@@ -1,0 +1,23 @@
+namespace: "fortinet"
+name: "fmgdevice"
+version: "1.0.0"
+readme: "README.md"
+authors:
+    - "Xinwei Du (@dux-fortinet)"
+    - "Xing Li (@lix-fortinet)"
+    - "Xue Jie (@JieX19)"
+description: "The FortiManager Device Ansible Collection."
+license_file: "LICENSE"
+tags:
+    - fortinet
+    - fmgdevice
+    - networking
+    - security
+    - cloud
+dependencies: { "ansible.netcommon": "*" }
+repository: "https://github.com/fortinet-ansible-dev/ansible-galaxy-fmgdevice-collection"
+documentation: "https://ansible-galaxy-fmgdevice-docs.readthedocs.io/en/latest"
+homepage: "https://fortinet.com"
+issues: "https://github.com/fortinet-ansible-dev/ansible-galaxy-fmgdevice-collection/issues"
+build_ignore:
+    - ".github"

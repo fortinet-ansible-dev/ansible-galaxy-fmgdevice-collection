@@ -1,0 +1,923 @@
+================================
+Fortinet.Fmgdevice Release Notes
+================================
+
+.. contents:: Topics
+
+
+v1.0.0
+======
+
+Release Summary
+---------------
+
+Release fortinet.fmgdevice 1.0.0
+
+New Plugins
+-----------
+
+Httpapi
+~~~~~~~
+
+- fortinet.fmgdevice.fmgdevice - HttpApi Plugin for Fortinet FortiManager Appliance or VM.
+
+New Modules
+-----------
+
+- fortinet.fmgdevice.fmgd_alertemail_setting - Configure alert email settings.
+- fortinet.fmgdevice.fmgd_antivirus_exemptlist - Configure a list of hashes to be exempt from AV scanning.
+- fortinet.fmgdevice.fmgd_antivirus_heuristic - Configure global heuristic options.
+- fortinet.fmgdevice.fmgd_antivirus_quarantine - Configure quarantine options.
+- fortinet.fmgdevice.fmgd_antivirus_settings - Configure AntiVirus settings.
+- fortinet.fmgdevice.fmgd_application_name - Configure application signatures.
+- fortinet.fmgdevice.fmgd_application_rulesettings - Configure application rule settings.
+- fortinet.fmgdevice.fmgd_automation_setting - Automation setting configuration.
+- fortinet.fmgdevice.fmgd_aws_vpce - Configure AWS VPC configuration.
+- fortinet.fmgdevice.fmgd_azure_vwaningresspublicips - Display Azure vWAN SLB ingress public IPs.
+- fortinet.fmgdevice.fmgd_azure_vwanslb - Configure Azure vWAN slb setting.
+- fortinet.fmgdevice.fmgd_azure_vwanslb_permanentsecurityrules - Configure permanent security rules.
+- fortinet.fmgdevice.fmgd_azure_vwanslb_permanentsecurityrules_rules - Configure security rules.
+- fortinet.fmgdevice.fmgd_azure_vwanslb_temporarysecurityrules - Configure temporary security rules.
+- fortinet.fmgdevice.fmgd_azure_vwanslb_temporarysecurityrules_rules - Configure security rules.
+- fortinet.fmgdevice.fmgd_casb_attributematch - Configure CASB SaaS application.
+- fortinet.fmgdevice.fmgd_casb_attributematch_attribute - CASB tenant match rules.
+- fortinet.fmgdevice.fmgd_certificate_remote - Remote certificate as a PEM file.
+- fortinet.fmgdevice.fmgd_clone - Clone an object in FortiManager.
+- fortinet.fmgdevice.fmgd_dlp_exactdatamatch - Configure exact-data-match template used by DLP scan.
+- fortinet.fmgdevice.fmgd_dlp_exactdatamatch_columns - DLP exact-data-match column types.
+- fortinet.fmgdevice.fmgd_dlp_fpdocsource - Create a DLP fingerprint database by allowing the FortiGate to access a file server containing files from which to create fingerprints.
+- fortinet.fmgdevice.fmgd_dlp_settings - Designate logical storage for DLP fingerprint database.
+- fortinet.fmgdevice.fmgd_dpdk_cpus - Configure CPUs enabled to run engines in each DPDK stage.
+- fortinet.fmgdevice.fmgd_dpdk_global - Configure global DPDK options.
+- fortinet.fmgdevice.fmgd_emailfilter_fortiguard - Device emailfilter fortiguard
+- fortinet.fmgdevice.fmgd_endpointcontrol_fctemsoverride - Configure FortiClient Enterprise Management Server
+- fortinet.fmgdevice.fmgd_endpointcontrol_settings - Configure endpoint control settings.
+- fortinet.fmgdevice.fmgd_ethernetoam_cfm - CFM domain configuration.
+- fortinet.fmgdevice.fmgd_ethernetoam_cfm_service - CFM service configuration.
+- fortinet.fmgdevice.fmgd_extendercontroller_extender - Device vdom extender controller extender
+- fortinet.fmgdevice.fmgd_extendercontroller_extender_controllerreport - FortiExtender controller report configuration.
+- fortinet.fmgdevice.fmgd_extendercontroller_extender_modem1 - Configuration options for modem 1.
+- fortinet.fmgdevice.fmgd_extendercontroller_extender_modem1_autoswitch - FortiExtender auto switch configuration.
+- fortinet.fmgdevice.fmgd_extendercontroller_extender_modem2 - Configuration options for modem 2.
+- fortinet.fmgdevice.fmgd_extendercontroller_extender_modem2_autoswitch - FortiExtender auto switch configuration.
+- fortinet.fmgdevice.fmgd_extendercontroller_extender_wanextension - Device vdom extender controller extender wan extension
+- fortinet.fmgdevice.fmgd_extensioncontroller_extender - Extender controller configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extender_wanextension - FortiExtender wan extension configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extendervap - FortiExtender wifi vap configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_fortigate - FortiGate controller configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_fortigateprofile - FortiGate connector profile configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_fortigateprofile_lanextension - FortiGate connector LAN extension configuration.
+- fortinet.fmgdevice.fmgd_fact - Gather fortimanager device facts.
+- fortinet.fmgdevice.fmgd_firewall_accessproxysshclientcert - Configure Access Proxy SSH client certificate.
+- fortinet.fmgdevice.fmgd_firewall_accessproxysshclientcert_certextension - Configure certificate extension for user certificate.
+- fortinet.fmgdevice.fmgd_firewall_authportal - Configure firewall authentication portals.
+- fortinet.fmgdevice.fmgd_firewall_dnstranslation - Configure DNS translation.
+- fortinet.fmgdevice.fmgd_firewall_global - Global firewall settings.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceappend - Configure additional port mappings for Internet Services.
+- fortinet.fmgdevice.fmgd_firewall_internetservicedefinition - Configure Internet Service definition.
+- fortinet.fmgdevice.fmgd_firewall_internetservicedefinition_entry - Protocol and port information in an Internet Service entry.
+- fortinet.fmgdevice.fmgd_firewall_internetservicedefinition_entry_portrange - Port ranges in the definition entry.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension - Configure Internet Services Extension.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension_disableentry - Disable entries in the Internet Service database.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension_disableentry_ip6range - IPv6 ranges in the disable entry.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension_disableentry_iprange - IPv4 ranges in the disable entry.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension_disableentry_portrange - Port ranges in the disable entry.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension_entry - Entries added to the Internet Service extension database.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceextension_entry_portrange - Port ranges in the custom entry.
+- fortinet.fmgdevice.fmgd_firewall_ipmacbinding_setting - Configure IP to MAC binding settings.
+- fortinet.fmgdevice.fmgd_firewall_ipmacbinding_table - Configure IP to MAC address pairs in the IP/MAC binding table.
+- fortinet.fmgdevice.fmgd_firewall_iptranslation - Configure firewall IP-translation.
+- fortinet.fmgdevice.fmgd_firewall_ipv6ehfilter - Configure IPv6 extension header filter.
+- fortinet.fmgdevice.fmgd_firewall_ondemandsniffer - Configure on-demand packet sniffer.
+- fortinet.fmgdevice.fmgd_firewall_pfcp - Configure PFCP.
+- fortinet.fmgdevice.fmgd_firewall_policy - Configure IPv4 policies.
+- fortinet.fmgdevice.fmgd_firewall_sniffer - Configure sniffer.
+- fortinet.fmgdevice.fmgd_firewall_sniffer_anomaly - Configuration method to edit Denial of Service
+- fortinet.fmgdevice.fmgd_firewall_ssh_hostkey - SSH proxy host public keys.
+- fortinet.fmgdevice.fmgd_firewall_ssh_localkey - SSH proxy local keys.
+- fortinet.fmgdevice.fmgd_firewall_ssh_setting - SSH proxy settings.
+- fortinet.fmgdevice.fmgd_firewall_ssl_setting - SSL proxy settings.
+- fortinet.fmgdevice.fmgd_firewall_sslserver - Configure SSL servers.
+- fortinet.fmgdevice.fmgd_firewall_ttlpolicy - Configure TTL policies.
+- fortinet.fmgdevice.fmgd_ftpproxy_explicit - Configure explicit FTP proxy settings.
+- fortinet.fmgdevice.fmgd_generic - Build and send generic FortiManager API request.
+- fortinet.fmgdevice.fmgd_gtp_apnshaper - Global per-APN shaper.
+- fortinet.fmgdevice.fmgd_gtp_ieallowlist - IE allow list.
+- fortinet.fmgdevice.fmgd_gtp_ieallowlist_entries - Entries of allow list for unknown or out-of-state IEs.
+- fortinet.fmgdevice.fmgd_gtp_rattimeoutprofile - RAT timeout profile
+- fortinet.fmgdevice.fmgd_icap_profile - Configure ICAP profiles.
+- fortinet.fmgdevice.fmgd_icap_server - Configure ICAP servers.
+- fortinet.fmgdevice.fmgd_icap_servergroup - Configure an ICAP server group consisting of multiple forward servers.
+- fortinet.fmgdevice.fmgd_icap_servergroup_serverlist - Add ICAP servers to a list to form a server group.
+- fortinet.fmgdevice.fmgd_ips_decoder - Configure IPS decoder.
+- fortinet.fmgdevice.fmgd_ips_decoder_parameter - IPS group parameters.
+- fortinet.fmgdevice.fmgd_ips_global - Configure IPS global parameter.
+- fortinet.fmgdevice.fmgd_ips_rule - Configure IPS rules.
+- fortinet.fmgdevice.fmgd_ips_rulesettings - Configure IPS rule setting.
+- fortinet.fmgdevice.fmgd_ips_settings - Configure IPS VDOM parameter.
+- fortinet.fmgdevice.fmgd_ips_tlsactiveprobe - TLS active probe configuration.
+- fortinet.fmgdevice.fmgd_loadbalance_flowrule - flow rule configuration
+- fortinet.fmgdevice.fmgd_loadbalance_setting - load balance setting
+- fortinet.fmgdevice.fmgd_loadbalance_setting_workers - Worker blade used by this group.
+- fortinet.fmgdevice.fmgd_loadbalance_workergroup - Worker group configuration.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter2_filter - Filters for Azure Security Center.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter2_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter2_setting - Settings for Azure Security Center.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter2_setting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter_filter - Filters for Azure Security Center.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter_setting - Settings for Azure Security Center.
+- fortinet.fmgdevice.fmgd_log_azuresecuritycenter_setting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_disk_filter - Configure filters for local disk logging.
+- fortinet.fmgdevice.fmgd_log_disk_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_disk_setting - Settings for local disk logging.
+- fortinet.fmgdevice.fmgd_log_eventfilter - Configure log event filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer2_filter - Filters for FortiAnalyzer.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer2_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer2_overridefilter - Override filters for FortiAnalyzer.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer2_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer2_overridesetting - Override FortiAnalyzer settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer2_setting - Global FortiAnalyzer settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer3_filter - Filters for FortiAnalyzer.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer3_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer3_overridefilter - Override filters for FortiAnalyzer.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer3_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer3_overridesetting - Override FortiAnalyzer settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer3_setting - Global FortiAnalyzer settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer_filter - Filters for FortiAnalyzer.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer_overridefilter - Override filters for FortiAnalyzer.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer_overridesetting - Override FortiAnalyzer settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzer_setting - Global FortiAnalyzer settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzercloud_filter - Filters for FortiAnalyzer Cloud.
+- fortinet.fmgdevice.fmgd_log_fortianalyzercloud_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzercloud_overridefilter - Override filters for FortiAnalyzer Cloud.
+- fortinet.fmgdevice.fmgd_log_fortianalyzercloud_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortianalyzercloud_overridesetting - Override FortiAnalyzer Cloud settings.
+- fortinet.fmgdevice.fmgd_log_fortianalyzercloud_setting - Global FortiAnalyzer Cloud settings.
+- fortinet.fmgdevice.fmgd_log_fortiguard_filter - Filters for FortiCloud.
+- fortinet.fmgdevice.fmgd_log_fortiguard_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortiguard_overridefilter - Override filters for FortiCloud.
+- fortinet.fmgdevice.fmgd_log_fortiguard_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_fortiguard_overridesetting - Override global FortiCloud logging settings for this VDOM.
+- fortinet.fmgdevice.fmgd_log_fortiguard_setting - Configure logging to FortiCloud.
+- fortinet.fmgdevice.fmgd_log_guidisplay - Configure how log messages are displayed on the GUI.
+- fortinet.fmgdevice.fmgd_log_memory_filter - Filters for memory buffer.
+- fortinet.fmgdevice.fmgd_log_memory_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_memory_globalsetting - Global settings for memory logging.
+- fortinet.fmgdevice.fmgd_log_memory_setting - Settings for memory buffer.
+- fortinet.fmgdevice.fmgd_log_nulldevice_filter - Filters for null device logging.
+- fortinet.fmgdevice.fmgd_log_nulldevice_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_nulldevice_setting - Settings for null device logging.
+- fortinet.fmgdevice.fmgd_log_setting - Configure general log settings.
+- fortinet.fmgdevice.fmgd_log_slbc_globalsetting - LOG Global settings for SLBC platform.
+- fortinet.fmgdevice.fmgd_log_syslogd2_filter - Filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd2_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd2_overridefilter - Override filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd2_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd2_overridesetting - Override settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd2_overridesetting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd2_setting - Global settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd2_setting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd3_filter - Filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd3_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd3_overridefilter - Override filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd3_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd3_overridesetting - Override settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd3_overridesetting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd3_setting - Global settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd3_setting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd4_filter - Filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd4_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd4_overridefilter - Override filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd4_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd4_overridesetting - Override settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd4_overridesetting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd4_setting - Global settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd4_setting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd_filter - Filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd_overridefilter - Override filters for remote system server.
+- fortinet.fmgdevice.fmgd_log_syslogd_overridefilter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_syslogd_overridesetting - Override settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd_overridesetting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_syslogd_setting - Global settings for remote syslog server.
+- fortinet.fmgdevice.fmgd_log_syslogd_setting_customfieldname - Custom field name for CEF format logging.
+- fortinet.fmgdevice.fmgd_log_tacacsaccounting2_filter - Settings for TACACS+ accounting events filter.
+- fortinet.fmgdevice.fmgd_log_tacacsaccounting2_setting - Settings for TACACS+ accounting.
+- fortinet.fmgdevice.fmgd_log_tacacsaccounting3_filter - Settings for TACACS+ accounting events filter.
+- fortinet.fmgdevice.fmgd_log_tacacsaccounting3_setting - Settings for TACACS+ accounting.
+- fortinet.fmgdevice.fmgd_log_tacacsaccounting_filter - Settings for TACACS+ accounting events filter.
+- fortinet.fmgdevice.fmgd_log_tacacsaccounting_setting - Settings for TACACS+ accounting.
+- fortinet.fmgdevice.fmgd_log_webtrends_filter - Filters for WebTrends.
+- fortinet.fmgdevice.fmgd_log_webtrends_filter_freestyle - Free style filters.
+- fortinet.fmgdevice.fmgd_log_webtrends_setting - Settings for WebTrends.
+- fortinet.fmgdevice.fmgd_monitoring_np6ipsecengine - Configure NP6 IPsec engine status monitoring.
+- fortinet.fmgdevice.fmgd_monitoring_npuhpe - Configure npu-hpe status monitoring.
+- fortinet.fmgdevice.fmgd_move - Move fortimanager defined Object.
+- fortinet.fmgdevice.fmgd_notification - Event notification configuration.
+- fortinet.fmgdevice.fmgd_nsx_profile - List NSX Profile.
+- fortinet.fmgdevice.fmgd_nsxt_servicechain - Configure NSX-T service chain.
+- fortinet.fmgdevice.fmgd_nsxt_servicechain_serviceindex - Configure service index.
+- fortinet.fmgdevice.fmgd_nsxt_setting - Configure NSX-T setting.
+- fortinet.fmgdevice.fmgd_pfcp_messagefilter - Message filter for PFCP messages.
+- fortinet.fmgdevice.fmgd_rename - Rename an object in FortiManager.
+- fortinet.fmgdevice.fmgd_report_chart - Report chart widget configuration.
+- fortinet.fmgdevice.fmgd_report_chart_categoryseries - Category series of pie chart.
+- fortinet.fmgdevice.fmgd_report_chart_column - Table column definition.
+- fortinet.fmgdevice.fmgd_report_chart_column_mapping - Show detail in certain display value for certain condition.
+- fortinet.fmgdevice.fmgd_report_chart_drilldowncharts - Drill down charts.
+- fortinet.fmgdevice.fmgd_report_chart_valueseries - Value series of pie chart.
+- fortinet.fmgdevice.fmgd_report_chart_xseries - X-series of chart.
+- fortinet.fmgdevice.fmgd_report_chart_yseries - Y-series of chart.
+- fortinet.fmgdevice.fmgd_report_dataset - Report dataset configuration.
+- fortinet.fmgdevice.fmgd_report_dataset_field - Fields.
+- fortinet.fmgdevice.fmgd_report_dataset_parameters - Parameters.
+- fortinet.fmgdevice.fmgd_report_layout - Report layout configuration.
+- fortinet.fmgdevice.fmgd_report_layout_bodyitem - Configure report body item.
+- fortinet.fmgdevice.fmgd_report_layout_bodyitem_list - Configure report list item.
+- fortinet.fmgdevice.fmgd_report_layout_bodyitem_parameters - Parameters.
+- fortinet.fmgdevice.fmgd_report_layout_page - Configure report page.
+- fortinet.fmgdevice.fmgd_report_layout_page_footer - Configure report page footer.
+- fortinet.fmgdevice.fmgd_report_layout_page_footer_footeritem - Configure report footer item.
+- fortinet.fmgdevice.fmgd_report_layout_page_header - Configure report page header.
+- fortinet.fmgdevice.fmgd_report_layout_page_header_headeritem - Configure report header item.
+- fortinet.fmgdevice.fmgd_report_setting - Report setting configuration.
+- fortinet.fmgdevice.fmgd_report_style - Report style configuration.
+- fortinet.fmgdevice.fmgd_report_theme - Report themes configuration
+- fortinet.fmgdevice.fmgd_router_authpath - Configure authentication based routing.
+- fortinet.fmgdevice.fmgd_router_bfd - Configure BFD.
+- fortinet.fmgdevice.fmgd_router_bfd6 - Configure IPv6 BFD.
+- fortinet.fmgdevice.fmgd_router_bfd6_multihoptemplate - BFD IPv6 multi-hop template table.
+- fortinet.fmgdevice.fmgd_router_bfd6_neighbor - Configure neighbor of IPv6 BFD.
+- fortinet.fmgdevice.fmgd_router_bfd_multihoptemplate - BFD multi-hop template table.
+- fortinet.fmgdevice.fmgd_router_bfd_neighbor - Neighbor.
+- fortinet.fmgdevice.fmgd_router_bgp - Configure BGP.
+- fortinet.fmgdevice.fmgd_router_bgp_admindistance - Administrative distance modifications.
+- fortinet.fmgdevice.fmgd_router_bgp_aggregateaddress - BGP aggregate address table.
+- fortinet.fmgdevice.fmgd_router_bgp_aggregateaddress6 - BGP IPv6 aggregate address table.
+- fortinet.fmgdevice.fmgd_router_bgp_neighbor - BGP neighbor table.
+- fortinet.fmgdevice.fmgd_router_bgp_neighbor_conditionaladvertise - Conditional advertisement.
+- fortinet.fmgdevice.fmgd_router_bgp_neighbor_conditionaladvertise6 - IPv6 conditional advertisement.
+- fortinet.fmgdevice.fmgd_router_bgp_neighborgroup - BGP neighbor group table.
+- fortinet.fmgdevice.fmgd_router_bgp_neighborrange - BGP neighbor range table.
+- fortinet.fmgdevice.fmgd_router_bgp_neighborrange6 - BGP IPv6 neighbor range table.
+- fortinet.fmgdevice.fmgd_router_bgp_network - BGP network table.
+- fortinet.fmgdevice.fmgd_router_bgp_network6 - BGP IPv6 network table.
+- fortinet.fmgdevice.fmgd_router_bgp_redistribute - BGP IPv4 redistribute table.
+- fortinet.fmgdevice.fmgd_router_bgp_redistribute6 - BGP IPv6 redistribute table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrf - BGP VRF leaking table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrf6 - BGP IPv6 VRF leaking table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrf6_leaktarget - Target VRF table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrf_leaktarget - Target VRF table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrfleak - BGP VRF leaking table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrfleak6 - BGP IPv6 VRF leaking table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrfleak6_target - Target VRF table.
+- fortinet.fmgdevice.fmgd_router_bgp_vrfleak_target - Target VRF table.
+- fortinet.fmgdevice.fmgd_router_extcommunitylist - Configure extended community lists.
+- fortinet.fmgdevice.fmgd_router_extcommunitylist_rule - Extended community list rule.
+- fortinet.fmgdevice.fmgd_router_isis - Configure IS-IS.
+- fortinet.fmgdevice.fmgd_router_isis_isisinterface - IS-IS interface configuration.
+- fortinet.fmgdevice.fmgd_router_isis_isisnet - IS-IS net configuration.
+- fortinet.fmgdevice.fmgd_router_isis_redistribute - IS-IS redistribute protocols.
+- fortinet.fmgdevice.fmgd_router_isis_redistribute6 - IS-IS IPv6 redistribution for routing protocols.
+- fortinet.fmgdevice.fmgd_router_isis_summaryaddress - IS-IS summary addresses.
+- fortinet.fmgdevice.fmgd_router_isis_summaryaddress6 - IS-IS IPv6 summary address.
+- fortinet.fmgdevice.fmgd_router_keychain - Configure key-chain.
+- fortinet.fmgdevice.fmgd_router_keychain_key - Configuration method to edit key settings.
+- fortinet.fmgdevice.fmgd_router_multicast - Configure router multicast.
+- fortinet.fmgdevice.fmgd_router_multicast6 - Configure IPv6 multicast.
+- fortinet.fmgdevice.fmgd_router_multicast6_interface - Protocol Independent Multicast
+- fortinet.fmgdevice.fmgd_router_multicast6_pimsmglobal - PIM sparse-mode global settings.
+- fortinet.fmgdevice.fmgd_router_multicast6_pimsmglobal_rpaddress - Statically configured RP addresses.
+- fortinet.fmgdevice.fmgd_router_multicast_interface - PIM interfaces.
+- fortinet.fmgdevice.fmgd_router_multicast_interface_igmp - IGMP configuration options.
+- fortinet.fmgdevice.fmgd_router_multicast_interface_joingroup - Join multicast groups.
+- fortinet.fmgdevice.fmgd_router_multicast_pimsmglobal - PIM sparse-mode global settings.
+- fortinet.fmgdevice.fmgd_router_multicast_pimsmglobal_rpaddress - Statically configure RP addresses.
+- fortinet.fmgdevice.fmgd_router_multicast_pimsmglobalvrf - per-VRF PIM sparse-mode global settings.
+- fortinet.fmgdevice.fmgd_router_multicast_pimsmglobalvrf_rpaddress - Statically configure RP addresses.
+- fortinet.fmgdevice.fmgd_router_multicastflow - Configure multicast-flow.
+- fortinet.fmgdevice.fmgd_router_multicastflow_flows - Multicast-flow entries.
+- fortinet.fmgdevice.fmgd_router_ospf - Configure OSPF.
+- fortinet.fmgdevice.fmgd_router_ospf6 - Configure IPv6 OSPF.
+- fortinet.fmgdevice.fmgd_router_ospf6_area - OSPF6 area configuration.
+- fortinet.fmgdevice.fmgd_router_ospf6_area_ipseckeys - IPsec authentication and encryption keys.
+- fortinet.fmgdevice.fmgd_router_ospf6_area_range - OSPF6 area range configuration.
+- fortinet.fmgdevice.fmgd_router_ospf6_area_virtuallink - OSPF6 virtual link configuration.
+- fortinet.fmgdevice.fmgd_router_ospf6_area_virtuallink_ipseckeys - IPsec authentication and encryption keys.
+- fortinet.fmgdevice.fmgd_router_ospf6_ospf6interface - OSPF6 interface configuration.
+- fortinet.fmgdevice.fmgd_router_ospf6_ospf6interface_ipseckeys - IPsec authentication and encryption keys.
+- fortinet.fmgdevice.fmgd_router_ospf6_ospf6interface_neighbor - OSPFv3 neighbors are used when OSPFv3 runs on non-broadcast media.
+- fortinet.fmgdevice.fmgd_router_ospf6_redistribute - Redistribute configuration.
+- fortinet.fmgdevice.fmgd_router_ospf6_summaryaddress - IPv6 address summary configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_area - OSPF area configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_area_filterlist - OSPF area filter-list configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_area_range - OSPF area range configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_area_virtuallink - OSPF virtual link configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_area_virtuallink_md5keys - MD5 key.
+- fortinet.fmgdevice.fmgd_router_ospf_distributelist - Distribute list configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_neighbor - OSPF neighbor configuration are used when OSPF runs on non-broadcast media.
+- fortinet.fmgdevice.fmgd_router_ospf_network - OSPF network configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_ospfinterface - OSPF interface configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_ospfinterface_md5keys - MD5 key.
+- fortinet.fmgdevice.fmgd_router_ospf_redistribute - Redistribute configuration.
+- fortinet.fmgdevice.fmgd_router_ospf_summaryaddress - IP address summary configuration.
+- fortinet.fmgdevice.fmgd_router_policy - Configure IPv4 routing policies.
+- fortinet.fmgdevice.fmgd_router_policy6 - Configure IPv6 routing policies.
+- fortinet.fmgdevice.fmgd_router_rip - Configure RIP.
+- fortinet.fmgdevice.fmgd_router_rip_distance - Distance.
+- fortinet.fmgdevice.fmgd_router_rip_distributelist - Distribute list.
+- fortinet.fmgdevice.fmgd_router_rip_interface - RIP interface configuration.
+- fortinet.fmgdevice.fmgd_router_rip_neighbor - Neighbor.
+- fortinet.fmgdevice.fmgd_router_rip_network - Network.
+- fortinet.fmgdevice.fmgd_router_rip_offsetlist - Offset list.
+- fortinet.fmgdevice.fmgd_router_rip_redistribute - Redistribute configuration.
+- fortinet.fmgdevice.fmgd_router_ripng - Configure RIPng.
+- fortinet.fmgdevice.fmgd_router_ripng_aggregateaddress - Aggregate address.
+- fortinet.fmgdevice.fmgd_router_ripng_distance - Distance.
+- fortinet.fmgdevice.fmgd_router_ripng_distributelist - Distribute list.
+- fortinet.fmgdevice.fmgd_router_ripng_interface - RIPng interface configuration.
+- fortinet.fmgdevice.fmgd_router_ripng_neighbor - Neighbor.
+- fortinet.fmgdevice.fmgd_router_ripng_network - Network.
+- fortinet.fmgdevice.fmgd_router_ripng_offsetlist - Offset list.
+- fortinet.fmgdevice.fmgd_router_ripng_redistribute - Redistribute configuration.
+- fortinet.fmgdevice.fmgd_router_routemap - Configure route maps.
+- fortinet.fmgdevice.fmgd_router_setting - Configure router settings.
+- fortinet.fmgdevice.fmgd_router_static - Configure IPv4 static routing tables.
+- fortinet.fmgdevice.fmgd_router_static6 - Configure IPv6 static routing tables.
+- fortinet.fmgdevice.fmgd_rule_fmwp - Show FMWP signatures.
+- fortinet.fmgdevice.fmgd_rule_otdt - Show OT detection signatures.
+- fortinet.fmgdevice.fmgd_rule_otvp - Show OT patch signatures.
+- fortinet.fmgdevice.fmgd_switchcontroller_8021xsettings - Configure global 802.
+- fortinet.fmgdevice.fmgd_switchcontroller_acl_group - Configure ACL groups to be applied on managed FortiSwitch ports.
+- fortinet.fmgdevice.fmgd_switchcontroller_acl_ingress - Configure ingress ACL policies to be applied on managed FortiSwitch ports.
+- fortinet.fmgdevice.fmgd_switchcontroller_acl_ingress_action - ACL actions.
+- fortinet.fmgdevice.fmgd_switchcontroller_acl_ingress_classifier - ACL classifiers.
+- fortinet.fmgdevice.fmgd_switchcontroller_autoconfig_custom - Policies which can override the default for specific ISL/ICL/FortiLink interface.
+- fortinet.fmgdevice.fmgd_switchcontroller_autoconfig_custom_switchbinding - Switch binding list.
+- fortinet.fmgdevice.fmgd_switchcontroller_autoconfig_default - Policies which are applied automatically to all ISL/ICL/FortiLink interfaces.
+- fortinet.fmgdevice.fmgd_switchcontroller_autoconfig_policy - Policy definitions which can define the behavior on auto configured interfaces.
+- fortinet.fmgdevice.fmgd_switchcontroller_customcommand - Configure the FortiGate switch controller to send custom commands to managed FortiSwitch devices.
+- fortinet.fmgdevice.fmgd_switchcontroller_dsl_policy - DSL policy.
+- fortinet.fmgdevice.fmgd_switchcontroller_dynamicportpolicy - Configure Dynamic port policy to be applied on the managed FortiSwitch ports through DPP device.
+- fortinet.fmgdevice.fmgd_switchcontroller_dynamicportpolicy_policy - Port policies with matching criteria and actions.
+- fortinet.fmgdevice.fmgd_switchcontroller_flowtracking - Configure FortiSwitch flow tracking and export via ipfix/netflow.
+- fortinet.fmgdevice.fmgd_switchcontroller_flowtracking_aggregates - Configure aggregates in which all traffic sessions matching the IP Address will be grouped into the same flow.
+- fortinet.fmgdevice.fmgd_switchcontroller_flowtracking_collectors - Configure collectors for the flow.
+- fortinet.fmgdevice.fmgd_switchcontroller_fortilinksettings - Configure integrated FortiLink settings for FortiSwitch.
+- fortinet.fmgdevice.fmgd_switchcontroller_fortilinksettings_nacports - NAC specific configuration.
+- fortinet.fmgdevice.fmgd_switchcontroller_global - Configure FortiSwitch global settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_igmpsnooping - Configure FortiSwitch IGMP snooping global settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_initialconfig_template - Configure template for auto-generated VLANs.
+- fortinet.fmgdevice.fmgd_switchcontroller_initialconfig_vlans - Configure initial template for auto-generated VLAN interfaces.
+- fortinet.fmgdevice.fmgd_switchcontroller_lldpprofile - Configure FortiSwitch LLDP profiles.
+- fortinet.fmgdevice.fmgd_switchcontroller_lldpprofile_customtlvs - Configuration method to edit custom TLV entries.
+- fortinet.fmgdevice.fmgd_switchcontroller_lldpprofile_medlocationservice - Configuration method to edit Media Endpoint Discovery
+- fortinet.fmgdevice.fmgd_switchcontroller_lldpprofile_mednetworkpolicy - Configuration method to edit Media Endpoint Discovery
+- fortinet.fmgdevice.fmgd_switchcontroller_lldpsettings - Configure FortiSwitch LLDP settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_location - Configure FortiSwitch location services.
+- fortinet.fmgdevice.fmgd_switchcontroller_location_addresscivic - Configure location civic address.
+- fortinet.fmgdevice.fmgd_switchcontroller_location_coordinates - Configure location GPS coordinates.
+- fortinet.fmgdevice.fmgd_switchcontroller_location_elinnumber - Configure location ELIN number.
+- fortinet.fmgdevice.fmgd_switchcontroller_macpolicy - Configure MAC policy to be applied on the managed FortiSwitch devices through NAC device.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch - Configure FortiSwitch devices that are managed by this FortiGate.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_8021xsettings - Configuration method to edit FortiSwitch 802.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_customcommand - Configuration method to edit FortiSwitch commands to be pushed to this FortiSwitch device upon rebooting the FortiGate switch contro...
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_dhcpsnoopingstaticclient - Configure FortiSwitch DHCP snooping static clients.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_igmpsnooping - Configure FortiSwitch IGMP snooping global settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_igmpsnooping_vlans - Configure IGMP snooping VLAN.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_ipsourceguard - IP source guard.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_ipsourceguard_bindingentry - IP and MAC address configuration.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_mirror - Configuration method to edit FortiSwitch packet mirror.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_ports - Managed-switch port list.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_ports_dhcpsnoopoption82override - Configure DHCP snooping option 82 override.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_remotelog - Configure logging by FortiSwitch device to a remote syslog server.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_routeoffloadrouter - Configure route offload MCLAG IP address.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_snmpcommunity - Configuration method to edit Simple Network Management Protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_snmpcommunity_hosts - Configure IPv4 SNMP managers
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_snmpsysinfo - Configuration method to edit Simple Network Management Protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_snmptrapthreshold - Configuration method to edit Simple Network Management Protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_snmpuser - Configuration method to edit Simple Network Management Protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_staticmac - Configuration method to edit FortiSwitch Static and Sticky MAC.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_stormcontrol - Configuration method to edit FortiSwitch storm control for measuring traffic activity using data rates to prevent traffic disruption.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_stpinstance - Configuration method to edit Spanning Tree Protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_stpsettings - Configuration method to edit Spanning Tree Protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_switchlog - Configuration method to edit FortiSwitch logging settings
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_vlan - Configure VLAN assignment priority.
+- fortinet.fmgdevice.fmgd_switchcontroller_nacdevice - Configure/list NAC devices learned on the managed FortiSwitch ports which matches NAC policy.
+- fortinet.fmgdevice.fmgd_switchcontroller_nacsettings - Configure integrated NAC settings for FortiSwitch.
+- fortinet.fmgdevice.fmgd_switchcontroller_networkmonitorsettings - Configure network monitor settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_portpolicy - Configure port policy to be applied on the managed FortiSwitch ports through NAC device.
+- fortinet.fmgdevice.fmgd_switchcontroller_ptp_interfacepolicy - PTP interface-policy configuration.
+- fortinet.fmgdevice.fmgd_switchcontroller_ptp_policy - PTP policy configuration.
+- fortinet.fmgdevice.fmgd_switchcontroller_ptp_profile - Global PTP profile.
+- fortinet.fmgdevice.fmgd_switchcontroller_ptp_settings - Global PTP settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_qos_dot1pmap - Configure FortiSwitch QoS 802.
+- fortinet.fmgdevice.fmgd_switchcontroller_qos_ipdscpmap - Configure FortiSwitch QoS IP precedence/DSCP.
+- fortinet.fmgdevice.fmgd_switchcontroller_qos_ipdscpmap_map - Maps between IP-DSCP value to COS queue.
+- fortinet.fmgdevice.fmgd_switchcontroller_qos_qospolicy - Configure FortiSwitch QoS policy.
+- fortinet.fmgdevice.fmgd_switchcontroller_qos_queuepolicy - Configure FortiSwitch QoS egress queue policy.
+- fortinet.fmgdevice.fmgd_switchcontroller_qos_queuepolicy_cosqueue - COS queue configuration.
+- fortinet.fmgdevice.fmgd_switchcontroller_remotelog - Configure logging by FortiSwitch device to a remote syslog server.
+- fortinet.fmgdevice.fmgd_switchcontroller_securitypolicy_8021x - Configure 802.
+- fortinet.fmgdevice.fmgd_switchcontroller_securitypolicy_localaccess - Configure allowaccess list for mgmt and internal interfaces on managed FortiSwitch units.
+- fortinet.fmgdevice.fmgd_switchcontroller_sflow - Configure FortiSwitch sFlow.
+- fortinet.fmgdevice.fmgd_switchcontroller_snmpcommunity - Configure FortiSwitch SNMP v1/v2c communities globally.
+- fortinet.fmgdevice.fmgd_switchcontroller_snmpcommunity_hosts - Configure IPv4 SNMP managers
+- fortinet.fmgdevice.fmgd_switchcontroller_snmpsysinfo - Configure FortiSwitch SNMP system information globally.
+- fortinet.fmgdevice.fmgd_switchcontroller_snmptrapthreshold - Configure FortiSwitch SNMP trap threshold values globally.
+- fortinet.fmgdevice.fmgd_switchcontroller_snmpuser - Configure FortiSwitch SNMP v3 users globally.
+- fortinet.fmgdevice.fmgd_switchcontroller_stormcontrol - Configure FortiSwitch storm control.
+- fortinet.fmgdevice.fmgd_switchcontroller_stormcontrolpolicy - Configure FortiSwitch storm control policy to be applied on managed-switch ports.
+- fortinet.fmgdevice.fmgd_switchcontroller_stpinstance - Configure FortiSwitch multiple spanning tree protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_stpsettings - Configure FortiSwitch spanning tree protocol
+- fortinet.fmgdevice.fmgd_switchcontroller_switchgroup - Configure FortiSwitch switch groups.
+- fortinet.fmgdevice.fmgd_switchcontroller_switchinterfacetag - Configure switch object tags.
+- fortinet.fmgdevice.fmgd_switchcontroller_switchlog - Configure FortiSwitch logging
+- fortinet.fmgdevice.fmgd_switchcontroller_switchprofile - Configure FortiSwitch switch profile.
+- fortinet.fmgdevice.fmgd_switchcontroller_system - Configure system-wide switch controller settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_trafficpolicy - Configure FortiSwitch traffic policy.
+- fortinet.fmgdevice.fmgd_switchcontroller_trafficsniffer - Configure FortiSwitch RSPAN/ERSPAN traffic sniffing parameters.
+- fortinet.fmgdevice.fmgd_switchcontroller_trafficsniffer_targetip - Sniffer IPs to filter.
+- fortinet.fmgdevice.fmgd_switchcontroller_trafficsniffer_targetmac - Sniffer MACs to filter.
+- fortinet.fmgdevice.fmgd_switchcontroller_trafficsniffer_targetport - Sniffer ports to filter.
+- fortinet.fmgdevice.fmgd_switchcontroller_virtualportpool - Configure virtual pool.
+- fortinet.fmgdevice.fmgd_switchcontroller_vlanpolicy - Configure VLAN policy to be applied on the managed FortiSwitch ports through dynamic-port-policy.
+- fortinet.fmgdevice.fmgd_system_3gmodem_custom - 3G MODEM custom.
+- fortinet.fmgdevice.fmgd_system_5gmodem - Configure USB 5G modems.
+- fortinet.fmgdevice.fmgd_system_5gmodem_dataplan - Configure data plan.
+- fortinet.fmgdevice.fmgd_system_5gmodem_modem1 - Configure 5G Modem1.
+- fortinet.fmgdevice.fmgd_system_5gmodem_modem1_simswitch - Configure SIM card switch.
+- fortinet.fmgdevice.fmgd_system_5gmodem_modem2 - Configure 5G Modem2.
+- fortinet.fmgdevice.fmgd_system_accprofile - Configure access profiles for system administrators.
+- fortinet.fmgdevice.fmgd_system_accprofile_fwgrppermission - Custom firewall permission.
+- fortinet.fmgdevice.fmgd_system_accprofile_loggrppermission - Custom Log & Report permission.
+- fortinet.fmgdevice.fmgd_system_accprofile_netgrppermission - Custom network permission.
+- fortinet.fmgdevice.fmgd_system_accprofile_sysgrppermission - Custom system permission.
+- fortinet.fmgdevice.fmgd_system_accprofile_utmgrppermission - Custom Security Profile permissions.
+- fortinet.fmgdevice.fmgd_system_acme - Configure ACME client.
+- fortinet.fmgdevice.fmgd_system_acme_accounts - ACME accounts list.
+- fortinet.fmgdevice.fmgd_system_admin - Configure admin users.
+- fortinet.fmgdevice.fmgd_system_affinityinterrupt - Configure interrupt affinity.
+- fortinet.fmgdevice.fmgd_system_affinitypacketredistribution - Configure packet redistribution.
+- fortinet.fmgdevice.fmgd_system_alias - Configure alias command.
+- fortinet.fmgdevice.fmgd_system_apiuser - Configure API users.
+- fortinet.fmgdevice.fmgd_system_apiuser_trusthost - Trusthost.
+- fortinet.fmgdevice.fmgd_system_arptable - Configure ARP table.
+- fortinet.fmgdevice.fmgd_system_autoinstall - Configure USB auto installation.
+- fortinet.fmgdevice.fmgd_system_automationaction - Action for automation stitches.
+- fortinet.fmgdevice.fmgd_system_automationaction_httpheaders - Request headers.
+- fortinet.fmgdevice.fmgd_system_automationcondition - Condition for automation stitches.
+- fortinet.fmgdevice.fmgd_system_automationdestination - Automation destinations.
+- fortinet.fmgdevice.fmgd_system_automationstitch - Automation stitches.
+- fortinet.fmgdevice.fmgd_system_automationstitch_actions - Configure stitch actions.
+- fortinet.fmgdevice.fmgd_system_automationtrigger - Trigger for automation stitches.
+- fortinet.fmgdevice.fmgd_system_automationtrigger_fields - Customized trigger field settings.
+- fortinet.fmgdevice.fmgd_system_autoscale - Configure system auto-scaling.
+- fortinet.fmgdevice.fmgd_system_autoscript - Configure auto script.
+- fortinet.fmgdevice.fmgd_system_autoupdate_pushupdate - Configure push updates.
+- fortinet.fmgdevice.fmgd_system_autoupdate_schedule - Configure update schedule.
+- fortinet.fmgdevice.fmgd_system_autoupdate_tunneling - Configure web proxy tunneling for the FDN.
+- fortinet.fmgdevice.fmgd_system_bypass - Configure system bypass.
+- fortinet.fmgdevice.fmgd_system_centralmanagement - Configure central management.
+- fortinet.fmgdevice.fmgd_system_centralmanagement_serverlist - Additional severs that the FortiGate can use for updates
+- fortinet.fmgdevice.fmgd_system_clustersync - Device system cluster sync
+- fortinet.fmgdevice.fmgd_system_clustersync_sessionsyncfilter - Device system cluster sync session sync filter
+- fortinet.fmgdevice.fmgd_system_clustersync_sessionsyncfilter_customservice - Device system cluster sync session sync filter custom service
+- fortinet.fmgdevice.fmgd_system_console - Configure console.
+- fortinet.fmgdevice.fmgd_system_consoleserver - Configure Console Server.
+- fortinet.fmgdevice.fmgd_system_consoleserver_entries - Entry used by console server.
+- fortinet.fmgdevice.fmgd_system_csf - Add this FortiGate to a Security Fabric or set up a new Security Fabric on this FortiGate.
+- fortinet.fmgdevice.fmgd_system_csf_fabricconnector - Fabric connector configuration.
+- fortinet.fmgdevice.fmgd_system_csf_fabricdevice - Fabric device configuration.
+- fortinet.fmgdevice.fmgd_system_csf_trustedlist - Pre-authorized and blocked security fabric nodes.
+- fortinet.fmgdevice.fmgd_system_ddns - Configure DDNS.
+- fortinet.fmgdevice.fmgd_system_dedicatedmgmt - Configure dedicated management.
+- fortinet.fmgdevice.fmgd_system_deviceupgrade - Independent upgrades for managed devices.
+- fortinet.fmgdevice.fmgd_system_deviceupgrade_knownhamembers - Known members of the HA cluster.
+- fortinet.fmgdevice.fmgd_system_dhcp6_server - Configure DHCPv6 servers.
+- fortinet.fmgdevice.fmgd_system_dhcp6_server_iprange - DHCP IP range configuration.
+- fortinet.fmgdevice.fmgd_system_dhcp6_server_options - DHCPv6 options.
+- fortinet.fmgdevice.fmgd_system_dhcp6_server_prefixrange - DHCP prefix configuration.
+- fortinet.fmgdevice.fmgd_system_digitalio - Configure digital-io.
+- fortinet.fmgdevice.fmgd_system_dnp3proxy - Configure dnpproxy settings.
+- fortinet.fmgdevice.fmgd_system_dns - Configure DNS.
+- fortinet.fmgdevice.fmgd_system_dns64 - Configure DNS64.
+- fortinet.fmgdevice.fmgd_system_dnsdatabase - Configure DNS databases.
+- fortinet.fmgdevice.fmgd_system_dnsdatabase_dnsentry - DNS entry.
+- fortinet.fmgdevice.fmgd_system_dnsserver - Configure DNS servers.
+- fortinet.fmgdevice.fmgd_system_dscpbasedpriority - Configure DSCP based priority table.
+- fortinet.fmgdevice.fmgd_system_elbc - Configure enhanced load balance cluster.
+- fortinet.fmgdevice.fmgd_system_emailserver - Configure the email server used by the FortiGate various things.
+- fortinet.fmgdevice.fmgd_system_evpn - Configure EVPN instance.
+- fortinet.fmgdevice.fmgd_system_fabricvpn - Setup for self orchestrated fabric auto discovery VPN.
+- fortinet.fmgdevice.fmgd_system_fabricvpn_advertisedsubnets - Local advertised subnets.
+- fortinet.fmgdevice.fmgd_system_fabricvpn_overlays - Local overlay interfaces table.
+- fortinet.fmgdevice.fmgd_system_federatedupgrade - Coordinate federated upgrades within the Security Fabric.
+- fortinet.fmgdevice.fmgd_system_federatedupgrade_knownhamembers - Known members of the HA cluster.
+- fortinet.fmgdevice.fmgd_system_federatedupgrade_nodelist - Nodes which will be included in the upgrade.
+- fortinet.fmgdevice.fmgd_system_fipscc - Configure FIPS-CC mode.
+- fortinet.fmgdevice.fmgd_system_fortiai - Configure FortiAI.
+- fortinet.fmgdevice.fmgd_system_fortindr - Configure FortiNDR.
+- fortinet.fmgdevice.fmgd_system_fortisandbox - Configure FortiSandbox.
+- fortinet.fmgdevice.fmgd_system_fssopolling - Configure Fortinet Single Sign On
+- fortinet.fmgdevice.fmgd_system_ftmpush - Configure FortiToken Mobile push services.
+- fortinet.fmgdevice.fmgd_system_geneve - Configure GENEVE devices.
+- fortinet.fmgdevice.fmgd_system_gigk - Configure Gi Firewall Gatekeeper.
+- fortinet.fmgdevice.fmgd_system_global - Configure global attributes.
+- fortinet.fmgdevice.fmgd_system_gretunnel - Configure GRE tunnel.
+- fortinet.fmgdevice.fmgd_system_ha - Configure HA.
+- fortinet.fmgdevice.fmgd_system_ha_frupsettings - Device system ha frup settings
+- fortinet.fmgdevice.fmgd_system_ha_hamgmtinterfaces - Reserve interfaces to manage individual cluster units.
+- fortinet.fmgdevice.fmgd_system_ha_secondaryvcluster - Configure virtual cluster 2.
+- fortinet.fmgdevice.fmgd_system_ha_unicastpeers - Number of unicast peers.
+- fortinet.fmgdevice.fmgd_system_ha_vcluster - Virtual cluster table.
+- fortinet.fmgdevice.fmgd_system_hamonitor - Configure HA monitor.
+- fortinet.fmgdevice.fmgd_system_healthcheckfortiguard - SD-WAN status checking or health checking.
+- fortinet.fmgdevice.fmgd_system_icond - Configure Industrial Connectivity.
+- fortinet.fmgdevice.fmgd_system_ike - Configure IKE global attributes.
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup1 - Diffie-Hellman group 1
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup14 - Diffie-Hellman group 14
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup15 - Diffie-Hellman group 15
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup16 - Diffie-Hellman group 16
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup17 - Diffie-Hellman group 17
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup18 - Diffie-Hellman group 18
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup19 - Diffie-Hellman group 19
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup2 - Diffie-Hellman group 2
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup20 - Diffie-Hellman group 20
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup21 - Diffie-Hellman group 21
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup27 - Diffie-Hellman group 27
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup28 - Diffie-Hellman group 28
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup29 - Diffie-Hellman group 29
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup30 - Diffie-Hellman group 30
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup31 - Diffie-Hellman group 31
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup32 - Diffie-Hellman group 32
+- fortinet.fmgdevice.fmgd_system_ike_dhgroup5 - Diffie-Hellman group 5
+- fortinet.fmgdevice.fmgd_system_interface - Configure interfaces.
+- fortinet.fmgdevice.fmgd_system_interface_clientoptions - DHCP client options.
+- fortinet.fmgdevice.fmgd_system_interface_dhcpsnoopingserverlist - Configure DHCP server access list.
+- fortinet.fmgdevice.fmgd_system_interface_egressqueues - Configure queues of NP port on egress path.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6 - IPv6 of interface.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_clientoptions - DHCP6 client options.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_dhcp6iapdlist - DHCPv6 IA-PD list.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_ip6delegatedprefixlist - Advertised IPv6 delegated prefix list.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_ip6dnssllist - Advertised IPv6 DNSS list.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_ip6extraaddr - Extra IPv6 address prefixes of interface.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_ip6prefixlist - Advertised prefix list.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_ip6rdnsslist - Advertised IPv6 RDNSS list.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_ip6routelist - Advertised route list.
+- fortinet.fmgdevice.fmgd_system_interface_ipv6_vrrp6 - IPv6 VRRP configuration.
+- fortinet.fmgdevice.fmgd_system_interface_l2tpclientsettings - L2TP client settings.
+- fortinet.fmgdevice.fmgd_system_interface_mirroringfilter - Mirroring filter.
+- fortinet.fmgdevice.fmgd_system_interface_secondaryip - Second IP address of interface.
+- fortinet.fmgdevice.fmgd_system_interface_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_system_interface_vrrp - VRRP configuration.
+- fortinet.fmgdevice.fmgd_system_interface_vrrp_proxyarp - VRRP Proxy ARP configuration.
+- fortinet.fmgdevice.fmgd_system_interface_wifinetworks - WiFi network table.
+- fortinet.fmgdevice.fmgd_system_ipam - Configure IP address management services.
+- fortinet.fmgdevice.fmgd_system_ipam_pools - Configure IPAM pools.
+- fortinet.fmgdevice.fmgd_system_ipam_pools_exclude - Configure pool exclude subnets.
+- fortinet.fmgdevice.fmgd_system_ipam_rules - Configure IPAM allocation rules.
+- fortinet.fmgdevice.fmgd_system_ipiptunnel - Configure IP in IP Tunneling.
+- fortinet.fmgdevice.fmgd_system_ips - Configure IPS system settings.
+- fortinet.fmgdevice.fmgd_system_ipsecaggregate - Configure an aggregate of IPsec tunnels.
+- fortinet.fmgdevice.fmgd_system_ipsurlfilterdns - Configure IPS URL filter DNS servers.
+- fortinet.fmgdevice.fmgd_system_ipsurlfilterdns6 - Configure IPS URL filter IPv6 DNS servers.
+- fortinet.fmgdevice.fmgd_system_ipv6neighborcache - Configure IPv6 neighbor cache table.
+- fortinet.fmgdevice.fmgd_system_ipv6tunnel - Configure IPv6/IPv4 in IPv6 tunnel.
+- fortinet.fmgdevice.fmgd_system_iscsi - Configure system iSCSI.
+- fortinet.fmgdevice.fmgd_system_isfqueueprofile - Create a queue profile of switch.
+- fortinet.fmgdevice.fmgd_system_linkmonitor - Configure Link Health Monitor.
+- fortinet.fmgdevice.fmgd_system_linkmonitor_serverlist - Servers for link-monitor to monitor.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy - Configure LLDP network policy.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_guest - Guest.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_guestvoicesignaling - Guest Voice Signaling.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_softphone - Softphone.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_streamingvideo - Streaming Video.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_videoconferencing - Video Conferencing.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_videosignaling - Video Signaling.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_voice - Voice.
+- fortinet.fmgdevice.fmgd_system_lldp_networkpolicy_voicesignaling - Voice signaling.
+- fortinet.fmgdevice.fmgd_system_ltemodem - Configure USB LTE/WIMAX devices.
+- fortinet.fmgdevice.fmgd_system_ltemodem_dataplan - Configure data plan.
+- fortinet.fmgdevice.fmgd_system_ltemodem_simswitch - Configure SIM card switch.
+- fortinet.fmgdevice.fmgd_system_macaddresstable - Configure MAC address tables.
+- fortinet.fmgdevice.fmgd_system_memmgr - Configure memory manager.
+- fortinet.fmgdevice.fmgd_system_mobiletunnel - Configure Mobile tunnels, an implementation of Network Mobility
+- fortinet.fmgdevice.fmgd_system_mobiletunnel_network - NEMO network configuration.
+- fortinet.fmgdevice.fmgd_system_modem - Configure MODEM.
+- fortinet.fmgdevice.fmgd_system_nat64 - Device vdom system nat64
+- fortinet.fmgdevice.fmgd_system_nat64_secondaryprefix - Device vdom system nat64 secondary prefix
+- fortinet.fmgdevice.fmgd_system_ndproxy - Configure IPv6 neighbor discovery proxy
+- fortinet.fmgdevice.fmgd_system_netflow - Configure NetFlow.
+- fortinet.fmgdevice.fmgd_system_netflow_collectors - Netflow collectors.
+- fortinet.fmgdevice.fmgd_system_netflow_exclusionfilters - Exclusion filters
+- fortinet.fmgdevice.fmgd_system_networkvisibility - Configure network visibility settings.
+- fortinet.fmgdevice.fmgd_system_ngfwsettings - Configure IPS NGFW policy-mode VDOM settings.
+- fortinet.fmgdevice.fmgd_system_np6 - Configure NP6 attributes.
+- fortinet.fmgdevice.fmgd_system_np6_fpanomaly - NP6 IPv4 anomaly protection.
+- fortinet.fmgdevice.fmgd_system_np6_hpe - HPE configuration.
+- fortinet.fmgdevice.fmgd_system_np6xlite - Configure NP6XLITE attributes.
+- fortinet.fmgdevice.fmgd_system_np6xlite_fpanomaly - NP6XLITE IPv4 anomaly protection.
+- fortinet.fmgdevice.fmgd_system_np6xlite_hpe - HPE configuration.
+- fortinet.fmgdevice.fmgd_system_npupost - Configure NPU attributes after interface initialization.
+- fortinet.fmgdevice.fmgd_system_npupost_portnpumap - Configure port to NPU group list.
+- fortinet.fmgdevice.fmgd_system_npusetting_prp - Configure NPU PRP attributes.
+- fortinet.fmgdevice.fmgd_system_npuvlink - Configure NPU VDOM link.
+- fortinet.fmgdevice.fmgd_system_ntp - Configure system NTP information.
+- fortinet.fmgdevice.fmgd_system_ntp_ntpserver - Configure the FortiGate to connect to any available third-party NTP server.
+- fortinet.fmgdevice.fmgd_system_passwordpolicy - Configure password policy for locally defined administrator passwords and IPsec VPN pre-shared keys.
+- fortinet.fmgdevice.fmgd_system_passwordpolicyguestadmin - Configure the password policy for guest administrators.
+- fortinet.fmgdevice.fmgd_system_pcpserver - Configure PCP server information.
+- fortinet.fmgdevice.fmgd_system_pcpserver_pools - Configure PCP pools.
+- fortinet.fmgdevice.fmgd_system_physicalswitch - Configure physical switches.
+- fortinet.fmgdevice.fmgd_system_pppoeinterface - Configure the PPPoE interfaces.
+- fortinet.fmgdevice.fmgd_system_proberesponse - Configure system probe response.
+- fortinet.fmgdevice.fmgd_system_proxyarp - Configure proxy-ARP.
+- fortinet.fmgdevice.fmgd_system_ptp - Configure system PTP information.
+- fortinet.fmgdevice.fmgd_system_ptp_serverinterface - FortiGate interface
+- fortinet.fmgdevice.fmgd_system_replacemsg_admin - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_alertmail - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_auth - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_automation - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_custommessage - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_devicedetectionportal - Device system replacemsg device detection portal
+- fortinet.fmgdevice.fmgd_system_replacemsg_fortiguardwf - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_ftp - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_http - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_icap - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_mail - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_mm1 - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_mm3 - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_mm4 - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_mm7 - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_mms - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_nacquar - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_nntp - Device system replacemsg nntp
+- fortinet.fmgdevice.fmgd_system_replacemsg_spam - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_sslvpn - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_trafficquota - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_utm - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_replacemsg_webproxy - Replacement messages.
+- fortinet.fmgdevice.fmgd_system_saml - Global settings for SAML authentication.
+- fortinet.fmgdevice.fmgd_system_saml_serviceproviders - Authorized service providers.
+- fortinet.fmgdevice.fmgd_system_saml_serviceproviders_assertionattributes - Customized SAML attributes to send along with assertion.
+- fortinet.fmgdevice.fmgd_system_sdnvpn - Configure public cloud VPN service.
+- fortinet.fmgdevice.fmgd_system_sdwan - Configure redundant Internet connections with multiple outbound links and health-check profiles.
+- fortinet.fmgdevice.fmgd_system_sdwan_duplication - Create SD-WAN duplication rule.
+- fortinet.fmgdevice.fmgd_system_sdwan_healthcheck - SD-WAN status checking or health checking.
+- fortinet.fmgdevice.fmgd_system_sdwan_healthcheck_sla - Service level agreement
+- fortinet.fmgdevice.fmgd_system_sdwan_healthcheckfortiguard - SD-WAN status checking or health checking.
+- fortinet.fmgdevice.fmgd_system_sdwan_healthcheckfortiguard_sla - Service level agreement
+- fortinet.fmgdevice.fmgd_system_sdwan_members - FortiGate interfaces added to the SD-WAN.
+- fortinet.fmgdevice.fmgd_system_sdwan_neighbor - Create SD-WAN neighbor from BGP neighbor table to control route advertisements according to SLA status.
+- fortinet.fmgdevice.fmgd_system_sdwan_service - Create SD-WAN rules
+- fortinet.fmgdevice.fmgd_system_sdwan_service_sla - Service level agreement
+- fortinet.fmgdevice.fmgd_system_sdwan_zone - Configure SD-WAN zones.
+- fortinet.fmgdevice.fmgd_system_securityrating_controls - Settings for individual Security Rating controls.
+- fortinet.fmgdevice.fmgd_system_securityrating_settings - Settings for Security Rating.
+- fortinet.fmgdevice.fmgd_system_sessionhelper - Configure session helper.
+- fortinet.fmgdevice.fmgd_system_sessionttl - Configure global session TTL timers for this FortiGate.
+- fortinet.fmgdevice.fmgd_system_sessionttl_port - Session TTL port.
+- fortinet.fmgdevice.fmgd_system_settings - Configure VDOM settings.
+- fortinet.fmgdevice.fmgd_system_sflow - Configure sFlow.
+- fortinet.fmgdevice.fmgd_system_sflow_collectors - sFlow collectors.
+- fortinet.fmgdevice.fmgd_system_sittunnel - Configure IPv6 tunnel over IPv4.
+- fortinet.fmgdevice.fmgd_system_smcntp - Configure SMC NTP information.
+- fortinet.fmgdevice.fmgd_system_smcntp_ntpserver - Configure the FortiGate SMC to connect to an NTP server.
+- fortinet.fmgdevice.fmgd_system_snmp_community - SNMP community configuration.
+- fortinet.fmgdevice.fmgd_system_snmp_community_hosts - Configure IPv4 SNMP managers
+- fortinet.fmgdevice.fmgd_system_snmp_community_hosts6 - Configure IPv6 SNMP managers.
+- fortinet.fmgdevice.fmgd_system_snmp_mibview - SNMP Access Control MIB View configuration.
+- fortinet.fmgdevice.fmgd_system_snmp_rmonstat - SNMP Remote Network Monitoring
+- fortinet.fmgdevice.fmgd_system_snmp_sysinfo - SNMP system info configuration.
+- fortinet.fmgdevice.fmgd_system_snmp_user - SNMP user configuration.
+- fortinet.fmgdevice.fmgd_system_speedtestschedule - Speed test schedule for each interface.
+- fortinet.fmgdevice.fmgd_system_speedtestserver - Configure speed test server list.
+- fortinet.fmgdevice.fmgd_system_speedtestserver_host - Hosts of the server.
+- fortinet.fmgdevice.fmgd_system_speedtestsetting - Configure speed test setting.
+- fortinet.fmgdevice.fmgd_system_splitportmode - Configure split port mode of ports.
+- fortinet.fmgdevice.fmgd_system_sshconfig - Configure SSH config.
+- fortinet.fmgdevice.fmgd_system_ssoadmin - Configure SSO admin users.
+- fortinet.fmgdevice.fmgd_system_ssoforticloudadmin - Configure FortiCloud SSO admin users.
+- fortinet.fmgdevice.fmgd_system_ssofortigatecloudadmin - Configure FortiCloud SSO admin users.
+- fortinet.fmgdevice.fmgd_system_standalonecluster - Configure FortiGate Session Life Support Protocol
+- fortinet.fmgdevice.fmgd_system_standalonecluster_clusterpeer - Configure FortiGate Session Life Support Protocol
+- fortinet.fmgdevice.fmgd_system_standalonecluster_clusterpeer_sessionsyncfilter - Add one or more filters if you only want to synchronize some sessions.
+- fortinet.fmgdevice.fmgd_system_standalonecluster_clusterpeer_sessionsyncfilter_customservice - Only sessions using these custom services are synchronized.
+- fortinet.fmgdevice.fmgd_system_standalonecluster_monitorprefix - Configure a list of routing prefixes to monitor.
+- fortinet.fmgdevice.fmgd_system_storage - Configure logical storage.
+- fortinet.fmgdevice.fmgd_system_stp - Configure Spanning Tree Protocol
+- fortinet.fmgdevice.fmgd_system_switchinterface - Configure software switch interfaces by grouping physical and WiFi interfaces.
+- fortinet.fmgdevice.fmgd_system_timezone - Show timezone.
+- fortinet.fmgdevice.fmgd_system_tosbasedpriority - Configure Type of Service
+- fortinet.fmgdevice.fmgd_system_vdom - Configure virtual domain.
+- fortinet.fmgdevice.fmgd_system_vdomdns - Configure DNS servers for a non-management VDOM.
+- fortinet.fmgdevice.fmgd_system_vdomexception - Global configuration objects that can be configured independently across different ha peers for all VDOMs or for the defined VDOM scope.
+- fortinet.fmgdevice.fmgd_system_vdomlink - Configure VDOM links.
+- fortinet.fmgdevice.fmgd_system_vdomnetflow - Configure NetFlow per VDOM.
+- fortinet.fmgdevice.fmgd_system_vdomnetflow_collectors - Netflow collectors.
+- fortinet.fmgdevice.fmgd_system_vdomproperty - Configure VDOM property.
+- fortinet.fmgdevice.fmgd_system_vdomradiusserver - Configure a RADIUS server to use as a RADIUS Single Sign On
+- fortinet.fmgdevice.fmgd_system_vdomsflow - Configure sFlow per VDOM to add or change the IP address and UDP port that FortiGate sFlow agents in this VDOM use to send sFlow dat...
+- fortinet.fmgdevice.fmgd_system_vdomsflow_collectors - sFlow collectors.
+- fortinet.fmgdevice.fmgd_system_vinalarm - Configure vin alarm settings.
+- fortinet.fmgdevice.fmgd_system_virtualswitch - Configure virtual hardware switch interfaces.
+- fortinet.fmgdevice.fmgd_system_virtualswitch_port - Configure member ports.
+- fortinet.fmgdevice.fmgd_system_virtualwanlink - Configure redundant internet connections using SD-WAN
+- fortinet.fmgdevice.fmgd_system_virtualwanlink_healthcheck - SD-WAN status checking or health checking.
+- fortinet.fmgdevice.fmgd_system_virtualwanlink_healthcheck_sla - Service level agreement
+- fortinet.fmgdevice.fmgd_system_virtualwanlink_members - FortiGate interfaces added to the virtual-wan-link.
+- fortinet.fmgdevice.fmgd_system_virtualwanlink_neighbor - Create SD-WAN neighbor from BGP neighbor table to control route advertisements according to SLA status.
+- fortinet.fmgdevice.fmgd_system_virtualwanlink_service - Create SD-WAN rules
+- fortinet.fmgdevice.fmgd_system_virtualwanlink_service_sla - Service level agreement
+- fortinet.fmgdevice.fmgd_system_vneinterface - Configure virtual network enabler tunnels.
+- fortinet.fmgdevice.fmgd_system_vnetunnel - Configure virtual network enabler tunnel.
+- fortinet.fmgdevice.fmgd_system_vpce - Configure system VPC configuration.
+- fortinet.fmgdevice.fmgd_system_vxlan - Configure VXLAN devices.
+- fortinet.fmgdevice.fmgd_system_wccp - Configure WCCP.
+- fortinet.fmgdevice.fmgd_system_wireless_apstatus - Configure accepted wireless AP.
+- fortinet.fmgdevice.fmgd_system_wireless_settings - Wireless radio configuration.
+- fortinet.fmgdevice.fmgd_system_zone - Configure zones to group two or more interfaces.
+- fortinet.fmgdevice.fmgd_system_zone_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_user_nacpolicy - Configure NAC policy matching pattern to identify matching NAC devices.
+- fortinet.fmgdevice.fmgd_user_quarantine - Configure quarantine support.
+- fortinet.fmgdevice.fmgd_user_quarantine_targets - Quarantine entry to hold multiple MACs.
+- fortinet.fmgdevice.fmgd_user_quarantine_targets_macs - Quarantine MACs.
+- fortinet.fmgdevice.fmgd_user_scim - Configure SCIM client entries.
+- fortinet.fmgdevice.fmgd_user_setting - Configure user authentication setting.
+- fortinet.fmgdevice.fmgd_user_setting_authports - Set up non-standard ports for authentication with HTTP, HTTPS, FTP, and TELNET.
+- fortinet.fmgdevice.fmgd_videofilter_youtubekey - Configure YouTube API keys.
+- fortinet.fmgdevice.fmgd_vpn_certificate_crl - Certificate Revocation List as a PEM file.
+- fortinet.fmgdevice.fmgd_vpn_certificate_local - Local keys and certificates.
+- fortinet.fmgdevice.fmgd_vpn_certificate_setting - VPN certificate setting.
+- fortinet.fmgdevice.fmgd_vpn_certificate_setting_crlverification - CRL verification options.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_concentrator - Concentrator configuration.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_forticlient - Configure FortiClient policy realm.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_manualkey - Configure IPsec manual keys.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_manualkeyinterface - Configure IPsec manual keys.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase1 - Configure VPN remote gateway.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase1_ipv4excluderange - Configuration Method IPv4 exclude ranges.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase1_ipv6excluderange - Configuration method IPv6 exclude ranges.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase1interface - Configure VPN remote gateway.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase1interface_ipv4excluderange - Configuration Method IPv4 exclude ranges.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase1interface_ipv6excluderange - Configuration method IPv6 exclude ranges.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase2 - Configure VPN autokey tunnel.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_phase2interface - Configure VPN autokey tunnel.
+- fortinet.fmgdevice.fmgd_vpn_kmipserver - KMIP server entry configuration.
+- fortinet.fmgdevice.fmgd_vpn_kmipserver_serverlist - KMIP server list.
+- fortinet.fmgdevice.fmgd_vpn_l2tp - Configure L2TP.
+- fortinet.fmgdevice.fmgd_vpn_ocvpn - Configure Overlay Controller VPN settings.
+- fortinet.fmgdevice.fmgd_vpn_ocvpn_forticlientaccess - Configure FortiClient settings.
+- fortinet.fmgdevice.fmgd_vpn_ocvpn_forticlientaccess_authgroups - FortiClient user authentication groups.
+- fortinet.fmgdevice.fmgd_vpn_ocvpn_overlays - Network overlays to register with Overlay Controller VPN service.
+- fortinet.fmgdevice.fmgd_vpn_ocvpn_overlays_subnets - Internal subnets to register with OCVPN service.
+- fortinet.fmgdevice.fmgd_vpn_pptp - Configure PPTP.
+- fortinet.fmgdevice.fmgd_vpn_qkd - Configure Quantum Key Distribution servers
+- fortinet.fmgdevice.fmgd_vpn_ssl_client - Client.
+- fortinet.fmgdevice.fmgd_vpn_ssl_settings - Configure SSL VPN.
+- fortinet.fmgdevice.fmgd_vpn_ssl_settings_authenticationrule - Authentication rule for SSL VPN.
+- fortinet.fmgdevice.fmgd_vpnsslweb_userbookmark - Configure SSL-VPN user bookmark.
+- fortinet.fmgdevice.fmgd_vpnsslweb_userbookmark_bookmarks - Bookmark table.
+- fortinet.fmgdevice.fmgd_vpnsslweb_userbookmark_bookmarks_formdata - Form data.
+- fortinet.fmgdevice.fmgd_vpnsslweb_usergroupbookmark - Configure SSL-VPN user group bookmark.
+- fortinet.fmgdevice.fmgd_vpnsslweb_usergroupbookmark_bookmarks - Bookmark table.
+- fortinet.fmgdevice.fmgd_vpnsslweb_usergroupbookmark_bookmarks_formdata - Form data.
+- fortinet.fmgdevice.fmgd_wanopt_cacheservice - Designate cache-service for wan-optimization and webcache.
+- fortinet.fmgdevice.fmgd_wanopt_cacheservice_dstpeer - Modify cache-service destination peer list.
+- fortinet.fmgdevice.fmgd_wanopt_cacheservice_srcpeer - Modify cache-service source peer list.
+- fortinet.fmgdevice.fmgd_wanopt_contentdeliverynetworkrule - Configure WAN optimization content delivery network rules.
+- fortinet.fmgdevice.fmgd_wanopt_contentdeliverynetworkrule_rules - WAN optimization content delivery network rule entries.
+- fortinet.fmgdevice.fmgd_wanopt_contentdeliverynetworkrule_rules_contentid - Content ID settings.
+- fortinet.fmgdevice.fmgd_wanopt_contentdeliverynetworkrule_rules_matchentries - List of entries to match.
+- fortinet.fmgdevice.fmgd_wanopt_contentdeliverynetworkrule_rules_skipentries - List of entries to skip.
+- fortinet.fmgdevice.fmgd_wanopt_remotestorage - Configure a remote cache device as Web cache storage.
+- fortinet.fmgdevice.fmgd_wanopt_settings - Configure WAN optimization settings.
+- fortinet.fmgdevice.fmgd_wanopt_webcache - Configure global Web cache settings.
+- fortinet.fmgdevice.fmgd_webfilter_fortiguard - Configure FortiGuard Web Filter service.
+- fortinet.fmgdevice.fmgd_webfilter_ftgdlocalrisk - Configure FortiGuard Web Filter local risk score.
+- fortinet.fmgdevice.fmgd_webfilter_ftgdrisklevel - Configure FortiGuard Web Filter risk level.
+- fortinet.fmgdevice.fmgd_webfilter_ipsurlfiltercachesetting - Configure IPS URL filter cache settings.
+- fortinet.fmgdevice.fmgd_webfilter_ipsurlfiltersetting - Configure IPS URL filter settings.
+- fortinet.fmgdevice.fmgd_webfilter_ipsurlfiltersetting6 - Configure IPS URL filter settings for IPv6.
+- fortinet.fmgdevice.fmgd_webfilter_override - Configure FortiGuard Web Filter administrative overrides.
+- fortinet.fmgdevice.fmgd_webfilter_searchengine - Configure web filter search engines.
+- fortinet.fmgdevice.fmgd_webproxy_debugurl - Configure debug URL addresses.
+- fortinet.fmgdevice.fmgd_webproxy_explicit - Configure explicit Web proxy settings.
+- fortinet.fmgdevice.fmgd_webproxy_explicit_pacpolicy - PAC policies.
+- fortinet.fmgdevice.fmgd_webproxy_fastfallback - Proxy destination connection fast-fallback.
+- fortinet.fmgdevice.fmgd_webproxy_global - Configure Web proxy global settings.
+- fortinet.fmgdevice.fmgd_webproxy_urlmatch - Exempt URLs from web proxy forwarding and caching.
+- fortinet.fmgdevice.fmgd_wireless_accesscontrollist - Configure WiFi bridge access control list.
+- fortinet.fmgdevice.fmgd_wireless_accesscontrollist_layer3ipv4rules - AP ACL layer3 ipv4 rule list.
+- fortinet.fmgdevice.fmgd_wireless_accesscontrollist_layer3ipv6rules - AP ACL layer3 ipv6 rule list.
+- fortinet.fmgdevice.fmgd_wireless_apcfgprofile - Configure AP local configuration profiles.
+- fortinet.fmgdevice.fmgd_wireless_apcfgprofile_commandlist - AP local configuration command list.
+- fortinet.fmgdevice.fmgd_wireless_apstatus - Configure access point status
+- fortinet.fmgdevice.fmgd_wireless_arrpprofile - Configure WiFi Automatic Radio Resource Provisioning
+- fortinet.fmgdevice.fmgd_wireless_bleprofile - Configure Bluetooth Low Energy profile.
+- fortinet.fmgdevice.fmgd_wireless_bonjourprofile - Configure Bonjour profiles.
+- fortinet.fmgdevice.fmgd_wireless_bonjourprofile_policylist - Bonjour policy list.
+- fortinet.fmgdevice.fmgd_wireless_global - Configure wireless controller global settings.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqp3gppcellular - Configure 3GPP public land mobile network
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqp3gppcellular_mccmnclist - Mobile Country Code and Mobile Network Code configuration.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpipaddresstype - Configure IP address type availability.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpnairealm - Configure network access identifier
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpnairealm_nailist - NAI list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpnairealm_nailist_eapmethod - EAP Methods.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpnairealm_nailist_eapmethod_authparam - EAP auth param.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpnetworkauthtype - Configure network authentication type.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqproamingconsortium - Configure roaming consortium.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqproamingconsortium_oilist - Organization identifier list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpvenuename - Configure venue name duple.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpvenuename_valuelist - Name list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpvenueurl - Configure venue URL.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_anqpvenueurl_valuelist - URL list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpadviceofcharge - Configure advice of charge.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpadviceofcharge_aoclist - AOC list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpadviceofcharge_aoclist_planinfo - Plan info.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpconncapability - Configure connection capability.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpoperatorname - Configure operator friendly name.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpoperatorname_valuelist - Name list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qposuprovider - Configure online sign up
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qposuprovider_friendlyname - OSU provider friendly name.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qposuprovider_servicedescription - OSU service name.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qposuprovidernai - Configure online sign up
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qposuprovidernai_nailist - OSU NAI list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qptermsandconditions - Configure terms and conditions.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_h2qpwanmetric - Configure WAN metrics.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_hsprofile - Configure hotspot profile.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_icon - Configure OSU provider icon.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_icon_iconlist - Icon list.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_qosmap - Configure QoS map set.
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_qosmap_dscpexcept - Differentiated Services Code Point
+- fortinet.fmgdevice.fmgd_wireless_hotspot20_qosmap_dscprange - Differentiated Services Code Point
+- fortinet.fmgdevice.fmgd_wireless_intercontroller - Configure inter wireless controller operation.
+- fortinet.fmgdevice.fmgd_wireless_intercontroller_intercontrollerpeer - Fast failover peer wireless controller list.
+- fortinet.fmgdevice.fmgd_wireless_log - Configure wireless controller event log filters.
+- fortinet.fmgdevice.fmgd_wireless_mpskprofile - Configure MPSK profile.
+- fortinet.fmgdevice.fmgd_wireless_mpskprofile_mpskgroup - List of multiple PSK groups.
+- fortinet.fmgdevice.fmgd_wireless_mpskprofile_mpskgroup_mpskkey - List of multiple PSK entries.
+- fortinet.fmgdevice.fmgd_wireless_nacprofile - Configure WiFi network access control
+- fortinet.fmgdevice.fmgd_wireless_qosprofile - Configure WiFi quality of service
+- fortinet.fmgdevice.fmgd_wireless_region - Configure FortiAP regions
+- fortinet.fmgdevice.fmgd_wireless_setting - VDOM wireless controller configuration.
+- fortinet.fmgdevice.fmgd_wireless_setting_offendingssid - Configure offending SSID.
+- fortinet.fmgdevice.fmgd_wireless_snmp - Configure SNMP.
+- fortinet.fmgdevice.fmgd_wireless_snmp_community - SNMP Community Configuration.
+- fortinet.fmgdevice.fmgd_wireless_snmp_community_hosts - Configure IPv4 SNMP managers
+- fortinet.fmgdevice.fmgd_wireless_snmp_user - SNMP User Configuration.
+- fortinet.fmgdevice.fmgd_wireless_ssidpolicy - Configure WiFi SSID policies.
+- fortinet.fmgdevice.fmgd_wireless_syslogprofile - Configure Wireless Termination Points
+- fortinet.fmgdevice.fmgd_wireless_timers - Configure CAPWAP timers.
+- fortinet.fmgdevice.fmgd_wireless_utmprofile - Configure UTM
+- fortinet.fmgdevice.fmgd_wireless_vap - Configure Virtual Access Points
+- fortinet.fmgdevice.fmgd_wireless_vap_dynamicmapping - Configure Virtual Access Points
+- fortinet.fmgdevice.fmgd_wireless_vap_macfilterlist - Create a list of MAC addresses for MAC address filtering.
+- fortinet.fmgdevice.fmgd_wireless_vap_mpskkey - Device vdom wireless controller vap mpsk key
+- fortinet.fmgdevice.fmgd_wireless_vap_portalmessageoverrides - Individual message overrides.
+- fortinet.fmgdevice.fmgd_wireless_vap_vlanname - Table for mapping VLAN name to VLAN ID.
+- fortinet.fmgdevice.fmgd_wireless_vap_vlanpool - VLAN pool.
+- fortinet.fmgdevice.fmgd_wireless_vapgroup - Configure virtual Access Point
+- fortinet.fmgdevice.fmgd_wireless_wagprofile - Configure wireless access gateway
+- fortinet.fmgdevice.fmgd_wireless_widsprofile - Configure wireless intrusion detection system
+- fortinet.fmgdevice.fmgd_wireless_wtp - Configure Wireless Termination Points
+- fortinet.fmgdevice.fmgd_wireless_wtp_lan - WTP LAN port mapping.
+- fortinet.fmgdevice.fmgd_wireless_wtp_radio1 - Configuration options for radio 1.
+- fortinet.fmgdevice.fmgd_wireless_wtp_radio2 - Configuration options for radio 2.
+- fortinet.fmgdevice.fmgd_wireless_wtp_radio3 - Configuration options for radio 3.
+- fortinet.fmgdevice.fmgd_wireless_wtp_radio4 - Configuration options for radio 4.
+- fortinet.fmgdevice.fmgd_wireless_wtp_splittunnelingacl - Split tunneling ACL filter list.
+- fortinet.fmgdevice.fmgd_wireless_wtpgroup - Configure WTP groups.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile - Configure WTP profiles or FortiAP profiles that define radio settings for manageable FortiAP platforms.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_denymaclist - List of MAC addresses that are denied access to this WTP, FortiAP, or AP.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_eslsesdongle - ESL SES-imagotag dongle configuration.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_lan - WTP LAN port mapping.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_lbs - Set various location based service
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_platform - WTP, FortiAP, or AP platform.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_radio1 - Configuration options for radio 1.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_radio2 - Configuration options for radio 2.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_radio3 - Configuration options for radio 3.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_radio4 - Configuration options for radio 4.
+- fortinet.fmgdevice.fmgd_wireless_wtpprofile_splittunnelingacl - Split tunneling ACL filter list.
+- fortinet.fmgdevice.fmgd_ztna_reverseconnector - Configure ZTNA Reverse-Connector.
+- fortinet.fmgdevice.fmgd_ztna_trafficforwardproxy - Configure ZTNA traffic forward proxy.
+- fortinet.fmgdevice.fmgd_ztna_trafficforwardproxy_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_ztna_trafficforwardproxy_sslciphersuites - SSL/TLS cipher suites acceptable from a client, ordered by priority.
+- fortinet.fmgdevice.fmgd_ztna_trafficforwardproxy_sslserverciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_ztna_trafficforwardproxyreverseservice - Configure ZTNA traffic forward proxy reverse service.
+- fortinet.fmgdevice.fmgd_ztna_trafficforwardproxyreverseservice_remoteservers - Connector Remote server
+- fortinet.fmgdevice.fmgd_ztna_webportal - Configure ztna web-portal.
+- fortinet.fmgdevice.fmgd_ztna_webportalbookmark - Configure ztna web-portal bookmark.
+- fortinet.fmgdevice.fmgd_ztna_webportalbookmark_bookmarks - Bookmark table.
+- fortinet.fmgdevice.fmgd_ztna_webproxy - Configure ZTNA web-proxy.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway - Set IPv4 API Gateway.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway6 - Set IPv6 API Gateway.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway6_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway6_realservers - Select the real servers that this Access Proxy will distribute traffic to.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway6_sslciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway_realservers - Select the real servers that this Access Proxy will distribute traffic to.
+- fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway_sslciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.

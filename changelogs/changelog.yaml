@@ -1,0 +1,2769 @@
+ancestor: null
+releases:
+  1.0.0:
+    changes:
+      release_summary: Release fortinet.fmgdevice 1.0.0
+    fragments:
+      - 1.0.0.yml
+    modules:
+      - description: Configure alert email settings.
+        name: fmgd_alertemail_setting
+        namespace: ""
+      - description: Configure a list of hashes to be exempt from AV scanning.
+        name: fmgd_antivirus_exemptlist
+        namespace: ""
+      - description: Configure global heuristic options.
+        name: fmgd_antivirus_heuristic
+        namespace: ""
+      - description: Configure quarantine options.
+        name: fmgd_antivirus_quarantine
+        namespace: ""
+      - description: Configure AntiVirus settings.
+        name: fmgd_antivirus_settings
+        namespace: ""
+      - description: Configure application signatures.
+        name: fmgd_application_name
+        namespace: ""
+      - description: Configure application rule settings.
+        name: fmgd_application_rulesettings
+        namespace: ""
+      - description: Automation setting configuration.
+        name: fmgd_automation_setting
+        namespace: ""
+      - description: Configure AWS VPC configuration.
+        name: fmgd_aws_vpce
+        namespace: ""
+      - description: Display Azure vWAN SLB ingress public IPs.
+        name: fmgd_azure_vwaningresspublicips
+        namespace: ""
+      - description: Configure Azure vWAN slb setting.
+        name: fmgd_azure_vwanslb
+        namespace: ""
+      - description: Configure permanent security rules.
+        name: fmgd_azure_vwanslb_permanentsecurityrules
+        namespace: ""
+      - description: Configure security rules.
+        name: fmgd_azure_vwanslb_permanentsecurityrules_rules
+        namespace: ""
+      - description: Configure temporary security rules.
+        name: fmgd_azure_vwanslb_temporarysecurityrules
+        namespace: ""
+      - description: Configure security rules.
+        name: fmgd_azure_vwanslb_temporarysecurityrules_rules
+        namespace: ""
+      - description: Configure CASB SaaS application.
+        name: fmgd_casb_attributematch
+        namespace: ""
+      - description: CASB tenant match rules.
+        name: fmgd_casb_attributematch_attribute
+        namespace: ""
+      - description: Remote certificate as a PEM file.
+        name: fmgd_certificate_remote
+        namespace: ""
+      - description: Clone an object in FortiManager.
+        name: fmgd_clone
+        namespace: ""
+      - description: Configure exact-data-match template used by DLP scan.
+        name: fmgd_dlp_exactdatamatch
+        namespace: ""
+      - description: DLP exact-data-match column types.
+        name: fmgd_dlp_exactdatamatch_columns
+        namespace: ""
+      - description:
+          Create a DLP fingerprint database by allowing the FortiGate to
+          access a file server containing files from which to create fingerprints.
+        name: fmgd_dlp_fpdocsource
+        namespace: ""
+      - description: Designate logical storage for DLP fingerprint database.
+        name: fmgd_dlp_settings
+        namespace: ""
+      - description: Configure CPUs enabled to run engines in each DPDK stage.
+        name: fmgd_dpdk_cpus
+        namespace: ""
+      - description: Configure global DPDK options.
+        name: fmgd_dpdk_global
+        namespace: ""
+      - description: Device emailfilter fortiguard
+        name: fmgd_emailfilter_fortiguard
+        namespace: ""
+      - description: Configure FortiClient Enterprise Management Server
+        name: fmgd_endpointcontrol_fctemsoverride
+        namespace: ""
+      - description: Configure endpoint control settings.
+        name: fmgd_endpointcontrol_settings
+        namespace: ""
+      - description: CFM domain configuration.
+        name: fmgd_ethernetoam_cfm
+        namespace: ""
+      - description: CFM service configuration.
+        name: fmgd_ethernetoam_cfm_service
+        namespace: ""
+      - description: Device vdom extender controller extender
+        name: fmgd_extendercontroller_extender
+        namespace: ""
+      - description: FortiExtender controller report configuration.
+        name: fmgd_extendercontroller_extender_controllerreport
+        namespace: ""
+      - description: Configuration options for modem 1.
+        name: fmgd_extendercontroller_extender_modem1
+        namespace: ""
+      - description: FortiExtender auto switch configuration.
+        name: fmgd_extendercontroller_extender_modem1_autoswitch
+        namespace: ""
+      - description: Configuration options for modem 2.
+        name: fmgd_extendercontroller_extender_modem2
+        namespace: ""
+      - description: FortiExtender auto switch configuration.
+        name: fmgd_extendercontroller_extender_modem2_autoswitch
+        namespace: ""
+      - description: Device vdom extender controller extender wan extension
+        name: fmgd_extendercontroller_extender_wanextension
+        namespace: ""
+      - description: Extender controller configuration.
+        name: fmgd_extensioncontroller_extender
+        namespace: ""
+      - description: FortiExtender wan extension configuration.
+        name: fmgd_extensioncontroller_extender_wanextension
+        namespace: ""
+      - description: FortiExtender wifi vap configuration.
+        name: fmgd_extensioncontroller_extendervap
+        namespace: ""
+      - description: FortiGate controller configuration.
+        name: fmgd_extensioncontroller_fortigate
+        namespace: ""
+      - description: FortiGate connector profile configuration.
+        name: fmgd_extensioncontroller_fortigateprofile
+        namespace: ""
+      - description: FortiGate connector LAN extension configuration.
+        name: fmgd_extensioncontroller_fortigateprofile_lanextension
+        namespace: ""
+      - description: Gather fortimanager device facts.
+        name: fmgd_fact
+        namespace: ""
+      - description: Configure Access Proxy SSH client certificate.
+        name: fmgd_firewall_accessproxysshclientcert
+        namespace: ""
+      - description: Configure certificate extension for user certificate.
+        name: fmgd_firewall_accessproxysshclientcert_certextension
+        namespace: ""
+      - description: Configure firewall authentication portals.
+        name: fmgd_firewall_authportal
+        namespace: ""
+      - description: Configure DNS translation.
+        name: fmgd_firewall_dnstranslation
+        namespace: ""
+      - description: Global firewall settings.
+        name: fmgd_firewall_global
+        namespace: ""
+      - description: Configure additional port mappings for Internet Services.
+        name: fmgd_firewall_internetserviceappend
+        namespace: ""
+      - description: Configure Internet Service definition.
+        name: fmgd_firewall_internetservicedefinition
+        namespace: ""
+      - description: Protocol and port information in an Internet Service entry.
+        name: fmgd_firewall_internetservicedefinition_entry
+        namespace: ""
+      - description: Port ranges in the definition entry.
+        name: fmgd_firewall_internetservicedefinition_entry_portrange
+        namespace: ""
+      - description: Configure Internet Services Extension.
+        name: fmgd_firewall_internetserviceextension
+        namespace: ""
+      - description: Disable entries in the Internet Service database.
+        name: fmgd_firewall_internetserviceextension_disableentry
+        namespace: ""
+      - description: IPv6 ranges in the disable entry.
+        name: fmgd_firewall_internetserviceextension_disableentry_ip6range
+        namespace: ""
+      - description: IPv4 ranges in the disable entry.
+        name: fmgd_firewall_internetserviceextension_disableentry_iprange
+        namespace: ""
+      - description: Port ranges in the disable entry.
+        name: fmgd_firewall_internetserviceextension_disableentry_portrange
+        namespace: ""
+      - description: Entries added to the Internet Service extension database.
+        name: fmgd_firewall_internetserviceextension_entry
+        namespace: ""
+      - description: Port ranges in the custom entry.
+        name: fmgd_firewall_internetserviceextension_entry_portrange
+        namespace: ""
+      - description: Configure IP to MAC binding settings.
+        name: fmgd_firewall_ipmacbinding_setting
+        namespace: ""
+      - description: Configure IP to MAC address pairs in the IP/MAC binding table.
+        name: fmgd_firewall_ipmacbinding_table
+        namespace: ""
+      - description: Configure firewall IP-translation.
+        name: fmgd_firewall_iptranslation
+        namespace: ""
+      - description: Configure IPv6 extension header filter.
+        name: fmgd_firewall_ipv6ehfilter
+        namespace: ""
+      - description: Configure on-demand packet sniffer.
+        name: fmgd_firewall_ondemandsniffer
+        namespace: ""
+      - description: Configure PFCP.
+        name: fmgd_firewall_pfcp
+        namespace: ""
+      - description: Configure IPv4 policies.
+        name: fmgd_firewall_policy
+        namespace: ""
+      - description: Configure sniffer.
+        name: fmgd_firewall_sniffer
+        namespace: ""
+      - description: Configuration method to edit Denial of Service
+        name: fmgd_firewall_sniffer_anomaly
+        namespace: ""
+      - description: SSH proxy host public keys.
+        name: fmgd_firewall_ssh_hostkey
+        namespace: ""
+      - description: SSH proxy local keys.
+        name: fmgd_firewall_ssh_localkey
+        namespace: ""
+      - description: SSH proxy settings.
+        name: fmgd_firewall_ssh_setting
+        namespace: ""
+      - description: SSL proxy settings.
+        name: fmgd_firewall_ssl_setting
+        namespace: ""
+      - description: Configure SSL servers.
+        name: fmgd_firewall_sslserver
+        namespace: ""
+      - description: Configure TTL policies.
+        name: fmgd_firewall_ttlpolicy
+        namespace: ""
+      - description: Configure explicit FTP proxy settings.
+        name: fmgd_ftpproxy_explicit
+        namespace: ""
+      - description: Build and send generic FortiManager API request.
+        name: fmgd_generic
+        namespace: ""
+      - description: Global per-APN shaper.
+        name: fmgd_gtp_apnshaper
+        namespace: ""
+      - description: IE allow list.
+        name: fmgd_gtp_ieallowlist
+        namespace: ""
+      - description: Entries of allow list for unknown or out-of-state IEs.
+        name: fmgd_gtp_ieallowlist_entries
+        namespace: ""
+      - description: RAT timeout profile
+        name: fmgd_gtp_rattimeoutprofile
+        namespace: ""
+      - description: Configure ICAP profiles.
+        name: fmgd_icap_profile
+        namespace: ""
+      - description: Configure ICAP servers.
+        name: fmgd_icap_server
+        namespace: ""
+      - description: Configure an ICAP server group consisting of multiple forward servers.
+        name: fmgd_icap_servergroup
+        namespace: ""
+      - description: Add ICAP servers to a list to form a server group.
+        name: fmgd_icap_servergroup_serverlist
+        namespace: ""
+      - description: Configure IPS decoder.
+        name: fmgd_ips_decoder
+        namespace: ""
+      - description: IPS group parameters.
+        name: fmgd_ips_decoder_parameter
+        namespace: ""
+      - description: Configure IPS global parameter.
+        name: fmgd_ips_global
+        namespace: ""
+      - description: Configure IPS rules.
+        name: fmgd_ips_rule
+        namespace: ""
+      - description: Configure IPS rule setting.
+        name: fmgd_ips_rulesettings
+        namespace: ""
+      - description: Configure IPS VDOM parameter.
+        name: fmgd_ips_settings
+        namespace: ""
+      - description: TLS active probe configuration.
+        name: fmgd_ips_tlsactiveprobe
+        namespace: ""
+      - description: flow rule configuration
+        name: fmgd_loadbalance_flowrule
+        namespace: ""
+      - description: load balance setting
+        name: fmgd_loadbalance_setting
+        namespace: ""
+      - description: Worker blade used by this group.
+        name: fmgd_loadbalance_setting_workers
+        namespace: ""
+      - description: Worker group configuration.
+        name: fmgd_loadbalance_workergroup
+        namespace: ""
+      - description: Filters for Azure Security Center.
+        name: fmgd_log_azuresecuritycenter2_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_azuresecuritycenter2_filter_freestyle
+        namespace: ""
+      - description: Settings for Azure Security Center.
+        name: fmgd_log_azuresecuritycenter2_setting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_azuresecuritycenter2_setting_customfieldname
+        namespace: ""
+      - description: Filters for Azure Security Center.
+        name: fmgd_log_azuresecuritycenter_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_azuresecuritycenter_filter_freestyle
+        namespace: ""
+      - description: Settings for Azure Security Center.
+        name: fmgd_log_azuresecuritycenter_setting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_azuresecuritycenter_setting_customfieldname
+        namespace: ""
+      - description: Configure filters for local disk logging.
+        name: fmgd_log_disk_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_disk_filter_freestyle
+        namespace: ""
+      - description: Settings for local disk logging.
+        name: fmgd_log_disk_setting
+        namespace: ""
+      - description: Configure log event filters.
+        name: fmgd_log_eventfilter
+        namespace: ""
+      - description: Filters for FortiAnalyzer.
+        name: fmgd_log_fortianalyzer2_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzer2_filter_freestyle
+        namespace: ""
+      - description: Override filters for FortiAnalyzer.
+        name: fmgd_log_fortianalyzer2_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzer2_overridefilter_freestyle
+        namespace: ""
+      - description: Override FortiAnalyzer settings.
+        name: fmgd_log_fortianalyzer2_overridesetting
+        namespace: ""
+      - description: Global FortiAnalyzer settings.
+        name: fmgd_log_fortianalyzer2_setting
+        namespace: ""
+      - description: Filters for FortiAnalyzer.
+        name: fmgd_log_fortianalyzer3_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzer3_filter_freestyle
+        namespace: ""
+      - description: Override filters for FortiAnalyzer.
+        name: fmgd_log_fortianalyzer3_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzer3_overridefilter_freestyle
+        namespace: ""
+      - description: Override FortiAnalyzer settings.
+        name: fmgd_log_fortianalyzer3_overridesetting
+        namespace: ""
+      - description: Global FortiAnalyzer settings.
+        name: fmgd_log_fortianalyzer3_setting
+        namespace: ""
+      - description: Filters for FortiAnalyzer.
+        name: fmgd_log_fortianalyzer_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzer_filter_freestyle
+        namespace: ""
+      - description: Override filters for FortiAnalyzer.
+        name: fmgd_log_fortianalyzer_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzer_overridefilter_freestyle
+        namespace: ""
+      - description: Override FortiAnalyzer settings.
+        name: fmgd_log_fortianalyzer_overridesetting
+        namespace: ""
+      - description: Global FortiAnalyzer settings.
+        name: fmgd_log_fortianalyzer_setting
+        namespace: ""
+      - description: Filters for FortiAnalyzer Cloud.
+        name: fmgd_log_fortianalyzercloud_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzercloud_filter_freestyle
+        namespace: ""
+      - description: Override filters for FortiAnalyzer Cloud.
+        name: fmgd_log_fortianalyzercloud_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortianalyzercloud_overridefilter_freestyle
+        namespace: ""
+      - description: Override FortiAnalyzer Cloud settings.
+        name: fmgd_log_fortianalyzercloud_overridesetting
+        namespace: ""
+      - description: Global FortiAnalyzer Cloud settings.
+        name: fmgd_log_fortianalyzercloud_setting
+        namespace: ""
+      - description: Filters for FortiCloud.
+        name: fmgd_log_fortiguard_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortiguard_filter_freestyle
+        namespace: ""
+      - description: Override filters for FortiCloud.
+        name: fmgd_log_fortiguard_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_fortiguard_overridefilter_freestyle
+        namespace: ""
+      - description: Override global FortiCloud logging settings for this VDOM.
+        name: fmgd_log_fortiguard_overridesetting
+        namespace: ""
+      - description: Configure logging to FortiCloud.
+        name: fmgd_log_fortiguard_setting
+        namespace: ""
+      - description: Configure how log messages are displayed on the GUI.
+        name: fmgd_log_guidisplay
+        namespace: ""
+      - description: Filters for memory buffer.
+        name: fmgd_log_memory_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_memory_filter_freestyle
+        namespace: ""
+      - description: Global settings for memory logging.
+        name: fmgd_log_memory_globalsetting
+        namespace: ""
+      - description: Settings for memory buffer.
+        name: fmgd_log_memory_setting
+        namespace: ""
+      - description: Filters for null device logging.
+        name: fmgd_log_nulldevice_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_nulldevice_filter_freestyle
+        namespace: ""
+      - description: Settings for null device logging.
+        name: fmgd_log_nulldevice_setting
+        namespace: ""
+      - description: Configure general log settings.
+        name: fmgd_log_setting
+        namespace: ""
+      - description: LOG Global settings for SLBC platform.
+        name: fmgd_log_slbc_globalsetting
+        namespace: ""
+      - description: Filters for remote system server.
+        name: fmgd_log_syslogd2_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd2_filter_freestyle
+        namespace: ""
+      - description: Override filters for remote system server.
+        name: fmgd_log_syslogd2_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd2_overridefilter_freestyle
+        namespace: ""
+      - description: Override settings for remote syslog server.
+        name: fmgd_log_syslogd2_overridesetting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd2_overridesetting_customfieldname
+        namespace: ""
+      - description: Global settings for remote syslog server.
+        name: fmgd_log_syslogd2_setting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd2_setting_customfieldname
+        namespace: ""
+      - description: Filters for remote system server.
+        name: fmgd_log_syslogd3_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd3_filter_freestyle
+        namespace: ""
+      - description: Override filters for remote system server.
+        name: fmgd_log_syslogd3_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd3_overridefilter_freestyle
+        namespace: ""
+      - description: Override settings for remote syslog server.
+        name: fmgd_log_syslogd3_overridesetting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd3_overridesetting_customfieldname
+        namespace: ""
+      - description: Global settings for remote syslog server.
+        name: fmgd_log_syslogd3_setting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd3_setting_customfieldname
+        namespace: ""
+      - description: Filters for remote system server.
+        name: fmgd_log_syslogd4_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd4_filter_freestyle
+        namespace: ""
+      - description: Override filters for remote system server.
+        name: fmgd_log_syslogd4_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd4_overridefilter_freestyle
+        namespace: ""
+      - description: Override settings for remote syslog server.
+        name: fmgd_log_syslogd4_overridesetting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd4_overridesetting_customfieldname
+        namespace: ""
+      - description: Global settings for remote syslog server.
+        name: fmgd_log_syslogd4_setting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd4_setting_customfieldname
+        namespace: ""
+      - description: Filters for remote system server.
+        name: fmgd_log_syslogd_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd_filter_freestyle
+        namespace: ""
+      - description: Override filters for remote system server.
+        name: fmgd_log_syslogd_overridefilter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_syslogd_overridefilter_freestyle
+        namespace: ""
+      - description: Override settings for remote syslog server.
+        name: fmgd_log_syslogd_overridesetting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd_overridesetting_customfieldname
+        namespace: ""
+      - description: Global settings for remote syslog server.
+        name: fmgd_log_syslogd_setting
+        namespace: ""
+      - description: Custom field name for CEF format logging.
+        name: fmgd_log_syslogd_setting_customfieldname
+        namespace: ""
+      - description: Settings for TACACS+ accounting events filter.
+        name: fmgd_log_tacacsaccounting2_filter
+        namespace: ""
+      - description: Settings for TACACS+ accounting.
+        name: fmgd_log_tacacsaccounting2_setting
+        namespace: ""
+      - description: Settings for TACACS+ accounting events filter.
+        name: fmgd_log_tacacsaccounting3_filter
+        namespace: ""
+      - description: Settings for TACACS+ accounting.
+        name: fmgd_log_tacacsaccounting3_setting
+        namespace: ""
+      - description: Settings for TACACS+ accounting events filter.
+        name: fmgd_log_tacacsaccounting_filter
+        namespace: ""
+      - description: Settings for TACACS+ accounting.
+        name: fmgd_log_tacacsaccounting_setting
+        namespace: ""
+      - description: Filters for WebTrends.
+        name: fmgd_log_webtrends_filter
+        namespace: ""
+      - description: Free style filters.
+        name: fmgd_log_webtrends_filter_freestyle
+        namespace: ""
+      - description: Settings for WebTrends.
+        name: fmgd_log_webtrends_setting
+        namespace: ""
+      - description: Configure NP6 IPsec engine status monitoring.
+        name: fmgd_monitoring_np6ipsecengine
+        namespace: ""
+      - description: Configure npu-hpe status monitoring.
+        name: fmgd_monitoring_npuhpe
+        namespace: ""
+      - description: Move fortimanager defined Object.
+        name: fmgd_move
+        namespace: ""
+      - description: Event notification configuration.
+        name: fmgd_notification
+        namespace: ""
+      - description: List NSX Profile.
+        name: fmgd_nsx_profile
+        namespace: ""
+      - description: Configure NSX-T service chain.
+        name: fmgd_nsxt_servicechain
+        namespace: ""
+      - description: Configure service index.
+        name: fmgd_nsxt_servicechain_serviceindex
+        namespace: ""
+      - description: Configure NSX-T setting.
+        name: fmgd_nsxt_setting
+        namespace: ""
+      - description: Message filter for PFCP messages.
+        name: fmgd_pfcp_messagefilter
+        namespace: ""
+      - description: Rename an object in FortiManager.
+        name: fmgd_rename
+        namespace: ""
+      - description: Report chart widget configuration.
+        name: fmgd_report_chart
+        namespace: ""
+      - description: Category series of pie chart.
+        name: fmgd_report_chart_categoryseries
+        namespace: ""
+      - description: Table column definition.
+        name: fmgd_report_chart_column
+        namespace: ""
+      - description: Show detail in certain display value for certain condition.
+        name: fmgd_report_chart_column_mapping
+        namespace: ""
+      - description: Drill down charts.
+        name: fmgd_report_chart_drilldowncharts
+        namespace: ""
+      - description: Value series of pie chart.
+        name: fmgd_report_chart_valueseries
+        namespace: ""
+      - description: X-series of chart.
+        name: fmgd_report_chart_xseries
+        namespace: ""
+      - description: Y-series of chart.
+        name: fmgd_report_chart_yseries
+        namespace: ""
+      - description: Report dataset configuration.
+        name: fmgd_report_dataset
+        namespace: ""
+      - description: Fields.
+        name: fmgd_report_dataset_field
+        namespace: ""
+      - description: Parameters.
+        name: fmgd_report_dataset_parameters
+        namespace: ""
+      - description: Report layout configuration.
+        name: fmgd_report_layout
+        namespace: ""
+      - description: Configure report body item.
+        name: fmgd_report_layout_bodyitem
+        namespace: ""
+      - description: Configure report list item.
+        name: fmgd_report_layout_bodyitem_list
+        namespace: ""
+      - description: Parameters.
+        name: fmgd_report_layout_bodyitem_parameters
+        namespace: ""
+      - description: Configure report page.
+        name: fmgd_report_layout_page
+        namespace: ""
+      - description: Configure report page footer.
+        name: fmgd_report_layout_page_footer
+        namespace: ""
+      - description: Configure report footer item.
+        name: fmgd_report_layout_page_footer_footeritem
+        namespace: ""
+      - description: Configure report page header.
+        name: fmgd_report_layout_page_header
+        namespace: ""
+      - description: Configure report header item.
+        name: fmgd_report_layout_page_header_headeritem
+        namespace: ""
+      - description: Report setting configuration.
+        name: fmgd_report_setting
+        namespace: ""
+      - description: Report style configuration.
+        name: fmgd_report_style
+        namespace: ""
+      - description: Report themes configuration
+        name: fmgd_report_theme
+        namespace: ""
+      - description: Configure authentication based routing.
+        name: fmgd_router_authpath
+        namespace: ""
+      - description: Configure BFD.
+        name: fmgd_router_bfd
+        namespace: ""
+      - description: Configure IPv6 BFD.
+        name: fmgd_router_bfd6
+        namespace: ""
+      - description: BFD IPv6 multi-hop template table.
+        name: fmgd_router_bfd6_multihoptemplate
+        namespace: ""
+      - description: Configure neighbor of IPv6 BFD.
+        name: fmgd_router_bfd6_neighbor
+        namespace: ""
+      - description: BFD multi-hop template table.
+        name: fmgd_router_bfd_multihoptemplate
+        namespace: ""
+      - description: Neighbor.
+        name: fmgd_router_bfd_neighbor
+        namespace: ""
+      - description: Configure BGP.
+        name: fmgd_router_bgp
+        namespace: ""
+      - description: Administrative distance modifications.
+        name: fmgd_router_bgp_admindistance
+        namespace: ""
+      - description: BGP aggregate address table.
+        name: fmgd_router_bgp_aggregateaddress
+        namespace: ""
+      - description: BGP IPv6 aggregate address table.
+        name: fmgd_router_bgp_aggregateaddress6
+        namespace: ""
+      - description: BGP neighbor table.
+        name: fmgd_router_bgp_neighbor
+        namespace: ""
+      - description: Conditional advertisement.
+        name: fmgd_router_bgp_neighbor_conditionaladvertise
+        namespace: ""
+      - description: IPv6 conditional advertisement.
+        name: fmgd_router_bgp_neighbor_conditionaladvertise6
+        namespace: ""
+      - description: BGP neighbor group table.
+        name: fmgd_router_bgp_neighborgroup
+        namespace: ""
+      - description: BGP neighbor range table.
+        name: fmgd_router_bgp_neighborrange
+        namespace: ""
+      - description: BGP IPv6 neighbor range table.
+        name: fmgd_router_bgp_neighborrange6
+        namespace: ""
+      - description: BGP network table.
+        name: fmgd_router_bgp_network
+        namespace: ""
+      - description: BGP IPv6 network table.
+        name: fmgd_router_bgp_network6
+        namespace: ""
+      - description: BGP IPv4 redistribute table.
+        name: fmgd_router_bgp_redistribute
+        namespace: ""
+      - description: BGP IPv6 redistribute table.
+        name: fmgd_router_bgp_redistribute6
+        namespace: ""
+      - description: BGP VRF leaking table.
+        name: fmgd_router_bgp_vrf
+        namespace: ""
+      - description: BGP IPv6 VRF leaking table.
+        name: fmgd_router_bgp_vrf6
+        namespace: ""
+      - description: Target VRF table.
+        name: fmgd_router_bgp_vrf6_leaktarget
+        namespace: ""
+      - description: Target VRF table.
+        name: fmgd_router_bgp_vrf_leaktarget
+        namespace: ""
+      - description: BGP VRF leaking table.
+        name: fmgd_router_bgp_vrfleak
+        namespace: ""
+      - description: BGP IPv6 VRF leaking table.
+        name: fmgd_router_bgp_vrfleak6
+        namespace: ""
+      - description: Target VRF table.
+        name: fmgd_router_bgp_vrfleak6_target
+        namespace: ""
+      - description: Target VRF table.
+        name: fmgd_router_bgp_vrfleak_target
+        namespace: ""
+      - description: Configure extended community lists.
+        name: fmgd_router_extcommunitylist
+        namespace: ""
+      - description: Extended community list rule.
+        name: fmgd_router_extcommunitylist_rule
+        namespace: ""
+      - description: Configure IS-IS.
+        name: fmgd_router_isis
+        namespace: ""
+      - description: IS-IS interface configuration.
+        name: fmgd_router_isis_isisinterface
+        namespace: ""
+      - description: IS-IS net configuration.
+        name: fmgd_router_isis_isisnet
+        namespace: ""
+      - description: IS-IS redistribute protocols.
+        name: fmgd_router_isis_redistribute
+        namespace: ""
+      - description: IS-IS IPv6 redistribution for routing protocols.
+        name: fmgd_router_isis_redistribute6
+        namespace: ""
+      - description: IS-IS summary addresses.
+        name: fmgd_router_isis_summaryaddress
+        namespace: ""
+      - description: IS-IS IPv6 summary address.
+        name: fmgd_router_isis_summaryaddress6
+        namespace: ""
+      - description: Configure key-chain.
+        name: fmgd_router_keychain
+        namespace: ""
+      - description: Configuration method to edit key settings.
+        name: fmgd_router_keychain_key
+        namespace: ""
+      - description: Configure router multicast.
+        name: fmgd_router_multicast
+        namespace: ""
+      - description: Configure IPv6 multicast.
+        name: fmgd_router_multicast6
+        namespace: ""
+      - description: Protocol Independent Multicast
+        name: fmgd_router_multicast6_interface
+        namespace: ""
+      - description: PIM sparse-mode global settings.
+        name: fmgd_router_multicast6_pimsmglobal
+        namespace: ""
+      - description: Statically configured RP addresses.
+        name: fmgd_router_multicast6_pimsmglobal_rpaddress
+        namespace: ""
+      - description: PIM interfaces.
+        name: fmgd_router_multicast_interface
+        namespace: ""
+      - description: IGMP configuration options.
+        name: fmgd_router_multicast_interface_igmp
+        namespace: ""
+      - description: Join multicast groups.
+        name: fmgd_router_multicast_interface_joingroup
+        namespace: ""
+      - description: PIM sparse-mode global settings.
+        name: fmgd_router_multicast_pimsmglobal
+        namespace: ""
+      - description: Statically configure RP addresses.
+        name: fmgd_router_multicast_pimsmglobal_rpaddress
+        namespace: ""
+      - description: per-VRF PIM sparse-mode global settings.
+        name: fmgd_router_multicast_pimsmglobalvrf
+        namespace: ""
+      - description: Statically configure RP addresses.
+        name: fmgd_router_multicast_pimsmglobalvrf_rpaddress
+        namespace: ""
+      - description: Configure multicast-flow.
+        name: fmgd_router_multicastflow
+        namespace: ""
+      - description: Multicast-flow entries.
+        name: fmgd_router_multicastflow_flows
+        namespace: ""
+      - description: Configure OSPF.
+        name: fmgd_router_ospf
+        namespace: ""
+      - description: Configure IPv6 OSPF.
+        name: fmgd_router_ospf6
+        namespace: ""
+      - description: OSPF6 area configuration.
+        name: fmgd_router_ospf6_area
+        namespace: ""
+      - description: IPsec authentication and encryption keys.
+        name: fmgd_router_ospf6_area_ipseckeys
+        namespace: ""
+      - description: OSPF6 area range configuration.
+        name: fmgd_router_ospf6_area_range
+        namespace: ""
+      - description: OSPF6 virtual link configuration.
+        name: fmgd_router_ospf6_area_virtuallink
+        namespace: ""
+      - description: IPsec authentication and encryption keys.
+        name: fmgd_router_ospf6_area_virtuallink_ipseckeys
+        namespace: ""
+      - description: OSPF6 interface configuration.
+        name: fmgd_router_ospf6_ospf6interface
+        namespace: ""
+      - description: IPsec authentication and encryption keys.
+        name: fmgd_router_ospf6_ospf6interface_ipseckeys
+        namespace: ""
+      - description: OSPFv3 neighbors are used when OSPFv3 runs on non-broadcast media.
+        name: fmgd_router_ospf6_ospf6interface_neighbor
+        namespace: ""
+      - description: Redistribute configuration.
+        name: fmgd_router_ospf6_redistribute
+        namespace: ""
+      - description: IPv6 address summary configuration.
+        name: fmgd_router_ospf6_summaryaddress
+        namespace: ""
+      - description: OSPF area configuration.
+        name: fmgd_router_ospf_area
+        namespace: ""
+      - description: OSPF area filter-list configuration.
+        name: fmgd_router_ospf_area_filterlist
+        namespace: ""
+      - description: OSPF area range configuration.
+        name: fmgd_router_ospf_area_range
+        namespace: ""
+      - description: OSPF virtual link configuration.
+        name: fmgd_router_ospf_area_virtuallink
+        namespace: ""
+      - description: MD5 key.
+        name: fmgd_router_ospf_area_virtuallink_md5keys
+        namespace: ""
+      - description: Distribute list configuration.
+        name: fmgd_router_ospf_distributelist
+        namespace: ""
+      - description:
+          OSPF neighbor configuration are used when OSPF runs on non-broadcast
+          media.
+        name: fmgd_router_ospf_neighbor
+        namespace: ""
+      - description: OSPF network configuration.
+        name: fmgd_router_ospf_network
+        namespace: ""
+      - description: OSPF interface configuration.
+        name: fmgd_router_ospf_ospfinterface
+        namespace: ""
+      - description: MD5 key.
+        name: fmgd_router_ospf_ospfinterface_md5keys
+        namespace: ""
+      - description: Redistribute configuration.
+        name: fmgd_router_ospf_redistribute
+        namespace: ""
+      - description: IP address summary configuration.
+        name: fmgd_router_ospf_summaryaddress
+        namespace: ""
+      - description: Configure IPv4 routing policies.
+        name: fmgd_router_policy
+        namespace: ""
+      - description: Configure IPv6 routing policies.
+        name: fmgd_router_policy6
+        namespace: ""
+      - description: Configure RIP.
+        name: fmgd_router_rip
+        namespace: ""
+      - description: Distance.
+        name: fmgd_router_rip_distance
+        namespace: ""
+      - description: Distribute list.
+        name: fmgd_router_rip_distributelist
+        namespace: ""
+      - description: RIP interface configuration.
+        name: fmgd_router_rip_interface
+        namespace: ""
+      - description: Neighbor.
+        name: fmgd_router_rip_neighbor
+        namespace: ""
+      - description: Network.
+        name: fmgd_router_rip_network
+        namespace: ""
+      - description: Offset list.
+        name: fmgd_router_rip_offsetlist
+        namespace: ""
+      - description: Redistribute configuration.
+        name: fmgd_router_rip_redistribute
+        namespace: ""
+      - description: Configure RIPng.
+        name: fmgd_router_ripng
+        namespace: ""
+      - description: Aggregate address.
+        name: fmgd_router_ripng_aggregateaddress
+        namespace: ""
+      - description: Distance.
+        name: fmgd_router_ripng_distance
+        namespace: ""
+      - description: Distribute list.
+        name: fmgd_router_ripng_distributelist
+        namespace: ""
+      - description: RIPng interface configuration.
+        name: fmgd_router_ripng_interface
+        namespace: ""
+      - description: Neighbor.
+        name: fmgd_router_ripng_neighbor
+        namespace: ""
+      - description: Network.
+        name: fmgd_router_ripng_network
+        namespace: ""
+      - description: Offset list.
+        name: fmgd_router_ripng_offsetlist
+        namespace: ""
+      - description: Redistribute configuration.
+        name: fmgd_router_ripng_redistribute
+        namespace: ""
+      - description: Configure route maps.
+        name: fmgd_router_routemap
+        namespace: ""
+      - description: Configure router settings.
+        name: fmgd_router_setting
+        namespace: ""
+      - description: Configure IPv4 static routing tables.
+        name: fmgd_router_static
+        namespace: ""
+      - description: Configure IPv6 static routing tables.
+        name: fmgd_router_static6
+        namespace: ""
+      - description: Show FMWP signatures.
+        name: fmgd_rule_fmwp
+        namespace: ""
+      - description: Show OT detection signatures.
+        name: fmgd_rule_otdt
+        namespace: ""
+      - description: Show OT patch signatures.
+        name: fmgd_rule_otvp
+        namespace: ""
+      - description: Configure global 802.
+        name: fmgd_switchcontroller_8021xsettings
+        namespace: ""
+      - description: Configure ACL groups to be applied on managed FortiSwitch ports.
+        name: fmgd_switchcontroller_acl_group
+        namespace: ""
+      - description:
+          Configure ingress ACL policies to be applied on managed FortiSwitch
+          ports.
+        name: fmgd_switchcontroller_acl_ingress
+        namespace: ""
+      - description: ACL actions.
+        name: fmgd_switchcontroller_acl_ingress_action
+        namespace: ""
+      - description: ACL classifiers.
+        name: fmgd_switchcontroller_acl_ingress_classifier
+        namespace: ""
+      - description:
+          Policies which can override the default for specific ISL/ICL/FortiLink
+          interface.
+        name: fmgd_switchcontroller_autoconfig_custom
+        namespace: ""
+      - description: Switch binding list.
+        name: fmgd_switchcontroller_autoconfig_custom_switchbinding
+        namespace: ""
+      - description:
+          Policies which are applied automatically to all ISL/ICL/FortiLink
+          interfaces.
+        name: fmgd_switchcontroller_autoconfig_default
+        namespace: ""
+      - description:
+          Policy definitions which can define the behavior on auto configured
+          interfaces.
+        name: fmgd_switchcontroller_autoconfig_policy
+        namespace: ""
+      - description:
+          Configure the FortiGate switch controller to send custom commands
+          to managed FortiSwitch devices.
+        name: fmgd_switchcontroller_customcommand
+        namespace: ""
+      - description: DSL policy.
+        name: fmgd_switchcontroller_dsl_policy
+        namespace: ""
+      - description:
+          Configure Dynamic port policy to be applied on the managed FortiSwitch
+          ports through DPP device.
+        name: fmgd_switchcontroller_dynamicportpolicy
+        namespace: ""
+      - description: Port policies with matching criteria and actions.
+        name: fmgd_switchcontroller_dynamicportpolicy_policy
+        namespace: ""
+      - description: Configure FortiSwitch flow tracking and export via ipfix/netflow.
+        name: fmgd_switchcontroller_flowtracking
+        namespace: ""
+      - description:
+          Configure aggregates in which all traffic sessions matching the
+          IP Address will be grouped into the same flow.
+        name: fmgd_switchcontroller_flowtracking_aggregates
+        namespace: ""
+      - description: Configure collectors for the flow.
+        name: fmgd_switchcontroller_flowtracking_collectors
+        namespace: ""
+      - description: Configure integrated FortiLink settings for FortiSwitch.
+        name: fmgd_switchcontroller_fortilinksettings
+        namespace: ""
+      - description: NAC specific configuration.
+        name: fmgd_switchcontroller_fortilinksettings_nacports
+        namespace: ""
+      - description: Configure FortiSwitch global settings.
+        name: fmgd_switchcontroller_global
+        namespace: ""
+      - description: Configure FortiSwitch IGMP snooping global settings.
+        name: fmgd_switchcontroller_igmpsnooping
+        namespace: ""
+      - description: Configure template for auto-generated VLANs.
+        name: fmgd_switchcontroller_initialconfig_template
+        namespace: ""
+      - description: Configure initial template for auto-generated VLAN interfaces.
+        name: fmgd_switchcontroller_initialconfig_vlans
+        namespace: ""
+      - description: Configure FortiSwitch LLDP profiles.
+        name: fmgd_switchcontroller_lldpprofile
+        namespace: ""
+      - description: Configuration method to edit custom TLV entries.
+        name: fmgd_switchcontroller_lldpprofile_customtlvs
+        namespace: ""
+      - description: Configuration method to edit Media Endpoint Discovery
+        name: fmgd_switchcontroller_lldpprofile_medlocationservice
+        namespace: ""
+      - description: Configuration method to edit Media Endpoint Discovery
+        name: fmgd_switchcontroller_lldpprofile_mednetworkpolicy
+        namespace: ""
+      - description: Configure FortiSwitch LLDP settings.
+        name: fmgd_switchcontroller_lldpsettings
+        namespace: ""
+      - description: Configure FortiSwitch location services.
+        name: fmgd_switchcontroller_location
+        namespace: ""
+      - description: Configure location civic address.
+        name: fmgd_switchcontroller_location_addresscivic
+        namespace: ""
+      - description: Configure location GPS coordinates.
+        name: fmgd_switchcontroller_location_coordinates
+        namespace: ""
+      - description: Configure location ELIN number.
+        name: fmgd_switchcontroller_location_elinnumber
+        namespace: ""
+      - description:
+          Configure MAC policy to be applied on the managed FortiSwitch devices
+          through NAC device.
+        name: fmgd_switchcontroller_macpolicy
+        namespace: ""
+      - description: Configure FortiSwitch devices that are managed by this FortiGate.
+        name: fmgd_switchcontroller_managedswitch
+        namespace: ""
+      - description: Configuration method to edit FortiSwitch 802.
+        name: fmgd_switchcontroller_managedswitch_8021xsettings
+        namespace: ""
+      - description:
+          Configuration method to edit FortiSwitch commands to be pushed
+          to this FortiSwitch device upon rebooting the FortiGate switch contro...
+        name: fmgd_switchcontroller_managedswitch_customcommand
+        namespace: ""
+      - description: Configure FortiSwitch DHCP snooping static clients.
+        name: fmgd_switchcontroller_managedswitch_dhcpsnoopingstaticclient
+        namespace: ""
+      - description: Configure FortiSwitch IGMP snooping global settings.
+        name: fmgd_switchcontroller_managedswitch_igmpsnooping
+        namespace: ""
+      - description: Configure IGMP snooping VLAN.
+        name: fmgd_switchcontroller_managedswitch_igmpsnooping_vlans
+        namespace: ""
+      - description: IP source guard.
+        name: fmgd_switchcontroller_managedswitch_ipsourceguard
+        namespace: ""
+      - description: IP and MAC address configuration.
+        name: fmgd_switchcontroller_managedswitch_ipsourceguard_bindingentry
+        namespace: ""
+      - description: Configuration method to edit FortiSwitch packet mirror.
+        name: fmgd_switchcontroller_managedswitch_mirror
+        namespace: ""
+      - description: Managed-switch port list.
+        name: fmgd_switchcontroller_managedswitch_ports
+        namespace: ""
+      - description: Configure DHCP snooping option 82 override.
+        name: fmgd_switchcontroller_managedswitch_ports_dhcpsnoopoption82override
+        namespace: ""
+      - description: Configure logging by FortiSwitch device to a remote syslog server.
+        name: fmgd_switchcontroller_managedswitch_remotelog
+        namespace: ""
+      - description: Configure route offload MCLAG IP address.
+        name: fmgd_switchcontroller_managedswitch_routeoffloadrouter
+        namespace: ""
+      - description: Configuration method to edit Simple Network Management Protocol
+        name: fmgd_switchcontroller_managedswitch_snmpcommunity
+        namespace: ""
+      - description: Configure IPv4 SNMP managers
+        name: fmgd_switchcontroller_managedswitch_snmpcommunity_hosts
+        namespace: ""
+      - description: Configuration method to edit Simple Network Management Protocol
+        name: fmgd_switchcontroller_managedswitch_snmpsysinfo
+        namespace: ""
+      - description: Configuration method to edit Simple Network Management Protocol
+        name: fmgd_switchcontroller_managedswitch_snmptrapthreshold
+        namespace: ""
+      - description: Configuration method to edit Simple Network Management Protocol
+        name: fmgd_switchcontroller_managedswitch_snmpuser
+        namespace: ""
+      - description: Configuration method to edit FortiSwitch Static and Sticky MAC.
+        name: fmgd_switchcontroller_managedswitch_staticmac
+        namespace: ""
+      - description:
+          Configuration method to edit FortiSwitch storm control for measuring
+          traffic activity using data rates to prevent traffic disruption.
+        name: fmgd_switchcontroller_managedswitch_stormcontrol
+        namespace: ""
+      - description: Configuration method to edit Spanning Tree Protocol
+        name: fmgd_switchcontroller_managedswitch_stpinstance
+        namespace: ""
+      - description: Configuration method to edit Spanning Tree Protocol
+        name: fmgd_switchcontroller_managedswitch_stpsettings
+        namespace: ""
+      - description: Configuration method to edit FortiSwitch logging settings
+        name: fmgd_switchcontroller_managedswitch_switchlog
+        namespace: ""
+      - description: Configure VLAN assignment priority.
+        name: fmgd_switchcontroller_managedswitch_vlan
+        namespace: ""
+      - description:
+          Configure/list NAC devices learned on the managed FortiSwitch ports
+          which matches NAC policy.
+        name: fmgd_switchcontroller_nacdevice
+        namespace: ""
+      - description: Configure integrated NAC settings for FortiSwitch.
+        name: fmgd_switchcontroller_nacsettings
+        namespace: ""
+      - description: Configure network monitor settings.
+        name: fmgd_switchcontroller_networkmonitorsettings
+        namespace: ""
+      - description:
+          Configure port policy to be applied on the managed FortiSwitch
+          ports through NAC device.
+        name: fmgd_switchcontroller_portpolicy
+        namespace: ""
+      - description: PTP interface-policy configuration.
+        name: fmgd_switchcontroller_ptp_interfacepolicy
+        namespace: ""
+      - description: PTP policy configuration.
+        name: fmgd_switchcontroller_ptp_policy
+        namespace: ""
+      - description: Global PTP profile.
+        name: fmgd_switchcontroller_ptp_profile
+        namespace: ""
+      - description: Global PTP settings.
+        name: fmgd_switchcontroller_ptp_settings
+        namespace: ""
+      - description: Configure FortiSwitch QoS 802.
+        name: fmgd_switchcontroller_qos_dot1pmap
+        namespace: ""
+      - description: Configure FortiSwitch QoS IP precedence/DSCP.
+        name: fmgd_switchcontroller_qos_ipdscpmap
+        namespace: ""
+      - description: Maps between IP-DSCP value to COS queue.
+        name: fmgd_switchcontroller_qos_ipdscpmap_map
+        namespace: ""
+      - description: Configure FortiSwitch QoS policy.
+        name: fmgd_switchcontroller_qos_qospolicy
+        namespace: ""
+      - description: Configure FortiSwitch QoS egress queue policy.
+        name: fmgd_switchcontroller_qos_queuepolicy
+        namespace: ""
+      - description: COS queue configuration.
+        name: fmgd_switchcontroller_qos_queuepolicy_cosqueue
+        namespace: ""
+      - description: Configure logging by FortiSwitch device to a remote syslog server.
+        name: fmgd_switchcontroller_remotelog
+        namespace: ""
+      - description: Configure 802.
+        name: fmgd_switchcontroller_securitypolicy_8021x
+        namespace: ""
+      - description:
+          Configure allowaccess list for mgmt and internal interfaces on
+          managed FortiSwitch units.
+        name: fmgd_switchcontroller_securitypolicy_localaccess
+        namespace: ""
+      - description: Configure FortiSwitch sFlow.
+        name: fmgd_switchcontroller_sflow
+        namespace: ""
+      - description: Configure FortiSwitch SNMP v1/v2c communities globally.
+        name: fmgd_switchcontroller_snmpcommunity
+        namespace: ""
+      - description: Configure IPv4 SNMP managers
+        name: fmgd_switchcontroller_snmpcommunity_hosts
+        namespace: ""
+      - description: Configure FortiSwitch SNMP system information globally.
+        name: fmgd_switchcontroller_snmpsysinfo
+        namespace: ""
+      - description: Configure FortiSwitch SNMP trap threshold values globally.
+        name: fmgd_switchcontroller_snmptrapthreshold
+        namespace: ""
+      - description: Configure FortiSwitch SNMP v3 users globally.
+        name: fmgd_switchcontroller_snmpuser
+        namespace: ""
+      - description: Configure FortiSwitch storm control.
+        name: fmgd_switchcontroller_stormcontrol
+        namespace: ""
+      - description:
+          Configure FortiSwitch storm control policy to be applied on managed-switch
+          ports.
+        name: fmgd_switchcontroller_stormcontrolpolicy
+        namespace: ""
+      - description: Configure FortiSwitch multiple spanning tree protocol
+        name: fmgd_switchcontroller_stpinstance
+        namespace: ""
+      - description: Configure FortiSwitch spanning tree protocol
+        name: fmgd_switchcontroller_stpsettings
+        namespace: ""
+      - description: Configure FortiSwitch switch groups.
+        name: fmgd_switchcontroller_switchgroup
+        namespace: ""
+      - description: Configure switch object tags.
+        name: fmgd_switchcontroller_switchinterfacetag
+        namespace: ""
+      - description: Configure FortiSwitch logging
+        name: fmgd_switchcontroller_switchlog
+        namespace: ""
+      - description: Configure FortiSwitch switch profile.
+        name: fmgd_switchcontroller_switchprofile
+        namespace: ""
+      - description: Configure system-wide switch controller settings.
+        name: fmgd_switchcontroller_system
+        namespace: ""
+      - description: Configure FortiSwitch traffic policy.
+        name: fmgd_switchcontroller_trafficpolicy
+        namespace: ""
+      - description: Configure FortiSwitch RSPAN/ERSPAN traffic sniffing parameters.
+        name: fmgd_switchcontroller_trafficsniffer
+        namespace: ""
+      - description: Sniffer IPs to filter.
+        name: fmgd_switchcontroller_trafficsniffer_targetip
+        namespace: ""
+      - description: Sniffer MACs to filter.
+        name: fmgd_switchcontroller_trafficsniffer_targetmac
+        namespace: ""
+      - description: Sniffer ports to filter.
+        name: fmgd_switchcontroller_trafficsniffer_targetport
+        namespace: ""
+      - description: Configure virtual pool.
+        name: fmgd_switchcontroller_virtualportpool
+        namespace: ""
+      - description:
+          Configure VLAN policy to be applied on the managed FortiSwitch
+          ports through dynamic-port-policy.
+        name: fmgd_switchcontroller_vlanpolicy
+        namespace: ""
+      - description: 3G MODEM custom.
+        name: fmgd_system_3gmodem_custom
+        namespace: ""
+      - description: Configure USB 5G modems.
+        name: fmgd_system_5gmodem
+        namespace: ""
+      - description: Configure data plan.
+        name: fmgd_system_5gmodem_dataplan
+        namespace: ""
+      - description: Configure 5G Modem1.
+        name: fmgd_system_5gmodem_modem1
+        namespace: ""
+      - description: Configure SIM card switch.
+        name: fmgd_system_5gmodem_modem1_simswitch
+        namespace: ""
+      - description: Configure 5G Modem2.
+        name: fmgd_system_5gmodem_modem2
+        namespace: ""
+      - description: Configure access profiles for system administrators.
+        name: fmgd_system_accprofile
+        namespace: ""
+      - description: Custom firewall permission.
+        name: fmgd_system_accprofile_fwgrppermission
+        namespace: ""
+      - description: Custom Log & Report permission.
+        name: fmgd_system_accprofile_loggrppermission
+        namespace: ""
+      - description: Custom network permission.
+        name: fmgd_system_accprofile_netgrppermission
+        namespace: ""
+      - description: Custom system permission.
+        name: fmgd_system_accprofile_sysgrppermission
+        namespace: ""
+      - description: Custom Security Profile permissions.
+        name: fmgd_system_accprofile_utmgrppermission
+        namespace: ""
+      - description: Configure ACME client.
+        name: fmgd_system_acme
+        namespace: ""
+      - description: ACME accounts list.
+        name: fmgd_system_acme_accounts
+        namespace: ""
+      - description: Configure admin users.
+        name: fmgd_system_admin
+        namespace: ""
+      - description: Configure interrupt affinity.
+        name: fmgd_system_affinityinterrupt
+        namespace: ""
+      - description: Configure packet redistribution.
+        name: fmgd_system_affinitypacketredistribution
+        namespace: ""
+      - description: Configure alias command.
+        name: fmgd_system_alias
+        namespace: ""
+      - description: Configure API users.
+        name: fmgd_system_apiuser
+        namespace: ""
+      - description: Trusthost.
+        name: fmgd_system_apiuser_trusthost
+        namespace: ""
+      - description: Configure ARP table.
+        name: fmgd_system_arptable
+        namespace: ""
+      - description: Configure USB auto installation.
+        name: fmgd_system_autoinstall
+        namespace: ""
+      - description: Action for automation stitches.
+        name: fmgd_system_automationaction
+        namespace: ""
+      - description: Request headers.
+        name: fmgd_system_automationaction_httpheaders
+        namespace: ""
+      - description: Condition for automation stitches.
+        name: fmgd_system_automationcondition
+        namespace: ""
+      - description: Automation destinations.
+        name: fmgd_system_automationdestination
+        namespace: ""
+      - description: Automation stitches.
+        name: fmgd_system_automationstitch
+        namespace: ""
+      - description: Configure stitch actions.
+        name: fmgd_system_automationstitch_actions
+        namespace: ""
+      - description: Trigger for automation stitches.
+        name: fmgd_system_automationtrigger
+        namespace: ""
+      - description: Customized trigger field settings.
+        name: fmgd_system_automationtrigger_fields
+        namespace: ""
+      - description: Configure system auto-scaling.
+        name: fmgd_system_autoscale
+        namespace: ""
+      - description: Configure auto script.
+        name: fmgd_system_autoscript
+        namespace: ""
+      - description: Configure push updates.
+        name: fmgd_system_autoupdate_pushupdate
+        namespace: ""
+      - description: Configure update schedule.
+        name: fmgd_system_autoupdate_schedule
+        namespace: ""
+      - description: Configure web proxy tunneling for the FDN.
+        name: fmgd_system_autoupdate_tunneling
+        namespace: ""
+      - description: Configure system bypass.
+        name: fmgd_system_bypass
+        namespace: ""
+      - description: Configure central management.
+        name: fmgd_system_centralmanagement
+        namespace: ""
+      - description: Additional severs that the FortiGate can use for updates
+        name: fmgd_system_centralmanagement_serverlist
+        namespace: ""
+      - description: Device system cluster sync
+        name: fmgd_system_clustersync
+        namespace: ""
+      - description: Device system cluster sync session sync filter
+        name: fmgd_system_clustersync_sessionsyncfilter
+        namespace: ""
+      - description: Device system cluster sync session sync filter custom service
+        name: fmgd_system_clustersync_sessionsyncfilter_customservice
+        namespace: ""
+      - description: Configure console.
+        name: fmgd_system_console
+        namespace: ""
+      - description: Configure Console Server.
+        name: fmgd_system_consoleserver
+        namespace: ""
+      - description: Entry used by console server.
+        name: fmgd_system_consoleserver_entries
+        namespace: ""
+      - description:
+          Add this FortiGate to a Security Fabric or set up a new Security
+          Fabric on this FortiGate.
+        name: fmgd_system_csf
+        namespace: ""
+      - description: Fabric connector configuration.
+        name: fmgd_system_csf_fabricconnector
+        namespace: ""
+      - description: Fabric device configuration.
+        name: fmgd_system_csf_fabricdevice
+        namespace: ""
+      - description: Pre-authorized and blocked security fabric nodes.
+        name: fmgd_system_csf_trustedlist
+        namespace: ""
+      - description: Configure DDNS.
+        name: fmgd_system_ddns
+        namespace: ""
+      - description: Configure dedicated management.
+        name: fmgd_system_dedicatedmgmt
+        namespace: ""
+      - description: Independent upgrades for managed devices.
+        name: fmgd_system_deviceupgrade
+        namespace: ""
+      - description: Known members of the HA cluster.
+        name: fmgd_system_deviceupgrade_knownhamembers
+        namespace: ""
+      - description: Configure DHCPv6 servers.
+        name: fmgd_system_dhcp6_server
+        namespace: ""
+      - description: DHCP IP range configuration.
+        name: fmgd_system_dhcp6_server_iprange
+        namespace: ""
+      - description: DHCPv6 options.
+        name: fmgd_system_dhcp6_server_options
+        namespace: ""
+      - description: DHCP prefix configuration.
+        name: fmgd_system_dhcp6_server_prefixrange
+        namespace: ""
+      - description: Configure digital-io.
+        name: fmgd_system_digitalio
+        namespace: ""
+      - description: Configure dnpproxy settings.
+        name: fmgd_system_dnp3proxy
+        namespace: ""
+      - description: Configure DNS.
+        name: fmgd_system_dns
+        namespace: ""
+      - description: Configure DNS64.
+        name: fmgd_system_dns64
+        namespace: ""
+      - description: Configure DNS databases.
+        name: fmgd_system_dnsdatabase
+        namespace: ""
+      - description: DNS entry.
+        name: fmgd_system_dnsdatabase_dnsentry
+        namespace: ""
+      - description: Configure DNS servers.
+        name: fmgd_system_dnsserver
+        namespace: ""
+      - description: Configure DSCP based priority table.
+        name: fmgd_system_dscpbasedpriority
+        namespace: ""
+      - description: Configure enhanced load balance cluster.
+        name: fmgd_system_elbc
+        namespace: ""
+      - description: Configure the email server used by the FortiGate various things.
+        name: fmgd_system_emailserver
+        namespace: ""
+      - description: Configure EVPN instance.
+        name: fmgd_system_evpn
+        namespace: ""
+      - description: Setup for self orchestrated fabric auto discovery VPN.
+        name: fmgd_system_fabricvpn
+        namespace: ""
+      - description: Local advertised subnets.
+        name: fmgd_system_fabricvpn_advertisedsubnets
+        namespace: ""
+      - description: Local overlay interfaces table.
+        name: fmgd_system_fabricvpn_overlays
+        namespace: ""
+      - description: Coordinate federated upgrades within the Security Fabric.
+        name: fmgd_system_federatedupgrade
+        namespace: ""
+      - description: Known members of the HA cluster.
+        name: fmgd_system_federatedupgrade_knownhamembers
+        namespace: ""
+      - description: Nodes which will be included in the upgrade.
+        name: fmgd_system_federatedupgrade_nodelist
+        namespace: ""
+      - description: Configure FIPS-CC mode.
+        name: fmgd_system_fipscc
+        namespace: ""
+      - description: Configure FortiAI.
+        name: fmgd_system_fortiai
+        namespace: ""
+      - description: Configure FortiNDR.
+        name: fmgd_system_fortindr
+        namespace: ""
+      - description: Configure FortiSandbox.
+        name: fmgd_system_fortisandbox
+        namespace: ""
+      - description: Configure Fortinet Single Sign On
+        name: fmgd_system_fssopolling
+        namespace: ""
+      - description: Configure FortiToken Mobile push services.
+        name: fmgd_system_ftmpush
+        namespace: ""
+      - description: Configure GENEVE devices.
+        name: fmgd_system_geneve
+        namespace: ""
+      - description: Configure Gi Firewall Gatekeeper.
+        name: fmgd_system_gigk
+        namespace: ""
+      - description: Configure global attributes.
+        name: fmgd_system_global
+        namespace: ""
+      - description: Configure GRE tunnel.
+        name: fmgd_system_gretunnel
+        namespace: ""
+      - description: Configure HA.
+        name: fmgd_system_ha
+        namespace: ""
+      - description: Device system ha frup settings
+        name: fmgd_system_ha_frupsettings
+        namespace: ""
+      - description: Reserve interfaces to manage individual cluster units.
+        name: fmgd_system_ha_hamgmtinterfaces
+        namespace: ""
+      - description: Configure virtual cluster 2.
+        name: fmgd_system_ha_secondaryvcluster
+        namespace: ""
+      - description: Number of unicast peers.
+        name: fmgd_system_ha_unicastpeers
+        namespace: ""
+      - description: Virtual cluster table.
+        name: fmgd_system_ha_vcluster
+        namespace: ""
+      - description: Configure HA monitor.
+        name: fmgd_system_hamonitor
+        namespace: ""
+      - description: SD-WAN status checking or health checking.
+        name: fmgd_system_healthcheckfortiguard
+        namespace: ""
+      - description: Configure Industrial Connectivity.
+        name: fmgd_system_icond
+        namespace: ""
+      - description: Configure IKE global attributes.
+        name: fmgd_system_ike
+        namespace: ""
+      - description: Diffie-Hellman group 1
+        name: fmgd_system_ike_dhgroup1
+        namespace: ""
+      - description: Diffie-Hellman group 14
+        name: fmgd_system_ike_dhgroup14
+        namespace: ""
+      - description: Diffie-Hellman group 15
+        name: fmgd_system_ike_dhgroup15
+        namespace: ""
+      - description: Diffie-Hellman group 16
+        name: fmgd_system_ike_dhgroup16
+        namespace: ""
+      - description: Diffie-Hellman group 17
+        name: fmgd_system_ike_dhgroup17
+        namespace: ""
+      - description: Diffie-Hellman group 18
+        name: fmgd_system_ike_dhgroup18
+        namespace: ""
+      - description: Diffie-Hellman group 19
+        name: fmgd_system_ike_dhgroup19
+        namespace: ""
+      - description: Diffie-Hellman group 2
+        name: fmgd_system_ike_dhgroup2
+        namespace: ""
+      - description: Diffie-Hellman group 20
+        name: fmgd_system_ike_dhgroup20
+        namespace: ""
+      - description: Diffie-Hellman group 21
+        name: fmgd_system_ike_dhgroup21
+        namespace: ""
+      - description: Diffie-Hellman group 27
+        name: fmgd_system_ike_dhgroup27
+        namespace: ""
+      - description: Diffie-Hellman group 28
+        name: fmgd_system_ike_dhgroup28
+        namespace: ""
+      - description: Diffie-Hellman group 29
+        name: fmgd_system_ike_dhgroup29
+        namespace: ""
+      - description: Diffie-Hellman group 30
+        name: fmgd_system_ike_dhgroup30
+        namespace: ""
+      - description: Diffie-Hellman group 31
+        name: fmgd_system_ike_dhgroup31
+        namespace: ""
+      - description: Diffie-Hellman group 32
+        name: fmgd_system_ike_dhgroup32
+        namespace: ""
+      - description: Diffie-Hellman group 5
+        name: fmgd_system_ike_dhgroup5
+        namespace: ""
+      - description: Configure interfaces.
+        name: fmgd_system_interface
+        namespace: ""
+      - description: DHCP client options.
+        name: fmgd_system_interface_clientoptions
+        namespace: ""
+      - description: Configure DHCP server access list.
+        name: fmgd_system_interface_dhcpsnoopingserverlist
+        namespace: ""
+      - description: Configure queues of NP port on egress path.
+        name: fmgd_system_interface_egressqueues
+        namespace: ""
+      - description: IPv6 of interface.
+        name: fmgd_system_interface_ipv6
+        namespace: ""
+      - description: DHCP6 client options.
+        name: fmgd_system_interface_ipv6_clientoptions
+        namespace: ""
+      - description: DHCPv6 IA-PD list.
+        name: fmgd_system_interface_ipv6_dhcp6iapdlist
+        namespace: ""
+      - description: Advertised IPv6 delegated prefix list.
+        name: fmgd_system_interface_ipv6_ip6delegatedprefixlist
+        namespace: ""
+      - description: Advertised IPv6 DNSS list.
+        name: fmgd_system_interface_ipv6_ip6dnssllist
+        namespace: ""
+      - description: Extra IPv6 address prefixes of interface.
+        name: fmgd_system_interface_ipv6_ip6extraaddr
+        namespace: ""
+      - description: Advertised prefix list.
+        name: fmgd_system_interface_ipv6_ip6prefixlist
+        namespace: ""
+      - description: Advertised IPv6 RDNSS list.
+        name: fmgd_system_interface_ipv6_ip6rdnsslist
+        namespace: ""
+      - description: Advertised route list.
+        name: fmgd_system_interface_ipv6_ip6routelist
+        namespace: ""
+      - description: IPv6 VRRP configuration.
+        name: fmgd_system_interface_ipv6_vrrp6
+        namespace: ""
+      - description: L2TP client settings.
+        name: fmgd_system_interface_l2tpclientsettings
+        namespace: ""
+      - description: Mirroring filter.
+        name: fmgd_system_interface_mirroringfilter
+        namespace: ""
+      - description: Second IP address of interface.
+        name: fmgd_system_interface_secondaryip
+        namespace: ""
+      - description: Config object tagging.
+        name: fmgd_system_interface_tagging
+        namespace: ""
+      - description: VRRP configuration.
+        name: fmgd_system_interface_vrrp
+        namespace: ""
+      - description: VRRP Proxy ARP configuration.
+        name: fmgd_system_interface_vrrp_proxyarp
+        namespace: ""
+      - description: WiFi network table.
+        name: fmgd_system_interface_wifinetworks
+        namespace: ""
+      - description: Configure IP address management services.
+        name: fmgd_system_ipam
+        namespace: ""
+      - description: Configure IPAM pools.
+        name: fmgd_system_ipam_pools
+        namespace: ""
+      - description: Configure pool exclude subnets.
+        name: fmgd_system_ipam_pools_exclude
+        namespace: ""
+      - description: Configure IPAM allocation rules.
+        name: fmgd_system_ipam_rules
+        namespace: ""
+      - description: Configure IP in IP Tunneling.
+        name: fmgd_system_ipiptunnel
+        namespace: ""
+      - description: Configure IPS system settings.
+        name: fmgd_system_ips
+        namespace: ""
+      - description: Configure an aggregate of IPsec tunnels.
+        name: fmgd_system_ipsecaggregate
+        namespace: ""
+      - description: Configure IPS URL filter DNS servers.
+        name: fmgd_system_ipsurlfilterdns
+        namespace: ""
+      - description: Configure IPS URL filter IPv6 DNS servers.
+        name: fmgd_system_ipsurlfilterdns6
+        namespace: ""
+      - description: Configure IPv6 neighbor cache table.
+        name: fmgd_system_ipv6neighborcache
+        namespace: ""
+      - description: Configure IPv6/IPv4 in IPv6 tunnel.
+        name: fmgd_system_ipv6tunnel
+        namespace: ""
+      - description: Configure system iSCSI.
+        name: fmgd_system_iscsi
+        namespace: ""
+      - description: Create a queue profile of switch.
+        name: fmgd_system_isfqueueprofile
+        namespace: ""
+      - description: Configure Link Health Monitor.
+        name: fmgd_system_linkmonitor
+        namespace: ""
+      - description: Servers for link-monitor to monitor.
+        name: fmgd_system_linkmonitor_serverlist
+        namespace: ""
+      - description: Configure LLDP network policy.
+        name: fmgd_system_lldp_networkpolicy
+        namespace: ""
+      - description: Guest.
+        name: fmgd_system_lldp_networkpolicy_guest
+        namespace: ""
+      - description: Guest Voice Signaling.
+        name: fmgd_system_lldp_networkpolicy_guestvoicesignaling
+        namespace: ""
+      - description: Softphone.
+        name: fmgd_system_lldp_networkpolicy_softphone
+        namespace: ""
+      - description: Streaming Video.
+        name: fmgd_system_lldp_networkpolicy_streamingvideo
+        namespace: ""
+      - description: Video Conferencing.
+        name: fmgd_system_lldp_networkpolicy_videoconferencing
+        namespace: ""
+      - description: Video Signaling.
+        name: fmgd_system_lldp_networkpolicy_videosignaling
+        namespace: ""
+      - description: Voice.
+        name: fmgd_system_lldp_networkpolicy_voice
+        namespace: ""
+      - description: Voice signaling.
+        name: fmgd_system_lldp_networkpolicy_voicesignaling
+        namespace: ""
+      - description: Configure USB LTE/WIMAX devices.
+        name: fmgd_system_ltemodem
+        namespace: ""
+      - description: Configure data plan.
+        name: fmgd_system_ltemodem_dataplan
+        namespace: ""
+      - description: Configure SIM card switch.
+        name: fmgd_system_ltemodem_simswitch
+        namespace: ""
+      - description: Configure MAC address tables.
+        name: fmgd_system_macaddresstable
+        namespace: ""
+      - description: Configure memory manager.
+        name: fmgd_system_memmgr
+        namespace: ""
+      - description: Configure Mobile tunnels, an implementation of Network Mobility
+        name: fmgd_system_mobiletunnel
+        namespace: ""
+      - description: NEMO network configuration.
+        name: fmgd_system_mobiletunnel_network
+        namespace: ""
+      - description: Configure MODEM.
+        name: fmgd_system_modem
+        namespace: ""
+      - description: Device vdom system nat64
+        name: fmgd_system_nat64
+        namespace: ""
+      - description: Device vdom system nat64 secondary prefix
+        name: fmgd_system_nat64_secondaryprefix
+        namespace: ""
+      - description: Configure IPv6 neighbor discovery proxy
+        name: fmgd_system_ndproxy
+        namespace: ""
+      - description: Configure NetFlow.
+        name: fmgd_system_netflow
+        namespace: ""
+      - description: Netflow collectors.
+        name: fmgd_system_netflow_collectors
+        namespace: ""
+      - description: Exclusion filters
+        name: fmgd_system_netflow_exclusionfilters
+        namespace: ""
+      - description: Configure network visibility settings.
+        name: fmgd_system_networkvisibility
+        namespace: ""
+      - description: Configure IPS NGFW policy-mode VDOM settings.
+        name: fmgd_system_ngfwsettings
+        namespace: ""
+      - description: Configure NP6 attributes.
+        name: fmgd_system_np6
+        namespace: ""
+      - description: NP6 IPv4 anomaly protection.
+        name: fmgd_system_np6_fpanomaly
+        namespace: ""
+      - description: HPE configuration.
+        name: fmgd_system_np6_hpe
+        namespace: ""
+      - description: Configure NP6XLITE attributes.
+        name: fmgd_system_np6xlite
+        namespace: ""
+      - description: NP6XLITE IPv4 anomaly protection.
+        name: fmgd_system_np6xlite_fpanomaly
+        namespace: ""
+      - description: HPE configuration.
+        name: fmgd_system_np6xlite_hpe
+        namespace: ""
+      - description: Configure NPU attributes after interface initialization.
+        name: fmgd_system_npupost
+        namespace: ""
+      - description: Configure port to NPU group list.
+        name: fmgd_system_npupost_portnpumap
+        namespace: ""
+      - description: Configure NPU PRP attributes.
+        name: fmgd_system_npusetting_prp
+        namespace: ""
+      - description: Configure NPU VDOM link.
+        name: fmgd_system_npuvlink
+        namespace: ""
+      - description: Configure system NTP information.
+        name: fmgd_system_ntp
+        namespace: ""
+      - description:
+          Configure the FortiGate to connect to any available third-party
+          NTP server.
+        name: fmgd_system_ntp_ntpserver
+        namespace: ""
+      - description:
+          Configure password policy for locally defined administrator passwords
+          and IPsec VPN pre-shared keys.
+        name: fmgd_system_passwordpolicy
+        namespace: ""
+      - description: Configure the password policy for guest administrators.
+        name: fmgd_system_passwordpolicyguestadmin
+        namespace: ""
+      - description: Configure PCP server information.
+        name: fmgd_system_pcpserver
+        namespace: ""
+      - description: Configure PCP pools.
+        name: fmgd_system_pcpserver_pools
+        namespace: ""
+      - description: Configure physical switches.
+        name: fmgd_system_physicalswitch
+        namespace: ""
+      - description: Configure the PPPoE interfaces.
+        name: fmgd_system_pppoeinterface
+        namespace: ""
+      - description: Configure system probe response.
+        name: fmgd_system_proberesponse
+        namespace: ""
+      - description: Configure proxy-ARP.
+        name: fmgd_system_proxyarp
+        namespace: ""
+      - description: Configure system PTP information.
+        name: fmgd_system_ptp
+        namespace: ""
+      - description: FortiGate interface
+        name: fmgd_system_ptp_serverinterface
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_admin
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_alertmail
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_auth
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_automation
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_custommessage
+        namespace: ""
+      - description: Device system replacemsg device detection portal
+        name: fmgd_system_replacemsg_devicedetectionportal
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_fortiguardwf
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_ftp
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_http
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_icap
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_mail
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_mm1
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_mm3
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_mm4
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_mm7
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_mms
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_nacquar
+        namespace: ""
+      - description: Device system replacemsg nntp
+        name: fmgd_system_replacemsg_nntp
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_spam
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_sslvpn
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_trafficquota
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_utm
+        namespace: ""
+      - description: Replacement messages.
+        name: fmgd_system_replacemsg_webproxy
+        namespace: ""
+      - description: Global settings for SAML authentication.
+        name: fmgd_system_saml
+        namespace: ""
+      - description: Authorized service providers.
+        name: fmgd_system_saml_serviceproviders
+        namespace: ""
+      - description: Customized SAML attributes to send along with assertion.
+        name: fmgd_system_saml_serviceproviders_assertionattributes
+        namespace: ""
+      - description: Configure public cloud VPN service.
+        name: fmgd_system_sdnvpn
+        namespace: ""
+      - description:
+          Configure redundant Internet connections with multiple outbound
+          links and health-check profiles.
+        name: fmgd_system_sdwan
+        namespace: ""
+      - description: Create SD-WAN duplication rule.
+        name: fmgd_system_sdwan_duplication
+        namespace: ""
+      - description: SD-WAN status checking or health checking.
+        name: fmgd_system_sdwan_healthcheck
+        namespace: ""
+      - description: Service level agreement
+        name: fmgd_system_sdwan_healthcheck_sla
+        namespace: ""
+      - description: SD-WAN status checking or health checking.
+        name: fmgd_system_sdwan_healthcheckfortiguard
+        namespace: ""
+      - description: Service level agreement
+        name: fmgd_system_sdwan_healthcheckfortiguard_sla
+        namespace: ""
+      - description: FortiGate interfaces added to the SD-WAN.
+        name: fmgd_system_sdwan_members
+        namespace: ""
+      - description:
+          Create SD-WAN neighbor from BGP neighbor table to control route
+          advertisements according to SLA status.
+        name: fmgd_system_sdwan_neighbor
+        namespace: ""
+      - description: Create SD-WAN rules
+        name: fmgd_system_sdwan_service
+        namespace: ""
+      - description: Service level agreement
+        name: fmgd_system_sdwan_service_sla
+        namespace: ""
+      - description: Configure SD-WAN zones.
+        name: fmgd_system_sdwan_zone
+        namespace: ""
+      - description: Settings for individual Security Rating controls.
+        name: fmgd_system_securityrating_controls
+        namespace: ""
+      - description: Settings for Security Rating.
+        name: fmgd_system_securityrating_settings
+        namespace: ""
+      - description: Configure session helper.
+        name: fmgd_system_sessionhelper
+        namespace: ""
+      - description: Configure global session TTL timers for this FortiGate.
+        name: fmgd_system_sessionttl
+        namespace: ""
+      - description: Session TTL port.
+        name: fmgd_system_sessionttl_port
+        namespace: ""
+      - description: Configure VDOM settings.
+        name: fmgd_system_settings
+        namespace: ""
+      - description: Configure sFlow.
+        name: fmgd_system_sflow
+        namespace: ""
+      - description: sFlow collectors.
+        name: fmgd_system_sflow_collectors
+        namespace: ""
+      - description: Configure IPv6 tunnel over IPv4.
+        name: fmgd_system_sittunnel
+        namespace: ""
+      - description: Configure SMC NTP information.
+        name: fmgd_system_smcntp
+        namespace: ""
+      - description: Configure the FortiGate SMC to connect to an NTP server.
+        name: fmgd_system_smcntp_ntpserver
+        namespace: ""
+      - description: SNMP community configuration.
+        name: fmgd_system_snmp_community
+        namespace: ""
+      - description: Configure IPv4 SNMP managers
+        name: fmgd_system_snmp_community_hosts
+        namespace: ""
+      - description: Configure IPv6 SNMP managers.
+        name: fmgd_system_snmp_community_hosts6
+        namespace: ""
+      - description: SNMP Access Control MIB View configuration.
+        name: fmgd_system_snmp_mibview
+        namespace: ""
+      - description: SNMP Remote Network Monitoring
+        name: fmgd_system_snmp_rmonstat
+        namespace: ""
+      - description: SNMP system info configuration.
+        name: fmgd_system_snmp_sysinfo
+        namespace: ""
+      - description: SNMP user configuration.
+        name: fmgd_system_snmp_user
+        namespace: ""
+      - description: Speed test schedule for each interface.
+        name: fmgd_system_speedtestschedule
+        namespace: ""
+      - description: Configure speed test server list.
+        name: fmgd_system_speedtestserver
+        namespace: ""
+      - description: Hosts of the server.
+        name: fmgd_system_speedtestserver_host
+        namespace: ""
+      - description: Configure speed test setting.
+        name: fmgd_system_speedtestsetting
+        namespace: ""
+      - description: Configure split port mode of ports.
+        name: fmgd_system_splitportmode
+        namespace: ""
+      - description: Configure SSH config.
+        name: fmgd_system_sshconfig
+        namespace: ""
+      - description: Configure SSO admin users.
+        name: fmgd_system_ssoadmin
+        namespace: ""
+      - description: Configure FortiCloud SSO admin users.
+        name: fmgd_system_ssoforticloudadmin
+        namespace: ""
+      - description: Configure FortiCloud SSO admin users.
+        name: fmgd_system_ssofortigatecloudadmin
+        namespace: ""
+      - description: Configure FortiGate Session Life Support Protocol
+        name: fmgd_system_standalonecluster
+        namespace: ""
+      - description: Configure FortiGate Session Life Support Protocol
+        name: fmgd_system_standalonecluster_clusterpeer
+        namespace: ""
+      - description: Add one or more filters if you only want to synchronize some sessions.
+        name: fmgd_system_standalonecluster_clusterpeer_sessionsyncfilter
+        namespace: ""
+      - description: Only sessions using these custom services are synchronized.
+        name: fmgd_system_standalonecluster_clusterpeer_sessionsyncfilter_customservice
+        namespace: ""
+      - description: Configure a list of routing prefixes to monitor.
+        name: fmgd_system_standalonecluster_monitorprefix
+        namespace: ""
+      - description: Configure logical storage.
+        name: fmgd_system_storage
+        namespace: ""
+      - description: Configure Spanning Tree Protocol
+        name: fmgd_system_stp
+        namespace: ""
+      - description:
+          Configure software switch interfaces by grouping physical and WiFi
+          interfaces.
+        name: fmgd_system_switchinterface
+        namespace: ""
+      - description: Show timezone.
+        name: fmgd_system_timezone
+        namespace: ""
+      - description: Configure Type of Service
+        name: fmgd_system_tosbasedpriority
+        namespace: ""
+      - description: Configure virtual domain.
+        name: fmgd_system_vdom
+        namespace: ""
+      - description: Configure DNS servers for a non-management VDOM.
+        name: fmgd_system_vdomdns
+        namespace: ""
+      - description:
+          Global configuration objects that can be configured independently
+          across different ha peers for all VDOMs or for the defined VDOM scope.
+        name: fmgd_system_vdomexception
+        namespace: ""
+      - description: Configure VDOM links.
+        name: fmgd_system_vdomlink
+        namespace: ""
+      - description: Configure NetFlow per VDOM.
+        name: fmgd_system_vdomnetflow
+        namespace: ""
+      - description: Netflow collectors.
+        name: fmgd_system_vdomnetflow_collectors
+        namespace: ""
+      - description: Configure VDOM property.
+        name: fmgd_system_vdomproperty
+        namespace: ""
+      - description: Configure a RADIUS server to use as a RADIUS Single Sign On
+        name: fmgd_system_vdomradiusserver
+        namespace: ""
+      - description:
+          Configure sFlow per VDOM to add or change the IP address and UDP
+          port that FortiGate sFlow agents in this VDOM use to send sFlow dat...
+        name: fmgd_system_vdomsflow
+        namespace: ""
+      - description: sFlow collectors.
+        name: fmgd_system_vdomsflow_collectors
+        namespace: ""
+      - description: Configure vin alarm settings.
+        name: fmgd_system_vinalarm
+        namespace: ""
+      - description: Configure virtual hardware switch interfaces.
+        name: fmgd_system_virtualswitch
+        namespace: ""
+      - description: Configure member ports.
+        name: fmgd_system_virtualswitch_port
+        namespace: ""
+      - description: Configure redundant internet connections using SD-WAN
+        name: fmgd_system_virtualwanlink
+        namespace: ""
+      - description: SD-WAN status checking or health checking.
+        name: fmgd_system_virtualwanlink_healthcheck
+        namespace: ""
+      - description: Service level agreement
+        name: fmgd_system_virtualwanlink_healthcheck_sla
+        namespace: ""
+      - description: FortiGate interfaces added to the virtual-wan-link.
+        name: fmgd_system_virtualwanlink_members
+        namespace: ""
+      - description:
+          Create SD-WAN neighbor from BGP neighbor table to control route
+          advertisements according to SLA status.
+        name: fmgd_system_virtualwanlink_neighbor
+        namespace: ""
+      - description: Create SD-WAN rules
+        name: fmgd_system_virtualwanlink_service
+        namespace: ""
+      - description: Service level agreement
+        name: fmgd_system_virtualwanlink_service_sla
+        namespace: ""
+      - description: Configure virtual network enabler tunnels.
+        name: fmgd_system_vneinterface
+        namespace: ""
+      - description: Configure virtual network enabler tunnel.
+        name: fmgd_system_vnetunnel
+        namespace: ""
+      - description: Configure system VPC configuration.
+        name: fmgd_system_vpce
+        namespace: ""
+      - description: Configure VXLAN devices.
+        name: fmgd_system_vxlan
+        namespace: ""
+      - description: Configure WCCP.
+        name: fmgd_system_wccp
+        namespace: ""
+      - description: Configure accepted wireless AP.
+        name: fmgd_system_wireless_apstatus
+        namespace: ""
+      - description: Wireless radio configuration.
+        name: fmgd_system_wireless_settings
+        namespace: ""
+      - description: Configure zones to group two or more interfaces.
+        name: fmgd_system_zone
+        namespace: ""
+      - description: Config object tagging.
+        name: fmgd_system_zone_tagging
+        namespace: ""
+      - description:
+          Configure NAC policy matching pattern to identify matching NAC
+          devices.
+        name: fmgd_user_nacpolicy
+        namespace: ""
+      - description: Configure quarantine support.
+        name: fmgd_user_quarantine
+        namespace: ""
+      - description: Quarantine entry to hold multiple MACs.
+        name: fmgd_user_quarantine_targets
+        namespace: ""
+      - description: Quarantine MACs.
+        name: fmgd_user_quarantine_targets_macs
+        namespace: ""
+      - description: Configure SCIM client entries.
+        name: fmgd_user_scim
+        namespace: ""
+      - description: Configure user authentication setting.
+        name: fmgd_user_setting
+        namespace: ""
+      - description:
+          Set up non-standard ports for authentication with HTTP, HTTPS,
+          FTP, and TELNET.
+        name: fmgd_user_setting_authports
+        namespace: ""
+      - description: Configure YouTube API keys.
+        name: fmgd_videofilter_youtubekey
+        namespace: ""
+      - description: Certificate Revocation List as a PEM file.
+        name: fmgd_vpn_certificate_crl
+        namespace: ""
+      - description: Local keys and certificates.
+        name: fmgd_vpn_certificate_local
+        namespace: ""
+      - description: VPN certificate setting.
+        name: fmgd_vpn_certificate_setting
+        namespace: ""
+      - description: CRL verification options.
+        name: fmgd_vpn_certificate_setting_crlverification
+        namespace: ""
+      - description: Concentrator configuration.
+        name: fmgd_vpn_ipsec_concentrator
+        namespace: ""
+      - description: Configure FortiClient policy realm.
+        name: fmgd_vpn_ipsec_forticlient
+        namespace: ""
+      - description: Configure IPsec manual keys.
+        name: fmgd_vpn_ipsec_manualkey
+        namespace: ""
+      - description: Configure IPsec manual keys.
+        name: fmgd_vpn_ipsec_manualkeyinterface
+        namespace: ""
+      - description: Configure VPN remote gateway.
+        name: fmgd_vpn_ipsec_phase1
+        namespace: ""
+      - description: Configuration Method IPv4 exclude ranges.
+        name: fmgd_vpn_ipsec_phase1_ipv4excluderange
+        namespace: ""
+      - description: Configuration method IPv6 exclude ranges.
+        name: fmgd_vpn_ipsec_phase1_ipv6excluderange
+        namespace: ""
+      - description: Configure VPN remote gateway.
+        name: fmgd_vpn_ipsec_phase1interface
+        namespace: ""
+      - description: Configuration Method IPv4 exclude ranges.
+        name: fmgd_vpn_ipsec_phase1interface_ipv4excluderange
+        namespace: ""
+      - description: Configuration method IPv6 exclude ranges.
+        name: fmgd_vpn_ipsec_phase1interface_ipv6excluderange
+        namespace: ""
+      - description: Configure VPN autokey tunnel.
+        name: fmgd_vpn_ipsec_phase2
+        namespace: ""
+      - description: Configure VPN autokey tunnel.
+        name: fmgd_vpn_ipsec_phase2interface
+        namespace: ""
+      - description: KMIP server entry configuration.
+        name: fmgd_vpn_kmipserver
+        namespace: ""
+      - description: KMIP server list.
+        name: fmgd_vpn_kmipserver_serverlist
+        namespace: ""
+      - description: Configure L2TP.
+        name: fmgd_vpn_l2tp
+        namespace: ""
+      - description: Configure Overlay Controller VPN settings.
+        name: fmgd_vpn_ocvpn
+        namespace: ""
+      - description: Configure FortiClient settings.
+        name: fmgd_vpn_ocvpn_forticlientaccess
+        namespace: ""
+      - description: FortiClient user authentication groups.
+        name: fmgd_vpn_ocvpn_forticlientaccess_authgroups
+        namespace: ""
+      - description: Network overlays to register with Overlay Controller VPN service.
+        name: fmgd_vpn_ocvpn_overlays
+        namespace: ""
+      - description: Internal subnets to register with OCVPN service.
+        name: fmgd_vpn_ocvpn_overlays_subnets
+        namespace: ""
+      - description: Configure PPTP.
+        name: fmgd_vpn_pptp
+        namespace: ""
+      - description: Configure Quantum Key Distribution servers
+        name: fmgd_vpn_qkd
+        namespace: ""
+      - description: Client.
+        name: fmgd_vpn_ssl_client
+        namespace: ""
+      - description: Configure SSL VPN.
+        name: fmgd_vpn_ssl_settings
+        namespace: ""
+      - description: Authentication rule for SSL VPN.
+        name: fmgd_vpn_ssl_settings_authenticationrule
+        namespace: ""
+      - description: Configure SSL-VPN user bookmark.
+        name: fmgd_vpnsslweb_userbookmark
+        namespace: ""
+      - description: Bookmark table.
+        name: fmgd_vpnsslweb_userbookmark_bookmarks
+        namespace: ""
+      - description: Form data.
+        name: fmgd_vpnsslweb_userbookmark_bookmarks_formdata
+        namespace: ""
+      - description: Configure SSL-VPN user group bookmark.
+        name: fmgd_vpnsslweb_usergroupbookmark
+        namespace: ""
+      - description: Bookmark table.
+        name: fmgd_vpnsslweb_usergroupbookmark_bookmarks
+        namespace: ""
+      - description: Form data.
+        name: fmgd_vpnsslweb_usergroupbookmark_bookmarks_formdata
+        namespace: ""
+      - description: Designate cache-service for wan-optimization and webcache.
+        name: fmgd_wanopt_cacheservice
+        namespace: ""
+      - description: Modify cache-service destination peer list.
+        name: fmgd_wanopt_cacheservice_dstpeer
+        namespace: ""
+      - description: Modify cache-service source peer list.
+        name: fmgd_wanopt_cacheservice_srcpeer
+        namespace: ""
+      - description: Configure WAN optimization content delivery network rules.
+        name: fmgd_wanopt_contentdeliverynetworkrule
+        namespace: ""
+      - description: WAN optimization content delivery network rule entries.
+        name: fmgd_wanopt_contentdeliverynetworkrule_rules
+        namespace: ""
+      - description: Content ID settings.
+        name: fmgd_wanopt_contentdeliverynetworkrule_rules_contentid
+        namespace: ""
+      - description: List of entries to match.
+        name: fmgd_wanopt_contentdeliverynetworkrule_rules_matchentries
+        namespace: ""
+      - description: List of entries to skip.
+        name: fmgd_wanopt_contentdeliverynetworkrule_rules_skipentries
+        namespace: ""
+      - description: Configure a remote cache device as Web cache storage.
+        name: fmgd_wanopt_remotestorage
+        namespace: ""
+      - description: Configure WAN optimization settings.
+        name: fmgd_wanopt_settings
+        namespace: ""
+      - description: Configure global Web cache settings.
+        name: fmgd_wanopt_webcache
+        namespace: ""
+      - description: Configure FortiGuard Web Filter service.
+        name: fmgd_webfilter_fortiguard
+        namespace: ""
+      - description: Configure FortiGuard Web Filter local risk score.
+        name: fmgd_webfilter_ftgdlocalrisk
+        namespace: ""
+      - description: Configure FortiGuard Web Filter risk level.
+        name: fmgd_webfilter_ftgdrisklevel
+        namespace: ""
+      - description: Configure IPS URL filter cache settings.
+        name: fmgd_webfilter_ipsurlfiltercachesetting
+        namespace: ""
+      - description: Configure IPS URL filter settings.
+        name: fmgd_webfilter_ipsurlfiltersetting
+        namespace: ""
+      - description: Configure IPS URL filter settings for IPv6.
+        name: fmgd_webfilter_ipsurlfiltersetting6
+        namespace: ""
+      - description: Configure FortiGuard Web Filter administrative overrides.
+        name: fmgd_webfilter_override
+        namespace: ""
+      - description: Configure web filter search engines.
+        name: fmgd_webfilter_searchengine
+        namespace: ""
+      - description: Configure debug URL addresses.
+        name: fmgd_webproxy_debugurl
+        namespace: ""
+      - description: Configure explicit Web proxy settings.
+        name: fmgd_webproxy_explicit
+        namespace: ""
+      - description: PAC policies.
+        name: fmgd_webproxy_explicit_pacpolicy
+        namespace: ""
+      - description: Proxy destination connection fast-fallback.
+        name: fmgd_webproxy_fastfallback
+        namespace: ""
+      - description: Configure Web proxy global settings.
+        name: fmgd_webproxy_global
+        namespace: ""
+      - description: Exempt URLs from web proxy forwarding and caching.
+        name: fmgd_webproxy_urlmatch
+        namespace: ""
+      - description: Configure WiFi bridge access control list.
+        name: fmgd_wireless_accesscontrollist
+        namespace: ""
+      - description: AP ACL layer3 ipv4 rule list.
+        name: fmgd_wireless_accesscontrollist_layer3ipv4rules
+        namespace: ""
+      - description: AP ACL layer3 ipv6 rule list.
+        name: fmgd_wireless_accesscontrollist_layer3ipv6rules
+        namespace: ""
+      - description: Configure AP local configuration profiles.
+        name: fmgd_wireless_apcfgprofile
+        namespace: ""
+      - description: AP local configuration command list.
+        name: fmgd_wireless_apcfgprofile_commandlist
+        namespace: ""
+      - description: Configure access point status
+        name: fmgd_wireless_apstatus
+        namespace: ""
+      - description: Configure WiFi Automatic Radio Resource Provisioning
+        name: fmgd_wireless_arrpprofile
+        namespace: ""
+      - description: Configure Bluetooth Low Energy profile.
+        name: fmgd_wireless_bleprofile
+        namespace: ""
+      - description: Configure Bonjour profiles.
+        name: fmgd_wireless_bonjourprofile
+        namespace: ""
+      - description: Bonjour policy list.
+        name: fmgd_wireless_bonjourprofile_policylist
+        namespace: ""
+      - description: Configure wireless controller global settings.
+        name: fmgd_wireless_global
+        namespace: ""
+      - description: Configure 3GPP public land mobile network
+        name: fmgd_wireless_hotspot20_anqp3gppcellular
+        namespace: ""
+      - description: Mobile Country Code and Mobile Network Code configuration.
+        name: fmgd_wireless_hotspot20_anqp3gppcellular_mccmnclist
+        namespace: ""
+      - description: Configure IP address type availability.
+        name: fmgd_wireless_hotspot20_anqpipaddresstype
+        namespace: ""
+      - description: Configure network access identifier
+        name: fmgd_wireless_hotspot20_anqpnairealm
+        namespace: ""
+      - description: NAI list.
+        name: fmgd_wireless_hotspot20_anqpnairealm_nailist
+        namespace: ""
+      - description: EAP Methods.
+        name: fmgd_wireless_hotspot20_anqpnairealm_nailist_eapmethod
+        namespace: ""
+      - description: EAP auth param.
+        name: fmgd_wireless_hotspot20_anqpnairealm_nailist_eapmethod_authparam
+        namespace: ""
+      - description: Configure network authentication type.
+        name: fmgd_wireless_hotspot20_anqpnetworkauthtype
+        namespace: ""
+      - description: Configure roaming consortium.
+        name: fmgd_wireless_hotspot20_anqproamingconsortium
+        namespace: ""
+      - description: Organization identifier list.
+        name: fmgd_wireless_hotspot20_anqproamingconsortium_oilist
+        namespace: ""
+      - description: Configure venue name duple.
+        name: fmgd_wireless_hotspot20_anqpvenuename
+        namespace: ""
+      - description: Name list.
+        name: fmgd_wireless_hotspot20_anqpvenuename_valuelist
+        namespace: ""
+      - description: Configure venue URL.
+        name: fmgd_wireless_hotspot20_anqpvenueurl
+        namespace: ""
+      - description: URL list.
+        name: fmgd_wireless_hotspot20_anqpvenueurl_valuelist
+        namespace: ""
+      - description: Configure advice of charge.
+        name: fmgd_wireless_hotspot20_h2qpadviceofcharge
+        namespace: ""
+      - description: AOC list.
+        name: fmgd_wireless_hotspot20_h2qpadviceofcharge_aoclist
+        namespace: ""
+      - description: Plan info.
+        name: fmgd_wireless_hotspot20_h2qpadviceofcharge_aoclist_planinfo
+        namespace: ""
+      - description: Configure connection capability.
+        name: fmgd_wireless_hotspot20_h2qpconncapability
+        namespace: ""
+      - description: Configure operator friendly name.
+        name: fmgd_wireless_hotspot20_h2qpoperatorname
+        namespace: ""
+      - description: Name list.
+        name: fmgd_wireless_hotspot20_h2qpoperatorname_valuelist
+        namespace: ""
+      - description: Configure online sign up
+        name: fmgd_wireless_hotspot20_h2qposuprovider
+        namespace: ""
+      - description: OSU provider friendly name.
+        name: fmgd_wireless_hotspot20_h2qposuprovider_friendlyname
+        namespace: ""
+      - description: OSU service name.
+        name: fmgd_wireless_hotspot20_h2qposuprovider_servicedescription
+        namespace: ""
+      - description: Configure online sign up
+        name: fmgd_wireless_hotspot20_h2qposuprovidernai
+        namespace: ""
+      - description: OSU NAI list.
+        name: fmgd_wireless_hotspot20_h2qposuprovidernai_nailist
+        namespace: ""
+      - description: Configure terms and conditions.
+        name: fmgd_wireless_hotspot20_h2qptermsandconditions
+        namespace: ""
+      - description: Configure WAN metrics.
+        name: fmgd_wireless_hotspot20_h2qpwanmetric
+        namespace: ""
+      - description: Configure hotspot profile.
+        name: fmgd_wireless_hotspot20_hsprofile
+        namespace: ""
+      - description: Configure OSU provider icon.
+        name: fmgd_wireless_hotspot20_icon
+        namespace: ""
+      - description: Icon list.
+        name: fmgd_wireless_hotspot20_icon_iconlist
+        namespace: ""
+      - description: Configure QoS map set.
+        name: fmgd_wireless_hotspot20_qosmap
+        namespace: ""
+      - description: Differentiated Services Code Point
+        name: fmgd_wireless_hotspot20_qosmap_dscpexcept
+        namespace: ""
+      - description: Differentiated Services Code Point
+        name: fmgd_wireless_hotspot20_qosmap_dscprange
+        namespace: ""
+      - description: Configure inter wireless controller operation.
+        name: fmgd_wireless_intercontroller
+        namespace: ""
+      - description: Fast failover peer wireless controller list.
+        name: fmgd_wireless_intercontroller_intercontrollerpeer
+        namespace: ""
+      - description: Configure wireless controller event log filters.
+        name: fmgd_wireless_log
+        namespace: ""
+      - description: Configure MPSK profile.
+        name: fmgd_wireless_mpskprofile
+        namespace: ""
+      - description: List of multiple PSK groups.
+        name: fmgd_wireless_mpskprofile_mpskgroup
+        namespace: ""
+      - description: List of multiple PSK entries.
+        name: fmgd_wireless_mpskprofile_mpskgroup_mpskkey
+        namespace: ""
+      - description: Configure WiFi network access control
+        name: fmgd_wireless_nacprofile
+        namespace: ""
+      - description: Configure WiFi quality of service
+        name: fmgd_wireless_qosprofile
+        namespace: ""
+      - description: Configure FortiAP regions
+        name: fmgd_wireless_region
+        namespace: ""
+      - description: VDOM wireless controller configuration.
+        name: fmgd_wireless_setting
+        namespace: ""
+      - description: Configure offending SSID.
+        name: fmgd_wireless_setting_offendingssid
+        namespace: ""
+      - description: Configure SNMP.
+        name: fmgd_wireless_snmp
+        namespace: ""
+      - description: SNMP Community Configuration.
+        name: fmgd_wireless_snmp_community
+        namespace: ""
+      - description: Configure IPv4 SNMP managers
+        name: fmgd_wireless_snmp_community_hosts
+        namespace: ""
+      - description: SNMP User Configuration.
+        name: fmgd_wireless_snmp_user
+        namespace: ""
+      - description: Configure WiFi SSID policies.
+        name: fmgd_wireless_ssidpolicy
+        namespace: ""
+      - description: Configure Wireless Termination Points
+        name: fmgd_wireless_syslogprofile
+        namespace: ""
+      - description: Configure CAPWAP timers.
+        name: fmgd_wireless_timers
+        namespace: ""
+      - description: Configure UTM
+        name: fmgd_wireless_utmprofile
+        namespace: ""
+      - description: Configure Virtual Access Points
+        name: fmgd_wireless_vap
+        namespace: ""
+      - description: Configure Virtual Access Points
+        name: fmgd_wireless_vap_dynamicmapping
+        namespace: ""
+      - description: Create a list of MAC addresses for MAC address filtering.
+        name: fmgd_wireless_vap_macfilterlist
+        namespace: ""
+      - description: Device vdom wireless controller vap mpsk key
+        name: fmgd_wireless_vap_mpskkey
+        namespace: ""
+      - description: Individual message overrides.
+        name: fmgd_wireless_vap_portalmessageoverrides
+        namespace: ""
+      - description: Table for mapping VLAN name to VLAN ID.
+        name: fmgd_wireless_vap_vlanname
+        namespace: ""
+      - description: VLAN pool.
+        name: fmgd_wireless_vap_vlanpool
+        namespace: ""
+      - description: Configure virtual Access Point
+        name: fmgd_wireless_vapgroup
+        namespace: ""
+      - description: Configure wireless access gateway
+        name: fmgd_wireless_wagprofile
+        namespace: ""
+      - description: Configure wireless intrusion detection system
+        name: fmgd_wireless_widsprofile
+        namespace: ""
+      - description: Configure Wireless Termination Points
+        name: fmgd_wireless_wtp
+        namespace: ""
+      - description: WTP LAN port mapping.
+        name: fmgd_wireless_wtp_lan
+        namespace: ""
+      - description: Configuration options for radio 1.
+        name: fmgd_wireless_wtp_radio1
+        namespace: ""
+      - description: Configuration options for radio 2.
+        name: fmgd_wireless_wtp_radio2
+        namespace: ""
+      - description: Configuration options for radio 3.
+        name: fmgd_wireless_wtp_radio3
+        namespace: ""
+      - description: Configuration options for radio 4.
+        name: fmgd_wireless_wtp_radio4
+        namespace: ""
+      - description: Split tunneling ACL filter list.
+        name: fmgd_wireless_wtp_splittunnelingacl
+        namespace: ""
+      - description: Configure WTP groups.
+        name: fmgd_wireless_wtpgroup
+        namespace: ""
+      - description:
+          Configure WTP profiles or FortiAP profiles that define radio settings
+          for manageable FortiAP platforms.
+        name: fmgd_wireless_wtpprofile
+        namespace: ""
+      - description:
+          List of MAC addresses that are denied access to this WTP, FortiAP,
+          or AP.
+        name: fmgd_wireless_wtpprofile_denymaclist
+        namespace: ""
+      - description: ESL SES-imagotag dongle configuration.
+        name: fmgd_wireless_wtpprofile_eslsesdongle
+        namespace: ""
+      - description: WTP LAN port mapping.
+        name: fmgd_wireless_wtpprofile_lan
+        namespace: ""
+      - description: Set various location based service
+        name: fmgd_wireless_wtpprofile_lbs
+        namespace: ""
+      - description: WTP, FortiAP, or AP platform.
+        name: fmgd_wireless_wtpprofile_platform
+        namespace: ""
+      - description: Configuration options for radio 1.
+        name: fmgd_wireless_wtpprofile_radio1
+        namespace: ""
+      - description: Configuration options for radio 2.
+        name: fmgd_wireless_wtpprofile_radio2
+        namespace: ""
+      - description: Configuration options for radio 3.
+        name: fmgd_wireless_wtpprofile_radio3
+        namespace: ""
+      - description: Configuration options for radio 4.
+        name: fmgd_wireless_wtpprofile_radio4
+        namespace: ""
+      - description: Split tunneling ACL filter list.
+        name: fmgd_wireless_wtpprofile_splittunnelingacl
+        namespace: ""
+      - description: Configure ZTNA Reverse-Connector.
+        name: fmgd_ztna_reverseconnector
+        namespace: ""
+      - description: Configure ZTNA traffic forward proxy.
+        name: fmgd_ztna_trafficforwardproxy
+        namespace: ""
+      - description: QUIC setting.
+        name: fmgd_ztna_trafficforwardproxy_quic
+        namespace: ""
+      - description: SSL/TLS cipher suites acceptable from a client, ordered by priority.
+        name: fmgd_ztna_trafficforwardproxy_sslciphersuites
+        namespace: ""
+      - description: SSL/TLS cipher suites to offer to a server, ordered by priority.
+        name: fmgd_ztna_trafficforwardproxy_sslserverciphersuites
+        namespace: ""
+      - description: Configure ZTNA traffic forward proxy reverse service.
+        name: fmgd_ztna_trafficforwardproxyreverseservice
+        namespace: ""
+      - description: Connector Remote server
+        name: fmgd_ztna_trafficforwardproxyreverseservice_remoteservers
+        namespace: ""
+      - description: Configure ztna web-portal.
+        name: fmgd_ztna_webportal
+        namespace: ""
+      - description: Configure ztna web-portal bookmark.
+        name: fmgd_ztna_webportalbookmark
+        namespace: ""
+      - description: Bookmark table.
+        name: fmgd_ztna_webportalbookmark_bookmarks
+        namespace: ""
+      - description: Configure ZTNA web-proxy.
+        name: fmgd_ztna_webproxy
+        namespace: ""
+      - description: Set IPv4 API Gateway.
+        name: fmgd_ztna_webproxy_apigateway
+        namespace: ""
+      - description: Set IPv6 API Gateway.
+        name: fmgd_ztna_webproxy_apigateway6
+        namespace: ""
+      - description: QUIC setting.
+        name: fmgd_ztna_webproxy_apigateway6_quic
+        namespace: ""
+      - description:
+          Select the real servers that this Access Proxy will distribute
+          traffic to.
+        name: fmgd_ztna_webproxy_apigateway6_realservers
+        namespace: ""
+      - description: SSL/TLS cipher suites to offer to a server, ordered by priority.
+        name: fmgd_ztna_webproxy_apigateway6_sslciphersuites
+        namespace: ""
+      - description: QUIC setting.
+        name: fmgd_ztna_webproxy_apigateway_quic
+        namespace: ""
+      - description:
+          Select the real servers that this Access Proxy will distribute
+          traffic to.
+        name: fmgd_ztna_webproxy_apigateway_realservers
+        namespace: ""
+      - description: SSL/TLS cipher suites to offer to a server, ordered by priority.
+        name: fmgd_ztna_webproxy_apigateway_sslciphersuites
+        namespace: ""
+    plugins:
+      httpapi:
+        - description: HttpApi Plugin for Fortinet FortiManager Appliance or VM.
+          name: fmgdevice
+          namespace: null
+    release_date: "2025-03-31"
