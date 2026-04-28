@@ -16,7 +16,6 @@ short_description: Configure OSPF.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -662,6 +661,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -670,8 +670,8 @@ EXAMPLES = '''
     - name: Configure OSPF.
       fortinet.fmgdevice.fmgd_router_ospf:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -853,227 +853,227 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'router_ospf': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'abr-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['cisco', 'ibm', 'shortcut', 'standard'], 'type': 'str'},
+                'abr-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['cisco', 'ibm', 'shortcut', 'standard'], 'type': 'str'},
                 'area': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
                         'authentication': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['none', 'text', 'md5', 'message-digest'],
                             'type': 'str'
                         },
-                        'comments': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'default-cost': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'default-cost': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'filter-list': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'options': {
-                                'direction': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['out', 'in'], 'type': 'str'},
-                                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'list': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                                'direction': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['out', 'in'], 'type': 'str'},
+                                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'list': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
                             },
                             'elements': 'dict'
                         },
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'nssa-default-information-originate': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'always'],
                             'type': 'str'
                         },
-                        'nssa-default-information-originate-metric': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'nssa-default-information-originate-metric': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'nssa-default-information-originate-metric-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['2', '1'],
                             'type': 'str'
                         },
-                        'nssa-redistribution': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'nssa-redistribution': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'nssa-translator-role': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['candidate', 'never', 'always'],
                             'type': 'str'
                         },
                         'range': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'options': {
-                                'advertise': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'prefix': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                                'substitute': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                                'substitute-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                                'advertise': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'prefix': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                                'substitute': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                                'substitute-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                             },
                             'elements': 'dict'
                         },
-                        'shortcut': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable', 'default'], 'type': 'str'},
-                        'stub-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['summary', 'no-summary'], 'type': 'str'},
-                        'type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['regular', 'nssa', 'stub'], 'type': 'str'},
+                        'shortcut': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable', 'default'], 'type': 'str'},
+                        'stub-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['summary', 'no-summary'], 'type': 'str'},
+                        'type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['regular', 'nssa', 'stub'], 'type': 'str'},
                         'virtual-link': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'options': {
                                 'authentication': {
-                                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                                     'choices': ['none', 'text', 'md5', 'message-digest'],
                                     'type': 'str'
                                 },
-                                'authentication-key': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                                'dead-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'hello-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'keychain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                                'authentication-key': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                                'dead-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'hello-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'keychain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                                 'md5-keys': {
-                                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                                     'no_log': True,
                                     'type': 'list',
                                     'options': {
-                                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                        'key-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
+                                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                        'key-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
                                     },
                                     'elements': 'dict'
                                 },
-                                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                                'peer': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                                'retransmit-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'transmit-delay': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'md5-keychain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
+                                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                                'peer': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                                'retransmit-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'transmit-delay': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'md5-keychain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
                             },
                             'elements': 'dict'
                         }
                     },
                     'elements': 'dict'
                 },
-                'auto-cost-ref-bandwidth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'bfd': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'database-overflow': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'database-overflow-max-lsas': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'database-overflow-time-to-recover': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'default-information-metric': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'default-information-metric-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['2', '1'], 'type': 'str'},
+                'auto-cost-ref-bandwidth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'bfd': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'database-overflow': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'database-overflow-max-lsas': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'database-overflow-time-to-recover': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'default-information-metric': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'default-information-metric-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['2', '1'], 'type': 'str'},
                 'default-information-originate': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['disable', 'enable', 'always'],
                     'type': 'str'
                 },
-                'default-information-route-map': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'default-metric': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'distance': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'distance-external': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'distance-inter-area': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'distance-intra-area': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'default-information-route-map': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'default-metric': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'distance': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'distance-external': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'distance-inter-area': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'distance-intra-area': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'distribute-list': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'access-list': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['connected', 'static', 'rip'], 'type': 'str'}
+                        'access-list': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['connected', 'static', 'rip'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'distribute-list-in': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'distribute-route-map-in': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'log-neighbour-changes': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'distribute-list-in': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'distribute-route-map-in': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'log-neighbour-changes': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'neighbor': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'cost': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'poll-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'cost': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'poll-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },
                 'network': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'area': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'comments': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'prefix': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                        'area': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'prefix': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
                     },
                     'elements': 'dict'
                 },
                 'ospf-interface': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
                         'authentication': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['none', 'text', 'md5', 'message-digest'],
                             'type': 'str'
                         },
-                        'authentication-key': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'bfd': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['global', 'enable', 'disable'], 'type': 'str'},
-                        'comments': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'cost': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'database-filter-out': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'dead-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'hello-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'hello-multiplier': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'keychain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'authentication-key': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'bfd': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['global', 'enable', 'disable'], 'type': 'str'},
+                        'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'cost': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'database-filter-out': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'dead-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'hello-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'hello-multiplier': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'keychain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'md5-keys': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'no_log': True,
                             'type': 'list',
                             'options': {
-                                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'key-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
+                                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'key-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
                             },
                             'elements': 'dict'
                         },
-                        'mtu': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'mtu-ignore': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'mtu': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'mtu-ignore': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'network-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['broadcast', 'non-broadcast', 'point-to-point', 'point-to-multipoint', 'point-to-multipoint-non-broadcast'],
                             'type': 'str'
                         },
-                        'prefix-length': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'resync-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'retransmit-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'transmit-delay': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'md5-keychain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'prefix-length': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'resync-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'retransmit-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'transmit-delay': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'md5-keychain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'linkdown-fast-failover': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'passive-interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'passive-interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'redistribute': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'metric': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'metric-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['2', '1'], 'type': 'str'},
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'routemap': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'tag': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'metric': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'metric-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['2', '1'], 'type': 'str'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'routemap': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'tag': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     }
                 },
-                'restart-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'lls', 'graceful-restart'], 'type': 'str'},
-                'restart-on-topology-change': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'restart-period': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'rfc1583-compatible': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'router-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'spf-timers': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'int'},
+                'restart-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'lls', 'graceful-restart'], 'type': 'str'},
+                'restart-on-topology-change': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'restart-period': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'rfc1583-compatible': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'router-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'spf-timers': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'int'},
                 'summary-address': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'advertise': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'prefix': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'tag': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'advertise': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'prefix': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'tag': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },

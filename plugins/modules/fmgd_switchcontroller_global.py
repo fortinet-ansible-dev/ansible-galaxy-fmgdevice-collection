@@ -16,7 +16,6 @@ short_description: Configure FortiSwitch global settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -271,12 +270,17 @@ options:
                 choices:
                     - 'no-op'
                     - 'factory-reset'
+            firewall_auth_user_hold_period:
+                aliases: ['firewall-auth-user-hold-period']
+                type: int
+                description: Time period in minutes to hold firewall authenticated MAC users
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -285,8 +289,8 @@ EXAMPLES = '''
     - name: Configure FortiSwitch global settings.
       fortinet.fmgdevice.fmgd_switchcontroller_global:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -334,6 +338,7 @@ EXAMPLES = '''
           # vlan_optimization: <value in [disable, enable, prune, ...]>
           # allow_multiple_interfaces: <value in [disable, enable]>
           # switch_on_deauth: <value in [no-op, factory-reset]>
+          # firewall_auth_user_hold_period: <integer>
 '''
 
 RETURN = '''
@@ -392,19 +397,19 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'switchcontroller_global': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'bounce-quarantined-link': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'bounce-quarantined-link': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'custom-command': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'command-entry': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'command-name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                        'command-entry': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'command-name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'default-virtual-switch-vlan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'default-virtual-switch-vlan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'dhcp-option82-circuit-id': {
                     'v_range': [['7.4.3', '']],
                     'type': 'list',
@@ -413,36 +418,37 @@ def main():
                 },
                 'dhcp-option82-format': {'v_range': [['7.4.3', '']], 'choices': ['ascii', 'legacy'], 'type': 'str'},
                 'dhcp-option82-remote-id': {'v_range': [['7.4.3', '']], 'type': 'list', 'choices': ['mac', 'hostname', 'ip'], 'elements': 'str'},
-                'dhcp-server-access-list': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'dhcp-server-access-list': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'dhcp-snoop-client-db-exp': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'dhcp-snoop-client-req': {'v_range': [['7.4.3', '']], 'choices': ['drop-untrusted', 'forward-untrusted'], 'type': 'str'},
                 'dhcp-snoop-db-per-port-learn-limit': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'disable-discovery': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'fips-enforce': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'firmware-provision-on-authorization': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'https-image-push': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'log-mac-limit-violations': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'mac-aging-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'mac-event-logging': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'mac-retention-period': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'mac-violation-timer': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'quarantine-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['by-vlan', 'by-redirect'], 'type': 'str'},
-                'sn-dns-resolution': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'disable-discovery': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'fips-enforce': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'firmware-provision-on-authorization': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'https-image-push': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'log-mac-limit-violations': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'mac-aging-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'mac-event-logging': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'mac-retention-period': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'mac-violation-timer': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'quarantine-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['by-vlan', 'by-redirect'], 'type': 'str'},
+                'sn-dns-resolution': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'update-user-device': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['mac-cache', 'lldp', 'dhcp-snooping', 'l2-db', 'l3-db'],
                     'elements': 'str'
                 },
-                'vlan-all-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['defined', 'all'], 'type': 'str'},
-                'vlan-identity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['description', 'name'], 'type': 'str'},
+                'vlan-all-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['defined', 'all'], 'type': 'str'},
+                'vlan-identity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['description', 'name'], 'type': 'str'},
                 'vlan-optimization': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['disable', 'enable', 'prune', 'configured', 'none'],
                     'type': 'str'
                 },
-                'allow-multiple-interfaces': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'switch-on-deauth': {'v_range': [['7.6.2', '']], 'choices': ['no-op', 'factory-reset'], 'type': 'str'}
+                'allow-multiple-interfaces': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'switch-on-deauth': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'choices': ['no-op', 'factory-reset'], 'type': 'str'},
+                'firewall-auth-user-hold-period': {'v_range': [['7.6.4', '']], 'type': 'int'}
             }
         }
     }

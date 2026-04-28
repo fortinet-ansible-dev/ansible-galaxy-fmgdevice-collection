@@ -16,7 +16,6 @@ short_description: Configure FortiClient Enterprise Management Server
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -109,6 +108,7 @@ options:
                     - 'client-avatars'
                     - 'fgt-sysinfo-api'
                     - 'ztna-server-info'
+                    - 'used-tags'
             certificate_fingerprint:
                 aliases: ['certificate-fingerprint']
                 type: str
@@ -257,6 +257,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -265,8 +266,8 @@ EXAMPLES = '''
     - name: Configure FortiClient Enterprise Management Server
       fortinet.fmgdevice.fmgd_endpointcontrol_fctemsoverride:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -287,6 +288,7 @@ EXAMPLES = '''
           #   - "client-avatars"
           #   - "fgt-sysinfo-api"
           #   - "ztna-server-info"
+          #   - "used-tags"
           # certificate_fingerprint: <string>
           # cloud_authentication_access_key: <string>
           # dirty_reason: <value in [none, mismatched-ems-sn]>
@@ -378,7 +380,7 @@ def main():
                     'type': 'list',
                     'choices': [
                         'fabric-auth', 'silent-approval', 'websocket', 'websocket-malware', 'push-ca-certs', 'common-tags-api', 'tenant-id',
-                        'single-vdom-connector', 'client-avatars', 'fgt-sysinfo-api', 'ztna-server-info'
+                        'single-vdom-connector', 'client-avatars', 'fgt-sysinfo-api', 'ztna-server-info', 'used-tags'
                     ],
                     'elements': 'str'
                 },

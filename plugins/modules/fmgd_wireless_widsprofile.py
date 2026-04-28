@@ -16,7 +16,6 @@ short_description: Configure wireless intrusion detection system
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -716,6 +715,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -724,8 +724,8 @@ EXAMPLES = '''
     - name: Configure wireless intrusion detection system
       fortinet.fmgdevice.fmgd_wireless_widsprofile:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -900,58 +900,58 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'wireless_widsprofile': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'ap-auto-suppress': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ap-bgscan-disable-schedules': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ap-bgscan-duration': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-bgscan-idle': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-bgscan-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-bgscan-period': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-bgscan-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-fgscan-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-scan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ap-auto-suppress': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ap-bgscan-disable-schedules': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ap-bgscan-duration': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-bgscan-idle': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-bgscan-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-bgscan-period': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-bgscan-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-fgscan-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-scan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'ap-scan-channel-list-2G-5G': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'ap-scan-channel-list-6G': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ap-scan-passive': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ap-scan-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'asleap-attack': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'assoc-flood-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'assoc-flood-time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'assoc-frame-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'auth-flood-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auth-flood-time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auth-frame-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'comment': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'deauth-broadcast': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'deauth-unknown-src-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-fail-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'eapol-fail-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-fail-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-logoff-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'eapol-logoff-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-logoff-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-pre-fail-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'eapol-pre-fail-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-pre-fail-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-pre-succ-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'eapol-pre-succ-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-pre-succ-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-start-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'eapol-start-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-start-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-succ-flood': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'eapol-succ-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'eapol-succ-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'invalid-mac-oui': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'long-duration-attack': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'long-duration-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'null-ssid-probe-resp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'sensor-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'foreign', 'both'], 'type': 'str'},
-                'spoofed-deauth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'weak-wep-iv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'wireless-bridge': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ap-scan-passive': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ap-scan-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'asleap-attack': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'assoc-flood-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'assoc-flood-time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'assoc-frame-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-flood-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auth-flood-time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auth-frame-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'comment': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'deauth-broadcast': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'deauth-unknown-src-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-fail-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'eapol-fail-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-fail-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-logoff-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'eapol-logoff-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-logoff-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-pre-fail-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'eapol-pre-fail-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-pre-fail-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-pre-succ-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'eapol-pre-succ-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-pre-succ-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-start-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'eapol-start-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-start-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-succ-flood': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'eapol-succ-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'eapol-succ-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'invalid-mac-oui': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'long-duration-attack': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'long-duration-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'null-ssid-probe-resp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'sensor-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'foreign', 'both'], 'type': 'str'},
+                'spoofed-deauth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'weak-wep-iv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'wireless-bridge': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'adhoc-network': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'adhoc-valid-ssid': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'air-jack': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},

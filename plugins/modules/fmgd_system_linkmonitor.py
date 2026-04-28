@@ -16,7 +16,6 @@ short_description: Configure Link Health Monitor.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -276,12 +275,20 @@ options:
                 choices:
                     - 'disable'
                     - 'enable'
+            ha_priority:
+                aliases: ['ha-priority']
+                type: int
+                description: HA election priority
+            timeout:
+                type: int
+                description: Detection request timeout
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -290,8 +297,8 @@ EXAMPLES = '''
     - name: Configure Link Health Monitor.
       fortinet.fmgdevice.fmgd_system_linkmonitor:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -349,6 +356,8 @@ EXAMPLES = '''
           # update_cascade_interface: <value in [disable, enable]>
           # update_policy_route: <value in [disable, enable]>
           # update_static_route: <value in [disable, enable]>
+          # ha_priority: <integer>
+          # timeout: <integer>
 '''
 
 RETURN = '''
@@ -407,62 +416,64 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'system_linkmonitor': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'addr-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ipv4', 'ipv6'], 'type': 'str'},
-                'class-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'diffservcode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'fail-weight': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'failtime': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'gateway-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'gateway-ip6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'http-agent': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'http-get': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'http-match': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'packet-size': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'probe-count': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'probe-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'addr-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ipv4', 'ipv6'], 'type': 'str'},
+                'class-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'diffservcode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'fail-weight': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'failtime': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'gateway-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'gateway-ip6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'http-agent': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'http-get': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'http-match': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'packet-size': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'probe-count': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'probe-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'protocol': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['ping', 'tcp-echo', 'udp-echo', 'http', 'twamp', 'ping6', 'https'],
                     'elements': 'str'
                 },
-                'recoverytime': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'route': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'security-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'authentication'], 'type': 'str'},
-                'server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'server-config': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['default', 'individual'], 'type': 'str'},
+                'recoverytime': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'route': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'security-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'authentication'], 'type': 'str'},
+                'server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'server-config': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['default', 'individual'], 'type': 'str'},
                 'server-list': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'dst': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'dst': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'protocol': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['ping', 'tcp-echo', 'udp-echo', 'http', 'twamp', 'https'],
                             'elements': 'str'
                         },
-                        'weight': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'weight': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },
-                'server-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['static', 'dynamic'], 'type': 'str'},
-                'service-detection': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'source-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'source-ip6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'srcintf': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-cascade-interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-policy-route': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-static-route': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'server-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['static', 'dynamic'], 'type': 'str'},
+                'service-detection': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'source-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'source-ip6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'srcintf': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-cascade-interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-policy-route': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-static-route': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ha-priority': {'v_range': [['7.2.11', '7.2.12'], ['7.4.7', '7.4.10'], ['7.6.3', '']], 'type': 'int'},
+                'timeout': {'v_range': [['7.4.8', '7.4.10']], 'type': 'int'}
             }
         }
     }

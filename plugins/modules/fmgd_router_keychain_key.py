@@ -16,7 +16,6 @@ short_description: Configuration method to edit key settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -128,6 +127,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -136,8 +136,8 @@ EXAMPLES = '''
     - name: Configuration method to edit key settings.
       fortinet.fmgdevice.fmgd_router_keychain_key:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -211,17 +211,17 @@ def main():
         'router_keychain_key': {
             'type': 'dict',
             'no_log': False,
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'accept-lifetime': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'accept-lifetime': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'algorithm': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['md5', 'hmac-sha1', 'hmac-sha256', 'hmac-sha384', 'hmac-sha512', 'cmac-aes128'],
                     'type': 'str'
                 },
-                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'key-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'send-lifetime': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'key-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'send-lifetime': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'}
             }
         }
     }

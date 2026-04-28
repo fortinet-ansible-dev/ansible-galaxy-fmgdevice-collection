@@ -16,7 +16,6 @@ short_description: Authorized service providers.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -163,6 +162,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -171,8 +171,8 @@ EXAMPLES = '''
     - name: Authorized service providers.
       fortinet.fmgdevice.fmgd_system_saml_serviceproviders:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -251,34 +251,34 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_saml_serviceproviders': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'assertion-attributes': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['username', 'email', 'privilege', 'profile-name'],
                             'type': 'str'
                         }
                     },
                     'elements': 'dict'
                 },
-                'idp-artifact-resolution-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'idp-entity-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'idp-single-logout-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'idp-single-sign-on-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'prefix': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'sp-artifact-resolution-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'sp-binding-protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['post', 'redirect'], 'type': 'str'},
-                'sp-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'sp-entity-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'sp-portal-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'sp-single-logout-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'sp-single-sign-on-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'idp-artifact-resolution-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'idp-entity-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'idp-single-logout-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'idp-single-sign-on-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'prefix': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'sp-artifact-resolution-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'sp-binding-protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['post', 'redirect'], 'type': 'str'},
+                'sp-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'sp-entity-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'sp-portal-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'sp-single-logout-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'sp-single-sign-on-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'}
             }
         }
     }

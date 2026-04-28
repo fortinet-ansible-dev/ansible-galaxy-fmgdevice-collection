@@ -75,10 +75,28 @@ options:
                     - 'alertemail_setting'
                     - 'antivirus_exemptlist'
                     - 'antivirus_heuristic'
+                    - 'antivirus_profile'
+                    - 'antivirus_profile_cifs'
+                    - 'antivirus_profile_ftp'
+                    - 'antivirus_profile_http'
+                    - 'antivirus_profile_imap'
+                    - 'antivirus_profile_nacquar'
+                    - 'antivirus_profile_nntp'
+                    - 'antivirus_profile_pop3'
+                    - 'antivirus_profile_smtp'
                     - 'antivirus_quarantine'
                     - 'antivirus_settings'
+                    - 'application_categories'
+                    - 'application_custom'
+                    - 'application_group'
+                    - 'application_list'
+                    - 'application_list_defaultnetworkservices'
+                    - 'application_list_entries'
                     - 'application_name'
                     - 'application_rulesettings'
+                    - 'authentication_rule'
+                    - 'authentication_scheme'
+                    - 'authentication_setting'
                     - 'automation_setting'
                     - 'aws_vpce'
                     - 'azure_vwaningresspublicips'
@@ -89,14 +107,72 @@ options:
                     - 'azure_vwanslb_temporarysecurityrules_rules'
                     - 'casb_attributematch'
                     - 'casb_attributematch_attribute'
+                    - 'casb_attributematch_match'
+                    - 'casb_attributematch_match_rule'
+                    - 'casb_profile'
+                    - 'casb_profile_saasapplication'
+                    - 'casb_profile_saasapplication_accessrule'
+                    - 'casb_profile_saasapplication_accessrule_attributefilter'
+                    - 'casb_profile_saasapplication_advancedtenantcontrol'
+                    - 'casb_profile_saasapplication_advancedtenantcontrol_attribute'
+                    - 'casb_profile_saasapplication_customcontrol'
+                    - 'casb_profile_saasapplication_customcontrol_attributefilter'
+                    - 'casb_profile_saasapplication_customcontrol_option'
+                    - 'casb_saasapplication'
+                    - 'casb_saasapplication_inputattributes'
+                    - 'casb_saasapplication_outputattributes'
+                    - 'casb_useractivity'
+                    - 'casb_useractivity_match'
+                    - 'casb_useractivity_match_rules'
+                    - 'casb_useractivity_match_tenantextraction'
+                    - 'casb_useractivity_match_tenantextraction_filters'
+                    - 'certificate_hsmlocal'
                     - 'certificate_remote'
+                    - 'diameterfilter_profile'
+                    - 'dlp_datatype'
+                    - 'dlp_dictionary'
+                    - 'dlp_dictionary_entries'
                     - 'dlp_exactdatamatch'
                     - 'dlp_exactdatamatch_columns'
+                    - 'dlp_filepattern'
+                    - 'dlp_filepattern_entries'
                     - 'dlp_fpdocsource'
+                    - 'dlp_label'
+                    - 'dlp_label_entries'
+                    - 'dlp_profile'
+                    - 'dlp_profile_rule'
+                    - 'dlp_sensor'
+                    - 'dlp_sensor_entries'
                     - 'dlp_settings'
+                    - 'dnsfilter_domainfilter'
+                    - 'dnsfilter_domainfilter_entries'
+                    - 'dnsfilter_profile'
+                    - 'dnsfilter_profile_dnstranslation'
+                    - 'dnsfilter_profile_domainfilter'
+                    - 'dnsfilter_profile_ftgddns'
+                    - 'dnsfilter_profile_ftgddns_filters'
                     - 'dpdk_cpus'
                     - 'dpdk_global'
+                    - 'emailfilter_blockallowlist'
+                    - 'emailfilter_blockallowlist_entries'
+                    - 'emailfilter_bword'
+                    - 'emailfilter_bword_entries'
+                    - 'emailfilter_dnsbl'
+                    - 'emailfilter_dnsbl_entries'
                     - 'emailfilter_fortiguard'
+                    - 'emailfilter_fortishield'
+                    - 'emailfilter_iptrust'
+                    - 'emailfilter_iptrust_entries'
+                    - 'emailfilter_mheader'
+                    - 'emailfilter_mheader_entries'
+                    - 'emailfilter_options'
+                    - 'emailfilter_profile'
+                    - 'emailfilter_profile_gmail'
+                    - 'emailfilter_profile_imap'
+                    - 'emailfilter_profile_msnhotmail'
+                    - 'emailfilter_profile_pop3'
+                    - 'emailfilter_profile_smtp'
+                    - 'endpointcontrol_fctems'
                     - 'endpointcontrol_fctemsoverride'
                     - 'endpointcontrol_settings'
                     - 'ethernetoam_cfm'
@@ -108,18 +184,79 @@ options:
                     - 'extendercontroller_extender_modem2'
                     - 'extendercontroller_extender_modem2_autoswitch'
                     - 'extendercontroller_extender_wanextension'
+                    - 'extensioncontroller_dataplan'
                     - 'extensioncontroller_extender'
                     - 'extensioncontroller_extender_wanextension'
+                    - 'extensioncontroller_extenderprofile'
+                    - 'extensioncontroller_extenderprofile_cellular'
+                    - 'extensioncontroller_extenderprofile_cellular_controllerreport'
+                    - 'extensioncontroller_extenderprofile_cellular_modem1'
+                    - 'extensioncontroller_extenderprofile_cellular_modem1_autoswitch'
+                    - 'extensioncontroller_extenderprofile_cellular_modem2_autoswitch'
+                    - 'extensioncontroller_extenderprofile_cellular_smsnotification'
+                    - 'extensioncontroller_extenderprofile_cellular_smsnotification_alert'
+                    - 'extensioncontroller_extenderprofile_cellular_smsnotification_receiver'
+                    - 'extensioncontroller_extenderprofile_wifi_radio1'
+                    - 'extensioncontroller_extenderprofile_wifi_radio2'
                     - 'extensioncontroller_extendervap'
                     - 'extensioncontroller_fortigate'
                     - 'extensioncontroller_fortigateprofile'
                     - 'extensioncontroller_fortigateprofile_lanextension'
+                    - 'filefilter_profile'
+                    - 'filefilter_profile_rules'
+                    - 'firewall_accessproxy'
+                    - 'firewall_accessproxy6'
+                    - 'firewall_accessproxy6_apigateway'
+                    - 'firewall_accessproxy6_apigateway6'
+                    - 'firewall_accessproxy6_apigateway6_realservers'
+                    - 'firewall_accessproxy6_apigateway6_sslciphersuites'
+                    - 'firewall_accessproxy6_apigateway_quic'
+                    - 'firewall_accessproxy6_apigateway_realservers'
+                    - 'firewall_accessproxy6_apigateway_sslciphersuites'
+                    - 'firewall_accessproxy_apigateway'
+                    - 'firewall_accessproxy_apigateway6'
+                    - 'firewall_accessproxy_apigateway6_quic'
+                    - 'firewall_accessproxy_apigateway6_realservers'
+                    - 'firewall_accessproxy_apigateway6_sslciphersuites'
+                    - 'firewall_accessproxy_apigateway_quic'
+                    - 'firewall_accessproxy_apigateway_realservers'
+                    - 'firewall_accessproxy_apigateway_sslciphersuites'
                     - 'firewall_accessproxysshclientcert'
                     - 'firewall_accessproxysshclientcert_certextension'
+                    - 'firewall_accessproxyvirtualhost'
+                    - 'firewall_address'
+                    - 'firewall_address6'
+                    - 'firewall_address6_list'
+                    - 'firewall_address6_subnetsegment'
+                    - 'firewall_address6_tagging'
+                    - 'firewall_address6template'
+                    - 'firewall_address6template_subnetsegment'
+                    - 'firewall_address6template_subnetsegment_values'
+                    - 'firewall_address_list'
+                    - 'firewall_address_tagging'
+                    - 'firewall_addrgrp'
+                    - 'firewall_addrgrp6'
+                    - 'firewall_addrgrp6_tagging'
+                    - 'firewall_addrgrp_tagging'
                     - 'firewall_authportal'
+                    - 'firewall_centralsnatmap'
                     - 'firewall_dnstranslation'
+                    - 'firewall_dospolicy'
+                    - 'firewall_dospolicy6'
+                    - 'firewall_dospolicy6_anomaly'
                     - 'firewall_global'
+                    - 'firewall_identitybasedroute'
+                    - 'firewall_identitybasedroute_rule'
+                    - 'firewall_interfacepolicy'
+                    - 'firewall_interfacepolicy6'
+                    - 'firewall_internetservice'
+                    - 'firewall_internetserviceaddition'
+                    - 'firewall_internetserviceaddition_entry'
+                    - 'firewall_internetserviceaddition_entry_portrange'
                     - 'firewall_internetserviceappend'
+                    - 'firewall_internetservicecustom'
+                    - 'firewall_internetservicecustom_entry'
+                    - 'firewall_internetservicecustomgroup'
                     - 'firewall_internetservicedefinition'
                     - 'firewall_internetservicedefinition_entry'
                     - 'firewall_internetservicedefinition_entry_portrange'
@@ -130,37 +267,143 @@ options:
                     - 'firewall_internetserviceextension_disableentry_portrange'
                     - 'firewall_internetserviceextension_entry'
                     - 'firewall_internetserviceextension_entry_portrange'
+                    - 'firewall_internetservicegroup'
+                    - 'firewall_internetservicename'
                     - 'firewall_ipmacbinding_setting'
                     - 'firewall_ipmacbinding_table'
+                    - 'firewall_ippool'
+                    - 'firewall_ippool6'
                     - 'firewall_iptranslation'
                     - 'firewall_ipv6ehfilter'
+                    - 'firewall_ldbmonitor'
+                    - 'firewall_localinpolicy'
+                    - 'firewall_localinpolicy6'
+                    - 'firewall_multicastaddress'
+                    - 'firewall_multicastaddress6'
+                    - 'firewall_multicastaddress6_tagging'
+                    - 'firewall_multicastaddress_tagging'
+                    - 'firewall_multicastpolicy'
+                    - 'firewall_multicastpolicy6'
+                    - 'firewall_networkservicedynamic'
                     - 'firewall_ondemandsniffer'
                     - 'firewall_pfcp'
                     - 'firewall_policy'
+                    - 'firewall_profilegroup'
+                    - 'firewall_profileprotocoloptions'
+                    - 'firewall_profileprotocoloptions_cifs'
+                    - 'firewall_profileprotocoloptions_cifs_serverkeytab'
+                    - 'firewall_profileprotocoloptions_dns'
+                    - 'firewall_profileprotocoloptions_ftp'
+                    - 'firewall_profileprotocoloptions_http'
+                    - 'firewall_profileprotocoloptions_imap'
+                    - 'firewall_profileprotocoloptions_mailsignature'
+                    - 'firewall_profileprotocoloptions_mapi'
+                    - 'firewall_profileprotocoloptions_nntp'
+                    - 'firewall_profileprotocoloptions_pop3'
+                    - 'firewall_profileprotocoloptions_smtp'
+                    - 'firewall_profileprotocoloptions_ssh'
+                    - 'firewall_proxyaddress'
+                    - 'firewall_proxyaddress6'
+                    - 'firewall_proxyaddress6_headergroup'
+                    - 'firewall_proxyaddress6_tagging'
+                    - 'firewall_proxyaddress_headergroup'
+                    - 'firewall_proxyaddress_tagging'
+                    - 'firewall_proxyaddrgrp'
+                    - 'firewall_proxyaddrgrp6'
+                    - 'firewall_proxyaddrgrp6_tagging'
+                    - 'firewall_proxyaddrgrp_tagging'
+                    - 'firewall_proxypolicy'
+                    - 'firewall_responseshapingpolicy'
+                    - 'firewall_schedule_group'
+                    - 'firewall_schedule_onetime'
+                    - 'firewall_schedule_recurring'
+                    - 'firewall_securitypolicy'
+                    - 'firewall_service_category'
+                    - 'firewall_service_custom'
+                    - 'firewall_service_group'
+                    - 'firewall_shaper_peripshaper'
+                    - 'firewall_shaper_trafficshaper'
+                    - 'firewall_shapingpolicy'
+                    - 'firewall_shapingprofile'
+                    - 'firewall_shapingprofile_shapingentries'
                     - 'firewall_sniffer'
                     - 'firewall_sniffer_anomaly'
                     - 'firewall_ssh_hostkey'
+                    - 'firewall_ssh_localca'
                     - 'firewall_ssh_localkey'
                     - 'firewall_ssh_setting'
+                    - 'firewall_ssl_defaultcertificate'
+                    - 'firewall_ssl_keyringlist'
                     - 'firewall_ssl_setting'
                     - 'firewall_sslserver'
+                    - 'firewall_sslsshprofile'
+                    - 'firewall_sslsshprofile_dot'
+                    - 'firewall_sslsshprofile_echoutersni'
+                    - 'firewall_sslsshprofile_ftps'
+                    - 'firewall_sslsshprofile_https'
+                    - 'firewall_sslsshprofile_imaps'
+                    - 'firewall_sslsshprofile_pop3s'
+                    - 'firewall_sslsshprofile_smtps'
+                    - 'firewall_sslsshprofile_ssh'
+                    - 'firewall_sslsshprofile_ssl'
+                    - 'firewall_sslsshprofile_sslclientcertificate'
+                    - 'firewall_sslsshprofile_sslexempt'
+                    - 'firewall_sslsshprofile_sslserver'
+                    - 'firewall_trafficclass'
                     - 'firewall_ttlpolicy'
+                    - 'firewall_vendormac'
+                    - 'firewall_vip'
+                    - 'firewall_vip6'
+                    - 'firewall_vip6_quic'
+                    - 'firewall_vip6_realservers'
+                    - 'firewall_vip6_sslciphersuites'
+                    - 'firewall_vip6_sslserverciphersuites'
+                    - 'firewall_vip_gslbpublicips'
+                    - 'firewall_vip_quic'
+                    - 'firewall_vip_realservers'
+                    - 'firewall_vip_sslciphersuites'
+                    - 'firewall_vip_sslserverciphersuites'
+                    - 'firewall_vipgrp'
+                    - 'firewall_vipgrp6'
+                    - 'firewall_wildcardfqdn_custom'
+                    - 'firewall_wildcardfqdn_group'
                     - 'ftpproxy_explicit'
                     - 'gtp_apnshaper'
                     - 'gtp_ieallowlist'
                     - 'gtp_ieallowlist_entries'
                     - 'gtp_rattimeoutprofile'
+                    - 'icap_localserver'
+                    - 'icap_localserver_icapservice'
                     - 'icap_profile'
+                    - 'icap_profile_icapheaders'
+                    - 'icap_remoteserver'
+                    - 'icap_remoteservergroup'
+                    - 'icap_remoteservergroup_serverlist'
                     - 'icap_server'
                     - 'icap_servergroup'
                     - 'icap_servergroup_serverlist'
+                    - 'imageanalyzer_profile'
+                    - 'ips_custom'
                     - 'ips_decoder'
                     - 'ips_decoder_parameter'
                     - 'ips_global'
                     - 'ips_rule'
                     - 'ips_rulesettings'
+                    - 'ips_sensor'
+                    - 'ips_sensor_entries'
+                    - 'ips_sensor_entries_exemptip'
                     - 'ips_settings'
                     - 'ips_tlsactiveprobe'
+                    - 'isolator_profile'
+                    - 'isolator_profile_entries'
+                    - 'isolator_setting'
+                    - 'llm_profile'
+                    - 'llm_profile_chat'
+                    - 'llm_profile_imagegen'
+                    - 'llm_profile_listmodels'
+                    - 'llm_profile_response'
+                    - 'llm_proxy'
+                    - 'llm_server'
                     - 'loadbalance_flowrule'
                     - 'loadbalance_setting'
                     - 'loadbalance_setting_workers'
@@ -173,6 +416,7 @@ options:
                     - 'log_azuresecuritycenter_filter_freestyle'
                     - 'log_azuresecuritycenter_setting'
                     - 'log_azuresecuritycenter_setting_customfieldname'
+                    - 'log_customfield'
                     - 'log_disk_filter'
                     - 'log_disk_filter_freestyle'
                     - 'log_disk_setting'
@@ -223,38 +467,53 @@ options:
                     - 'log_syslogd2_overridefilter_freestyle'
                     - 'log_syslogd2_overridesetting'
                     - 'log_syslogd2_overridesetting_customfieldname'
+                    - 'log_syslogd2_overridesetting_logtemplates'
                     - 'log_syslogd2_setting'
                     - 'log_syslogd2_setting_customfieldname'
+                    - 'log_syslogd2_setting_logtemplates'
                     - 'log_syslogd3_filter'
                     - 'log_syslogd3_filter_freestyle'
                     - 'log_syslogd3_overridefilter'
                     - 'log_syslogd3_overridefilter_freestyle'
                     - 'log_syslogd3_overridesetting'
                     - 'log_syslogd3_overridesetting_customfieldname'
+                    - 'log_syslogd3_overridesetting_logtemplates'
                     - 'log_syslogd3_setting'
                     - 'log_syslogd3_setting_customfieldname'
+                    - 'log_syslogd3_setting_logtemplates'
                     - 'log_syslogd4_filter'
                     - 'log_syslogd4_filter_freestyle'
                     - 'log_syslogd4_overridefilter'
                     - 'log_syslogd4_overridefilter_freestyle'
                     - 'log_syslogd4_overridesetting'
                     - 'log_syslogd4_overridesetting_customfieldname'
+                    - 'log_syslogd4_overridesetting_logtemplates'
                     - 'log_syslogd4_setting'
                     - 'log_syslogd4_setting_customfieldname'
+                    - 'log_syslogd4_setting_logtemplates'
                     - 'log_syslogd_filter'
                     - 'log_syslogd_filter_freestyle'
                     - 'log_syslogd_overridefilter'
                     - 'log_syslogd_overridefilter_freestyle'
                     - 'log_syslogd_overridesetting'
                     - 'log_syslogd_overridesetting_customfieldname'
+                    - 'log_syslogd_overridesetting_logtemplates'
                     - 'log_syslogd_setting'
                     - 'log_syslogd_setting_customfieldname'
+                    - 'log_syslogd_setting_logtemplates'
                     - 'log_tacacsaccounting2_filter'
                     - 'log_tacacsaccounting2_setting'
                     - 'log_tacacsaccounting3_filter'
                     - 'log_tacacsaccounting3_setting'
                     - 'log_tacacsaccounting_filter'
                     - 'log_tacacsaccounting_setting'
+                    - 'log_threatweight'
+                    - 'log_threatweight_application'
+                    - 'log_threatweight_geolocation'
+                    - 'log_threatweight_ips'
+                    - 'log_threatweight_level'
+                    - 'log_threatweight_malware'
+                    - 'log_threatweight_web'
                     - 'log_webtrends_filter'
                     - 'log_webtrends_filter_freestyle'
                     - 'log_webtrends_setting'
@@ -289,6 +548,12 @@ options:
                     - 'report_setting'
                     - 'report_style'
                     - 'report_theme'
+                    - 'router_accesslist'
+                    - 'router_accesslist6'
+                    - 'router_accesslist6_rule'
+                    - 'router_accesslist_rule'
+                    - 'router_aspathlist'
+                    - 'router_aspathlist_rule'
                     - 'router_authpath'
                     - 'router_bfd'
                     - 'router_bfd6'
@@ -318,6 +583,8 @@ options:
                     - 'router_bgp_vrfleak6'
                     - 'router_bgp_vrfleak6_target'
                     - 'router_bgp_vrfleak_target'
+                    - 'router_communitylist'
+                    - 'router_communitylist_rule'
                     - 'router_extcommunitylist'
                     - 'router_extcommunitylist_rule'
                     - 'router_isis'
@@ -369,6 +636,10 @@ options:
                     - 'router_ospf_summaryaddress'
                     - 'router_policy'
                     - 'router_policy6'
+                    - 'router_prefixlist'
+                    - 'router_prefixlist6'
+                    - 'router_prefixlist6_rule'
+                    - 'router_prefixlist_rule'
                     - 'router_rip'
                     - 'router_rip_distance'
                     - 'router_rip_distributelist'
@@ -387,12 +658,17 @@ options:
                     - 'router_ripng_offsetlist'
                     - 'router_ripng_redistribute'
                     - 'router_routemap'
+                    - 'router_routemap_rule'
                     - 'router_setting'
                     - 'router_static'
                     - 'router_static6'
                     - 'rule_fmwp'
                     - 'rule_otdt'
                     - 'rule_otvp'
+                    - 'sctpfilter_profile'
+                    - 'sctpfilter_profile_ppidfilters'
+                    - 'sshfilter_profile'
+                    - 'sshfilter_profile_shellcommands'
                     - 'switchcontroller_8021xsettings'
                     - 'switchcontroller_acl_group'
                     - 'switchcontroller_acl_ingress'
@@ -415,6 +691,7 @@ options:
                     - 'switchcontroller_igmpsnooping'
                     - 'switchcontroller_initialconfig_template'
                     - 'switchcontroller_initialconfig_vlans'
+                    - 'switchcontroller_ipsourceguardlog'
                     - 'switchcontroller_lldpprofile'
                     - 'switchcontroller_lldpprofile_customtlvs'
                     - 'switchcontroller_lldpprofile_medlocationservice'
@@ -438,6 +715,8 @@ options:
                     - 'switchcontroller_managedswitch_ports_dhcpsnoopoption82override'
                     - 'switchcontroller_managedswitch_remotelog'
                     - 'switchcontroller_managedswitch_routeoffloadrouter'
+                    - 'switchcontroller_managedswitch_routerstatic'
+                    - 'switchcontroller_managedswitch_routervrf'
                     - 'switchcontroller_managedswitch_snmpcommunity'
                     - 'switchcontroller_managedswitch_snmpcommunity_hosts'
                     - 'switchcontroller_managedswitch_snmpsysinfo'
@@ -448,6 +727,10 @@ options:
                     - 'switchcontroller_managedswitch_stpinstance'
                     - 'switchcontroller_managedswitch_stpsettings'
                     - 'switchcontroller_managedswitch_switchlog'
+                    - 'switchcontroller_managedswitch_systemdhcpserver'
+                    - 'switchcontroller_managedswitch_systemdhcpserver_iprange'
+                    - 'switchcontroller_managedswitch_systemdhcpserver_options'
+                    - 'switchcontroller_managedswitch_systeminterface'
                     - 'switchcontroller_managedswitch_vlan'
                     - 'switchcontroller_nacdevice'
                     - 'switchcontroller_nacsettings'
@@ -498,11 +781,13 @@ options:
                     - 'system_accprofile_fwgrppermission'
                     - 'system_accprofile_loggrppermission'
                     - 'system_accprofile_netgrppermission'
+                    - 'system_accprofile_secfabgrppermission'
                     - 'system_accprofile_sysgrppermission'
                     - 'system_accprofile_utmgrppermission'
                     - 'system_acme'
                     - 'system_acme_accounts'
                     - 'system_admin'
+                    - 'system_admin_trusthosts'
                     - 'system_affinityinterrupt'
                     - 'system_affinitypacketredistribution'
                     - 'system_alias'
@@ -511,6 +796,7 @@ options:
                     - 'system_arptable'
                     - 'system_autoinstall'
                     - 'system_automationaction'
+                    - 'system_automationaction_formdata'
                     - 'system_automationaction_httpheaders'
                     - 'system_automationcondition'
                     - 'system_automationdestination'
@@ -526,6 +812,7 @@ options:
                     - 'system_bypass'
                     - 'system_centralmanagement'
                     - 'system_centralmanagement_serverlist'
+                    - 'system_cloudservice'
                     - 'system_clustersync'
                     - 'system_clustersync_sessionsyncfilter'
                     - 'system_clustersync_sessionsyncfilter_customservice'
@@ -536,14 +823,21 @@ options:
                     - 'system_csf_fabricconnector'
                     - 'system_csf_fabricdevice'
                     - 'system_csf_trustedlist'
+                    - 'system_customlanguage'
                     - 'system_ddns'
                     - 'system_dedicatedmgmt'
                     - 'system_deviceupgrade'
                     - 'system_deviceupgrade_knownhamembers'
+                    - 'system_deviceupgradeexemptions'
                     - 'system_dhcp6_server'
                     - 'system_dhcp6_server_iprange'
                     - 'system_dhcp6_server_options'
                     - 'system_dhcp6_server_prefixrange'
+                    - 'system_dhcp_server'
+                    - 'system_dhcp_server_excluderange'
+                    - 'system_dhcp_server_iprange'
+                    - 'system_dhcp_server_options'
+                    - 'system_dhcp_server_reservedaddress'
                     - 'system_digitalio'
                     - 'system_dnp3proxy'
                     - 'system_dns'
@@ -555,6 +849,7 @@ options:
                     - 'system_elbc'
                     - 'system_emailserver'
                     - 'system_evpn'
+                    - 'system_externalresource'
                     - 'system_fabricvpn'
                     - 'system_fabricvpn_advertisedsubnets'
                     - 'system_fabricvpn_overlays'
@@ -563,11 +858,17 @@ options:
                     - 'system_federatedupgrade_nodelist'
                     - 'system_fipscc'
                     - 'system_fortiai'
+                    - 'system_fortidata'
+                    - 'system_fortiguard'
                     - 'system_fortindr'
                     - 'system_fortisandbox'
                     - 'system_fssopolling'
                     - 'system_ftmpush'
                     - 'system_geneve'
+                    - 'system_geoipcountry'
+                    - 'system_geoipoverride'
+                    - 'system_geoipoverride_ip6range'
+                    - 'system_geoipoverride_iprange'
                     - 'system_gigk'
                     - 'system_global'
                     - 'system_gretunnel'
@@ -577,6 +878,7 @@ options:
                     - 'system_ha_secondaryvcluster'
                     - 'system_ha_unicastpeers'
                     - 'system_ha_vcluster'
+                    - 'system_halic'
                     - 'system_hamonitor'
                     - 'system_healthcheckfortiguard'
                     - 'system_icond'
@@ -657,6 +959,11 @@ options:
                     - 'system_netflow'
                     - 'system_netflow_collectors'
                     - 'system_netflow_exclusionfilters'
+                    - 'system_nethsm'
+                    - 'system_nethsm_hagroups'
+                    - 'system_nethsm_partitions'
+                    - 'system_nethsm_servers'
+                    - 'system_nethsm_slots'
                     - 'system_networkvisibility'
                     - 'system_ngfwsettings'
                     - 'system_np6'
@@ -665,12 +972,18 @@ options:
                     - 'system_np6xlite'
                     - 'system_np6xlite_fpanomaly'
                     - 'system_np6xlite_hpe'
+                    - 'system_npu_dswdtsprofile'
+                    - 'system_npu_npqueues'
+                    - 'system_npu_portcpumap'
+                    - 'system_npu_portnpumap'
                     - 'system_npupost'
                     - 'system_npupost_portnpumap'
                     - 'system_npusetting_prp'
                     - 'system_npuvlink'
                     - 'system_ntp'
                     - 'system_ntp_ntpserver'
+                    - 'system_objecttag'
+                    - 'system_objecttagging'
                     - 'system_passwordpolicy'
                     - 'system_passwordpolicyguestadmin'
                     - 'system_pcpserver'
@@ -704,9 +1017,34 @@ options:
                     - 'system_replacemsg_trafficquota'
                     - 'system_replacemsg_utm'
                     - 'system_replacemsg_webproxy'
+                    - 'system_replacemsggroup'
+                    - 'system_replacemsggroup_admin'
+                    - 'system_replacemsggroup_alertmail'
+                    - 'system_replacemsggroup_auth'
+                    - 'system_replacemsggroup_automation'
+                    - 'system_replacemsggroup_custommessage'
+                    - 'system_replacemsggroup_fortiguardwf'
+                    - 'system_replacemsggroup_ftp'
+                    - 'system_replacemsggroup_http'
+                    - 'system_replacemsggroup_icap'
+                    - 'system_replacemsggroup_mail'
+                    - 'system_replacemsggroup_nacquar'
+                    - 'system_replacemsggroup_spam'
+                    - 'system_replacemsggroup_sslvpn'
+                    - 'system_replacemsggroup_trafficquota'
+                    - 'system_replacemsggroup_utm'
+                    - 'system_replacemsggroup_webproxy'
+                    - 'system_replacemsgimage'
                     - 'system_saml'
                     - 'system_saml_serviceproviders'
                     - 'system_saml_serviceproviders_assertionattributes'
+                    - 'system_sdnconnector'
+                    - 'system_sdnconnector_compartmentlist'
+                    - 'system_sdnconnector_externalaccountlist'
+                    - 'system_sdnconnector_forwardingrule'
+                    - 'system_sdnconnector_ociregionlist'
+                    - 'system_sdnconnector_routetable'
+                    - 'system_sdnproxy'
                     - 'system_sdnvpn'
                     - 'system_sdwan'
                     - 'system_sdwan_duplication'
@@ -730,6 +1068,7 @@ options:
                     - 'system_sittunnel'
                     - 'system_smcntp'
                     - 'system_smcntp_ntpserver'
+                    - 'system_smsserver'
                     - 'system_snmp_community'
                     - 'system_snmp_community_hosts'
                     - 'system_snmp_community_hosts6'
@@ -737,6 +1076,8 @@ options:
                     - 'system_snmp_rmonstat'
                     - 'system_snmp_sysinfo'
                     - 'system_snmp_user'
+                    - 'system_sovsase'
+                    - 'system_spanport'
                     - 'system_speedtestschedule'
                     - 'system_speedtestserver'
                     - 'system_speedtestserver_host'
@@ -776,6 +1117,7 @@ options:
                     - 'system_virtualwanlink_neighbor'
                     - 'system_virtualwanlink_service'
                     - 'system_virtualwanlink_service_sla'
+                    - 'system_virtualwirepair'
                     - 'system_vneinterface'
                     - 'system_vnetunnel'
                     - 'system_vpce'
@@ -785,19 +1127,62 @@ options:
                     - 'system_wireless_settings'
                     - 'system_zone'
                     - 'system_zone_tagging'
+                    - 'user_adgrp'
+                    - 'user_certificate'
+                    - 'user_domaincontroller'
+                    - 'user_domaincontroller_extraserver'
+                    - 'user_exchange'
+                    - 'user_externalidentityprovider'
+                    - 'user_fortitoken'
+                    - 'user_fsso'
+                    - 'user_fssopolling'
+                    - 'user_fssopolling_adgrp'
+                    - 'user_group'
+                    - 'user_group_match'
+                    - 'user_krbkeytab'
+                    - 'user_ldap'
+                    - 'user_local'
                     - 'user_nacpolicy'
+                    - 'user_oidc'
+                    - 'user_passwordpolicy'
+                    - 'user_peer'
+                    - 'user_peergrp'
+                    - 'user_pop3'
                     - 'user_quarantine'
                     - 'user_quarantine_targets'
                     - 'user_quarantine_targets_macs'
+                    - 'user_radius'
+                    - 'user_radius_accountingserver'
+                    - 'user_saml'
                     - 'user_scim'
+                    - 'user_securityexemptlist'
+                    - 'user_securityexemptlist_rule'
                     - 'user_setting'
                     - 'user_setting_authports'
+                    - 'user_tacacs'
+                    - 'videofilter_keyword'
+                    - 'videofilter_keyword_word'
+                    - 'videofilter_profile'
+                    - 'videofilter_profile_filters'
+                    - 'videofilter_profile_fortiguardcategory_filters'
                     - 'videofilter_youtubekey'
+                    - 'virtualpatch_profile'
+                    - 'virtualpatch_profile_exemption'
+                    - 'voip_profile'
+                    - 'voip_profile_msrp'
+                    - 'voip_profile_sccp'
+                    - 'voip_profile_sip'
+                    - 'vpn_certificate_ca'
                     - 'vpn_certificate_crl'
+                    - 'vpn_certificate_hsmlocal'
                     - 'vpn_certificate_local'
+                    - 'vpn_certificate_ocspserver'
+                    - 'vpn_certificate_remote'
                     - 'vpn_certificate_setting'
                     - 'vpn_certificate_setting_crlverification'
                     - 'vpn_ipsec_concentrator'
+                    - 'vpn_ipsec_fec'
+                    - 'vpn_ipsec_fec_mappings'
                     - 'vpn_ipsec_forticlient'
                     - 'vpn_ipsec_manualkey'
                     - 'vpn_ipsec_manualkeyinterface'
@@ -822,12 +1207,52 @@ options:
                     - 'vpn_ssl_client'
                     - 'vpn_ssl_settings'
                     - 'vpn_ssl_settings_authenticationrule'
+                    - 'vpnsslweb_hostchecksoftware'
+                    - 'vpnsslweb_hostchecksoftware_checkitemlist'
+                    - 'vpnsslweb_portal'
+                    - 'vpnsslweb_portal_bookmarkgroup'
+                    - 'vpnsslweb_portal_bookmarkgroup_bookmarks'
+                    - 'vpnsslweb_portal_bookmarkgroup_bookmarks_formdata'
+                    - 'vpnsslweb_portal_landingpage'
+                    - 'vpnsslweb_portal_landingpage_formdata'
+                    - 'vpnsslweb_portal_macaddrcheckrule'
+                    - 'vpnsslweb_portal_oschecklist'
+                    - 'vpnsslweb_portal_splitdns'
+                    - 'vpnsslweb_realm'
                     - 'vpnsslweb_userbookmark'
                     - 'vpnsslweb_userbookmark_bookmarks'
                     - 'vpnsslweb_userbookmark_bookmarks_formdata'
                     - 'vpnsslweb_usergroupbookmark'
                     - 'vpnsslweb_usergroupbookmark_bookmarks'
                     - 'vpnsslweb_usergroupbookmark_bookmarks_formdata'
+                    - 'waf_mainclass'
+                    - 'waf_profile'
+                    - 'waf_profile_addresslist'
+                    - 'waf_profile_constraint'
+                    - 'waf_profile_constraint_contentlength'
+                    - 'waf_profile_constraint_exception'
+                    - 'waf_profile_constraint_headerlength'
+                    - 'waf_profile_constraint_hostname'
+                    - 'waf_profile_constraint_linelength'
+                    - 'waf_profile_constraint_malformed'
+                    - 'waf_profile_constraint_maxcookie'
+                    - 'waf_profile_constraint_maxheaderline'
+                    - 'waf_profile_constraint_maxrangesegment'
+                    - 'waf_profile_constraint_maxurlparam'
+                    - 'waf_profile_constraint_method'
+                    - 'waf_profile_constraint_paramlength'
+                    - 'waf_profile_constraint_urlparamlength'
+                    - 'waf_profile_constraint_version'
+                    - 'waf_profile_method'
+                    - 'waf_profile_method_methodpolicy'
+                    - 'waf_profile_signature'
+                    - 'waf_profile_signature_customsignature'
+                    - 'waf_profile_signature_mainclass'
+                    - 'waf_profile_urlaccess'
+                    - 'waf_profile_urlaccess_accesspattern'
+                    - 'waf_signature'
+                    - 'waf_subclass'
+                    - 'wanopt_authgroup'
                     - 'wanopt_cacheservice'
                     - 'wanopt_cacheservice_dstpeer'
                     - 'wanopt_cacheservice_srcpeer'
@@ -836,23 +1261,72 @@ options:
                     - 'wanopt_contentdeliverynetworkrule_rules_contentid'
                     - 'wanopt_contentdeliverynetworkrule_rules_matchentries'
                     - 'wanopt_contentdeliverynetworkrule_rules_skipentries'
+                    - 'wanopt_peer'
+                    - 'wanopt_profile'
+                    - 'wanopt_profile_cifs'
+                    - 'wanopt_profile_ftp'
+                    - 'wanopt_profile_http'
+                    - 'wanopt_profile_mapi'
+                    - 'wanopt_profile_tcp'
                     - 'wanopt_remotestorage'
                     - 'wanopt_settings'
                     - 'wanopt_webcache'
+                    - 'webcache_prefetch'
+                    - 'webcache_reversecacheserver'
+                    - 'webcache_settings'
+                    - 'webcache_useragent'
+                    - 'webfilter_content'
+                    - 'webfilter_content_entries'
+                    - 'webfilter_contentheader'
+                    - 'webfilter_contentheader_entries'
+                    - 'webfilter_domainlist'
+                    - 'webfilter_domainlist_entries'
                     - 'webfilter_fortiguard'
+                    - 'webfilter_ftgdlocalcat'
+                    - 'webfilter_ftgdlocalrating'
                     - 'webfilter_ftgdlocalrisk'
                     - 'webfilter_ftgdrisklevel'
                     - 'webfilter_ipsurlfiltercachesetting'
                     - 'webfilter_ipsurlfiltersetting'
                     - 'webfilter_ipsurlfiltersetting6'
                     - 'webfilter_override'
+                    - 'webfilter_profile'
+                    - 'webfilter_profile_antiphish_custompatterns'
+                    - 'webfilter_profile_antiphish_inspectionentries'
+                    - 'webfilter_profile_ftgdwf'
+                    - 'webfilter_profile_ftgdwf_filters'
+                    - 'webfilter_profile_ftgdwf_quota'
+                    - 'webfilter_profile_ftgdwf_risk'
+                    - 'webfilter_profile_override'
+                    - 'webfilter_profile_web'
                     - 'webfilter_searchengine'
+                    - 'webfilter_urlfilter'
+                    - 'webfilter_urlfilter_entries'
+                    - 'webfilter_urllist'
+                    - 'webfilter_urllist_entries'
                     - 'webproxy_debugurl'
+                    - 'webproxy_dynamicbypass'
                     - 'webproxy_explicit'
                     - 'webproxy_explicit_pacpolicy'
+                    - 'webproxy_explicitproxy'
                     - 'webproxy_fastfallback'
+                    - 'webproxy_forwardserver'
+                    - 'webproxy_forwardservergroup'
+                    - 'webproxy_forwardservergroup_serverlist'
                     - 'webproxy_global'
+                    - 'webproxy_implicitproxyrule'
+                    - 'webproxy_implicitproxyrule_proxyservers'
+                    - 'webproxy_implicitproxysetting'
+                    - 'webproxy_isolatorserver'
+                    - 'webproxy_pacpolicy'
+                    - 'webproxy_profile'
+                    - 'webproxy_profile_headers'
+                    - 'webproxy_redirectprofile'
+                    - 'webproxy_redirectprofile_entries'
+                    - 'webproxy_urllist'
+                    - 'webproxy_urllist_entries'
                     - 'webproxy_urlmatch'
+                    - 'webproxy_wisp'
                     - 'wireless_accesscontrollist'
                     - 'wireless_accesscontrollist_layer3ipv4rules'
                     - 'wireless_accesscontrollist_layer3ipv6rules'
@@ -900,6 +1374,7 @@ options:
                     - 'wireless_intercontroller'
                     - 'wireless_intercontroller_intercontrollerpeer'
                     - 'wireless_log'
+                    - 'wireless_lwprofile'
                     - 'wireless_mpskprofile'
                     - 'wireless_mpskprofile_mpskgroup'
                     - 'wireless_mpskprofile_mpskgroup_mpskkey'
@@ -911,6 +1386,7 @@ options:
                     - 'wireless_snmp'
                     - 'wireless_snmp_community'
                     - 'wireless_snmp_community_hosts'
+                    - 'wireless_snmp_community_hosts6'
                     - 'wireless_snmp_user'
                     - 'wireless_ssidpolicy'
                     - 'wireless_syslogprofile'
@@ -945,7 +1421,9 @@ options:
                     - 'wireless_wtpprofile_radio3'
                     - 'wireless_wtpprofile_radio4'
                     - 'wireless_wtpprofile_splittunnelingacl'
+                    - 'ztna_connectorserviceedge'
                     - 'ztna_reverseconnector'
+                    - 'ztna_serviceconnector'
                     - 'ztna_trafficforwardproxy'
                     - 'ztna_trafficforwardproxy_quic'
                     - 'ztna_trafficforwardproxy_sslciphersuites'
@@ -955,6 +1433,7 @@ options:
                     - 'ztna_webportal'
                     - 'ztna_webportalbookmark'
                     - 'ztna_webportalbookmark_bookmarks'
+                    - 'ztna_webportalbookmark_llmsecureproxy'
                     - 'ztna_webproxy'
                     - 'ztna_webproxy_apigateway'
                     - 'ztna_webproxy_apigateway6'
@@ -1014,7 +1493,7 @@ EXAMPLES = '''
             vdom: "{{ vdom_name }}"
       register: response
     - name: Display response
-      debug:
+      ansible.builtin.debug:
         var: response
 '''
 
@@ -1070,7 +1549,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/alertemail/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'antivirus_exemptlist': {
             'params': ['device', 'exempt-list', 'vdom'],
@@ -1078,49 +1557,184 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/antivirus/exempt-list',
                 '/pm/config/device/{device}/vdom/{vdom}/antivirus/exempt-list/{exempt-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'antivirus_heuristic': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/antivirus/heuristic'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'antivirus_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_cifs': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/cifs'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_ftp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/ftp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_http': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/http'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_imap': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/imap'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_nacquar': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/nac-quar'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_nntp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/nntp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_pop3': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/pop3'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'antivirus_profile_smtp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}/smtp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'antivirus_quarantine': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/antivirus/quarantine'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'antivirus_settings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/antivirus/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'application_categories': {
+            'params': ['categories', 'device'],
+            'urls': [
+                '/pm/config/device/{device}/global/application/categories',
+                '/pm/config/device/{device}/global/application/categories/{categories}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'application_custom': {
+            'params': ['custom', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/application/custom',
+                '/pm/config/device/{device}/vdom/{vdom}/application/custom/{custom}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'application_group': {
+            'params': ['device', 'group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/application/group',
+                '/pm/config/device/{device}/vdom/{vdom}/application/group/{group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'application_list': {
+            'params': ['device', 'list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/application/list',
+                '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'application_list_defaultnetworkservices': {
+            'params': ['default-network-services', 'device', 'list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}/default-network-services',
+                '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}/default-network-services/{default-network-services}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'application_list_entries': {
+            'params': ['device', 'entries', 'list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'application_name': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/application/name'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'application_rulesettings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/application/rule-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'authentication_rule': {
+            'params': ['device', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/authentication/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/authentication/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'authentication_scheme': {
+            'params': ['device', 'scheme', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/authentication/scheme',
+                '/pm/config/device/{device}/vdom/{vdom}/authentication/scheme/{scheme}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'authentication_setting': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/authentication/setting'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'automation_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/automation/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'aws_vpce': {
             'params': ['device', 'vpce'],
@@ -1128,7 +1742,7 @@ def main():
                 '/pm/config/device/{device}/global/aws/vpce',
                 '/pm/config/device/{device}/global/aws/vpce/{vpce}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'azure_vwaningresspublicips': {
             'params': ['device', 'vwan-ingress-public-IPs'],
@@ -1191,13 +1805,211 @@ def main():
             ],
             'v_range': [['7.6.2', '']]
         },
+        'casb_attributematch_match': {
+            'params': ['attribute-match', 'device', 'match', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/attribute-match/{attribute-match}/match',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/attribute-match/{attribute-match}/match/{match}'
+            ],
+            'v_range': [['7.6.3', '']]
+        },
+        'casb_attributematch_match_rule': {
+            'params': ['attribute-match', 'device', 'match', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/attribute-match/{attribute-match}/match/{match}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/attribute-match/{attribute-match}/match/{match}/rule/{rule}'
+            ],
+            'v_range': [['7.6.3', '']]
+        },
+        'casb_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_profile_saasapplication': {
+            'params': ['device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_accessrule': {
+            'params': ['access-rule', 'device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/access-rule',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/access-rule/{access-rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_accessrule_attributefilter': {
+            'params': ['access-rule', 'attribute-filter', 'device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/access-rule/{access-rule}/attribute-filter',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/access-rule/{access-rule}/attribute-filter'
+                '/{attribute-filter}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_advancedtenantcontrol': {
+            'params': ['advanced-tenant-control', 'device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/advanced-tenant-control',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/advanced-tenant-control/{advanced-tenant-c'
+                'ontrol}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_advancedtenantcontrol_attribute': {
+            'params': ['advanced-tenant-control', 'attribute', 'device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/advanced-tenant-control/{advanced-tenant-c'
+                'ontrol}/attribute',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/advanced-tenant-control/{advanced-tenant-c'
+                'ontrol}/attribute/{attribute}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_customcontrol': {
+            'params': ['custom-control', 'device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_customcontrol_attributefilter': {
+            'params': ['attribute-filter', 'custom-control', 'device', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}/attribute-'
+                'filter',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}/attribute-'
+                'filter/{attribute-filter}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_profile_saasapplication_customcontrol_option': {
+            'params': ['custom-control', 'device', 'option', 'profile', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}/option',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}/option/{op'
+                'tion}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_saasapplication': {
+            'params': ['device', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application/{saas-application}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_saasapplication_inputattributes': {
+            'params': ['device', 'input-attributes', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application/{saas-application}/input-attributes',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application/{saas-application}/input-attributes/{input-attributes}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_saasapplication_outputattributes': {
+            'params': ['device', 'output-attributes', 'saas-application', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application/{saas-application}/output-attributes',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application/{saas-application}/output-attributes/{output-attributes}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_useractivity': {
+            'params': ['device', 'user-activity', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_useractivity_match': {
+            'params': ['device', 'match', 'user-activity', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_useractivity_match_rules': {
+            'params': ['device', 'match', 'rules', 'user-activity', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/rules',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/rules/{rules}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'casb_useractivity_match_tenantextraction': {
+            'params': ['device', 'match', 'user-activity', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/tenant-extraction'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'casb_useractivity_match_tenantextraction_filters': {
+            'params': ['device', 'filters', 'match', 'user-activity', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/tenant-extraction/filters',
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/tenant-extraction/filters/{filters}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'certificate_hsmlocal': {
+            'params': ['device', 'hsm-local'],
+            'urls': [
+                '/pm/config/device/{device}/global/certificate/hsm-local',
+                '/pm/config/device/{device}/global/certificate/hsm-local/{hsm-local}'
+            ],
+            'v_range': [['7.6.3', '']]
+        },
         'certificate_remote': {
             'params': ['device', 'remote'],
             'urls': [
                 '/pm/config/device/{device}/global/certificate/remote',
                 '/pm/config/device/{device}/global/certificate/remote/{remote}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'diameterfilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/diameter-filter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/diameter-filter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_datatype': {
+            'params': ['data-type', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/data-type',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/data-type/{data-type}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_dictionary': {
+            'params': ['device', 'dictionary', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/dictionary',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/dictionary/{dictionary}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_dictionary_entries': {
+            'params': ['device', 'dictionary', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/dictionary/{dictionary}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/dictionary/{dictionary}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'dlp_exactdatamatch': {
             'params': ['device', 'exact-data-match', 'vdom'],
@@ -1205,7 +2017,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/exact-data-match',
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/exact-data-match/{exact-data-match}'
             ],
-            'v_range': [['7.4.3', '']]
+            'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']]
         },
         'dlp_exactdatamatch_columns': {
             'params': ['columns', 'device', 'exact-data-match', 'vdom'],
@@ -1213,7 +2025,23 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/exact-data-match/{exact-data-match}/columns',
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/exact-data-match/{exact-data-match}/columns/{columns}'
             ],
-            'v_range': [['7.4.3', '']]
+            'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']]
+        },
+        'dlp_filepattern': {
+            'params': ['device', 'filepattern', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/filepattern',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/filepattern/{filepattern}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_filepattern_entries': {
+            'params': ['device', 'entries', 'filepattern', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/filepattern/{filepattern}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/filepattern/{filepattern}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'dlp_fpdocsource': {
             'params': ['device', 'fp-doc-source', 'vdom'],
@@ -1221,35 +2049,282 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/fp-doc-source',
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/fp-doc-source/{fp-doc-source}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'dlp_label': {
+            'params': ['device', 'label', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/label',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/label/{label}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'dlp_label_entries': {
+            'params': ['device', 'entries', 'label', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/label/{label}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/label/{label}/entries/{entries}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'dlp_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_profile_rule': {
+            'params': ['device', 'profile', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/profile/{profile}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/profile/{profile}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_sensor': {
+            'params': ['device', 'sensor', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/sensor',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/sensor/{sensor}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dlp_sensor_entries': {
+            'params': ['device', 'entries', 'sensor', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/sensor/{sensor}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/dlp/sensor/{sensor}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'dlp_settings': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/dlp/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'dnsfilter_domainfilter': {
+            'params': ['device', 'domain-filter', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/domain-filter',
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/domain-filter/{domain-filter}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dnsfilter_domainfilter_entries': {
+            'params': ['device', 'domain-filter', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/domain-filter/{domain-filter}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/domain-filter/{domain-filter}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dnsfilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dnsfilter_profile_dnstranslation': {
+            'params': ['device', 'dns-translation', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/dns-translation',
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/dns-translation/{dns-translation}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dnsfilter_profile_domainfilter': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/domain-filter'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dnsfilter_profile_ftgddns': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/ftgd-dns'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'dnsfilter_profile_ftgddns_filters': {
+            'params': ['device', 'filters', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/ftgd-dns/filters',
+                '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/ftgd-dns/filters/{filters}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'dpdk_cpus': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/dpdk/cpus'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'dpdk_global': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/dpdk/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'emailfilter_blockallowlist': {
+            'params': ['block-allow-list', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/block-allow-list',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/block-allow-list/{block-allow-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_blockallowlist_entries': {
+            'params': ['block-allow-list', 'device', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/block-allow-list/{block-allow-list}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/block-allow-list/{block-allow-list}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_bword': {
+            'params': ['bword', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/bword',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/bword/{bword}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_bword_entries': {
+            'params': ['bword', 'device', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/bword/{bword}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/bword/{bword}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_dnsbl': {
+            'params': ['device', 'dnsbl', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/dnsbl',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/dnsbl/{dnsbl}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_dnsbl_entries': {
+            'params': ['device', 'dnsbl', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/dnsbl/{dnsbl}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/dnsbl/{dnsbl}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'emailfilter_fortiguard': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/emailfilter/fortiguard'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'emailfilter_fortishield': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/emailfilter/fortishield'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_iptrust': {
+            'params': ['device', 'iptrust', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/iptrust',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/iptrust/{iptrust}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_iptrust_entries': {
+            'params': ['device', 'entries', 'iptrust', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/iptrust/{iptrust}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/iptrust/{iptrust}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_mheader': {
+            'params': ['device', 'mheader', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/mheader',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/mheader/{mheader}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_mheader_entries': {
+            'params': ['device', 'entries', 'mheader', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/mheader/{mheader}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/mheader/{mheader}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_options': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/emailfilter/options'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_profile_gmail': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}/gmail'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_profile_imap': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}/imap'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_profile_msnhotmail': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}/msn-hotmail'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_profile_pop3': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}/pop3'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'emailfilter_profile_smtp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}/smtp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'endpointcontrol_fctems': {
+            'params': ['device', 'fctems'],
+            'urls': [
+                '/pm/config/device/{device}/global/endpoint-control/fctems',
+                '/pm/config/device/{device}/global/endpoint-control/fctems/{fctems}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'endpointcontrol_fctemsoverride': {
             'params': ['device', 'fctems-override', 'vdom'],
@@ -1264,7 +2339,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/endpoint-control/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'ethernetoam_cfm': {
             'params': ['cfm', 'device', 'vdom'],
@@ -1288,49 +2363,57 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender',
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extendercontroller_extender_controllerreport': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}/controller-report'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extendercontroller_extender_modem1': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}/modem1'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extendercontroller_extender_modem1_autoswitch': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}/modem1/auto-switch'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extendercontroller_extender_modem2': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}/modem2'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extendercontroller_extender_modem2_autoswitch': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}/modem2/auto-switch'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extendercontroller_extender_wanextension': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extender-controller/extender/{extender}/wan-extension'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'extensioncontroller_dataplan': {
+            'params': ['dataplan', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/dataplan',
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/dataplan/{dataplan}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'extensioncontroller_extender': {
             'params': ['device', 'extender', 'vdom'],
@@ -1338,14 +2421,94 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender',
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender/{extender}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extensioncontroller_extender_wanextension': {
             'params': ['device', 'extender', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender/{extender}/wan-extension'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'extensioncontroller_extenderprofile': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile',
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_controllerreport': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/controller-report'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_modem1': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/modem1'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_modem1_autoswitch': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/modem1/auto-switch'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_modem2_autoswitch': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/modem2/auto-switch'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_smsnotification': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/sms-notification'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_smsnotification_alert': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/sms-notification/alert'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_cellular_smsnotification_receiver': {
+            'params': ['device', 'extender-profile', 'receiver', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/sms-notification/receiver',
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/sms-notification/receiver/{receiver'
+                '}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_wifi_radio1': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/wifi/radio-1'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'extensioncontroller_extenderprofile_wifi_radio2': {
+            'params': ['device', 'extender-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/wifi/radio-2'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'extensioncontroller_extendervap': {
             'params': ['device', 'extender-vap', 'vdom'],
@@ -1353,7 +2516,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-vap',
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-vap/{extender-vap}'
             ],
-            'v_range': [['7.4.3', '']]
+            'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']]
         },
         'extensioncontroller_fortigate': {
             'params': ['device', 'fortigate', 'vdom'],
@@ -1361,7 +2524,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/fortigate',
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/fortigate/{fortigate}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extensioncontroller_fortigateprofile': {
             'params': ['device', 'fortigate-profile', 'vdom'],
@@ -1369,14 +2532,166 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/fortigate-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/fortigate-profile/{fortigate-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'extensioncontroller_fortigateprofile_lanextension': {
             'params': ['device', 'fortigate-profile', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/fortigate-profile/{fortigate-profile}/lan-extension'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'filefilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/file-filter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/file-filter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'filefilter_profile_rules': {
+            'params': ['device', 'profile', 'rules', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/file-filter/profile/{profile}/rules',
+                '/pm/config/device/{device}/vdom/{vdom}/file-filter/profile/{profile}/rules/{rules}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy': {
+            'params': ['access-proxy', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6': {
+            'params': ['access-proxy6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway': {
+            'params': ['access-proxy6', 'api-gateway', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway6': {
+            'params': ['access-proxy6', 'api-gateway6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway6_realservers': {
+            'params': ['access-proxy6', 'api-gateway6', 'device', 'realservers', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}/realservers',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}/realservers/{realservers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway6_sslciphersuites': {
+            'params': ['access-proxy6', 'api-gateway6', 'device', 'ssl-cipher-suites', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}/ssl-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}/ssl-cipher-suites/{ssl-cipher-suit'
+                'es}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway_quic': {
+            'params': ['access-proxy6', 'api-gateway', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}/quic'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway_realservers': {
+            'params': ['access-proxy6', 'api-gateway', 'device', 'realservers', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}/realservers',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}/realservers/{realservers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy6_apigateway_sslciphersuites': {
+            'params': ['access-proxy6', 'api-gateway', 'device', 'ssl-cipher-suites', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}/ssl-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}/ssl-cipher-suites/{ssl-cipher-suites'
+                '}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway': {
+            'params': ['access-proxy', 'api-gateway', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway6': {
+            'params': ['access-proxy', 'api-gateway6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway6_quic': {
+            'params': ['access-proxy', 'api-gateway6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}/quic'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway6_realservers': {
+            'params': ['access-proxy', 'api-gateway6', 'device', 'realservers', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}/realservers',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}/realservers/{realservers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway6_sslciphersuites': {
+            'params': ['access-proxy', 'api-gateway6', 'device', 'ssl-cipher-suites', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}/ssl-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}/ssl-cipher-suites/{ssl-cipher-suites'
+                '}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway_quic': {
+            'params': ['access-proxy', 'api-gateway', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}/quic'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway_realservers': {
+            'params': ['access-proxy', 'api-gateway', 'device', 'realservers', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}/realservers',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}/realservers/{realservers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxy_apigateway_sslciphersuites': {
+            'params': ['access-proxy', 'api-gateway', 'device', 'ssl-cipher-suites', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}/ssl-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}/ssl-cipher-suites/{ssl-cipher-suites}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_accessproxysshclientcert': {
             'params': ['access-proxy-ssh-client-cert', 'device', 'vdom'],
@@ -1384,7 +2699,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-ssh-client-cert',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-ssh-client-cert/{access-proxy-ssh-client-cert}'
             ],
-            'v_range': [['7.2.6', '7.2.9']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_accessproxysshclientcert_certextension': {
             'params': ['access-proxy-ssh-client-cert', 'cert-extension', 'device', 'vdom'],
@@ -1392,14 +2707,142 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-ssh-client-cert/{access-proxy-ssh-client-cert}/cert-extension',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-ssh-client-cert/{access-proxy-ssh-client-cert}/cert-extension/{cert-extension}'
             ],
-            'v_range': [['7.2.6', '7.2.9']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_accessproxyvirtualhost': {
+            'params': ['access-proxy-virtual-host', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-virtual-host',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-virtual-host/{access-proxy-virtual-host}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address': {
+            'params': ['address', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6': {
+            'params': ['address6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6_list': {
+            'params': ['address6', 'device', 'list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/list',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/list/{list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6_subnetsegment': {
+            'params': ['address6', 'device', 'subnet-segment', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/subnet-segment',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/subnet-segment/{subnet-segment}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6_tagging': {
+            'params': ['address6', 'device', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6template': {
+            'params': ['address6-template', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6template_subnetsegment': {
+            'params': ['address6-template', 'device', 'subnet-segment', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}/subnet-segment',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}/subnet-segment/{subnet-segment}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address6template_subnetsegment_values': {
+            'params': ['address6-template', 'device', 'subnet-segment', 'values', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}/subnet-segment/{subnet-segment}/values',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}/subnet-segment/{subnet-segment}/values/{values}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address_list': {
+            'params': ['address', 'device', 'list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}/list',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}/list/{list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_address_tagging': {
+            'params': ['address', 'device', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_addrgrp': {
+            'params': ['addrgrp', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp/{addrgrp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_addrgrp6': {
+            'params': ['addrgrp6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp6/{addrgrp6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_addrgrp6_tagging': {
+            'params': ['addrgrp6', 'device', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp6/{addrgrp6}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp6/{addrgrp6}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_addrgrp_tagging': {
+            'params': ['addrgrp', 'device', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp/{addrgrp}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp/{addrgrp}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_authportal': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/auth-portal'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_centralsnatmap': {
+            'params': ['central-snat-map', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/central-snat-map',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/central-snat-map/{central-snat-map}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_dnstranslation': {
             'params': ['device', 'dnstranslation', 'vdom'],
@@ -1407,21 +2850,132 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/dnstranslation',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/dnstranslation/{dnstranslation}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_dospolicy': {
+            'params': ['DoS-policy', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy/{DoS-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_dospolicy6': {
+            'params': ['DoS-policy6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy6/{DoS-policy6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_dospolicy6_anomaly': {
+            'params': ['DoS-policy6', 'anomaly', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy6/{DoS-policy6}/anomaly',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy6/{DoS-policy6}/anomaly/{anomaly}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_global': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_identitybasedroute': {
+            'params': ['device', 'identity-based-route', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/identity-based-route',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/identity-based-route/{identity-based-route}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_identitybasedroute_rule': {
+            'params': ['device', 'identity-based-route', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/identity-based-route/{identity-based-route}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/identity-based-route/{identity-based-route}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_interfacepolicy': {
+            'params': ['device', 'interface-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/interface-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/interface-policy/{interface-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_interfacepolicy6': {
+            'params': ['device', 'interface-policy6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/interface-policy6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/interface-policy6/{interface-policy6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetservice': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/internet-service'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetserviceaddition': {
+            'params': ['device', 'internet-service-addition'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/internet-service-addition',
+                '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetserviceaddition_entry': {
+            'params': ['device', 'entry', 'internet-service-addition'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}/entry',
+                '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}/entry/{entry}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetserviceaddition_entry_portrange': {
+            'params': ['device', 'entry', 'internet-service-addition', 'port-range'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}/entry/{entry}/port-range',
+                '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}/entry/{entry}/port-range/{port-range}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_internetserviceappend': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/internet-service-append'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_internetservicecustom': {
+            'params': ['device', 'internet-service-custom', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom/{internet-service-custom}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetservicecustom_entry': {
+            'params': ['device', 'entry', 'internet-service-custom', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom/{internet-service-custom}/entry',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom/{internet-service-custom}/entry/{entry}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetservicecustomgroup': {
+            'params': ['device', 'internet-service-custom-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom-group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom-group/{internet-service-custom-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_internetservicedefinition': {
             'params': ['device', 'internet-service-definition'],
@@ -1429,7 +2983,7 @@ def main():
                 '/pm/config/device/{device}/global/firewall/internet-service-definition',
                 '/pm/config/device/{device}/global/firewall/internet-service-definition/{internet-service-definition}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_internetservicedefinition_entry': {
             'params': ['device', 'entry', 'internet-service-definition'],
@@ -1437,7 +2991,7 @@ def main():
                 '/pm/config/device/{device}/global/firewall/internet-service-definition/{internet-service-definition}/entry',
                 '/pm/config/device/{device}/global/firewall/internet-service-definition/{internet-service-definition}/entry/{entry}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_internetservicedefinition_entry_portrange': {
             'params': ['device', 'entry', 'internet-service-definition', 'port-range'],
@@ -1445,7 +2999,7 @@ def main():
                 '/pm/config/device/{device}/global/firewall/internet-service-definition/{internet-service-definition}/entry/{entry}/port-range',
                 '/pm/config/device/{device}/global/firewall/internet-service-definition/{internet-service-definition}/entry/{entry}/port-range/{port-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_internetserviceextension': {
             'params': ['device', 'internet-service-extension', 'vdom'],
@@ -1453,7 +3007,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
         },
         'firewall_internetserviceextension_disableentry': {
             'params': ['device', 'disable-entry', 'internet-service-extension', 'vdom'],
@@ -1461,7 +3015,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/disable-entry',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/disable-entry/{disable-entry}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
         },
         'firewall_internetserviceextension_disableentry_ip6range': {
             'params': ['device', 'disable-entry', 'internet-service-extension', 'ip6-range', 'vdom'],
@@ -1471,7 +3025,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/disable-entry/{disable-entry}/ip6-ra'
                 'nge/{ip6-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
         },
         'firewall_internetserviceextension_disableentry_iprange': {
             'params': ['device', 'disable-entry', 'internet-service-extension', 'ip-range', 'vdom'],
@@ -1481,7 +3035,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/disable-entry/{disable-entry}/ip-ran'
                 'ge/{ip-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
         },
         'firewall_internetserviceextension_disableentry_portrange': {
             'params': ['device', 'disable-entry', 'internet-service-extension', 'port-range', 'vdom'],
@@ -1491,7 +3045,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/disable-entry/{disable-entry}/port-r'
                 'ange/{port-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
         },
         'firewall_internetserviceextension_entry': {
             'params': ['device', 'entry', 'internet-service-extension', 'vdom'],
@@ -1499,7 +3053,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/entry',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/entry/{entry}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
         },
         'firewall_internetserviceextension_entry_portrange': {
             'params': ['device', 'entry', 'internet-service-extension', 'port-range', 'vdom'],
@@ -1508,14 +3062,30 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-extension/{internet-service-extension}/entry/{entry}/port-range/{port-range'
                 '}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
+        },
+        'firewall_internetservicegroup': {
+            'params': ['device', 'internet-service-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-group/{internet-service-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_internetservicename': {
+            'params': ['device', 'internet-service-name'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/internet-service-name',
+                '/pm/config/device/{device}/global/firewall/internet-service-name/{internet-service-name}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_ipmacbinding_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ipmacbinding/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_ipmacbinding_table': {
             'params': ['device', 'table', 'vdom'],
@@ -1523,7 +3093,23 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ipmacbinding/table',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ipmacbinding/table/{table}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_ippool': {
+            'params': ['device', 'ippool', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ippool',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ippool/{ippool}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_ippool6': {
+            'params': ['device', 'ippool6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ippool6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ippool6/{ippool6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_iptranslation': {
             'params': ['device', 'ip-translation', 'vdom'],
@@ -1531,14 +3117,94 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ip-translation',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ip-translation/{ip-translation}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_ipv6ehfilter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/ipv6-eh-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_ldbmonitor': {
+            'params': ['device', 'ldb-monitor', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ldb-monitor',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ldb-monitor/{ldb-monitor}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_localinpolicy': {
+            'params': ['device', 'local-in-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/local-in-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/local-in-policy/{local-in-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_localinpolicy6': {
+            'params': ['device', 'local-in-policy6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/local-in-policy6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/local-in-policy6/{local-in-policy6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_multicastaddress': {
+            'params': ['device', 'multicast-address', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address/{multicast-address}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_multicastaddress6': {
+            'params': ['device', 'multicast-address6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address6/{multicast-address6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_multicastaddress6_tagging': {
+            'params': ['device', 'multicast-address6', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address6/{multicast-address6}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address6/{multicast-address6}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_multicastaddress_tagging': {
+            'params': ['device', 'multicast-address', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address/{multicast-address}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address/{multicast-address}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_multicastpolicy': {
+            'params': ['device', 'multicast-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-policy/{multicast-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_multicastpolicy6': {
+            'params': ['device', 'multicast-policy6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-policy6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-policy6/{multicast-policy6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_networkservicedynamic': {
+            'params': ['device', 'network-service-dynamic', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/network-service-dynamic',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/network-service-dynamic/{network-service-dynamic}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_ondemandsniffer': {
             'params': ['device', 'on-demand-sniffer', 'vdom'],
@@ -1554,7 +3220,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/pfcp',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/pfcp/{pfcp}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_policy': {
             'params': ['device', 'policy', 'vdom'],
@@ -1563,13 +3229,308 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/policy/{policy}'
             ]
         },
+        'firewall_profilegroup': {
+            'params': ['device', 'profile-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-group/{profile-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_cifs': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/cifs'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_cifs_serverkeytab': {
+            'params': ['device', 'profile-protocol-options', 'server-keytab', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/cifs/server-keytab',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/cifs/server-keytab/{server-keytab}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_dns': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/dns'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_ftp': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/ftp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_http': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/http'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_imap': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/imap'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_mailsignature': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/mail-signature'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_mapi': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/mapi'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_nntp': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/nntp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_pop3': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/pop3'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_smtp': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/smtp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_profileprotocoloptions_ssh': {
+            'params': ['device', 'profile-protocol-options', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}/ssh'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddress': {
+            'params': ['device', 'proxy-address', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddress6': {
+            'params': ['device', 'proxy-address6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddress6_headergroup': {
+            'params': ['device', 'header-group', 'proxy-address6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}/header-group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}/header-group/{header-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddress6_tagging': {
+            'params': ['device', 'proxy-address6', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddress_headergroup': {
+            'params': ['device', 'header-group', 'proxy-address', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}/header-group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}/header-group/{header-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddress_tagging': {
+            'params': ['device', 'proxy-address', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddrgrp': {
+            'params': ['device', 'proxy-addrgrp', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp/{proxy-addrgrp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddrgrp6': {
+            'params': ['device', 'proxy-addrgrp6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp6/{proxy-addrgrp6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddrgrp6_tagging': {
+            'params': ['device', 'proxy-addrgrp6', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp6/{proxy-addrgrp6}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp6/{proxy-addrgrp6}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxyaddrgrp_tagging': {
+            'params': ['device', 'proxy-addrgrp', 'tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp/{proxy-addrgrp}/tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp/{proxy-addrgrp}/tagging/{tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_proxypolicy': {
+            'params': ['device', 'proxy-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-policy/{proxy-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_responseshapingpolicy': {
+            'params': ['device', 'response-shaping-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/response-shaping-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/response-shaping-policy/{response-shaping-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_schedule_group': {
+            'params': ['device', 'group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/group/{group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_schedule_onetime': {
+            'params': ['device', 'onetime', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/onetime',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/onetime/{onetime}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_schedule_recurring': {
+            'params': ['device', 'recurring', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/recurring',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/recurring/{recurring}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_securitypolicy': {
+            'params': ['device', 'security-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/security-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/security-policy/{security-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_service_category': {
+            'params': ['category', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/service/category',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/service/category/{category}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_service_custom': {
+            'params': ['custom', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/service/custom',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/service/custom/{custom}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_service_group': {
+            'params': ['device', 'group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/service/group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/service/group/{group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_shaper_peripshaper': {
+            'params': ['device', 'per-ip-shaper', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaper/per-ip-shaper',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaper/per-ip-shaper/{per-ip-shaper}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_shaper_trafficshaper': {
+            'params': ['device', 'traffic-shaper', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaper/traffic-shaper',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaper/traffic-shaper/{traffic-shaper}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_shapingpolicy': {
+            'params': ['device', 'shaping-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-policy/{shaping-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_shapingprofile': {
+            'params': ['device', 'shaping-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/shaping-profile',
+                '/pm/config/device/{device}/global/firewall/shaping-profile/{shaping-profile}',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-profile',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-profile/{shaping-profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_shapingprofile_shapingentries': {
+            'params': ['device', 'shaping-entries', 'shaping-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-profile/{shaping-profile}/shaping-entries',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-profile/{shaping-profile}/shaping-entries/{shaping-entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'firewall_sniffer': {
             'params': ['device', 'sniffer', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/sniffer',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/sniffer/{sniffer}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_sniffer_anomaly': {
             'params': ['anomaly', 'device', 'sniffer', 'vdom'],
@@ -1577,7 +3538,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/sniffer/{sniffer}/anomaly',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/sniffer/{sniffer}/anomaly/{anomaly}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_ssh_hostkey': {
             'params': ['device', 'host-key', 'vdom'],
@@ -1585,7 +3546,15 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/host-key',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/host-key/{host-key}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_ssh_localca': {
+            'params': ['device', 'local-ca', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/local-ca',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/local-ca/{local-ca}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_ssh_localkey': {
             'params': ['device', 'local-key', 'vdom'],
@@ -1593,21 +3562,36 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/local-key',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/local-key/{local-key}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_ssh_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_ssl_defaultcertificate': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl/default-certificate'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_ssl_keyringlist': {
+            'params': ['device', 'keyring-list'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/ssl/keyring-list',
+                '/pm/config/device/{device}/global/firewall/ssl/keyring-list/{keyring-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_ssl_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/ssl/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'firewall_sslserver': {
             'params': ['device', 'ssl-server', 'vdom'],
@@ -1615,7 +3599,110 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-server',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-server/{ssl-server}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_sslsshprofile': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_dot': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/dot'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_echoutersni': {
+            'params': ['device', 'ech-outer-sni', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ech-outer-sni',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ech-outer-sni/{ech-outer-sni}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_ftps': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ftps'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_https': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/https'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_imaps': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/imaps'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_pop3s': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/pop3s'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_smtps': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/smtps'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_ssh': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssh'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_ssl': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_sslclientcertificate': {
+            'params': ['device', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-client-certificate'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_sslexempt': {
+            'params': ['device', 'ssl-exempt', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-exempt',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-exempt/{ssl-exempt}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_sslsshprofile_sslserver': {
+            'params': ['device', 'ssl-server', 'ssl-ssh-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-server',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-server/{ssl-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_trafficclass': {
+            'params': ['device', 'traffic-class', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/traffic-class',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/traffic-class/{traffic-class}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'firewall_ttlpolicy': {
             'params': ['device', 'ttl-policy', 'vdom'],
@@ -1623,14 +3710,139 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ttl-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ttl-policy/{ttl-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'firewall_vendormac': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/firewall/vendor-mac'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip': {
+            'params': ['device', 'vdom', 'vip'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip6': {
+            'params': ['device', 'vdom', 'vip6'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip6_quic': {
+            'params': ['device', 'vdom', 'vip6'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/quic'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip6_realservers': {
+            'params': ['device', 'realservers', 'vdom', 'vip6'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/realservers',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/realservers/{realservers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip6_sslciphersuites': {
+            'params': ['device', 'ssl-cipher-suites', 'vdom', 'vip6'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/ssl-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/ssl-cipher-suites/{ssl-cipher-suites}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip6_sslserverciphersuites': {
+            'params': ['device', 'ssl-server-cipher-suites', 'vdom', 'vip6'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/ssl-server-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/ssl-server-cipher-suites/{ssl-server-cipher-suites}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip_gslbpublicips': {
+            'params': ['device', 'gslb-public-ips', 'vdom', 'vip'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/gslb-public-ips',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/gslb-public-ips/{gslb-public-ips}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip_quic': {
+            'params': ['device', 'vdom', 'vip'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/quic'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip_realservers': {
+            'params': ['device', 'realservers', 'vdom', 'vip'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/realservers',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/realservers/{realservers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip_sslciphersuites': {
+            'params': ['device', 'ssl-cipher-suites', 'vdom', 'vip'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/ssl-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/ssl-cipher-suites/{ssl-cipher-suites}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vip_sslserverciphersuites': {
+            'params': ['device', 'ssl-server-cipher-suites', 'vdom', 'vip'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/ssl-server-cipher-suites',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/ssl-server-cipher-suites/{ssl-server-cipher-suites}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vipgrp': {
+            'params': ['device', 'vdom', 'vipgrp'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vipgrp',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vipgrp/{vipgrp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_vipgrp6': {
+            'params': ['device', 'vdom', 'vipgrp6'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vipgrp6',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/vipgrp6/{vipgrp6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_wildcardfqdn_custom': {
+            'params': ['custom', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/wildcard-fqdn/custom',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/wildcard-fqdn/custom/{custom}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'firewall_wildcardfqdn_group': {
+            'params': ['device', 'group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/wildcard-fqdn/group',
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/wildcard-fqdn/group/{group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'ftpproxy_explicit': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ftp-proxy/explicit'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'gtp_apnshaper': {
             'params': ['apn-shaper', 'device', 'vdom'],
@@ -1638,7 +3850,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/apn-shaper',
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/apn-shaper/{apn-shaper}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'gtp_ieallowlist': {
             'params': ['device', 'ie-allow-list', 'vdom'],
@@ -1646,7 +3858,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/ie-allow-list',
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/ie-allow-list/{ie-allow-list}'
             ],
-            'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']]
+            'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']]
         },
         'gtp_ieallowlist_entries': {
             'params': ['device', 'entries', 'ie-allow-list', 'vdom'],
@@ -1654,7 +3866,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/ie-allow-list/{ie-allow-list}/entries',
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/ie-allow-list/{ie-allow-list}/entries/{entries}'
             ],
-            'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']]
+            'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']]
         },
         'gtp_rattimeoutprofile': {
             'params': ['device', 'rat-timeout-profile', 'vdom'],
@@ -1662,7 +3874,23 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/rat-timeout-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/gtp/rat-timeout-profile/{rat-timeout-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.4.6'], ['7.4.8', '']]
+        },
+        'icap_localserver': {
+            'params': ['device', 'local-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/icap/local-server',
+                '/pm/config/device/{device}/vdom/{vdom}/icap/local-server/{local-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'icap_localserver_icapservice': {
+            'params': ['device', 'icap-service', 'local-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/icap/local-server/{local-server}/icap-service',
+                '/pm/config/device/{device}/vdom/{vdom}/icap/local-server/{local-server}/icap-service/{icap-service}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'icap_profile': {
             'params': ['device', 'profile', 'vdom'],
@@ -1670,6 +3898,38 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/icap/profile',
                 '/pm/config/device/{device}/vdom/{vdom}/icap/profile/{profile}'
             ]
+        },
+        'icap_profile_icapheaders': {
+            'params': ['device', 'icap-headers', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/icap/profile/{profile}/icap-headers',
+                '/pm/config/device/{device}/vdom/{vdom}/icap/profile/{profile}/icap-headers/{icap-headers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'icap_remoteserver': {
+            'params': ['device', 'remote-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server',
+                '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server/{remote-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'icap_remoteservergroup': {
+            'params': ['device', 'remote-server-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server-group',
+                '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server-group/{remote-server-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'icap_remoteservergroup_serverlist': {
+            'params': ['device', 'remote-server-group', 'server-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server-group/{remote-server-group}/server-list',
+                '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server-group/{remote-server-group}/server-list/{server-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'icap_server': {
             'params': ['device', 'server', 'vdom'],
@@ -1684,7 +3944,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/icap/server-group',
                 '/pm/config/device/{device}/vdom/{vdom}/icap/server-group/{server-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2'], ['7.6.4', '']]
         },
         'icap_servergroup_serverlist': {
             'params': ['device', 'server-group', 'server-list', 'vdom'],
@@ -1692,56 +3952,170 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/icap/server-group/{server-group}/server-list',
                 '/pm/config/device/{device}/vdom/{vdom}/icap/server-group/{server-group}/server-list/{server-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2'], ['7.6.4', '']]
+        },
+        'imageanalyzer_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/image-analyzer/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/image-analyzer/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'ips_custom': {
+            'params': ['custom', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ips/custom',
+                '/pm/config/device/{device}/vdom/{vdom}/ips/custom/{custom}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'ips_decoder': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/ips/decoder'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'ips_decoder_parameter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/ips/decoder/parameter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'ips_global': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/ips/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'ips_rule': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/ips/rule'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'ips_rulesettings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ips/rule-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'ips_sensor': {
+            'params': ['device', 'sensor', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ips/sensor',
+                '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'ips_sensor_entries': {
+            'params': ['device', 'entries', 'sensor', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'ips_sensor_entries_exemptip': {
+            'params': ['device', 'entries', 'exempt-ip', 'sensor', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}/entries/{entries}/exempt-ip',
+                '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}/entries/{entries}/exempt-ip/{exempt-ip}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'ips_settings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ips/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'ips_tlsactiveprobe': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/ips/global/tls-active-probe'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'isolator_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/isolator/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/isolator/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'isolator_profile_entries': {
+            'params': ['device', 'entries', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/isolator/profile/{profile}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/isolator/profile/{profile}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'isolator_setting': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/isolator/setting'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'llm_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/llm/profile/{profile}'
+            ],
+            'v_range': [['7.6.5', '']]
+        },
+        'llm_profile_chat': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/profile/{profile}/chat'
+            ],
+            'v_range': [['7.6.5', '']]
+        },
+        'llm_profile_imagegen': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/profile/{profile}/image-gen'
+            ],
+            'v_range': [['7.6.5', '']]
+        },
+        'llm_profile_listmodels': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/profile/{profile}/list-models'
+            ],
+            'v_range': [['7.6.5', '']]
+        },
+        'llm_profile_response': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/profile/{profile}/response'
+            ],
+            'v_range': [['7.6.5', '']]
+        },
+        'llm_proxy': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/proxy'
+            ],
+            'v_range': [['7.6.5', '']]
+        },
+        'llm_server': {
+            'params': ['device', 'server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/llm/server',
+                '/pm/config/device/{device}/vdom/{vdom}/llm/server/{server}'
+            ],
+            'v_range': [['7.6.5', '']]
         },
         'loadbalance_flowrule': {
             'params': ['device', 'flow-rule'],
@@ -1749,14 +4123,14 @@ def main():
                 '/pm/config/device/{device}/global/load-balance/flow-rule',
                 '/pm/config/device/{device}/global/load-balance/flow-rule/{flow-rule}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'loadbalance_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/load-balance/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'loadbalance_setting_workers': {
             'params': ['device', 'workers'],
@@ -1764,7 +4138,7 @@ def main():
                 '/pm/config/device/{device}/global/load-balance/setting/workers',
                 '/pm/config/device/{device}/global/load-balance/setting/workers/{workers}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'loadbalance_workergroup': {
             'params': ['device', 'worker-group'],
@@ -1779,7 +4153,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/log/azure-security-center2/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter2_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -1787,14 +4161,14 @@ def main():
                 '/pm/config/device/{device}/global/log/azure-security-center2/filter/free-style',
                 '/pm/config/device/{device}/global/log/azure-security-center2/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter2_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/azure-security-center2/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter2_setting_customfieldname': {
             'params': ['custom-field-name', 'device'],
@@ -1802,14 +4176,14 @@ def main():
                 '/pm/config/device/{device}/global/log/azure-security-center2/setting/custom-field-name',
                 '/pm/config/device/{device}/global/log/azure-security-center2/setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/azure-security-center/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -1817,14 +4191,14 @@ def main():
                 '/pm/config/device/{device}/global/log/azure-security-center/filter/free-style',
                 '/pm/config/device/{device}/global/log/azure-security-center/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/azure-security-center/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_azuresecuritycenter_setting_customfieldname': {
             'params': ['custom-field-name', 'device'],
@@ -1832,14 +4206,22 @@ def main():
                 '/pm/config/device/{device}/global/log/azure-security-center/setting/custom-field-name',
                 '/pm/config/device/{device}/global/log/azure-security-center/setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_customfield': {
+            'params': ['custom-field', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/custom-field',
+                '/pm/config/device/{device}/vdom/{vdom}/log/custom-field/{custom-field}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_disk_filter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/disk/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_disk_filter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -1847,28 +4229,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/disk/filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/disk/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_disk_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/disk/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_eventfilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/eventfilter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer2_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer2/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer2_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -1876,14 +4258,14 @@ def main():
                 '/pm/config/device/{device}/global/log/fortianalyzer2/filter/free-style',
                 '/pm/config/device/{device}/global/log/fortianalyzer2/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer2_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer2/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer2_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -1891,28 +4273,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer2/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer2/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer2_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer2/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer2_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer2/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer3_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer3/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer3_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -1920,14 +4302,14 @@ def main():
                 '/pm/config/device/{device}/global/log/fortianalyzer3/filter/free-style',
                 '/pm/config/device/{device}/global/log/fortianalyzer3/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer3_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer3/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer3_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -1935,28 +4317,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer3/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer3/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer3_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer3/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer3_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer3/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -1964,14 +4346,14 @@ def main():
                 '/pm/config/device/{device}/global/log/fortianalyzer/filter/free-style',
                 '/pm/config/device/{device}/global/log/fortianalyzer/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -1979,28 +4361,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzer_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzercloud_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer-cloud/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzercloud_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2008,14 +4390,14 @@ def main():
                 '/pm/config/device/{device}/global/log/fortianalyzer-cloud/filter/free-style',
                 '/pm/config/device/{device}/global/log/fortianalyzer-cloud/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzercloud_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer-cloud/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzercloud_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2023,28 +4405,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer-cloud/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer-cloud/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzercloud_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortianalyzer-cloud/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortianalyzercloud_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortianalyzer-cloud/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortiguard_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortiguard/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortiguard_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2052,14 +4434,14 @@ def main():
                 '/pm/config/device/{device}/global/log/fortiguard/filter/free-style',
                 '/pm/config/device/{device}/global/log/fortiguard/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortiguard_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortiguard/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortiguard_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2067,35 +4449,35 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortiguard/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortiguard/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortiguard_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/fortiguard/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_fortiguard_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/fortiguard/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_guidisplay': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/gui-display'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_memory_filter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/memory/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_memory_filter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2103,28 +4485,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/memory/filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/memory/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_memory_globalsetting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/memory/global-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_memory_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/memory/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_nulldevice_filter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/null-device/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_nulldevice_filter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2132,35 +4514,35 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/null-device/filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/null-device/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_nulldevice_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/null-device/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_slbc_globalsetting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/slbc/global-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd2/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2168,14 +4550,14 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd2/filter/free-style',
                 '/pm/config/device/{device}/global/log/syslogd2/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2183,14 +4565,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_overridesetting_customfieldname': {
             'params': ['custom-field-name', 'device', 'vdom'],
@@ -2198,14 +4580,22 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-setting/custom-field-name',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd2_overridesetting_logtemplates': {
+            'params': ['device', 'log-templates', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-setting/log-templates',
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd2_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd2/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd2_setting_customfieldname': {
             'params': ['custom-field-name', 'device'],
@@ -2213,14 +4603,22 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd2/setting/custom-field-name',
                 '/pm/config/device/{device}/global/log/syslogd2/setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd2_setting_logtemplates': {
+            'params': ['device', 'log-templates'],
+            'urls': [
+                '/pm/config/device/{device}/global/log/syslogd2/setting/log-templates',
+                '/pm/config/device/{device}/global/log/syslogd2/setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd3_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd3/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd3_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2228,14 +4626,14 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd3/filter/free-style',
                 '/pm/config/device/{device}/global/log/syslogd3/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd3_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd3_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2243,14 +4641,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd3_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd3_overridesetting_customfieldname': {
             'params': ['custom-field-name', 'device', 'vdom'],
@@ -2258,14 +4656,22 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-setting/custom-field-name',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd3_overridesetting_logtemplates': {
+            'params': ['device', 'log-templates', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-setting/log-templates',
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd3_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd3/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd3_setting_customfieldname': {
             'params': ['custom-field-name', 'device'],
@@ -2273,14 +4679,22 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd3/setting/custom-field-name',
                 '/pm/config/device/{device}/global/log/syslogd3/setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd3_setting_logtemplates': {
+            'params': ['device', 'log-templates'],
+            'urls': [
+                '/pm/config/device/{device}/global/log/syslogd3/setting/log-templates',
+                '/pm/config/device/{device}/global/log/syslogd3/setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd4_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd4/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd4_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2288,14 +4702,14 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd4/filter/free-style',
                 '/pm/config/device/{device}/global/log/syslogd4/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd4_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd4_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2303,14 +4717,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd4_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd4_overridesetting_customfieldname': {
             'params': ['custom-field-name', 'device', 'vdom'],
@@ -2318,14 +4732,22 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-setting/custom-field-name',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd4_overridesetting_logtemplates': {
+            'params': ['device', 'log-templates', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-setting/log-templates',
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd4_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd4/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd4_setting_customfieldname': {
             'params': ['custom-field-name', 'device'],
@@ -2333,14 +4755,22 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd4/setting/custom-field-name',
                 '/pm/config/device/{device}/global/log/syslogd4/setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd4_setting_logtemplates': {
+            'params': ['device', 'log-templates'],
+            'urls': [
+                '/pm/config/device/{device}/global/log/syslogd4/setting/log-templates',
+                '/pm/config/device/{device}/global/log/syslogd4/setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2348,14 +4778,14 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd/filter/free-style',
                 '/pm/config/device/{device}/global/log/syslogd/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd_overridefilter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd_overridefilter_freestyle': {
             'params': ['device', 'free-style', 'vdom'],
@@ -2363,14 +4793,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-filter/free-style',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd_overridesetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd_overridesetting_customfieldname': {
             'params': ['custom-field-name', 'device', 'vdom'],
@@ -2378,14 +4808,22 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-setting/custom-field-name',
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd_overridesetting_logtemplates': {
+            'params': ['device', 'log-templates', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-setting/log-templates',
+                '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_syslogd_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_syslogd_setting_customfieldname': {
             'params': ['custom-field-name', 'device'],
@@ -2393,56 +4831,116 @@ def main():
                 '/pm/config/device/{device}/global/log/syslogd/setting/custom-field-name',
                 '/pm/config/device/{device}/global/log/syslogd/setting/custom-field-name/{custom-field-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_syslogd_setting_logtemplates': {
+            'params': ['device', 'log-templates'],
+            'urls': [
+                '/pm/config/device/{device}/global/log/syslogd/setting/log-templates',
+                '/pm/config/device/{device}/global/log/syslogd/setting/log-templates/{log-templates}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_tacacsaccounting2_filter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/tacacs+accounting2/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_tacacsaccounting2_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/tacacs+accounting2/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_tacacsaccounting3_filter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/tacacs+accounting3/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_tacacsaccounting3_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/tacacs+accounting3/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_tacacsaccounting_filter': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/tacacs+accounting/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_tacacsaccounting_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/tacacs+accounting/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'log_threatweight': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'log_threatweight_application': {
+            'params': ['application', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/application',
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/application/{application}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'log_threatweight_geolocation': {
+            'params': ['device', 'geolocation', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/geolocation',
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/geolocation/{geolocation}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'log_threatweight_ips': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/ips'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'log_threatweight_level': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/level'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'log_threatweight_malware': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/malware'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'log_threatweight_web': {
+            'params': ['device', 'vdom', 'web'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/web',
+                '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/web/{web}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'log_webtrends_filter': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/webtrends/filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_webtrends_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2450,35 +4948,35 @@ def main():
                 '/pm/config/device/{device}/global/log/webtrends/filter/free-style',
                 '/pm/config/device/{device}/global/log/webtrends/filter/free-style/{free-style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'log_webtrends_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/log/webtrends/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'monitoring_np6ipsecengine': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/monitoring/np6-ipsec-engine'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'monitoring_npuhpe': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/monitoring/npu-hpe'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'notification': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/notification'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'nsx_profile': {
             'params': ['device', 'profile'],
@@ -2486,7 +4984,7 @@ def main():
                 '/pm/config/device/{device}/global/nsx/profile',
                 '/pm/config/device/{device}/global/nsx/profile/{profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'nsxt_servicechain': {
             'params': ['device', 'service-chain'],
@@ -2494,7 +4992,7 @@ def main():
                 '/pm/config/device/{device}/global/nsxt/service-chain',
                 '/pm/config/device/{device}/global/nsxt/service-chain/{service-chain}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'nsxt_servicechain_serviceindex': {
             'params': ['device', 'service-chain', 'service-index'],
@@ -2502,14 +5000,14 @@ def main():
                 '/pm/config/device/{device}/global/nsxt/service-chain/{service-chain}/service-index',
                 '/pm/config/device/{device}/global/nsxt/service-chain/{service-chain}/service-index/{service-index}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'nsxt_setting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/nsxt/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'pfcp_messagefilter': {
             'params': ['device', 'message-filter', 'vdom'],
@@ -2517,7 +5015,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/pfcp/message-filter',
                 '/pm/config/device/{device}/vdom/{vdom}/pfcp/message-filter/{message-filter}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart': {
             'params': ['chart', 'device', 'vdom'],
@@ -2525,14 +5023,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart',
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_categoryseries': {
             'params': ['chart', 'device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/category-series'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_column': {
             'params': ['chart', 'column', 'device', 'vdom'],
@@ -2540,7 +5038,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/column',
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/column/{column}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_column_mapping': {
             'params': ['chart', 'column', 'device', 'mapping', 'vdom'],
@@ -2548,7 +5046,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/column/{column}/mapping',
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/column/{column}/mapping/{mapping}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_drilldowncharts': {
             'params': ['chart', 'device', 'drill-down-charts', 'vdom'],
@@ -2556,28 +5054,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/drill-down-charts',
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/drill-down-charts/{drill-down-charts}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_valueseries': {
             'params': ['chart', 'device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/value-series'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_xseries': {
             'params': ['chart', 'device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/x-series'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_chart_yseries': {
             'params': ['chart', 'device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/y-series'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_dataset': {
             'params': ['dataset', 'device', 'vdom'],
@@ -2585,7 +5083,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset',
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_dataset_field': {
             'params': ['dataset', 'device', 'field', 'vdom'],
@@ -2593,7 +5091,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}/field',
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}/field/{field}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_dataset_parameters': {
             'params': ['dataset', 'device', 'parameters', 'vdom'],
@@ -2601,7 +5099,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}/parameters',
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}/parameters/{parameters}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout': {
             'params': ['device', 'layout', 'vdom'],
@@ -2609,7 +5107,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout',
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_bodyitem': {
             'params': ['body-item', 'device', 'layout', 'vdom'],
@@ -2617,7 +5115,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item',
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item/{body-item}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_bodyitem_list': {
             'params': ['body-item', 'device', 'layout', 'list', 'vdom'],
@@ -2625,7 +5123,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item/{body-item}/list',
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item/{body-item}/list/{list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_bodyitem_parameters': {
             'params': ['body-item', 'device', 'layout', 'parameters', 'vdom'],
@@ -2633,21 +5131,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item/{body-item}/parameters',
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item/{body-item}/parameters/{parameters}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_page': {
             'params': ['device', 'layout', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_page_footer': {
             'params': ['device', 'layout', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page/footer'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_page_footer_footeritem': {
             'params': ['device', 'footer-item', 'layout', 'vdom'],
@@ -2655,14 +5153,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page/footer/footer-item',
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page/footer/footer-item/{footer-item}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_page_header': {
             'params': ['device', 'layout', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page/header'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_layout_page_header_headeritem': {
             'params': ['device', 'header-item', 'layout', 'vdom'],
@@ -2670,14 +5168,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page/header/header-item',
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/page/header/header-item/{header-item}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_style': {
             'params': ['device', 'style', 'vdom'],
@@ -2685,7 +5183,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/style',
                 '/pm/config/device/{device}/vdom/{vdom}/report/style/{style}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'report_theme': {
             'params': ['device', 'theme', 'vdom'],
@@ -2693,7 +5191,55 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/report/theme',
                 '/pm/config/device/{device}/vdom/{vdom}/report/theme/{theme}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'router_accesslist': {
+            'params': ['access-list', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list',
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list/{access-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_accesslist6': {
+            'params': ['access-list6', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list6',
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list6/{access-list6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_accesslist6_rule': {
+            'params': ['access-list6', 'device', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list6/{access-list6}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list6/{access-list6}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_accesslist_rule': {
+            'params': ['access-list', 'device', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list/{access-list}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/access-list/{access-list}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_aspathlist': {
+            'params': ['aspath-list', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/aspath-list',
+                '/pm/config/device/{device}/vdom/{vdom}/router/aspath-list/{aspath-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_aspathlist_rule': {
+            'params': ['aspath-list', 'device', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/aspath-list/{aspath-list}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/aspath-list/{aspath-list}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'router_authpath': {
             'params': ['auth-path', 'device', 'vdom'],
@@ -2701,21 +5247,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/auth-path',
                 '/pm/config/device/{device}/vdom/{vdom}/router/auth-path/{auth-path}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bfd': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bfd6': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bfd6_multihoptemplate': {
             'params': ['device', 'multihop-template', 'vdom'],
@@ -2723,7 +5269,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd6/multihop-template',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd6/multihop-template/{multihop-template}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bfd6_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -2731,7 +5277,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd6/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd6/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bfd_multihoptemplate': {
             'params': ['device', 'multihop-template', 'vdom'],
@@ -2739,7 +5285,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd/multihop-template',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd/multihop-template/{multihop-template}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bfd_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -2747,14 +5293,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bfd/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_admindistance': {
             'params': ['admin-distance', 'device', 'vdom'],
@@ -2762,7 +5308,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/admin-distance',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/admin-distance/{admin-distance}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_aggregateaddress': {
             'params': ['aggregate-address', 'device', 'vdom'],
@@ -2770,7 +5316,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/aggregate-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/aggregate-address/{aggregate-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_aggregateaddress6': {
             'params': ['aggregate-address6', 'device', 'vdom'],
@@ -2778,7 +5324,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/aggregate-address6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/aggregate-address6/{aggregate-address6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -2786,7 +5332,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_neighbor_conditionaladvertise': {
             'params': ['conditional-advertise', 'device', 'neighbor', 'vdom'],
@@ -2794,7 +5340,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor/{neighbor}/conditional-advertise',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor/{neighbor}/conditional-advertise/{conditional-advertise}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_neighbor_conditionaladvertise6': {
             'params': ['conditional-advertise6', 'device', 'neighbor', 'vdom'],
@@ -2802,7 +5348,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor/{neighbor}/conditional-advertise6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor/{neighbor}/conditional-advertise6/{conditional-advertise6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_neighborgroup': {
             'params': ['device', 'neighbor-group', 'vdom'],
@@ -2810,7 +5356,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor-group',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor-group/{neighbor-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_neighborrange': {
             'params': ['device', 'neighbor-range', 'vdom'],
@@ -2818,7 +5364,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor-range',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor-range/{neighbor-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_neighborrange6': {
             'params': ['device', 'neighbor-range6', 'vdom'],
@@ -2826,7 +5372,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor-range6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor-range6/{neighbor-range6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_network': {
             'params': ['device', 'network', 'vdom'],
@@ -2834,7 +5380,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/network',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/network/{network}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_network6': {
             'params': ['device', 'network6', 'vdom'],
@@ -2842,21 +5388,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/network6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/network6/{network6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_redistribute': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/redistribute'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_redistribute6': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/redistribute6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrf': {
             'params': ['device', 'vdom', 'vrf'],
@@ -2864,7 +5410,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf/{vrf}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrf6': {
             'params': ['device', 'vdom', 'vrf6'],
@@ -2872,7 +5418,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf6/{vrf6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrf6_leaktarget': {
             'params': ['device', 'leak-target', 'vdom', 'vrf6'],
@@ -2880,7 +5426,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf6/{vrf6}/leak-target',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf6/{vrf6}/leak-target/{leak-target}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrf_leaktarget': {
             'params': ['device', 'leak-target', 'vdom', 'vrf'],
@@ -2888,7 +5434,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf/{vrf}/leak-target',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf/{vrf}/leak-target/{leak-target}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrfleak': {
             'params': ['device', 'vdom', 'vrf-leak'],
@@ -2896,7 +5442,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak/{vrf-leak}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrfleak6': {
             'params': ['device', 'vdom', 'vrf-leak6'],
@@ -2904,7 +5450,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak6/{vrf-leak6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrfleak6_target': {
             'params': ['device', 'target', 'vdom', 'vrf-leak6'],
@@ -2912,7 +5458,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak6/{vrf-leak6}/target',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak6/{vrf-leak6}/target/{target}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_bgp_vrfleak_target': {
             'params': ['device', 'target', 'vdom', 'vrf-leak'],
@@ -2920,7 +5466,23 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak/{vrf-leak}/target',
                 '/pm/config/device/{device}/vdom/{vdom}/router/bgp/vrf-leak/{vrf-leak}/target/{target}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'router_communitylist': {
+            'params': ['community-list', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/community-list',
+                '/pm/config/device/{device}/vdom/{vdom}/router/community-list/{community-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_communitylist_rule': {
+            'params': ['community-list', 'device', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/community-list/{community-list}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/community-list/{community-list}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'router_extcommunitylist': {
             'params': ['device', 'extcommunity-list', 'vdom'],
@@ -2928,7 +5490,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/extcommunity-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/extcommunity-list/{extcommunity-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_extcommunitylist_rule': {
             'params': ['device', 'extcommunity-list', 'rule', 'vdom'],
@@ -2936,14 +5498,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/extcommunity-list/{extcommunity-list}/rule',
                 '/pm/config/device/{device}/vdom/{vdom}/router/extcommunity-list/{extcommunity-list}/rule/{rule}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis_isisinterface': {
             'params': ['device', 'isis-interface', 'vdom'],
@@ -2951,7 +5513,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/isis-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/isis-interface/{isis-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis_isisnet': {
             'params': ['device', 'isis-net', 'vdom'],
@@ -2959,21 +5521,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/isis-net',
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/isis-net/{isis-net}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis_redistribute': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/redistribute'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis_redistribute6': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/redistribute6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis_summaryaddress': {
             'params': ['device', 'summary-address', 'vdom'],
@@ -2981,7 +5543,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/summary-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/summary-address/{summary-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_isis_summaryaddress6': {
             'params': ['device', 'summary-address6', 'vdom'],
@@ -2989,7 +5551,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/summary-address6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/isis/summary-address6/{summary-address6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_keychain': {
             'params': ['device', 'key-chain', 'vdom'],
@@ -2997,7 +5559,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/key-chain',
                 '/pm/config/device/{device}/vdom/{vdom}/router/key-chain/{key-chain}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_keychain_key': {
             'params': ['device', 'key', 'key-chain', 'vdom'],
@@ -3005,21 +5567,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/key-chain/{key-chain}/key',
                 '/pm/config/device/{device}/vdom/{vdom}/router/key-chain/{key-chain}/key/{key}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast6': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast6_interface': {
             'params': ['device', 'interface', 'vdom'],
@@ -3027,14 +5589,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/interface/{interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast6_pimsmglobal': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/pim-sm-global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast6_pimsmglobal_rpaddress': {
             'params': ['device', 'rp-address', 'vdom'],
@@ -3042,7 +5604,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/pim-sm-global/rp-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/pim-sm-global/rp-address/{rp-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast_interface': {
             'params': ['device', 'interface', 'vdom'],
@@ -3050,14 +5612,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/interface/{interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast_interface_igmp': {
             'params': ['device', 'interface', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/interface/{interface}/igmp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast_interface_joingroup': {
             'params': ['device', 'interface', 'join-group', 'vdom'],
@@ -3065,14 +5627,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/interface/{interface}/join-group',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/interface/{interface}/join-group/{join-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast_pimsmglobal': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/pim-sm-global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast_pimsmglobal_rpaddress': {
             'params': ['device', 'rp-address', 'vdom'],
@@ -3080,7 +5642,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/pim-sm-global/rp-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast/pim-sm-global/rp-address/{rp-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicast_pimsmglobalvrf': {
             'params': ['device', 'pim-sm-global-vrf', 'vdom'],
@@ -3104,7 +5666,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast-flow',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast-flow/{multicast-flow}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_multicastflow_flows': {
             'params': ['device', 'flows', 'multicast-flow', 'vdom'],
@@ -3112,21 +5674,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast-flow/{multicast-flow}/flows',
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast-flow/{multicast-flow}/flows/{flows}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_area': {
             'params': ['area', 'device', 'vdom'],
@@ -3134,7 +5696,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_area_ipseckeys': {
             'params': ['area', 'device', 'ipsec-keys', 'vdom'],
@@ -3142,7 +5704,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/ipsec-keys',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/ipsec-keys/{ipsec-keys}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_area_range': {
             'params': ['area', 'device', 'range', 'vdom'],
@@ -3150,7 +5712,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/range',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/range/{range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_area_virtuallink': {
             'params': ['area', 'device', 'vdom', 'virtual-link'],
@@ -3158,7 +5720,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/virtual-link',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/virtual-link/{virtual-link}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_area_virtuallink_ipseckeys': {
             'params': ['area', 'device', 'ipsec-keys', 'vdom', 'virtual-link'],
@@ -3166,7 +5728,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/virtual-link/{virtual-link}/ipsec-keys',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/area/{area}/virtual-link/{virtual-link}/ipsec-keys/{ipsec-keys}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_ospf6interface': {
             'params': ['device', 'ospf6-interface', 'vdom'],
@@ -3174,7 +5736,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/ospf6-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/ospf6-interface/{ospf6-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_ospf6interface_ipseckeys': {
             'params': ['device', 'ipsec-keys', 'ospf6-interface', 'vdom'],
@@ -3182,7 +5744,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/ospf6-interface/{ospf6-interface}/ipsec-keys',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/ospf6-interface/{ospf6-interface}/ipsec-keys/{ipsec-keys}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_ospf6interface_neighbor': {
             'params': ['device', 'neighbor', 'ospf6-interface', 'vdom'],
@@ -3190,14 +5752,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/ospf6-interface/{ospf6-interface}/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/ospf6-interface/{ospf6-interface}/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_redistribute': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/redistribute'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf6_summaryaddress': {
             'params': ['device', 'summary-address', 'vdom'],
@@ -3205,7 +5767,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/summary-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf6/summary-address/{summary-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_area': {
             'params': ['area', 'device', 'vdom'],
@@ -3213,7 +5775,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_area_filterlist': {
             'params': ['area', 'device', 'filter-list', 'vdom'],
@@ -3221,7 +5783,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/filter-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/filter-list/{filter-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_area_range': {
             'params': ['area', 'device', 'range', 'vdom'],
@@ -3229,7 +5791,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/range',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/range/{range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_area_virtuallink': {
             'params': ['area', 'device', 'vdom', 'virtual-link'],
@@ -3237,7 +5799,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/virtual-link',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/virtual-link/{virtual-link}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_area_virtuallink_md5keys': {
             'params': ['area', 'device', 'md5-keys', 'vdom', 'virtual-link'],
@@ -3245,7 +5807,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/virtual-link/{virtual-link}/md5-keys',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area/{area}/virtual-link/{virtual-link}/md5-keys/{md5-keys}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_distributelist': {
             'params': ['device', 'distribute-list', 'vdom'],
@@ -3253,7 +5815,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/distribute-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/distribute-list/{distribute-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -3261,7 +5823,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_network': {
             'params': ['device', 'network', 'vdom'],
@@ -3269,7 +5831,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/network',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/network/{network}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_ospfinterface': {
             'params': ['device', 'ospf-interface', 'vdom'],
@@ -3277,7 +5839,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/ospf-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/ospf-interface/{ospf-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_ospfinterface_md5keys': {
             'params': ['device', 'md5-keys', 'ospf-interface', 'vdom'],
@@ -3285,14 +5847,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/ospf-interface/{ospf-interface}/md5-keys',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/ospf-interface/{ospf-interface}/md5-keys/{md5-keys}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_redistribute': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/redistribute'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ospf_summaryaddress': {
             'params': ['device', 'summary-address', 'vdom'],
@@ -3300,7 +5862,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/summary-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ospf/summary-address/{summary-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_policy': {
             'params': ['device', 'policy', 'vdom'],
@@ -3308,7 +5870,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/policy',
                 '/pm/config/device/{device}/vdom/{vdom}/router/policy/{policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_policy6': {
             'params': ['device', 'policy6', 'vdom'],
@@ -3316,14 +5878,46 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/policy6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/policy6/{policy6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'router_prefixlist': {
+            'params': ['device', 'prefix-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list',
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list/{prefix-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_prefixlist6': {
+            'params': ['device', 'prefix-list6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list6',
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list6/{prefix-list6}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_prefixlist6_rule': {
+            'params': ['device', 'prefix-list6', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list6/{prefix-list6}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list6/{prefix-list6}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'router_prefixlist_rule': {
+            'params': ['device', 'prefix-list', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list/{prefix-list}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list/{prefix-list}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'router_rip': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_distance': {
             'params': ['device', 'distance', 'vdom'],
@@ -3331,7 +5925,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/distance',
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/distance/{distance}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_distributelist': {
             'params': ['device', 'distribute-list', 'vdom'],
@@ -3339,7 +5933,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/distribute-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/distribute-list/{distribute-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_interface': {
             'params': ['device', 'interface', 'vdom'],
@@ -3347,7 +5941,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/interface/{interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -3355,7 +5949,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_network': {
             'params': ['device', 'network', 'vdom'],
@@ -3363,7 +5957,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/network',
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/network/{network}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_offsetlist': {
             'params': ['device', 'offset-list', 'vdom'],
@@ -3371,21 +5965,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/offset-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/offset-list/{offset-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_rip_redistribute': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/rip/redistribute'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_aggregateaddress': {
             'params': ['aggregate-address', 'device', 'vdom'],
@@ -3393,7 +5987,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/aggregate-address',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/aggregate-address/{aggregate-address}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_distance': {
             'params': ['device', 'distance', 'vdom'],
@@ -3401,7 +5995,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/distance',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/distance/{distance}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_distributelist': {
             'params': ['device', 'distribute-list', 'vdom'],
@@ -3409,7 +6003,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/distribute-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/distribute-list/{distribute-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_interface': {
             'params': ['device', 'interface', 'vdom'],
@@ -3417,7 +6011,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/interface',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/interface/{interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -3425,7 +6019,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_network': {
             'params': ['device', 'network', 'vdom'],
@@ -3433,7 +6027,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/network',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/network/{network}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_offsetlist': {
             'params': ['device', 'offset-list', 'vdom'],
@@ -3441,14 +6035,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/offset-list',
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/offset-list/{offset-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_ripng_redistribute': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/ripng/redistribute'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_routemap': {
             'params': ['device', 'route-map', 'vdom'],
@@ -3458,12 +6052,20 @@ def main():
             ],
             'v_range': [['7.0.2', '']]
         },
+        'router_routemap_rule': {
+            'params': ['device', 'route-map', 'rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/route-map/{route-map}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/router/route-map/{route-map}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'router_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_static': {
             'params': ['device', 'static', 'vdom'],
@@ -3471,7 +6073,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/static',
                 '/pm/config/device/{device}/vdom/{vdom}/router/static/{static}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'router_static6': {
             'params': ['device', 'static6', 'vdom'],
@@ -3479,14 +6081,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/static6',
                 '/pm/config/device/{device}/vdom/{vdom}/router/static6/{static6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'rule_fmwp': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/rule/fmwp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'rule_otdt': {
             'params': ['device'],
@@ -3502,12 +6104,44 @@ def main():
             ],
             'v_range': [['7.4.3', '']]
         },
+        'sctpfilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/sctp-filter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/sctp-filter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'sctpfilter_profile_ppidfilters': {
+            'params': ['device', 'ppid-filters', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/sctp-filter/profile/{profile}/ppid-filters',
+                '/pm/config/device/{device}/vdom/{vdom}/sctp-filter/profile/{profile}/ppid-filters/{ppid-filters}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'sshfilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ssh-filter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/ssh-filter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'sshfilter_profile_shellcommands': {
+            'params': ['device', 'profile', 'shell-commands', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ssh-filter/profile/{profile}/shell-commands',
+                '/pm/config/device/{device}/vdom/{vdom}/ssh-filter/profile/{profile}/shell-commands/{shell-commands}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'switchcontroller_8021xsettings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/802-1X-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_acl_group': {
             'params': ['device', 'group', 'vdom'],
@@ -3545,7 +6179,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/custom',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/custom/{custom}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_autoconfig_custom_switchbinding': {
             'params': ['custom', 'device', 'switch-binding', 'vdom'],
@@ -3553,14 +6187,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/custom/{custom}/switch-binding',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/custom/{custom}/switch-binding/{switch-binding}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_autoconfig_default': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/default'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_autoconfig_policy': {
             'params': ['device', 'policy', 'vdom'],
@@ -3568,7 +6202,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/auto-config/policy/{policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_customcommand': {
             'params': ['custom-command', 'device', 'vdom'],
@@ -3578,7 +6212,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/global/custom-command',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/global/custom-command/{custom-command}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_dsl_policy': {
             'params': ['device', 'policy', 'vdom'],
@@ -3586,7 +6220,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/dsl/policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/dsl/policy/{policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_dynamicportpolicy': {
             'params': ['device', 'dynamic-port-policy', 'vdom'],
@@ -3594,7 +6228,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/dynamic-port-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/dynamic-port-policy/{dynamic-port-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_dynamicportpolicy_policy': {
             'params': ['device', 'dynamic-port-policy', 'policy', 'vdom'],
@@ -3602,14 +6236,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/dynamic-port-policy/{dynamic-port-policy}/policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/dynamic-port-policy/{dynamic-port-policy}/policy/{policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_flowtracking': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/flow-tracking'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_flowtracking_aggregates': {
             'params': ['aggregates', 'device', 'vdom'],
@@ -3617,7 +6251,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/flow-tracking/aggregates',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/flow-tracking/aggregates/{aggregates}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_flowtracking_collectors': {
             'params': ['collectors', 'device', 'vdom'],
@@ -3625,7 +6259,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/flow-tracking/collectors',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/flow-tracking/collectors/{collectors}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_fortilinksettings': {
             'params': ['device', 'fortilink-settings', 'vdom'],
@@ -3633,28 +6267,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/fortilink-settings',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/fortilink-settings/{fortilink-settings}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_fortilinksettings_nacports': {
             'params': ['device', 'fortilink-settings', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/fortilink-settings/{fortilink-settings}/nac-ports'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_global': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_igmpsnooping': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/igmp-snooping'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_initialconfig_template': {
             'params': ['device', 'template', 'vdom'],
@@ -3662,14 +6296,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/initial-config/template',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/initial-config/template/{template}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_initialconfig_vlans': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/initial-config/vlans'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'switchcontroller_ipsourceguardlog': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/ip-source-guard-log'
+            ],
+            'v_range': [['7.6.4', '']]
         },
         'switchcontroller_lldpprofile': {
             'params': ['device', 'lldp-profile', 'vdom'],
@@ -3677,7 +6318,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_lldpprofile_customtlvs': {
             'params': ['custom-tlvs', 'device', 'lldp-profile', 'vdom'],
@@ -3685,7 +6326,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}/custom-tlvs',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}/custom-tlvs/{custom-tlvs}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_lldpprofile_medlocationservice': {
             'params': ['device', 'lldp-profile', 'med-location-service', 'vdom'],
@@ -3693,7 +6334,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}/med-location-service',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}/med-location-service/{med-location-service}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_lldpprofile_mednetworkpolicy': {
             'params': ['device', 'lldp-profile', 'med-network-policy', 'vdom'],
@@ -3701,14 +6342,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}/med-network-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-profile/{lldp-profile}/med-network-policy/{med-network-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_lldpsettings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/lldp-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_location': {
             'params': ['device', 'location', 'vdom'],
@@ -3716,28 +6357,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/location',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/location/{location}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_location_addresscivic': {
             'params': ['device', 'location', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/location/{location}/address-civic'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_location_coordinates': {
             'params': ['device', 'location', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/location/{location}/coordinates'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_location_elinnumber': {
             'params': ['device', 'location', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/location/{location}/elin-number'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_macpolicy': {
             'params': ['device', 'mac-policy', 'vdom'],
@@ -3745,7 +6386,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/mac-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/mac-policy/{mac-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch': {
             'params': ['device', 'managed-switch', 'vdom'],
@@ -3753,14 +6394,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_8021xsettings': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/802-1X-settings'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_customcommand': {
             'params': ['custom-command', 'device', 'managed-switch', 'vdom'],
@@ -3768,7 +6409,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/custom-command',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/custom-command/{custom-command}'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_dhcpsnoopingstaticclient': {
             'params': ['device', 'dhcp-snooping-static-client', 'managed-switch', 'vdom'],
@@ -3777,14 +6418,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/dhcp-snooping-static-client/{dhcp-snooping-static-c'
                 'lient}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_igmpsnooping': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/igmp-snooping'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_igmpsnooping_vlans': {
             'params': ['device', 'managed-switch', 'vdom', 'vlans'],
@@ -3792,7 +6433,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/igmp-snooping/vlans',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/igmp-snooping/vlans/{vlans}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_ipsourceguard': {
             'params': ['device', 'ip-source-guard', 'managed-switch', 'vdom'],
@@ -3800,7 +6441,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/ip-source-guard',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/ip-source-guard/{ip-source-guard}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_ipsourceguard_bindingentry': {
             'params': ['binding-entry', 'device', 'ip-source-guard', 'managed-switch', 'vdom'],
@@ -3809,7 +6450,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/ip-source-guard/{ip-source-guard}/binding-entry/{bi'
                 'nding-entry}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_mirror': {
             'params': ['device', 'managed-switch', 'mirror', 'vdom'],
@@ -3817,7 +6458,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/mirror',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/mirror/{mirror}'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_ports': {
             'params': ['device', 'managed-switch', 'ports', 'vdom'],
@@ -3825,7 +6466,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/ports',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/ports/{ports}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_ports_dhcpsnoopoption82override': {
             'params': ['device', 'dhcp-snoop-option82-override', 'managed-switch', 'ports', 'vdom'],
@@ -3842,7 +6483,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/remote-log',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/remote-log/{remote-log}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_routeoffloadrouter': {
             'params': ['device', 'managed-switch', 'route-offload-router', 'vdom'],
@@ -3852,13 +6493,29 @@ def main():
             ],
             'v_range': [['7.4.3', '']]
         },
+        'switchcontroller_managedswitch_routerstatic': {
+            'params': ['device', 'managed-switch', 'router-static', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/router-static',
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/router-static/{router-static}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'switchcontroller_managedswitch_routervrf': {
+            'params': ['device', 'managed-switch', 'router-vrf', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/router-vrf',
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/router-vrf/{router-vrf}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
         'switchcontroller_managedswitch_snmpcommunity': {
             'params': ['device', 'managed-switch', 'snmp-community', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-community',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-community/{snmp-community}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_snmpcommunity_hosts': {
             'params': ['device', 'hosts', 'managed-switch', 'snmp-community', 'vdom'],
@@ -3866,21 +6523,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-community/{snmp-community}/hosts',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-community/{snmp-community}/hosts/{hosts}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_snmpsysinfo': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-sysinfo'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_snmptrapthreshold': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-trap-threshold'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_snmpuser': {
             'params': ['device', 'managed-switch', 'snmp-user', 'vdom'],
@@ -3888,7 +6545,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-user',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/snmp-user/{snmp-user}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_staticmac': {
             'params': ['device', 'managed-switch', 'static-mac', 'vdom'],
@@ -3896,14 +6553,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/static-mac',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/static-mac/{static-mac}'
             ],
-            'v_range': [['6.2.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.2.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_stormcontrol': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/storm-control'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_stpinstance': {
             'params': ['device', 'managed-switch', 'stp-instance', 'vdom'],
@@ -3911,21 +6568,55 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/stp-instance',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/stp-instance/{stp-instance}'
             ],
-            'v_range': [['6.2.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.2.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_stpsettings': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/stp-settings'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_managedswitch_switchlog': {
             'params': ['device', 'managed-switch', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/switch-log'
             ],
-            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['6.0.0', '6.2.0'], ['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'switchcontroller_managedswitch_systemdhcpserver': {
+            'params': ['device', 'managed-switch', 'system-dhcp-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-dhcp-server',
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-dhcp-server/{system-dhcp-server}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'switchcontroller_managedswitch_systemdhcpserver_iprange': {
+            'params': ['device', 'ip-range', 'managed-switch', 'system-dhcp-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-dhcp-server/{system-dhcp-server}/ip-range',
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-dhcp-server/{system-dhcp-server}/ip-range/{i'
+                'p-range}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'switchcontroller_managedswitch_systemdhcpserver_options': {
+            'params': ['device', 'managed-switch', 'options', 'system-dhcp-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-dhcp-server/{system-dhcp-server}/options',
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-dhcp-server/{system-dhcp-server}/options/{op'
+                'tions}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'switchcontroller_managedswitch_systeminterface': {
+            'params': ['device', 'managed-switch', 'system-interface', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-interface',
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/system-interface/{system-interface}'
+            ],
+            'v_range': [['7.6.4', '']]
         },
         'switchcontroller_managedswitch_vlan': {
             'params': ['device', 'managed-switch', 'vdom', 'vlan'],
@@ -3941,7 +6632,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/nac-device',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/nac-device/{nac-device}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_nacsettings': {
             'params': ['device', 'nac-settings', 'vdom'],
@@ -3949,14 +6640,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/nac-settings',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/nac-settings/{nac-settings}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_networkmonitorsettings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/network-monitor-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_portpolicy': {
             'params': ['device', 'port-policy', 'vdom'],
@@ -3964,7 +6655,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/port-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/port-policy/{port-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_ptp_interfacepolicy': {
             'params': ['device', 'interface-policy', 'vdom'],
@@ -3980,7 +6671,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/ptp/policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/ptp/policy/{policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_ptp_profile': {
             'params': ['device', 'profile', 'vdom'],
@@ -3995,7 +6686,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/ptp/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_qos_dot1pmap': {
             'params': ['device', 'dot1p-map', 'vdom'],
@@ -4003,7 +6694,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/dot1p-map',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/dot1p-map/{dot1p-map}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_qos_ipdscpmap': {
             'params': ['device', 'ip-dscp-map', 'vdom'],
@@ -4011,7 +6702,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/ip-dscp-map',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/ip-dscp-map/{ip-dscp-map}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_qos_ipdscpmap_map': {
             'params': ['device', 'ip-dscp-map', 'map', 'vdom'],
@@ -4019,7 +6710,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/ip-dscp-map/{ip-dscp-map}/map',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/ip-dscp-map/{ip-dscp-map}/map/{map}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_qos_qospolicy': {
             'params': ['device', 'qos-policy', 'vdom'],
@@ -4027,7 +6718,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/qos-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/qos-policy/{qos-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_qos_queuepolicy': {
             'params': ['device', 'queue-policy', 'vdom'],
@@ -4035,7 +6726,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/queue-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/queue-policy/{queue-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_qos_queuepolicy_cosqueue': {
             'params': ['cos-queue', 'device', 'queue-policy', 'vdom'],
@@ -4043,7 +6734,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/queue-policy/{queue-policy}/cos-queue',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/qos/queue-policy/{queue-policy}/cos-queue/{cos-queue}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_remotelog': {
             'params': ['device', 'remote-log', 'vdom'],
@@ -4051,7 +6742,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/remote-log',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/remote-log/{remote-log}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_securitypolicy_8021x': {
             'params': ['802-1X', 'device', 'vdom'],
@@ -4059,7 +6750,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/security-policy/802-1X',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/security-policy/802-1X/{802-1X}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_securitypolicy_localaccess': {
             'params': ['device', 'local-access', 'vdom'],
@@ -4067,14 +6758,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/security-policy/local-access',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/security-policy/local-access/{local-access}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_sflow': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/sflow'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_snmpcommunity': {
             'params': ['device', 'snmp-community', 'vdom'],
@@ -4082,7 +6773,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-community',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-community/{snmp-community}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_snmpcommunity_hosts': {
             'params': ['device', 'hosts', 'snmp-community', 'vdom'],
@@ -4090,21 +6781,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-community/{snmp-community}/hosts',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-community/{snmp-community}/hosts/{hosts}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_snmpsysinfo': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-sysinfo'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_snmptrapthreshold': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-trap-threshold'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_snmpuser': {
             'params': ['device', 'snmp-user', 'vdom'],
@@ -4112,14 +6803,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-user',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/snmp-user/{snmp-user}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_stormcontrol': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/storm-control'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_stormcontrolpolicy': {
             'params': ['device', 'storm-control-policy', 'vdom'],
@@ -4127,7 +6818,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/storm-control-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/storm-control-policy/{storm-control-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_stpinstance': {
             'params': ['device', 'stp-instance', 'vdom'],
@@ -4135,14 +6826,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/stp-instance',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/stp-instance/{stp-instance}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_stpsettings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/stp-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_switchgroup': {
             'params': ['device', 'switch-group', 'vdom'],
@@ -4150,7 +6841,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-group',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-group/{switch-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_switchinterfacetag': {
             'params': ['device', 'switch-interface-tag', 'vdom'],
@@ -4158,14 +6849,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-interface-tag',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-interface-tag/{switch-interface-tag}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_switchlog': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-log'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_switchprofile': {
             'params': ['device', 'switch-profile', 'vdom'],
@@ -4173,14 +6864,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/switch-profile/{switch-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_system': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/switch-controller/system'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_trafficpolicy': {
             'params': ['device', 'traffic-policy', 'vdom'],
@@ -4188,14 +6879,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-policy/{traffic-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_trafficsniffer': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_trafficsniffer_targetip': {
             'params': ['device', 'target-ip', 'vdom'],
@@ -4203,7 +6894,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer/target-ip',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer/target-ip/{target-ip}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_trafficsniffer_targetmac': {
             'params': ['device', 'target-mac', 'vdom'],
@@ -4211,7 +6902,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer/target-mac',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer/target-mac/{target-mac}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_trafficsniffer_targetport': {
             'params': ['device', 'target-port', 'vdom'],
@@ -4219,7 +6910,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer/target-port',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/traffic-sniffer/target-port/{target-port}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_virtualportpool': {
             'params': ['device', 'vdom', 'virtual-port-pool'],
@@ -4227,7 +6918,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/virtual-port-pool',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/virtual-port-pool/{virtual-port-pool}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'switchcontroller_vlanpolicy': {
             'params': ['device', 'vdom', 'vlan-policy'],
@@ -4235,7 +6926,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/vlan-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/vlan-policy/{vlan-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_3gmodem_custom': {
             'params': ['custom', 'device', 'vdom'],
@@ -4243,14 +6934,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/3g-modem/custom',
                 '/pm/config/device/{device}/vdom/{vdom}/system/3g-modem/custom/{custom}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_5gmodem': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/5g-modem'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_5gmodem_dataplan': {
             'params': ['data-plan', 'device'],
@@ -4258,28 +6949,28 @@ def main():
                 '/pm/config/device/{device}/global/system/5g-modem/data-plan',
                 '/pm/config/device/{device}/global/system/5g-modem/data-plan/{data-plan}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_5gmodem_modem1': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/5g-modem/modem1'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_5gmodem_modem1_simswitch': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/5g-modem/modem1/sim-switch'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_5gmodem_modem2': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/5g-modem/modem2'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_accprofile': {
             'params': ['accprofile', 'device'],
@@ -4287,49 +6978,56 @@ def main():
                 '/pm/config/device/{device}/global/system/accprofile',
                 '/pm/config/device/{device}/global/system/accprofile/{accprofile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_accprofile_fwgrppermission': {
             'params': ['accprofile', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/accprofile/{accprofile}/fwgrp-permission'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_accprofile_loggrppermission': {
             'params': ['accprofile', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/accprofile/{accprofile}/loggrp-permission'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_accprofile_netgrppermission': {
             'params': ['accprofile', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/accprofile/{accprofile}/netgrp-permission'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_accprofile_secfabgrppermission': {
+            'params': ['accprofile', 'device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/accprofile/{accprofile}/secfabgrp-permission'
+            ],
+            'v_range': [['7.6.5', '']]
         },
         'system_accprofile_sysgrppermission': {
             'params': ['accprofile', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/accprofile/{accprofile}/sysgrp-permission'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_accprofile_utmgrppermission': {
             'params': ['accprofile', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/accprofile/{accprofile}/utmgrp-permission'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_acme': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/acme'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_acme_accounts': {
             'params': ['accounts', 'device'],
@@ -4337,7 +7035,7 @@ def main():
                 '/pm/config/device/{device}/global/system/acme/accounts',
                 '/pm/config/device/{device}/global/system/acme/accounts/{accounts}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_admin': {
             'params': ['admin', 'device'],
@@ -4345,7 +7043,15 @@ def main():
                 '/pm/config/device/{device}/global/system/admin',
                 '/pm/config/device/{device}/global/system/admin/{admin}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_admin_trusthosts': {
+            'params': ['admin', 'device', 'trusthosts'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/admin/{admin}/trusthosts',
+                '/pm/config/device/{device}/global/system/admin/{admin}/trusthosts/{trusthosts}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_affinityinterrupt': {
             'params': ['affinity-interrupt', 'device'],
@@ -4353,7 +7059,7 @@ def main():
                 '/pm/config/device/{device}/global/system/affinity-interrupt',
                 '/pm/config/device/{device}/global/system/affinity-interrupt/{affinity-interrupt}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_affinitypacketredistribution': {
             'params': ['affinity-packet-redistribution', 'device'],
@@ -4361,7 +7067,7 @@ def main():
                 '/pm/config/device/{device}/global/system/affinity-packet-redistribution',
                 '/pm/config/device/{device}/global/system/affinity-packet-redistribution/{affinity-packet-redistribution}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_alias': {
             'params': ['alias', 'device'],
@@ -4369,7 +7075,7 @@ def main():
                 '/pm/config/device/{device}/global/system/alias',
                 '/pm/config/device/{device}/global/system/alias/{alias}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_apiuser': {
             'params': ['api-user', 'device'],
@@ -4377,7 +7083,7 @@ def main():
                 '/pm/config/device/{device}/global/system/api-user',
                 '/pm/config/device/{device}/global/system/api-user/{api-user}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_apiuser_trusthost': {
             'params': ['api-user', 'device', 'trusthost'],
@@ -4385,7 +7091,7 @@ def main():
                 '/pm/config/device/{device}/global/system/api-user/{api-user}/trusthost',
                 '/pm/config/device/{device}/global/system/api-user/{api-user}/trusthost/{trusthost}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_arptable': {
             'params': ['arp-table', 'device', 'vdom'],
@@ -4393,14 +7099,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/arp-table',
                 '/pm/config/device/{device}/vdom/{vdom}/system/arp-table/{arp-table}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_autoinstall': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/auto-install'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_automationaction': {
             'params': ['automation-action', 'device'],
@@ -4408,7 +7114,15 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-action',
                 '/pm/config/device/{device}/global/system/automation-action/{automation-action}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_automationaction_formdata': {
+            'params': ['automation-action', 'device', 'form-data'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/automation-action/{automation-action}/form-data',
+                '/pm/config/device/{device}/global/system/automation-action/{automation-action}/form-data/{form-data}'
+            ],
+            'v_range': [['7.6.4', '']]
         },
         'system_automationaction_httpheaders': {
             'params': ['automation-action', 'device', 'http-headers'],
@@ -4416,7 +7130,7 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-action/{automation-action}/http-headers',
                 '/pm/config/device/{device}/global/system/automation-action/{automation-action}/http-headers/{http-headers}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_automationcondition': {
             'params': ['automation-condition', 'device'],
@@ -4424,7 +7138,7 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-condition',
                 '/pm/config/device/{device}/global/system/automation-condition/{automation-condition}'
             ],
-            'v_range': [['7.6.2', '']]
+            'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']]
         },
         'system_automationdestination': {
             'params': ['automation-destination', 'device'],
@@ -4432,7 +7146,7 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-destination',
                 '/pm/config/device/{device}/global/system/automation-destination/{automation-destination}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_automationstitch': {
             'params': ['automation-stitch', 'device'],
@@ -4440,7 +7154,7 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-stitch',
                 '/pm/config/device/{device}/global/system/automation-stitch/{automation-stitch}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_automationstitch_actions': {
             'params': ['actions', 'automation-stitch', 'device'],
@@ -4448,7 +7162,7 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-stitch/{automation-stitch}/actions',
                 '/pm/config/device/{device}/global/system/automation-stitch/{automation-stitch}/actions/{actions}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_automationtrigger': {
             'params': ['automation-trigger', 'device'],
@@ -4456,7 +7170,7 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-trigger',
                 '/pm/config/device/{device}/global/system/automation-trigger/{automation-trigger}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_automationtrigger_fields': {
             'params': ['automation-trigger', 'device', 'fields'],
@@ -4464,14 +7178,14 @@ def main():
                 '/pm/config/device/{device}/global/system/automation-trigger/{automation-trigger}/fields',
                 '/pm/config/device/{device}/global/system/automation-trigger/{automation-trigger}/fields/{fields}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_autoscale': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/auto-scale'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_autoscript': {
             'params': ['auto-script', 'device'],
@@ -4479,42 +7193,42 @@ def main():
                 '/pm/config/device/{device}/global/system/auto-script',
                 '/pm/config/device/{device}/global/system/auto-script/{auto-script}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_autoupdate_pushupdate': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/autoupdate/push-update'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_autoupdate_schedule': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/autoupdate/schedule'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_autoupdate_tunneling': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/autoupdate/tunneling'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_bypass': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/bypass'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_centralmanagement': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/central-management'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_centralmanagement_serverlist': {
             'params': ['device', 'server-list'],
@@ -4522,7 +7236,15 @@ def main():
                 '/pm/config/device/{device}/global/system/central-management/server-list',
                 '/pm/config/device/{device}/global/system/central-management/server-list/{server-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_cloudservice': {
+            'params': ['cloud-service', 'device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/cloud-service',
+                '/pm/config/device/{device}/global/system/cloud-service/{cloud-service}'
+            ],
+            'v_range': [['7.6.3', '']]
         },
         'system_clustersync': {
             'params': ['cluster-sync', 'device'],
@@ -4530,14 +7252,14 @@ def main():
                 '/pm/config/device/{device}/global/system/cluster-sync',
                 '/pm/config/device/{device}/global/system/cluster-sync/{cluster-sync}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_clustersync_sessionsyncfilter': {
             'params': ['cluster-sync', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/cluster-sync/{cluster-sync}/session-sync-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_clustersync_sessionsyncfilter_customservice': {
             'params': ['cluster-sync', 'custom-service', 'device'],
@@ -4545,21 +7267,21 @@ def main():
                 '/pm/config/device/{device}/global/system/cluster-sync/{cluster-sync}/session-sync-filter/custom-service',
                 '/pm/config/device/{device}/global/system/cluster-sync/{cluster-sync}/session-sync-filter/custom-service/{custom-service}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_console': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/console'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_consoleserver': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/console-server'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_consoleserver_entries': {
             'params': ['device', 'entries'],
@@ -4567,14 +7289,14 @@ def main():
                 '/pm/config/device/{device}/global/system/console-server/entries',
                 '/pm/config/device/{device}/global/system/console-server/entries/{entries}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_csf': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/csf'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_csf_fabricconnector': {
             'params': ['device', 'fabric-connector'],
@@ -4582,7 +7304,7 @@ def main():
                 '/pm/config/device/{device}/global/system/csf/fabric-connector',
                 '/pm/config/device/{device}/global/system/csf/fabric-connector/{fabric-connector}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_csf_fabricdevice': {
             'params': ['device', 'fabric-device'],
@@ -4590,7 +7312,7 @@ def main():
                 '/pm/config/device/{device}/global/system/csf/fabric-device',
                 '/pm/config/device/{device}/global/system/csf/fabric-device/{fabric-device}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_csf_trustedlist': {
             'params': ['device', 'trusted-list'],
@@ -4598,7 +7320,15 @@ def main():
                 '/pm/config/device/{device}/global/system/csf/trusted-list',
                 '/pm/config/device/{device}/global/system/csf/trusted-list/{trusted-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_customlanguage': {
+            'params': ['custom-language', 'device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/custom-language',
+                '/pm/config/device/{device}/global/system/custom-language/{custom-language}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_ddns': {
             'params': ['ddns', 'device'],
@@ -4606,14 +7336,14 @@ def main():
                 '/pm/config/device/{device}/global/system/ddns',
                 '/pm/config/device/{device}/global/system/ddns/{ddns}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dedicatedmgmt': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/dedicated-mgmt'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_deviceupgrade': {
             'params': ['device', 'device-upgrade'],
@@ -4621,7 +7351,7 @@ def main():
                 '/pm/config/device/{device}/global/system/device-upgrade',
                 '/pm/config/device/{device}/global/system/device-upgrade/{device-upgrade}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_deviceupgrade_knownhamembers': {
             'params': ['device', 'device-upgrade', 'known-ha-members'],
@@ -4631,13 +7361,21 @@ def main():
             ],
             'v_range': [['7.4.3', '']]
         },
+        'system_deviceupgradeexemptions': {
+            'params': ['device', 'device-upgrade-exemptions'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/device-upgrade-exemptions',
+                '/pm/config/device/{device}/global/system/device-upgrade-exemptions/{device-upgrade-exemptions}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
         'system_dhcp6_server': {
             'params': ['device', 'server', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp6/server',
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp6/server/{server}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dhcp6_server_iprange': {
             'params': ['device', 'ip-range', 'server', 'vdom'],
@@ -4645,7 +7383,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp6/server/{server}/ip-range',
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp6/server/{server}/ip-range/{ip-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dhcp6_server_options': {
             'params': ['device', 'options', 'server', 'vdom'],
@@ -4661,35 +7399,75 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp6/server/{server}/prefix-range',
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp6/server/{server}/prefix-range/{prefix-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_dhcp_server': {
+            'params': ['device', 'server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server',
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_dhcp_server_excluderange': {
+            'params': ['device', 'exclude-range', 'server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/exclude-range',
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/exclude-range/{exclude-range}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_dhcp_server_iprange': {
+            'params': ['device', 'ip-range', 'server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/ip-range',
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/ip-range/{ip-range}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_dhcp_server_options': {
+            'params': ['device', 'options', 'server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/options',
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/options/{options}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_dhcp_server_reservedaddress': {
+            'params': ['device', 'reserved-address', 'server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/reserved-address',
+                '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/reserved-address/{reserved-address}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_digitalio': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/digital-io'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dnp3proxy': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/dnp3-proxy'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dns': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/dns'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dns64': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns64'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dnsdatabase': {
             'params': ['device', 'dns-database', 'vdom'],
@@ -4697,7 +7475,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns-database',
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns-database/{dns-database}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dnsdatabase_dnsentry': {
             'params': ['device', 'dns-database', 'dns-entry', 'vdom'],
@@ -4705,7 +7483,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns-database/{dns-database}/dns-entry',
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns-database/{dns-database}/dns-entry/{dns-entry}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dnsserver': {
             'params': ['device', 'dns-server', 'vdom'],
@@ -4713,7 +7491,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns-server',
                 '/pm/config/device/{device}/vdom/{vdom}/system/dns-server/{dns-server}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_dscpbasedpriority': {
             'params': ['device', 'dscp-based-priority'],
@@ -4721,21 +7499,21 @@ def main():
                 '/pm/config/device/{device}/global/system/dscp-based-priority',
                 '/pm/config/device/{device}/global/system/dscp-based-priority/{dscp-based-priority}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_elbc': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/elbc'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_emailserver': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/email-server'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_evpn': {
             'params': ['device', 'evpn', 'vdom'],
@@ -4745,12 +7523,22 @@ def main():
             ],
             'v_range': [['7.4.3', '']]
         },
+        'system_externalresource': {
+            'params': ['device', 'external-resource', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/external-resource',
+                '/pm/config/device/{device}/global/system/external-resource/{external-resource}',
+                '/pm/config/device/{device}/vdom/{vdom}/system/external-resource',
+                '/pm/config/device/{device}/vdom/{vdom}/system/external-resource/{external-resource}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'system_fabricvpn': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/fabric-vpn'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_fabricvpn_advertisedsubnets': {
             'params': ['advertised-subnets', 'device'],
@@ -4758,7 +7546,7 @@ def main():
                 '/pm/config/device/{device}/global/system/fabric-vpn/advertised-subnets',
                 '/pm/config/device/{device}/global/system/fabric-vpn/advertised-subnets/{advertised-subnets}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_fabricvpn_overlays': {
             'params': ['device', 'overlays'],
@@ -4766,14 +7554,14 @@ def main():
                 '/pm/config/device/{device}/global/system/fabric-vpn/overlays',
                 '/pm/config/device/{device}/global/system/fabric-vpn/overlays/{overlays}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_federatedupgrade': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/federated-upgrade'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_federatedupgrade_knownhamembers': {
             'params': ['device', 'known-ha-members'],
@@ -4789,49 +7577,63 @@ def main():
                 '/pm/config/device/{device}/global/system/federated-upgrade/node-list',
                 '/pm/config/device/{device}/global/system/federated-upgrade/node-list/{node-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_fipscc': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/fips-cc'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_fortiai': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/fortiai'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_fortidata': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/fortidata'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'system_fortiguard': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/fortiguard'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_fortindr': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/fortindr'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_fortisandbox': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/fortisandbox'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_fssopolling': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/fsso-polling'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ftmpush': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ftm-push'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_geneve': {
             'params': ['device', 'geneve', 'vdom'],
@@ -4839,21 +7641,53 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/geneve',
                 '/pm/config/device/{device}/vdom/{vdom}/system/geneve/{geneve}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_geoipcountry': {
+            'params': ['device', 'geoip-country'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/geoip-country',
+                '/pm/config/device/{device}/global/system/geoip-country/{geoip-country}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_geoipoverride': {
+            'params': ['device', 'geoip-override'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/geoip-override',
+                '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_geoipoverride_ip6range': {
+            'params': ['device', 'geoip-override', 'ip6-range'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}/ip6-range',
+                '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}/ip6-range/{ip6-range}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_geoipoverride_iprange': {
+            'params': ['device', 'geoip-override', 'ip-range'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}/ip-range',
+                '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}/ip-range/{ip-range}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_gigk': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/gi-gk'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_global': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_gretunnel': {
             'params': ['device', 'gre-tunnel', 'vdom'],
@@ -4861,21 +7695,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/gre-tunnel',
                 '/pm/config/device/{device}/vdom/{vdom}/system/gre-tunnel/{gre-tunnel}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ha': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ha'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ha_frupsettings': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ha/frup-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ha_hamgmtinterfaces': {
             'params': ['device', 'ha-mgmt-interfaces'],
@@ -4883,14 +7717,14 @@ def main():
                 '/pm/config/device/{device}/global/system/ha/ha-mgmt-interfaces',
                 '/pm/config/device/{device}/global/system/ha/ha-mgmt-interfaces/{ha-mgmt-interfaces}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ha_secondaryvcluster': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ha/secondary-vcluster'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ha_unicastpeers': {
             'params': ['device', 'unicast-peers'],
@@ -4898,7 +7732,7 @@ def main():
                 '/pm/config/device/{device}/global/system/ha/unicast-peers',
                 '/pm/config/device/{device}/global/system/ha/unicast-peers/{unicast-peers}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ha_vcluster': {
             'params': ['device', 'vcluster'],
@@ -4906,14 +7740,22 @@ def main():
                 '/pm/config/device/{device}/global/system/ha/vcluster',
                 '/pm/config/device/{device}/global/system/ha/vcluster/{vcluster}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_halic': {
+            'params': ['device', 'ha-lic'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/ha-lic',
+                '/pm/config/device/{device}/global/system/ha-lic/{ha-lic}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_hamonitor': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ha-monitor'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_healthcheckfortiguard': {
             'params': ['device', 'health-check-fortiguard'],
@@ -4935,126 +7777,126 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/ike'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup1': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-1'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup14': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-14'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup15': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-15'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup16': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-16'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup17': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-17'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup18': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-18'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup19': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-19'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup2': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-2'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup20': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-20'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup21': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-21'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup27': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-27'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup28': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-28'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup29': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-29'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup30': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-30'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup31': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-31'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup32': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-32'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ike_dhgroup5': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ike/dh-group-5'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface': {
             'params': ['device', 'interface'],
@@ -5062,7 +7904,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface',
                 '/pm/config/device/{device}/global/system/interface/{interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_clientoptions': {
             'params': ['client-options', 'device', 'interface'],
@@ -5070,7 +7912,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/client-options',
                 '/pm/config/device/{device}/global/system/interface/{interface}/client-options/{client-options}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_dhcpsnoopingserverlist': {
             'params': ['device', 'dhcp-snooping-server-list', 'interface'],
@@ -5078,21 +7920,21 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/dhcp-snooping-server-list',
                 '/pm/config/device/{device}/global/system/interface/{interface}/dhcp-snooping-server-list/{dhcp-snooping-server-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_egressqueues': {
             'params': ['device', 'interface'],
             'urls': [
                 '/pm/config/device/{device}/global/system/interface/{interface}/egress-queues'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_ipv6': {
             'params': ['device', 'interface'],
             'urls': [
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_ipv6_clientoptions': {
             'params': ['client-options', 'device', 'interface'],
@@ -5108,7 +7950,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/dhcp6-iapd-list',
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/dhcp6-iapd-list/{dhcp6-iapd-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_ipv6_ip6delegatedprefixlist': {
             'params': ['device', 'interface', 'ip6-delegated-prefix-list'],
@@ -5116,7 +7958,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/ip6-delegated-prefix-list',
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/ip6-delegated-prefix-list/{ip6-delegated-prefix-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_ipv6_ip6dnssllist': {
             'params': ['device', 'interface', 'ip6-dnssl-list'],
@@ -5132,7 +7974,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/ip6-extra-addr',
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/ip6-extra-addr/{ip6-extra-addr}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_ipv6_ip6prefixlist': {
             'params': ['device', 'interface', 'ip6-prefix-list'],
@@ -5140,7 +7982,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/ip6-prefix-list',
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/ip6-prefix-list/{ip6-prefix-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_ipv6_ip6rdnsslist': {
             'params': ['device', 'interface', 'ip6-rdnss-list'],
@@ -5164,14 +8006,14 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/vrrp6',
                 '/pm/config/device/{device}/global/system/interface/{interface}/ipv6/vrrp6/{vrrp6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_l2tpclientsettings': {
             'params': ['device', 'interface'],
             'urls': [
                 '/pm/config/device/{device}/global/system/interface/{interface}/l2tp-client-settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_mirroringfilter': {
             'params': ['device', 'interface'],
@@ -5186,7 +8028,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/secondaryip',
                 '/pm/config/device/{device}/global/system/interface/{interface}/secondaryip/{secondaryip}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_tagging': {
             'params': ['device', 'interface', 'tagging'],
@@ -5194,7 +8036,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/tagging',
                 '/pm/config/device/{device}/global/system/interface/{interface}/tagging/{tagging}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_vrrp': {
             'params': ['device', 'interface', 'vrrp'],
@@ -5202,7 +8044,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/vrrp',
                 '/pm/config/device/{device}/global/system/interface/{interface}/vrrp/{vrrp}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_vrrp_proxyarp': {
             'params': ['device', 'interface', 'proxy-arp', 'vrrp'],
@@ -5210,7 +8052,7 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/vrrp/{vrrp}/proxy-arp',
                 '/pm/config/device/{device}/global/system/interface/{interface}/vrrp/{vrrp}/proxy-arp/{proxy-arp}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_interface_wifinetworks': {
             'params': ['device', 'interface', 'wifi-networks'],
@@ -5218,14 +8060,14 @@ def main():
                 '/pm/config/device/{device}/global/system/interface/{interface}/wifi-networks',
                 '/pm/config/device/{device}/global/system/interface/{interface}/wifi-networks/{wifi-networks}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipam': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ipam'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipam_pools': {
             'params': ['device', 'pools'],
@@ -5233,7 +8075,7 @@ def main():
                 '/pm/config/device/{device}/global/system/ipam/pools',
                 '/pm/config/device/{device}/global/system/ipam/pools/{pools}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipam_pools_exclude': {
             'params': ['device', 'exclude', 'pools'],
@@ -5249,7 +8091,7 @@ def main():
                 '/pm/config/device/{device}/global/system/ipam/rules',
                 '/pm/config/device/{device}/global/system/ipam/rules/{rules}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipiptunnel': {
             'params': ['device', 'ipip-tunnel', 'vdom'],
@@ -5257,14 +8099,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipip-tunnel',
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipip-tunnel/{ipip-tunnel}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ips': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/ips'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipsecaggregate': {
             'params': ['device', 'ipsec-aggregate', 'vdom'],
@@ -5272,7 +8114,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipsec-aggregate',
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipsec-aggregate/{ipsec-aggregate}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipsurlfilterdns': {
             'params': ['device', 'ips-urlfilter-dns'],
@@ -5280,7 +8122,7 @@ def main():
                 '/pm/config/device/{device}/global/system/ips-urlfilter-dns',
                 '/pm/config/device/{device}/global/system/ips-urlfilter-dns/{ips-urlfilter-dns}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipsurlfilterdns6': {
             'params': ['device', 'ips-urlfilter-dns6'],
@@ -5288,7 +8130,7 @@ def main():
                 '/pm/config/device/{device}/global/system/ips-urlfilter-dns6',
                 '/pm/config/device/{device}/global/system/ips-urlfilter-dns6/{ips-urlfilter-dns6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipv6neighborcache': {
             'params': ['device', 'ipv6-neighbor-cache', 'vdom'],
@@ -5296,7 +8138,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipv6-neighbor-cache',
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipv6-neighbor-cache/{ipv6-neighbor-cache}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ipv6tunnel': {
             'params': ['device', 'ipv6-tunnel', 'vdom'],
@@ -5304,7 +8146,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipv6-tunnel',
                 '/pm/config/device/{device}/vdom/{vdom}/system/ipv6-tunnel/{ipv6-tunnel}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_iscsi': {
             'params': ['device', 'iscsi'],
@@ -5312,7 +8154,7 @@ def main():
                 '/pm/config/device/{device}/global/system/iscsi',
                 '/pm/config/device/{device}/global/system/iscsi/{iscsi}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_isfqueueprofile': {
             'params': ['device', 'isf-queue-profile'],
@@ -5320,7 +8162,7 @@ def main():
                 '/pm/config/device/{device}/global/system/isf-queue-profile',
                 '/pm/config/device/{device}/global/system/isf-queue-profile/{isf-queue-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_linkmonitor': {
             'params': ['device', 'link-monitor', 'vdom'],
@@ -5328,7 +8170,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/link-monitor',
                 '/pm/config/device/{device}/vdom/{vdom}/system/link-monitor/{link-monitor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_linkmonitor_serverlist': {
             'params': ['device', 'link-monitor', 'server-list', 'vdom'],
@@ -5336,7 +8178,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/link-monitor/{link-monitor}/server-list',
                 '/pm/config/device/{device}/vdom/{vdom}/system/link-monitor/{link-monitor}/server-list/{server-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy': {
             'params': ['device', 'network-policy', 'vdom'],
@@ -5344,70 +8186,70 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_guest': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/guest'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_guestvoicesignaling': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/guest-voice-signaling'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_softphone': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/softphone'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_streamingvideo': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/streaming-video'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_videoconferencing': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/video-conferencing'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_videosignaling': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/video-signaling'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_voice': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/voice'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_lldp_networkpolicy_voicesignaling': {
             'params': ['device', 'network-policy', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/lldp/network-policy/{network-policy}/voice-signaling'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ltemodem': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/lte-modem'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ltemodem_dataplan': {
             'params': ['data-plan', 'device'],
@@ -5430,14 +8272,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/mac-address-table',
                 '/pm/config/device/{device}/vdom/{vdom}/system/mac-address-table/{mac-address-table}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_memmgr': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/mem-mgr'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_mobiletunnel': {
             'params': ['device', 'mobile-tunnel', 'vdom'],
@@ -5445,7 +8287,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/mobile-tunnel',
                 '/pm/config/device/{device}/vdom/{vdom}/system/mobile-tunnel/{mobile-tunnel}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_mobiletunnel_network': {
             'params': ['device', 'mobile-tunnel', 'network', 'vdom'],
@@ -5453,21 +8295,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/mobile-tunnel/{mobile-tunnel}/network',
                 '/pm/config/device/{device}/vdom/{vdom}/system/mobile-tunnel/{mobile-tunnel}/network/{network}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_modem': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/modem'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_nat64': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/nat64'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_nat64_secondaryprefix': {
             'params': ['device', 'secondary-prefix', 'vdom'],
@@ -5475,21 +8317,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/nat64/secondary-prefix',
                 '/pm/config/device/{device}/vdom/{vdom}/system/nat64/secondary-prefix/{secondary-prefix}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ndproxy': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/nd-proxy'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_netflow': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/netflow'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_netflow_collectors': {
             'params': ['collectors', 'device'],
@@ -5497,7 +8339,7 @@ def main():
                 '/pm/config/device/{device}/global/system/netflow/collectors',
                 '/pm/config/device/{device}/global/system/netflow/collectors/{collectors}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_netflow_exclusionfilters': {
             'params': ['device', 'exclusion-filters'],
@@ -5507,12 +8349,51 @@ def main():
             ],
             'v_range': [['7.6.0', '']]
         },
+        'system_nethsm': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/nethsm'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_nethsm_hagroups': {
+            'params': ['device', 'hagroups'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/nethsm/hagroups',
+                '/pm/config/device/{device}/global/system/nethsm/hagroups/{hagroups}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_nethsm_partitions': {
+            'params': ['device', 'partitions'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/nethsm/partitions',
+                '/pm/config/device/{device}/global/system/nethsm/partitions/{partitions}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_nethsm_servers': {
+            'params': ['device', 'servers'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/nethsm/servers',
+                '/pm/config/device/{device}/global/system/nethsm/servers/{servers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_nethsm_slots': {
+            'params': ['device', 'slots'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/nethsm/slots',
+                '/pm/config/device/{device}/global/system/nethsm/slots/{slots}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'system_networkvisibility': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/network-visibility'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ngfwsettings': {
             'params': ['device', 'vdom'],
@@ -5527,21 +8408,21 @@ def main():
                 '/pm/config/device/{device}/global/system/np6',
                 '/pm/config/device/{device}/global/system/np6/{np6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_np6_fpanomaly': {
             'params': ['device', 'np6'],
             'urls': [
                 '/pm/config/device/{device}/global/system/np6/{np6}/fp-anomaly'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_np6_hpe': {
             'params': ['device', 'np6'],
             'urls': [
                 '/pm/config/device/{device}/global/system/np6/{np6}/hpe'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_np6xlite': {
             'params': ['device', 'np6xlite'],
@@ -5549,21 +8430,52 @@ def main():
                 '/pm/config/device/{device}/global/system/np6xlite',
                 '/pm/config/device/{device}/global/system/np6xlite/{np6xlite}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_np6xlite_fpanomaly': {
             'params': ['device', 'np6xlite'],
             'urls': [
                 '/pm/config/device/{device}/global/system/np6xlite/{np6xlite}/fp-anomaly'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_np6xlite_hpe': {
             'params': ['device', 'np6xlite'],
             'urls': [
                 '/pm/config/device/{device}/global/system/np6xlite/{np6xlite}/hpe'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_npu_dswdtsprofile': {
+            'params': ['device', 'dsw-dts-profile'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/npu/dsw-dts-profile',
+                '/pm/config/device/{device}/global/system/npu/dsw-dts-profile/{dsw-dts-profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_npu_npqueues': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/npu/np-queues'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_npu_portcpumap': {
+            'params': ['device', 'port-cpu-map'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/npu/port-cpu-map',
+                '/pm/config/device/{device}/global/system/npu/port-cpu-map/{port-cpu-map}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_npu_portnpumap': {
+            'params': ['device', 'port-npu-map'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/npu/port-npu-map',
+                '/pm/config/device/{device}/global/system/npu/port-npu-map/{port-npu-map}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_npupost': {
             'params': ['device'],
@@ -5585,7 +8497,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/npu-setting/prp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_npuvlink': {
             'params': ['device', 'npu-vlink'],
@@ -5593,14 +8505,14 @@ def main():
                 '/pm/config/device/{device}/global/system/npu-vlink',
                 '/pm/config/device/{device}/global/system/npu-vlink/{npu-vlink}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ntp': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ntp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ntp_ntpserver': {
             'params': ['device', 'ntpserver'],
@@ -5608,21 +8520,37 @@ def main():
                 '/pm/config/device/{device}/global/system/ntp/ntpserver',
                 '/pm/config/device/{device}/global/system/ntp/ntpserver/{ntpserver}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_objecttag': {
+            'params': ['device', 'object-tag', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/object-tag',
+                '/pm/config/device/{device}/vdom/{vdom}/system/object-tag/{object-tag}'
+            ],
+            'v_range': [['7.4.8', '7.4.10']]
+        },
+        'system_objecttagging': {
+            'params': ['device', 'object-tagging', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/object-tagging',
+                '/pm/config/device/{device}/vdom/{vdom}/system/object-tagging/{object-tagging}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_passwordpolicy': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/password-policy'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_passwordpolicyguestadmin': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/password-policy-guest-admin'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_pcpserver': {
             'params': ['device', 'vdom'],
@@ -5645,7 +8573,7 @@ def main():
                 '/pm/config/device/{device}/global/system/physical-switch',
                 '/pm/config/device/{device}/global/system/physical-switch/{physical-switch}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_pppoeinterface': {
             'params': ['device', 'pppoe-interface', 'vdom'],
@@ -5653,14 +8581,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/pppoe-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/system/pppoe-interface/{pppoe-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_proberesponse': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/probe-response'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_proxyarp': {
             'params': ['device', 'proxy-arp', 'vdom'],
@@ -5668,14 +8596,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/proxy-arp',
                 '/pm/config/device/{device}/vdom/{vdom}/system/proxy-arp/{proxy-arp}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ptp': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/ptp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ptp_serverinterface': {
             'params': ['device', 'server-interface'],
@@ -5683,175 +8611,319 @@ def main():
                 '/pm/config/device/{device}/global/system/ptp/server-interface',
                 '/pm/config/device/{device}/global/system/ptp/server-interface/{server-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_admin': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/admin'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_alertmail': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/alertmail'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_auth': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/auth'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_automation': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/automation'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_custommessage': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/custom-message'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_devicedetectionportal': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/device-detection-portal'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_fortiguardwf': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/fortiguard-wf'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_ftp': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/ftp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_http': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/http'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_icap': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/icap'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_mail': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/mail'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_mm1': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/mm1'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_replacemsg_mm3': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/mm3'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_replacemsg_mm4': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/mm4'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_replacemsg_mm7': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/mm7'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_replacemsg_mms': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/mms'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_replacemsg_nacquar': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/nac-quar'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_nntp': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/nntp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_spam': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/spam'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_sslvpn': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/sslvpn'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_trafficquota': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/traffic-quota'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_utm': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/utm'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_replacemsg_webproxy': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/replacemsg/webproxy'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_replacemsggroup': {
+            'params': ['device', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_admin': {
+            'params': ['admin', 'device', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/admin',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/admin/{admin}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_alertmail': {
+            'params': ['alertmail', 'device', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/alertmail',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/alertmail/{alertmail}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_auth': {
+            'params': ['auth', 'device', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/auth',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/auth/{auth}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_automation': {
+            'params': ['automation', 'device', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/automation',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/automation/{automation}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_custommessage': {
+            'params': ['custom-message', 'device', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/custom-message',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/custom-message/{custom-message}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_fortiguardwf': {
+            'params': ['device', 'fortiguard-wf', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/fortiguard-wf',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/fortiguard-wf/{fortiguard-wf}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_ftp': {
+            'params': ['device', 'ftp', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/ftp',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/ftp/{ftp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_http': {
+            'params': ['device', 'http', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/http',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/http/{http}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_icap': {
+            'params': ['device', 'icap', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/icap',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/icap/{icap}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_mail': {
+            'params': ['device', 'mail', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/mail',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/mail/{mail}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_nacquar': {
+            'params': ['device', 'nac-quar', 'replacemsg-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/nac-quar',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/nac-quar/{nac-quar}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_spam': {
+            'params': ['device', 'replacemsg-group', 'spam', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/spam',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/spam/{spam}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_sslvpn': {
+            'params': ['device', 'replacemsg-group', 'sslvpn', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/sslvpn',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/sslvpn/{sslvpn}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_trafficquota': {
+            'params': ['device', 'replacemsg-group', 'traffic-quota', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/traffic-quota',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/traffic-quota/{traffic-quota}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_utm': {
+            'params': ['device', 'replacemsg-group', 'utm', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/utm',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/utm/{utm}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsggroup_webproxy': {
+            'params': ['device', 'replacemsg-group', 'vdom', 'webproxy'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/webproxy',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/webproxy/{webproxy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_replacemsgimage': {
+            'params': ['device', 'replacemsg-image'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/replacemsg-image',
+                '/pm/config/device/{device}/global/system/replacemsg-image/{replacemsg-image}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_saml': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/saml'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_saml_serviceproviders': {
             'params': ['device', 'service-providers'],
@@ -5859,7 +8931,7 @@ def main():
                 '/pm/config/device/{device}/global/system/saml/service-providers',
                 '/pm/config/device/{device}/global/system/saml/service-providers/{service-providers}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_saml_serviceproviders_assertionattributes': {
             'params': ['assertion-attributes', 'device', 'service-providers'],
@@ -5867,7 +8939,63 @@ def main():
                 '/pm/config/device/{device}/global/system/saml/service-providers/{service-providers}/assertion-attributes',
                 '/pm/config/device/{device}/global/system/saml/service-providers/{service-providers}/assertion-attributes/{assertion-attributes}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_sdnconnector': {
+            'params': ['device', 'sdn-connector'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-connector',
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_sdnconnector_compartmentlist': {
+            'params': ['compartment-list', 'device', 'sdn-connector'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/compartment-list',
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/compartment-list/{compartment-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_sdnconnector_externalaccountlist': {
+            'params': ['device', 'external-account-list', 'sdn-connector'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/external-account-list',
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/external-account-list/{external-account-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_sdnconnector_forwardingrule': {
+            'params': ['device', 'forwarding-rule', 'sdn-connector'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/forwarding-rule',
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/forwarding-rule/{forwarding-rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_sdnconnector_ociregionlist': {
+            'params': ['device', 'oci-region-list', 'sdn-connector'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/oci-region-list',
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/oci-region-list/{oci-region-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_sdnconnector_routetable': {
+            'params': ['device', 'route-table', 'sdn-connector'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/route-table',
+                '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/route-table/{route-table}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_sdnproxy': {
+            'params': ['device', 'sdn-proxy'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sdn-proxy',
+                '/pm/config/device/{device}/global/system/sdn-proxy/{sdn-proxy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_sdnvpn': {
             'params': ['device', 'sdn-vpn'],
@@ -5882,7 +9010,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_duplication': {
             'params': ['device', 'duplication', 'vdom'],
@@ -5890,7 +9018,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/duplication',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/duplication/{duplication}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_healthcheck': {
             'params': ['device', 'health-check', 'vdom'],
@@ -5898,7 +9026,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/health-check',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/health-check/{health-check}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_healthcheck_sla': {
             'params': ['device', 'health-check', 'sla', 'vdom'],
@@ -5906,7 +9034,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/health-check/{health-check}/sla',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/health-check/{health-check}/sla/{sla}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_healthcheckfortiguard': {
             'params': ['device', 'health-check-fortiguard', 'vdom'],
@@ -5930,7 +9058,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/members',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/members/{members}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -5938,7 +9066,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_service': {
             'params': ['device', 'service', 'vdom'],
@@ -5946,7 +9074,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/service',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/service/{service}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_service_sla': {
             'params': ['device', 'service', 'sla', 'vdom'],
@@ -5954,7 +9082,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/service/{service}/sla',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/service/{service}/sla/{sla}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sdwan_zone': {
             'params': ['device', 'vdom', 'zone'],
@@ -5962,7 +9090,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/zone',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sdwan/zone/{zone}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_securityrating_controls': {
             'params': ['controls', 'device'],
@@ -5985,14 +9113,14 @@ def main():
                 '/pm/config/device/{device}/global/system/session-helper',
                 '/pm/config/device/{device}/global/system/session-helper/{session-helper}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sessionttl': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/session-ttl'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sessionttl_port': {
             'params': ['device', 'port', 'vdom'],
@@ -6000,21 +9128,21 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/session-ttl/port',
                 '/pm/config/device/{device}/vdom/{vdom}/system/session-ttl/port/{port}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_settings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sflow': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/sflow'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sflow_collectors': {
             'params': ['collectors', 'device'],
@@ -6030,14 +9158,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/sit-tunnel',
                 '/pm/config/device/{device}/vdom/{vdom}/system/sit-tunnel/{sit-tunnel}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_smcntp': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/smc-ntp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_smcntp_ntpserver': {
             'params': ['device', 'ntpserver'],
@@ -6045,7 +9173,15 @@ def main():
                 '/pm/config/device/{device}/global/system/smc-ntp/ntpserver',
                 '/pm/config/device/{device}/global/system/smc-ntp/ntpserver/{ntpserver}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_smsserver': {
+            'params': ['device', 'sms-server'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sms-server',
+                '/pm/config/device/{device}/global/system/sms-server/{sms-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_snmp_community': {
             'params': ['community', 'device'],
@@ -6053,7 +9189,7 @@ def main():
                 '/pm/config/device/{device}/global/system/snmp/community',
                 '/pm/config/device/{device}/global/system/snmp/community/{community}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_snmp_community_hosts': {
             'params': ['community', 'device', 'hosts'],
@@ -6061,7 +9197,7 @@ def main():
                 '/pm/config/device/{device}/global/system/snmp/community/{community}/hosts',
                 '/pm/config/device/{device}/global/system/snmp/community/{community}/hosts/{hosts}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_snmp_community_hosts6': {
             'params': ['community', 'device', 'hosts6'],
@@ -6069,7 +9205,7 @@ def main():
                 '/pm/config/device/{device}/global/system/snmp/community/{community}/hosts6',
                 '/pm/config/device/{device}/global/system/snmp/community/{community}/hosts6/{hosts6}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_snmp_mibview': {
             'params': ['device', 'mib-view'],
@@ -6077,7 +9213,7 @@ def main():
                 '/pm/config/device/{device}/global/system/snmp/mib-view',
                 '/pm/config/device/{device}/global/system/snmp/mib-view/{mib-view}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_snmp_rmonstat': {
             'params': ['device', 'rmon-stat'],
@@ -6092,7 +9228,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/snmp/sysinfo'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_snmp_user': {
             'params': ['device', 'user'],
@@ -6100,7 +9236,22 @@ def main():
                 '/pm/config/device/{device}/global/system/snmp/user',
                 '/pm/config/device/{device}/global/system/snmp/user/{user}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_sovsase': {
+            'params': ['device'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/sov-sase'
+            ],
+            'v_range': [['7.4.7', '7.4.10'], ['7.6.4', '']]
+        },
+        'system_spanport': {
+            'params': ['device', 'span-port'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/span-port',
+                '/pm/config/device/{device}/global/system/span-port/{span-port}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_speedtestschedule': {
             'params': ['device', 'speed-test-schedule', 'vdom'],
@@ -6108,7 +9259,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/speed-test-schedule',
                 '/pm/config/device/{device}/vdom/{vdom}/system/speed-test-schedule/{speed-test-schedule}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_speedtestserver': {
             'params': ['device', 'speed-test-server', 'vdom'],
@@ -6116,7 +9267,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/speed-test-server',
                 '/pm/config/device/{device}/vdom/{vdom}/system/speed-test-server/{speed-test-server}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_speedtestserver_host': {
             'params': ['device', 'host', 'speed-test-server', 'vdom'],
@@ -6124,14 +9275,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/speed-test-server/{speed-test-server}/host',
                 '/pm/config/device/{device}/vdom/{vdom}/system/speed-test-server/{speed-test-server}/host/{host}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_speedtestsetting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/speed-test-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_splitportmode': {
             'params': ['device', 'split-port-mode'],
@@ -6139,7 +9290,7 @@ def main():
                 '/pm/config/device/{device}/global/system/global/split-port-mode',
                 '/pm/config/device/{device}/global/system/global/split-port-mode/{split-port-mode}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_sshconfig': {
             'params': ['device'],
@@ -6154,7 +9305,7 @@ def main():
                 '/pm/config/device/{device}/global/system/sso-admin',
                 '/pm/config/device/{device}/global/system/sso-admin/{sso-admin}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ssoforticloudadmin': {
             'params': ['device', 'sso-forticloud-admin'],
@@ -6162,7 +9313,7 @@ def main():
                 '/pm/config/device/{device}/global/system/sso-forticloud-admin',
                 '/pm/config/device/{device}/global/system/sso-forticloud-admin/{sso-forticloud-admin}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_ssofortigatecloudadmin': {
             'params': ['device', 'sso-fortigate-cloud-admin'],
@@ -6170,14 +9321,14 @@ def main():
                 '/pm/config/device/{device}/global/system/sso-fortigate-cloud-admin',
                 '/pm/config/device/{device}/global/system/sso-fortigate-cloud-admin/{sso-fortigate-cloud-admin}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_standalonecluster': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/standalone-cluster'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_standalonecluster_clusterpeer': {
             'params': ['cluster-peer', 'device'],
@@ -6185,14 +9336,14 @@ def main():
                 '/pm/config/device/{device}/global/system/standalone-cluster/cluster-peer',
                 '/pm/config/device/{device}/global/system/standalone-cluster/cluster-peer/{cluster-peer}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_standalonecluster_clusterpeer_sessionsyncfilter': {
             'params': ['cluster-peer', 'device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/standalone-cluster/cluster-peer/{cluster-peer}/session-sync-filter'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_standalonecluster_clusterpeer_sessionsyncfilter_customservice': {
             'params': ['cluster-peer', 'custom-service', 'device'],
@@ -6200,7 +9351,7 @@ def main():
                 '/pm/config/device/{device}/global/system/standalone-cluster/cluster-peer/{cluster-peer}/session-sync-filter/custom-service',
                 '/pm/config/device/{device}/global/system/standalone-cluster/cluster-peer/{cluster-peer}/session-sync-filter/custom-service/{custom-service}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_standalonecluster_monitorprefix': {
             'params': ['device', 'monitor-prefix'],
@@ -6216,14 +9367,14 @@ def main():
                 '/pm/config/device/{device}/global/system/storage',
                 '/pm/config/device/{device}/global/system/storage/{storage}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_stp': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/stp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_switchinterface': {
             'params': ['device', 'switch-interface'],
@@ -6231,7 +9382,7 @@ def main():
                 '/pm/config/device/{device}/global/system/switch-interface',
                 '/pm/config/device/{device}/global/system/switch-interface/{switch-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_timezone': {
             'params': ['device'],
@@ -6246,7 +9397,7 @@ def main():
                 '/pm/config/device/{device}/global/system/tos-based-priority',
                 '/pm/config/device/{device}/global/system/tos-based-priority/{tos-based-priority}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdom': {
             'params': ['device', 'vdom'],
@@ -6254,14 +9405,14 @@ def main():
                 '/pm/config/device/{device}/global/system/vdom',
                 '/pm/config/device/{device}/global/system/vdom/{vdom}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomdns': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/vdom-dns'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomexception': {
             'params': ['device', 'vdom-exception'],
@@ -6269,7 +9420,7 @@ def main():
                 '/pm/config/device/{device}/global/system/vdom-exception',
                 '/pm/config/device/{device}/global/system/vdom-exception/{vdom-exception}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomlink': {
             'params': ['device', 'vdom-link'],
@@ -6277,14 +9428,14 @@ def main():
                 '/pm/config/device/{device}/global/system/vdom-link',
                 '/pm/config/device/{device}/global/system/vdom-link/{vdom-link}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomnetflow': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/vdom-netflow'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomnetflow_collectors': {
             'params': ['collectors', 'device', 'vdom'],
@@ -6292,7 +9443,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/vdom-netflow/collectors',
                 '/pm/config/device/{device}/vdom/{vdom}/system/vdom-netflow/collectors/{collectors}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomproperty': {
             'params': ['device', 'vdom-property'],
@@ -6300,7 +9451,7 @@ def main():
                 '/pm/config/device/{device}/global/system/vdom-property',
                 '/pm/config/device/{device}/global/system/vdom-property/{vdom-property}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomradiusserver': {
             'params': ['device', 'vdom-radius-server'],
@@ -6308,14 +9459,14 @@ def main():
                 '/pm/config/device/{device}/global/system/vdom-radius-server',
                 '/pm/config/device/{device}/global/system/vdom-radius-server/{vdom-radius-server}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomsflow': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/vdom-sflow'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vdomsflow_collectors': {
             'params': ['collectors', 'device', 'vdom'],
@@ -6330,7 +9481,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/vin-alarm'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_virtualswitch': {
             'params': ['device', 'virtual-switch'],
@@ -6338,7 +9489,7 @@ def main():
                 '/pm/config/device/{device}/global/system/virtual-switch',
                 '/pm/config/device/{device}/global/system/virtual-switch/{virtual-switch}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_virtualswitch_port': {
             'params': ['device', 'port', 'virtual-switch'],
@@ -6346,14 +9497,14 @@ def main():
                 '/pm/config/device/{device}/global/system/virtual-switch/{virtual-switch}/port',
                 '/pm/config/device/{device}/global/system/virtual-switch/{virtual-switch}/port/{port}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_virtualwanlink': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_virtualwanlink_healthcheck': {
             'params': ['device', 'health-check', 'vdom'],
@@ -6361,7 +9512,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/health-check',
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/health-check/{health-check}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_virtualwanlink_healthcheck_sla': {
             'params': ['device', 'health-check', 'sla', 'vdom'],
@@ -6369,7 +9520,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/health-check/{health-check}/sla',
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/health-check/{health-check}/sla/{sla}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_virtualwanlink_members': {
             'params': ['device', 'members', 'vdom'],
@@ -6377,7 +9528,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/members',
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/members/{members}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_virtualwanlink_neighbor': {
             'params': ['device', 'neighbor', 'vdom'],
@@ -6385,7 +9536,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/neighbor',
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/neighbor/{neighbor}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_virtualwanlink_service': {
             'params': ['device', 'service', 'vdom'],
@@ -6393,7 +9544,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/service',
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/service/{service}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
         },
         'system_virtualwanlink_service_sla': {
             'params': ['device', 'service', 'sla', 'vdom'],
@@ -6401,7 +9552,15 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/service/{service}/sla',
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wan-link/service/{service}/sla/{sla}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']]
+        },
+        'system_virtualwirepair': {
+            'params': ['device', 'vdom', 'virtual-wire-pair'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wire-pair',
+                '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wire-pair/{virtual-wire-pair}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'system_vneinterface': {
             'params': ['device', 'vdom', 'vne-interface'],
@@ -6416,7 +9575,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/vne-tunnel'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_vpce': {
             'params': ['device', 'vpce'],
@@ -6432,7 +9591,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/vxlan',
                 '/pm/config/device/{device}/vdom/{vdom}/system/vxlan/{vxlan}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_wccp': {
             'params': ['device', 'vdom', 'wccp'],
@@ -6440,7 +9599,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/wccp',
                 '/pm/config/device/{device}/vdom/{vdom}/system/wccp/{wccp}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_wireless_apstatus': {
             'params': ['ap-status', 'device'],
@@ -6448,14 +9607,14 @@ def main():
                 '/pm/config/device/{device}/global/system/wireless/ap-status',
                 '/pm/config/device/{device}/global/system/wireless/ap-status/{ap-status}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_wireless_settings': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/wireless/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_zone': {
             'params': ['device', 'vdom', 'zone'],
@@ -6463,7 +9622,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/zone',
                 '/pm/config/device/{device}/vdom/{vdom}/system/zone/{zone}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'system_zone_tagging': {
             'params': ['device', 'tagging', 'vdom', 'zone'],
@@ -6471,7 +9630,127 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/system/zone/{zone}/tagging',
                 '/pm/config/device/{device}/vdom/{vdom}/system/zone/{zone}/tagging/{tagging}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'user_adgrp': {
+            'params': ['adgrp', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/adgrp',
+                '/pm/config/device/{device}/vdom/{vdom}/user/adgrp/{adgrp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_certificate': {
+            'params': ['certificate', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/certificate',
+                '/pm/config/device/{device}/vdom/{vdom}/user/certificate/{certificate}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_domaincontroller': {
+            'params': ['device', 'domain-controller', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/domain-controller',
+                '/pm/config/device/{device}/vdom/{vdom}/user/domain-controller/{domain-controller}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_domaincontroller_extraserver': {
+            'params': ['device', 'domain-controller', 'extra-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/domain-controller/{domain-controller}/extra-server',
+                '/pm/config/device/{device}/vdom/{vdom}/user/domain-controller/{domain-controller}/extra-server/{extra-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_exchange': {
+            'params': ['device', 'exchange', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/exchange',
+                '/pm/config/device/{device}/vdom/{vdom}/user/exchange/{exchange}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_externalidentityprovider': {
+            'params': ['device', 'external-identity-provider', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/external-identity-provider',
+                '/pm/config/device/{device}/vdom/{vdom}/user/external-identity-provider/{external-identity-provider}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_fortitoken': {
+            'params': ['device', 'fortitoken', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/fortitoken',
+                '/pm/config/device/{device}/vdom/{vdom}/user/fortitoken/{fortitoken}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_fsso': {
+            'params': ['device', 'fsso', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/fsso',
+                '/pm/config/device/{device}/vdom/{vdom}/user/fsso/{fsso}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_fssopolling': {
+            'params': ['device', 'fsso-polling', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/fsso-polling',
+                '/pm/config/device/{device}/vdom/{vdom}/user/fsso-polling/{fsso-polling}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_fssopolling_adgrp': {
+            'params': ['adgrp', 'device', 'fsso-polling', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/fsso-polling/{fsso-polling}/adgrp',
+                '/pm/config/device/{device}/vdom/{vdom}/user/fsso-polling/{fsso-polling}/adgrp/{adgrp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_group': {
+            'params': ['device', 'group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/group',
+                '/pm/config/device/{device}/vdom/{vdom}/user/group/{group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_group_match': {
+            'params': ['device', 'group', 'match', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/group/{group}/match',
+                '/pm/config/device/{device}/vdom/{vdom}/user/group/{group}/match/{match}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_krbkeytab': {
+            'params': ['device', 'krb-keytab', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/krb-keytab',
+                '/pm/config/device/{device}/vdom/{vdom}/user/krb-keytab/{krb-keytab}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_ldap': {
+            'params': ['device', 'ldap', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/ldap',
+                '/pm/config/device/{device}/vdom/{vdom}/user/ldap/{ldap}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_local': {
+            'params': ['device', 'local', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/local',
+                '/pm/config/device/{device}/vdom/{vdom}/user/local/{local}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'user_nacpolicy': {
             'params': ['device', 'nac-policy', 'vdom'],
@@ -6479,14 +9758,54 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/user/nac-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/user/nac-policy/{nac-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'user_oidc': {
+            'params': ['device', 'oidc', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/oidc',
+                '/pm/config/device/{device}/vdom/{vdom}/user/oidc/{oidc}'
+            ],
+            'v_range': [['7.6.4', '']]
+        },
+        'user_passwordpolicy': {
+            'params': ['device', 'password-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/password-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/user/password-policy/{password-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_peer': {
+            'params': ['device', 'peer', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/peer',
+                '/pm/config/device/{device}/vdom/{vdom}/user/peer/{peer}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_peergrp': {
+            'params': ['device', 'peergrp', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/peergrp',
+                '/pm/config/device/{device}/vdom/{vdom}/user/peergrp/{peergrp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_pop3': {
+            'params': ['device', 'pop3', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/pop3',
+                '/pm/config/device/{device}/vdom/{vdom}/user/pop3/{pop3}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'user_quarantine': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/quarantine'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'user_quarantine_targets': {
             'params': ['device', 'targets', 'vdom'],
@@ -6494,7 +9813,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/user/quarantine/targets',
                 '/pm/config/device/{device}/vdom/{vdom}/user/quarantine/targets/{targets}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'user_quarantine_targets_macs': {
             'params': ['device', 'macs', 'targets', 'vdom'],
@@ -6502,7 +9821,31 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/user/quarantine/targets/{targets}/macs',
                 '/pm/config/device/{device}/vdom/{vdom}/user/quarantine/targets/{targets}/macs/{macs}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'user_radius': {
+            'params': ['device', 'radius', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/radius',
+                '/pm/config/device/{device}/vdom/{vdom}/user/radius/{radius}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_radius_accountingserver': {
+            'params': ['accounting-server', 'device', 'radius', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/radius/{radius}/accounting-server',
+                '/pm/config/device/{device}/vdom/{vdom}/user/radius/{radius}/accounting-server/{accounting-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_saml': {
+            'params': ['device', 'saml', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/saml',
+                '/pm/config/device/{device}/vdom/{vdom}/user/saml/{saml}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'user_scim': {
             'params': ['device', 'scim', 'vdom'],
@@ -6510,14 +9853,30 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/user/scim',
                 '/pm/config/device/{device}/vdom/{vdom}/user/scim/{scim}'
             ],
-            'v_range': [['7.6.0', '']]
+            'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']]
+        },
+        'user_securityexemptlist': {
+            'params': ['device', 'security-exempt-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/security-exempt-list',
+                '/pm/config/device/{device}/vdom/{vdom}/user/security-exempt-list/{security-exempt-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'user_securityexemptlist_rule': {
+            'params': ['device', 'rule', 'security-exempt-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/security-exempt-list/{security-exempt-list}/rule',
+                '/pm/config/device/{device}/vdom/{vdom}/user/security-exempt-list/{security-exempt-list}/rule/{rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'user_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'user_setting_authports': {
             'params': ['auth-ports', 'device', 'vdom'],
@@ -6525,7 +9884,55 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/user/setting/auth-ports',
                 '/pm/config/device/{device}/vdom/{vdom}/user/setting/auth-ports/{auth-ports}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'user_tacacs': {
+            'params': ['device', 'tacacs+', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/user/tacacs+',
+                '/pm/config/device/{device}/vdom/{vdom}/user/tacacs+/{tacacs+}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'videofilter_keyword': {
+            'params': ['device', 'keyword', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/keyword',
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/keyword/{keyword}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'videofilter_keyword_word': {
+            'params': ['device', 'keyword', 'vdom', 'word'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/keyword/{keyword}/word',
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/keyword/{keyword}/word/{word}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'videofilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'videofilter_profile_filters': {
+            'params': ['device', 'filters', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}/filters',
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}/filters/{filters}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'videofilter_profile_fortiguardcategory_filters': {
+            'params': ['device', 'filters', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}/fortiguard-category/filters',
+                '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}/fortiguard-category/filters/{filters}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'videofilter_youtubekey': {
             'params': ['device', 'vdom', 'youtube-key'],
@@ -6533,7 +9940,60 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/youtube-key',
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/youtube-key/{youtube-key}'
             ],
-            'v_range': [['7.2.6', '7.2.9']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'virtualpatch_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/virtual-patch/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/virtual-patch/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'virtualpatch_profile_exemption': {
+            'params': ['device', 'exemption', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/virtual-patch/profile/{profile}/exemption',
+                '/pm/config/device/{device}/vdom/{vdom}/virtual-patch/profile/{profile}/exemption/{exemption}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'voip_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/voip/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/voip/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'voip_profile_msrp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/voip/profile/{profile}/msrp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'voip_profile_sccp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/voip/profile/{profile}/sccp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'voip_profile_sip': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/voip/profile/{profile}/sip'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpn_certificate_ca': {
+            'params': ['ca', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/ca',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/ca/{ca}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'vpn_certificate_crl': {
             'params': ['crl', 'device', 'vdom'],
@@ -6541,7 +10001,15 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/crl',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/crl/{crl}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'vpn_certificate_hsmlocal': {
+            'params': ['device', 'hsm-local', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/hsm-local',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/hsm-local/{hsm-local}'
+            ],
+            'v_range': [['7.6.3', '']]
         },
         'vpn_certificate_local': {
             'params': ['device', 'local', 'vdom'],
@@ -6549,21 +10017,37 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/local',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/local/{local}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'vpn_certificate_ocspserver': {
+            'params': ['device', 'ocsp-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/ocsp-server',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/ocsp-server/{ocsp-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpn_certificate_remote': {
+            'params': ['device', 'remote', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/remote',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/remote/{remote}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'vpn_certificate_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_certificate_setting_crlverification': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/setting/crl-verification'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_concentrator': {
             'params': ['concentrator', 'device', 'vdom'],
@@ -6571,7 +10055,23 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/concentrator',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/concentrator/{concentrator}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'vpn_ipsec_fec': {
+            'params': ['device', 'fec', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/fec',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/fec/{fec}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpn_ipsec_fec_mappings': {
+            'params': ['device', 'fec', 'mappings', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/fec/{fec}/mappings',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/fec/{fec}/mappings/{mappings}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'vpn_ipsec_forticlient': {
             'params': ['device', 'forticlient', 'vdom'],
@@ -6579,7 +10079,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/forticlient',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/forticlient/{forticlient}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_manualkey': {
             'params': ['device', 'manualkey', 'vdom'],
@@ -6587,7 +10087,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/manualkey',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/manualkey/{manualkey}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_manualkeyinterface': {
             'params': ['device', 'manualkey-interface', 'vdom'],
@@ -6595,7 +10095,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/manualkey-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/manualkey-interface/{manualkey-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase1': {
             'params': ['device', 'phase1', 'vdom'],
@@ -6603,7 +10103,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1/{phase1}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase1_ipv4excluderange': {
             'params': ['device', 'ipv4-exclude-range', 'phase1', 'vdom'],
@@ -6611,7 +10111,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1/{phase1}/ipv4-exclude-range',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1/{phase1}/ipv4-exclude-range/{ipv4-exclude-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase1_ipv6excluderange': {
             'params': ['device', 'ipv6-exclude-range', 'phase1', 'vdom'],
@@ -6619,7 +10119,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1/{phase1}/ipv6-exclude-range',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1/{phase1}/ipv6-exclude-range/{ipv6-exclude-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase1interface': {
             'params': ['device', 'phase1-interface', 'vdom'],
@@ -6627,7 +10127,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1-interface/{phase1-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase1interface_ipv4excluderange': {
             'params': ['device', 'ipv4-exclude-range', 'phase1-interface', 'vdom'],
@@ -6635,7 +10135,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1-interface/{phase1-interface}/ipv4-exclude-range',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1-interface/{phase1-interface}/ipv4-exclude-range/{ipv4-exclude-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase1interface_ipv6excluderange': {
             'params': ['device', 'ipv6-exclude-range', 'phase1-interface', 'vdom'],
@@ -6643,7 +10143,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1-interface/{phase1-interface}/ipv6-exclude-range',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase1-interface/{phase1-interface}/ipv6-exclude-range/{ipv6-exclude-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase2': {
             'params': ['device', 'phase2', 'vdom'],
@@ -6651,7 +10151,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase2',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase2/{phase2}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ipsec_phase2interface': {
             'params': ['device', 'phase2-interface', 'vdom'],
@@ -6659,7 +10159,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase2-interface',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase2-interface/{phase2-interface}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_kmipserver': {
             'params': ['device', 'kmip-server', 'vdom'],
@@ -6682,21 +10182,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/l2tp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ocvpn': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ocvpn_forticlientaccess': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/forticlient-access'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ocvpn_forticlientaccess_authgroups': {
             'params': ['auth-groups', 'device', 'vdom'],
@@ -6704,7 +10204,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/forticlient-access/auth-groups',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/forticlient-access/auth-groups/{auth-groups}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ocvpn_overlays': {
             'params': ['device', 'overlays', 'vdom'],
@@ -6712,7 +10212,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/overlays',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/overlays/{overlays}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ocvpn_overlays_subnets': {
             'params': ['device', 'overlays', 'subnets', 'vdom'],
@@ -6720,14 +10220,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/overlays/{overlays}/subnets',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ocvpn/overlays/{overlays}/subnets/{subnets}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_pptp': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/pptp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_qkd': {
             'params': ['device', 'qkd', 'vdom'],
@@ -6743,7 +10243,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/client',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/client/{client}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpn_ssl_settings': {
             'params': ['device', 'vdom'],
@@ -6760,13 +10260,108 @@ def main():
             ],
             'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']]
         },
+        'vpnsslweb_hostchecksoftware': {
+            'params': ['device', 'host-check-software', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/host-check-software',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/host-check-software/{host-check-software}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_hostchecksoftware_checkitemlist': {
+            'params': ['check-item-list', 'device', 'host-check-software', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/host-check-software/{host-check-software}/check-item-list',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/host-check-software/{host-check-software}/check-item-list/{check-item-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal': {
+            'params': ['device', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_bookmarkgroup': {
+            'params': ['bookmark-group', 'device', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_bookmarkgroup_bookmarks': {
+            'params': ['bookmark-group', 'bookmarks', 'device', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}/bookmarks',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}/bookmarks/{bookmarks}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_bookmarkgroup_bookmarks_formdata': {
+            'params': ['bookmark-group', 'bookmarks', 'device', 'form-data', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}/bookmarks/{bookmarks}/form-data',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}/bookmarks/{bookmarks}/form-data/{form-dat'
+                'a}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_landingpage': {
+            'params': ['device', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/landing-page'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_landingpage_formdata': {
+            'params': ['device', 'form-data', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/landing-page/form-data',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/landing-page/form-data/{form-data}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_macaddrcheckrule': {
+            'params': ['device', 'mac-addr-check-rule', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/mac-addr-check-rule',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/mac-addr-check-rule/{mac-addr-check-rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_oschecklist': {
+            'params': ['device', 'portal', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/os-check-list'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_portal_splitdns': {
+            'params': ['device', 'portal', 'split-dns', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/split-dns',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/split-dns/{split-dns}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'vpnsslweb_realm': {
+            'params': ['device', 'realm', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/realm',
+                '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/realm/{realm}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'vpnsslweb_userbookmark': {
             'params': ['device', 'user-bookmark', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-bookmark',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-bookmark/{user-bookmark}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpnsslweb_userbookmark_bookmarks': {
             'params': ['bookmarks', 'device', 'user-bookmark', 'vdom'],
@@ -6774,7 +10369,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-bookmark/{user-bookmark}/bookmarks',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-bookmark/{user-bookmark}/bookmarks/{bookmarks}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpnsslweb_userbookmark_bookmarks_formdata': {
             'params': ['bookmarks', 'device', 'form-data', 'user-bookmark', 'vdom'],
@@ -6782,7 +10377,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-bookmark/{user-bookmark}/bookmarks/{bookmarks}/form-data',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-bookmark/{user-bookmark}/bookmarks/{bookmarks}/form-data/{form-data}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpnsslweb_usergroupbookmark': {
             'params': ['device', 'user-group-bookmark', 'vdom'],
@@ -6790,7 +10385,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-group-bookmark',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-group-bookmark/{user-group-bookmark}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpnsslweb_usergroupbookmark_bookmarks': {
             'params': ['bookmarks', 'device', 'user-group-bookmark', 'vdom'],
@@ -6798,7 +10393,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-group-bookmark/{user-group-bookmark}/bookmarks',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-group-bookmark/{user-group-bookmark}/bookmarks/{bookmarks}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'vpnsslweb_usergroupbookmark_bookmarks_formdata': {
             'params': ['bookmarks', 'device', 'form-data', 'user-group-bookmark', 'vdom'],
@@ -6806,30 +10401,241 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-group-bookmark/{user-group-bookmark}/bookmarks/{bookmarks}/form-data',
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/user-group-bookmark/{user-group-bookmark}/bookmarks/{bookmarks}/form-data/{form-data}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'waf_mainclass': {
+            'params': ['device', 'main-class'],
+            'urls': [
+                '/pm/config/device/{device}/global/waf/main-class',
+                '/pm/config/device/{device}/global/waf/main-class/{main-class}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_addresslist': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/address-list'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_contentlength': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/content-length'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_exception': {
+            'params': ['device', 'exception', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/exception',
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/exception/{exception}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_headerlength': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/header-length'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_hostname': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/hostname'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_linelength': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/line-length'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_malformed': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/malformed'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_maxcookie': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/max-cookie'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_maxheaderline': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/max-header-line'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_maxrangesegment': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/max-range-segment'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_maxurlparam': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/max-url-param'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_method': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/method'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_paramlength': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/param-length'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_urlparamlength': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/url-param-length'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_constraint_version': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/version'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_method': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/method'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_method_methodpolicy': {
+            'params': ['device', 'method-policy', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/method/method-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/method/method-policy/{method-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_signature': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/signature'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_signature_customsignature': {
+            'params': ['custom-signature', 'device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/signature/custom-signature',
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/signature/custom-signature/{custom-signature}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_signature_mainclass': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/signature/main-class'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_urlaccess': {
+            'params': ['device', 'profile', 'url-access', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/url-access',
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/url-access/{url-access}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_profile_urlaccess_accesspattern': {
+            'params': ['access-pattern', 'device', 'profile', 'url-access', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/url-access/{url-access}/access-pattern',
+                '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/url-access/{url-access}/access-pattern/{access-pattern}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_signature': {
+            'params': ['device', 'signature'],
+            'urls': [
+                '/pm/config/device/{device}/global/waf/signature',
+                '/pm/config/device/{device}/global/waf/signature/{signature}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'waf_subclass': {
+            'params': ['device', 'sub-class'],
+            'urls': [
+                '/pm/config/device/{device}/global/waf/sub-class',
+                '/pm/config/device/{device}/global/waf/sub-class/{sub-class}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_authgroup': {
+            'params': ['auth-group', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/auth-group',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/auth-group/{auth-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'wanopt_cacheservice': {
-            'params': ['device'],
+            'params': ['device', 'vdom'],
             'urls': [
-                '/pm/config/device/{device}/global/wanopt/cache-service'
+                '/pm/config/device/{device}/global/wanopt/cache-service',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_cacheservice_dstpeer': {
-            'params': ['device', 'dst-peer'],
+            'params': ['device', 'dst-peer', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/global/wanopt/cache-service/dst-peer',
-                '/pm/config/device/{device}/global/wanopt/cache-service/dst-peer/{dst-peer}'
+                '/pm/config/device/{device}/global/wanopt/cache-service/dst-peer/{dst-peer}',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service/dst-peer',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service/dst-peer/{dst-peer}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_cacheservice_srcpeer': {
-            'params': ['device', 'src-peer'],
+            'params': ['device', 'src-peer', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/global/wanopt/cache-service/src-peer',
-                '/pm/config/device/{device}/global/wanopt/cache-service/src-peer/{src-peer}'
+                '/pm/config/device/{device}/global/wanopt/cache-service/src-peer/{src-peer}',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service/src-peer',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service/src-peer/{src-peer}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_contentdeliverynetworkrule': {
             'params': ['content-delivery-network-rule', 'device'],
@@ -6837,7 +10643,7 @@ def main():
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule',
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule/{content-delivery-network-rule}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_contentdeliverynetworkrule_rules': {
             'params': ['content-delivery-network-rule', 'device', 'rules'],
@@ -6845,14 +10651,14 @@ def main():
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule/{content-delivery-network-rule}/rules',
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule/{content-delivery-network-rule}/rules/{rules}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_contentdeliverynetworkrule_rules_contentid': {
             'params': ['content-delivery-network-rule', 'device', 'rules'],
             'urls': [
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule/{content-delivery-network-rule}/rules/{rules}/content-id'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_contentdeliverynetworkrule_rules_matchentries': {
             'params': ['content-delivery-network-rule', 'device', 'match-entries', 'rules'],
@@ -6861,7 +10667,7 @@ def main():
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule/{content-delivery-network-rule}/rules/{rules}/match-entries/{match-en'
                 'tries}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_contentdeliverynetworkrule_rules_skipentries': {
             'params': ['content-delivery-network-rule', 'device', 'rules', 'skip-entries'],
@@ -6870,35 +10676,181 @@ def main():
                 '/pm/config/device/{device}/global/wanopt/content-delivery-network-rule/{content-delivery-network-rule}/rules/{rules}/skip-entries/{skip-entr'
                 'ies}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'wanopt_peer': {
+            'params': ['device', 'peer', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/peer',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/peer/{peer}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_profile_cifs': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}/cifs'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_profile_ftp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}/ftp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_profile_http': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}/http'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_profile_mapi': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}/mapi'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'wanopt_profile_tcp': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}/tcp'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'wanopt_remotestorage': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/wanopt/remote-storage'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_settings': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wanopt/settings'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wanopt_webcache': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wanopt/webcache'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webcache_prefetch': {
+            'params': ['device', 'prefetch', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/prefetch',
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/prefetch/{prefetch}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webcache_reversecacheserver': {
+            'params': ['device', 'reverse-cache-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/reverse-cache-server',
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/reverse-cache-server/{reverse-cache-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webcache_settings': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/settings'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webcache_useragent': {
+            'params': ['device', 'user-agent', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/user-agent',
+                '/pm/config/device/{device}/vdom/{vdom}/webcache/user-agent/{user-agent}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_content': {
+            'params': ['content', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content/{content}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_content_entries': {
+            'params': ['content', 'device', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content/{content}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content/{content}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_contentheader': {
+            'params': ['content-header', 'device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content-header',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content-header/{content-header}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_contentheader_entries': {
+            'params': ['content-header', 'device', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content-header/{content-header}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/content-header/{content-header}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_domainlist': {
+            'params': ['device', 'domain-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/domain-list',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/domain-list/{domain-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_domainlist_entries': {
+            'params': ['device', 'domain-list', 'entries', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/domain-list/{domain-list}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/domain-list/{domain-list}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'webfilter_fortiguard': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/webfilter/fortiguard'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webfilter_ftgdlocalcat': {
+            'params': ['device', 'ftgd-local-cat', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-cat',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-cat/{ftgd-local-cat}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_ftgdlocalrating': {
+            'params': ['device', 'ftgd-local-rating', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-rating',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-rating/{ftgd-local-rating}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'webfilter_ftgdlocalrisk': {
             'params': ['device', 'ftgd-local-risk', 'vdom'],
@@ -6906,7 +10858,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-risk',
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-risk/{ftgd-local-risk}'
             ],
-            'v_range': [['7.6.2', '']]
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.2', '']]
         },
         'webfilter_ftgdrisklevel': {
             'params': ['device', 'ftgd-risk-level', 'vdom'],
@@ -6914,28 +10866,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-risk-level',
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-risk-level/{ftgd-risk-level}'
             ],
-            'v_range': [['7.6.2', '']]
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.2', '']]
         },
         'webfilter_ipsurlfiltercachesetting': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/webfilter/ips-urlfilter-cache-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'webfilter_ipsurlfiltersetting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ips-urlfilter-setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'webfilter_ipsurlfiltersetting6': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ips-urlfilter-setting6'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'webfilter_override': {
             'params': ['device', 'override', 'vdom'],
@@ -6943,7 +10895,76 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/override',
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/override/{override}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webfilter_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_antiphish_custompatterns': {
+            'params': ['custom-patterns', 'device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/antiphish/custom-patterns',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/antiphish/custom-patterns/{custom-patterns}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_antiphish_inspectionentries': {
+            'params': ['device', 'inspection-entries', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/antiphish/inspection-entries',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/antiphish/inspection-entries/{inspection-entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_ftgdwf': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_ftgdwf_filters': {
+            'params': ['device', 'filters', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/filters',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/filters/{filters}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_ftgdwf_quota': {
+            'params': ['device', 'profile', 'quota', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/quota',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/quota/{quota}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_ftgdwf_risk': {
+            'params': ['device', 'profile', 'risk', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/risk',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/risk/{risk}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_override': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/override'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_profile_web': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/web'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'webfilter_searchengine': {
             'params': ['device', 'search-engine', 'vdom'],
@@ -6951,7 +10972,39 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/search-engine',
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/search-engine/{search-engine}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webfilter_urlfilter': {
+            'params': ['device', 'urlfilter', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/urlfilter',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/urlfilter/{urlfilter}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_urlfilter_entries': {
+            'params': ['device', 'entries', 'urlfilter', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/urlfilter/{urlfilter}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/urlfilter/{urlfilter}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_urllist': {
+            'params': ['device', 'url-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/url-list',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/url-list/{url-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webfilter_urllist_entries': {
+            'params': ['device', 'entries', 'url-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/url-list/{url-list}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/webfilter/url-list/{url-list}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'webproxy_debugurl': {
             'params': ['debug-url', 'device', 'vdom'],
@@ -6959,14 +11012,22 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/debug-url',
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/debug-url/{debug-url}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
-        'webproxy_explicit': {
+        'webproxy_dynamicbypass': {
             'params': ['device', 'vdom'],
             'urls': [
-                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit'
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/dynamic-bypass'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_explicit': {
+            'params': ['device', 'explicit', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit/{explicit}'
+            ],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'webproxy_explicit_pacpolicy': {
             'params': ['device', 'pac-policy', 'vdom'],
@@ -6974,7 +11035,15 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit/pac-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit/pac-policy/{pac-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webproxy_explicitproxy': {
+            'params': ['device', 'explicit-proxy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit-proxy',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit-proxy/{explicit-proxy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'webproxy_fastfallback': {
             'params': ['device', 'fast-fallback', 'vdom'],
@@ -6984,12 +11053,124 @@ def main():
             ],
             'v_range': [['7.4.3', '']]
         },
+        'webproxy_forwardserver': {
+            'params': ['device', 'forward-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server/{forward-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_forwardservergroup': {
+            'params': ['device', 'forward-server-group', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server-group',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server-group/{forward-server-group}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_forwardservergroup_serverlist': {
+            'params': ['device', 'forward-server-group', 'server-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server-group/{forward-server-group}/server-list',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server-group/{forward-server-group}/server-list/{server-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
         'webproxy_global': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webproxy_implicitproxyrule': {
+            'params': ['device', 'implicit-proxy-rule', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-rule',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-rule/{implicit-proxy-rule}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_implicitproxyrule_proxyservers': {
+            'params': ['device', 'implicit-proxy-rule', 'proxy-servers', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-rule/{implicit-proxy-rule}/proxy-servers',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-rule/{implicit-proxy-rule}/proxy-servers/{proxy-servers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_implicitproxysetting': {
+            'params': ['device', 'implicit-proxy-setting', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-setting',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-setting/{implicit-proxy-setting}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_isolatorserver': {
+            'params': ['device', 'isolator-server', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/isolator-server',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/isolator-server/{isolator-server}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_pacpolicy': {
+            'params': ['device', 'pac-policy', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/pac-policy',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/pac-policy/{pac-policy}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_profile': {
+            'params': ['device', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/profile',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/profile/{profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_profile_headers': {
+            'params': ['device', 'headers', 'profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/profile/{profile}/headers',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/profile/{profile}/headers/{headers}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_redirectprofile': {
+            'params': ['device', 'redirect-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/redirect-profile',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/redirect-profile/{redirect-profile}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_redirectprofile_entries': {
+            'params': ['device', 'entries', 'redirect-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/redirect-profile/{redirect-profile}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/redirect-profile/{redirect-profile}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_urllist': {
+            'params': ['device', 'url-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-list',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-list/{url-list}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+        },
+        'webproxy_urllist_entries': {
+            'params': ['device', 'entries', 'url-list', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-list/{url-list}/entries',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-list/{url-list}/entries/{entries}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'webproxy_urlmatch': {
             'params': ['device', 'url-match', 'vdom'],
@@ -6997,7 +11178,15 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-match',
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-match/{url-match}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'webproxy_wisp': {
+            'params': ['device', 'vdom', 'wisp'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/wisp',
+                '/pm/config/device/{device}/vdom/{vdom}/web-proxy/wisp/{wisp}'
+            ],
+            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
         },
         'wireless_accesscontrollist': {
             'params': ['access-control-list', 'device', 'vdom'],
@@ -7005,7 +11194,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/access-control-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/access-control-list/{access-control-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_accesscontrollist_layer3ipv4rules': {
             'params': ['access-control-list', 'device', 'layer3-ipv4-rules', 'vdom'],
@@ -7013,7 +11202,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/access-control-list/{access-control-list}/layer3-ipv4-rules',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/access-control-list/{access-control-list}/layer3-ipv4-rules/{layer3-ipv4-rules}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_accesscontrollist_layer3ipv6rules': {
             'params': ['access-control-list', 'device', 'layer3-ipv6-rules', 'vdom'],
@@ -7021,7 +11210,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/access-control-list/{access-control-list}/layer3-ipv6-rules',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/access-control-list/{access-control-list}/layer3-ipv6-rules/{layer3-ipv6-rules}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_apcfgprofile': {
             'params': ['apcfg-profile', 'device', 'vdom'],
@@ -7029,7 +11218,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/apcfg-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/apcfg-profile/{apcfg-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_apcfgprofile_commandlist': {
             'params': ['apcfg-profile', 'command-list', 'device', 'vdom'],
@@ -7037,7 +11226,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/apcfg-profile/{apcfg-profile}/command-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/apcfg-profile/{apcfg-profile}/command-list/{command-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_apstatus': {
             'params': ['ap-status', 'device', 'vdom'],
@@ -7045,7 +11234,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/ap-status',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/ap-status/{ap-status}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_arrpprofile': {
             'params': ['arrp-profile', 'device', 'vdom'],
@@ -7053,7 +11242,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/arrp-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/arrp-profile/{arrp-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_bleprofile': {
             'params': ['ble-profile', 'device', 'vdom'],
@@ -7061,7 +11250,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/ble-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/ble-profile/{ble-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_bonjourprofile': {
             'params': ['bonjour-profile', 'device', 'vdom'],
@@ -7069,7 +11258,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/bonjour-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/bonjour-profile/{bonjour-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_bonjourprofile_policylist': {
             'params': ['bonjour-profile', 'device', 'policy-list', 'vdom'],
@@ -7077,14 +11266,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/bonjour-profile/{bonjour-profile}/policy-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/bonjour-profile/{bonjour-profile}/policy-list/{policy-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_global': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/wireless-controller/global'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqp3gppcellular': {
             'params': ['anqp-3gpp-cellular', 'device', 'vdom'],
@@ -7092,7 +11281,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-3gpp-cellular',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-3gpp-cellular/{anqp-3gpp-cellular}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqp3gppcellular_mccmnclist': {
             'params': ['anqp-3gpp-cellular', 'device', 'mcc-mnc-list', 'vdom'],
@@ -7100,7 +11289,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-3gpp-cellular/{anqp-3gpp-cellular}/mcc-mnc-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-3gpp-cellular/{anqp-3gpp-cellular}/mcc-mnc-list/{mcc-mnc-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpipaddresstype': {
             'params': ['anqp-ip-address-type', 'device', 'vdom'],
@@ -7108,7 +11297,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-ip-address-type',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-ip-address-type/{anqp-ip-address-type}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpnairealm': {
             'params': ['anqp-nai-realm', 'device', 'vdom'],
@@ -7116,7 +11305,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-nai-realm',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-nai-realm/{anqp-nai-realm}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpnairealm_nailist': {
             'params': ['anqp-nai-realm', 'device', 'nai-list', 'vdom'],
@@ -7124,7 +11313,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-nai-realm/{anqp-nai-realm}/nai-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-nai-realm/{anqp-nai-realm}/nai-list/{nai-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpnairealm_nailist_eapmethod': {
             'params': ['anqp-nai-realm', 'device', 'eap-method', 'nai-list', 'vdom'],
@@ -7133,7 +11322,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-nai-realm/{anqp-nai-realm}/nai-list/{nai-list}/eap-method/{eap-met'
                 'hod}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpnairealm_nailist_eapmethod_authparam': {
             'params': ['anqp-nai-realm', 'auth-param', 'device', 'eap-method', 'nai-list', 'vdom'],
@@ -7143,7 +11332,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-nai-realm/{anqp-nai-realm}/nai-list/{nai-list}/eap-method/{eap-met'
                 'hod}/auth-param/{auth-param}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpnetworkauthtype': {
             'params': ['anqp-network-auth-type', 'device', 'vdom'],
@@ -7151,7 +11340,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-network-auth-type',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-network-auth-type/{anqp-network-auth-type}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqproamingconsortium': {
             'params': ['anqp-roaming-consortium', 'device', 'vdom'],
@@ -7159,7 +11348,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-roaming-consortium',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-roaming-consortium/{anqp-roaming-consortium}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqproamingconsortium_oilist': {
             'params': ['anqp-roaming-consortium', 'device', 'oi-list', 'vdom'],
@@ -7167,7 +11356,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-roaming-consortium/{anqp-roaming-consortium}/oi-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-roaming-consortium/{anqp-roaming-consortium}/oi-list/{oi-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpvenuename': {
             'params': ['anqp-venue-name', 'device', 'vdom'],
@@ -7175,7 +11364,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-name',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-name/{anqp-venue-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpvenuename_valuelist': {
             'params': ['anqp-venue-name', 'device', 'value-list', 'vdom'],
@@ -7183,7 +11372,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-name/{anqp-venue-name}/value-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-name/{anqp-venue-name}/value-list/{value-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpvenueurl': {
             'params': ['anqp-venue-url', 'device', 'vdom'],
@@ -7191,7 +11380,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-url',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-url/{anqp-venue-url}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_anqpvenueurl_valuelist': {
             'params': ['anqp-venue-url', 'device', 'value-list', 'vdom'],
@@ -7199,7 +11388,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-url/{anqp-venue-url}/value-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/anqp-venue-url/{anqp-venue-url}/value-list/{value-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpadviceofcharge': {
             'params': ['device', 'h2qp-advice-of-charge', 'vdom'],
@@ -7207,7 +11396,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-advice-of-charge',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-advice-of-charge/{h2qp-advice-of-charge}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpadviceofcharge_aoclist': {
             'params': ['aoc-list', 'device', 'h2qp-advice-of-charge', 'vdom'],
@@ -7215,7 +11404,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-advice-of-charge/{h2qp-advice-of-charge}/aoc-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-advice-of-charge/{h2qp-advice-of-charge}/aoc-list/{aoc-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpadviceofcharge_aoclist_planinfo': {
             'params': ['aoc-list', 'device', 'h2qp-advice-of-charge', 'plan-info', 'vdom'],
@@ -7225,7 +11414,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-advice-of-charge/{h2qp-advice-of-charge}/aoc-list/{aoc-list}/plan-'
                 'info/{plan-info}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpconncapability': {
             'params': ['device', 'h2qp-conn-capability', 'vdom'],
@@ -7233,7 +11422,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-conn-capability',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-conn-capability/{h2qp-conn-capability}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpoperatorname': {
             'params': ['device', 'h2qp-operator-name', 'vdom'],
@@ -7241,7 +11430,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-operator-name',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-operator-name/{h2qp-operator-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpoperatorname_valuelist': {
             'params': ['device', 'h2qp-operator-name', 'value-list', 'vdom'],
@@ -7249,7 +11438,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-operator-name/{h2qp-operator-name}/value-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-operator-name/{h2qp-operator-name}/value-list/{value-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qposuprovider': {
             'params': ['device', 'h2qp-osu-provider', 'vdom'],
@@ -7257,7 +11446,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider/{h2qp-osu-provider}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qposuprovider_friendlyname': {
             'params': ['device', 'friendly-name', 'h2qp-osu-provider', 'vdom'],
@@ -7265,7 +11454,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider/{h2qp-osu-provider}/friendly-name',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider/{h2qp-osu-provider}/friendly-name/{friendly-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qposuprovider_servicedescription': {
             'params': ['device', 'h2qp-osu-provider', 'service-description', 'vdom'],
@@ -7274,7 +11463,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider/{h2qp-osu-provider}/service-description/{service-desc'
                 'ription}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qposuprovidernai': {
             'params': ['device', 'h2qp-osu-provider-nai', 'vdom'],
@@ -7282,7 +11471,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider-nai',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider-nai/{h2qp-osu-provider-nai}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qposuprovidernai_nailist': {
             'params': ['device', 'h2qp-osu-provider-nai', 'nai-list', 'vdom'],
@@ -7290,7 +11479,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider-nai/{h2qp-osu-provider-nai}/nai-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-osu-provider-nai/{h2qp-osu-provider-nai}/nai-list/{nai-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qptermsandconditions': {
             'params': ['device', 'h2qp-terms-and-conditions', 'vdom'],
@@ -7298,7 +11487,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-terms-and-conditions',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-terms-and-conditions/{h2qp-terms-and-conditions}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_h2qpwanmetric': {
             'params': ['device', 'h2qp-wan-metric', 'vdom'],
@@ -7306,7 +11495,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-wan-metric',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/h2qp-wan-metric/{h2qp-wan-metric}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_hsprofile': {
             'params': ['device', 'hs-profile', 'vdom'],
@@ -7314,7 +11503,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/hs-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/hs-profile/{hs-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_icon': {
             'params': ['device', 'icon', 'vdom'],
@@ -7322,7 +11511,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/icon',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/icon/{icon}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_icon_iconlist': {
             'params': ['device', 'icon', 'icon-list', 'vdom'],
@@ -7330,7 +11519,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/icon/{icon}/icon-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/icon/{icon}/icon-list/{icon-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_qosmap': {
             'params': ['device', 'qos-map', 'vdom'],
@@ -7338,7 +11527,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/qos-map',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/qos-map/{qos-map}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_qosmap_dscpexcept': {
             'params': ['device', 'dscp-except', 'qos-map', 'vdom'],
@@ -7346,7 +11535,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/qos-map/{qos-map}/dscp-except',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/qos-map/{qos-map}/dscp-except/{dscp-except}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_hotspot20_qosmap_dscprange': {
             'params': ['device', 'dscp-range', 'qos-map', 'vdom'],
@@ -7354,14 +11543,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/qos-map/{qos-map}/dscp-range',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/hotspot20/qos-map/{qos-map}/dscp-range/{dscp-range}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_intercontroller': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/wireless-controller/inter-controller'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_intercontroller_intercontrollerpeer': {
             'params': ['device', 'inter-controller-peer'],
@@ -7369,14 +11558,22 @@ def main():
                 '/pm/config/device/{device}/global/wireless-controller/inter-controller/inter-controller-peer',
                 '/pm/config/device/{device}/global/wireless-controller/inter-controller/inter-controller-peer/{inter-controller-peer}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_log': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/log'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'wireless_lwprofile': {
+            'params': ['device', 'lw-profile', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/lw-profile',
+                '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/lw-profile/{lw-profile}'
+            ],
+            'v_range': [['7.6.5', '']]
         },
         'wireless_mpskprofile': {
             'params': ['device', 'mpsk-profile', 'vdom'],
@@ -7384,7 +11581,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/mpsk-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/mpsk-profile/{mpsk-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_mpskprofile_mpskgroup': {
             'params': ['device', 'mpsk-group', 'mpsk-profile', 'vdom'],
@@ -7392,7 +11589,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/mpsk-profile/{mpsk-profile}/mpsk-group',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/mpsk-profile/{mpsk-profile}/mpsk-group/{mpsk-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_mpskprofile_mpskgroup_mpskkey': {
             'params': ['device', 'mpsk-group', 'mpsk-key', 'mpsk-profile', 'vdom'],
@@ -7400,7 +11597,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/mpsk-profile/{mpsk-profile}/mpsk-group/{mpsk-group}/mpsk-key',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/mpsk-profile/{mpsk-profile}/mpsk-group/{mpsk-group}/mpsk-key/{mpsk-key}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_nacprofile': {
             'params': ['device', 'nac-profile', 'vdom'],
@@ -7408,7 +11605,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/nac-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/nac-profile/{nac-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_qosprofile': {
             'params': ['device', 'qos-profile', 'vdom'],
@@ -7416,7 +11613,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/qos-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/qos-profile/{qos-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_region': {
             'params': ['device', 'region', 'vdom'],
@@ -7424,14 +11621,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/region',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/region/{region}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_setting': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/setting'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_setting_offendingssid': {
             'params': ['device', 'offending-ssid', 'vdom'],
@@ -7439,14 +11636,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/setting/offending-ssid',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/setting/offending-ssid/{offending-ssid}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_snmp': {
             'params': ['device', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_snmp_community': {
             'params': ['community', 'device', 'vdom'],
@@ -7454,7 +11651,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/community',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/community/{community}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_snmp_community_hosts': {
             'params': ['community', 'device', 'hosts', 'vdom'],
@@ -7462,7 +11659,15 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/community/{community}/hosts',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/community/{community}/hosts/{hosts}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'wireless_snmp_community_hosts6': {
+            'params': ['community', 'device', 'hosts6', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/community/{community}/hosts6',
+                '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/community/{community}/hosts6/{hosts6}'
+            ],
+            'v_range': [['7.6.5', '']]
         },
         'wireless_snmp_user': {
             'params': ['device', 'user', 'vdom'],
@@ -7470,7 +11675,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/user',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/snmp/user/{user}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_ssidpolicy': {
             'params': ['device', 'ssid-policy', 'vdom'],
@@ -7478,7 +11683,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/ssid-policy',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/ssid-policy/{ssid-policy}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_syslogprofile': {
             'params': ['device', 'syslog-profile', 'vdom'],
@@ -7486,14 +11691,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/syslog-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/syslog-profile/{syslog-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_timers': {
             'params': ['device'],
             'urls': [
                 '/pm/config/device/{device}/global/wireless-controller/timers'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_utmprofile': {
             'params': ['device', 'utm-profile', 'vdom'],
@@ -7501,7 +11706,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/utm-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/utm-profile/{utm-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap': {
             'params': ['device', 'vap', 'vdom'],
@@ -7509,14 +11714,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap_dynamicmapping': {
             'params': ['device', 'vap', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/dynamic_mapping'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap_macfilterlist': {
             'params': ['device', 'mac-filter-list', 'vap', 'vdom'],
@@ -7524,7 +11729,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/mac-filter-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/mac-filter-list/{mac-filter-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap_mpskkey': {
             'params': ['device', 'mpsk-key', 'vap', 'vdom'],
@@ -7532,14 +11737,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/mpsk-key',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/mpsk-key/{mpsk-key}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap_portalmessageoverrides': {
             'params': ['device', 'vap', 'vdom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/portal-message-overrides'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap_vlanname': {
             'params': ['device', 'vap', 'vdom', 'vlan-name'],
@@ -7547,7 +11752,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/vlan-name',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/vlan-name/{vlan-name}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vap_vlanpool': {
             'params': ['device', 'vap', 'vdom', 'vlan-pool'],
@@ -7555,7 +11760,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/vlan-pool',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap/{vap}/vlan-pool/{vlan-pool}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_vapgroup': {
             'params': ['device', 'vap-group', 'vdom'],
@@ -7563,7 +11768,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap-group',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/vap-group/{vap-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wagprofile': {
             'params': ['device', 'vdom', 'wag-profile'],
@@ -7571,7 +11776,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wag-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wag-profile/{wag-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_widsprofile': {
             'params': ['device', 'vdom', 'wids-profile'],
@@ -7579,7 +11784,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wids-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wids-profile/{wids-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp': {
             'params': ['device', 'vdom', 'wtp'],
@@ -7587,42 +11792,42 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp_lan': {
             'params': ['device', 'vdom', 'wtp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/lan'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp_radio1': {
             'params': ['device', 'vdom', 'wtp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/radio-1'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp_radio2': {
             'params': ['device', 'vdom', 'wtp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/radio-2'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp_radio3': {
             'params': ['device', 'vdom', 'wtp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/radio-3'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp_radio4': {
             'params': ['device', 'vdom', 'wtp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/radio-4'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtp_splittunnelingacl': {
             'params': ['device', 'split-tunneling-acl', 'vdom', 'wtp'],
@@ -7630,7 +11835,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/split-tunneling-acl',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp/{wtp}/split-tunneling-acl/{split-tunneling-acl}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpgroup': {
             'params': ['device', 'vdom', 'wtp-group'],
@@ -7638,7 +11843,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-group',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-group/{wtp-group}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile': {
             'params': ['device', 'vdom', 'wtp-profile'],
@@ -7646,7 +11851,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_denymaclist': {
             'params': ['deny-mac-list', 'device', 'vdom', 'wtp-profile'],
@@ -7654,63 +11859,63 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/deny-mac-list',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/deny-mac-list/{deny-mac-list}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_eslsesdongle': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/esl-ses-dongle'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_lan': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/lan'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_lbs': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/lbs'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_platform': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/platform'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_radio1': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/radio-1'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_radio2': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/radio-2'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_radio3': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/radio-3'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_radio4': {
             'params': ['device', 'vdom', 'wtp-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/radio-4'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
         'wireless_wtpprofile_splittunnelingacl': {
             'params': ['device', 'split-tunneling-acl', 'vdom', 'wtp-profile'],
@@ -7718,7 +11923,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/split-tunneling-acl',
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/split-tunneling-acl/{split-tunneling-acl}'
             ],
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']]
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'ztna_connectorserviceedge': {
+            'params': ['device', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ztna/connector-service-edge'
+            ],
+            'v_range': [['7.6.4', '']]
         },
         'ztna_reverseconnector': {
             'params': ['device', 'reverse-connector', 'vdom'],
@@ -7727,6 +11939,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/ztna/reverse-connector/{reverse-connector}'
             ],
             'v_range': [['7.6.2', '']]
+        },
+        'ztna_serviceconnector': {
+            'params': ['device', 'service-connector', 'vdom'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ztna/service-connector',
+                '/pm/config/device/{device}/vdom/{vdom}/ztna/service-connector/{service-connector}'
+            ],
+            'v_range': [['7.6.4', '']]
         },
         'ztna_trafficforwardproxy': {
             'params': ['device', 'traffic-forward-proxy', 'vdom'],
@@ -7798,6 +12018,13 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/ztna/web-portal-bookmark/{web-portal-bookmark}/bookmarks/{bookmarks}'
             ],
             'v_range': [['7.6.2', '']]
+        },
+        'ztna_webportalbookmark_llmsecureproxy': {
+            'params': ['device', 'vdom', 'web-portal-bookmark'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ztna/web-portal-bookmark/{web-portal-bookmark}/llm-secure-proxy'
+            ],
+            'v_range': [['7.6.5', '']]
         },
         'ztna_webproxy': {
             'params': ['device', 'vdom', 'web-proxy'],

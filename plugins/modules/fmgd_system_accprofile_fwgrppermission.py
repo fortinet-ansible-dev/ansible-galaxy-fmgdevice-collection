@@ -16,7 +16,6 @@ short_description: Custom firewall permission.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -115,12 +114,21 @@ options:
                     - 'none'
                     - 'read'
                     - 'read-write'
+            packet_capture:
+                aliases: ['packet-capture']
+                type: str
+                description: Packet Capture configuration.
+                choices:
+                    - 'none'
+                    - 'read'
+                    - 'read-write'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -129,8 +137,8 @@ EXAMPLES = '''
     - name: Custom firewall permission.
       fortinet.fmgdevice.fmgd_system_accprofile_fwgrppermission:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -141,6 +149,7 @@ EXAMPLES = '''
           # policy: <value in [none, read, read-write]>
           # schedule: <value in [none, read, read-write]>
           # service: <value in [none, read, read-write]>
+          # packet_capture: <value in [none, read, read-write]>
 '''
 
 RETURN = '''
@@ -199,13 +208,14 @@ def main():
         'accprofile': {'required': True, 'type': 'str'},
         'system_accprofile_fwgrppermission': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'address': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'others': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'policy': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'schedule': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'service': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                'address': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'others': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'policy': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'schedule': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'service': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'packet-capture': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
             }
         }
     }

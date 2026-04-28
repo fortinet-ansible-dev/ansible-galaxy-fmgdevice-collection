@@ -16,7 +16,6 @@ short_description: Configure user authentication setting.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -234,12 +233,24 @@ options:
                 choices:
                     - 'hard-timeout'
                     - 'ignore-timeout'
+            cors:
+                type: str
+                description: Enable/disable allowed origins white list for CORS.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            cors_allowed_origins:
+                aliases: ['cors-allowed-origins']
+                type: list
+                elements: str
+                description: Allowed origins white list for CORS.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -248,8 +259,8 @@ EXAMPLES = '''
     - name: Configure user authentication setting.
       fortinet.fmgdevice.fmgd_user_setting:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -284,6 +295,8 @@ EXAMPLES = '''
           # default_user_password_policy: <list or string>
           # per_policy_disclaimer: <value in [disable, enable]>
           # radius_ses_timeout_act: <value in [hard-timeout, ignore-timeout]>
+          # cors: <value in [disable, enable]>
+          # cors_allowed_origins: <list or string>
 '''
 
 RETURN = '''
@@ -342,56 +355,58 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'user_setting': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'auth-blackout-time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auth-ca-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'auth-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'auth-http-basic': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'auth-invalid-max': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auth-lockout-duration': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auth-lockout-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auth-on-demand': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['always', 'implicitly'], 'type': 'str'},
-                'auth-portal-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'auth-blackout-time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auth-ca-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'auth-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'auth-http-basic': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-invalid-max': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auth-lockout-duration': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auth-lockout-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auth-on-demand': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['always', 'implicitly'], 'type': 'str'},
+                'auth-portal-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'auth-ports': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['http', 'https', 'ftp', 'telnet'], 'type': 'str'}
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['http', 'https', 'ftp', 'telnet'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'auth-secure-http': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'auth-src-mac': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'auth-ssl-allow-renegotiation': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-secure-http': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-src-mac': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-ssl-allow-renegotiation': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'auth-ssl-max-proto-version': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['tlsv1-1', 'tlsv1-2', 'sslv3', 'tlsv1', 'tlsv1-3'],
                     'type': 'str'
                 },
                 'auth-ssl-min-proto-version': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['default', 'TLSv1-1', 'TLSv1-2', 'SSLv3', 'TLSv1', 'TLSv1-3'],
                     'type': 'str'
                 },
-                'auth-ssl-sigalgs': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['no-rsa-pss', 'all'], 'type': 'str'},
-                'auth-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'auth-ssl-sigalgs': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['no-rsa-pss', 'all'], 'type': 'str'},
+                'auth-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'auth-timeout-type': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['idle-timeout', 'hard-timeout', 'new-session'],
                     'type': 'str'
                 },
                 'auth-type': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['http', 'https', 'ftp', 'telnet'],
                     'elements': 'str'
                 },
                 'default-user-password-policy': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'per-policy-disclaimer': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'radius-ses-timeout-act': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['hard-timeout', 'ignore-timeout'], 'type': 'str'}
+                'per-policy-disclaimer': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'radius-ses-timeout-act': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['hard-timeout', 'ignore-timeout'], 'type': 'str'},
+                'cors': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'cors-allowed-origins': {'v_range': [['7.6.3', '']], 'type': 'list', 'elements': 'str'}
             }
         }
     }

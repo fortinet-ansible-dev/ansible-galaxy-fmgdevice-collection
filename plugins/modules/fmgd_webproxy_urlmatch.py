@@ -16,7 +16,6 @@ short_description: Exempt URLs from web proxy forwarding and caching.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -123,12 +122,35 @@ options:
                 aliases: ['url-pattern']
                 type: str
                 description: URL pattern to be exempted from web proxy forwarding and caching.
+            explicit_web_proxy:
+                aliases: ['explicit-web-proxy']
+                type: list
+                elements: str
+                description: Explicit web proxy.
+            ftp_forward_server:
+                aliases: ['ftp-forward-server']
+                type: list
+                elements: str
+                description: Ftp forward server.
+            type:
+                type: str
+                description: Type.
+                choices:
+                    - 'simple'
+                    - 'wildcard'
+                    - 'list'
+            url_list:
+                aliases: ['url-list']
+                type: list
+                elements: str
+                description: Url list.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -137,8 +159,8 @@ EXAMPLES = '''
     - name: Exempt URLs from web proxy forwarding and caching.
       fortinet.fmgdevice.fmgd_webproxy_urlmatch:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -152,6 +174,10 @@ EXAMPLES = '''
           # forward_server: <list or string>
           # status: <value in [disable, enable]>
           # url_pattern: <string>
+          # explicit_web_proxy: <list or string>
+          # ftp_forward_server: <list or string>
+          # type: <value in [simple, wildcard, list]>
+          # url_list: <list or string>
 '''
 
 RETURN = '''
@@ -210,15 +236,19 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'webproxy_urlmatch': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'cache-exemption': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'comment': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'cache-exemption': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'comment': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'fast-fallback': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'forward-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'url-pattern': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'forward-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'url-pattern': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'explicit-web-proxy': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'ftp-forward-server': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'type': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['simple', 'wildcard', 'list'], 'type': 'str'},
+                'url-list': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'}
             }
         }
     }

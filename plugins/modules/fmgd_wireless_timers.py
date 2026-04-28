@@ -16,7 +16,6 @@ short_description: Configure CAPWAP timers.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -172,12 +171,21 @@ options:
                 aliases: ['wids-entry-cleanup']
                 type: int
                 description: Time period in minutes to keep wids entry after it is gone
+            sta_offline_cleanup:
+                aliases: ['sta-offline-cleanup']
+                type: int
+                description: Time period in seconds to keep station offline data after it is gone
+            sta_offline_ip2mac_cleanup:
+                aliases: ['sta-offline-ip2mac-cleanup']
+                type: int
+                description: Time period in seconds to keep station offline Ip2mac data after it is gone
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -186,8 +194,8 @@ EXAMPLES = '''
     - name: Configure CAPWAP timers.
       fortinet.fmgdevice.fmgd_wireless_timers:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -216,6 +224,8 @@ EXAMPLES = '''
           # sta_stats_interval: <integer>
           # vap_stats_interval: <integer>
           # wids_entry_cleanup: <integer>
+          # sta_offline_cleanup: <integer>
+          # sta_offline_ip2mac_cleanup: <integer>
 '''
 
 RETURN = '''
@@ -273,32 +283,34 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'wireless_timers': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'ap-reboot-wait-interval1': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'ap-reboot-wait-interval2': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'ap-reboot-wait-time': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                'auth-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'auth-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'ble-device-cleanup': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'ble-scan-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'client-idle-rehome-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'client-idle-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'discovery-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'drma-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'echo-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'fake-ap-log': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ipsec-intf-cleanup': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'ble-scan-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'client-idle-rehome-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'client-idle-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'discovery-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'drma-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'echo-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'fake-ap-log': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ipsec-intf-cleanup': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'nat-session-keep-alive': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'radio-stats-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'rogue-ap-cleanup': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'rogue-ap-log': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'radio-stats-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'rogue-ap-cleanup': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'rogue-ap-log': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'rogue-sta-cleanup': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'sta-cap-cleanup': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'sta-capability-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'sta-locate-timer': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'sta-stats-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'vap-stats-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'wids-entry-cleanup': {'v_range': [['7.6.2', '']], 'type': 'int'}
+                'sta-capability-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'sta-locate-timer': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'sta-stats-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'vap-stats-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'wids-entry-cleanup': {'v_range': [['7.6.2', '']], 'type': 'int'},
+                'sta-offline-cleanup': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'sta-offline-ip2mac-cleanup': {'v_range': [['7.6.3', '']], 'type': 'int'}
             }
         }
     }

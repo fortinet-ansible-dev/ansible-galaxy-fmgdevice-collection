@@ -16,7 +16,6 @@ short_description: Configure access profiles for system administrators.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -195,6 +194,14 @@ options:
                             - 'none'
                             - 'read'
                             - 'read-write'
+                    packet_capture:
+                        aliases: ['packet-capture']
+                        type: str
+                        description: Packet Capture configuration.
+                        choices:
+                            - 'none'
+                            - 'read'
+                            - 'read-write'
             loggrp:
                 type: str
                 description: Administrator access to Logging and Reporting including viewing log messages.
@@ -292,6 +299,7 @@ options:
                     - 'none'
                     - 'read'
                     - 'read-write'
+                    - 'custom'
             sysgrp:
                 type: str
                 description: System Configuration.
@@ -499,6 +507,20 @@ options:
                             - 'none'
                             - 'read'
                             - 'read-write'
+                    spamfilter:
+                        type: str
+                        description: AntiSpam filter and settings.
+                        choices:
+                            - 'none'
+                            - 'read'
+                            - 'read-write'
+                    telemetry:
+                        type: str
+                        description: Telemetry profile and settings.
+                        choices:
+                            - 'none'
+                            - 'read'
+                            - 'read-write'
             vpngrp:
                 type: str
                 description: Administrator access to IPsec, SSL, PPTP, and L2TP VPN.
@@ -520,12 +542,74 @@ options:
                     - 'none'
                     - 'read'
                     - 'read-write'
+            admingrp:
+                type: str
+                description: Administrator access to add, remove, and edit admin accounts and access profiles.
+                choices:
+                    - 'none'
+                    - 'read'
+                    - 'read-write'
+            certgrp:
+                type: str
+                description: Administrator access to the Certificate Configuration.
+                choices:
+                    - 'none'
+                    - 'read'
+                    - 'read-write'
+            routegrp:
+                type: str
+                description: Administrator access to the Routing configuration.
+                choices:
+                    - 'none'
+                    - 'read'
+                    - 'read-write'
+            mntgrp:
+                type: str
+                description: Administrator access to maintenance commands including reset to factory defaults, format log disk, reboot, restore, and sh...
+                choices:
+                    - 'none'
+                    - 'read'
+                    - 'read-write'
+            updategrp:
+                type: str
+                description: Administrator access to the FortiGuard configuration and requesting FortiGuard updates.
+                choices:
+                    - 'none'
+                    - 'read'
+                    - 'read-write'
+            secfabgrp_permission:
+                aliases: ['secfabgrp-permission']
+                type: dict
+                description: Secfabgrp permission.
+                suboptions:
+                    csffoo:
+                        type: str
+                        description: Fabric Overlay Orchestrator profiles and settings.
+                        choices:
+                            - 'none'
+                            - 'read'
+                            - 'read-write'
+                    csfsys:
+                        type: str
+                        description: Security Fabric system profiles and settings.
+                        choices:
+                            - 'none'
+                            - 'read'
+                            - 'read-write'
+                    mmsgtp:
+                        type: str
+                        description: UTM permission.
+                        choices:
+                            - 'none'
+                            - 'read'
+                            - 'read-write'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -534,8 +618,8 @@ EXAMPLES = '''
     - name: Configure access profiles for system administrators.
       fortinet.fmgdevice.fmgd_system_accprofile:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -559,6 +643,7 @@ EXAMPLES = '''
           #   policy: <value in [none, read, read-write]>
           #   schedule: <value in [none, read, read-write]>
           #   service: <value in [none, read, read-write]>
+          #   packet_capture: <value in [none, read, read-write]>
           # loggrp: <value in [none, read, read-write, ...]>
           # loggrp_permission:
           #   config: <value in [none, read, read-write]>
@@ -571,7 +656,7 @@ EXAMPLES = '''
           #   packet_capture: <value in [none, read, read-write]>
           #   route_cfg: <value in [none, read, read-write]>
           # scope: <value in [vdom, global]>
-          # secfabgrp: <value in [none, read, read-write]>
+          # secfabgrp: <value in [none, read, read-write, ...]>
           # sysgrp: <value in [none, read, read-write, ...]>
           # sysgrp_permission:
           #   admin: <value in [none, read, read-write]>
@@ -601,9 +686,20 @@ EXAMPLES = '''
           #   waf: <value in [none, read, read-write]>
           #   webfilter: <value in [none, read, read-write]>
           #   data_loss_prevention: <value in [none, read, read-write]>
+          #   spamfilter: <value in [none, read, read-write]>
+          #   telemetry: <value in [none, read, read-write]>
           # vpngrp: <value in [none, read, read-write]>
           # wanoptgrp: <value in [none, read, read-write]>
           # wifi: <value in [none, read, read-write]>
+          # admingrp: <value in [none, read, read-write]>
+          # certgrp: <value in [none, read, read-write]>
+          # routegrp: <value in [none, read, read-write]>
+          # mntgrp: <value in [none, read, read-write]>
+          # updategrp: <value in [none, read, read-write]>
+          # secfabgrp_permission:
+          #   csffoo: <value in [none, read, read-write]>
+          #   csfsys: <value in [none, read, read-write]>
+          #   mmsgtp: <value in [none, read, read-write]>
 '''
 
 RETURN = '''
@@ -661,96 +757,121 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_accprofile': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'admintimeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'admintimeout-override': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'authgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'admintimeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'admintimeout-override': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'authgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
                 'cli-config': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'cli-diagnose': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'cli-exec': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'cli-get': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'cli-show': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'comments': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ftviewgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'fwgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
+                'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ftviewgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'fwgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
                 'fwgrp-permission': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'address': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'others': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'policy': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'schedule': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'service': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                        'address': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'others': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'policy': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'schedule': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'service': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'packet-capture': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
                     }
                 },
-                'loggrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
+                'loggrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
                 'loggrp-permission': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'config': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'data-access': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'report-access': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'threat-weight': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                        'config': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'data-access': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'report-access': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'threat-weight': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
                     }
                 },
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'netgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'netgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
                 'netgrp-permission': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'cfg': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'packet-capture': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'route-cfg': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                        'cfg': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'packet-capture': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'route-cfg': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
                     }
                 },
-                'scope': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['vdom', 'global'], 'type': 'str'},
-                'secfabgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'sysgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
+                'scope': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['vdom', 'global'], 'type': 'str'},
+                'secfabgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
+                'sysgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
                 'sysgrp-permission': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'admin': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'cfg': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'mnt': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'upd': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                        'admin': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'cfg': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'mnt': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'upd': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
                     }
                 },
-                'system-diagnostics': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'system-execute-ssh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'system-execute-telnet': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'utmgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
+                'system-diagnostics': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'system-execute-ssh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'system-execute-telnet': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'utmgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write', 'custom'], 'type': 'str'},
                 'utmgrp-permission': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'antivirus': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'application-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'antivirus': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'application-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
                         'casb': {'v_range': [['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'data-leak-prevention': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'data-leak-prevention': {
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'choices': ['none', 'read', 'read-write'],
+                            'type': 'str'
+                        },
                         'dlp': {'v_range': [['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'dnsfilter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'emailfilter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'endpoint-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'file-filter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'icap': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'ips': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'mmsgtp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'videofilter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'dnsfilter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'emailfilter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'endpoint-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'file-filter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'icap': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'ips': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'mmsgtp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'videofilter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
                         'virtual-patch': {'v_range': [['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'voip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'waf': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'webfilter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                        'data-loss-prevention': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                        'voip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'waf': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'webfilter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'data-loss-prevention': {
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'choices': ['none', 'read', 'read-write'],
+                            'type': 'str'
+                        },
+                        'spamfilter': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'telemetry': {'v_range': [['7.6.4', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
                     }
                 },
-                'vpngrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'wanoptgrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
-                'wifi': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                'vpngrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'wanoptgrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'wifi': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'admingrp': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'certgrp': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'routegrp': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'mntgrp': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'updategrp': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                'secfabgrp-permission': {
+                    'v_range': [['7.6.5', '']],
+                    'type': 'dict',
+                    'options': {
+                        'csffoo': {'v_range': [['7.6.5', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'csfsys': {'v_range': [['7.6.5', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'},
+                        'mmsgtp': {'v_range': [['7.6.5', '']], 'choices': ['none', 'read', 'read-write'], 'type': 'str'}
+                    }
+                }
             }
         }
     }

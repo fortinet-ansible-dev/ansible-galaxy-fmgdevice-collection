@@ -16,7 +16,6 @@ short_description: Configure Bluetooth Low Energy profile.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -187,12 +186,18 @@ options:
                     - '10'
                     - '11'
                     - '12'
+                    - '13'
+                    - '14'
+                    - '15'
+                    - '16'
+                    - '17'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -201,8 +206,8 @@ EXAMPLES = '''
     - name: Configure Bluetooth Low Energy profile.
       fortinet.fmgdevice.fmgd_wireless_bleprofile:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -289,25 +294,25 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'wireless_bleprofile': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'advertising': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['ibeacon', 'eddystone-uid', 'eddystone-url'],
                     'elements': 'str'
                 },
-                'beacon-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ble-scanning': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'comment': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'eddystone-instance': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'eddystone-namespace': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'eddystone-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'eddystone-url-encode-hex': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ibeacon-uuid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'major-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'minor-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'beacon-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ble-scanning': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'comment': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'eddystone-instance': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'eddystone-namespace': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'eddystone-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'eddystone-url-encode-hex': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ibeacon-uuid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'major-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'minor-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
                 'scan-interval': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'scan-period': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'scan-threshold': {'v_range': [['7.4.3', '']], 'type': 'str'},
@@ -315,8 +320,8 @@ def main():
                 'scan-type': {'v_range': [['7.4.3', '']], 'choices': ['active', 'passive'], 'type': 'str'},
                 'scan-window': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'txpower': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
-                    'choices': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                    'choices': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17'],
                     'type': 'str'
                 }
             }

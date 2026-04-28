@@ -16,7 +16,6 @@ short_description: Service level agreement
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -122,6 +121,7 @@ options:
                     - 'packet-loss'
                     - 'mos'
                     - 'remote'
+                    - 'custom-profile-1'
             mos_threshold:
                 aliases: ['mos-threshold']
                 type: str
@@ -142,12 +142,17 @@ options:
                 aliases: ['priority-out-sla']
                 type: int
                 description: Value to be distributed into routing table when out-sla
+            custom_profile_threshold:
+                aliases: ['custom-profile-threshold']
+                type: int
+                description: Custom profile threshold for SLA to be marked as pass
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -156,8 +161,8 @@ EXAMPLES = '''
     - name: Service level agreement
       fortinet.fmgdevice.fmgd_system_sdwan_healthcheck_sla:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -174,10 +179,12 @@ EXAMPLES = '''
           #   - "packet-loss"
           #   - "mos"
           #   - "remote"
+          #   - "custom-profile-1"
           # mos_threshold: <string>
           # packetloss_threshold: <integer>
           # priority_in_sla: <integer>
           # priority_out_sla: <integer>
+          # custom_profile_threshold: <integer>
 '''
 
 RETURN = '''
@@ -238,21 +245,22 @@ def main():
         'health_check': {'type': 'str'},
         'system_sdwan_healthcheck_sla': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'int'},
-                'jitter-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'latency-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'int'},
+                'jitter-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'latency-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'link-cost-factor': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
-                    'choices': ['latency', 'jitter', 'packet-loss', 'mos', 'remote'],
+                    'choices': ['latency', 'jitter', 'packet-loss', 'mos', 'remote', 'custom-profile-1'],
                     'elements': 'str'
                 },
-                'mos-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'packetloss-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'priority-in-sla': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'priority-out-sla': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                'mos-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'packetloss-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'priority-in-sla': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'priority-out-sla': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'custom-profile-threshold': {'v_range': [['7.6.4', '']], 'type': 'int'}
             }
         }
     }

@@ -16,7 +16,6 @@ short_description: Designate cache-service for wan-optimization and webcache.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -69,6 +68,10 @@ options:
         default: 300
     device:
         description: The parameter (device) in requested url.
+        type: str
+        required: true
+    vdom:
+        description: The parameter (vdom) in requested url.
         type: str
         required: true
     wanopt_cacheservice:
@@ -149,12 +152,21 @@ options:
                     priority:
                         type: int
                         description: Set priority for this peer.
+            prefer_senario:
+                aliases: ['prefer-senario']
+                type: str
+                description: Prefer senario
+                choices:
+                    - 'balance'
+                    - 'prefer-speed'
+                    - 'prefer-cache'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -163,11 +175,12 @@ EXAMPLES = '''
     - name: Designate cache-service for wan-optimization and webcache.
       fortinet.fmgdevice.fmgd_wanopt_cacheservice:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
+        vdom: <your own value>
         wanopt_cacheservice:
           # acceptable_connections: <value in [any, peers]>
           # collaboration: <value in [disable, enable]>
@@ -185,6 +198,7 @@ EXAMPLES = '''
           #     encode_type: <integer>
           #     ip: <string>
           #     priority: <integer>
+          # prefer_senario: <value in [balance, prefer-speed, prefer-cache]>
 '''
 
 RETURN = '''
@@ -234,44 +248,51 @@ from ansible_collections.fortinet.fmgdevice.plugins.module_utils.common import g
 
 def main():
     urls_list = [
-        '/pm/config/device/{device}/global/wanopt/cache-service'
+        '/pm/config/device/{device}/global/wanopt/cache-service',
+        '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service'
     ]
-    url_params = ['device']
+    url_params = ['device', 'vdom']
     module_primary_key = None
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
+        'vdom': {'required': True, 'type': 'str'},
         'wanopt_cacheservice': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'acceptable-connections': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['any', 'peers'], 'type': 'str'},
-                'collaboration': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'device-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'acceptable-connections': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['any', 'peers'], 'type': 'str'},
+                'collaboration': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'device-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'dst-peer': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'auth-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'device-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'encode-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'auth-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'device-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'encode-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },
-                'prefer-scenario': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['balance', 'prefer-speed', 'prefer-cache'], 'type': 'str'},
+                'prefer-scenario': {
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                    'choices': ['balance', 'prefer-speed', 'prefer-cache'],
+                    'type': 'str'
+                },
                 'src-peer': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'auth-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'device-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'encode-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'auth-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'device-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'encode-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
-                }
+                },
+                'prefer-senario': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['balance', 'prefer-speed', 'prefer-cache'], 'type': 'str'}
             }
         }
     }

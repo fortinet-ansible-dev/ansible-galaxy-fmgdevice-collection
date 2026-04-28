@@ -16,7 +16,6 @@ short_description: Automation setting configuration.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -87,12 +86,20 @@ options:
                 aliases: ['max-concurrent-stitches']
                 type: int
                 description: Maximum number of automation stitches that are allowed to run concurrently.
+            secure_mode:
+                aliases: ['secure-mode']
+                type: str
+                description: Enable/disable secure running mode for automation.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -101,14 +108,15 @@ EXAMPLES = '''
     - name: Automation setting configuration.
       fortinet.fmgdevice.fmgd_automation_setting:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
         automation_setting:
           # fabric_sync: <value in [disable, enable]>
           # max_concurrent_stitches: <integer>
+          # secure_mode: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -166,10 +174,11 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'automation_setting': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'fabric-sync': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'max-concurrent-stitches': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                'max-concurrent-stitches': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'secure-mode': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

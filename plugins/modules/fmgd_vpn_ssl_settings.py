@@ -16,7 +16,6 @@ short_description: Configure SSL VPN.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -620,12 +619,43 @@ options:
                 aliases: ['server-hostname']
                 type: str
                 description: Server hostname for HTTPS.
+            remote_https_cert_check:
+                aliases: ['remote-https-cert-check']
+                type: str
+                description: Configure how the FortiGate unit checks and responds to the remote HTTPS servers certificate
+                choices:
+                    - 'no-check'
+                    - 'warn-on-error'
+                    - 'reject-on-error'
+            tls_groups:
+                aliases: ['tls-groups']
+                type: list
+                elements: str
+                description: Configure the supported groups for TLS negotiation.
+                choices:
+                    - 'P-521'
+                    - 'P-384'
+                    - 'P-256'
+                    - 'ML-KEM512'
+                    - 'ML-KEM768'
+                    - 'ML-KEM1024'
+                    - 'P-384-MLKEM1024'
+                    - 'P-256-MLKEM768'
+                    - 'X25519-MLKEM768'
+                    - 'X448'
+                    - 'X25519'
+                    - 'FFDHE2048'
+                    - 'FFDHE3072'
+                    - 'FFDHE4096'
+                    - 'FFDHE6144'
+                    - 'FFDHE8192'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -634,8 +664,8 @@ EXAMPLES = '''
     - name: Configure SSL VPN.
       fortinet.fmgdevice.fmgd_vpn_ssl_settings:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -757,6 +787,24 @@ EXAMPLES = '''
           # dtls_heartbeat_idle_timeout: <integer>
           # dtls_heartbeat_interval: <integer>
           # server_hostname: <string>
+          # remote_https_cert_check: <value in [no-check, warn-on-error, reject-on-error]>
+          # tls_groups:
+          #   - "P-521"
+          #   - "P-384"
+          #   - "P-256"
+          #   - "ML-KEM512"
+          #   - "ML-KEM768"
+          #   - "ML-KEM1024"
+          #   - "P-384-MLKEM1024"
+          #   - "P-256-MLKEM768"
+          #   - "X25519-MLKEM768"
+          #   - "X448"
+          #   - "X25519"
+          #   - "FFDHE2048"
+          #   - "FFDHE3072"
+          #   - "FFDHE4096"
+          #   - "FFDHE6144"
+          #   - "FFDHE8192"
 '''
 
 RETURN = '''
@@ -818,7 +866,7 @@ def main():
             'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']],
             'options': {
                 'algorithm': {
-                    'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1'], ['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1'], ['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['default', 'high', 'low', 'medium'],
                     'type': 'str'
                 },
@@ -891,7 +939,11 @@ def main():
                 'port': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'type': 'int'},
                 'port-precedence': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'reqclientcert': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'route-source-interface': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.0']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'route-source-interface': {
+                    'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.0'], ['7.4.8', '7.4.10']],
+                    'choices': ['disable', 'enable'],
+                    'type': 'str'
+                },
                 'servercert': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'type': 'str'},
                 'source-address': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'type': 'raw'},
                 'source-address-negate': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
@@ -902,9 +954,9 @@ def main():
                 'ssl-insert-empty-fragment': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'ssl-max-proto-ver': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['tls1-0', 'tls1-1', 'tls1-2', 'tls1-3'], 'type': 'str'},
                 'ssl-min-proto-ver': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['tls1-0', 'tls1-1', 'tls1-2', 'tls1-3'], 'type': 'str'},
-                'tlsv1-0': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'tlsv1-1': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'tlsv1-2': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'tlsv1-0': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1'], ['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'tlsv1-1': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1'], ['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'tlsv1-2': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.1'], ['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'tlsv1-3': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '7.2.0']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'transform-backward-slashes': {'v_range': [['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'tunnel-connect-without-reauth': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
@@ -918,7 +970,11 @@ def main():
                 'wins-server2': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'type': 'str'},
                 'x-content-type-options': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'sslv3': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '6.4.15']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ssl-big-buffer': {'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '6.4.15']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ssl-big-buffer': {
+                    'v_range': [['6.2.6', '6.2.13'], ['6.4.2', '6.4.15'], ['7.4.8', '7.4.10']],
+                    'choices': ['disable', 'enable'],
+                    'type': 'str'
+                },
                 'client-sigalgs': {'v_range': [['6.4.4', '']], 'choices': ['no-rsa-pss', 'all'], 'type': 'str'},
                 'ciphersuite': {
                     'v_range': [['6.4.8', '']],
@@ -939,7 +995,17 @@ def main():
                 'dtls-heartbeat-fail-count': {'v_range': [['7.4.0', '']], 'type': 'int'},
                 'dtls-heartbeat-idle-timeout': {'v_range': [['7.4.0', '']], 'type': 'int'},
                 'dtls-heartbeat-interval': {'v_range': [['7.4.0', '']], 'type': 'int'},
-                'server-hostname': {'v_range': [['7.2.6', '']], 'type': 'str'}
+                'server-hostname': {'v_range': [['7.2.6', '']], 'type': 'str'},
+                'remote-https-cert-check': {'v_range': [['7.6.5', '']], 'choices': ['no-check', 'warn-on-error', 'reject-on-error'], 'type': 'str'},
+                'tls-groups': {
+                    'v_range': [['7.6.5', '']],
+                    'type': 'list',
+                    'choices': [
+                        'P-521', 'P-384', 'P-256', 'ML-KEM512', 'ML-KEM768', 'ML-KEM1024', 'P-384-MLKEM1024', 'P-256-MLKEM768', 'X25519-MLKEM768',
+                        'X448', 'X25519', 'FFDHE2048', 'FFDHE3072', 'FFDHE4096', 'FFDHE6144', 'FFDHE8192'
+                    ],
+                    'elements': 'str'
+                }
             }
         }
     }

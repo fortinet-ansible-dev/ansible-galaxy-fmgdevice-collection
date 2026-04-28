@@ -16,7 +16,6 @@ short_description: Configure Web proxy global settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -246,12 +245,103 @@ options:
                     - 'block'
                     - 'replace-with-sp'
                     - 'keep'
+            http2_client_window_size:
+                aliases: ['http2-client-window-size']
+                type: int
+                description: HTTP/2 client initial window size in bytes
+            http2_server_window_size:
+                aliases: ['http2-server-window-size']
+                type: int
+                description: HTTP/2 server initial window size in bytes
+            explicit_outgoing_ip:
+                aliases: ['explicit-outgoing-ip']
+                type: list
+                elements: str
+                description: Outgoing HTTP requests by explicit webproxy will have this IP address as their source address.
+            explicit_outgoing_ip6:
+                aliases: ['explicit-outgoing-ip6']
+                type: list
+                elements: str
+                description: Outgoing HTTP requests by explicit webproxy will leave this IP.
+            extended_log:
+                aliases: ['extended-log']
+                type: str
+                description: Extended log.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            https_replacement_message:
+                aliases: ['https-replacement-message']
+                type: str
+                description: Default action to enable or disable return replacement message for HTTPS requests.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            log_http_transaction:
+                aliases: ['log-http-transaction']
+                type: str
+                description: Log http transaction.
+                choices:
+                    - 'disable'
+                    - 'enable'
+                    - 'all'
+                    - 'utm'
+            message_upon_server_error:
+                aliases: ['message-upon-server-error']
+                type: str
+                description: Enable/disable return of replacement message upon server error detection.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            realm:
+                type: str
+                description: Authentication realm.
+            strict_guest:
+                aliases: ['strict-guest']
+                type: str
+                description: Enable/disable strict guest user checking by the explicit web proxy.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            trace_auth_no_rsp:
+                aliases: ['trace-auth-no-rsp']
+                type: str
+                description: Enable/disable logging timed-out authentication requests.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            use_dynamic_pkey:
+                aliases: ['use-dynamic-pkey']
+                type: str
+                description: Use dynamic pkey.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            address_ip_rating:
+                aliases: ['address-ip-rating']
+                type: str
+                description: Address ip rating.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            policy_partial_match:
+                aliases: ['policy-partial-match']
+                type: str
+                description: Policy partial match.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            auth_sign_timeout:
+                aliases: ['auth-sign-timeout']
+                type: int
+                description: Proxy auth query sign timeout in seconds
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -260,8 +350,8 @@ EXAMPLES = '''
     - name: Configure Web proxy global settings.
       fortinet.fmgdevice.fmgd_webproxy_global:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -297,6 +387,21 @@ EXAMPLES = '''
           # tunnel_non_http: <value in [disable, enable]>
           # unknown_http_version: <value in [best-effort, reject, tunnel]>
           # request_obs_fold: <value in [block, replace-with-sp, keep]>
+          # http2_client_window_size: <integer>
+          # http2_server_window_size: <integer>
+          # explicit_outgoing_ip: <list or string>
+          # explicit_outgoing_ip6: <list or string>
+          # extended_log: <value in [disable, enable]>
+          # https_replacement_message: <value in [disable, enable]>
+          # log_http_transaction: <value in [disable, enable, all, ...]>
+          # message_upon_server_error: <value in [disable, enable]>
+          # realm: <string>
+          # strict_guest: <value in [disable, enable]>
+          # trace_auth_no_rsp: <value in [disable, enable]>
+          # use_dynamic_pkey: <value in [disable, enable]>
+          # address_ip_rating: <value in [disable, enable]>
+          # policy_partial_match: <value in [disable, enable]>
+          # auth_sign_timeout: <integer>
 '''
 
 RETURN = '''
@@ -355,44 +460,63 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'webproxy_global': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'always-learn-client-ip': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'fast-policy-match': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'forward-proxy-auth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'forward-server-affinity-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ldap-user-cache': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'fast-policy-match': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'forward-proxy-auth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'forward-server-affinity-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ldap-user-cache': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'learn-client-ip': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['disable', 'enable', 'traffic-process', 'log-only'],
                     'type': 'str'
                 },
                 'learn-client-ip-from-header': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['true-client-ip', 'x-real-ip', 'x-forwarded-for'],
                     'elements': 'str'
                 },
-                'learn-client-ip-srcaddr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'learn-client-ip-srcaddr6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'learn-client-ip-srcaddr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'learn-client-ip-srcaddr6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'log-app-id': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'log-forward-server': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'log-policy-pending': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'max-message-length': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'max-request-length': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'max-waf-body-cache-length': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'policy-category-deep-inspect': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'proxy-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'log-policy-pending': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'max-message-length': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'max-request-length': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'max-waf-body-cache-length': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'policy-category-deep-inspect': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'proxy-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'proxy-transparent-cert-inspection': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'src-affinity-exempt-addr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'src-affinity-exempt-addr6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ssl-ca-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ssl-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'strict-web-check': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'webproxy-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'tunnel-non-http': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'unknown-http-version': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['best-effort', 'reject', 'tunnel'], 'type': 'str'},
-                'request-obs-fold': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'choices': ['block', 'replace-with-sp', 'keep'], 'type': 'str'}
+                'src-affinity-exempt-addr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'src-affinity-exempt-addr6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ssl-ca-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ssl-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'strict-web-check': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'webproxy-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'tunnel-non-http': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'unknown-http-version': {
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']],
+                    'choices': ['best-effort', 'reject', 'tunnel'],
+                    'type': 'str'
+                },
+                'request-obs-fold': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'choices': ['block', 'replace-with-sp', 'keep'], 'type': 'str'},
+                'http2-client-window-size': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'http2-server-window-size': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'explicit-outgoing-ip': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'explicit-outgoing-ip6': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'extended-log': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'https-replacement-message': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'log-http-transaction': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable', 'all', 'utm'], 'type': 'str'},
+                'message-upon-server-error': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'realm': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                'strict-guest': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'trace-auth-no-rsp': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'use-dynamic-pkey': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'address-ip-rating': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'policy-partial-match': {'v_range': [['7.4.9', '7.4.10'], ['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-sign-timeout': {'v_range': [['7.6.5', '']], 'type': 'int'}
             }
         }
     }

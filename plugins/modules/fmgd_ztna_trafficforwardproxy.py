@@ -16,7 +16,6 @@ short_description: Configure ZTNA traffic forward proxy.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -654,12 +653,31 @@ options:
                 type: list
                 elements: str
                 description: Virtual IPv6 name.
+            url_route:
+                aliases: ['url-route']
+                type: list
+                elements: dict
+                description: Url route.
+                suboptions:
+                    name:
+                        type: str
+                        description: Name.
+                    service_connector:
+                        aliases: ['service-connector']
+                        type: list
+                        elements: str
+                        description: Service connector.
+                    url_pattern:
+                        aliases: ['url-pattern']
+                        type: str
+                        description: Url pattern.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -668,8 +686,8 @@ EXAMPLES = '''
     - name: Configure ZTNA traffic forward proxy.
       fortinet.fmgdevice.fmgd_ztna_trafficforwardproxy:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -756,6 +774,10 @@ EXAMPLES = '''
           # host: <list or string>
           # vip: <list or string>
           # vip6: <list or string>
+          # url_route:
+          #   - name: <string>
+          #     service_connector: <list or string>
+          #     url_pattern: <string>
 '''
 
 RETURN = '''
@@ -982,7 +1004,17 @@ def main():
                 'decrypted-traffic-mirror': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
                 'host': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
                 'vip': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
-                'vip6': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'}
+                'vip6': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                'url-route': {
+                    'v_range': [['7.6.4', '']],
+                    'type': 'list',
+                    'options': {
+                        'name': {'v_range': [['7.6.4', '']], 'type': 'str'},
+                        'service-connector': {'v_range': [['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                        'url-pattern': {'v_range': [['7.6.4', '']], 'type': 'str'}
+                    },
+                    'elements': 'dict'
+                }
             }
         }
     }

@@ -34,12 +34,15 @@ version_added: "1.0.0"
 
 import time
 import json
+import os
 from ansible.plugins.httpapi import HttpApiBase
 from ansible.module_utils.basic import to_text
 from ansible_collections.fortinet.fmgdevice.plugins.module_utils.common import BASE_HEADERS
 from ansible_collections.fortinet.fmgdevice.plugins.module_utils.common import FMGBaseException
 from ansible_collections.fortinet.fmgdevice.plugins.module_utils.common import FMGRCommon
 from datetime import datetime
+
+ENABLE_LOG = os.getenv("ANSIBLE_FMGDEVICE_ENABLE_LOG", "false").lower() in ["true", "1", "yes", "y", "t"]
 
 
 class HttpApi(HttpApiBase):
@@ -74,6 +77,8 @@ class HttpApi(HttpApiBase):
 
     def log(self, msg):
         log_enabled = self.customer_options.get("enable_log", False)
+        if ENABLE_LOG:
+            log_enabled = True
         if not log_enabled:
             return
         if not self._log:
@@ -126,16 +131,18 @@ class HttpApi(HttpApiBase):
         self._logged_in_user = username
         forticloud_access_token = self.customer_options.get("forticloud_access_token", None)
         self._access_token = self.customer_options.get("access_token", None)
-        if self._access_token:
+        if username is not None and password is not None:
+            self._login_method = 'username_password'
+            self.send_request("exec", self._tools.format_request("exec", "sys/login/user", passwd=password, user=username))
+        elif self._access_token:
             self._login_method = 'access_token'
         elif forticloud_access_token:
             self._login_method = 'forticloud'
             self.forticloud_login()
         else:
-            self._login_method = 'username_password'
-            self.send_request("exec", self._tools.format_request("exec", "sys/login/user", passwd=password, user=username))
+            err_msg = "Please check whether you provide the correct information."
+            raise AssertionError(err_msg)
         self.log('login method: ' + self._login_method)
-        self.log(self)
         if (self.sid or self._access_token) and self.connection._url is not None:
             # If Login worked, then inspect the FortiManager for Workspace Mode, and it's system information.
             self.inspect_fmgr()
@@ -143,7 +150,8 @@ class HttpApi(HttpApiBase):
             for param in self._prelocking_user_params:
                 self.process_workspace_locking_internal(param)
         else:
-            err_msg = "Can't login. Your login method is %s. Please check whether you provide the correct information." % (self._login_method)
+            err_msg = "Can't login. Your login method is %s. " % (self._login_method)
+            err_msg += "Please check whether you provide the correct information or have necessary permissions."
             raise FMGBaseException(msg=err_msg)
 
     def inspect_fmgr(self):
@@ -203,14 +211,14 @@ class HttpApi(HttpApiBase):
             "id": self.req_id,
             "verbose": 1,
         }
-        data = json.dumps(json_request, ensure_ascii=False).replace("\\\\", "\\")
+        data = json.dumps(json_request, ensure_ascii=False)
 
         # Don't log sensitive information
         if params[0]["url"] == "sys/login/user" and "data" in params[0] and "passwd" in params[0]["data"]:
             json_request["params"][0]["data"]["passwd"] = "******"
         if "session" in params[0]:
             json_request["params"][0]["session"] = "******"
-        log_data = json.dumps(json_request, ensure_ascii=False).replace("\\\\", "\\")
+        log_data = json.dumps(json_request, ensure_ascii=False)
         self.log("request: %s" % (log_data))
 
         # Sending URL and Data in Unicode, per Ansible Specifications for Connection Plugins
@@ -223,8 +231,13 @@ class HttpApi(HttpApiBase):
             path=to_text(self._url) + access_token_str, data=to_text(data), headers=header_data
         )
         # Get Unicode Response - Must convert from StringIO to unicode first so we can do a replace function below
-        result = json.loads(to_text(response_data.getvalue()))
-        self.log("response: %s" % (str(self._jsonize(result))))
+        response_text = to_text(response_data.getvalue())
+        result = ""
+        try:
+            result = json.loads(response_text)
+        except Exception as e:
+            raise FMGBaseException(msg="Got unexpected result: %s" % (response_text))
+        self.log("response: %s" % (self._jsonize(result)))
         self._update_self_from_response(result, self._url, data)
         return self._handle_response(result)
 

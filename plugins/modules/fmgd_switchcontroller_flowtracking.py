@@ -16,7 +16,6 @@ short_description: Configure FortiSwitch flow tracking and export via ipfix/netf
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -199,6 +198,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -207,8 +207,8 @@ EXAMPLES = '''
     - name: Configure FortiSwitch flow tracking and export via ipfix/netflow.
       fortinet.fmgdevice.fmgd_switchcontroller_flowtracking:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -296,44 +296,44 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'switchcontroller_flowtracking': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'aggregates': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
                     },
                     'elements': 'dict'
                 },
                 'collectors': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'transport': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'tcp', 'sctp'], 'type': 'str'}
+                        'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'transport': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'tcp', 'sctp'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'format': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['netflow1', 'netflow5', 'netflow9', 'ipfix'], 'type': 'str'},
-                'level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['vlan', 'ip', 'port', 'proto', 'mac'], 'type': 'str'},
-                'max-export-pkt-size': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'sample-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['local', 'perimeter', 'device-ingress'], 'type': 'str'},
-                'sample-rate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'template-export-period': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-general': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-icmp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-max': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-tcp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-tcp-fin': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-tcp-rst': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'timeout-udp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'transport': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'tcp', 'sctp'], 'type': 'str'},
-                'collector-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'collector-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'format': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['netflow1', 'netflow5', 'netflow9', 'ipfix'], 'type': 'str'},
+                'level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['vlan', 'ip', 'port', 'proto', 'mac'], 'type': 'str'},
+                'max-export-pkt-size': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'sample-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['local', 'perimeter', 'device-ingress'], 'type': 'str'},
+                'sample-rate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'template-export-period': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-general': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-icmp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-max': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-tcp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-tcp-fin': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-tcp-rst': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'timeout-udp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'transport': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'tcp', 'sctp'], 'type': 'str'},
+                'collector-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'collector-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'}
             }
         }
     }

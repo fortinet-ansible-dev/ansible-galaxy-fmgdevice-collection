@@ -16,7 +16,6 @@ short_description: Configure explicit Web proxy settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -28,6 +27,8 @@ author:
 notes:
     - Running in workspace locking mode is supported in this FortiManager module, the top
       level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
+    - To create or update an object, use state present directive.
+    - To delete an object, use state absent directive.
     - Normally, running one module can fail when a non-zero rc is returned. you can also override
       the conditions to fail or succeed with parameters rc_failed and rc_succeeded
 options:
@@ -60,6 +61,13 @@ options:
         description: The rc codes list with which the conditions to fail will be overriden.
         type: list
         elements: int
+    state:
+        description: The directive to create, update or delete an object.
+        type: str
+        required: true
+        choices:
+          - present
+          - absent
     workspace_locking_adom:
         description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
         type: str
@@ -343,12 +351,24 @@ options:
                 aliases: ['vrf-select']
                 type: int
                 description: VRF ID used for connection to server.
+            name:
+                type: str
+                description: Object name
+                required: true
+            return_to_sender:
+                aliases: ['return-to-sender']
+                type: str
+                description: Enable/disable return-to-sender.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -357,13 +377,15 @@ EXAMPLES = '''
     - name: Configure explicit Web proxy settings.
       fortinet.fmgdevice.fmgd_webproxy_explicit:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
+        state: present # <value in [present, absent]>
         webproxy_explicit:
+          name: "your value" # Required variable, string
           # client_cert: <value in [disable, enable]>
           # empty_cert_action: <value in [block, accept, accept-unmanageable]>
           # ftp_incoming_port: <list or string>
@@ -410,6 +432,7 @@ EXAMPLES = '''
           # interface: <list or string>
           # interface_select_method: <value in [sdwan, specify]>
           # vrf_select: <integer>
+          # return_to_sender: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -462,75 +485,77 @@ def main():
         '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit'
     ]
     url_params = ['device', 'vdom']
-    module_primary_key = None
+    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'webproxy_explicit': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'client-cert': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'empty-cert-action': {'v_range': [['7.4.3', '']], 'choices': ['block', 'accept', 'accept-unmanageable'], 'type': 'str'},
-                'ftp-incoming-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ftp-over-http': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'http-connection-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['static', 'multiplex', 'serverpool'], 'type': 'str'},
-                'http-incoming-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'https-incoming-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'https-replacement-message': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'incoming-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'incoming-ip6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ipv6-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'message-upon-server-error': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'outgoing-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'outgoing-ip6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'pac-file-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'pac-file-name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'pac-file-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'pac-file-server-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'pac-file-through-https': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'pac-file-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'ftp-incoming-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ftp-over-http': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'http-connection-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['static', 'multiplex', 'serverpool'], 'type': 'str'},
+                'http-incoming-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'https-incoming-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'https-replacement-message': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'incoming-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'incoming-ip6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ipv6-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'message-upon-server-error': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'outgoing-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'outgoing-ip6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'pac-file-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'pac-file-name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'pac-file-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'pac-file-server-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'pac-file-through-https': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'pac-file-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'pac-policy': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'comments': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'dstaddr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'pac-file-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'pac-file-name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'policyid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'srcaddr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'srcaddr6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'dstaddr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'pac-file-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'pac-file-name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'policyid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'srcaddr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'srcaddr6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
                 'pref-dns-result': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['ipv4', 'ipv6', 'ipv4-strict', 'ipv6-strict'],
                     'type': 'str'
                 },
-                'realm': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'sec-default-action': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['deny', 'accept'], 'type': 'str'},
+                'realm': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'sec-default-action': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['deny', 'accept'], 'type': 'str'},
                 'secure-web-proxy': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable', 'secure'], 'type': 'str'},
                 'secure-web-proxy-cert': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'socks': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'socks-incoming-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ssl-algorithm': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['high', 'medium', 'low'], 'type': 'str'},
+                'socks': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'socks-incoming-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ssl-algorithm': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['high', 'medium', 'low'], 'type': 'str'},
                 'ssl-dh-bits': {'v_range': [['7.4.3', '']], 'choices': ['768', '1024', '1536', '2048'], 'type': 'str'},
-                'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'strict-guest': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'trace-auth-no-rsp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'unknown-http-version': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['best-effort', 'reject', 'tunnel'], 'type': 'str'},
+                'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'strict-guest': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'trace-auth-no-rsp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'unknown-http-version': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['best-effort', 'reject', 'tunnel'], 'type': 'str'},
                 'user-agent-detect': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'interface': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                'interface': {'v_range': [['7.4.8', '7.4.10'], ['7.6.2', '']], 'type': 'list', 'elements': 'str'},
                 'interface-select-method': {'v_range': [['7.6.2', '']], 'choices': ['sdwan', 'specify'], 'type': 'str'},
-                'vrf-select': {'v_range': [['7.6.2', '']], 'type': 'int'}
+                'vrf-select': {'v_range': [['7.6.2', '']], 'type': 'int'},
+                'name': {'v_range': [['7.4.8', '7.4.10']], 'required': True, 'type': 'str'},
+                'return-to-sender': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }
 
-    module_option_spec = get_module_arg_spec('partial crud')
+    module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
     params_validation_blob = []
     check_galaxy_version(module_arg_spec)
@@ -540,10 +565,10 @@ def main():
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list, module_primary_key, url_params,
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
                        module, connection, top_level_schema_name='data')
     fmgd.validate_parameters(params_validation_blob)
-    fmgd.process_partial_crud()
+    fmgd.process_crud()
 
     module.exit_json(meta=module.params)
 

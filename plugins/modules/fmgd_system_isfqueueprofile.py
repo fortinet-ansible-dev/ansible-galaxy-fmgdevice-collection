@@ -16,7 +16,6 @@ short_description: Create a queue profile of switch.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -143,6 +142,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -151,8 +151,8 @@ EXAMPLES = '''
     - name: Create a queue profile of switch.
       fortinet.fmgdevice.fmgd_system_isfqueueprofile:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -222,23 +222,23 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_isfqueueprofile': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'bandwidth-unit': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['kbps', 'pps'], 'type': 'str'},
+                'bandwidth-unit': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['kbps', 'pps'], 'type': 'str'},
                 'burst-bps-granularity': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['disable', '512-bytes', '1k-bytes', '2k-bytes', '4k-bytes', '8k-bytes', '16k-bytes', '32k-bytes'],
                     'type': 'str'
                 },
                 'burst-pps-granularity': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['disable', 'half-packet', '1-packet', '2-packets', '4-packets', '16-packets', '65-packets', '262-packets'],
                     'type': 'str'
                 },
-                'guaranteed-bandwidth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'maximum-bandwidth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'burst-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'guaranteed-bandwidth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'maximum-bandwidth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'burst-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

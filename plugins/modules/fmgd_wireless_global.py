@@ -16,7 +16,6 @@ short_description: Configure wireless controller global settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -238,12 +237,25 @@ options:
                 aliases: ['max-wids-entry']
                 type: int
                 description: Maximum number of wids entries stored on the controller
+            max_sta_offline:
+                aliases: ['max-sta-offline']
+                type: int
+                description: Maximum number of station offline stored on the controller
+            max_sta_offline_ip2mac:
+                aliases: ['max-sta-offline-ip2mac']
+                type: int
+                description: Maximum number of station offline ip2mac stored on the controller
+            discovery_mc_addr6:
+                aliases: ['discovery-mc-addr6']
+                type: str
+                description: Multicast IPv6 address for AP discovery
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -252,8 +264,8 @@ EXAMPLES = '''
     - name: Configure wireless controller global settings.
       fortinet.fmgdevice.fmgd_wireless_global:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -299,6 +311,9 @@ EXAMPLES = '''
           # wpad_process_count: <integer>
           # wtp_share: <value in [disable, enable]>
           # max_wids_entry: <integer>
+          # max_sta_offline: <integer>
+          # max_sta_offline_ip2mac: <integer>
+          # discovery_mc_addr6: <string>
 '''
 
 RETURN = '''
@@ -356,47 +371,50 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'wireless_global': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'acd-process-count': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ap-log-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ap-log-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ap-log-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'acd-process-count': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ap-log-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ap-log-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ap-log-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'control-message-offload': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': [
                         'ebp-frame', 'aeroscout-tag', 'ap-list', 'sta-list', 'sta-cap-list', 'stats', 'aeroscout-mu', 'sta-health', 'spectral-analysis'
                     ],
                     'elements': 'str'
                 },
-                'data-ethernet-II': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'dfs-lab-test': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'discovery-mc-addr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'fiapp-eth-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'image-download': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ipsec-base-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'link-aggregation': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'local-radio-vdom': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'location': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'data-ethernet-II': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'dfs-lab-test': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'discovery-mc-addr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'fiapp-eth-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'image-download': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ipsec-base-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'link-aggregation': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'local-radio-vdom': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'location': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'max-ble-device': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'max-clients': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'max-retransmit': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'max-clients': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'max-retransmit': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'max-rogue-ap': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'max-rogue-ap-wtp': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'max-rogue-sta': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'max-sta-cap': {'v_range': [['7.4.3', '']], 'type': 'int'},
                 'max-sta-cap-wtp': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'mesh-eth-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'nac-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'rogue-scan-mac-adjacency': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'mesh-eth-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'nac-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'rogue-scan-mac-adjacency': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'rolling-wtp-upgrade': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'rolling-wtp-upgrade-threshold': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                'tunnel-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['compatible', 'strict'], 'type': 'str'},
+                'tunnel-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['compatible', 'strict'], 'type': 'str'},
                 'wpad-process-count': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'wtp-share': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'max-wids-entry': {'v_range': [['7.6.2', '']], 'type': 'int'}
+                'wtp-share': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'max-wids-entry': {'v_range': [['7.6.2', '']], 'type': 'int'},
+                'max-sta-offline': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'max-sta-offline-ip2mac': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'discovery-mc-addr6': {'v_range': [['7.6.5', '']], 'type': 'str'}
             }
         }
     }

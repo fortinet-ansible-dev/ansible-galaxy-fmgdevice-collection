@@ -16,7 +16,6 @@ short_description: Coordinate federated upgrades within the Security Fabric.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -102,6 +101,7 @@ options:
                     - 'node-failed'
                     - 'csf-tree-not-supported'
                     - 'firmware-changed'
+                    - 'image-missing'
             ha_reboot_controller:
                 aliases: ['ha-reboot-controller']
                 type: str
@@ -172,6 +172,40 @@ options:
                         aliases: ['upgrade-path']
                         type: str
                         description: Fortinet OS image versions to upgrade through in major-minor-patch format, such as 7-0-4.
+                    failure_reason:
+                        aliases: ['failure-reason']
+                        type: str
+                        description: Upgrade failure reason.
+                        choices:
+                            - 'timeout'
+                            - 'none'
+                            - 'internal'
+                            - 'device-type-unsupported'
+                            - 'download-failed'
+                            - 'device-missing'
+                            - 'version-unavailable'
+                            - 'staging-failed'
+                            - 'reboot-failed'
+                            - 'device-not-reconnected'
+                            - 'node-not-ready'
+                            - 'no-final-confirmation'
+                            - 'no-confirmation-query'
+                            - 'config-error-log-nonempty'
+                            - 'csf-tree-not-supported'
+                            - 'firmware-changed'
+                            - 'node-failed'
+                            - 'image-missing'
+                    coordinating_fortiproxy:
+                        aliases: ['coordinating-fortiproxy']
+                        type: str
+                        description: Coordinating fortiproxy.
+                    allow_download:
+                        aliases: ['allow-download']
+                        type: str
+                        description: Enable/disable download firmware images.
+                        choices:
+                            - 'disable'
+                            - 'enable'
             status:
                 type: str
                 description: Current status of the upgrade.
@@ -208,6 +242,7 @@ options:
                 choices:
                     - 'user'
                     - 'auto-firmware-upgrade'
+                    - 'forced-upgrade'
             initial_version:
                 aliases: ['initial-version']
                 type: str
@@ -222,6 +257,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -230,8 +266,8 @@ EXAMPLES = '''
     - name: Coordinate federated upgrades within the Security Fabric.
       fortinet.fmgdevice.fmgd_system_federatedupgrade:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -252,10 +288,13 @@ EXAMPLES = '''
           #     time: <list or string>
           #     timing: <value in [immediate, scheduled]>
           #     upgrade_path: <string>
+          #     failure_reason: <value in [timeout, none, internal, ...]>
+          #     coordinating_fortiproxy: <string>
+          #     allow_download: <value in [disable, enable]>
           # status: <value in [disabled, initialized, downloading, ...]>
           # upgrade_id: <integer>
           # dry_run: <value in [disable, enable]>
-          # source: <value in [user, auto-firmware-upgrade]>
+          # source: <value in [user, auto-firmware-upgrade, forced-upgrade]>
           # initial_version: <string>
           # starter_admin: <string>
 '''
@@ -315,57 +354,69 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_federatedupgrade': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'failure-device': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'failure-device': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'failure-reason': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'none', 'internal', 'timeout', 'device-type-unsupported', 'download-failed', 'device-missing', 'version-unavailable',
                         'staging-failed', 'reboot-failed', 'device-not-reconnected', 'node-not-ready', 'no-final-confirmation', 'no-confirmation-query',
-                        'config-error-log-nonempty', 'node-failed', 'csf-tree-not-supported', 'firmware-changed'
+                        'config-error-log-nonempty', 'node-failed', 'csf-tree-not-supported', 'firmware-changed', 'image-missing'
                     ],
                     'type': 'str'
                 },
-                'ha-reboot-controller': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ignore-signing-errors': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ha-reboot-controller': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ignore-signing-errors': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'known-ha-members': {
                     'v_range': [['7.4.3', '']],
                     'type': 'list',
                     'options': {'serial': {'v_range': [['7.4.3', '']], 'type': 'str'}},
                     'elements': 'dict'
                 },
-                'next-path-index': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'next-path-index': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'node-list': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'coordinating-fortigate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'coordinating-fortigate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'device-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['fortigate', 'fortiswitch', 'fortiap', 'fortiproxy', 'fortiextender'],
                             'type': 'str'
                         },
-                        'maximum-minutes': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'serial': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'setup-time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'timing': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['immediate', 'scheduled'], 'type': 'str'},
-                        'upgrade-path': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                        'maximum-minutes': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'serial': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'setup-time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'timing': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['immediate', 'scheduled'], 'type': 'str'},
+                        'upgrade-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'failure-reason': {
+                            'v_range': [['7.6.3', '']],
+                            'choices': [
+                                'timeout', 'none', 'internal', 'device-type-unsupported', 'download-failed', 'device-missing', 'version-unavailable',
+                                'staging-failed', 'reboot-failed', 'device-not-reconnected', 'node-not-ready', 'no-final-confirmation',
+                                'no-confirmation-query', 'config-error-log-nonempty', 'csf-tree-not-supported', 'firmware-changed', 'node-failed',
+                                'image-missing'
+                            ],
+                            'type': 'str'
+                        },
+                        'coordinating-fortiproxy': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                        'allow-download': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
                 'status': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'disabled', 'initialized', 'downloading', 'download-failed', 'ready', 'cancelled', 'confirmed', 'done', 'failed',
                         'device-disconnected', 'staging', 'final-check', 'upgrade-devices', 'coordinating', 'dry-run-done'
                     ],
                     'type': 'str'
                 },
-                'upgrade-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'upgrade-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'dry-run': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'source': {'v_range': [['7.2.6', '7.2.9'], ['7.4.4', '']], 'choices': ['user', 'auto-firmware-upgrade'], 'type': 'str'},
+                'source': {'v_range': [['7.2.6', '7.2.12'], ['7.4.4', '']], 'choices': ['user', 'auto-firmware-upgrade', 'forced-upgrade'], 'type': 'str'},
                 'initial-version': {'v_range': [['7.6.2', '']], 'type': 'str'},
                 'starter-admin': {'v_range': [['7.6.2', '']], 'type': 'str'}
             }

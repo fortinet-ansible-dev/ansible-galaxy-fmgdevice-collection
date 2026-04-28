@@ -16,7 +16,6 @@ short_description: Configure web filter search engines.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -124,12 +123,20 @@ options:
             url:
                 type: str
                 description: URL
+            source_url:
+                aliases: ['source-url']
+                type: str
+                description: Source url.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -138,8 +145,8 @@ EXAMPLES = '''
     - name: Configure web filter search engines.
       fortinet.fmgdevice.fmgd_webfilter_searchengine:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -153,6 +160,7 @@ EXAMPLES = '''
           # safesearch: <value in [disable, url, header, ...]>
           # safesearch_str: <string>
           # url: <string>
+          # source_url: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -211,19 +219,20 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'webfilter_searchengine': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'charset': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['utf-8', 'gb2312'], 'type': 'str'},
-                'hostname': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'query': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'charset': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['utf-8', 'gb2312'], 'type': 'str'},
+                'hostname': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'query': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'safesearch': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['disable', 'url', 'header', 'translate', 'yt-pattern', 'yt-scan', 'yt-video', 'yt-channel'],
                     'type': 'str'
                 },
-                'safesearch-str': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'safesearch-str': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'source-url': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

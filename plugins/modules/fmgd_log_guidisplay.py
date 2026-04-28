@@ -16,7 +16,6 @@ short_description: Configure how log messages are displayed on the GUI.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -101,12 +100,21 @@ options:
                 choices:
                     - 'disable'
                     - 'enable'
+            location:
+                type: str
+                description: Configure the GUI to show memory logs, disk logs, FortiAnalyzer logs, or FortiCloud logs.
+                choices:
+                    - 'memory'
+                    - 'fortianalyzer'
+                    - 'disk'
+                    - 'forticloud'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -115,8 +123,8 @@ EXAMPLES = '''
     - name: Configure how log messages are displayed on the GUI.
       fortinet.fmgdevice.fmgd_log_guidisplay:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -125,6 +133,7 @@ EXAMPLES = '''
           # fortiview_unscanned_apps: <value in [disable, enable]>
           # resolve_apps: <value in [disable, enable]>
           # resolve_hosts: <value in [disable, enable]>
+          # location: <value in [memory, fortianalyzer, disk, ...]>
 '''
 
 RETURN = '''
@@ -183,11 +192,12 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'log_guidisplay': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'fortiview-unscanned-apps': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'resolve-apps': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'resolve-hosts': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'fortiview-unscanned-apps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'resolve-apps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'resolve-hosts': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'location': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['memory', 'fortianalyzer', 'disk', 'forticloud'], 'type': 'str'}
             }
         }
     }

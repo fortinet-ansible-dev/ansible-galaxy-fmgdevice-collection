@@ -16,7 +16,6 @@ short_description: Modify cache-service source peer list.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -80,6 +79,10 @@ options:
         description: The parameter (device) in requested url.
         type: str
         required: true
+    vdom:
+        description: The parameter (vdom) in requested url.
+        type: str
+        required: true
     wanopt_cacheservice_srcpeer:
         description: The top level parameters set.
         required: false
@@ -109,6 +112,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -117,11 +121,12 @@ EXAMPLES = '''
     - name: Modify cache-service source peer list.
       fortinet.fmgdevice.fmgd_wanopt_cacheservice_srcpeer:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
+        vdom: <your own value>
         state: present # <value in [present, absent]>
         wanopt_cacheservice_srcpeer:
           device_id: "your value" # Required variable, string
@@ -178,21 +183,23 @@ from ansible_collections.fortinet.fmgdevice.plugins.module_utils.common import g
 
 def main():
     urls_list = [
-        '/pm/config/device/{device}/global/wanopt/cache-service/src-peer'
+        '/pm/config/device/{device}/global/wanopt/cache-service/src-peer',
+        '/pm/config/device/{device}/vdom/{vdom}/wanopt/cache-service/src-peer'
     ]
-    url_params = ['device']
+    url_params = ['device', 'vdom']
     module_primary_key = 'device_id'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
+        'vdom': {'required': True, 'type': 'str'},
         'wanopt_cacheservice_srcpeer': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'auth-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'device-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'encode-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                'auth-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'device-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'encode-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
             }
         }
     }

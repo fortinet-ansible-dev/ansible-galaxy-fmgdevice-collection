@@ -16,7 +16,6 @@ short_description: Configure ztna web-portal.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -233,12 +232,29 @@ options:
                 aliases: ['windows-forticlient-download-url']
                 type: str
                 description: Download URL for Windows FortiClient.
+            bookmarks:
+                type: list
+                elements: str
+                description: Bookmarks.
+            llm_profile:
+                aliases: ['llm-profile']
+                type: list
+                elements: str
+                description: Llm profile.
+            llm_proxy:
+                aliases: ['llm-proxy']
+                type: str
+                description: Llm proxy.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -247,8 +263,8 @@ EXAMPLES = '''
     - name: Configure ztna web-portal.
       fortinet.fmgdevice.fmgd_ztna_webportal:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -280,6 +296,9 @@ EXAMPLES = '''
           # vip: <list or string>
           # vip6: <list or string>
           # windows_forticlient_download_url: <string>
+          # bookmarks: <list or string>
+          # llm_profile: <list or string>
+          # llm_proxy: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -368,7 +387,10 @@ def main():
                 },
                 'vip': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
                 'vip6': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
-                'windows-forticlient-download-url': {'v_range': [['7.6.2', '']], 'type': 'str'}
+                'windows-forticlient-download-url': {'v_range': [['7.6.2', '']], 'type': 'str'},
+                'bookmarks': {'v_range': [['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'llm-profile': {'v_range': [['7.6.5', '']], 'type': 'list', 'elements': 'str'},
+                'llm-proxy': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

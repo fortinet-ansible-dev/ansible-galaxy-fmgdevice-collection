@@ -4,6 +4,507 @@ Fortinet.Fmgdevice Release Notes
 
 .. contents:: Topics
 
+v1.1.0
+======
+
+Release Summary
+---------------
+
+Release fortinet.fmgdevice 1.1.0
+
+Minor Changes
+-------------
+
+- Supported FortiManager latest schema.
+- Supported new modules to configure FortiProxy.
+
+Bugfixes
+--------
+
+- Improved the request sending logic in httpapi plugin.
+
+New Modules
+-----------
+
+- fortinet.fmgdevice.fmgd_antivirus_profile - Configure AntiVirus profiles.
+- fortinet.fmgdevice.fmgd_antivirus_profile_cifs - Configure CIFS AntiVirus options.
+- fortinet.fmgdevice.fmgd_antivirus_profile_ftp - Configure FTP AntiVirus options.
+- fortinet.fmgdevice.fmgd_antivirus_profile_http - Configure HTTP AntiVirus options.
+- fortinet.fmgdevice.fmgd_antivirus_profile_imap - Configure IMAP AntiVirus options.
+- fortinet.fmgdevice.fmgd_antivirus_profile_nacquar - Configure AntiVirus quarantine settings.
+- fortinet.fmgdevice.fmgd_antivirus_profile_nntp - Configure NNTP AntiVirus options.
+- fortinet.fmgdevice.fmgd_antivirus_profile_pop3 - Configure POP3 AntiVirus options.
+- fortinet.fmgdevice.fmgd_antivirus_profile_smtp - Configure SMTP AntiVirus options.
+- fortinet.fmgdevice.fmgd_application_categories - Device application categories
+- fortinet.fmgdevice.fmgd_application_custom - Configure custom application signatures.
+- fortinet.fmgdevice.fmgd_application_group - Configure firewall application groups.
+- fortinet.fmgdevice.fmgd_application_list - Configure application control lists.
+- fortinet.fmgdevice.fmgd_application_list_defaultnetworkservices - Default network service entries.
+- fortinet.fmgdevice.fmgd_application_list_entries - Application list entries.
+- fortinet.fmgdevice.fmgd_authentication_rule - Configure Authentication Rules.
+- fortinet.fmgdevice.fmgd_authentication_scheme - Configure Authentication Schemes.
+- fortinet.fmgdevice.fmgd_authentication_setting - Configure authentication setting.
+- fortinet.fmgdevice.fmgd_casb_attributematch_match - CASB tenant match rules.
+- fortinet.fmgdevice.fmgd_casb_attributematch_match_rule - CASB attribute match rule.
+- fortinet.fmgdevice.fmgd_casb_profile - Configure CASB profile.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication - CASB profile SaaS application.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_accessrule - CASB profile access rule.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_accessrule_attributefilter - CASB profile attribute filter.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_advancedtenantcontrol - CASB profile advanced tenant control.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_advancedtenantcontrol_attribute - CASB advanced tenant control attribute.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_customcontrol - CASB profile custom control.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_customcontrol_attributefilter - CASB attribute filter.
+- fortinet.fmgdevice.fmgd_casb_profile_saasapplication_customcontrol_option - CASB custom control option.
+- fortinet.fmgdevice.fmgd_casb_saasapplication - Configure CASB SaaS application.
+- fortinet.fmgdevice.fmgd_casb_saasapplication_inputattributes - SaaS application input attributes.
+- fortinet.fmgdevice.fmgd_casb_saasapplication_outputattributes - SaaS application output attributes.
+- fortinet.fmgdevice.fmgd_casb_useractivity - Configure CASB user activity.
+- fortinet.fmgdevice.fmgd_casb_useractivity_match - CASB user activity match rules.
+- fortinet.fmgdevice.fmgd_casb_useractivity_match_rules - CASB user activity rules.
+- fortinet.fmgdevice.fmgd_casb_useractivity_match_tenantextraction - CASB user activity tenant extraction.
+- fortinet.fmgdevice.fmgd_casb_useractivity_match_tenantextraction_filters - CASB user activity tenant extraction filters.
+- fortinet.fmgdevice.fmgd_certificate_hsmlocal - Local certificates whose keys are stored on HSM.
+- fortinet.fmgdevice.fmgd_diameterfilter_profile - Configure Diameter filter profiles.
+- fortinet.fmgdevice.fmgd_dlp_datatype - Configure predefined data type used by DLP blocking.
+- fortinet.fmgdevice.fmgd_dlp_dictionary - Configure dictionaries used by DLP blocking.
+- fortinet.fmgdevice.fmgd_dlp_dictionary_entries - DLP dictionary entries.
+- fortinet.fmgdevice.fmgd_dlp_filepattern - Configure file patterns used by DLP blocking.
+- fortinet.fmgdevice.fmgd_dlp_filepattern_entries - Configure file patterns used by DLP blocking.
+- fortinet.fmgdevice.fmgd_dlp_label - Configure labels used by DLP blocking.
+- fortinet.fmgdevice.fmgd_dlp_label_entries - DLP label entries.
+- fortinet.fmgdevice.fmgd_dlp_profile - Configure DLP profiles.
+- fortinet.fmgdevice.fmgd_dlp_profile_rule - Set up DLP rules for this profile.
+- fortinet.fmgdevice.fmgd_dlp_sensor - Configure sensors used by DLP blocking.
+- fortinet.fmgdevice.fmgd_dlp_sensor_entries - DLP sensor entries.
+- fortinet.fmgdevice.fmgd_dnsfilter_domainfilter - Configure DNS domain filters.
+- fortinet.fmgdevice.fmgd_dnsfilter_domainfilter_entries - DNS domain filter entries.
+- fortinet.fmgdevice.fmgd_dnsfilter_profile - Configure DNS domain filter profile.
+- fortinet.fmgdevice.fmgd_dnsfilter_profile_dnstranslation - DNS translation settings.
+- fortinet.fmgdevice.fmgd_dnsfilter_profile_domainfilter - Domain filter settings.
+- fortinet.fmgdevice.fmgd_dnsfilter_profile_ftgddns - FortiGuard DNS Filter settings.
+- fortinet.fmgdevice.fmgd_dnsfilter_profile_ftgddns_filters - FortiGuard DNS domain filters.
+- fortinet.fmgdevice.fmgd_emailfilter_blockallowlist - Configure anti-spam block/allow list.
+- fortinet.fmgdevice.fmgd_emailfilter_blockallowlist_entries - Anti-spam block/allow entries.
+- fortinet.fmgdevice.fmgd_emailfilter_bword - Configure AntiSpam banned word list.
+- fortinet.fmgdevice.fmgd_emailfilter_bword_entries - Spam filter banned word.
+- fortinet.fmgdevice.fmgd_emailfilter_dnsbl - Configure AntiSpam DNSBL/ORBL.
+- fortinet.fmgdevice.fmgd_emailfilter_dnsbl_entries - Spam filter DNSBL and ORBL server.
+- fortinet.fmgdevice.fmgd_emailfilter_fortishield - Configure FortiGuard - AntiSpam.
+- fortinet.fmgdevice.fmgd_emailfilter_iptrust - Configure AntiSpam IP trust.
+- fortinet.fmgdevice.fmgd_emailfilter_iptrust_entries - Spam filter trusted IP addresses.
+- fortinet.fmgdevice.fmgd_emailfilter_mheader - Configure AntiSpam MIME header.
+- fortinet.fmgdevice.fmgd_emailfilter_mheader_entries - Spam filter mime header content.
+- fortinet.fmgdevice.fmgd_emailfilter_options - Configure AntiSpam options.
+- fortinet.fmgdevice.fmgd_emailfilter_profile - Configure Email Filter profiles.
+- fortinet.fmgdevice.fmgd_emailfilter_profile_gmail - Gmail.
+- fortinet.fmgdevice.fmgd_emailfilter_profile_imap - IMAP.
+- fortinet.fmgdevice.fmgd_emailfilter_profile_msnhotmail - MSN Hotmail.
+- fortinet.fmgdevice.fmgd_emailfilter_profile_pop3 - POP3.
+- fortinet.fmgdevice.fmgd_emailfilter_profile_smtp - SMTP.
+- fortinet.fmgdevice.fmgd_endpointcontrol_fctems - Configure FortiClient Enterprise Management Server
+- fortinet.fmgdevice.fmgd_extensioncontroller_dataplan - FortiExtender dataplan configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile - FortiExtender extender profile configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular - FortiExtender cellular configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_controllerreport - FortiExtender controller report configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_modem1 - Configuration options for modem 1.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_modem1_autoswitch - FortiExtender auto switch configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_modem2_autoswitch - FortiExtender auto switch configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_smsnotification - FortiExtender cellular SMS notification configuration.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_smsnotification_alert - SMS alert list.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_cellular_smsnotification_receiver - SMS notification receiver list.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_wifi_radio1 - Radio-1 config for Wi-Fi 2.
+- fortinet.fmgdevice.fmgd_extensioncontroller_extenderprofile_wifi_radio2 - Radio-2 config for Wi-Fi 5GHz
+- fortinet.fmgdevice.fmgd_filefilter_profile - Configure file-filter profiles.
+- fortinet.fmgdevice.fmgd_filefilter_profile_rules - File filter rules.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy - Configure IPv4 access proxy.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6 - Configure IPv6 access proxy.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway - Set IPv4 API Gateway.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway6 - Set IPv6 API Gateway.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway6_realservers - Select the real servers that this Access Proxy will distribute traffic to.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway6_sslciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway_realservers - Select the real servers that this Access Proxy will distribute traffic to.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy6_apigateway_sslciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway - Set IPv4 API Gateway.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway6 - Set IPv6 API Gateway.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway6_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway6_realservers - Select the real servers that this Access Proxy will distribute traffic to.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway6_sslciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway_realservers - Select the real servers that this Access Proxy will distribute traffic to.
+- fortinet.fmgdevice.fmgd_firewall_accessproxy_apigateway_sslciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_accessproxyvirtualhost - Configure Access Proxy virtual hosts.
+- fortinet.fmgdevice.fmgd_firewall_address - Configure IPv4 addresses.
+- fortinet.fmgdevice.fmgd_firewall_address6 - Configure IPv6 firewall addresses.
+- fortinet.fmgdevice.fmgd_firewall_address6_list - IP address list.
+- fortinet.fmgdevice.fmgd_firewall_address6_subnetsegment - IPv6 subnet segments.
+- fortinet.fmgdevice.fmgd_firewall_address6_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_address6template - Configure IPv6 address templates.
+- fortinet.fmgdevice.fmgd_firewall_address6template_subnetsegment - IPv6 subnet segments.
+- fortinet.fmgdevice.fmgd_firewall_address6template_subnetsegment_values - Subnet segment values.
+- fortinet.fmgdevice.fmgd_firewall_address_list - IP address list.
+- fortinet.fmgdevice.fmgd_firewall_address_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_addrgrp - Configure IPv4 address groups.
+- fortinet.fmgdevice.fmgd_firewall_addrgrp6 - Configure IPv6 address groups.
+- fortinet.fmgdevice.fmgd_firewall_addrgrp6_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_addrgrp_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_centralsnatmap - Configure IPv4 and IPv6 central SNAT policies.
+- fortinet.fmgdevice.fmgd_firewall_dospolicy - Configure IPv4 DoS policies.
+- fortinet.fmgdevice.fmgd_firewall_dospolicy6 - Configure IPv6 DoS policies.
+- fortinet.fmgdevice.fmgd_firewall_dospolicy6_anomaly - Anomaly name.
+- fortinet.fmgdevice.fmgd_firewall_identitybasedroute - Configure identity based routing.
+- fortinet.fmgdevice.fmgd_firewall_identitybasedroute_rule - Rule.
+- fortinet.fmgdevice.fmgd_firewall_interfacepolicy - Configure IPv4 interface policies.
+- fortinet.fmgdevice.fmgd_firewall_interfacepolicy6 - Configure IPv6 interface policies.
+- fortinet.fmgdevice.fmgd_firewall_internetservice - Show Internet Service application.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceaddition - Configure Internet Services Addition.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceaddition_entry - Entries added to the Internet Service addition database.
+- fortinet.fmgdevice.fmgd_firewall_internetserviceaddition_entry_portrange - Port ranges in the custom entry.
+- fortinet.fmgdevice.fmgd_firewall_internetservicecustom - Configure custom Internet Services.
+- fortinet.fmgdevice.fmgd_firewall_internetservicecustom_entry - Entries added to the Internet Service database and custom database.
+- fortinet.fmgdevice.fmgd_firewall_internetservicecustomgroup - Configure custom Internet Service group.
+- fortinet.fmgdevice.fmgd_firewall_internetservicegroup - Configure group of Internet Service.
+- fortinet.fmgdevice.fmgd_firewall_internetservicename - Define internet service names.
+- fortinet.fmgdevice.fmgd_firewall_ippool - Configure IPv4 IP pools.
+- fortinet.fmgdevice.fmgd_firewall_ippool6 - Configure IPv6 IP pools.
+- fortinet.fmgdevice.fmgd_firewall_ldbmonitor - Configure server load balancing health monitors.
+- fortinet.fmgdevice.fmgd_firewall_localinpolicy - Configure user defined IPv4 local-in policies.
+- fortinet.fmgdevice.fmgd_firewall_localinpolicy6 - Configure user defined IPv6 local-in policies.
+- fortinet.fmgdevice.fmgd_firewall_multicastaddress - Configure multicast addresses.
+- fortinet.fmgdevice.fmgd_firewall_multicastaddress6 - Configure IPv6 multicast address.
+- fortinet.fmgdevice.fmgd_firewall_multicastaddress6_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_multicastaddress_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_multicastpolicy - Configure multicast NAT policies.
+- fortinet.fmgdevice.fmgd_firewall_multicastpolicy6 - Configure IPv6 multicast NAT policies.
+- fortinet.fmgdevice.fmgd_firewall_networkservicedynamic - Configure Dynamic Network Services.
+- fortinet.fmgdevice.fmgd_firewall_profilegroup - Configure profile groups.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions - Configure protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_cifs - Configure CIFS protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_cifs_serverkeytab - Server keytab.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_dns - Configure DNS protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_ftp - Configure FTP protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_http - Configure HTTP protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_imap - Configure IMAP protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_mailsignature - Configure Mail signature.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_mapi - Configure MAPI protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_nntp - Configure NNTP protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_pop3 - Configure POP3 protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_smtp - Configure SMTP protocol options.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_ssh - Configure SFTP and SCP protocol options.
+- fortinet.fmgdevice.fmgd_firewall_proxyaddress - Configure web proxy address.
+- fortinet.fmgdevice.fmgd_firewall_proxyaddress6 - Device vdom firewall proxy address6
+- fortinet.fmgdevice.fmgd_firewall_proxyaddress6_headergroup - Device vdom firewall proxy address6 header group
+- fortinet.fmgdevice.fmgd_firewall_proxyaddress6_tagging - Device vdom firewall proxy address6 tagging
+- fortinet.fmgdevice.fmgd_firewall_proxyaddress_headergroup - HTTP header group.
+- fortinet.fmgdevice.fmgd_firewall_proxyaddress_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_proxyaddrgrp - Configure web proxy address group.
+- fortinet.fmgdevice.fmgd_firewall_proxyaddrgrp6 - Device vdom firewall proxy addrgrp6
+- fortinet.fmgdevice.fmgd_firewall_proxyaddrgrp6_tagging - Device vdom firewall proxy addrgrp6 tagging
+- fortinet.fmgdevice.fmgd_firewall_proxyaddrgrp_tagging - Config object tagging.
+- fortinet.fmgdevice.fmgd_firewall_proxypolicy - Configure proxy policies.
+- fortinet.fmgdevice.fmgd_firewall_responseshapingpolicy - Device vdom firewall response shaping policy
+- fortinet.fmgdevice.fmgd_firewall_schedule_group - Schedule group configuration.
+- fortinet.fmgdevice.fmgd_firewall_schedule_onetime - Onetime schedule configuration.
+- fortinet.fmgdevice.fmgd_firewall_schedule_recurring - Recurring schedule configuration.
+- fortinet.fmgdevice.fmgd_firewall_securitypolicy - When configuring policy within policy package, use
+- fortinet.fmgdevice.fmgd_firewall_service_category - Configure service categories.
+- fortinet.fmgdevice.fmgd_firewall_service_custom - Configure custom services.
+- fortinet.fmgdevice.fmgd_firewall_service_group - Configure service groups.
+- fortinet.fmgdevice.fmgd_firewall_shaper_peripshaper - Configure per-IP traffic shaper.
+- fortinet.fmgdevice.fmgd_firewall_shaper_trafficshaper - Configure shared traffic shaper.
+- fortinet.fmgdevice.fmgd_firewall_shapingpolicy - Configure shaping policies.
+- fortinet.fmgdevice.fmgd_firewall_shapingprofile - Configure shaping profiles.
+- fortinet.fmgdevice.fmgd_firewall_shapingprofile_shapingentries - Define shaping entries of this shaping profile.
+- fortinet.fmgdevice.fmgd_firewall_ssh_localca - SSH proxy local CA.
+- fortinet.fmgdevice.fmgd_firewall_ssl_defaultcertificate - Device vdom firewall ssl default certificate
+- fortinet.fmgdevice.fmgd_firewall_ssl_keyringlist - Device firewall ssl keyring list
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile - Configure SSL/SSH protocol options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_dot - Configure DNS over TLS options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_echoutersni - ClientHelloOuter SNIs to be blocked.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_ftps - Configure FTPS options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_https - Configure HTTPS options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_imaps - Configure IMAPS options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_pop3s - Configure POP3S options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_smtps - Configure SMTPS options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_ssh - Configure SSH options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_ssl - Configure SSL options.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_sslclientcertificate - Device vdom firewall ssl ssh profile ssl client certificate
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_sslexempt - Servers to exempt from SSL inspection.
+- fortinet.fmgdevice.fmgd_firewall_sslsshprofile_sslserver - SSL server settings used for client certificate request.
+- fortinet.fmgdevice.fmgd_firewall_trafficclass - Configure names for shaping classes.
+- fortinet.fmgdevice.fmgd_firewall_vendormac - Show vendor and the MAC address they have.
+- fortinet.fmgdevice.fmgd_firewall_vip - Configure virtual IP for IPv4.
+- fortinet.fmgdevice.fmgd_firewall_vip6 - Configure virtual IP for IPv6.
+- fortinet.fmgdevice.fmgd_firewall_vip6_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_firewall_vip6_realservers - Select the real servers that this server load balancing VIP will distribute traffic to.
+- fortinet.fmgdevice.fmgd_firewall_vip6_sslciphersuites - SSL/TLS cipher suites acceptable from a client, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_vip6_sslserverciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_vip_gslbpublicips - Publicly accessible IP addresses for the FortiGSLB service.
+- fortinet.fmgdevice.fmgd_firewall_vip_quic - QUIC setting.
+- fortinet.fmgdevice.fmgd_firewall_vip_realservers - Select the real servers that this server load balancing VIP will distribute traffic to.
+- fortinet.fmgdevice.fmgd_firewall_vip_sslciphersuites - SSL/TLS cipher suites acceptable from a client, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_vip_sslserverciphersuites - SSL/TLS cipher suites to offer to a server, ordered by priority.
+- fortinet.fmgdevice.fmgd_firewall_vipgrp - Configure IPv4 virtual IP groups.
+- fortinet.fmgdevice.fmgd_firewall_vipgrp6 - Configure IPv6 virtual IP groups.
+- fortinet.fmgdevice.fmgd_firewall_wildcardfqdn_custom - Config global/VDOM Wildcard FQDN address.
+- fortinet.fmgdevice.fmgd_firewall_wildcardfqdn_group - Config global Wildcard FQDN address groups.
+- fortinet.fmgdevice.fmgd_icap_localserver - Device vdom icap local server
+- fortinet.fmgdevice.fmgd_icap_localserver_icapservice - Device vdom icap local server icap service
+- fortinet.fmgdevice.fmgd_icap_profile_icapheaders - Configure ICAP forwarded request headers.
+- fortinet.fmgdevice.fmgd_icap_remoteserver - Device vdom icap remote server
+- fortinet.fmgdevice.fmgd_icap_remoteservergroup - Device vdom icap remote server group
+- fortinet.fmgdevice.fmgd_icap_remoteservergroup_serverlist - Device vdom icap remote server group server list
+- fortinet.fmgdevice.fmgd_imageanalyzer_profile - Device vdom image analyzer profile
+- fortinet.fmgdevice.fmgd_ips_custom - Configure IPS custom signature.
+- fortinet.fmgdevice.fmgd_ips_sensor - Configure IPS sensor.
+- fortinet.fmgdevice.fmgd_ips_sensor_entries - IPS sensor filter.
+- fortinet.fmgdevice.fmgd_ips_sensor_entries_exemptip - Traffic from selected source or destination IP addresses is exempt from this signature.
+- fortinet.fmgdevice.fmgd_isolator_profile - Device vdom isolator profile
+- fortinet.fmgdevice.fmgd_isolator_profile_entries - Device vdom isolator profile entries
+- fortinet.fmgdevice.fmgd_isolator_setting - Device vdom isolator setting
+- fortinet.fmgdevice.fmgd_llm_profile - Device vdom llm profile
+- fortinet.fmgdevice.fmgd_llm_profile_chat - Device vdom llm profile chat
+- fortinet.fmgdevice.fmgd_llm_profile_imagegen - Device vdom llm profile image gen
+- fortinet.fmgdevice.fmgd_llm_profile_listmodels - Device vdom llm profile list models
+- fortinet.fmgdevice.fmgd_llm_profile_response - Device vdom llm profile response
+- fortinet.fmgdevice.fmgd_llm_proxy - Device vdom llm proxy
+- fortinet.fmgdevice.fmgd_llm_server - Device vdom llm server
+- fortinet.fmgdevice.fmgd_log_customfield - Configure custom log fields.
+- fortinet.fmgdevice.fmgd_log_syslogd2_overridesetting_logtemplates - Device vdom log syslogd2 override setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd2_setting_logtemplates - Device log syslogd2 setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd3_overridesetting_logtemplates - Device vdom log syslogd3 override setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd3_setting_logtemplates - Device log syslogd3 setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd4_overridesetting_logtemplates - Device vdom log syslogd4 override setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd4_setting_logtemplates - Device log syslogd4 setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd_overridesetting_logtemplates - Device vdom log syslogd override setting log templates
+- fortinet.fmgdevice.fmgd_log_syslogd_setting_logtemplates - Device log syslogd setting log templates
+- fortinet.fmgdevice.fmgd_log_threatweight - Configure threat weight settings.
+- fortinet.fmgdevice.fmgd_log_threatweight_application - Application-control threat weight settings.
+- fortinet.fmgdevice.fmgd_log_threatweight_geolocation - Geolocation-based threat weight settings.
+- fortinet.fmgdevice.fmgd_log_threatweight_ips - IPS threat weight settings.
+- fortinet.fmgdevice.fmgd_log_threatweight_level - Score mapping for threat weight levels.
+- fortinet.fmgdevice.fmgd_log_threatweight_malware - Anti-virus malware threat weight settings.
+- fortinet.fmgdevice.fmgd_log_threatweight_web - Web filtering threat weight settings.
+- fortinet.fmgdevice.fmgd_router_accesslist - Configure access lists.
+- fortinet.fmgdevice.fmgd_router_accesslist6 - Configure IPv6 access lists.
+- fortinet.fmgdevice.fmgd_router_accesslist6_rule - Rule.
+- fortinet.fmgdevice.fmgd_router_accesslist_rule - Rule.
+- fortinet.fmgdevice.fmgd_router_aspathlist - Configure Autonomous System
+- fortinet.fmgdevice.fmgd_router_aspathlist_rule - AS path list rule.
+- fortinet.fmgdevice.fmgd_router_communitylist - Configure community lists.
+- fortinet.fmgdevice.fmgd_router_communitylist_rule - Community list rule.
+- fortinet.fmgdevice.fmgd_router_prefixlist - Configure IPv4 prefix lists.
+- fortinet.fmgdevice.fmgd_router_prefixlist6 - Configure IPv6 prefix lists.
+- fortinet.fmgdevice.fmgd_router_prefixlist6_rule - IPv6 prefix list rule.
+- fortinet.fmgdevice.fmgd_router_prefixlist_rule - IPv4 prefix list rule.
+- fortinet.fmgdevice.fmgd_router_routemap_rule - Rule.
+- fortinet.fmgdevice.fmgd_sctpfilter_profile - Configure SCTP filter profiles.
+- fortinet.fmgdevice.fmgd_sctpfilter_profile_ppidfilters - PPID filters list.
+- fortinet.fmgdevice.fmgd_sshfilter_profile - Configure SSH filter profile.
+- fortinet.fmgdevice.fmgd_sshfilter_profile_shellcommands - SSH command filter.
+- fortinet.fmgdevice.fmgd_switchcontroller_ipsourceguardlog - Configure FortiSwitch ip source guard log.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_routerstatic - Configure static routes.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_routervrf - Configure VRF.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_systemdhcpserver - Configure DHCP servers.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_systemdhcpserver_iprange - DHCP IP range configuration.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_systemdhcpserver_options - DHCP options.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_systeminterface - Configure system interface on FortiSwitch.
+- fortinet.fmgdevice.fmgd_system_accprofile_secfabgrppermission - Custom Security Fabric permissions.
+- fortinet.fmgdevice.fmgd_system_admin_trusthosts - Device system admin trusthosts
+- fortinet.fmgdevice.fmgd_system_automationaction_formdata - Form data parts for content type multipart/form-data.
+- fortinet.fmgdevice.fmgd_system_cloudservice - Configure system cloud service.
+- fortinet.fmgdevice.fmgd_system_customlanguage - Configure custom languages.
+- fortinet.fmgdevice.fmgd_system_deviceupgradeexemptions - Configure device upgrade exemptions.
+- fortinet.fmgdevice.fmgd_system_dhcp_server - Configure DHCP servers.
+- fortinet.fmgdevice.fmgd_system_dhcp_server_excluderange - Exclude one or more ranges of IP addresses from being assigned to clients.
+- fortinet.fmgdevice.fmgd_system_dhcp_server_iprange - DHCP IP range configuration.
+- fortinet.fmgdevice.fmgd_system_dhcp_server_options - DHCP options.
+- fortinet.fmgdevice.fmgd_system_dhcp_server_reservedaddress - Options for the DHCP server to assign IP settings to specific MAC addresses.
+- fortinet.fmgdevice.fmgd_system_externalresource - Configure external resource.
+- fortinet.fmgdevice.fmgd_system_fortidata - Configure FortiData.
+- fortinet.fmgdevice.fmgd_system_fortiguard - Configure FortiGuard services.
+- fortinet.fmgdevice.fmgd_system_geoipcountry - Device system geoip country
+- fortinet.fmgdevice.fmgd_system_geoipoverride - Configure geographical location mapping for IP address
+- fortinet.fmgdevice.fmgd_system_geoipoverride_ip6range - Table of IPv6 ranges assigned to country.
+- fortinet.fmgdevice.fmgd_system_geoipoverride_iprange - Table of IP ranges assigned to country.
+- fortinet.fmgdevice.fmgd_system_halic - Device system ha lic
+- fortinet.fmgdevice.fmgd_system_nethsm - Device system nethsm
+- fortinet.fmgdevice.fmgd_system_nethsm_hagroups - Device system nethsm hagroups
+- fortinet.fmgdevice.fmgd_system_nethsm_partitions - Device system nethsm partitions
+- fortinet.fmgdevice.fmgd_system_nethsm_servers - Device system nethsm servers
+- fortinet.fmgdevice.fmgd_system_nethsm_slots - Device system nethsm slots
+- fortinet.fmgdevice.fmgd_system_npu_dswdtsprofile - Configure NPU DSW DTS profile.
+- fortinet.fmgdevice.fmgd_system_npu_npqueues - Configure queue assignment on NP7LITE.
+- fortinet.fmgdevice.fmgd_system_npu_portcpumap - Configure NPU interface to CPU core mapping.
+- fortinet.fmgdevice.fmgd_system_npu_portnpumap - Configure port to NPU group mapping.
+- fortinet.fmgdevice.fmgd_system_objecttag - Configure object tags.
+- fortinet.fmgdevice.fmgd_system_objecttagging - Configure object tagging.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup - Configure replacement message groups.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_admin - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_alertmail - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_auth - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_automation - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_custommessage - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_fortiguardwf - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_ftp - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_http - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_icap - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_mail - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_nacquar - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_spam - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_sslvpn - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_trafficquota - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_utm - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsggroup_webproxy - Replacement message table entries.
+- fortinet.fmgdevice.fmgd_system_replacemsgimage - Configure replacement message images.
+- fortinet.fmgdevice.fmgd_system_sdnconnector - Configure connection to SDN Connector.
+- fortinet.fmgdevice.fmgd_system_sdnconnector_compartmentlist - Configure OCI compartment list.
+- fortinet.fmgdevice.fmgd_system_sdnconnector_externalaccountlist - Configure AWS external account list.
+- fortinet.fmgdevice.fmgd_system_sdnconnector_forwardingrule - Configure GCP forwarding rule.
+- fortinet.fmgdevice.fmgd_system_sdnconnector_ociregionlist - Configure OCI region list.
+- fortinet.fmgdevice.fmgd_system_sdnconnector_routetable - Configure Azure route table.
+- fortinet.fmgdevice.fmgd_system_sdnproxy - Configure SDN proxy.
+- fortinet.fmgdevice.fmgd_system_smsserver - Configure SMS server for sending SMS messages to support user authentication.
+- fortinet.fmgdevice.fmgd_system_sovsase - Configure Sovereign SASE.
+- fortinet.fmgdevice.fmgd_system_spanport - Device system span port
+- fortinet.fmgdevice.fmgd_system_virtualwirepair - Configure virtual wire pairs.
+- fortinet.fmgdevice.fmgd_user_adgrp - Configure FSSO groups.
+- fortinet.fmgdevice.fmgd_user_certificate - Configure certificate users.
+- fortinet.fmgdevice.fmgd_user_domaincontroller - Configure domain controller entries.
+- fortinet.fmgdevice.fmgd_user_domaincontroller_extraserver - Extra servers.
+- fortinet.fmgdevice.fmgd_user_exchange - Configure MS Exchange server entries.
+- fortinet.fmgdevice.fmgd_user_externalidentityprovider - Configure external identity provider.
+- fortinet.fmgdevice.fmgd_user_fortitoken - Configure FortiToken.
+- fortinet.fmgdevice.fmgd_user_fsso - Configure Fortinet Single Sign On
+- fortinet.fmgdevice.fmgd_user_fssopolling - Configure FSSO active directory servers for polling mode.
+- fortinet.fmgdevice.fmgd_user_fssopolling_adgrp - LDAP Group Info.
+- fortinet.fmgdevice.fmgd_user_group - Configure user groups.
+- fortinet.fmgdevice.fmgd_user_group_match - Group matches.
+- fortinet.fmgdevice.fmgd_user_krbkeytab - Configure Kerberos keytab entries.
+- fortinet.fmgdevice.fmgd_user_ldap - Configure LDAP server entries.
+- fortinet.fmgdevice.fmgd_user_local - Configure local users.
+- fortinet.fmgdevice.fmgd_user_oidc - Device vdom user oidc
+- fortinet.fmgdevice.fmgd_user_passwordpolicy - Configure user password policy.
+- fortinet.fmgdevice.fmgd_user_peer - Configure peer users.
+- fortinet.fmgdevice.fmgd_user_peergrp - Configure peer groups.
+- fortinet.fmgdevice.fmgd_user_pop3 - POP3 server entry configuration.
+- fortinet.fmgdevice.fmgd_user_radius - Configure RADIUS server entries.
+- fortinet.fmgdevice.fmgd_user_radius_accountingserver - Additional accounting servers.
+- fortinet.fmgdevice.fmgd_user_saml - SAML server entry configuration.
+- fortinet.fmgdevice.fmgd_user_securityexemptlist - Configure security exemption list.
+- fortinet.fmgdevice.fmgd_user_securityexemptlist_rule - Configure rules for exempting users from captive portal authentication.
+- fortinet.fmgdevice.fmgd_user_tacacs - Configure TACACS+ server entries.
+- fortinet.fmgdevice.fmgd_videofilter_keyword - Configure video filter keywords.
+- fortinet.fmgdevice.fmgd_videofilter_keyword_word - List of keywords.
+- fortinet.fmgdevice.fmgd_videofilter_profile - Configure VideoFilter profile.
+- fortinet.fmgdevice.fmgd_videofilter_profile_filters - YouTube filter entries.
+- fortinet.fmgdevice.fmgd_videofilter_profile_fortiguardcategory_filters - Configure VideoFilter FortiGuard category.
+- fortinet.fmgdevice.fmgd_virtualpatch_profile - Configure virtual-patch profile.
+- fortinet.fmgdevice.fmgd_virtualpatch_profile_exemption - Exempt devices or rules.
+- fortinet.fmgdevice.fmgd_voip_profile - Configure VoIP profiles.
+- fortinet.fmgdevice.fmgd_voip_profile_msrp - MSRP.
+- fortinet.fmgdevice.fmgd_voip_profile_sccp - SCCP.
+- fortinet.fmgdevice.fmgd_voip_profile_sip - SIP.
+- fortinet.fmgdevice.fmgd_vpn_certificate_ca - CA certificate.
+- fortinet.fmgdevice.fmgd_vpn_certificate_hsmlocal - Local certificates whose keys are stored on HSM.
+- fortinet.fmgdevice.fmgd_vpn_certificate_ocspserver - OCSP server configuration.
+- fortinet.fmgdevice.fmgd_vpn_certificate_remote - Remote certificate as a PEM file.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_fec - Configure Forward Error Correction
+- fortinet.fmgdevice.fmgd_vpn_ipsec_fec_mappings - FEC redundancy mapping table.
+- fortinet.fmgdevice.fmgd_vpnsslweb_hostchecksoftware - SSL-VPN host check software.
+- fortinet.fmgdevice.fmgd_vpnsslweb_hostchecksoftware_checkitemlist - Check item list.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal - Portal.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_bookmarkgroup - Portal bookmark group.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_bookmarkgroup_bookmarks - Bookmark table.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_bookmarkgroup_bookmarks_formdata - Form data.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_landingpage - Landing page options.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_landingpage_formdata - Form data.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_macaddrcheckrule - Client MAC address check rule.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_oschecklist - SSL-VPN OS checks.
+- fortinet.fmgdevice.fmgd_vpnsslweb_portal_splitdns - Split DNS for SSL-VPN.
+- fortinet.fmgdevice.fmgd_vpnsslweb_realm - Realm.
+- fortinet.fmgdevice.fmgd_waf_mainclass - Hidden table for datasource.
+- fortinet.fmgdevice.fmgd_waf_profile - Configure Web application firewall configuration.
+- fortinet.fmgdevice.fmgd_waf_profile_addresslist - Address block and allow lists.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint - WAF HTTP protocol restrictions.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_contentlength - HTTP content length in request.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_exception - HTTP constraint exception.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_headerlength - HTTP header length in request.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_hostname - Enable/disable hostname check.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_linelength - HTTP line length in request.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_malformed - Enable/disable malformed HTTP request check.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_maxcookie - Maximum number of cookies in HTTP request.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_maxheaderline - Maximum number of HTTP header line.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_maxrangesegment - Maximum number of range segments in HTTP range line.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_maxurlparam - Maximum number of parameters in URL.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_method - Enable/disable HTTP method check.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_paramlength - Maximum length of parameter in URL, HTTP POST request or HTTP body.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_urlparamlength - Maximum length of parameter in URL.
+- fortinet.fmgdevice.fmgd_waf_profile_constraint_version - Enable/disable HTTP version check.
+- fortinet.fmgdevice.fmgd_waf_profile_method - Method restriction.
+- fortinet.fmgdevice.fmgd_waf_profile_method_methodpolicy - HTTP method policy.
+- fortinet.fmgdevice.fmgd_waf_profile_signature - WAF signatures.
+- fortinet.fmgdevice.fmgd_waf_profile_signature_customsignature - Custom signature.
+- fortinet.fmgdevice.fmgd_waf_profile_signature_mainclass - Main signature class.
+- fortinet.fmgdevice.fmgd_waf_profile_urlaccess - URL access list.
+- fortinet.fmgdevice.fmgd_waf_profile_urlaccess_accesspattern - URL access pattern.
+- fortinet.fmgdevice.fmgd_waf_signature - Hidden table for datasource.
+- fortinet.fmgdevice.fmgd_waf_subclass - Hidden table for datasource.
+- fortinet.fmgdevice.fmgd_wanopt_authgroup - Configure WAN optimization authentication groups.
+- fortinet.fmgdevice.fmgd_wanopt_peer - Configure WAN optimization peers.
+- fortinet.fmgdevice.fmgd_wanopt_profile - Configure WAN optimization profiles.
+- fortinet.fmgdevice.fmgd_wanopt_profile_cifs - Enable/disable CIFS
+- fortinet.fmgdevice.fmgd_wanopt_profile_ftp - Enable/disable FTP WAN Optimization and configure FTP WAN Optimization features.
+- fortinet.fmgdevice.fmgd_wanopt_profile_http - Enable/disable HTTP WAN Optimization and configure HTTP WAN Optimization features.
+- fortinet.fmgdevice.fmgd_wanopt_profile_mapi - Enable/disable MAPI email WAN Optimization and configure MAPI WAN Optimization features.
+- fortinet.fmgdevice.fmgd_wanopt_profile_tcp - Enable/disable TCP WAN Optimization and configure TCP WAN Optimization features.
+- fortinet.fmgdevice.fmgd_webcache_prefetch - Device vdom webcache prefetch
+- fortinet.fmgdevice.fmgd_webcache_reversecacheserver - Device vdom webcache reverse cache server
+- fortinet.fmgdevice.fmgd_webcache_settings - Device vdom webcache settings
+- fortinet.fmgdevice.fmgd_webcache_useragent - Device vdom webcache user agent
+- fortinet.fmgdevice.fmgd_webfilter_content - Configure Web filter banned word table.
+- fortinet.fmgdevice.fmgd_webfilter_content_entries - Configure banned word entries.
+- fortinet.fmgdevice.fmgd_webfilter_contentheader - Configure content types used by Web filter.
+- fortinet.fmgdevice.fmgd_webfilter_contentheader_entries - Configure content types used by web filter.
+- fortinet.fmgdevice.fmgd_webfilter_domainlist - Device vdom webfilter domain list
+- fortinet.fmgdevice.fmgd_webfilter_domainlist_entries - Device vdom webfilter domain list entries
+- fortinet.fmgdevice.fmgd_webfilter_ftgdlocalcat - Configure FortiGuard Web Filter local categories.
+- fortinet.fmgdevice.fmgd_webfilter_ftgdlocalrating - Configure local FortiGuard Web Filter local ratings.
+- fortinet.fmgdevice.fmgd_webfilter_profile - Configure Web filter profiles.
+- fortinet.fmgdevice.fmgd_webfilter_profile_antiphish_custompatterns - Custom username and password regex patterns.
+- fortinet.fmgdevice.fmgd_webfilter_profile_antiphish_inspectionentries - AntiPhishing entries.
+- fortinet.fmgdevice.fmgd_webfilter_profile_ftgdwf - FortiGuard Web Filter settings.
+- fortinet.fmgdevice.fmgd_webfilter_profile_ftgdwf_filters - FortiGuard filters.
+- fortinet.fmgdevice.fmgd_webfilter_profile_ftgdwf_quota - FortiGuard traffic quota settings.
+- fortinet.fmgdevice.fmgd_webfilter_profile_ftgdwf_risk - FortiGuard risk level settings.
+- fortinet.fmgdevice.fmgd_webfilter_profile_override - Web Filter override settings.
+- fortinet.fmgdevice.fmgd_webfilter_profile_web - Web content filtering settings.
+- fortinet.fmgdevice.fmgd_webfilter_urlfilter - Configure URL filter lists.
+- fortinet.fmgdevice.fmgd_webfilter_urlfilter_entries - URL filter entries.
+- fortinet.fmgdevice.fmgd_webfilter_urllist - Device vdom webfilter url list
+- fortinet.fmgdevice.fmgd_webfilter_urllist_entries - Device vdom webfilter url list entries
+- fortinet.fmgdevice.fmgd_webproxy_dynamicbypass - Device vdom web proxy dynamic bypass
+- fortinet.fmgdevice.fmgd_webproxy_explicitproxy - Device vdom web proxy explicit proxy
+- fortinet.fmgdevice.fmgd_webproxy_forwardserver - Configure forward-server addresses.
+- fortinet.fmgdevice.fmgd_webproxy_forwardservergroup - Configure a forward server group consisting or multiple forward servers.
+- fortinet.fmgdevice.fmgd_webproxy_forwardservergroup_serverlist - Add web forward servers to a list to form a server group.
+- fortinet.fmgdevice.fmgd_webproxy_implicitproxyrule - Device vdom web proxy implicit proxy rule
+- fortinet.fmgdevice.fmgd_webproxy_implicitproxyrule_proxyservers - Device vdom web proxy implicit proxy rule proxy servers
+- fortinet.fmgdevice.fmgd_webproxy_implicitproxysetting - Device vdom web proxy implicit proxy setting
+- fortinet.fmgdevice.fmgd_webproxy_isolatorserver - Configure forward-server addresses.
+- fortinet.fmgdevice.fmgd_webproxy_pacpolicy - Device vdom web proxy pac policy
+- fortinet.fmgdevice.fmgd_webproxy_profile - Configure web proxy profiles.
+- fortinet.fmgdevice.fmgd_webproxy_profile_headers - Configure HTTP forwarded requests headers.
+- fortinet.fmgdevice.fmgd_webproxy_redirectprofile - Device vdom web proxy redirect profile
+- fortinet.fmgdevice.fmgd_webproxy_redirectprofile_entries - Device vdom web proxy redirect profile entries
+- fortinet.fmgdevice.fmgd_webproxy_urllist - Device vdom web proxy url list
+- fortinet.fmgdevice.fmgd_webproxy_urllist_entries - Device vdom web proxy url list entries
+- fortinet.fmgdevice.fmgd_webproxy_wisp - Configure Websense Integrated Services Protocol
+- fortinet.fmgdevice.fmgd_wireless_lwprofile - Configure LoRaWAN profile.
+- fortinet.fmgdevice.fmgd_wireless_snmp_community_hosts6 - Configure IPv6 SNMP managers
+- fortinet.fmgdevice.fmgd_ztna_connectorserviceedge - Device vdom ztna connector service edge
+- fortinet.fmgdevice.fmgd_ztna_serviceconnector - Device vdom ztna service connector
+- fortinet.fmgdevice.fmgd_ztna_webportalbookmark_llmsecureproxy - Device vdom ztna web portal bookmark llm secure proxy
 
 v1.0.0
 ======

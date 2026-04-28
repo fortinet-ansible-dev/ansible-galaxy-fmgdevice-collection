@@ -16,7 +16,6 @@ short_description: Nodes which will be included in the upgrade.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -125,12 +124,47 @@ options:
                 aliases: ['upgrade-path']
                 type: str
                 description: Fortinet OS image versions to upgrade through in major-minor-patch format, such as 7-0-4.
+            failure_reason:
+                aliases: ['failure-reason']
+                type: str
+                description: Upgrade failure reason.
+                choices:
+                    - 'timeout'
+                    - 'none'
+                    - 'internal'
+                    - 'device-type-unsupported'
+                    - 'download-failed'
+                    - 'device-missing'
+                    - 'version-unavailable'
+                    - 'staging-failed'
+                    - 'reboot-failed'
+                    - 'device-not-reconnected'
+                    - 'node-not-ready'
+                    - 'no-final-confirmation'
+                    - 'no-confirmation-query'
+                    - 'config-error-log-nonempty'
+                    - 'csf-tree-not-supported'
+                    - 'firmware-changed'
+                    - 'node-failed'
+                    - 'image-missing'
+            coordinating_fortiproxy:
+                aliases: ['coordinating-fortiproxy']
+                type: str
+                description: Coordinating fortiproxy.
+            allow_download:
+                aliases: ['allow-download']
+                type: str
+                description: Enable/disable download firmware images.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -139,8 +173,8 @@ EXAMPLES = '''
     - name: Nodes which will be included in the upgrade.
       fortinet.fmgdevice.fmgd_system_federatedupgrade_nodelist:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -154,6 +188,9 @@ EXAMPLES = '''
           # time: <list or string>
           # timing: <value in [immediate, scheduled]>
           # upgrade_path: <string>
+          # failure_reason: <value in [timeout, none, internal, ...]>
+          # coordinating_fortiproxy: <string>
+          # allow_download: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -211,20 +248,31 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_federatedupgrade_nodelist': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'coordinating-fortigate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'coordinating-fortigate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'device-type': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['fortigate', 'fortiswitch', 'fortiap', 'fortiproxy', 'fortiextender'],
                     'type': 'str'
                 },
-                'maximum-minutes': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'serial': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'setup-time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'timing': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['immediate', 'scheduled'], 'type': 'str'},
-                'upgrade-path': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'maximum-minutes': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'serial': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'setup-time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'timing': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['immediate', 'scheduled'], 'type': 'str'},
+                'upgrade-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'failure-reason': {
+                    'v_range': [['7.6.3', '']],
+                    'choices': [
+                        'timeout', 'none', 'internal', 'device-type-unsupported', 'download-failed', 'device-missing', 'version-unavailable',
+                        'staging-failed', 'reboot-failed', 'device-not-reconnected', 'node-not-ready', 'no-final-confirmation', 'no-confirmation-query',
+                        'config-error-log-nonempty', 'csf-tree-not-supported', 'firmware-changed', 'node-failed', 'image-missing'
+                    ],
+                    'type': 'str'
+                },
+                'coordinating-fortiproxy': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                'allow-download': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

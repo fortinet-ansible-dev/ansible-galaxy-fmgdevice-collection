@@ -16,7 +16,6 @@ short_description: Configure exact-data-match template used by DLP scan.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -124,6 +123,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -132,8 +132,8 @@ EXAMPLES = '''
     - name: Configure exact-data-match template used by DLP scan.
       fortinet.fmgdevice.fmgd_dlp_exactdatamatch:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -205,21 +205,21 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'dlp_exactdatamatch': {
             'type': 'dict',
-            'v_range': [['7.4.3', '']],
+            'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']],
             'options': {
                 'columns': {
-                    'v_range': [['7.4.3', '']],
+                    'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']],
                     'type': 'list',
                     'options': {
-                        'index': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                        'optional': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'type': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                        'index': {'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']], 'type': 'int'},
+                        'optional': {'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'type': {'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'data': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'name': {'v_range': [['7.4.3', '']], 'required': True, 'type': 'str'},
-                'optional': {'v_range': [['7.4.3', '']], 'type': 'int'}
+                'data': {'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'name': {'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']], 'required': True, 'type': 'str'},
+                'optional': {'v_range': [['7.4.3', '7.4.6'], ['7.4.8', '7.6.2'], ['7.6.4', '']], 'type': 'int'}
             }
         }
     }

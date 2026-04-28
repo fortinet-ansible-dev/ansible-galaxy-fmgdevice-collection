@@ -16,7 +16,6 @@ short_description: Configure explicit FTP proxy settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -142,12 +141,31 @@ options:
                 choices:
                     - 'disable'
                     - 'enable'
+            active_src_port:
+                aliases: ['active-src-port']
+                type: str
+                description: Active src port.
+                choices:
+                    - 'default'
+                    - 'server'
+            incoming_ip6:
+                aliases: ['incoming-ip6']
+                type: str
+                description: Incoming ip6.
+            ipv6_status:
+                aliases: ['ipv6-status']
+                type: str
+                description: Ipv6 status.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -156,8 +174,8 @@ EXAMPLES = '''
     - name: Configure explicit FTP proxy settings.
       fortinet.fmgdevice.fmgd_ftpproxy_explicit:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -173,6 +191,9 @@ EXAMPLES = '''
           # ssl_cert: <list or string>
           # ssl_dh_bits: <value in [768, 1024, 1536, ...]>
           # status: <value in [disable, enable]>
+          # active_src_port: <value in [default, server]>
+          # incoming_ip6: <string>
+          # ipv6_status: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -231,18 +252,21 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'ftpproxy_explicit': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'incoming-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'incoming-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'outgoing-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'sec-default-action': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['deny', 'accept'], 'type': 'str'},
+                'incoming-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'incoming-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'outgoing-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'sec-default-action': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['deny', 'accept'], 'type': 'str'},
                 'server-data-mode': {'v_range': [['7.4.3', '']], 'choices': ['client', 'passive'], 'type': 'str'},
-                'ssl': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ssl-algorithm': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['high', 'low', 'medium'], 'type': 'str'},
-                'ssl-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ssl-dh-bits': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['768', '1024', '1536', '2048'], 'type': 'str'},
-                'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'ssl': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ssl-algorithm': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['high', 'low', 'medium'], 'type': 'str'},
+                'ssl-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ssl-dh-bits': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['768', '1024', '1536', '2048'], 'type': 'str'},
+                'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'active-src-port': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['default', 'server'], 'type': 'str'},
+                'incoming-ip6': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                'ipv6-status': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

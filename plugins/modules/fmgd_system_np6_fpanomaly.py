@@ -16,7 +16,6 @@ short_description: NP6 IPv4 anomaly protection.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -362,6 +361,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -370,8 +370,8 @@ EXAMPLES = '''
     - name: NP6 IPv4 anomaly protection.
       fortinet.fmgdevice.fmgd_system_np6_fpanomaly:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -470,43 +470,43 @@ def main():
         'np6': {'required': True, 'type': 'str'},
         'system_np6_fpanomaly': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'icmp-csum-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
-                'icmp-frag': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'icmp-land': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-csum-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-land': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-optlsrr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-optrr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-optsecurity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-optssrr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-optstream': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-opttimestamp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-proto-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv4-unknopt': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-daddr-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-land': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-optendpid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-opthomeaddr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-optinvld': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-optjumbo': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-optnsap': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-optralert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-opttunnel': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-proto-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-saddr-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'ipv6-unknopt': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-csum-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-fin-noack': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-fin-only': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-land': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-no-flag': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-syn-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-syn-fin': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'tcp-winnuke': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
-                'udp-csum-err': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
-                'udp-land': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'}
+                'icmp-csum-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
+                'icmp-frag': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'icmp-land': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-csum-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-land': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-optlsrr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-optrr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-optsecurity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-optssrr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-optstream': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-opttimestamp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-proto-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv4-unknopt': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-daddr-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-land': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-optendpid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-opthomeaddr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-optinvld': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-optjumbo': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-optnsap': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-optralert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-opttunnel': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-proto-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-saddr-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'ipv6-unknopt': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-csum-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-fin-noack': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-fin-only': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-land': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-no-flag': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-syn-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-syn-fin': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'tcp-winnuke': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'},
+                'udp-csum-err': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['drop', 'trap-to-host'], 'type': 'str'},
+                'udp-land': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['allow', 'drop', 'trap-to-host'], 'type': 'str'}
             }
         }
     }

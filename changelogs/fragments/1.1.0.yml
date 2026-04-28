@@ -1,0 +1,6 @@
+release_summary: Release fortinet.fmgdevice 1.1.0
+minor_changes:
+  - Supported FortiManager latest schema.
+  - Supported new modules to configure FortiProxy.
+bugfixes:
+  - Improved the request sending logic in httpapi plugin.

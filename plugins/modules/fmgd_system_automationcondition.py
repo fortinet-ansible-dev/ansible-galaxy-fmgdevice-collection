@@ -16,7 +16,6 @@ short_description: Condition for automation stitches.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -141,6 +140,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -149,8 +149,8 @@ EXAMPLES = '''
     - name: Condition for automation stitches.
       fortinet.fmgdevice.fmgd_system_automationcondition:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -223,18 +223,18 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_automationcondition': {
             'type': 'dict',
-            'v_range': [['7.6.2', '']],
+            'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']],
             'options': {
-                'condition-type': {'v_range': [['7.6.2', '']], 'choices': ['cpu', 'memory', 'vpn', 'input'], 'type': 'str'},
-                'cpu-usage-percent': {'v_range': [['7.6.2', '']], 'type': 'int'},
-                'description': {'v_range': [['7.6.2', '']], 'type': 'str'},
-                'input-id': {'v_range': [['7.6.2', '']], 'type': 'int'},
-                'input-state': {'v_range': [['7.6.2', '']], 'choices': ['close', 'open'], 'type': 'str'},
-                'mem-usage-percent': {'v_range': [['7.6.2', '']], 'type': 'int'},
-                'name': {'v_range': [['7.6.2', '']], 'required': True, 'type': 'str'},
-                'vdom': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
-                'vpn-tunnel-name': {'v_range': [['7.6.2', '']], 'type': 'str'},
-                'vpn-tunnel-state': {'v_range': [['7.6.2', '']], 'choices': ['tunnel-up', 'tunnel-down'], 'type': 'str'}
+                'condition-type': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'choices': ['cpu', 'memory', 'vpn', 'input'], 'type': 'str'},
+                'cpu-usage-percent': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'type': 'int'},
+                'description': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                'input-id': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'type': 'int'},
+                'input-state': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'choices': ['close', 'open'], 'type': 'str'},
+                'mem-usage-percent': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'type': 'int'},
+                'name': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'required': True, 'type': 'str'},
+                'vdom': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                'vpn-tunnel-name': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                'vpn-tunnel-state': {'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']], 'choices': ['tunnel-up', 'tunnel-down'], 'type': 'str'}
             }
         }
     }

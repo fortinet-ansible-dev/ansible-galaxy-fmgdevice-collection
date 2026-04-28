@@ -16,7 +16,6 @@ short_description: Configure VXLAN devices.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -138,12 +137,21 @@ options:
             vni:
                 type: int
                 description: VXLAN network ID.
+            local_ip6:
+                aliases: ['local-ip6']
+                type: str
+                description: IPv6 address to use as the source address for egress VXLAN packets.
+            local_ip:
+                aliases: ['local-ip']
+                type: str
+                description: IPv4 address to use as the source address for egress VXLAN packets.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -152,8 +160,8 @@ EXAMPLES = '''
     - name: Configure VXLAN devices.
       fortinet.fmgdevice.fmgd_system_vxlan:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -170,6 +178,8 @@ EXAMPLES = '''
           # remote_ip: <list or string>
           # remote_ip6: <list or string>
           # vni: <integer>
+          # local_ip6: <string>
+          # local_ip: <string>
 '''
 
 RETURN = '''
@@ -228,22 +238,24 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'system_vxlan': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'dstport': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'dstport': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'evpn-id': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'ip-version': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['ipv4-unicast', 'ipv6-unicast', 'ipv4-multicast', 'ipv6-multicast'],
                     'type': 'str'
                 },
                 'learn-from-traffic': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'multicast-ttl': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'remote-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'remote-ip6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'vni': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                'multicast-ttl': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'remote-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'remote-ip6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'vni': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'local-ip6': {'v_range': [['7.6.4', '']], 'type': 'str'},
+                'local-ip': {'v_range': [['7.6.4', '']], 'type': 'str'}
             }
         }
     }

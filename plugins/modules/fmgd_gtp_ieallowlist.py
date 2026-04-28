@@ -16,7 +16,6 @@ short_description: IE allow list.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -113,6 +112,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -121,8 +121,8 @@ EXAMPLES = '''
     - name: IE allow list.
       fortinet.fmgdevice.fmgd_gtp_ieallowlist:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -192,19 +192,19 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'gtp_ieallowlist': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']],
+            'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']],
             'options': {
                 'entries': {
-                    'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']],
+                    'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']],
                     'type': 'list',
                     'options': {
-                        'id': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']], 'type': 'int'},
-                        'ie': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']], 'type': 'int'},
-                        'fmgr_message': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']], 'type': 'int'}
+                        'id': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']], 'type': 'int'},
+                        'ie': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']], 'type': 'int'},
+                        'fmgr_message': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },
-                'name': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.6.1']], 'required': True, 'type': 'str'}
+                'name': {'v_range': [['7.2.6', '7.2.8'], ['7.4.3', '7.4.6'], ['7.4.8', '7.6.1'], ['7.6.4', '']], 'required': True, 'type': 'str'}
             }
         }
     }

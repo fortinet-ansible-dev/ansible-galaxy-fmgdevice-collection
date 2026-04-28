@@ -16,7 +16,6 @@ short_description: Override settings for remote syslog server.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -145,6 +144,7 @@ options:
                     - 'cef'
                     - 'rfc5424'
                     - 'json'
+                    - 'custom'
             interface:
                 type: list
                 elements: str
@@ -223,12 +223,50 @@ options:
                 aliases: ['vrf-select']
                 type: int
                 description: VRF ID used for connection to server.
+            log_templates:
+                aliases: ['log-templates']
+                type: list
+                elements: dict
+                description: Log templates.
+                suboptions:
+                    category:
+                        type: str
+                        description: Category.
+                        choices:
+                            - 'app-ctrl'
+                            - 'attack'
+                            - 'dlp'
+                            - 'event'
+                            - 'traffic'
+                            - 'virus'
+                            - 'voip'
+                            - 'webfilter'
+                            - 'spam'
+                            - 'anomaly'
+                            - 'waf'
+                            - 'dns'
+                            - 'ssh'
+                            - 'ssl'
+                            - 'file-filter'
+                            - 'icap'
+                            - 'virtual-patch'
+                    empty_value_indicator:
+                        aliases: ['empty-value-indicator']
+                        type: str
+                        description: Empty value indicator.
+                    id:
+                        type: int
+                        description: Id.
+                    template:
+                        type: str
+                        description: Template.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -237,8 +275,8 @@ EXAMPLES = '''
     - name: Override settings for remote syslog server.
       fortinet.fmgdevice.fmgd_log_syslogd2_overridesetting:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -266,6 +304,11 @@ EXAMPLES = '''
           # source_ip_interface: <list or string>
           # use_management_vdom: <value in [disable, enable]>
           # vrf_select: <integer>
+          # log_templates:
+          #   - category: <value in [app-ctrl, attack, dlp, ...]>
+          #     empty_value_indicator: <string>
+          #     id: <integer>
+          #     template: <string>
 '''
 
 RETURN = '''
@@ -324,47 +367,69 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'log_syslogd2_overridesetting': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'certificate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'certificate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'custom-field-name': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'custom': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                        'custom': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'enc-algorithm': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['high', 'low', 'disable', 'high-medium'], 'type': 'str'},
+                'enc-algorithm': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['high', 'low', 'disable', 'high-medium'], 'type': 'str'},
                 'facility': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'kernel', 'user', 'mail', 'daemon', 'auth', 'syslog', 'lpr', 'news', 'uucp', 'cron', 'authpriv', 'ftp', 'ntp', 'audit', 'alert',
                         'clock', 'local0', 'local1', 'local2', 'local3', 'local4', 'local5', 'local6', 'local7'
                     ],
                     'type': 'str'
                 },
-                'format': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['default', 'csv', 'cef', 'rfc5424', 'json'], 'type': 'str'},
-                'interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'interface-select-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['auto', 'sdwan', 'specify'], 'type': 'str'},
-                'max-log-rate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'legacy-reliable', 'reliable'], 'type': 'str'},
-                'port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['low', 'default'], 'type': 'str'},
-                'server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'source-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'format': {
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                    'choices': ['default', 'csv', 'cef', 'rfc5424', 'json', 'custom'],
+                    'type': 'str'
+                },
+                'interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'interface-select-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['auto', 'sdwan', 'specify'], 'type': 'str'},
+                'max-log-rate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'legacy-reliable', 'reliable'], 'type': 'str'},
+                'port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['low', 'default'], 'type': 'str'},
+                'server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'source-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'ssl-min-proto-version': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['default', 'TLSv1-1', 'TLSv1-2', 'SSLv3', 'TLSv1', 'TLSv1-3'],
                     'type': 'str'
                 },
-                'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'override': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'override': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'source-ip-interface': {'v_range': [['7.6.0', '']], 'type': 'list', 'elements': 'str'},
                 'use-management-vdom': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'vrf-select': {'v_range': [['7.6.2', '']], 'type': 'int'}
+                'vrf-select': {'v_range': [['7.6.2', '']], 'type': 'int'},
+                'log-templates': {
+                    'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']],
+                    'type': 'list',
+                    'options': {
+                        'category': {
+                            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']],
+                            'choices': [
+                                'app-ctrl', 'attack', 'dlp', 'event', 'traffic', 'virus', 'voip', 'webfilter', 'spam', 'anomaly', 'waf', 'dns', 'ssh',
+                                'ssl', 'file-filter', 'icap', 'virtual-patch'
+                            ],
+                            'type': 'str'
+                        },
+                        'empty-value-indicator': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                        'id': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'int'},
+                        'template': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'}
+                    },
+                    'elements': 'dict'
+                }
             }
         }
     }

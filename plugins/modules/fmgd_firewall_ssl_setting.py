@@ -16,7 +16,6 @@ short_description: SSL proxy settings.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -134,12 +133,24 @@ options:
                 choices:
                     - 'disable'
                     - 'enable'
+            cert_manager_cache_timeout:
+                aliases: ['cert-manager-cache-timeout']
+                type: int
+                description: Time limit for certificate manager to keep FortiGate re-signed server certificate
+            resigned_short_lived_certificate:
+                aliases: ['resigned-short-lived-certificate']
+                type: str
+                description: Enable/disable short-lived certificate.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -148,8 +159,8 @@ EXAMPLES = '''
     - name: SSL proxy settings.
       fortinet.fmgdevice.fmgd_firewall_ssl_setting:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -165,6 +176,8 @@ EXAMPLES = '''
           # ssl_dh_bits: <value in [768, 1024, 1536, ...]>
           # ssl_queue_threshold: <integer>
           # ssl_send_empty_frags: <value in [disable, enable]>
+          # cert_manager_cache_timeout: <integer>
+          # resigned_short_lived_certificate: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -222,19 +235,21 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'firewall_ssl_setting': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'abbreviate-handshake': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'cert-cache-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'cert-cache-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'kxp-queue-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'no-matching-cipher-action': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['drop', 'bypass'], 'type': 'str'},
-                'proxy-connect-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'session-cache-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'session-cache-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ssl-dh-bits': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['768', '1024', '1536', '2048'], 'type': 'str'},
-                'ssl-queue-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ssl-send-empty-frags': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'abbreviate-handshake': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'cert-cache-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'cert-cache-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'kxp-queue-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'no-matching-cipher-action': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['drop', 'bypass'], 'type': 'str'},
+                'proxy-connect-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'session-cache-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'session-cache-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ssl-dh-bits': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['768', '1024', '1536', '2048'], 'type': 'str'},
+                'ssl-queue-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ssl-send-empty-frags': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'cert-manager-cache-timeout': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'resigned-short-lived-certificate': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

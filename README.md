@@ -1,6 +1,6 @@
 ![Fortinet logo|](https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Fortinet_logo.svg/320px-Fortinet_logo.svg.png)
 
-# fortinet.fmgdevice:1.0.0 - configuring FortiManager
+# fortinet.fmgdevice:1.1.0 - configuring FortiManager
 
 ## Description
 
@@ -10,12 +10,10 @@ FortiManager Ansible Collection includes the modules that are able to configure 
 
 ## Requirements
 
-- Ansible 2.15.0 or above
-- Python 3.9 or above
+- Ansible-core 2.16 or above
+- Python 3.12 or above
 
 ## Installation
-
-This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/fortinet/fmgdevice).
 
 Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
 
@@ -31,7 +29,6 @@ collections:
   - name: fortinet.fmgdevice
 ```
 
-Note that if you install any collections from Ansible Galaxy, they will not be upgraded automatically when you upgrade the Ansible package.
 To upgrade the collection to the latest available version, run the following command:
 
 ```
@@ -78,10 +75,28 @@ The collection provides the following modules:
 * `fmgd_alertemail_setting`  Configure alert email settings.
 * `fmgd_antivirus_exemptlist`  Configure a list of hashes to be exempt from AV scanning.
 * `fmgd_antivirus_heuristic`  Configure global heuristic options.
+* `fmgd_antivirus_profile`  Configure AntiVirus profiles.
+* `fmgd_antivirus_profile_cifs`  Configure CIFS AntiVirus options.
+* `fmgd_antivirus_profile_ftp`  Configure FTP AntiVirus options.
+* `fmgd_antivirus_profile_http`  Configure HTTP AntiVirus options.
+* `fmgd_antivirus_profile_imap`  Configure IMAP AntiVirus options.
+* `fmgd_antivirus_profile_nacquar`  Configure AntiVirus quarantine settings.
+* `fmgd_antivirus_profile_nntp`  Configure NNTP AntiVirus options.
+* `fmgd_antivirus_profile_pop3`  Configure POP3 AntiVirus options.
+* `fmgd_antivirus_profile_smtp`  Configure SMTP AntiVirus options.
 * `fmgd_antivirus_quarantine`  Configure quarantine options.
 * `fmgd_antivirus_settings`  Configure AntiVirus settings.
+* `fmgd_application_categories`  Device application categories.
+* `fmgd_application_custom`  Configure custom application signatures.
+* `fmgd_application_group`  Configure firewall application groups.
+* `fmgd_application_list`  Configure application control lists.
+* `fmgd_application_list_defaultnetworkservices`  Default network service entries.
+* `fmgd_application_list_entries`  Application list entries.
 * `fmgd_application_name`  Configure application signatures.
 * `fmgd_application_rulesettings`  Configure application rule settings.
+* `fmgd_authentication_rule`  Configure Authentication Rules.
+* `fmgd_authentication_scheme`  Configure Authentication Schemes.
+* `fmgd_authentication_setting`  Configure authentication setting.
 * `fmgd_automation_setting`  Automation setting configuration.
 * `fmgd_aws_vpce`  Configure AWS VPC configuration.
 * `fmgd_azure_vwaningresspublicips`  Display Azure vWAN SLB ingress public IPs.
@@ -92,14 +107,72 @@ The collection provides the following modules:
 * `fmgd_azure_vwanslb_temporarysecurityrules_rules`  Configure security rules.
 * `fmgd_casb_attributematch`  Configure CASB SaaS application.
 * `fmgd_casb_attributematch_attribute`  CASB tenant match rules.
+* `fmgd_casb_attributematch_match`  CASB tenant match rules.
+* `fmgd_casb_attributematch_match_rule`  CASB attribute match rule.
+* `fmgd_casb_profile`  Configure CASB profile.
+* `fmgd_casb_profile_saasapplication`  CASB profile SaaS application.
+* `fmgd_casb_profile_saasapplication_accessrule`  CASB profile access rule.
+* `fmgd_casb_profile_saasapplication_accessrule_attributefilter`  CASB profile attribute filter.
+* `fmgd_casb_profile_saasapplication_advancedtenantcontrol`  CASB profile advanced tenant control.
+* `fmgd_casb_profile_saasapplication_advancedtenantcontrol_attribute`  CASB advanced tenant control attribute.
+* `fmgd_casb_profile_saasapplication_customcontrol`  CASB profile custom control.
+* `fmgd_casb_profile_saasapplication_customcontrol_attributefilter`  CASB attribute filter.
+* `fmgd_casb_profile_saasapplication_customcontrol_option`  CASB custom control option.
+* `fmgd_casb_saasapplication`  Configure CASB SaaS application.
+* `fmgd_casb_saasapplication_inputattributes`  SaaS application input attributes.
+* `fmgd_casb_saasapplication_outputattributes`  SaaS application output attributes.
+* `fmgd_casb_useractivity`  Configure CASB user activity.
+* `fmgd_casb_useractivity_match`  CASB user activity match rules.
+* `fmgd_casb_useractivity_match_rules`  CASB user activity rules.
+* `fmgd_casb_useractivity_match_tenantextraction`  CASB user activity tenant extraction.
+* `fmgd_casb_useractivity_match_tenantextraction_filters`  CASB user activity tenant extraction filters.
+* `fmgd_certificate_hsmlocal`  Local certificates whose keys are stored on HSM.
 * `fmgd_certificate_remote`  Remote certificate as a PEM file.
+* `fmgd_diameterfilter_profile`  Configure Diameter filter profiles.
+* `fmgd_dlp_datatype`  Configure predefined data type used by DLP blocking.
+* `fmgd_dlp_dictionary`  Configure dictionaries used by DLP blocking.
+* `fmgd_dlp_dictionary_entries`  DLP dictionary entries.
 * `fmgd_dlp_exactdatamatch`  Configure exact-data-match template used by DLP scan.
 * `fmgd_dlp_exactdatamatch_columns`  DLP exact-data-match column types.
+* `fmgd_dlp_filepattern`  Configure file patterns used by DLP blocking.
+* `fmgd_dlp_filepattern_entries`  Configure file patterns used by DLP blocking.
 * `fmgd_dlp_fpdocsource`  Create a DLP fingerprint database by allowing the FortiGate to access a file server containing files from which to create fingerprints.
+* `fmgd_dlp_label`  Configure labels used by DLP blocking.
+* `fmgd_dlp_label_entries`  DLP label entries.
+* `fmgd_dlp_profile`  Configure DLP profiles.
+* `fmgd_dlp_profile_rule`  Set up DLP rules for this profile.
+* `fmgd_dlp_sensor`  Configure sensors used by DLP blocking.
+* `fmgd_dlp_sensor_entries`  DLP sensor entries.
 * `fmgd_dlp_settings`  Designate logical storage for DLP fingerprint database.
+* `fmgd_dnsfilter_domainfilter`  Configure DNS domain filters.
+* `fmgd_dnsfilter_domainfilter_entries`  DNS domain filter entries.
+* `fmgd_dnsfilter_profile`  Configure DNS domain filter profile.
+* `fmgd_dnsfilter_profile_dnstranslation`  DNS translation settings.
+* `fmgd_dnsfilter_profile_domainfilter`  Domain filter settings.
+* `fmgd_dnsfilter_profile_ftgddns`  FortiGuard DNS Filter settings.
+* `fmgd_dnsfilter_profile_ftgddns_filters`  FortiGuard DNS domain filters.
 * `fmgd_dpdk_cpus`  Configure CPUs enabled to run engines in each DPDK stage.
 * `fmgd_dpdk_global`  Configure global DPDK options.
+* `fmgd_emailfilter_blockallowlist`  Configure anti-spam block/allow list.
+* `fmgd_emailfilter_blockallowlist_entries`  Anti-spam block/allow entries.
+* `fmgd_emailfilter_bword`  Configure AntiSpam banned word list.
+* `fmgd_emailfilter_bword_entries`  Spam filter banned word.
+* `fmgd_emailfilter_dnsbl`  Configure AntiSpam DNSBL/ORBL.
+* `fmgd_emailfilter_dnsbl_entries`  Spam filter DNSBL and ORBL server.
 * `fmgd_emailfilter_fortiguard`  Device emailfilter fortiguard.
+* `fmgd_emailfilter_fortishield`  Configure FortiGuard - AntiSpam.
+* `fmgd_emailfilter_iptrust`  Configure AntiSpam IP trust.
+* `fmgd_emailfilter_iptrust_entries`  Spam filter trusted IP addresses.
+* `fmgd_emailfilter_mheader`  Configure AntiSpam MIME header.
+* `fmgd_emailfilter_mheader_entries`  Spam filter mime header content.
+* `fmgd_emailfilter_options`  Configure AntiSpam options.
+* `fmgd_emailfilter_profile`  Configure Email Filter profiles.
+* `fmgd_emailfilter_profile_gmail`  Gmail.
+* `fmgd_emailfilter_profile_imap`  IMAP.
+* `fmgd_emailfilter_profile_msnhotmail`  MSN Hotmail.
+* `fmgd_emailfilter_profile_pop3`  POP3.
+* `fmgd_emailfilter_profile_smtp`  SMTP.
+* `fmgd_endpointcontrol_fctems`  Configure FortiClient Enterprise Management Server.
 * `fmgd_endpointcontrol_fctemsoverride`  Configure FortiClient Enterprise Management Server.
 * `fmgd_endpointcontrol_settings`  Configure endpoint control settings.
 * `fmgd_ethernetoam_cfm`  CFM domain configuration.
@@ -111,18 +184,79 @@ The collection provides the following modules:
 * `fmgd_extendercontroller_extender_modem2`  Configuration options for modem 2.
 * `fmgd_extendercontroller_extender_modem2_autoswitch`  FortiExtender auto switch configuration.
 * `fmgd_extendercontroller_extender_wanextension`  Device vdom extender controller extender wan extension.
+* `fmgd_extensioncontroller_dataplan`  FortiExtender dataplan configuration.
 * `fmgd_extensioncontroller_extender`  Extender controller configuration.
 * `fmgd_extensioncontroller_extender_wanextension`  FortiExtender wan extension configuration.
+* `fmgd_extensioncontroller_extenderprofile`  FortiExtender extender profile configuration.
+* `fmgd_extensioncontroller_extenderprofile_cellular`  FortiExtender cellular configuration.
+* `fmgd_extensioncontroller_extenderprofile_cellular_controllerreport`  FortiExtender controller report configuration.
+* `fmgd_extensioncontroller_extenderprofile_cellular_modem1`  Configuration options for modem 1.
+* `fmgd_extensioncontroller_extenderprofile_cellular_modem1_autoswitch`  FortiExtender auto switch configuration.
+* `fmgd_extensioncontroller_extenderprofile_cellular_modem2_autoswitch`  FortiExtender auto switch configuration.
+* `fmgd_extensioncontroller_extenderprofile_cellular_smsnotification`  FortiExtender cellular SMS notification configuration.
+* `fmgd_extensioncontroller_extenderprofile_cellular_smsnotification_alert`  SMS alert list.
+* `fmgd_extensioncontroller_extenderprofile_cellular_smsnotification_receiver`  SMS notification receiver list.
+* `fmgd_extensioncontroller_extenderprofile_wifi_radio1`  Radio-1 config for Wi-Fi 2.
+* `fmgd_extensioncontroller_extenderprofile_wifi_radio2`  Radio-2 config for Wi-Fi 5GHz.
 * `fmgd_extensioncontroller_extendervap`  FortiExtender wifi vap configuration.
 * `fmgd_extensioncontroller_fortigate`  FortiGate controller configuration.
 * `fmgd_extensioncontroller_fortigateprofile`  FortiGate connector profile configuration.
 * `fmgd_extensioncontroller_fortigateprofile_lanextension`  FortiGate connector LAN extension configuration.
+* `fmgd_filefilter_profile`  Configure file-filter profiles.
+* `fmgd_filefilter_profile_rules`  File filter rules.
+* `fmgd_firewall_accessproxy`  Configure IPv4 access proxy.
+* `fmgd_firewall_accessproxy6`  Configure IPv6 access proxy.
+* `fmgd_firewall_accessproxy6_apigateway`  Set IPv4 API Gateway.
+* `fmgd_firewall_accessproxy6_apigateway6`  Set IPv6 API Gateway.
+* `fmgd_firewall_accessproxy6_apigateway6_realservers`  Select the real servers that this Access Proxy will distribute traffic to.
+* `fmgd_firewall_accessproxy6_apigateway6_sslciphersuites`  SSL/TLS cipher suites to offer to a server, ordered by priority.
+* `fmgd_firewall_accessproxy6_apigateway_quic`  QUIC setting.
+* `fmgd_firewall_accessproxy6_apigateway_realservers`  Select the real servers that this Access Proxy will distribute traffic to.
+* `fmgd_firewall_accessproxy6_apigateway_sslciphersuites`  SSL/TLS cipher suites to offer to a server, ordered by priority.
+* `fmgd_firewall_accessproxy_apigateway`  Set IPv4 API Gateway.
+* `fmgd_firewall_accessproxy_apigateway6`  Set IPv6 API Gateway.
+* `fmgd_firewall_accessproxy_apigateway6_quic`  QUIC setting.
+* `fmgd_firewall_accessproxy_apigateway6_realservers`  Select the real servers that this Access Proxy will distribute traffic to.
+* `fmgd_firewall_accessproxy_apigateway6_sslciphersuites`  SSL/TLS cipher suites to offer to a server, ordered by priority.
+* `fmgd_firewall_accessproxy_apigateway_quic`  QUIC setting.
+* `fmgd_firewall_accessproxy_apigateway_realservers`  Select the real servers that this Access Proxy will distribute traffic to.
+* `fmgd_firewall_accessproxy_apigateway_sslciphersuites`  SSL/TLS cipher suites to offer to a server, ordered by priority.
 * `fmgd_firewall_accessproxysshclientcert`  Configure Access Proxy SSH client certificate.
 * `fmgd_firewall_accessproxysshclientcert_certextension`  Configure certificate extension for user certificate.
+* `fmgd_firewall_accessproxyvirtualhost`  Configure Access Proxy virtual hosts.
+* `fmgd_firewall_address`  Configure IPv4 addresses.
+* `fmgd_firewall_address6`  Configure IPv6 firewall addresses.
+* `fmgd_firewall_address6_list`  IP address list.
+* `fmgd_firewall_address6_subnetsegment`  IPv6 subnet segments.
+* `fmgd_firewall_address6_tagging`  Config object tagging.
+* `fmgd_firewall_address6template`  Configure IPv6 address templates.
+* `fmgd_firewall_address6template_subnetsegment`  IPv6 subnet segments.
+* `fmgd_firewall_address6template_subnetsegment_values`  Subnet segment values.
+* `fmgd_firewall_address_list`  IP address list.
+* `fmgd_firewall_address_tagging`  Config object tagging.
+* `fmgd_firewall_addrgrp`  Configure IPv4 address groups.
+* `fmgd_firewall_addrgrp6`  Configure IPv6 address groups.
+* `fmgd_firewall_addrgrp6_tagging`  Config object tagging.
+* `fmgd_firewall_addrgrp_tagging`  Config object tagging.
 * `fmgd_firewall_authportal`  Configure firewall authentication portals.
+* `fmgd_firewall_centralsnatmap`  Configure IPv4 and IPv6 central SNAT policies.
 * `fmgd_firewall_dnstranslation`  Configure DNS translation.
+* `fmgd_firewall_dospolicy`  Configure IPv4 DoS policies.
+* `fmgd_firewall_dospolicy6`  Configure IPv6 DoS policies.
+* `fmgd_firewall_dospolicy6_anomaly`  Anomaly name.
 * `fmgd_firewall_global`  Global firewall settings.
+* `fmgd_firewall_identitybasedroute`  Configure identity based routing.
+* `fmgd_firewall_identitybasedroute_rule`  Rule.
+* `fmgd_firewall_interfacepolicy`  Configure IPv4 interface policies.
+* `fmgd_firewall_interfacepolicy6`  Configure IPv6 interface policies.
+* `fmgd_firewall_internetservice`  Show Internet Service application.
+* `fmgd_firewall_internetserviceaddition`  Configure Internet Services Addition.
+* `fmgd_firewall_internetserviceaddition_entry`  Entries added to the Internet Service addition database.
+* `fmgd_firewall_internetserviceaddition_entry_portrange`  Port ranges in the custom entry.
 * `fmgd_firewall_internetserviceappend`  Configure additional port mappings for Internet Services.
+* `fmgd_firewall_internetservicecustom`  Configure custom Internet Services.
+* `fmgd_firewall_internetservicecustom_entry`  Entries added to the Internet Service database and custom database.
+* `fmgd_firewall_internetservicecustomgroup`  Configure custom Internet Service group.
 * `fmgd_firewall_internetservicedefinition`  Configure Internet Service definition.
 * `fmgd_firewall_internetservicedefinition_entry`  Protocol and port information in an Internet Service entry.
 * `fmgd_firewall_internetservicedefinition_entry_portrange`  Port ranges in the definition entry.
@@ -133,37 +267,143 @@ The collection provides the following modules:
 * `fmgd_firewall_internetserviceextension_disableentry_portrange`  Port ranges in the disable entry.
 * `fmgd_firewall_internetserviceextension_entry`  Entries added to the Internet Service extension database.
 * `fmgd_firewall_internetserviceextension_entry_portrange`  Port ranges in the custom entry.
+* `fmgd_firewall_internetservicegroup`  Configure group of Internet Service.
+* `fmgd_firewall_internetservicename`  Define internet service names.
 * `fmgd_firewall_ipmacbinding_setting`  Configure IP to MAC binding settings.
 * `fmgd_firewall_ipmacbinding_table`  Configure IP to MAC address pairs in the IP/MAC binding table.
+* `fmgd_firewall_ippool`  Configure IPv4 IP pools.
+* `fmgd_firewall_ippool6`  Configure IPv6 IP pools.
 * `fmgd_firewall_iptranslation`  Configure firewall IP-translation.
 * `fmgd_firewall_ipv6ehfilter`  Configure IPv6 extension header filter.
+* `fmgd_firewall_ldbmonitor`  Configure server load balancing health monitors.
+* `fmgd_firewall_localinpolicy`  Configure user defined IPv4 local-in policies.
+* `fmgd_firewall_localinpolicy6`  Configure user defined IPv6 local-in policies.
+* `fmgd_firewall_multicastaddress`  Configure multicast addresses.
+* `fmgd_firewall_multicastaddress6`  Configure IPv6 multicast address.
+* `fmgd_firewall_multicastaddress6_tagging`  Config object tagging.
+* `fmgd_firewall_multicastaddress_tagging`  Config object tagging.
+* `fmgd_firewall_multicastpolicy`  Configure multicast NAT policies.
+* `fmgd_firewall_multicastpolicy6`  Configure IPv6 multicast NAT policies.
+* `fmgd_firewall_networkservicedynamic`  Configure Dynamic Network Services.
 * `fmgd_firewall_ondemandsniffer`  Configure on-demand packet sniffer.
 * `fmgd_firewall_pfcp`  Configure PFCP.
 * `fmgd_firewall_policy`  Configure IPv4 policies.
+* `fmgd_firewall_profilegroup`  Configure profile groups.
+* `fmgd_firewall_profileprotocoloptions`  Configure protocol options.
+* `fmgd_firewall_profileprotocoloptions_cifs`  Configure CIFS protocol options.
+* `fmgd_firewall_profileprotocoloptions_cifs_serverkeytab`  Server keytab.
+* `fmgd_firewall_profileprotocoloptions_dns`  Configure DNS protocol options.
+* `fmgd_firewall_profileprotocoloptions_ftp`  Configure FTP protocol options.
+* `fmgd_firewall_profileprotocoloptions_http`  Configure HTTP protocol options.
+* `fmgd_firewall_profileprotocoloptions_imap`  Configure IMAP protocol options.
+* `fmgd_firewall_profileprotocoloptions_mailsignature`  Configure Mail signature.
+* `fmgd_firewall_profileprotocoloptions_mapi`  Configure MAPI protocol options.
+* `fmgd_firewall_profileprotocoloptions_nntp`  Configure NNTP protocol options.
+* `fmgd_firewall_profileprotocoloptions_pop3`  Configure POP3 protocol options.
+* `fmgd_firewall_profileprotocoloptions_smtp`  Configure SMTP protocol options.
+* `fmgd_firewall_profileprotocoloptions_ssh`  Configure SFTP and SCP protocol options.
+* `fmgd_firewall_proxyaddress`  Configure web proxy address.
+* `fmgd_firewall_proxyaddress6`  Device vdom firewall proxy address6.
+* `fmgd_firewall_proxyaddress6_headergroup`  Device vdom firewall proxy address6 header group.
+* `fmgd_firewall_proxyaddress6_tagging`  Device vdom firewall proxy address6 tagging.
+* `fmgd_firewall_proxyaddress_headergroup`  HTTP header group.
+* `fmgd_firewall_proxyaddress_tagging`  Config object tagging.
+* `fmgd_firewall_proxyaddrgrp`  Configure web proxy address group.
+* `fmgd_firewall_proxyaddrgrp6`  Device vdom firewall proxy addrgrp6.
+* `fmgd_firewall_proxyaddrgrp6_tagging`  Device vdom firewall proxy addrgrp6 tagging.
+* `fmgd_firewall_proxyaddrgrp_tagging`  Config object tagging.
+* `fmgd_firewall_proxypolicy`  Configure proxy policies.
+* `fmgd_firewall_responseshapingpolicy`  Device vdom firewall response shaping policy.
+* `fmgd_firewall_schedule_group`  Schedule group configuration.
+* `fmgd_firewall_schedule_onetime`  Onetime schedule configuration.
+* `fmgd_firewall_schedule_recurring`  Recurring schedule configuration.
+* `fmgd_firewall_securitypolicy`  When configuring policy within policy package, use.
+* `fmgd_firewall_service_category`  Configure service categories.
+* `fmgd_firewall_service_custom`  Configure custom services.
+* `fmgd_firewall_service_group`  Configure service groups.
+* `fmgd_firewall_shaper_peripshaper`  Configure per-IP traffic shaper.
+* `fmgd_firewall_shaper_trafficshaper`  Configure shared traffic shaper.
+* `fmgd_firewall_shapingpolicy`  Configure shaping policies.
+* `fmgd_firewall_shapingprofile`  Configure shaping profiles.
+* `fmgd_firewall_shapingprofile_shapingentries`  Define shaping entries of this shaping profile.
 * `fmgd_firewall_sniffer`  Configure sniffer.
 * `fmgd_firewall_sniffer_anomaly`  Configuration method to edit Denial of Service.
 * `fmgd_firewall_ssh_hostkey`  SSH proxy host public keys.
+* `fmgd_firewall_ssh_localca`  SSH proxy local CA.
 * `fmgd_firewall_ssh_localkey`  SSH proxy local keys.
 * `fmgd_firewall_ssh_setting`  SSH proxy settings.
+* `fmgd_firewall_ssl_defaultcertificate`  Device vdom firewall ssl default certificate.
+* `fmgd_firewall_ssl_keyringlist`  Device firewall ssl keyring list.
 * `fmgd_firewall_ssl_setting`  SSL proxy settings.
 * `fmgd_firewall_sslserver`  Configure SSL servers.
+* `fmgd_firewall_sslsshprofile`  Configure SSL/SSH protocol options.
+* `fmgd_firewall_sslsshprofile_dot`  Configure DNS over TLS options.
+* `fmgd_firewall_sslsshprofile_echoutersni`  ClientHelloOuter SNIs to be blocked.
+* `fmgd_firewall_sslsshprofile_ftps`  Configure FTPS options.
+* `fmgd_firewall_sslsshprofile_https`  Configure HTTPS options.
+* `fmgd_firewall_sslsshprofile_imaps`  Configure IMAPS options.
+* `fmgd_firewall_sslsshprofile_pop3s`  Configure POP3S options.
+* `fmgd_firewall_sslsshprofile_smtps`  Configure SMTPS options.
+* `fmgd_firewall_sslsshprofile_ssh`  Configure SSH options.
+* `fmgd_firewall_sslsshprofile_ssl`  Configure SSL options.
+* `fmgd_firewall_sslsshprofile_sslclientcertificate`  Device vdom firewall ssl ssh profile ssl client certificate.
+* `fmgd_firewall_sslsshprofile_sslexempt`  Servers to exempt from SSL inspection.
+* `fmgd_firewall_sslsshprofile_sslserver`  SSL server settings used for client certificate request.
+* `fmgd_firewall_trafficclass`  Configure names for shaping classes.
 * `fmgd_firewall_ttlpolicy`  Configure TTL policies.
+* `fmgd_firewall_vendormac`  Show vendor and the MAC address they have.
+* `fmgd_firewall_vip`  Configure virtual IP for IPv4.
+* `fmgd_firewall_vip6`  Configure virtual IP for IPv6.
+* `fmgd_firewall_vip6_quic`  QUIC setting.
+* `fmgd_firewall_vip6_realservers`  Select the real servers that this server load balancing VIP will distribute traffic to.
+* `fmgd_firewall_vip6_sslciphersuites`  SSL/TLS cipher suites acceptable from a client, ordered by priority.
+* `fmgd_firewall_vip6_sslserverciphersuites`  SSL/TLS cipher suites to offer to a server, ordered by priority.
+* `fmgd_firewall_vip_gslbpublicips`  Publicly accessible IP addresses for the FortiGSLB service.
+* `fmgd_firewall_vip_quic`  QUIC setting.
+* `fmgd_firewall_vip_realservers`  Select the real servers that this server load balancing VIP will distribute traffic to.
+* `fmgd_firewall_vip_sslciphersuites`  SSL/TLS cipher suites acceptable from a client, ordered by priority.
+* `fmgd_firewall_vip_sslserverciphersuites`  SSL/TLS cipher suites to offer to a server, ordered by priority.
+* `fmgd_firewall_vipgrp`  Configure IPv4 virtual IP groups.
+* `fmgd_firewall_vipgrp6`  Configure IPv6 virtual IP groups.
+* `fmgd_firewall_wildcardfqdn_custom`  Config global/VDOM Wildcard FQDN address.
+* `fmgd_firewall_wildcardfqdn_group`  Config global Wildcard FQDN address groups.
 * `fmgd_ftpproxy_explicit`  Configure explicit FTP proxy settings.
 * `fmgd_gtp_apnshaper`  Global per-APN shaper.
 * `fmgd_gtp_ieallowlist`  IE allow list.
 * `fmgd_gtp_ieallowlist_entries`  Entries of allow list for unknown or out-of-state IEs.
 * `fmgd_gtp_rattimeoutprofile`  RAT timeout profile.
+* `fmgd_icap_localserver`  Device vdom icap local server.
+* `fmgd_icap_localserver_icapservice`  Device vdom icap local server icap service.
 * `fmgd_icap_profile`  Configure ICAP profiles.
+* `fmgd_icap_profile_icapheaders`  Configure ICAP forwarded request headers.
+* `fmgd_icap_remoteserver`  Device vdom icap remote server.
+* `fmgd_icap_remoteservergroup`  Device vdom icap remote server group.
+* `fmgd_icap_remoteservergroup_serverlist`  Device vdom icap remote server group server list.
 * `fmgd_icap_server`  Configure ICAP servers.
 * `fmgd_icap_servergroup`  Configure an ICAP server group consisting of multiple forward servers.
 * `fmgd_icap_servergroup_serverlist`  Add ICAP servers to a list to form a server group.
+* `fmgd_imageanalyzer_profile`  Device vdom image analyzer profile.
+* `fmgd_ips_custom`  Configure IPS custom signature.
 * `fmgd_ips_decoder`  Configure IPS decoder.
 * `fmgd_ips_decoder_parameter`  IPS group parameters.
 * `fmgd_ips_global`  Configure IPS global parameter.
 * `fmgd_ips_rule`  Configure IPS rules.
 * `fmgd_ips_rulesettings`  Configure IPS rule setting.
+* `fmgd_ips_sensor`  Configure IPS sensor.
+* `fmgd_ips_sensor_entries`  IPS sensor filter.
+* `fmgd_ips_sensor_entries_exemptip`  Traffic from selected source or destination IP addresses is exempt from this signature.
 * `fmgd_ips_settings`  Configure IPS VDOM parameter.
 * `fmgd_ips_tlsactiveprobe`  TLS active probe configuration.
+* `fmgd_isolator_profile`  Device vdom isolator profile.
+* `fmgd_isolator_profile_entries`  Device vdom isolator profile entries.
+* `fmgd_isolator_setting`  Device vdom isolator setting.
+* `fmgd_llm_profile`  Device vdom llm profile.
+* `fmgd_llm_profile_chat`  Device vdom llm profile chat.
+* `fmgd_llm_profile_imagegen`  Device vdom llm profile image gen.
+* `fmgd_llm_profile_listmodels`  Device vdom llm profile list models.
+* `fmgd_llm_profile_response`  Device vdom llm profile response.
+* `fmgd_llm_proxy`  Device vdom llm proxy.
+* `fmgd_llm_server`  Device vdom llm server.
 * `fmgd_loadbalance_flowrule`  flow rule configuration.
 * `fmgd_loadbalance_setting`  load balance setting.
 * `fmgd_loadbalance_setting_workers`  Worker blade used by this group.
@@ -176,6 +416,7 @@ The collection provides the following modules:
 * `fmgd_log_azuresecuritycenter_filter_freestyle`  Free style filters.
 * `fmgd_log_azuresecuritycenter_setting`  Settings for Azure Security Center.
 * `fmgd_log_azuresecuritycenter_setting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_customfield`  Configure custom log fields.
 * `fmgd_log_disk_filter`  Configure filters for local disk logging.
 * `fmgd_log_disk_filter_freestyle`  Free style filters.
 * `fmgd_log_disk_setting`  Settings for local disk logging.
@@ -226,38 +467,53 @@ The collection provides the following modules:
 * `fmgd_log_syslogd2_overridefilter_freestyle`  Free style filters.
 * `fmgd_log_syslogd2_overridesetting`  Override settings for remote syslog server.
 * `fmgd_log_syslogd2_overridesetting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd2_overridesetting_logtemplates`  Device vdom log syslogd2 override setting log templates.
 * `fmgd_log_syslogd2_setting`  Global settings for remote syslog server.
 * `fmgd_log_syslogd2_setting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd2_setting_logtemplates`  Device log syslogd2 setting log templates.
 * `fmgd_log_syslogd3_filter`  Filters for remote system server.
 * `fmgd_log_syslogd3_filter_freestyle`  Free style filters.
 * `fmgd_log_syslogd3_overridefilter`  Override filters for remote system server.
 * `fmgd_log_syslogd3_overridefilter_freestyle`  Free style filters.
 * `fmgd_log_syslogd3_overridesetting`  Override settings for remote syslog server.
 * `fmgd_log_syslogd3_overridesetting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd3_overridesetting_logtemplates`  Device vdom log syslogd3 override setting log templates.
 * `fmgd_log_syslogd3_setting`  Global settings for remote syslog server.
 * `fmgd_log_syslogd3_setting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd3_setting_logtemplates`  Device log syslogd3 setting log templates.
 * `fmgd_log_syslogd4_filter`  Filters for remote system server.
 * `fmgd_log_syslogd4_filter_freestyle`  Free style filters.
 * `fmgd_log_syslogd4_overridefilter`  Override filters for remote system server.
 * `fmgd_log_syslogd4_overridefilter_freestyle`  Free style filters.
 * `fmgd_log_syslogd4_overridesetting`  Override settings for remote syslog server.
 * `fmgd_log_syslogd4_overridesetting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd4_overridesetting_logtemplates`  Device vdom log syslogd4 override setting log templates.
 * `fmgd_log_syslogd4_setting`  Global settings for remote syslog server.
 * `fmgd_log_syslogd4_setting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd4_setting_logtemplates`  Device log syslogd4 setting log templates.
 * `fmgd_log_syslogd_filter`  Filters for remote system server.
 * `fmgd_log_syslogd_filter_freestyle`  Free style filters.
 * `fmgd_log_syslogd_overridefilter`  Override filters for remote system server.
 * `fmgd_log_syslogd_overridefilter_freestyle`  Free style filters.
 * `fmgd_log_syslogd_overridesetting`  Override settings for remote syslog server.
 * `fmgd_log_syslogd_overridesetting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd_overridesetting_logtemplates`  Device vdom log syslogd override setting log templates.
 * `fmgd_log_syslogd_setting`  Global settings for remote syslog server.
 * `fmgd_log_syslogd_setting_customfieldname`  Custom field name for CEF format logging.
+* `fmgd_log_syslogd_setting_logtemplates`  Device log syslogd setting log templates.
 * `fmgd_log_tacacsaccounting2_filter`  Settings for TACACS+ accounting events filter.
 * `fmgd_log_tacacsaccounting2_setting`  Settings for TACACS+ accounting.
 * `fmgd_log_tacacsaccounting3_filter`  Settings for TACACS+ accounting events filter.
 * `fmgd_log_tacacsaccounting3_setting`  Settings for TACACS+ accounting.
 * `fmgd_log_tacacsaccounting_filter`  Settings for TACACS+ accounting events filter.
 * `fmgd_log_tacacsaccounting_setting`  Settings for TACACS+ accounting.
+* `fmgd_log_threatweight`  Configure threat weight settings.
+* `fmgd_log_threatweight_application`  Application-control threat weight settings.
+* `fmgd_log_threatweight_geolocation`  Geolocation-based threat weight settings.
+* `fmgd_log_threatweight_ips`  IPS threat weight settings.
+* `fmgd_log_threatweight_level`  Score mapping for threat weight levels.
+* `fmgd_log_threatweight_malware`  Anti-virus malware threat weight settings.
+* `fmgd_log_threatweight_web`  Web filtering threat weight settings.
 * `fmgd_log_webtrends_filter`  Filters for WebTrends.
 * `fmgd_log_webtrends_filter_freestyle`  Free style filters.
 * `fmgd_log_webtrends_setting`  Settings for WebTrends.
@@ -292,6 +548,12 @@ The collection provides the following modules:
 * `fmgd_report_setting`  Report setting configuration.
 * `fmgd_report_style`  Report style configuration.
 * `fmgd_report_theme`  Report themes configuration.
+* `fmgd_router_accesslist`  Configure access lists.
+* `fmgd_router_accesslist6`  Configure IPv6 access lists.
+* `fmgd_router_accesslist6_rule`  Rule.
+* `fmgd_router_accesslist_rule`  Rule.
+* `fmgd_router_aspathlist`  Configure Autonomous System.
+* `fmgd_router_aspathlist_rule`  AS path list rule.
 * `fmgd_router_authpath`  Configure authentication based routing.
 * `fmgd_router_bfd`  Configure BFD.
 * `fmgd_router_bfd6`  Configure IPv6 BFD.
@@ -321,6 +583,8 @@ The collection provides the following modules:
 * `fmgd_router_bgp_vrfleak6`  BGP IPv6 VRF leaking table.
 * `fmgd_router_bgp_vrfleak6_target`  Target VRF table.
 * `fmgd_router_bgp_vrfleak_target`  Target VRF table.
+* `fmgd_router_communitylist`  Configure community lists.
+* `fmgd_router_communitylist_rule`  Community list rule.
 * `fmgd_router_extcommunitylist`  Configure extended community lists.
 * `fmgd_router_extcommunitylist_rule`  Extended community list rule.
 * `fmgd_router_isis`  Configure IS-IS.
@@ -372,6 +636,10 @@ The collection provides the following modules:
 * `fmgd_router_ospf_summaryaddress`  IP address summary configuration.
 * `fmgd_router_policy`  Configure IPv4 routing policies.
 * `fmgd_router_policy6`  Configure IPv6 routing policies.
+* `fmgd_router_prefixlist`  Configure IPv4 prefix lists.
+* `fmgd_router_prefixlist6`  Configure IPv6 prefix lists.
+* `fmgd_router_prefixlist6_rule`  IPv6 prefix list rule.
+* `fmgd_router_prefixlist_rule`  IPv4 prefix list rule.
 * `fmgd_router_rip`  Configure RIP.
 * `fmgd_router_rip_distance`  Distance.
 * `fmgd_router_rip_distributelist`  Distribute list.
@@ -390,12 +658,17 @@ The collection provides the following modules:
 * `fmgd_router_ripng_offsetlist`  Offset list.
 * `fmgd_router_ripng_redistribute`  Redistribute configuration.
 * `fmgd_router_routemap`  Configure route maps.
+* `fmgd_router_routemap_rule`  Rule.
 * `fmgd_router_setting`  Configure router settings.
 * `fmgd_router_static`  Configure IPv4 static routing tables.
 * `fmgd_router_static6`  Configure IPv6 static routing tables.
 * `fmgd_rule_fmwp`  Show FMWP signatures.
 * `fmgd_rule_otdt`  Show OT detection signatures.
 * `fmgd_rule_otvp`  Show OT patch signatures.
+* `fmgd_sctpfilter_profile`  Configure SCTP filter profiles.
+* `fmgd_sctpfilter_profile_ppidfilters`  PPID filters list.
+* `fmgd_sshfilter_profile`  Configure SSH filter profile.
+* `fmgd_sshfilter_profile_shellcommands`  SSH command filter.
 * `fmgd_switchcontroller_8021xsettings`  Configure global 802.
 * `fmgd_switchcontroller_acl_group`  Configure ACL groups to be applied on managed FortiSwitch ports.
 * `fmgd_switchcontroller_acl_ingress`  Configure ingress ACL policies to be applied on managed FortiSwitch ports.
@@ -418,6 +691,7 @@ The collection provides the following modules:
 * `fmgd_switchcontroller_igmpsnooping`  Configure FortiSwitch IGMP snooping global settings.
 * `fmgd_switchcontroller_initialconfig_template`  Configure template for auto-generated VLANs.
 * `fmgd_switchcontroller_initialconfig_vlans`  Configure initial template for auto-generated VLAN interfaces.
+* `fmgd_switchcontroller_ipsourceguardlog`  Configure FortiSwitch ip source guard log.
 * `fmgd_switchcontroller_lldpprofile`  Configure FortiSwitch LLDP profiles.
 * `fmgd_switchcontroller_lldpprofile_customtlvs`  Configuration method to edit custom TLV entries.
 * `fmgd_switchcontroller_lldpprofile_medlocationservice`  Configuration method to edit Media Endpoint Discovery.
@@ -441,6 +715,8 @@ The collection provides the following modules:
 * `fmgd_switchcontroller_managedswitch_ports_dhcpsnoopoption82override`  Configure DHCP snooping option 82 override.
 * `fmgd_switchcontroller_managedswitch_remotelog`  Configure logging by FortiSwitch device to a remote syslog server.
 * `fmgd_switchcontroller_managedswitch_routeoffloadrouter`  Configure route offload MCLAG IP address.
+* `fmgd_switchcontroller_managedswitch_routerstatic`  Configure static routes.
+* `fmgd_switchcontroller_managedswitch_routervrf`  Configure VRF.
 * `fmgd_switchcontroller_managedswitch_snmpcommunity`  Configuration method to edit Simple Network Management Protocol.
 * `fmgd_switchcontroller_managedswitch_snmpcommunity_hosts`  Configure IPv4 SNMP managers.
 * `fmgd_switchcontroller_managedswitch_snmpsysinfo`  Configuration method to edit Simple Network Management Protocol.
@@ -451,6 +727,10 @@ The collection provides the following modules:
 * `fmgd_switchcontroller_managedswitch_stpinstance`  Configuration method to edit Spanning Tree Protocol.
 * `fmgd_switchcontroller_managedswitch_stpsettings`  Configuration method to edit Spanning Tree Protocol.
 * `fmgd_switchcontroller_managedswitch_switchlog`  Configuration method to edit FortiSwitch logging settings.
+* `fmgd_switchcontroller_managedswitch_systemdhcpserver`  Configure DHCP servers.
+* `fmgd_switchcontroller_managedswitch_systemdhcpserver_iprange`  DHCP IP range configuration.
+* `fmgd_switchcontroller_managedswitch_systemdhcpserver_options`  DHCP options.
+* `fmgd_switchcontroller_managedswitch_systeminterface`  Configure system interface on FortiSwitch.
 * `fmgd_switchcontroller_managedswitch_vlan`  Configure VLAN assignment priority.
 * `fmgd_switchcontroller_nacdevice`  Configure/list NAC devices learned on the managed FortiSwitch ports which matches NAC policy.
 * `fmgd_switchcontroller_nacsettings`  Configure integrated NAC settings for FortiSwitch.
@@ -501,11 +781,13 @@ The collection provides the following modules:
 * `fmgd_system_accprofile_fwgrppermission`  Custom firewall permission.
 * `fmgd_system_accprofile_loggrppermission`  Custom Log & Report permission.
 * `fmgd_system_accprofile_netgrppermission`  Custom network permission.
+* `fmgd_system_accprofile_secfabgrppermission`  Custom Security Fabric permissions.
 * `fmgd_system_accprofile_sysgrppermission`  Custom system permission.
 * `fmgd_system_accprofile_utmgrppermission`  Custom Security Profile permissions.
 * `fmgd_system_acme`  Configure ACME client.
 * `fmgd_system_acme_accounts`  ACME accounts list.
 * `fmgd_system_admin`  Configure admin users.
+* `fmgd_system_admin_trusthosts`  Device system admin trusthosts.
 * `fmgd_system_affinityinterrupt`  Configure interrupt affinity.
 * `fmgd_system_affinitypacketredistribution`  Configure packet redistribution.
 * `fmgd_system_alias`  Configure alias command.
@@ -514,6 +796,7 @@ The collection provides the following modules:
 * `fmgd_system_arptable`  Configure ARP table.
 * `fmgd_system_autoinstall`  Configure USB auto installation.
 * `fmgd_system_automationaction`  Action for automation stitches.
+* `fmgd_system_automationaction_formdata`  Form data parts for content type multipart/form-data.
 * `fmgd_system_automationaction_httpheaders`  Request headers.
 * `fmgd_system_automationcondition`  Condition for automation stitches.
 * `fmgd_system_automationdestination`  Automation destinations.
@@ -529,6 +812,7 @@ The collection provides the following modules:
 * `fmgd_system_bypass`  Configure system bypass.
 * `fmgd_system_centralmanagement`  Configure central management.
 * `fmgd_system_centralmanagement_serverlist`  Additional severs that the FortiGate can use for updates.
+* `fmgd_system_cloudservice`  Configure system cloud service.
 * `fmgd_system_clustersync`  Device system cluster sync.
 * `fmgd_system_clustersync_sessionsyncfilter`  Device system cluster sync session sync filter.
 * `fmgd_system_clustersync_sessionsyncfilter_customservice`  Device system cluster sync session sync filter custom service.
@@ -539,14 +823,21 @@ The collection provides the following modules:
 * `fmgd_system_csf_fabricconnector`  Fabric connector configuration.
 * `fmgd_system_csf_fabricdevice`  Fabric device configuration.
 * `fmgd_system_csf_trustedlist`  Pre-authorized and blocked security fabric nodes.
+* `fmgd_system_customlanguage`  Configure custom languages.
 * `fmgd_system_ddns`  Configure DDNS.
 * `fmgd_system_dedicatedmgmt`  Configure dedicated management.
 * `fmgd_system_deviceupgrade`  Independent upgrades for managed devices.
 * `fmgd_system_deviceupgrade_knownhamembers`  Known members of the HA cluster.
+* `fmgd_system_deviceupgradeexemptions`  Configure device upgrade exemptions.
 * `fmgd_system_dhcp6_server`  Configure DHCPv6 servers.
 * `fmgd_system_dhcp6_server_iprange`  DHCP IP range configuration.
 * `fmgd_system_dhcp6_server_options`  DHCPv6 options.
 * `fmgd_system_dhcp6_server_prefixrange`  DHCP prefix configuration.
+* `fmgd_system_dhcp_server`  Configure DHCP servers.
+* `fmgd_system_dhcp_server_excluderange`  Exclude one or more ranges of IP addresses from being assigned to clients.
+* `fmgd_system_dhcp_server_iprange`  DHCP IP range configuration.
+* `fmgd_system_dhcp_server_options`  DHCP options.
+* `fmgd_system_dhcp_server_reservedaddress`  Options for the DHCP server to assign IP settings to specific MAC addresses.
 * `fmgd_system_digitalio`  Configure digital-io.
 * `fmgd_system_dnp3proxy`  Configure dnpproxy settings.
 * `fmgd_system_dns`  Configure DNS.
@@ -558,6 +849,7 @@ The collection provides the following modules:
 * `fmgd_system_elbc`  Configure enhanced load balance cluster.
 * `fmgd_system_emailserver`  Configure the email server used by the FortiGate various things.
 * `fmgd_system_evpn`  Configure EVPN instance.
+* `fmgd_system_externalresource`  Configure external resource.
 * `fmgd_system_fabricvpn`  Setup for self orchestrated fabric auto discovery VPN.
 * `fmgd_system_fabricvpn_advertisedsubnets`  Local advertised subnets.
 * `fmgd_system_fabricvpn_overlays`  Local overlay interfaces table.
@@ -566,11 +858,17 @@ The collection provides the following modules:
 * `fmgd_system_federatedupgrade_nodelist`  Nodes which will be included in the upgrade.
 * `fmgd_system_fipscc`  Configure FIPS-CC mode.
 * `fmgd_system_fortiai`  Configure FortiAI.
+* `fmgd_system_fortidata`  Configure FortiData.
+* `fmgd_system_fortiguard`  Configure FortiGuard services.
 * `fmgd_system_fortindr`  Configure FortiNDR.
 * `fmgd_system_fortisandbox`  Configure FortiSandbox.
 * `fmgd_system_fssopolling`  Configure Fortinet Single Sign On.
 * `fmgd_system_ftmpush`  Configure FortiToken Mobile push services.
 * `fmgd_system_geneve`  Configure GENEVE devices.
+* `fmgd_system_geoipcountry`  Device system geoip country.
+* `fmgd_system_geoipoverride`  Configure geographical location mapping for IP address.
+* `fmgd_system_geoipoverride_ip6range`  Table of IPv6 ranges assigned to country.
+* `fmgd_system_geoipoverride_iprange`  Table of IP ranges assigned to country.
 * `fmgd_system_gigk`  Configure Gi Firewall Gatekeeper.
 * `fmgd_system_global`  Configure global attributes.
 * `fmgd_system_gretunnel`  Configure GRE tunnel.
@@ -580,6 +878,7 @@ The collection provides the following modules:
 * `fmgd_system_ha_secondaryvcluster`  Configure virtual cluster 2.
 * `fmgd_system_ha_unicastpeers`  Number of unicast peers.
 * `fmgd_system_ha_vcluster`  Virtual cluster table.
+* `fmgd_system_halic`  Device system ha lic.
 * `fmgd_system_hamonitor`  Configure HA monitor.
 * `fmgd_system_healthcheckfortiguard`  SD-WAN status checking or health checking.
 * `fmgd_system_icond`  Configure Industrial Connectivity.
@@ -660,6 +959,11 @@ The collection provides the following modules:
 * `fmgd_system_netflow`  Configure NetFlow.
 * `fmgd_system_netflow_collectors`  Netflow collectors.
 * `fmgd_system_netflow_exclusionfilters`  Exclusion filters.
+* `fmgd_system_nethsm`  Device system nethsm.
+* `fmgd_system_nethsm_hagroups`  Device system nethsm hagroups.
+* `fmgd_system_nethsm_partitions`  Device system nethsm partitions.
+* `fmgd_system_nethsm_servers`  Device system nethsm servers.
+* `fmgd_system_nethsm_slots`  Device system nethsm slots.
 * `fmgd_system_networkvisibility`  Configure network visibility settings.
 * `fmgd_system_ngfwsettings`  Configure IPS NGFW policy-mode VDOM settings.
 * `fmgd_system_np6`  Configure NP6 attributes.
@@ -668,12 +972,18 @@ The collection provides the following modules:
 * `fmgd_system_np6xlite`  Configure NP6XLITE attributes.
 * `fmgd_system_np6xlite_fpanomaly`  NP6XLITE IPv4 anomaly protection.
 * `fmgd_system_np6xlite_hpe`  HPE configuration.
+* `fmgd_system_npu_dswdtsprofile`  Configure NPU DSW DTS profile.
+* `fmgd_system_npu_npqueues`  Configure queue assignment on NP7LITE.
+* `fmgd_system_npu_portcpumap`  Configure NPU interface to CPU core mapping.
+* `fmgd_system_npu_portnpumap`  Configure port to NPU group mapping.
 * `fmgd_system_npupost`  Configure NPU attributes after interface initialization.
 * `fmgd_system_npupost_portnpumap`  Configure port to NPU group list.
 * `fmgd_system_npusetting_prp`  Configure NPU PRP attributes.
 * `fmgd_system_npuvlink`  Configure NPU VDOM link.
 * `fmgd_system_ntp`  Configure system NTP information.
 * `fmgd_system_ntp_ntpserver`  Configure the FortiGate to connect to any available third-party NTP server.
+* `fmgd_system_objecttag`  Configure object tags.
+* `fmgd_system_objecttagging`  Configure object tagging.
 * `fmgd_system_passwordpolicy`  Configure password policy for locally defined administrator passwords and IPsec VPN pre-shared keys.
 * `fmgd_system_passwordpolicyguestadmin`  Configure the password policy for guest administrators.
 * `fmgd_system_pcpserver`  Configure PCP server information.
@@ -707,9 +1017,34 @@ The collection provides the following modules:
 * `fmgd_system_replacemsg_trafficquota`  Replacement messages.
 * `fmgd_system_replacemsg_utm`  Replacement messages.
 * `fmgd_system_replacemsg_webproxy`  Replacement messages.
+* `fmgd_system_replacemsggroup`  Configure replacement message groups.
+* `fmgd_system_replacemsggroup_admin`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_alertmail`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_auth`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_automation`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_custommessage`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_fortiguardwf`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_ftp`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_http`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_icap`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_mail`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_nacquar`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_spam`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_sslvpn`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_trafficquota`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_utm`  Replacement message table entries.
+* `fmgd_system_replacemsggroup_webproxy`  Replacement message table entries.
+* `fmgd_system_replacemsgimage`  Configure replacement message images.
 * `fmgd_system_saml`  Global settings for SAML authentication.
 * `fmgd_system_saml_serviceproviders`  Authorized service providers.
 * `fmgd_system_saml_serviceproviders_assertionattributes`  Customized SAML attributes to send along with assertion.
+* `fmgd_system_sdnconnector`  Configure connection to SDN Connector.
+* `fmgd_system_sdnconnector_compartmentlist`  Configure OCI compartment list.
+* `fmgd_system_sdnconnector_externalaccountlist`  Configure AWS external account list.
+* `fmgd_system_sdnconnector_forwardingrule`  Configure GCP forwarding rule.
+* `fmgd_system_sdnconnector_ociregionlist`  Configure OCI region list.
+* `fmgd_system_sdnconnector_routetable`  Configure Azure route table.
+* `fmgd_system_sdnproxy`  Configure SDN proxy.
 * `fmgd_system_sdnvpn`  Configure public cloud VPN service.
 * `fmgd_system_sdwan`  Configure redundant Internet connections with multiple outbound links and health-check profiles.
 * `fmgd_system_sdwan_duplication`  Create SD-WAN duplication rule.
@@ -733,6 +1068,7 @@ The collection provides the following modules:
 * `fmgd_system_sittunnel`  Configure IPv6 tunnel over IPv4.
 * `fmgd_system_smcntp`  Configure SMC NTP information.
 * `fmgd_system_smcntp_ntpserver`  Configure the FortiGate SMC to connect to an NTP server.
+* `fmgd_system_smsserver`  Configure SMS server for sending SMS messages to support user authentication.
 * `fmgd_system_snmp_community`  SNMP community configuration.
 * `fmgd_system_snmp_community_hosts`  Configure IPv4 SNMP managers.
 * `fmgd_system_snmp_community_hosts6`  Configure IPv6 SNMP managers.
@@ -740,6 +1076,8 @@ The collection provides the following modules:
 * `fmgd_system_snmp_rmonstat`  SNMP Remote Network Monitoring.
 * `fmgd_system_snmp_sysinfo`  SNMP system info configuration.
 * `fmgd_system_snmp_user`  SNMP user configuration.
+* `fmgd_system_sovsase`  Configure Sovereign SASE.
+* `fmgd_system_spanport`  Device system span port.
 * `fmgd_system_speedtestschedule`  Speed test schedule for each interface.
 * `fmgd_system_speedtestserver`  Configure speed test server list.
 * `fmgd_system_speedtestserver_host`  Hosts of the server.
@@ -779,6 +1117,7 @@ The collection provides the following modules:
 * `fmgd_system_virtualwanlink_neighbor`  Create SD-WAN neighbor from BGP neighbor table to control route advertisements according to SLA status.
 * `fmgd_system_virtualwanlink_service`  Create SD-WAN rules.
 * `fmgd_system_virtualwanlink_service_sla`  Service level agreement.
+* `fmgd_system_virtualwirepair`  Configure virtual wire pairs.
 * `fmgd_system_vneinterface`  Configure virtual network enabler tunnels.
 * `fmgd_system_vnetunnel`  Configure virtual network enabler tunnel.
 * `fmgd_system_vpce`  Configure system VPC configuration.
@@ -788,19 +1127,62 @@ The collection provides the following modules:
 * `fmgd_system_wireless_settings`  Wireless radio configuration.
 * `fmgd_system_zone`  Configure zones to group two or more interfaces.
 * `fmgd_system_zone_tagging`  Config object tagging.
+* `fmgd_user_adgrp`  Configure FSSO groups.
+* `fmgd_user_certificate`  Configure certificate users.
+* `fmgd_user_domaincontroller`  Configure domain controller entries.
+* `fmgd_user_domaincontroller_extraserver`  Extra servers.
+* `fmgd_user_exchange`  Configure MS Exchange server entries.
+* `fmgd_user_externalidentityprovider`  Configure external identity provider.
+* `fmgd_user_fortitoken`  Configure FortiToken.
+* `fmgd_user_fsso`  Configure Fortinet Single Sign On.
+* `fmgd_user_fssopolling`  Configure FSSO active directory servers for polling mode.
+* `fmgd_user_fssopolling_adgrp`  LDAP Group Info.
+* `fmgd_user_group`  Configure user groups.
+* `fmgd_user_group_match`  Group matches.
+* `fmgd_user_krbkeytab`  Configure Kerberos keytab entries.
+* `fmgd_user_ldap`  Configure LDAP server entries.
+* `fmgd_user_local`  Configure local users.
 * `fmgd_user_nacpolicy`  Configure NAC policy matching pattern to identify matching NAC devices.
+* `fmgd_user_oidc`  Device vdom user oidc.
+* `fmgd_user_passwordpolicy`  Configure user password policy.
+* `fmgd_user_peer`  Configure peer users.
+* `fmgd_user_peergrp`  Configure peer groups.
+* `fmgd_user_pop3`  POP3 server entry configuration.
 * `fmgd_user_quarantine`  Configure quarantine support.
 * `fmgd_user_quarantine_targets`  Quarantine entry to hold multiple MACs.
 * `fmgd_user_quarantine_targets_macs`  Quarantine MACs.
+* `fmgd_user_radius`  Configure RADIUS server entries.
+* `fmgd_user_radius_accountingserver`  Additional accounting servers.
+* `fmgd_user_saml`  SAML server entry configuration.
 * `fmgd_user_scim`  Configure SCIM client entries.
+* `fmgd_user_securityexemptlist`  Configure security exemption list.
+* `fmgd_user_securityexemptlist_rule`  Configure rules for exempting users from captive portal authentication.
 * `fmgd_user_setting`  Configure user authentication setting.
 * `fmgd_user_setting_authports`  Set up non-standard ports for authentication with HTTP, HTTPS, FTP, and TELNET.
+* `fmgd_user_tacacs`  Configure TACACS+ server entries.
+* `fmgd_videofilter_keyword`  Configure video filter keywords.
+* `fmgd_videofilter_keyword_word`  List of keywords.
+* `fmgd_videofilter_profile`  Configure VideoFilter profile.
+* `fmgd_videofilter_profile_filters`  YouTube filter entries.
+* `fmgd_videofilter_profile_fortiguardcategory_filters`  Configure VideoFilter FortiGuard category.
 * `fmgd_videofilter_youtubekey`  Configure YouTube API keys.
+* `fmgd_virtualpatch_profile`  Configure virtual-patch profile.
+* `fmgd_virtualpatch_profile_exemption`  Exempt devices or rules.
+* `fmgd_voip_profile`  Configure VoIP profiles.
+* `fmgd_voip_profile_msrp`  MSRP.
+* `fmgd_voip_profile_sccp`  SCCP.
+* `fmgd_voip_profile_sip`  SIP.
+* `fmgd_vpn_certificate_ca`  CA certificate.
 * `fmgd_vpn_certificate_crl`  Certificate Revocation List as a PEM file.
+* `fmgd_vpn_certificate_hsmlocal`  Local certificates whose keys are stored on HSM.
 * `fmgd_vpn_certificate_local`  Local keys and certificates.
+* `fmgd_vpn_certificate_ocspserver`  OCSP server configuration.
+* `fmgd_vpn_certificate_remote`  Remote certificate as a PEM file.
 * `fmgd_vpn_certificate_setting`  VPN certificate setting.
 * `fmgd_vpn_certificate_setting_crlverification`  CRL verification options.
 * `fmgd_vpn_ipsec_concentrator`  Concentrator configuration.
+* `fmgd_vpn_ipsec_fec`  Configure Forward Error Correction.
+* `fmgd_vpn_ipsec_fec_mappings`  FEC redundancy mapping table.
 * `fmgd_vpn_ipsec_forticlient`  Configure FortiClient policy realm.
 * `fmgd_vpn_ipsec_manualkey`  Configure IPsec manual keys.
 * `fmgd_vpn_ipsec_manualkeyinterface`  Configure IPsec manual keys.
@@ -825,12 +1207,52 @@ The collection provides the following modules:
 * `fmgd_vpn_ssl_client`  Client.
 * `fmgd_vpn_ssl_settings`  Configure SSL VPN.
 * `fmgd_vpn_ssl_settings_authenticationrule`  Authentication rule for SSL VPN.
+* `fmgd_vpnsslweb_hostchecksoftware`  SSL-VPN host check software.
+* `fmgd_vpnsslweb_hostchecksoftware_checkitemlist`  Check item list.
+* `fmgd_vpnsslweb_portal`  Portal.
+* `fmgd_vpnsslweb_portal_bookmarkgroup`  Portal bookmark group.
+* `fmgd_vpnsslweb_portal_bookmarkgroup_bookmarks`  Bookmark table.
+* `fmgd_vpnsslweb_portal_bookmarkgroup_bookmarks_formdata`  Form data.
+* `fmgd_vpnsslweb_portal_landingpage`  Landing page options.
+* `fmgd_vpnsslweb_portal_landingpage_formdata`  Form data.
+* `fmgd_vpnsslweb_portal_macaddrcheckrule`  Client MAC address check rule.
+* `fmgd_vpnsslweb_portal_oschecklist`  SSL-VPN OS checks.
+* `fmgd_vpnsslweb_portal_splitdns`  Split DNS for SSL-VPN.
+* `fmgd_vpnsslweb_realm`  Realm.
 * `fmgd_vpnsslweb_userbookmark`  Configure SSL-VPN user bookmark.
 * `fmgd_vpnsslweb_userbookmark_bookmarks`  Bookmark table.
 * `fmgd_vpnsslweb_userbookmark_bookmarks_formdata`  Form data.
 * `fmgd_vpnsslweb_usergroupbookmark`  Configure SSL-VPN user group bookmark.
 * `fmgd_vpnsslweb_usergroupbookmark_bookmarks`  Bookmark table.
 * `fmgd_vpnsslweb_usergroupbookmark_bookmarks_formdata`  Form data.
+* `fmgd_waf_mainclass`  Hidden table for datasource.
+* `fmgd_waf_profile`  Configure Web application firewall configuration.
+* `fmgd_waf_profile_addresslist`  Address block and allow lists.
+* `fmgd_waf_profile_constraint`  WAF HTTP protocol restrictions.
+* `fmgd_waf_profile_constraint_contentlength`  HTTP content length in request.
+* `fmgd_waf_profile_constraint_exception`  HTTP constraint exception.
+* `fmgd_waf_profile_constraint_headerlength`  HTTP header length in request.
+* `fmgd_waf_profile_constraint_hostname`  Enable/disable hostname check.
+* `fmgd_waf_profile_constraint_linelength`  HTTP line length in request.
+* `fmgd_waf_profile_constraint_malformed`  Enable/disable malformed HTTP request check.
+* `fmgd_waf_profile_constraint_maxcookie`  Maximum number of cookies in HTTP request.
+* `fmgd_waf_profile_constraint_maxheaderline`  Maximum number of HTTP header line.
+* `fmgd_waf_profile_constraint_maxrangesegment`  Maximum number of range segments in HTTP range line.
+* `fmgd_waf_profile_constraint_maxurlparam`  Maximum number of parameters in URL.
+* `fmgd_waf_profile_constraint_method`  Enable/disable HTTP method check.
+* `fmgd_waf_profile_constraint_paramlength`  Maximum length of parameter in URL, HTTP POST request or HTTP body.
+* `fmgd_waf_profile_constraint_urlparamlength`  Maximum length of parameter in URL.
+* `fmgd_waf_profile_constraint_version`  Enable/disable HTTP version check.
+* `fmgd_waf_profile_method`  Method restriction.
+* `fmgd_waf_profile_method_methodpolicy`  HTTP method policy.
+* `fmgd_waf_profile_signature`  WAF signatures.
+* `fmgd_waf_profile_signature_customsignature`  Custom signature.
+* `fmgd_waf_profile_signature_mainclass`  Main signature class.
+* `fmgd_waf_profile_urlaccess`  URL access list.
+* `fmgd_waf_profile_urlaccess_accesspattern`  URL access pattern.
+* `fmgd_waf_signature`  Hidden table for datasource.
+* `fmgd_waf_subclass`  Hidden table for datasource.
+* `fmgd_wanopt_authgroup`  Configure WAN optimization authentication groups.
 * `fmgd_wanopt_cacheservice`  Designate cache-service for wan-optimization and webcache.
 * `fmgd_wanopt_cacheservice_dstpeer`  Modify cache-service destination peer list.
 * `fmgd_wanopt_cacheservice_srcpeer`  Modify cache-service source peer list.
@@ -839,23 +1261,72 @@ The collection provides the following modules:
 * `fmgd_wanopt_contentdeliverynetworkrule_rules_contentid`  Content ID settings.
 * `fmgd_wanopt_contentdeliverynetworkrule_rules_matchentries`  List of entries to match.
 * `fmgd_wanopt_contentdeliverynetworkrule_rules_skipentries`  List of entries to skip.
+* `fmgd_wanopt_peer`  Configure WAN optimization peers.
+* `fmgd_wanopt_profile`  Configure WAN optimization profiles.
+* `fmgd_wanopt_profile_cifs`  Enable/disable CIFS.
+* `fmgd_wanopt_profile_ftp`  Enable/disable FTP WAN Optimization and configure FTP WAN Optimization features.
+* `fmgd_wanopt_profile_http`  Enable/disable HTTP WAN Optimization and configure HTTP WAN Optimization features.
+* `fmgd_wanopt_profile_mapi`  Enable/disable MAPI email WAN Optimization and configure MAPI WAN Optimization features.
+* `fmgd_wanopt_profile_tcp`  Enable/disable TCP WAN Optimization and configure TCP WAN Optimization features.
 * `fmgd_wanopt_remotestorage`  Configure a remote cache device as Web cache storage.
 * `fmgd_wanopt_settings`  Configure WAN optimization settings.
 * `fmgd_wanopt_webcache`  Configure global Web cache settings.
+* `fmgd_webcache_prefetch`  Device vdom webcache prefetch.
+* `fmgd_webcache_reversecacheserver`  Device vdom webcache reverse cache server.
+* `fmgd_webcache_settings`  Device vdom webcache settings.
+* `fmgd_webcache_useragent`  Device vdom webcache user agent.
+* `fmgd_webfilter_content`  Configure Web filter banned word table.
+* `fmgd_webfilter_content_entries`  Configure banned word entries.
+* `fmgd_webfilter_contentheader`  Configure content types used by Web filter.
+* `fmgd_webfilter_contentheader_entries`  Configure content types used by web filter.
+* `fmgd_webfilter_domainlist`  Device vdom webfilter domain list.
+* `fmgd_webfilter_domainlist_entries`  Device vdom webfilter domain list entries.
 * `fmgd_webfilter_fortiguard`  Configure FortiGuard Web Filter service.
+* `fmgd_webfilter_ftgdlocalcat`  Configure FortiGuard Web Filter local categories.
+* `fmgd_webfilter_ftgdlocalrating`  Configure local FortiGuard Web Filter local ratings.
 * `fmgd_webfilter_ftgdlocalrisk`  Configure FortiGuard Web Filter local risk score.
 * `fmgd_webfilter_ftgdrisklevel`  Configure FortiGuard Web Filter risk level.
 * `fmgd_webfilter_ipsurlfiltercachesetting`  Configure IPS URL filter cache settings.
 * `fmgd_webfilter_ipsurlfiltersetting`  Configure IPS URL filter settings.
 * `fmgd_webfilter_ipsurlfiltersetting6`  Configure IPS URL filter settings for IPv6.
 * `fmgd_webfilter_override`  Configure FortiGuard Web Filter administrative overrides.
+* `fmgd_webfilter_profile`  Configure Web filter profiles.
+* `fmgd_webfilter_profile_antiphish_custompatterns`  Custom username and password regex patterns.
+* `fmgd_webfilter_profile_antiphish_inspectionentries`  AntiPhishing entries.
+* `fmgd_webfilter_profile_ftgdwf`  FortiGuard Web Filter settings.
+* `fmgd_webfilter_profile_ftgdwf_filters`  FortiGuard filters.
+* `fmgd_webfilter_profile_ftgdwf_quota`  FortiGuard traffic quota settings.
+* `fmgd_webfilter_profile_ftgdwf_risk`  FortiGuard risk level settings.
+* `fmgd_webfilter_profile_override`  Web Filter override settings.
+* `fmgd_webfilter_profile_web`  Web content filtering settings.
 * `fmgd_webfilter_searchengine`  Configure web filter search engines.
+* `fmgd_webfilter_urlfilter`  Configure URL filter lists.
+* `fmgd_webfilter_urlfilter_entries`  URL filter entries.
+* `fmgd_webfilter_urllist`  Device vdom webfilter url list.
+* `fmgd_webfilter_urllist_entries`  Device vdom webfilter url list entries.
 * `fmgd_webproxy_debugurl`  Configure debug URL addresses.
+* `fmgd_webproxy_dynamicbypass`  Device vdom web proxy dynamic bypass.
 * `fmgd_webproxy_explicit`  Configure explicit Web proxy settings.
 * `fmgd_webproxy_explicit_pacpolicy`  PAC policies.
+* `fmgd_webproxy_explicitproxy`  Device vdom web proxy explicit proxy.
 * `fmgd_webproxy_fastfallback`  Proxy destination connection fast-fallback.
+* `fmgd_webproxy_forwardserver`  Configure forward-server addresses.
+* `fmgd_webproxy_forwardservergroup`  Configure a forward server group consisting or multiple forward servers.
+* `fmgd_webproxy_forwardservergroup_serverlist`  Add web forward servers to a list to form a server group.
 * `fmgd_webproxy_global`  Configure Web proxy global settings.
+* `fmgd_webproxy_implicitproxyrule`  Device vdom web proxy implicit proxy rule.
+* `fmgd_webproxy_implicitproxyrule_proxyservers`  Device vdom web proxy implicit proxy rule proxy servers.
+* `fmgd_webproxy_implicitproxysetting`  Device vdom web proxy implicit proxy setting.
+* `fmgd_webproxy_isolatorserver`  Configure forward-server addresses.
+* `fmgd_webproxy_pacpolicy`  Device vdom web proxy pac policy.
+* `fmgd_webproxy_profile`  Configure web proxy profiles.
+* `fmgd_webproxy_profile_headers`  Configure HTTP forwarded requests headers.
+* `fmgd_webproxy_redirectprofile`  Device vdom web proxy redirect profile.
+* `fmgd_webproxy_redirectprofile_entries`  Device vdom web proxy redirect profile entries.
+* `fmgd_webproxy_urllist`  Device vdom web proxy url list.
+* `fmgd_webproxy_urllist_entries`  Device vdom web proxy url list entries.
 * `fmgd_webproxy_urlmatch`  Exempt URLs from web proxy forwarding and caching.
+* `fmgd_webproxy_wisp`  Configure Websense Integrated Services Protocol.
 * `fmgd_wireless_accesscontrollist`  Configure WiFi bridge access control list.
 * `fmgd_wireless_accesscontrollist_layer3ipv4rules`  AP ACL layer3 ipv4 rule list.
 * `fmgd_wireless_accesscontrollist_layer3ipv6rules`  AP ACL layer3 ipv6 rule list.
@@ -903,6 +1374,7 @@ The collection provides the following modules:
 * `fmgd_wireless_intercontroller`  Configure inter wireless controller operation.
 * `fmgd_wireless_intercontroller_intercontrollerpeer`  Fast failover peer wireless controller list.
 * `fmgd_wireless_log`  Configure wireless controller event log filters.
+* `fmgd_wireless_lwprofile`  Configure LoRaWAN profile.
 * `fmgd_wireless_mpskprofile`  Configure MPSK profile.
 * `fmgd_wireless_mpskprofile_mpskgroup`  List of multiple PSK groups.
 * `fmgd_wireless_mpskprofile_mpskgroup_mpskkey`  List of multiple PSK entries.
@@ -914,6 +1386,7 @@ The collection provides the following modules:
 * `fmgd_wireless_snmp`  Configure SNMP.
 * `fmgd_wireless_snmp_community`  SNMP Community Configuration.
 * `fmgd_wireless_snmp_community_hosts`  Configure IPv4 SNMP managers.
+* `fmgd_wireless_snmp_community_hosts6`  Configure IPv6 SNMP managers.
 * `fmgd_wireless_snmp_user`  SNMP User Configuration.
 * `fmgd_wireless_ssidpolicy`  Configure WiFi SSID policies.
 * `fmgd_wireless_syslogprofile`  Configure Wireless Termination Points.
@@ -948,7 +1421,9 @@ The collection provides the following modules:
 * `fmgd_wireless_wtpprofile_radio3`  Configuration options for radio 3.
 * `fmgd_wireless_wtpprofile_radio4`  Configuration options for radio 4.
 * `fmgd_wireless_wtpprofile_splittunnelingacl`  Split tunneling ACL filter list.
+* `fmgd_ztna_connectorserviceedge`  Device vdom ztna connector service edge.
 * `fmgd_ztna_reverseconnector`  Configure ZTNA Reverse-Connector.
+* `fmgd_ztna_serviceconnector`  Device vdom ztna service connector.
 * `fmgd_ztna_trafficforwardproxy`  Configure ZTNA traffic forward proxy.
 * `fmgd_ztna_trafficforwardproxy_quic`  QUIC setting.
 * `fmgd_ztna_trafficforwardproxy_sslciphersuites`  SSL/TLS cipher suites acceptable from a client, ordered by priority.
@@ -958,6 +1433,7 @@ The collection provides the following modules:
 * `fmgd_ztna_webportal`  Configure ztna web-portal.
 * `fmgd_ztna_webportalbookmark`  Configure ztna web-portal bookmark.
 * `fmgd_ztna_webportalbookmark_bookmarks`  Bookmark table.
+* `fmgd_ztna_webportalbookmark_llmsecureproxy`  Device vdom ztna web portal bookmark llm secure proxy.
 * `fmgd_ztna_webproxy`  Configure ZTNA web-proxy.
 * `fmgd_ztna_webproxy_apigateway`  Set IPv4 API Gateway.
 * `fmgd_ztna_webproxy_apigateway6`  Set IPv6 API Gateway.

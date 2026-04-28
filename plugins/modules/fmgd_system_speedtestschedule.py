@@ -16,7 +16,6 @@ short_description: Speed test schedule for each interface.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -171,12 +170,43 @@ options:
                     - 'local'
                     - 'remote'
                     - 'both'
+            expected_inbandwidth_maximum:
+                aliases: ['expected-inbandwidth-maximum']
+                type: int
+                description: Set the maximum inbandwidth threshold for applying speedtest results on shaping-profile.
+            expected_outbandwidth_minimum:
+                aliases: ['expected-outbandwidth-minimum']
+                type: int
+                description: Set the minimum outbandwidth threshold for applying speedtest results on shaping-profile.
+            retry_pause:
+                aliases: ['retry-pause']
+                type: int
+                description: Number of seconds the FortiGate pauses between successive speed tests before trying a different server
+            expected_outbandwidth_maximum:
+                aliases: ['expected-outbandwidth-maximum']
+                type: int
+                description: Set the maximum outbandwidth threshold for applying speedtest results on shaping-profile.
+            retries:
+                type: int
+                description: Maximum number of times the FortiGate unit will attempt to contact the same server before considering the speed test has f...
+            update_interface_shaping:
+                aliases: ['update-interface-shaping']
+                type: str
+                description: Enable/disable using the speedtest results as reference for interface shaping
+                choices:
+                    - 'disable'
+                    - 'enable'
+            expected_inbandwidth_minimum:
+                aliases: ['expected-inbandwidth-minimum']
+                type: int
+                description: Set the minimum inbandwidth threshold for applying speedtest results on shaping-profile.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -185,8 +215,8 @@ EXAMPLES = '''
     - name: Speed test schedule for each interface.
       fortinet.fmgdevice.fmgd_system_speedtestschedule:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -209,6 +239,13 @@ EXAMPLES = '''
           # update_outbandwidth_maximum: <integer>
           # update_outbandwidth_minimum: <integer>
           # update_shaper: <value in [disable, local, remote, ...]>
+          # expected_inbandwidth_maximum: <integer>
+          # expected_outbandwidth_minimum: <integer>
+          # retry_pause: <integer>
+          # expected_outbandwidth_maximum: <integer>
+          # retries: <integer>
+          # update_interface_shaping: <value in [disable, enable]>
+          # expected_inbandwidth_minimum: <integer>
 '''
 
 RETURN = '''
@@ -267,24 +304,31 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'system_speedtestschedule': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'ctrl-port': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'diffserv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'dynamic-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['UDP', 'TCP', 'Auto'], 'type': 'str'},
-                'schedules': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'server-name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'diffserv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'dynamic-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['UDP', 'TCP', 'Auto'], 'type': 'str'},
+                'schedules': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'server-name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'server-port': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-inbandwidth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-inbandwidth-maximum': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'update-inbandwidth-minimum': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'update-outbandwidth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-outbandwidth-maximum': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'update-outbandwidth-minimum': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'update-shaper': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'local', 'remote', 'both'], 'type': 'str'}
+                'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-inbandwidth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-inbandwidth-maximum': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'update-inbandwidth-minimum': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'update-outbandwidth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-outbandwidth-maximum': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'update-outbandwidth-minimum': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'update-shaper': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'local', 'remote', 'both'], 'type': 'str'},
+                'expected-inbandwidth-maximum': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'expected-outbandwidth-minimum': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'retry-pause': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'expected-outbandwidth-maximum': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'retries': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'update-interface-shaping': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'expected-inbandwidth-minimum': {'v_range': [['7.6.5', '']], 'type': 'int'}
             }
         }
     }

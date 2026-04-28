@@ -16,7 +16,6 @@ short_description: Local keys and certificates.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -269,12 +268,57 @@ options:
                 aliases: ['tmp-cert-file']
                 type: str
                 description: Temporary certificate file.
+            est_regeneration_method:
+                aliases: ['est-regeneration-method']
+                type: str
+                description: EST behavioral options during re-enrollment.
+                choices:
+                    - 'create-new-key'
+                    - 'use-existing-key'
+            acme_eab_key_hmac:
+                aliases: ['acme-eab-key-hmac']
+                type: list
+                elements: str
+                description: External Account Binding HMAC Key
+            acme_eab_key_id:
+                aliases: ['acme-eab-key-id']
+                type: str
+                description: External Account Binding Key ID
+            hsm_keytype:
+                aliases: ['hsm-keytype']
+                type: str
+                description: Hsm keytype.
+                choices:
+                    - 'rsa'
+                    - 'ec'
+            hsm_slot:
+                aliases: ['hsm-slot']
+                type: str
+                description: Hsm slot.
+            hsm_vendor:
+                aliases: ['hsm-vendor']
+                type: str
+                description: Hsm vendor.
+                choices:
+                    - 'safenet'
+                    - 'primus'
+            nethsm_slot:
+                aliases: ['nethsm-slot']
+                type: str
+                description: Nethsm slot.
+            type:
+                type: str
+                description: Type.
+                choices:
+                    - 'normal'
+                    - 'hsm'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -283,8 +327,8 @@ EXAMPLES = '''
     - name: Local keys and certificates.
       fortinet.fmgdevice.fmgd_vpn_certificate_local:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -330,6 +374,14 @@ EXAMPLES = '''
           # source_ip: <string>
           # state: <string>
           # tmp_cert_file: <string>
+          # est_regeneration_method: <value in [create-new-key, use-existing-key]>
+          # acme_eab_key_hmac: <list or string>
+          # acme_eab_key_id: <string>
+          # hsm_keytype: <value in [rsa, ec]>
+          # hsm_slot: <string>
+          # hsm_vendor: <value in [safenet, primus]>
+          # nethsm_slot: <string>
+          # type: <value in [normal, hsm]>
 '''
 
 RETURN = '''
@@ -388,24 +440,24 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'vpn_certificate_local': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'acme-ca-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'acme-domain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'acme-email': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'acme-renew-window': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'acme-rsa-key-size': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'int'},
-                'auto-regenerate-days': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'auto-regenerate-days-warning': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ca-identifier': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'certificate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'cmp-path': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'cmp-regeneration-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['keyupate', 'renewal'], 'type': 'str'},
-                'cmp-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'cmp-server-cert': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'comments': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'csr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'enroll-protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'scep', 'cmpv2', 'acme2', 'est'], 'type': 'str'},
+                'acme-ca-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'acme-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'acme-email': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'acme-renew-window': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'acme-rsa-key-size': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'int'},
+                'auto-regenerate-days': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'auto-regenerate-days-warning': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ca-identifier': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'certificate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'cmp-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'cmp-regeneration-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['keyupate', 'renewal'], 'type': 'str'},
+                'cmp-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'cmp-server-cert': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'csr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'enroll-protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'scep', 'cmpv2', 'acme2', 'est'], 'type': 'str'},
                 'est-ca-id': {'v_range': [['7.4.3', '']], 'type': 'str'},
                 'est-client-cert': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'est-http-password': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'str'},
@@ -414,21 +466,33 @@ def main():
                 'est-server-cert': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'est-srp-password': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'str'},
                 'est-srp-username': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                'ike-localid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ike-localid-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['fqdn', 'asn1dn'], 'type': 'str'},
-                'last-updated': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'name-encoding': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['printable', 'utf8'], 'type': 'str'},
-                'password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'private-key': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'str'},
-                'private-key-retain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'range': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['global', 'vdom'], 'type': 'str'},
-                'scep-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'scep-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'source': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['factory', 'user', 'bundle', 'fortiguard'], 'type': 'str'},
-                'source-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'state': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'tmp-cert-file': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'ike-localid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ike-localid-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['fqdn', 'asn1dn'], 'type': 'str'},
+                'last-updated': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'name-encoding': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['printable', 'utf8'], 'type': 'str'},
+                'password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'private-key': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'str'},
+                'private-key-retain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'range': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['global', 'vdom'], 'type': 'str'},
+                'scep-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'scep-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'source': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['factory', 'user', 'bundle', 'fortiguard'], 'type': 'str'},
+                'source-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'state': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'tmp-cert-file': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'est-regeneration-method': {
+                    'v_range': [['7.4.6', '7.4.10'], ['7.6.3', '']],
+                    'choices': ['create-new-key', 'use-existing-key'],
+                    'type': 'str'
+                },
+                'acme-eab-key-hmac': {'v_range': [['7.6.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'acme-eab-key-id': {'v_range': [['7.6.3', '']], 'no_log': True, 'type': 'str'},
+                'hsm-keytype': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['rsa', 'ec'], 'type': 'str'},
+                'hsm-slot': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                'hsm-vendor': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['safenet', 'primus'], 'type': 'str'},
+                'nethsm-slot': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                'type': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['normal', 'hsm'], 'type': 'str'}
             }
         }
     }

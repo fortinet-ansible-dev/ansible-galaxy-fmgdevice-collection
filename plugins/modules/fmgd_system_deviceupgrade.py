@@ -16,7 +16,6 @@ short_description: Independent upgrades for managed devices.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -94,6 +93,7 @@ options:
                     - 'fortiswitch'
                     - 'fortiap'
                     - 'fortiextender'
+                    - 'fortiproxy'
             failure_reason:
                 aliases: ['failure-reason']
                 type: str
@@ -116,6 +116,7 @@ options:
                     - 'node-failed'
                     - 'csf-tree-not-supported'
                     - 'firmware-changed'
+                    - 'image-missing'
             ha_reboot_controller:
                 aliases: ['ha-reboot-controller']
                 type: str
@@ -196,12 +197,20 @@ options:
                 type: list
                 elements: str
                 description: Limit upgrade to this virtual domain
+            allow_download:
+                aliases: ['allow-download']
+                type: str
+                description: Enable/disable download firmware images.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -210,8 +219,8 @@ EXAMPLES = '''
     - name: Independent upgrades for managed devices.
       fortinet.fmgdevice.fmgd_system_deviceupgrade:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -234,6 +243,7 @@ EXAMPLES = '''
           # next_path_index: <integer>
           # starter_admin: <string>
           # vdom: <list or string>
+          # allow_download: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -291,19 +301,19 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_deviceupgrade': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'device-type': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
-                    'choices': ['fortigate', 'fortiswitch', 'fortiap', 'fortiextender'],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                    'choices': ['fortigate', 'fortiswitch', 'fortiap', 'fortiextender', 'fortiproxy'],
                     'type': 'str'
                 },
                 'failure-reason': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'none', 'internal', 'timeout', 'device-type-unsupported', 'download-failed', 'device-missing', 'version-unavailable',
                         'staging-failed', 'reboot-failed', 'device-not-reconnected', 'node-not-ready', 'no-final-confirmation', 'no-confirmation-query',
-                        'config-error-log-nonempty', 'node-failed', 'csf-tree-not-supported', 'firmware-changed'
+                        'config-error-log-nonempty', 'node-failed', 'csf-tree-not-supported', 'firmware-changed', 'image-missing'
                     ],
                     'type': 'str'
                 },
@@ -314,25 +324,26 @@ def main():
                     'options': {'serial': {'v_range': [['7.4.3', '']], 'type': 'str'}},
                     'elements': 'dict'
                 },
-                'maximum-minutes': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'serial': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'setup-time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'maximum-minutes': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'serial': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'setup-time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'status': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'disabled', 'initialized', 'downloading', 'ready', 'cancelled', 'confirmed', 'done', 'failed', 'device-disconnected', 'staging',
                         'final-check', 'upgrade-devices', 'coordinating', 'dry-run-done'
                     ],
                     'type': 'str'
                 },
-                'time': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'timing': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['immediate', 'scheduled'], 'type': 'str'},
-                'upgrade-path': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'time': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'timing': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['immediate', 'scheduled'], 'type': 'str'},
+                'upgrade-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'ignore-signing-errors': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'initial-version': {'v_range': [['7.6.2', '']], 'type': 'str'},
                 'next-path-index': {'v_range': [['7.6.2', '']], 'type': 'int'},
                 'starter-admin': {'v_range': [['7.6.2', '']], 'type': 'str'},
-                'vdom': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'}
+                'vdom': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                'allow-download': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

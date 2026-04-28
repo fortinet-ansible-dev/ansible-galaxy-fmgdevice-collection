@@ -16,7 +16,6 @@ short_description: Configure ICAP profiles.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -182,6 +181,31 @@ options:
                     name:
                         type: str
                         description: HTTP forwarded header name.
+                    http_header:
+                        aliases: ['http-header']
+                        type: str
+                        description: Http header.
+                    sesson_info_type:
+                        aliases: ['sesson-info-type']
+                        type: str
+                        description: Sesson info type.
+                        choices:
+                            - 'client-ip'
+                            - 'user'
+                            - 'upn'
+                            - 'domain'
+                            - 'local-grp'
+                            - 'remote-grp'
+                            - 'proxy-name'
+                            - 'auth-user-uri'
+                            - 'auth-group-uri'
+                    source:
+                        type: str
+                        description: Source.
+                        choices:
+                            - 'content'
+                            - 'http-header'
+                            - 'session'
             preview:
                 type: str
                 description: Enable/disable preview of data to ICAP server.
@@ -317,10 +341,33 @@ options:
             comment:
                 type: str
                 description: Comment.
-            ocr_only:
-                aliases: ['ocr-only']
+            ocr-only:
                 type: str
-                description: Enable/disable this FortiGate unit to submit only OCR interested content to the ICAP server.
+                description: Deprecated, please rename it to ocr_only. Enable/disable this FortiGate unit to submit only OCR interested content to the ...
+                choices:
+                    - 'disable'
+                    - 'enable'
+            ocr_only:
+                type: str
+                description: Ocr only.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            scan_oversize_log:
+                aliases: ['scan-oversize-log']
+                type: str
+                description: Scan oversize log.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            scan_size_limit:
+                aliases: ['scan-size-limit']
+                type: int
+                description: Scan size limit.
+            allow_204_response:
+                aliases: ['allow-204-response']
+                type: str
+                description: Enable/disable allowing of 204 response from icap server.
                 choices:
                     - 'disable'
                     - 'enable'
@@ -330,6 +377,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -338,8 +386,8 @@ EXAMPLES = '''
     - name: Configure ICAP profiles.
       fortinet.fmgdevice.fmgd_icap_profile:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -372,6 +420,9 @@ EXAMPLES = '''
           #     content: <string>
           #     id: <integer>
           #     name: <string>
+          #     http_header: <string>
+          #     sesson_info_type: <value in [client-ip, user, upn, ...]>
+          #     source: <value in [content, http-header, session]>
           # preview: <value in [disable, enable]>
           # preview_data_length: <integer>
           # response_req_hdr: <value in [disable, enable]>
@@ -402,6 +453,10 @@ EXAMPLES = '''
           # timeout: <integer>
           # comment: <string>
           # ocr_only: <value in [disable, enable]>
+          # ocr_only: <value in [disable, enable]>
+          # scan_oversize_log: <value in [disable, enable]>
+          # scan_size_limit: <integer>
+          # allow_204_response: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -485,7 +540,14 @@ def main():
                         'base64-encoding': {'v_range': [['6.2.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'content': {'v_range': [['6.2.0', '']], 'type': 'str'},
                         'id': {'v_range': [['6.2.0', '']], 'type': 'int'},
-                        'name': {'v_range': [['6.2.0', '']], 'type': 'str'}
+                        'name': {'v_range': [['6.2.0', '']], 'type': 'str'},
+                        'http-header': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
+                        'sesson-info-type': {
+                            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']],
+                            'choices': ['client-ip', 'user', 'upn', 'domain', 'local-grp', 'remote-grp', 'proxy-name', 'auth-user-uri', 'auth-group-uri'],
+                            'type': 'str'
+                        },
+                        'source': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['content', 'http-header', 'session'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
@@ -527,7 +589,11 @@ def main():
                 'scan-progress-interval': {'v_range': [['7.0.2', '']], 'type': 'int'},
                 'timeout': {'v_range': [['7.2.0', '']], 'type': 'int'},
                 'comment': {'v_range': [['7.2.2', '']], 'type': 'str'},
-                'ocr-only': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'ocr-only': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ocr_only': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'scan-oversize-log': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'scan-size-limit': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'int'},
+                'allow-204-response': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

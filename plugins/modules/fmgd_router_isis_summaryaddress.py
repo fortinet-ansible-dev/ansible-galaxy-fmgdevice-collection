@@ -16,7 +16,6 @@ short_description: IS-IS summary addresses.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -110,6 +109,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -118,8 +118,8 @@ EXAMPLES = '''
     - name: IS-IS summary addresses.
       fortinet.fmgdevice.fmgd_router_isis_summaryaddress:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -187,11 +187,11 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'router_isis_summaryaddress': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'int'},
-                'level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['level-1-2', 'level-1', 'level-2'], 'type': 'str'},
-                'prefix': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'int'},
+                'level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['level-1-2', 'level-1', 'level-2'], 'type': 'str'},
+                'prefix': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
             }
         }
     }

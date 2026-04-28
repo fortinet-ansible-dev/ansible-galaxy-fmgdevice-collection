@@ -16,7 +16,6 @@ short_description: Configure CASB SaaS application.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -133,16 +132,69 @@ options:
                 choices:
                     - 'or'
                     - 'and'
+                    - 'subset'
             name:
                 type: str
                 description: CASB tenant match name.
                 required: true
+            match:
+                type: list
+                elements: dict
+                description: Match.
+                suboptions:
+                    id:
+                        type: int
+                        description: CASB attribute match rule ID.
+                    rule:
+                        type: list
+                        elements: dict
+                        description: Rule.
+                        suboptions:
+                            attribute:
+                                type: str
+                                description: CASB attribute match name.
+                            case_sensitive:
+                                aliases: ['case-sensitive']
+                                type: str
+                                description: CASB attribute match case sensitive.
+                                choices:
+                                    - 'disable'
+                                    - 'enable'
+                            id:
+                                type: int
+                                description: CASB attribute rule ID.
+                            match_pattern:
+                                aliases: ['match-pattern']
+                                type: str
+                                description: CASB attribute match pattern.
+                                choices:
+                                    - 'simple'
+                                    - 'substr'
+                                    - 'regexp'
+                            match_value:
+                                aliases: ['match-value']
+                                type: str
+                                description: CASB attribute match value.
+                            negate:
+                                type: str
+                                description: Enable/disable what the matching strategy must not be.
+                                choices:
+                                    - 'disable'
+                                    - 'enable'
+                    rule_strategy:
+                        aliases: ['rule-strategy']
+                        type: str
+                        description: CASB attribute match rule strategy.
+                        choices:
+                            - 'or'
+                            - 'and'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -151,8 +203,8 @@ EXAMPLES = '''
     - name: Configure CASB SaaS application.
       fortinet.fmgdevice.fmgd_casb_attributematch:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -167,7 +219,17 @@ EXAMPLES = '''
           #     match_value: <string>
           #     name: <string>
           #     negate: <value in [disable, enable]>
-          # match_strategy: <value in [or, and]>
+          # match_strategy: <value in [or, and, subset]>
+          # match:
+          #   - id: <integer>
+          #     rule:
+          #       - attribute: <string>
+          #         case_sensitive: <value in [disable, enable]>
+          #         id: <integer>
+          #         match_pattern: <value in [simple, substr, regexp]>
+          #         match_value: <string>
+          #         negate: <value in [disable, enable]>
+          #     rule_strategy: <value in [or, and]>
 '''
 
 RETURN = '''
@@ -241,8 +303,30 @@ def main():
                     },
                     'elements': 'dict'
                 },
-                'match-strategy': {'v_range': [['7.6.2', '']], 'choices': ['or', 'and'], 'type': 'str'},
-                'name': {'v_range': [['7.6.2', '']], 'required': True, 'type': 'str'}
+                'match-strategy': {'v_range': [['7.6.2', '']], 'choices': ['or', 'and', 'subset'], 'type': 'str'},
+                'name': {'v_range': [['7.6.2', '']], 'required': True, 'type': 'str'},
+                'match': {
+                    'v_range': [['7.6.3', '']],
+                    'type': 'list',
+                    'options': {
+                        'id': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                        'rule': {
+                            'v_range': [['7.6.3', '']],
+                            'type': 'list',
+                            'options': {
+                                'attribute': {'v_range': [['7.6.3', '']], 'type': 'str'},
+                                'case-sensitive': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                                'id': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                                'match-pattern': {'v_range': [['7.6.3', '']], 'choices': ['simple', 'substr', 'regexp'], 'type': 'str'},
+                                'match-value': {'v_range': [['7.6.3', '']], 'type': 'str'},
+                                'negate': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                            },
+                            'elements': 'dict'
+                        },
+                        'rule-strategy': {'v_range': [['7.6.3', '']], 'choices': ['or', 'and'], 'type': 'str'}
+                    },
+                    'elements': 'dict'
+                }
             }
         }
     }

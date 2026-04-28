@@ -16,7 +16,6 @@ short_description: SD-WAN status checking or health checking.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -280,6 +279,7 @@ options:
                             - 'packet-loss'
                             - 'mos'
                             - 'remote'
+                            - 'custom-profile-1'
                     mos_threshold:
                         aliases: ['mos-threshold']
                         type: str
@@ -300,6 +300,10 @@ options:
                         aliases: ['priority-out-sla']
                         type: int
                         description: Value to be distributed into routing table when out-sla
+                    custom_profile_threshold:
+                        aliases: ['custom-profile-threshold']
+                        type: int
+                        description: Custom profile threshold for SLA to be marked as pass
             sla_fail_log_period:
                 aliases: ['sla-fail-log-period']
                 type: int
@@ -382,12 +386,44 @@ options:
                 type: list
                 elements: str
                 description: Predefined health-check target name.
+            agent_probe_timeout:
+                aliases: ['agent-probe-timeout']
+                type: int
+                description: Time to wait before a probe packet is considered lost when detect-mode is agent
+            remote_probe_timeout:
+                aliases: ['remote-probe-timeout']
+                type: int
+                description: Time to wait before a probe packet is considered lost when detect-mode is remote
+            bandwidth_weight:
+                aliases: ['bandwidth-weight']
+                type: int
+                description: Coefficient of reciprocal of available bidirectional bandwidth in the formula of custom-profile-1.
+            jitter_weight:
+                aliases: ['jitter-weight']
+                type: int
+                description: Coefficient of jitter in the formula of custom-profile-1.
+            latency_weight:
+                aliases: ['latency-weight']
+                type: int
+                description: Coefficient of latency in the formula of custom-profile-1.
+            packet_loss_weight:
+                aliases: ['packet-loss-weight']
+                type: int
+                description: Coefficient of packet-loss in the formula of custom-profile-1.
+            update_bgp_route:
+                aliases: ['update-bgp-route']
+                type: str
+                description: Enable/disable updating the BGP route.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -396,8 +432,8 @@ EXAMPLES = '''
     - name: SD-WAN status checking or health checking.
       fortinet.fmgdevice.fmgd_system_sdwan_healthcheck:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -443,10 +479,12 @@ EXAMPLES = '''
           #       - "packet-loss"
           #       - "mos"
           #       - "remote"
+          #       - "custom-profile-1"
           #     mos_threshold: <string>
           #     packetloss_threshold: <integer>
           #     priority_in_sla: <integer>
           #     priority_out_sla: <integer>
+          #     custom_profile_threshold: <integer>
           # sla_fail_log_period: <integer>
           # sla_id_redistribute: <integer>
           # sla_pass_log_period: <integer>
@@ -465,6 +503,13 @@ EXAMPLES = '''
           # vrf: <integer>
           # fortiguard: <value in [disable, enable]>
           # fortiguard_name: <list or string>
+          # agent_probe_timeout: <integer>
+          # remote_probe_timeout: <integer>
+          # bandwidth_weight: <integer>
+          # jitter_weight: <integer>
+          # latency_weight: <integer>
+          # packet_loss_weight: <integer>
+          # update_bgp_route: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -523,83 +568,91 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'system_sdwan_healthcheck': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'addr-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ipv4', 'ipv6'], 'type': 'str'},
+                'addr-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ipv4', 'ipv6'], 'type': 'str'},
                 'class-id': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'detect-mode': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['active', 'passive', 'prefer-passive', 'remote', 'agent-based'],
                     'type': 'str'
                 },
-                'diffservcode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'dns-match-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'dns-request-domain': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'embed-measured-health': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'failtime': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'ftp-file': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'ftp-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['passive', 'port'], 'type': 'str'},
-                'ha-priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'http-agent': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'http-get': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'http-match': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'members': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'mos-codec': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['g711', 'g722', 'g729'], 'type': 'str'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'packet-size': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'probe-count': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'probe-packets': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'probe-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'diffservcode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'dns-match-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'dns-request-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'embed-measured-health': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'failtime': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'ftp-file': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'ftp-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['passive', 'port'], 'type': 'str'},
+                'ha-priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'http-agent': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'http-get': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'http-match': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'members': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'mos-codec': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['g711', 'g722', 'g729'], 'type': 'str'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'packet-size': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'probe-count': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'probe-packets': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'probe-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'protocol': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['ping', 'tcp-echo', 'udp-echo', 'http', 'twamp', 'ping6', 'dns', 'tcp-connect', 'ftp', 'https'],
                     'type': 'str'
                 },
-                'quality-measured-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['half-close', 'half-open'], 'type': 'str'},
-                'recoverytime': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'security-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', 'authentication'], 'type': 'str'},
-                'server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'quality-measured-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['half-close', 'half-open'], 'type': 'str'},
+                'recoverytime': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'security-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'authentication'], 'type': 'str'},
+                'server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'sla': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'jitter-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'latency-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'jitter-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'latency-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'link-cost-factor': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
-                            'choices': ['latency', 'jitter', 'packet-loss', 'mos', 'remote'],
+                            'choices': ['latency', 'jitter', 'packet-loss', 'mos', 'remote', 'custom-profile-1'],
                             'elements': 'str'
                         },
-                        'mos-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'packetloss-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'priority-in-sla': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'priority-out-sla': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'mos-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'packetloss-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'priority-in-sla': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'priority-out-sla': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'custom-profile-threshold': {'v_range': [['7.6.4', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },
-                'sla-fail-log-period': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'sla-id-redistribute': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'sla-pass-log-period': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'int'},
-                'source': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                'sla-fail-log-period': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'sla-id-redistribute': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'sla-pass-log-period': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'int'},
+                'source': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                 'source6': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                'system-dns': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'threshold-alert-jitter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'threshold-alert-latency': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'threshold-alert-packetloss': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'threshold-warning-jitter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'threshold-warning-latency': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'threshold-warning-packetloss': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'update-cascade-interface': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'update-static-route': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'user': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'vrf': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'system-dns': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'threshold-alert-jitter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'threshold-alert-latency': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'threshold-alert-packetloss': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'threshold-warning-jitter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'threshold-warning-latency': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'threshold-warning-packetloss': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'update-cascade-interface': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'update-static-route': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'user': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'vrf': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'fortiguard': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'fortiguard-name': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'}
+                'fortiguard-name': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                'agent-probe-timeout': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'remote-probe-timeout': {'v_range': [['7.6.3', '']], 'type': 'int'},
+                'bandwidth-weight': {'v_range': [['7.6.4', '']], 'type': 'int'},
+                'jitter-weight': {'v_range': [['7.6.4', '']], 'type': 'int'},
+                'latency-weight': {'v_range': [['7.6.4', '']], 'type': 'int'},
+                'packet-loss-weight': {'v_range': [['7.6.4', '']], 'type': 'int'},
+                'update-bgp-route': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

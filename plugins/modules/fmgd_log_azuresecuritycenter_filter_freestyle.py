@@ -16,7 +16,6 @@ short_description: Free style filters.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -108,6 +107,7 @@ options:
                     - 'icap'
                     - 'ztna'
                     - 'virtual-patch'
+                    - 'debug'
             filter:
                 type: str
                 description: Free style filter string.
@@ -128,6 +128,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -136,8 +137,8 @@ EXAMPLES = '''
     - name: Free style filters.
       fortinet.fmgdevice.fmgd_log_azuresecuritycenter_filter_freestyle:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -204,19 +205,19 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'log_azuresecuritycenter_filter_freestyle': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'category': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'traffic', 'event', 'virus', 'webfilter', 'attack', 'spam', 'voip', 'dlp', 'app-ctrl', 'anomaly', 'waf', 'gtp', 'dns', 'ssh',
-                        'ssl', 'file-filter', 'icap', 'ztna', 'virtual-patch'
+                        'ssl', 'file-filter', 'icap', 'ztna', 'virtual-patch', 'debug'
                     ],
                     'type': 'str'
                 },
-                'filter': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'filter-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['include', 'exclude'], 'type': 'str'},
-                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'int'}
+                'filter': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'filter-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['include', 'exclude'], 'type': 'str'},
+                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'int'}
             }
         }
     }

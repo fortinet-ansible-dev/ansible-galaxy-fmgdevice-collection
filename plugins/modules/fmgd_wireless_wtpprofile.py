@@ -16,7 +16,6 @@ short_description: Configure WTP profiles or FortiAP profiles that define radio 
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -312,6 +311,7 @@ options:
                     - 'YT'
                     - 'BL'
                     - '--'
+                    - 'TL'
             ap_handoff:
                 aliases: ['ap-handoff']
                 type: str
@@ -1078,6 +1078,11 @@ options:
                             - '243K'
                             - '231K'
                             - '23JK'
+                            - '222KL'
+                            - '244K'
+                            - '432K'
+                            - 'MVP'
+                            - '231KD'
             poe_mode:
                 aliases: ['poe-mode']
                 type: str
@@ -1381,6 +1386,7 @@ options:
                             - 'FANT-10ACAX-1213-D-N'
                             - 'FANT-08ABGN-1213-D-R'
                             - 'custom'
+                            - 'FANT-04BEAX-0606-P-R'
                     optional_antenna_gain:
                         aliases: ['optional-antenna-gain']
                         type: str
@@ -1652,6 +1658,13 @@ options:
                             - '80MHz'
                             - '40MHz'
                             - '20MHz'
+                    ai_darrp_support:
+                        aliases: ['ai-darrp-support']
+                        type: str
+                        description: Enable/disable support for FortiAIOps to retrieve Distributed Automatic Radio Resource Provisioning
+                        choices:
+                            - 'disable'
+                            - 'enable'
             radio_2:
                 aliases: ['radio-2']
                 type: dict
@@ -1943,6 +1956,7 @@ options:
                             - 'FANT-10ACAX-1213-D-N'
                             - 'FANT-08ABGN-1213-D-R'
                             - 'custom'
+                            - 'FANT-04BEAX-0606-P-R'
                     optional_antenna_gain:
                         aliases: ['optional-antenna-gain']
                         type: str
@@ -2214,6 +2228,13 @@ options:
                             - '80MHz'
                             - '40MHz'
                             - '20MHz'
+                    ai_darrp_support:
+                        aliases: ['ai-darrp-support']
+                        type: str
+                        description: Enable/disable support for FortiAIOps to retrieve Distributed Automatic Radio Resource Provisioning
+                        choices:
+                            - 'disable'
+                            - 'enable'
             radio_3:
                 aliases: ['radio-3']
                 type: dict
@@ -2503,6 +2524,7 @@ options:
                             - 'FANT-10ACAX-1213-D-N'
                             - 'FANT-08ABGN-1213-D-R'
                             - 'custom'
+                            - 'FANT-04BEAX-0606-P-R'
                     optional_antenna_gain:
                         aliases: ['optional-antenna-gain']
                         type: str
@@ -2774,6 +2796,13 @@ options:
                             - '80MHz'
                             - '40MHz'
                             - '20MHz'
+                    ai_darrp_support:
+                        aliases: ['ai-darrp-support']
+                        type: str
+                        description: Enable/disable support for FortiAIOps to retrieve Distributed Automatic Radio Resource Provisioning
+                        choices:
+                            - 'disable'
+                            - 'enable'
             radio_4:
                 aliases: ['radio-4']
                 type: dict
@@ -3063,6 +3092,7 @@ options:
                             - 'FANT-10ACAX-1213-D-N'
                             - 'FANT-08ABGN-1213-D-R'
                             - 'custom'
+                            - 'FANT-04BEAX-0606-P-R'
                     optional_antenna_gain:
                         aliases: ['optional-antenna-gain']
                         type: str
@@ -3334,6 +3364,13 @@ options:
                             - '80MHz'
                             - '40MHz'
                             - '20MHz'
+                    ai_darrp_support:
+                        aliases: ['ai-darrp-support']
+                        type: str
+                        description: Enable/disable support for FortiAIOps to retrieve Distributed Automatic Radio Resource Provisioning
+                        choices:
+                            - 'disable'
+                            - 'enable'
             split_tunneling_acl:
                 aliases: ['split-tunneling-acl']
                 type: list
@@ -3440,12 +3477,168 @@ options:
                 choices:
                     - 'disable'
                     - 'enable'
+            apcfg_mesh:
+                aliases: ['apcfg-mesh']
+                type: str
+                description: Enable/disable AP local mesh configuration
+                choices:
+                    - 'disable'
+                    - 'enable'
+            apcfg_mesh_ap_type:
+                aliases: ['apcfg-mesh-ap-type']
+                type: str
+                description: Mesh AP Type
+                choices:
+                    - 'auto'
+                    - 'ethernet'
+                    - 'mesh'
+            apcfg_mesh_eth_bridge:
+                aliases: ['apcfg-mesh-eth-bridge']
+                type: str
+                description: Enable/disable mesh ethernet bridge
+                choices:
+                    - 'disable'
+                    - 'enable'
+            apcfg_mesh_passwd:
+                aliases: ['apcfg-mesh-passwd']
+                type: list
+                elements: str
+                description: Apcfg mesh passwd.
+            apcfg_mesh_ssid:
+                aliases: ['apcfg-mesh-ssid']
+                type: list
+                elements: str
+                description: Mesh SSID
+            default_mesh_root:
+                aliases: ['default-mesh-root']
+                type: str
+                description: Configure default mesh root SSID when it is not included by radios SSID configuration.
+                choices:
+                    - 'disable'
+                    - 'enable'
+            apcfg_auto_cert:
+                aliases: ['apcfg-auto-cert']
+                type: str
+                description: Enable/disable AP local auto cert configuration
+                choices:
+                    - 'disable'
+                    - 'enable'
+            apcfg_auto_cert_auto_regen_days:
+                aliases: ['apcfg-auto-cert-auto-regen-days']
+                type: int
+                description: Number of days to wait before expiry of an updated local certificate is requested
+            apcfg_auto_cert_crypto_algo:
+                aliases: ['apcfg-auto-cert-crypto-algo']
+                type: str
+                description: Cryptography algorithm
+                choices:
+                    - 'rsa-1024'
+                    - 'rsa-1536'
+                    - 'rsa-2048'
+                    - 'rsa-4096'
+                    - 'ec-secp256r1'
+                    - 'ec-secp384r1'
+                    - 'ec-secp521r1'
+            apcfg_auto_cert_enroll_protocol:
+                aliases: ['apcfg-auto-cert-enroll-protocol']
+                type: str
+                description: Certificate enrollment protocol
+                choices:
+                    - 'none'
+                    - 'scep'
+                    - 'est'
+            apcfg_auto_cert_est_ca_id:
+                aliases: ['apcfg-auto-cert-est-ca-id']
+                type: str
+                description: CA identifier of the CA server for signing via EST.
+            apcfg_auto_cert_est_http_password:
+                aliases: ['apcfg-auto-cert-est-http-password']
+                type: list
+                elements: str
+                description: HTTP Authentication password for signing via EST.
+            apcfg_auto_cert_est_http_username:
+                aliases: ['apcfg-auto-cert-est-http-username']
+                type: str
+                description: HTTP Authentication username for signing via EST.
+            apcfg_auto_cert_est_https_ca:
+                aliases: ['apcfg-auto-cert-est-https-ca']
+                type: list
+                elements: str
+                description: PEM format https CA Certificate.
+            apcfg_auto_cert_est_server:
+                aliases: ['apcfg-auto-cert-est-server']
+                type: str
+                description: Address and port for EST server
+            apcfg_auto_cert_est_subject:
+                aliases: ['apcfg-auto-cert-est-subject']
+                type: str
+                description: Subject e.
+            apcfg_auto_cert_est_subject_alt_name:
+                aliases: ['apcfg-auto-cert-est-subject-alt-name']
+                type: str
+                description: Subject alternative name
+            apcfg_auto_cert_scep_ca_id:
+                aliases: ['apcfg-auto-cert-scep-ca-id']
+                type: str
+                description: CA identifier of the CA server for signing via SCEP.
+            apcfg_auto_cert_scep_ec_name:
+                aliases: ['apcfg-auto-cert-scep-ec-name']
+                type: str
+                description: Elliptic curve name
+                choices:
+                    - 'secp256r1'
+                    - 'secp384r1'
+                    - 'secp521r1'
+            apcfg_auto_cert_scep_https_ca:
+                aliases: ['apcfg-auto-cert-scep-https-ca']
+                type: list
+                elements: str
+                description: PEM format https CA Certificate.
+            apcfg_auto_cert_scep_keysize:
+                aliases: ['apcfg-auto-cert-scep-keysize']
+                type: str
+                description: Key size
+                choices:
+                    - '1024'
+                    - '1536'
+                    - '2048'
+                    - '4096'
+            apcfg_auto_cert_scep_keytype:
+                aliases: ['apcfg-auto-cert-scep-keytype']
+                type: str
+                description: Key type
+                choices:
+                    - 'rsa'
+                    - 'ec'
+            apcfg_auto_cert_scep_password:
+                aliases: ['apcfg-auto-cert-scep-password']
+                type: list
+                elements: str
+                description: SCEP server challenge password for auto-regeneration.
+            apcfg_auto_cert_scep_sub_fully_dn:
+                aliases: ['apcfg-auto-cert-scep-sub-fully-dn']
+                type: str
+                description: Full DN of the subject
+            apcfg_auto_cert_scep_subject_alt_name:
+                aliases: ['apcfg-auto-cert-scep-subject-alt-name']
+                type: str
+                description: Subject alternative name
+            apcfg_auto_cert_scep_url:
+                aliases: ['apcfg-auto-cert-scep-url']
+                type: str
+                description: SCEP server URL.
+            lw_profile:
+                aliases: ['lw-profile']
+                type: list
+                elements: str
+                description: LoRaWAN profile name.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -3454,8 +3647,8 @@ EXAMPLES = '''
     - name: Configure WTP profiles or FortiAP profiles that define radio settings for manageable FortiAP platforms.
       fortinet.fmgdevice.fmgd_wireless_wtpprofile:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -3733,6 +3926,7 @@ EXAMPLES = '''
           #   frequency_handoff: <value in [disable, enable]>
           #   d80211mc: <value in [disable, enable]>
           #   ap_sniffer_chan_width: <value in [320MHz, 240MHz, 160MHz, ...]>
+          #   ai_darrp_support: <value in [disable, enable]>
           # radio_2:
           #   d80211d: <value in [disable, enable]>
           #   airtime_fairness: <value in [disable, enable]>
@@ -3864,6 +4058,7 @@ EXAMPLES = '''
           #   frequency_handoff: <value in [disable, enable]>
           #   d80211mc: <value in [disable, enable]>
           #   ap_sniffer_chan_width: <value in [320MHz, 240MHz, 160MHz, ...]>
+          #   ai_darrp_support: <value in [disable, enable]>
           # radio_3:
           #   d80211d: <value in [disable, enable]>
           #   airtime_fairness: <value in [disable, enable]>
@@ -3995,6 +4190,7 @@ EXAMPLES = '''
           #   frequency_handoff: <value in [disable, enable]>
           #   d80211mc: <value in [disable, enable]>
           #   ap_sniffer_chan_width: <value in [320MHz, 240MHz, 160MHz, ...]>
+          #   ai_darrp_support: <value in [disable, enable]>
           # radio_4:
           #   d80211d: <value in [disable, enable]>
           #   airtime_fairness: <value in [disable, enable]>
@@ -4126,6 +4322,7 @@ EXAMPLES = '''
           #   frequency_handoff: <value in [disable, enable]>
           #   d80211mc: <value in [disable, enable]>
           #   ap_sniffer_chan_width: <value in [320MHz, 240MHz, 160MHz, ...]>
+          #   ai_darrp_support: <value in [disable, enable]>
           # split_tunneling_acl:
           #   - dest_ip: <list or string>
           #     id: <integer>
@@ -4144,6 +4341,33 @@ EXAMPLES = '''
           # wan_port_mode: <value in [wan-lan, wan-only]>
           # admin_auth_tacacs_: <list or string>
           # admin_restrict_local: <value in [disable, enable]>
+          # apcfg_mesh: <value in [disable, enable]>
+          # apcfg_mesh_ap_type: <value in [auto, ethernet, mesh]>
+          # apcfg_mesh_eth_bridge: <value in [disable, enable]>
+          # apcfg_mesh_passwd: <list or string>
+          # apcfg_mesh_ssid: <list or string>
+          # default_mesh_root: <value in [disable, enable]>
+          # apcfg_auto_cert: <value in [disable, enable]>
+          # apcfg_auto_cert_auto_regen_days: <integer>
+          # apcfg_auto_cert_crypto_algo: <value in [rsa-1024, rsa-1536, rsa-2048, ...]>
+          # apcfg_auto_cert_enroll_protocol: <value in [none, scep, est]>
+          # apcfg_auto_cert_est_ca_id: <string>
+          # apcfg_auto_cert_est_http_password: <list or string>
+          # apcfg_auto_cert_est_http_username: <string>
+          # apcfg_auto_cert_est_https_ca: <list or string>
+          # apcfg_auto_cert_est_server: <string>
+          # apcfg_auto_cert_est_subject: <string>
+          # apcfg_auto_cert_est_subject_alt_name: <string>
+          # apcfg_auto_cert_scep_ca_id: <string>
+          # apcfg_auto_cert_scep_ec_name: <value in [secp256r1, secp384r1, secp521r1]>
+          # apcfg_auto_cert_scep_https_ca: <list or string>
+          # apcfg_auto_cert_scep_keysize: <value in [1024, 1536, 2048, ...]>
+          # apcfg_auto_cert_scep_keytype: <value in [rsa, ec]>
+          # apcfg_auto_cert_scep_password: <list or string>
+          # apcfg_auto_cert_scep_sub_fully_dn: <string>
+          # apcfg_auto_cert_scep_subject_alt_name: <string>
+          # apcfg_auto_cert_scep_url: <string>
+          # lw_profile: <list or string>
 '''
 
 RETURN = '''
@@ -4202,17 +4426,17 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'wireless_wtpprofile': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 '_is_factory_setting': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable', 'ext'], 'type': 'str'},
                 'allowaccess': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['https', 'ssh', 'snmp', 'http', 'telnet'],
                     'elements': 'str'
                 },
                 'ap-country': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'AL', 'DZ', 'AR', 'AM', 'AU', 'AT', 'AZ', 'BH', 'BD', 'BY', 'BE', 'BZ', 'BO', 'BA', 'BR', 'BN', 'BG', 'CA', 'CL', 'CN', 'CO',
                         'CR', 'HR', 'CY', 'CZ', 'DK', 'DO', 'EC', 'EG', 'SV', 'EE', 'FI', 'FR', 'GE', 'DE', 'GR', 'GT', 'HN', 'HK', 'HU', 'IS', 'IN',
@@ -4223,18 +4447,18 @@ def main():
                         'GA', 'ML', 'BJ', 'MG', 'TD', 'BW', 'LY', 'RW', 'MZ', 'GM', 'LS', 'MU', 'CG', 'UG', 'BF', 'SL', 'SO', 'CD', 'NE', 'CF', 'SZ',
                         'TG', 'LR', 'MR', 'DJ', 'RE', 'RS', 'ME', 'IQ', 'MD', 'KY', 'BB', 'BM', 'TC', 'VI', 'PM', 'MF', 'GD', 'IM', 'FO', 'GI', 'GL',
                         'TM', 'MN', 'VU', 'FJ', 'LA', 'GU', 'WF', 'MH', 'BT', 'FM', 'PF', 'NI', 'PY', 'HT', 'GY', 'AW', 'KN', 'GF', 'AS', 'MP', 'PW',
-                        'MM', 'LC', 'GP', 'ET', 'SR', 'ZB', 'CX', 'DM', 'MQ', 'YT', 'BL', '--'
+                        'MM', 'LC', 'GP', 'ET', 'SR', 'ZB', 'CX', 'DM', 'MQ', 'YT', 'BL', '--', 'TL'
                     ],
                     'type': 'str'
                 },
-                'ap-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'apcfg-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'ble-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ap-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'apcfg-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'ble-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'bonjour-profile': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'comment': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'console-login': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'comment': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'console-login': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'control-message-offload': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': [
                         'ebp-frame', 'aeroscout-tag', 'ap-list', 'sta-list', 'sta-cap-list', 'stats', 'aeroscout-mu', 'sta-health', 'spectral-analysis'
@@ -4242,160 +4466,160 @@ def main():
                     'elements': 'str'
                 },
                 'deny-mac-list': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'mac': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'mac': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'dtls-in-kernel': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'dtls-in-kernel': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'dtls-policy': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['clear-text', 'dtls-enabled', 'ipsec-vpn', 'ipsec-sn-vpn'],
                     'elements': 'str'
                 },
-                'energy-efficient-ethernet': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'energy-efficient-ethernet': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'esl-ses-dongle': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'apc-addr-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['fqdn', 'ip'], 'type': 'str'},
-                        'apc-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'apc-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'apc-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'coex-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none'], 'type': 'str'},
-                        'compliance-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['compliance-level-2'], 'type': 'str'},
+                        'apc-addr-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['fqdn', 'ip'], 'type': 'str'},
+                        'apc-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'apc-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'apc-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'coex-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none'], 'type': 'str'},
+                        'compliance-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['compliance-level-2'], 'type': 'str'},
                         'esl-channel': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '127', '-1'],
                             'type': 'str'
                         },
                         'output-power': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
                             'type': 'str'
                         },
-                        'scd-enable': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'tls-cert-verification': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'tls-fqdn-verification': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'scd-enable': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'tls-cert-verification': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'tls-fqdn-verification': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     }
                 },
-                'ext-info-enable': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'frequency-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'handoff-roaming': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'handoff-rssi': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'handoff-sta-thresh': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'ext-info-enable': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'frequency-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'handoff-roaming': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'handoff-rssi': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'handoff-sta-thresh': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'indoor-outdoor-deployment': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['platform-determined', 'outdoor', 'indoor'],
                     'type': 'str'
                 },
                 'ip-fragment-preventing': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['tcp-mss-adjust', 'icmp-unreachable'],
                     'elements': 'str'
                 },
                 'lan': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
                         'port-esl-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port-esl-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port-esl-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port1-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port1-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port1-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port2-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port2-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port2-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port3-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port3-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port3-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port4-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port4-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port4-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port5-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port5-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port5-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port6-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port6-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port6-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port7-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port7-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'port7-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'port8-mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan'],
                             'type': 'str'
                         },
-                        'port8-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                        'port8-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
                     }
                 },
                 'lbs': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        'aeroscout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'aeroscout-ap-mac': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['bssid', 'board-mac'], 'type': 'str'},
-                        'aeroscout-mmu-report': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'aeroscout-mu': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'aeroscout-mu-factor': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'aeroscout-mu-timeout': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'aeroscout-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'aeroscout-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ekahau-blink-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ekahau-tag': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'erc-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'erc-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'aeroscout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'aeroscout-ap-mac': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['bssid', 'board-mac'], 'type': 'str'},
+                        'aeroscout-mmu-report': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'aeroscout-mu': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'aeroscout-mu-factor': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'aeroscout-mu-timeout': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'aeroscout-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'aeroscout-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ekahau-blink-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ekahau-tag': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'erc-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'erc-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'fortipresence': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'enable2', 'foreign', 'both'],
                             'type': 'str'
                         },
-                        'fortipresence-ble': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'fortipresence-frequency': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'fortipresence-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'fortipresence-project': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'fortipresence-rogue': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'fortipresence-secret': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'fortipresence-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'fortipresence-server-addr-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['fqdn', 'ipv4'], 'type': 'str'},
-                        'fortipresence-server-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'fortipresence-unassoc': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'fortipresence-ble': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'fortipresence-frequency': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'fortipresence-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'fortipresence-project': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'fortipresence-rogue': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'fortipresence-secret': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'fortipresence-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'fortipresence-server-addr-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['fqdn', 'ipv4'], 'type': 'str'},
+                        'fortipresence-server-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'fortipresence-unassoc': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'polestar': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'polestar-accumulation-interval': {'v_range': [['7.4.3', '']], 'type': 'int'},
                         'polestar-asset-addrgrp-list': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
@@ -4409,38 +4633,38 @@ def main():
                         'polestar-server-path': {'v_range': [['7.4.3', '']], 'type': 'str'},
                         'polestar-server-port': {'v_range': [['7.4.3', '']], 'type': 'int'},
                         'polestar-server-token': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'str'},
-                        'station-locate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ble-rtls': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'choices': ['none', 'polestar', 'evresys'], 'type': 'str'},
-                        'ble-rtls-accumulation-interval': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'int'},
-                        'ble-rtls-asset-addrgrp-list': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'list', 'elements': 'str'},
-                        'ble-rtls-asset-uuid-list1': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'str'},
-                        'ble-rtls-asset-uuid-list2': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'str'},
-                        'ble-rtls-asset-uuid-list3': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'str'},
-                        'ble-rtls-asset-uuid-list4': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'str'},
-                        'ble-rtls-protocol': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'choices': ['WSS'], 'type': 'str'},
-                        'ble-rtls-reporting-interval': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'int'},
-                        'ble-rtls-server-fqdn': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'str'},
-                        'ble-rtls-server-path': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'str'},
-                        'ble-rtls-server-port': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'type': 'int'},
-                        'ble-rtls-server-token': {'v_range': [['7.4.4', '7.4.5'], ['7.6.2', '']], 'no_log': True, 'type': 'str'}
+                        'station-locate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ble-rtls': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'choices': ['none', 'polestar', 'evresys'], 'type': 'str'},
+                        'ble-rtls-accumulation-interval': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'int'},
+                        'ble-rtls-asset-addrgrp-list': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                        'ble-rtls-asset-uuid-list1': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                        'ble-rtls-asset-uuid-list2': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                        'ble-rtls-asset-uuid-list3': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                        'ble-rtls-asset-uuid-list4': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                        'ble-rtls-protocol': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'choices': ['WSS'], 'type': 'str'},
+                        'ble-rtls-reporting-interval': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'int'},
+                        'ble-rtls-server-fqdn': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                        'ble-rtls-server-path': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'str'},
+                        'ble-rtls-server-port': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'type': 'int'},
+                        'ble-rtls-server-token': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'no_log': True, 'type': 'str'}
                     }
                 },
-                'led-schedules': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'led-state': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'lldp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'login-passwd': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'login-passwd-change': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['no', 'yes', 'default'], 'type': 'str'},
-                'max-clients': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'led-schedules': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'led-state': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'lldp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'login-passwd': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'login-passwd-change': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['no', 'yes', 'default'], 'type': 'str'},
+                'max-clients': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
                 'platform': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        '_local_platform_str': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'ddscan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['dual-5G', 'single-5G'], 'type': 'str'},
+                        '_local_platform_str': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'ddscan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['dual-5G', 'single-5G'], 'type': 'str'},
                         'type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': [
                                 '30B-50B', '60B', '80CM-81CM', '220A', '220B', '210B', '60C', '222B', '112B', '320B', '11C', '14C', '223B', '28C',
                                 '320C', '221C', '25D', '222C', '224D', '214B', '21D', '24D', '112D', '223C', '321C', 'C220C', 'C225C', 'S321C', 'S323C',
@@ -4448,39 +4672,40 @@ def main():
                                 'C221E', 'C226E', 'C23JD', 'C24JE', 'C21D', 'U421E', 'U423E', '221E', '222E', '223E', 'S221E', 'S223E', 'U221EV',
                                 'U223EV', 'U321EV', 'U323EV', '224E', 'U422EV', 'U24JEV', '321E', 'U431F', 'U433F', '231E', '431F', '433F', '231F',
                                 '432F', '234F', '23JF', 'U231F', '831F', 'U234F', 'U432F', '431FL', '432FR', '433FL', '231FL', '231G', '233G', '431G',
-                                '433G', 'U231G', 'U441G', '234G', '432G', '441K', '443K', '241K', '243K', '231K', '23JK'
+                                '433G', 'U231G', 'U441G', '234G', '432G', '441K', '443K', '241K', '243K', '231K', '23JK', '222KL', '244K', '432K', 'MVP',
+                                '231KD'
                             ],
                             'type': 'str'
                         }
                     }
                 },
                 'poe-mode': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['auto', '8023af', '8023at', 'power-adapter', 'full', 'high', 'low'],
                     'type': 'str'
                 },
                 'radio-1': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        '80211d': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'amsdu': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'arrp-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'auto-power-high': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'auto-power-low': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-target': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        '80211d': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'amsdu': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'arrp-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'auto-power-high': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'auto-power-low': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-target': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'band': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': [
                                 '802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only', '802.11g-only', '802.11n-only',
@@ -4490,146 +4715,147 @@ def main():
                             ],
                             'elements': 'str'
                         },
-                        'band-5g-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
-                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'beacon-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
-                        'call-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'call-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'channel': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'band-5g-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
+                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'beacon-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
+                        'call-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'call-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'channel': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'channel-bonding': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', '80MHz', '40MHz', '20MHz', '160MHz', '320MHz', '240MHz'],
                             'type': 'str'
                         },
                         'channel-bonding-ext': {'v_range': [['7.4.3', '']], 'choices': ['320MHz-1', '320MHz-2'], 'type': 'str'},
-                        'channel-utilization': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'coexistence': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'darrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
-                        'dtim': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'frag-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
-                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-clients': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-distance': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'channel-utilization': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'coexistence': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'darrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
+                        'dtim': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'frag-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
+                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-clients': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-distance': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'mimo-mode': {'v_range': [['7.4.3', '']], 'choices': ['default', '1x1', '2x2', '3x3', '4x4', '8x8'], 'type': 'str'},
                         'mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disabled', 'ap', 'monitor', 'sniffer', 'sam'],
                             'type': 'str'
                         },
                         'optional-antenna': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': [
                                 'none', 'FANT-04ABGN-0606-O-N', 'FANT-04ABGN-1414-P-N', 'FANT-04ABGN-8065-P-N', 'FANT-04ABGN-0606-O-R',
-                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom'
+                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom', 'FANT-04BEAX-0606-P-R'
                             ],
                             'type': 'str'
                         },
                         'optional-antenna-gain': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                        'power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'power-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
-                        'power-value': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'power-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
+                        'power-value': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'powersave-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['tim', 'ac-vo', 'no-obss-scan', 'no-11b-rate', 'client-rate-follow'],
                             'elements': 'str'
                         },
-                        'protection-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
-                        'radio-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'rts-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'sam-bssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'protection-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
+                        'radio-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'rts-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-bssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-ca-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'sam-client-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-eap-method': {'v_range': [['7.4.3', '']], 'choices': ['tls', 'peap', 'both'], 'type': 'str'},
-                        'sam-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key-password': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'sam-security-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['open', 'wpa-personal', 'wpa-enterprise', 'owe', 'wpa3-sae'],
                             'type': 'str'
                         },
-                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
-                        'sam-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-test': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
-                        'sam-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
+                        'sam-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-test': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
+                        'sam-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'transmit-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['disable', 'power-save', 'aggr-limit', 'retry-limit', 'send-bar'],
                             'elements': 'str'
                         },
                         'vap-all': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'tunnel', 'bridge', 'manual'],
                             'type': 'str'
                         },
-                        'vap1': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap2': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap3': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap4': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap5': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap7': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap8': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vaps': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'wids-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'sam-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'vap1': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap2': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap3': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap4': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap5': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap7': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'wids-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'ap-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         '80211mc': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'ap-sniffer-chan-width': {
                             'v_range': [['7.4.4', '']],
                             'choices': ['320MHz', '240MHz', '160MHz', '80MHz', '40MHz', '20MHz'],
                             'type': 'str'
-                        }
+                        },
+                        'ai-darrp-support': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     }
                 },
                 'radio-2': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        '80211d': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'amsdu': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'arrp-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'auto-power-high': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'auto-power-low': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-target': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        '80211d': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'amsdu': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'arrp-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'auto-power-high': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'auto-power-low': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-target': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'band': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': [
                                 '802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only', '802.11g-only', '802.11n-only',
@@ -4639,146 +4865,147 @@ def main():
                             ],
                             'elements': 'str'
                         },
-                        'band-5g-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
-                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'beacon-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
-                        'call-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'call-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'channel': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'band-5g-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
+                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'beacon-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
+                        'call-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'call-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'channel': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'channel-bonding': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', '80MHz', '40MHz', '20MHz', '160MHz', '320MHz', '240MHz'],
                             'type': 'str'
                         },
                         'channel-bonding-ext': {'v_range': [['7.4.3', '']], 'choices': ['320MHz-1', '320MHz-2'], 'type': 'str'},
-                        'channel-utilization': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'coexistence': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'darrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
-                        'dtim': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'frag-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
-                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-clients': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-distance': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'channel-utilization': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'coexistence': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'darrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
+                        'dtim': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'frag-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
+                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-clients': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-distance': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'mimo-mode': {'v_range': [['7.4.3', '']], 'choices': ['default', '1x1', '2x2', '3x3', '4x4', '8x8'], 'type': 'str'},
                         'mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disabled', 'ap', 'monitor', 'sniffer', 'sam'],
                             'type': 'str'
                         },
                         'optional-antenna': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': [
                                 'none', 'FANT-04ABGN-0606-O-N', 'FANT-04ABGN-1414-P-N', 'FANT-04ABGN-8065-P-N', 'FANT-04ABGN-0606-O-R',
-                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom'
+                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom', 'FANT-04BEAX-0606-P-R'
                             ],
                             'type': 'str'
                         },
                         'optional-antenna-gain': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                        'power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'power-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
-                        'power-value': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'power-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
+                        'power-value': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'powersave-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['tim', 'ac-vo', 'no-obss-scan', 'no-11b-rate', 'client-rate-follow'],
                             'elements': 'str'
                         },
-                        'protection-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
-                        'radio-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'rts-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'sam-bssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'protection-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
+                        'radio-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'rts-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-bssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-ca-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'sam-client-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-eap-method': {'v_range': [['7.4.3', '']], 'choices': ['tls', 'peap', 'both'], 'type': 'str'},
-                        'sam-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key-password': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'sam-security-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['open', 'wpa-personal', 'wpa-enterprise', 'owe', 'wpa3-sae'],
                             'type': 'str'
                         },
-                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
-                        'sam-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-test': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
-                        'sam-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
+                        'sam-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-test': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
+                        'sam-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'transmit-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['disable', 'power-save', 'aggr-limit', 'retry-limit', 'send-bar'],
                             'elements': 'str'
                         },
                         'vap-all': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'tunnel', 'bridge', 'manual'],
                             'type': 'str'
                         },
-                        'vap1': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap2': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap3': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap4': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap5': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap7': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap8': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vaps': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'wids-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'sam-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'vap1': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap2': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap3': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap4': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap5': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap7': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'wids-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'ap-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         '80211mc': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'ap-sniffer-chan-width': {
                             'v_range': [['7.4.4', '']],
                             'choices': ['320MHz', '240MHz', '160MHz', '80MHz', '40MHz', '20MHz'],
                             'type': 'str'
-                        }
+                        },
+                        'ai-darrp-support': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     }
                 },
                 'radio-3': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        '80211d': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'amsdu': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'arrp-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'auto-power-high': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'auto-power-low': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-target': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        '80211d': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'amsdu': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'arrp-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'auto-power-high': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'auto-power-low': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-target': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'band': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': [
                                 '802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only', '802.11g-only', '802.11n-only',
@@ -4788,146 +5015,147 @@ def main():
                             ],
                             'elements': 'str'
                         },
-                        'band-5g-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
-                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'beacon-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
-                        'call-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'call-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'channel': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'band-5g-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
+                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'beacon-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
+                        'call-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'call-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'channel': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'channel-bonding': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['80MHz', '40MHz', '20MHz', '160MHz', '320MHz', '240MHz'],
                             'type': 'str'
                         },
                         'channel-bonding-ext': {'v_range': [['7.4.3', '']], 'choices': ['320MHz-1', '320MHz-2'], 'type': 'str'},
-                        'channel-utilization': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'coexistence': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'darrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
-                        'dtim': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'frag-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
-                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-clients': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-distance': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'channel-utilization': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'coexistence': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'darrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
+                        'dtim': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'frag-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
+                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-clients': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-distance': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'mimo-mode': {'v_range': [['7.4.3', '']], 'choices': ['default', '1x1', '2x2', '3x3', '4x4', '8x8'], 'type': 'str'},
                         'mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disabled', 'ap', 'monitor', 'sniffer', 'sam'],
                             'type': 'str'
                         },
                         'optional-antenna': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': [
                                 'none', 'FANT-04ABGN-0606-O-N', 'FANT-04ABGN-1414-P-N', 'FANT-04ABGN-8065-P-N', 'FANT-04ABGN-0606-O-R',
-                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom'
+                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom', 'FANT-04BEAX-0606-P-R'
                             ],
                             'type': 'str'
                         },
                         'optional-antenna-gain': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                        'power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'power-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
-                        'power-value': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'power-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
+                        'power-value': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'powersave-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['tim', 'ac-vo', 'no-obss-scan', 'no-11b-rate', 'client-rate-follow'],
                             'elements': 'str'
                         },
-                        'protection-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
-                        'radio-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'rts-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'sam-bssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'protection-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
+                        'radio-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'rts-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-bssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-ca-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'sam-client-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-eap-method': {'v_range': [['7.4.3', '']], 'choices': ['tls', 'peap', 'both'], 'type': 'str'},
-                        'sam-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key-password': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'sam-security-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['open', 'wpa-personal', 'wpa-enterprise', 'owe', 'wpa3-sae'],
                             'type': 'str'
                         },
-                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
-                        'sam-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-test': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
-                        'sam-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
+                        'sam-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-test': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
+                        'sam-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'transmit-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['disable', 'power-save', 'aggr-limit', 'retry-limit', 'send-bar'],
                             'elements': 'str'
                         },
                         'vap-all': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'tunnel', 'bridge', 'manual'],
                             'type': 'str'
                         },
-                        'vap1': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap2': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap3': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap4': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap5': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap7': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap8': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vaps': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'wids-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'sam-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'vap1': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap2': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap3': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap4': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap5': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap7': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'wids-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'ap-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         '80211mc': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'ap-sniffer-chan-width': {
                             'v_range': [['7.4.4', '']],
                             'choices': ['320MHz', '240MHz', '160MHz', '80MHz', '40MHz', '20MHz'],
                             'type': 'str'
-                        }
+                        },
+                        'ai-darrp-support': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     }
                 },
                 'radio-4': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'dict',
                     'options': {
-                        '80211d': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'amsdu': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'arrp-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'auto-power-high': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'auto-power-low': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'auto-power-target': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        '80211d': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'airtime-fairness': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'amsdu': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-addr': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'ap-sniffer-bufsize': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-chan': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'ap-sniffer-ctl': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-data': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-beacon': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-other': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-sniffer-mgmt-probe': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'arrp-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'auto-power-high': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'auto-power-low': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'auto-power-target': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'band': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': [
                                 '802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only', '802.11g-only', '802.11n-only',
@@ -4937,152 +5165,184 @@ def main():
                             ],
                             'elements': 'str'
                         },
-                        'band-5g-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
-                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'beacon-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
-                        'call-admission-control': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'call-capacity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'channel': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'band-5g-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['5g-full', '5g-high', '5g-low'], 'type': 'str'},
+                        'bandwidth-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'bandwidth-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'beacon-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'bss-color-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['auto', 'static'], 'type': 'str'},
+                        'call-admission-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'call-capacity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'channel': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'channel-bonding': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['80MHz', '40MHz', '20MHz', '160MHz', '320MHz', '240MHz'],
                             'type': 'str'
                         },
                         'channel-bonding-ext': {'v_range': [['7.4.3', '']], 'choices': ['320MHz-1', '320MHz-2'], 'type': 'str'},
-                        'channel-utilization': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'coexistence': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'darrp': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
-                        'dtim': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'frag-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
-                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-clients': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'max-distance': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'channel-utilization': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'coexistence': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'darrp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'drma-sensitivity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['low', 'medium', 'high'], 'type': 'str'},
+                        'dtim': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'frag-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'iperf-protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['udp', 'tcp'], 'type': 'str'},
+                        'iperf-server-port': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-clients': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'max-distance': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'mimo-mode': {'v_range': [['7.4.3', '']], 'choices': ['default', '1x1', '2x2', '3x3', '4x4', '8x8'], 'type': 'str'},
                         'mode': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disabled', 'ap', 'monitor', 'sniffer', 'sam'],
                             'type': 'str'
                         },
                         'optional-antenna': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': [
                                 'none', 'FANT-04ABGN-0606-O-N', 'FANT-04ABGN-1414-P-N', 'FANT-04ABGN-8065-P-N', 'FANT-04ABGN-0606-O-R',
-                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom'
+                                'FANT-04ABGN-0606-P-R', 'FANT-10ACAX-1213-D-N', 'FANT-08ABGN-1213-D-R', 'custom', 'FANT-04BEAX-0606-P-R'
                             ],
                             'type': 'str'
                         },
                         'optional-antenna-gain': {'v_range': [['7.4.3', '']], 'type': 'str'},
-                        'power-level': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'power-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
-                        'power-value': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'power-level': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'power-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['dBm', 'percentage'], 'type': 'str'},
+                        'power-value': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'powersave-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['tim', 'ac-vo', 'no-obss-scan', 'no-11b-rate', 'client-rate-follow'],
                             'elements': 'str'
                         },
-                        'protection-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
-                        'radio-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'rts-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'sam-bssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'protection-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['rtscts', 'ctsonly', 'disable'], 'type': 'str'},
+                        'radio-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'rts-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-bssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-ca-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-captive-portal': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'sam-client-certificate': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-failure-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-match-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-cwp-success-string': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-test-url': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-cwp-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'sam-eap-method': {'v_range': [['7.4.3', '']], 'choices': ['tls', 'peap', 'both'], 'type': 'str'},
-                        'sam-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                        'sam-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                         'sam-private-key-password': {'v_range': [['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                        'sam-report-intv': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                         'sam-security-type': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['open', 'wpa-personal', 'wpa-enterprise', 'owe', 'wpa3-sae'],
                             'type': 'str'
                         },
-                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-server-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
-                        'sam-ssid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'sam-test': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
-                        'sam-username': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server-fqdn': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-server-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ip', 'fqdn'], 'type': 'str'},
+                        'sam-ssid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'sam-test': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['ping', 'iperf'], 'type': 'str'},
+                        'sam-username': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'short-guard-interval': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'transmit-optimize': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'choices': ['disable', 'power-save', 'aggr-limit', 'retry-limit', 'send-bar'],
                             'elements': 'str'
                         },
                         'vap-all': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'tunnel', 'bridge', 'manual'],
                             'type': 'str'
                         },
-                        'vap1': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap2': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap3': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap4': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap5': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap6': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap7': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vap8': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'vaps': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'wids-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'sam-server': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
+                        'vap1': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap2': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap3': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap4': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap5': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap6': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap7': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'wids-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'zero-wait-dfs': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'sam-server': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'ap-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'ap-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'frequency-handoff': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         '80211mc': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'ap-sniffer-chan-width': {
                             'v_range': [['7.4.4', '']],
                             'choices': ['320MHz', '240MHz', '160MHz', '80MHz', '40MHz', '20MHz'],
                             'type': 'str'
-                        }
+                        },
+                        'ai-darrp-support': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     }
                 },
                 'split-tunneling-acl': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'dest-ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'}
+                        'dest-ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'}
                     },
                     'elements': 'dict'
                 },
-                'split-tunneling-acl-local-ap-subnet': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'split-tunneling-acl-path': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['tunnel', 'local'], 'type': 'str'},
-                'syslog-profile': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'tun-mtu-downlink': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'tun-mtu-uplink': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'split-tunneling-acl-local-ap-subnet': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'split-tunneling-acl-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['tunnel', 'local'], 'type': 'str'},
+                'syslog-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'tun-mtu-downlink': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'tun-mtu-uplink': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'unii-4-5ghz-band': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'usb-port': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'wan-port-auth': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['none', '802.1x'], 'type': 'str'},
+                'wan-port-auth': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', '802.1x'], 'type': 'str'},
                 'wan-port-auth-macsec': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'wan-port-auth-methods': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['all', 'EAP-FAST', 'EAP-TLS', 'EAP-PEAP'],
                     'type': 'str'
                 },
-                'wan-port-auth-password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'wan-port-auth-usrname': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'wan-port-mode': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['wan-lan', 'wan-only'], 'type': 'str'},
+                'wan-port-auth-password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'wan-port-auth-usrname': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'wan-port-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['wan-lan', 'wan-only'], 'type': 'str'},
                 'admin-auth-tacacs+': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
-                'admin-restrict-local': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'admin-restrict-local': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'apcfg-mesh': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'apcfg-mesh-ap-type': {'v_range': [['7.6.4', '']], 'choices': ['auto', 'ethernet', 'mesh'], 'type': 'str'},
+                'apcfg-mesh-eth-bridge': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'apcfg-mesh-passwd': {'v_range': [['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'apcfg-mesh-ssid': {'v_range': [['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'default-mesh-root': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'apcfg-auto-cert': {'v_range': [['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'apcfg-auto-cert-auto-regen-days': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'apcfg-auto-cert-crypto-algo': {
+                    'v_range': [['7.6.5', '']],
+                    'choices': ['rsa-1024', 'rsa-1536', 'rsa-2048', 'rsa-4096', 'ec-secp256r1', 'ec-secp384r1', 'ec-secp521r1'],
+                    'type': 'str'
+                },
+                'apcfg-auto-cert-enroll-protocol': {'v_range': [['7.6.5', '']], 'choices': ['none', 'scep', 'est'], 'type': 'str'},
+                'apcfg-auto-cert-est-ca-id': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-est-http-password': {'v_range': [['7.6.5', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'apcfg-auto-cert-est-http-username': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-est-https-ca': {'v_range': [['7.6.5', '']], 'type': 'list', 'elements': 'str'},
+                'apcfg-auto-cert-est-server': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-est-subject': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-est-subject-alt-name': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-scep-ca-id': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-scep-ec-name': {'v_range': [['7.6.5', '']], 'choices': ['secp256r1', 'secp384r1', 'secp521r1'], 'type': 'str'},
+                'apcfg-auto-cert-scep-https-ca': {'v_range': [['7.6.5', '']], 'type': 'list', 'elements': 'str'},
+                'apcfg-auto-cert-scep-keysize': {'v_range': [['7.6.5', '']], 'choices': ['1024', '1536', '2048', '4096'], 'type': 'str'},
+                'apcfg-auto-cert-scep-keytype': {'v_range': [['7.6.5', '']], 'choices': ['rsa', 'ec'], 'type': 'str'},
+                'apcfg-auto-cert-scep-password': {'v_range': [['7.6.5', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'apcfg-auto-cert-scep-sub-fully-dn': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-scep-subject-alt-name': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'apcfg-auto-cert-scep-url': {'v_range': [['7.6.5', '']], 'type': 'str'},
+                'lw-profile': {'v_range': [['7.6.5', '']], 'type': 'list', 'elements': 'str'}
             }
         }
     }

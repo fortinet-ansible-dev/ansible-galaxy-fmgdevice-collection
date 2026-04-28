@@ -16,7 +16,6 @@ short_description: Configure SNMP.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -136,6 +135,17 @@ options:
                         choices:
                             - 'disable'
                             - 'enable'
+                    hosts6:
+                        type: list
+                        elements: dict
+                        description: Hosts6.
+                        suboptions:
+                            id:
+                                type: int
+                                description: Host6 entry ID.
+                            ipv6:
+                                type: str
+                                description: IPv6 address of the SNMP manager
             contact_info:
                 aliases: ['contact-info']
                 type: str
@@ -164,6 +174,10 @@ options:
                         choices:
                             - 'md5'
                             - 'sha'
+                            - 'sha224'
+                            - 'sha256'
+                            - 'sha384'
+                            - 'sha512'
                     auth_pwd:
                         aliases: ['auth-pwd']
                         type: list
@@ -218,12 +232,18 @@ options:
                         choices:
                             - 'disable'
                             - 'enable'
+                    notify_hosts6:
+                        aliases: ['notify-hosts6']
+                        type: list
+                        elements: str
+                        description: Configure IPv6 SNMP User Notify Hosts.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -232,8 +252,8 @@ EXAMPLES = '''
     - name: Configure SNMP.
       fortinet.fmgdevice.fmgd_wireless_snmp:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -250,12 +270,15 @@ EXAMPLES = '''
           #     status: <value in [disable, enable]>
           #     trap_v1_status: <value in [disable, enable]>
           #     trap_v2c_status: <value in [disable, enable]>
+          #     hosts6:
+          #       - id: <integer>
+          #         ipv6: <string>
           # contact_info: <string>
           # engine_id: <string>
           # trap_high_cpu_threshold: <integer>
           # trap_high_mem_threshold: <integer>
           # user:
-          #   - auth_proto: <value in [md5, sha]>
+          #   - auth_proto: <value in [md5, sha, sha224, ...]>
           #     auth_pwd: <list or string>
           #     name: <string>
           #     notify_hosts: <list or string>
@@ -265,6 +288,7 @@ EXAMPLES = '''
           #     security_level: <value in [no-auth-no-priv, auth-no-priv, auth-priv]>
           #     status: <value in [disable, enable]>
           #     trap_status: <value in [disable, enable]>
+          #     notify_hosts6: <list or string>
 '''
 
 RETURN = '''
@@ -323,53 +347,64 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'wireless_snmp': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'community': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
                         'hosts': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'type': 'list',
                             'options': {
-                                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                                'ip': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                                'ip': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'}
                             },
                             'elements': 'dict'
                         },
-                        'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'query-v1-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'query-v2c-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'trap-v1-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'trap-v2c-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'query-v1-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'query-v2c-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'trap-v1-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'trap-v2c-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'hosts6': {
+                            'v_range': [['7.6.5', '']],
+                            'type': 'list',
+                            'options': {'id': {'v_range': [['7.6.5', '']], 'type': 'int'}, 'ipv6': {'v_range': [['7.6.5', '']], 'type': 'str'}},
+                            'elements': 'dict'
+                        }
                     },
                     'elements': 'dict'
                 },
-                'contact-info': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'engine-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'trap-high-cpu-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'trap-high-mem-threshold': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
+                'contact-info': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'engine-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'trap-high-cpu-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'trap-high-mem-threshold': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
                 'user': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'options': {
-                        'auth-proto': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['md5', 'sha'], 'type': 'str'},
-                        'auth-pwd': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                        'notify-hosts': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'priv-proto': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['aes', 'des', 'aes256', 'aes256cisco'], 'type': 'str'},
-                        'priv-pwd': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                        'queries': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'auth-proto': {
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'choices': ['md5', 'sha', 'sha224', 'sha256', 'sha384', 'sha512'],
+                            'type': 'str'
+                        },
+                        'auth-pwd': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                        'notify-hosts': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'priv-proto': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['aes', 'des', 'aes256', 'aes256cisco'], 'type': 'str'},
+                        'priv-pwd': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                        'queries': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                         'security-level': {
-                            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                             'choices': ['no-auth-no-priv', 'auth-no-priv', 'auth-priv'],
                             'type': 'str'
                         },
-                        'status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'trap-status': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'trap-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'notify-hosts6': {'v_range': [['7.6.5', '']], 'type': 'list', 'elements': 'str'}
                     },
                     'elements': 'dict'
                 }

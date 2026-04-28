@@ -16,7 +16,6 @@ short_description: Set IPv4 API Gateway.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -276,6 +275,13 @@ options:
                     weight:
                         type: int
                         description: Weight of the real server.
+                    verify_cert:
+                        aliases: ['verify-cert']
+                        type: str
+                        description: Enable/disable certificate verification of the real server.
+                        choices:
+                            - 'disable'
+                            - 'enable'
             service:
                 type: str
                 description: Service.
@@ -437,6 +443,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -445,8 +452,8 @@ EXAMPLES = '''
     - name: Set IPv4 API Gateway.
       fortinet.fmgdevice.fmgd_ztna_webproxy_apigateway:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -488,6 +495,7 @@ EXAMPLES = '''
           #     status: <value in [active, standby, disable]>
           #     translate_host: <value in [disable, enable]>
           #     weight: <integer>
+          #     verify_cert: <value in [disable, enable]>
           # service: <value in [http, https]>
           # ssl_algorithm: <value in [high, medium, low]>
           # ssl_cipher_suites:
@@ -607,7 +615,8 @@ def main():
                         'port': {'v_range': [['7.6.2', '']], 'type': 'int'},
                         'status': {'v_range': [['7.6.2', '']], 'choices': ['active', 'standby', 'disable'], 'type': 'str'},
                         'translate-host': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                        'weight': {'v_range': [['7.6.2', '']], 'type': 'int'}
+                        'weight': {'v_range': [['7.6.2', '']], 'type': 'int'},
+                        'verify-cert': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },

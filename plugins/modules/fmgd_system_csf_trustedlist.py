@@ -16,7 +16,6 @@ short_description: Pre-authorized and blocked security fabric nodes.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -123,12 +122,21 @@ options:
             serial:
                 type: str
                 description: Serial.
+            guaranteed_seats:
+                aliases: ['guaranteed-seats']
+                type: int
+                description: Guaranteed seats.
+            preferred_seats:
+                aliases: ['preferred-seats']
+                type: int
+                description: Preferred seats.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -137,8 +145,8 @@ EXAMPLES = '''
     - name: Pre-authorized and blocked security fabric nodes.
       fortinet.fmgdevice.fmgd_system_csf_trustedlist:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -152,6 +160,8 @@ EXAMPLES = '''
           # ha_members: <list or string>
           # index: <integer>
           # serial: <string>
+          # guaranteed_seats: <integer>
+          # preferred_seats: <integer>
 '''
 
 RETURN = '''
@@ -209,16 +219,18 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_csf_trustedlist': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'action': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['deny', 'accept'], 'type': 'str'},
-                'authorization-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['certificate', 'serial'], 'type': 'str'},
-                'certificate': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'downstream-authorization': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ha-members': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'index': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
-                'serial': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'}
+                'action': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['deny', 'accept'], 'type': 'str'},
+                'authorization-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['certificate', 'serial'], 'type': 'str'},
+                'certificate': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'downstream-authorization': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ha-members': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'index': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'serial': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'guaranteed-seats': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'int'},
+                'preferred-seats': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'int'}
             }
         }
     }

@@ -16,7 +16,6 @@ short_description: Configure SD-WAN zones.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -117,12 +116,14 @@ options:
                     - 'cfg-order'
                     - 'fib-best-match'
                     - 'input-device'
+                    - 'priority'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -131,8 +132,8 @@ EXAMPLES = '''
     - name: Configure SD-WAN zones.
       fortinet.fmgdevice.fmgd_system_sdwan_zone:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -143,7 +144,7 @@ EXAMPLES = '''
           # advpn_health_check: <list or string>
           # advpn_select: <value in [disable, enable]>
           # minimum_sla_meet_members: <integer>
-          # service_sla_tie_break: <value in [cfg-order, fib-best-match, input-device]>
+          # service_sla_tie_break: <value in [cfg-order, fib-best-match, input-device, ...]>
 '''
 
 RETURN = '''
@@ -202,15 +203,15 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'system_sdwan_zone': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'advpn-health-check': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'advpn-select': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'minimum-sla-meet-members': {'v_range': [['7.4.3', '']], 'type': 'int'},
-                'name': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'str'},
+                'name': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'str'},
                 'service-sla-tie-break': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
-                    'choices': ['cfg-order', 'fib-best-match', 'input-device'],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                    'choices': ['cfg-order', 'fib-best-match', 'input-device', 'priority'],
                     'type': 'str'
                 }
             }

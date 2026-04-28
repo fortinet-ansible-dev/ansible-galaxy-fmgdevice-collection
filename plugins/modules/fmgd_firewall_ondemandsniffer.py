@@ -16,7 +16,6 @@ short_description: Configure on-demand packet sniffer.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -124,12 +123,21 @@ options:
                 type: list
                 elements: int
                 description: Protocols to filter in this traffic sniffer.
+            hostnames:
+                type: list
+                elements: str
+                description: Hostnames.
+            snapshot_length:
+                aliases: ['snapshot-length']
+                type: int
+                description: Snapshot length.
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -138,8 +146,8 @@ EXAMPLES = '''
     - name: Configure on-demand packet sniffer.
       fortinet.fmgdevice.fmgd_firewall_ondemandsniffer:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -154,6 +162,8 @@ EXAMPLES = '''
           # non_ip_packet: <value in [disable, enable]>
           # ports: <list or integer>
           # protocols: <list or integer>
+          # hostnames: <list or string>
+          # snapshot_length: <integer>
 '''
 
 RETURN = '''
@@ -221,7 +231,9 @@ def main():
                 'name': {'v_range': [['7.4.3', '']], 'required': True, 'type': 'str'},
                 'non-ip-packet': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'ports': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'int'},
-                'protocols': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'int'}
+                'protocols': {'v_range': [['7.4.3', '']], 'type': 'list', 'elements': 'int'},
+                'hostnames': {'v_range': [['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'snapshot-length': {'v_range': [['7.6.4', '']], 'type': 'int'}
             }
         }
     }

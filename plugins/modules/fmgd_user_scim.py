@@ -16,7 +16,6 @@ short_description: Configure SCIM client entries.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -144,12 +143,19 @@ options:
                 type: list
                 elements: str
                 description: Certificate for token verification.
+            cascade:
+                type: str
+                description: Enable/disable to follow SCIM users/groups changes in IDP.
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -158,8 +164,8 @@ EXAMPLES = '''
     - name: Configure SCIM client entries.
       fortinet.fmgdevice.fmgd_user_scim:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -177,6 +183,7 @@ EXAMPLES = '''
           # auth_method: <value in [token, base]>
           # secret: <list or string>
           # token_certificate: <list or string>
+          # cascade: <value in [disable, enable]>
 '''
 
 RETURN = '''
@@ -235,19 +242,20 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'user_scim': {
             'type': 'dict',
-            'v_range': [['7.6.0', '']],
+            'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']],
             'options': {
-                'base-url': {'v_range': [['7.6.0', '']], 'type': 'str'},
-                'certificate': {'v_range': [['7.6.0', '']], 'type': 'list', 'elements': 'str'},
-                'client-authentication-method': {'v_range': [['7.6.0', '']], 'choices': ['token', 'base'], 'type': 'str'},
-                'client-identity-check': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'client-secret-token': {'v_range': [['7.6.0', '']], 'no_log': True, 'type': 'str'},
-                'id': {'v_range': [['7.6.0', '']], 'type': 'int'},
-                'name': {'v_range': [['7.6.0', '']], 'required': True, 'type': 'str'},
-                'status': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'auth-method': {'v_range': [['7.6.2', '']], 'choices': ['token', 'base'], 'type': 'str'},
-                'secret': {'v_range': [['7.6.2', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'token-certificate': {'v_range': [['7.6.2', '']], 'no_log': True, 'type': 'list', 'elements': 'str'}
+                'base-url': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'type': 'str'},
+                'certificate': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'client-authentication-method': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'choices': ['token', 'base'], 'type': 'str'},
+                'client-identity-check': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'client-secret-token': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'no_log': True, 'type': 'str'},
+                'id': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'type': 'int'},
+                'name': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'required': True, 'type': 'str'},
+                'status': {'v_range': [['7.6.0', '7.6.2'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'auth-method': {'v_range': [['7.6.2', '7.6.2'], ['7.6.4', '']], 'choices': ['token', 'base'], 'type': 'str'},
+                'secret': {'v_range': [['7.6.2', '7.6.2'], ['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'token-certificate': {'v_range': [['7.6.2', '7.6.2'], ['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'cascade': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }

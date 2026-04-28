@@ -16,7 +16,6 @@ short_description: Global configuration objects that can be configured independe
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -138,6 +137,7 @@ options:
                     - 'system.snmp.community'
                     - 'system.snmp.user'
                     - 'firewall.address'
+                    - 'system.vin-alarm'
             oid:
                 type: int
                 description: Object ID.
@@ -158,6 +158,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -166,8 +167,8 @@ EXAMPLES = '''
     - name: Global configuration objects that can be configured independently across different ha peers for all VDOMs or for the defined VDOM scope.
       fortinet.fmgdevice.fmgd_system_vdomexception:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -235,11 +236,11 @@ def main():
         'device': {'required': True, 'type': 'str'},
         'system_vdomexception': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
-                'id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'required': True, 'type': 'int'},
+                'id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'required': True, 'type': 'int'},
                 'object': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': [
                         'log.fortianalyzer.setting', 'log.fortianalyzer.override-setting', 'vpn.ipsec.phase1-interface', 'vpn.ipsec.phase2-interface',
                         'router.bgp', 'router.route-map', 'router.prefix-list', 'firewall.ippool', 'log.fortianalyzer2.setting',
@@ -250,13 +251,13 @@ def main():
                         'log.syslogd4.override-setting', 'firewall.vip', 'firewall.vip6', 'firewall.vip46', 'firewall.vip64', 'firewall.ippool6',
                         'router.static', 'router.static6', 'system.interface', 'system.sdwan', 'system.saml', 'router.policy', 'router.policy6',
                         'system.gre-tunnel', 'system.cluster-sync', 'system.standalone-cluster', 'system.snmp.sysinfo', 'system.snmp.community',
-                        'system.snmp.user', 'firewall.address'
+                        'system.snmp.user', 'firewall.address', 'system.vin-alarm'
                     ],
                     'type': 'str'
                 },
-                'oid': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'scope': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['all', 'inclusive', 'exclusive'], 'type': 'str'},
-                'vdom': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
+                'oid': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'scope': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['all', 'inclusive', 'exclusive'], 'type': 'str'},
+                'vdom': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'}
             }
         }
     }

@@ -16,7 +16,6 @@ short_description: Configure WCCP.
 description:
     - This module is able to configure a FortiManager device.
     - Examples include all parameters and values which need to be adjusted to data sources before usage.
-
 version_added: "1.0.0"
 author:
     - Xinwei Du (@dux-fortinet)
@@ -225,6 +224,7 @@ EXAMPLES = '''
 - name: Example playbook (generated based on argument schema)
   hosts: fortimanagers
   connection: httpapi
+  gather_facts: false
   vars:
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
@@ -233,8 +233,8 @@ EXAMPLES = '''
     - name: Configure WCCP.
       fortinet.fmgdevice.fmgd_system_wccp:
         # bypass_validation: false
-        workspace_locking_adom: <value in [global, custom adom including root]>
-        workspace_locking_timeout: 300
+        # workspace_locking_adom: <global or your adom name>
+        # workspace_locking_timeout: 300
         # rc_succeeded: [0, -2, -3, ...]
         # rc_failed: [-2, -3, ...]
         device: <your own value>
@@ -328,40 +328,40 @@ def main():
         'vdom': {'required': True, 'type': 'str'},
         'system_wccp': {
             'type': 'dict',
-            'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'assignment-bucket-format': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'choices': ['cisco-implementation', 'wccp-v2'],
                     'type': 'str'
                 },
-                'assignment-dstaddr-mask': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'assignment-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['HASH', 'MASK', 'any'], 'type': 'str'},
-                'assignment-srcaddr-mask': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'assignment-weight': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'authentication': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'cache-engine-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['GRE', 'L2'], 'type': 'str'},
-                'cache-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'forward-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['GRE', 'L2', 'any'], 'type': 'str'},
-                'group-address': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'password': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'ports': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'int'},
-                'ports-defined': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['source', 'destination'], 'type': 'str'},
+                'assignment-dstaddr-mask': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'assignment-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['HASH', 'MASK', 'any'], 'type': 'str'},
+                'assignment-srcaddr-mask': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'assignment-weight': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'authentication': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'cache-engine-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['GRE', 'L2'], 'type': 'str'},
+                'cache-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'forward-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['GRE', 'L2', 'any'], 'type': 'str'},
+                'group-address': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'password': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'ports': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'int'},
+                'ports-defined': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['source', 'destination'], 'type': 'str'},
                 'primary-hash': {
-                    'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']],
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
                     'choices': ['src-ip', 'dst-ip', 'src-port', 'dst-port', 'ports-defined', 'ports-source'],
                     'elements': 'str'
                 },
-                'priority': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'protocol': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'int'},
-                'return-method': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['GRE', 'L2', 'any'], 'type': 'str'},
-                'router-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'router-list': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'server-list': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
-                'server-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['forward', 'proxy'], 'type': 'str'},
-                'service-id': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'type': 'str'},
-                'service-type': {'v_range': [['7.2.6', '7.2.9'], ['7.4.3', '']], 'choices': ['standard', 'dynamic', 'auto'], 'type': 'str'}
+                'priority': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'protocol': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
+                'return-method': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['GRE', 'L2', 'any'], 'type': 'str'},
+                'router-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'router-list': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'server-list': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
+                'server-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['forward', 'proxy'], 'type': 'str'},
+                'service-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'service-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['standard', 'dynamic', 'auto'], 'type': 'str'}
             }
         }
     }
