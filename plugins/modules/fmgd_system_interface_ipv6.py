@@ -13,592 +13,474 @@ DOCUMENTATION = '''
 ---
 module: fmgd_system_interface_ipv6
 short_description: IPv6 of interface.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.partial_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  interface:
+    description: The parameter (interface) in requested url.
+    type: str
+    required: true
+  system_interface_ipv6:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      autoconf:
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        description: Enable/disable address auto config.
+        choices: ['disable', 'enable']
+      cli_conn6_status:
+        aliases: ['cli-conn6-status']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
-        type: str
-        required: true
-    interface:
-        description: The parameter (interface) in requested url.
-        type: str
-        required: true
-    system_interface_ipv6:
-        description: The top level parameters set.
-        required: false
-        type: dict
+        description: Cli conn6 status.
+      dhcp6_client_options:
+        aliases: ['dhcp6-client-options']
+        type: list
+        elements: str
+        description: Dhcp6 client options.
+        choices: ['rapid', 'iapd', 'iana', 'dns', 'dnsname']
+      dhcp6_iapd_list:
+        aliases: ['dhcp6-iapd-list']
+        type: list
+        elements: dict
+        description: Dhcp6 iapd list.
         suboptions:
-            autoconf:
-                type: str
-                description: Enable/disable address auto config.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            cli_conn6_status:
-                aliases: ['cli-conn6-status']
-                type: int
-                description: Cli conn6 status.
-            dhcp6_client_options:
-                aliases: ['dhcp6-client-options']
-                type: list
-                elements: str
-                description: Dhcp6 client options.
-                choices:
-                    - 'rapid'
-                    - 'iapd'
-                    - 'iana'
-                    - 'dns'
-                    - 'dnsname'
-            dhcp6_iapd_list:
-                aliases: ['dhcp6-iapd-list']
-                type: list
-                elements: dict
-                description: Dhcp6 iapd list.
-                suboptions:
-                    iaid:
-                        type: int
-                        description: Identity association identifier.
-                    prefix_hint:
-                        aliases: ['prefix-hint']
-                        type: str
-                        description: DHCPv6 prefix that will be used as a hint to the upstream DHCPv6 server.
-                    prefix_hint_plt:
-                        aliases: ['prefix-hint-plt']
-                        type: int
-                        description: DHCPv6 prefix hint preferred life time
-                    prefix_hint_vlt:
-                        aliases: ['prefix-hint-vlt']
-                        type: int
-                        description: DHCPv6 prefix hint valid life time
-            dhcp6_information_request:
-                aliases: ['dhcp6-information-request']
-                type: str
-                description: Enable/disable DHCPv6 information request.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhcp6_prefix_delegation:
-                aliases: ['dhcp6-prefix-delegation']
-                type: str
-                description: Enable/disable DHCPv6 prefix delegation.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhcp6_relay_interface_id:
-                aliases: ['dhcp6-relay-interface-id']
-                type: str
-                description: DHCP6 relay interface ID.
-            dhcp6_relay_ip:
-                aliases: ['dhcp6-relay-ip']
-                type: list
-                elements: str
-                description: DHCPv6 relay IP address.
-            dhcp6_relay_service:
-                aliases: ['dhcp6-relay-service']
-                type: str
-                description: Enable/disable DHCPv6 relay.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhcp6_relay_source_interface:
-                aliases: ['dhcp6-relay-source-interface']
-                type: str
-                description: Enable/disable use of address on this interface as the source address of the relay message.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhcp6_relay_source_ip:
-                aliases: ['dhcp6-relay-source-ip']
-                type: str
-                description: IPv6 address used by the DHCP6 relay as its source IP.
-            dhcp6_relay_type:
-                aliases: ['dhcp6-relay-type']
-                type: str
-                description: DHCPv6 relay type.
-                choices:
-                    - 'regular'
-            icmp6_send_redirect:
-                aliases: ['icmp6-send-redirect']
-                type: str
-                description: Enable/disable sending of ICMPv6 redirects.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            interface_identifier:
-                aliases: ['interface-identifier']
-                type: str
-                description: IPv6 interface identifier.
-            ip6_address:
-                aliases: ['ip6-address']
-                type: str
-                description: Primary IPv6 address prefix.
-            ip6_allowaccess:
-                aliases: ['ip6-allowaccess']
-                type: list
-                elements: str
-                description: Allow management access to the interface.
-                choices:
-                    - 'https'
-                    - 'ping'
-                    - 'ssh'
-                    - 'snmp'
-                    - 'http'
-                    - 'telnet'
-                    - 'fgfm'
-                    - 'capwap'
-                    - 'fabric'
-                    - 'scim'
-                    - 'probe-response'
-            ip6_default_life:
-                aliases: ['ip6-default-life']
-                type: int
-                description: Default life
-            ip6_delegated_prefix_iaid:
-                aliases: ['ip6-delegated-prefix-iaid']
-                type: int
-                description: IAID of obtained delegated-prefix from the upstream interface.
-            ip6_delegated_prefix_list:
-                aliases: ['ip6-delegated-prefix-list']
-                type: list
-                elements: dict
-                description: Ip6 delegated prefix list.
-                suboptions:
-                    autonomous_flag:
-                        aliases: ['autonomous-flag']
-                        type: str
-                        description: Enable/disable the autonomous flag.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    delegated_prefix_iaid:
-                        aliases: ['delegated-prefix-iaid']
-                        type: int
-                        description: IAID of obtained delegated-prefix from the upstream interface.
-                    onlink_flag:
-                        aliases: ['onlink-flag']
-                        type: str
-                        description: Enable/disable the onlink flag.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    prefix_id:
-                        aliases: ['prefix-id']
-                        type: int
-                        description: Prefix ID.
-                    rdnss:
-                        type: list
-                        elements: str
-                        description: Recursive DNS server option.
-                    rdnss_service:
-                        aliases: ['rdnss-service']
-                        type: str
-                        description: Recursive DNS service option.
-                        choices:
-                            - 'delegated'
-                            - 'default'
-                            - 'specify'
-                    subnet:
-                        type: str
-                        description: Add subnet ID to routing prefix.
-                    upstream_interface:
-                        aliases: ['upstream-interface']
-                        type: list
-                        elements: str
-                        description: Name of the interface that provides delegated information.
-                    dnssl_service:
-                        aliases: ['dnssl-service']
-                        type: str
-                        description: Enable/disable use of domain from delegated prefix for DNSSL.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            ip6_dns_server_override:
-                aliases: ['ip6-dns-server-override']
-                type: str
-                description: Enable/disable using the DNS server acquired by DHCP.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip6_extra_addr:
-                aliases: ['ip6-extra-addr']
-                type: list
-                elements: dict
-                description: Ip6 extra addr.
-                suboptions:
-                    prefix:
-                        type: str
-                        description: IPv6 address prefix.
-            ip6_hop_limit:
-                aliases: ['ip6-hop-limit']
-                type: int
-                description: Hop limit
-            ip6_link_mtu:
-                aliases: ['ip6-link-mtu']
-                type: int
-                description: IPv6 link MTU.
-            ip6_manage_flag:
-                aliases: ['ip6-manage-flag']
-                type: str
-                description: Enable/disable the managed flag.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip6_max_interval:
-                aliases: ['ip6-max-interval']
-                type: int
-                description: IPv6 maximum interval
-            ip6_min_interval:
-                aliases: ['ip6-min-interval']
-                type: int
-                description: IPv6 minimum interval
-            ip6_mode:
-                aliases: ['ip6-mode']
-                type: str
-                description: Addressing mode
-                choices:
-                    - 'static'
-                    - 'dhcp'
-                    - 'pppoe'
-                    - 'delegated'
-            ip6_other_flag:
-                aliases: ['ip6-other-flag']
-                type: str
-                description: Enable/disable the other IPv6 flag.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip6_prefix_list:
-                aliases: ['ip6-prefix-list']
-                type: list
-                elements: dict
-                description: Ip6 prefix list.
-                suboptions:
-                    autonomous_flag:
-                        aliases: ['autonomous-flag']
-                        type: str
-                        description: Enable/disable the autonomous flag.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    dnssl:
-                        type: list
-                        elements: str
-                        description: DNS search list option.
-                    onlink_flag:
-                        aliases: ['onlink-flag']
-                        type: str
-                        description: Enable/disable the onlink flag.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    preferred_life_time:
-                        aliases: ['preferred-life-time']
-                        type: int
-                        description: Preferred life time
-                    prefix:
-                        type: str
-                        description: IPv6 prefix.
-                    rdnss:
-                        type: list
-                        elements: str
-                        description: Recursive DNS server option.
-                    valid_life_time:
-                        aliases: ['valid-life-time']
-                        type: int
-                        description: Valid life time
-            ip6_prefix_mode:
-                aliases: ['ip6-prefix-mode']
-                type: str
-                description: Assigning a prefix from DHCP or RA.
-                choices:
-                    - 'dhcp6'
-                    - 'ra'
-            ip6_reachable_time:
-                aliases: ['ip6-reachable-time']
-                type: int
-                description: IPv6 reachable time
-            ip6_retrans_time:
-                aliases: ['ip6-retrans-time']
-                type: int
-                description: IPv6 retransmit time
-            ip6_send_adv:
-                aliases: ['ip6-send-adv']
-                type: str
-                description: Enable/disable sending advertisements about the interface.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip6_subnet:
-                aliases: ['ip6-subnet']
-                type: str
-                description: Subnet to routing prefix.
-            ip6_upstream_interface:
-                aliases: ['ip6-upstream-interface']
-                type: list
-                elements: str
-                description: Interface name providing delegated information.
-            nd_cert:
-                aliases: ['nd-cert']
-                type: list
-                elements: str
-                description: Neighbor discovery certificate.
-            nd_cga_modifier:
-                aliases: ['nd-cga-modifier']
-                type: str
-                description: Neighbor discovery CGA modifier.
-            nd_mode:
-                aliases: ['nd-mode']
-                type: str
-                description: Neighbor discovery mode.
-                choices:
-                    - 'basic'
-                    - 'SEND-compatible'
-            nd_security_level:
-                aliases: ['nd-security-level']
-                type: int
-                description: Neighbor discovery security level
-            nd_timestamp_delta:
-                aliases: ['nd-timestamp-delta']
-                type: int
-                description: Neighbor discovery timestamp delta value
-            nd_timestamp_fuzz:
-                aliases: ['nd-timestamp-fuzz']
-                type: int
-                description: Neighbor discovery timestamp fuzz factor
-            ra_send_mtu:
-                aliases: ['ra-send-mtu']
-                type: str
-                description: Enable/disable sending link MTU in RA packet.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            unique_autoconf_addr:
-                aliases: ['unique-autoconf-addr']
-                type: str
-                description: Enable/disable unique auto config address.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            vrip6_link_local:
-                type: str
-                description: Link-local IPv6 address of virtual router.
-            vrrp_virtual_mac6:
-                aliases: ['vrrp-virtual-mac6']
-                type: str
-                description: Enable/disable virtual MAC for VRRP.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            vrrp6:
-                type: list
-                elements: dict
-                description: Vrrp6.
-                suboptions:
-                    accept_mode:
-                        aliases: ['accept-mode']
-                        type: str
-                        description: Enable/disable accept mode.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    adv_interval:
-                        aliases: ['adv-interval']
-                        type: int
-                        description: Advertisement interval
-                    ignore_default_route:
-                        aliases: ['ignore-default-route']
-                        type: str
-                        description: Enable/disable ignoring of default route when checking destination.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    preempt:
-                        type: str
-                        description: Enable/disable preempt mode.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    priority:
-                        type: int
-                        description: Priority of the virtual router
-                    start_time:
-                        aliases: ['start-time']
-                        type: int
-                        description: Startup time
-                    status:
-                        type: str
-                        description: Enable/disable VRRP.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    vrdst6:
-                        type: list
-                        elements: str
-                        description: Monitor the route to this destination.
-                    vrgrp:
-                        type: int
-                        description: VRRP group ID
-                    vrid:
-                        type: int
-                        description: Virtual router identifier
-                    vrip6:
-                        type: str
-                        description: IPv6 address of the virtual router.
-                    vrdst_priority:
-                        aliases: ['vrdst-priority']
-                        type: int
-                        description: Priority of the virtual router when the virtual router destination becomes unreachable
-            dhcp6_prefix_hint_vlt:
-                aliases: ['dhcp6-prefix-hint-vlt']
-                type: int
-                description: DHCPv6 prefix hint valid life time
-            dhcp6_prefix_hint:
-                aliases: ['dhcp6-prefix-hint']
-                type: str
-                description: DHCPv6 prefix that will be used as a hint to the upstream DHCPv6 server.
-            dhcp6_prefix_hint_plt:
-                aliases: ['dhcp6-prefix-hint-plt']
-                type: int
-                description: DHCPv6 prefix hint preferred life time
-            client_options:
-                aliases: ['client-options']
-                type: list
-                elements: dict
-                description: Client options.
-                suboptions:
-                    code:
-                        type: int
-                        description: DHCPv6 option code.
-                    id:
-                        type: int
-                        description: ID.
-                    ip6:
-                        type: str
-                        description: DHCP option IP6s.
-                    type:
-                        type: str
-                        description: DHCPv6 option type.
-                        choices:
-                            - 'hex'
-                            - 'string'
-                            - 'ip6'
-                            - 'fqdn'
-                    value:
-                        type: str
-                        description: DHCPv6 option value
-            ip6_adv_rio:
-                aliases: ['ip6-adv-rio']
-                type: str
-                description: Enable/disable sending advertisements with route information option.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip6_dnssl_list:
-                aliases: ['ip6-dnssl-list']
-                type: list
-                elements: dict
-                description: Ip6 dnssl list.
-                suboptions:
-                    dnssl_life_time:
-                        aliases: ['dnssl-life-time']
-                        type: int
-                        description: DNS search list time in seconds
-                    domain:
-                        type: str
-                        description: Domain name.
-            ip6_rdnss_list:
-                aliases: ['ip6-rdnss-list']
-                type: list
-                elements: dict
-                description: Ip6 rdnss list.
-                suboptions:
-                    rdnss:
-                        type: str
-                        description: Recursive DNS server option.
-                    rdnss_life_time:
-                        aliases: ['rdnss-life-time']
-                        type: int
-                        description: Recursive DNS server life time in seconds
-            ip6_route_list:
-                aliases: ['ip6-route-list']
-                type: list
-                elements: dict
-                description: Ip6 route list.
-                suboptions:
-                    route:
-                        type: str
-                        description: IPv6 route.
-                    route_life_time:
-                        aliases: ['route-life-time']
-                        type: int
-                        description: Route life time in seconds
-                    route_pref:
-                        aliases: ['route-pref']
-                        type: str
-                        description: Set route preference to the interface
-                        choices:
-                            - 'medium'
-                            - 'high'
-                            - 'low'
-            ip6_route_pref:
-                aliases: ['ip6-route-pref']
-                type: str
-                description: Set route preference to the interface
-                choices:
-                    - 'medium'
-                    - 'high'
-                    - 'low'
+          iaid:
+            type: int
+            description: Identity association identifier.
+          prefix_hint:
+            aliases: ['prefix-hint']
+            type: str
+            description: DHCPv6 prefix that will be used as a hint to the upstream DHCPv6 server.
+          prefix_hint_plt:
+            aliases: ['prefix-hint-plt']
+            type: int
+            description: DHCPv6 prefix hint preferred life time
+          prefix_hint_vlt:
+            aliases: ['prefix-hint-vlt']
+            type: int
+            description: DHCPv6 prefix hint valid life time
+      dhcp6_information_request:
+        aliases: ['dhcp6-information-request']
+        type: str
+        description: Enable/disable DHCPv6 information request.
+        choices: ['disable', 'enable']
+      dhcp6_prefix_delegation:
+        aliases: ['dhcp6-prefix-delegation']
+        type: str
+        description: Enable/disable DHCPv6 prefix delegation.
+        choices: ['disable', 'enable']
+      dhcp6_relay_interface_id:
+        aliases: ['dhcp6-relay-interface-id']
+        type: str
+        description: DHCP6 relay interface ID.
+      dhcp6_relay_ip:
+        aliases: ['dhcp6-relay-ip']
+        type: list
+        elements: str
+        description: DHCPv6 relay IP address.
+      dhcp6_relay_service:
+        aliases: ['dhcp6-relay-service']
+        type: str
+        description: Enable/disable DHCPv6 relay.
+        choices: ['disable', 'enable']
+      dhcp6_relay_source_interface:
+        aliases: ['dhcp6-relay-source-interface']
+        type: str
+        description: Enable/disable use of address on this interface as the source address of the relay message.
+        choices: ['disable', 'enable']
+      dhcp6_relay_source_ip:
+        aliases: ['dhcp6-relay-source-ip']
+        type: str
+        description: IPv6 address used by the DHCP6 relay as its source IP.
+      dhcp6_relay_type:
+        aliases: ['dhcp6-relay-type']
+        type: str
+        description: DHCPv6 relay type.
+        choices: ['regular']
+      icmp6_send_redirect:
+        aliases: ['icmp6-send-redirect']
+        type: str
+        description: Enable/disable sending of ICMPv6 redirects.
+        choices: ['disable', 'enable']
+      interface_identifier:
+        aliases: ['interface-identifier']
+        type: str
+        description: IPv6 interface identifier.
+      ip6_address:
+        aliases: ['ip6-address']
+        type: str
+        description: Primary IPv6 address prefix.
+      ip6_allowaccess:
+        aliases: ['ip6-allowaccess']
+        type: list
+        elements: str
+        description: Allow management access to the interface.
+        choices: ['https', 'ping', 'ssh', 'snmp', 'http', 'telnet', 'fgfm', 'capwap', 'fabric',
+                  'scim', 'probe-response', 'mqtt']
+      ip6_default_life:
+        aliases: ['ip6-default-life']
+        type: int
+        description: Default life
+      ip6_delegated_prefix_iaid:
+        aliases: ['ip6-delegated-prefix-iaid']
+        type: int
+        description: IAID of obtained delegated-prefix from the upstream interface.
+      ip6_delegated_prefix_list:
+        aliases: ['ip6-delegated-prefix-list']
+        type: list
+        elements: dict
+        description: Ip6 delegated prefix list.
+        suboptions:
+          autonomous_flag:
+            aliases: ['autonomous-flag']
+            type: str
+            description: Enable/disable the autonomous flag.
+            choices: ['disable', 'enable']
+          delegated_prefix_iaid:
+            aliases: ['delegated-prefix-iaid']
+            type: int
+            description: IAID of obtained delegated-prefix from the upstream interface.
+          onlink_flag:
+            aliases: ['onlink-flag']
+            type: str
+            description: Enable/disable the onlink flag.
+            choices: ['disable', 'enable']
+          prefix_id:
+            aliases: ['prefix-id']
+            type: int
+            description: Prefix ID.
+          rdnss:
+            type: list
+            elements: str
+            description: Recursive DNS server option.
+          rdnss_service:
+            aliases: ['rdnss-service']
+            type: str
+            description: Recursive DNS service option.
+            choices: ['delegated', 'default', 'specify']
+          subnet:
+            type: str
+            description: Add subnet ID to routing prefix.
+          upstream_interface:
+            aliases: ['upstream-interface']
+            type: list
+            elements: str
+            description: Name of the interface that provides delegated information.
+          dnssl_service:
+            aliases: ['dnssl-service']
+            type: str
+            description: Enable/disable use of domain from delegated prefix for DNSSL.
+            choices: ['disable', 'enable']
+      ip6_dns_server_override:
+        aliases: ['ip6-dns-server-override']
+        type: str
+        description: Enable/disable using the DNS server acquired by DHCP.
+        choices: ['disable', 'enable']
+      ip6_extra_addr:
+        aliases: ['ip6-extra-addr']
+        type: list
+        elements: dict
+        description: Ip6 extra addr.
+        suboptions:
+          prefix:
+            type: str
+            description: IPv6 address prefix.
+      ip6_hop_limit:
+        aliases: ['ip6-hop-limit']
+        type: int
+        description: Hop limit
+      ip6_link_mtu:
+        aliases: ['ip6-link-mtu']
+        type: int
+        description: IPv6 link MTU.
+      ip6_manage_flag:
+        aliases: ['ip6-manage-flag']
+        type: str
+        description: Enable/disable the managed flag.
+        choices: ['disable', 'enable']
+      ip6_max_interval:
+        aliases: ['ip6-max-interval']
+        type: int
+        description: IPv6 maximum interval
+      ip6_min_interval:
+        aliases: ['ip6-min-interval']
+        type: int
+        description: IPv6 minimum interval
+      ip6_mode:
+        aliases: ['ip6-mode']
+        type: str
+        description: Addressing mode
+        choices: ['static', 'dhcp', 'pppoe', 'delegated']
+      ip6_other_flag:
+        aliases: ['ip6-other-flag']
+        type: str
+        description: Enable/disable the other IPv6 flag.
+        choices: ['disable', 'enable']
+      ip6_prefix_list:
+        aliases: ['ip6-prefix-list']
+        type: list
+        elements: dict
+        description: Ip6 prefix list.
+        suboptions:
+          autonomous_flag:
+            aliases: ['autonomous-flag']
+            type: str
+            description: Enable/disable the autonomous flag.
+            choices: ['disable', 'enable']
+          dnssl:
+            type: list
+            elements: str
+            description: DNS search list option.
+          onlink_flag:
+            aliases: ['onlink-flag']
+            type: str
+            description: Enable/disable the onlink flag.
+            choices: ['disable', 'enable']
+          preferred_life_time:
+            aliases: ['preferred-life-time']
+            type: int
+            description: Preferred life time
+          prefix:
+            type: str
+            description: IPv6 prefix.
+          rdnss:
+            type: list
+            elements: str
+            description: Recursive DNS server option.
+          valid_life_time:
+            aliases: ['valid-life-time']
+            type: int
+            description: Valid life time
+      ip6_prefix_mode:
+        aliases: ['ip6-prefix-mode']
+        type: str
+        description: Assigning a prefix from DHCP or RA.
+        choices: ['dhcp6', 'ra']
+      ip6_reachable_time:
+        aliases: ['ip6-reachable-time']
+        type: int
+        description: IPv6 reachable time
+      ip6_retrans_time:
+        aliases: ['ip6-retrans-time']
+        type: int
+        description: IPv6 retransmit time
+      ip6_send_adv:
+        aliases: ['ip6-send-adv']
+        type: str
+        description: Enable/disable sending advertisements about the interface.
+        choices: ['disable', 'enable']
+      ip6_subnet:
+        aliases: ['ip6-subnet']
+        type: str
+        description: Subnet to routing prefix.
+      ip6_upstream_interface:
+        aliases: ['ip6-upstream-interface']
+        type: list
+        elements: str
+        description: Interface name providing delegated information.
+      nd_cert:
+        aliases: ['nd-cert']
+        type: list
+        elements: str
+        description: Neighbor discovery certificate.
+      nd_cga_modifier:
+        aliases: ['nd-cga-modifier']
+        type: str
+        description: Neighbor discovery CGA modifier.
+      nd_mode:
+        aliases: ['nd-mode']
+        type: str
+        description: Neighbor discovery mode.
+        choices: ['basic', 'SEND-compatible']
+      nd_security_level:
+        aliases: ['nd-security-level']
+        type: int
+        description: Neighbor discovery security level
+      nd_timestamp_delta:
+        aliases: ['nd-timestamp-delta']
+        type: int
+        description: Neighbor discovery timestamp delta value
+      nd_timestamp_fuzz:
+        aliases: ['nd-timestamp-fuzz']
+        type: int
+        description: Neighbor discovery timestamp fuzz factor
+      ra_send_mtu:
+        aliases: ['ra-send-mtu']
+        type: str
+        description: Enable/disable sending link MTU in RA packet.
+        choices: ['disable', 'enable']
+      unique_autoconf_addr:
+        aliases: ['unique-autoconf-addr']
+        type: str
+        description: Enable/disable unique auto config address.
+        choices: ['disable', 'enable']
+      vrip6_link_local:
+        type: str
+        description: Link-local IPv6 address of virtual router.
+      vrrp_virtual_mac6:
+        aliases: ['vrrp-virtual-mac6']
+        type: str
+        description: Enable/disable virtual MAC for VRRP.
+        choices: ['disable', 'enable']
+      vrrp6:
+        type: list
+        elements: dict
+        description: Vrrp6.
+        suboptions:
+          accept_mode:
+            aliases: ['accept-mode']
+            type: str
+            description: Enable/disable accept mode.
+            choices: ['disable', 'enable']
+          adv_interval:
+            aliases: ['adv-interval']
+            type: int
+            description: Advertisement interval
+          ignore_default_route:
+            aliases: ['ignore-default-route']
+            type: str
+            description: Enable/disable ignoring of default route when checking destination.
+            choices: ['disable', 'enable']
+          preempt:
+            type: str
+            description: Enable/disable preempt mode.
+            choices: ['disable', 'enable']
+          priority:
+            type: int
+            description: Priority of the virtual router
+          start_time:
+            aliases: ['start-time']
+            type: int
+            description: Startup time
+          status:
+            type: str
+            description: Enable/disable VRRP.
+            choices: ['disable', 'enable']
+          vrdst6:
+            type: list
+            elements: str
+            description: Monitor the route to this destination.
+          vrgrp:
+            type: int
+            description: VRRP group ID
+          vrid:
+            type: int
+            description: Virtual router identifier
+          vrip6:
+            type: str
+            description: IPv6 address of the virtual router.
+          vrdst_priority:
+            aliases: ['vrdst-priority']
+            type: int
+            description: Priority of the virtual router when the virtual router destination becomes unreachable
+      dhcp6_prefix_hint_vlt:
+        aliases: ['dhcp6-prefix-hint-vlt']
+        type: int
+        description: DHCPv6 prefix hint valid life time
+      dhcp6_prefix_hint:
+        aliases: ['dhcp6-prefix-hint']
+        type: str
+        description: DHCPv6 prefix that will be used as a hint to the upstream DHCPv6 server.
+      dhcp6_prefix_hint_plt:
+        aliases: ['dhcp6-prefix-hint-plt']
+        type: int
+        description: DHCPv6 prefix hint preferred life time
+      client_options:
+        aliases: ['client-options']
+        type: list
+        elements: dict
+        description: Client options.
+        suboptions:
+          code:
+            type: int
+            description: DHCPv6 option code.
+          id:
+            type: int
+            description: ID.
+          ip6:
+            type: str
+            description: DHCP option IP6s.
+          type:
+            type: str
+            description: DHCPv6 option type.
+            choices: ['hex', 'string', 'ip6', 'fqdn']
+          value:
+            type: str
+            description: DHCPv6 option value
+      ip6_adv_rio:
+        aliases: ['ip6-adv-rio']
+        type: str
+        description: Enable/disable sending advertisements with route information option.
+        choices: ['disable', 'enable']
+      ip6_dnssl_list:
+        aliases: ['ip6-dnssl-list']
+        type: list
+        elements: dict
+        description: Ip6 dnssl list.
+        suboptions:
+          dnssl_life_time:
+            aliases: ['dnssl-life-time']
+            type: int
+            description: DNS search list time in seconds
+          domain:
+            type: str
+            description: Domain name.
+      ip6_rdnss_list:
+        aliases: ['ip6-rdnss-list']
+        type: list
+        elements: dict
+        description: Ip6 rdnss list.
+        suboptions:
+          rdnss:
+            type: str
+            description: Recursive DNS server option.
+          rdnss_life_time:
+            aliases: ['rdnss-life-time']
+            type: int
+            description: Recursive DNS server life time in seconds
+      ip6_route_list:
+        aliases: ['ip6-route-list']
+        type: list
+        elements: dict
+        description: Ip6 route list.
+        suboptions:
+          route:
+            type: str
+            description: IPv6 route.
+          route_life_time:
+            aliases: ['route-life-time']
+            type: int
+            description: Route life time in seconds
+          route_pref:
+            aliases: ['route-pref']
+            type: str
+            description: Set route preference to the interface
+            choices: ['medium', 'high', 'low']
+      ip6_route_pref:
+        aliases: ['ip6-route-pref']
+        type: str
+        description: Set route preference to the interface
+        choices: ['medium', 'high', 'low']
+      dhcp6_egress_cos:
+        aliases: ['dhcp6-egress-cos']
+        type: str
+        description: CoS in VLAN tag for outgoing DHCPv6 packets.
+        choices: ['cos0', 'cos1', 'cos2', 'cos3', 'cos4', 'cos5', 'cos6', 'cos7']
+      ip6_link_local:
+        aliases: ['ip6-link-local']
+        type: str
+        description: IPv6 link-local address of interface.
+      ip6_mgmt_address:
+        aliases: ['ip6-mgmt-address']
+        type: str
+        description: High Availability in-band management IPv6 address of this interface and should be in the same subnet with primary IPv6 address
 '''
 
 EXAMPLES = '''
@@ -606,29 +488,16 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: IPv6 of interface.
       fortinet.fmgdevice.fmgd_system_interface_ipv6:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         interface: <your own value>
         system_interface_ipv6:
           # autoconf: <value in [disable, enable]>
           # cli_conn6_status: <integer>
-          # dhcp6_client_options:
-          #   - "rapid"
-          #   - "iapd"
-          #   - "iana"
-          #   - "dns"
-          #   - "dnsname"
+          # dhcp6_client_options: ["rapid", "iapd", "iana", "dns", "dnsname"]
           # dhcp6_iapd_list:
           #   - iaid: <integer>
           #     prefix_hint: <string>
@@ -645,18 +514,8 @@ EXAMPLES = '''
           # icmp6_send_redirect: <value in [disable, enable]>
           # interface_identifier: <string>
           # ip6_address: <string>
-          # ip6_allowaccess:
-          #   - "https"
-          #   - "ping"
-          #   - "ssh"
-          #   - "snmp"
-          #   - "http"
-          #   - "telnet"
-          #   - "fgfm"
-          #   - "capwap"
-          #   - "fabric"
-          #   - "scim"
-          #   - "probe-response"
+          # ip6_allowaccess: ["https", "ping", "ssh", "snmp", "http", "telnet", "fgfm", "capwap",
+          #                   "fabric", "scim", "probe-response", "mqtt"]
           # ip6_default_life: <integer>
           # ip6_delegated_prefix_iaid: <integer>
           # ip6_delegated_prefix_list:
@@ -737,46 +596,49 @@ EXAMPLES = '''
           #     route_life_time: <integer>
           #     route_pref: <value in [medium, high, low]>
           # ip6_route_pref: <value in [medium, high, low]>
+          # dhcp6_egress_cos: <value in [cos0, cos1, cos2, ...]>
+          # ip6_link_local: <string>
+          # ip6_mgmt_address: <string>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -788,14 +650,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/global/system/interface/{interface}/ipv6'
     ]
-    url_params = ['device', 'interface']
-    module_primary_key = None
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'interface': {'required': True, 'type': 'str'},
         'system_interface_ipv6': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'autoconf': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'cli-conn6-status': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
@@ -830,7 +689,7 @@ def main():
                 'ip6-allowaccess': {
                     'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
-                    'choices': ['https', 'ping', 'ssh', 'snmp', 'http', 'telnet', 'fgfm', 'capwap', 'fabric', 'scim', 'probe-response'],
+                    'choices': ['https', 'ping', 'ssh', 'snmp', 'http', 'telnet', 'fgfm', 'capwap', 'fabric', 'scim', 'probe-response', 'mqtt'],
                     'elements': 'str'
                 },
                 'ip6-default-life': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
@@ -952,26 +811,29 @@ def main():
                     },
                     'elements': 'dict'
                 },
-                'ip6-route-pref': {'v_range': [['7.6.2', '']], 'choices': ['medium', 'high', 'low'], 'type': 'str'}
+                'ip6-route-pref': {'v_range': [['7.6.2', '']], 'choices': ['medium', 'high', 'low'], 'type': 'str'},
+                'dhcp6-egress-cos': {
+                    'v_range': [['8.0.0', '']],
+                    'choices': ['cos0', 'cos1', 'cos2', 'cos3', 'cos4', 'cos5', 'cos6', 'cos7'],
+                    'type': 'str'
+                },
+                'ip6-link-local': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                'ip6-mgmt-address': {'v_range': [['8.0.0', '']], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('partial crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'system_interface_ipv6'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list,
+                       None, 'data', module, connection)
     fmgd.process_partial_crud()
-
     module.exit_json(meta=module.params)
 
 

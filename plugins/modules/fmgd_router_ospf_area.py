@@ -13,267 +13,178 @@ DOCUMENTATION = '''
 ---
 module: fmgd_router_ospf_area
 short_description: OSPF area configuration.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  router_ospf_area:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      authentication:
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Authentication type.
+        choices: ['none', 'text', 'md5', 'message-digest']
+      comments:
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
-        type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        description: Comment.
+      default_cost:
+        aliases: ['default-cost']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
-        type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
-        type: str
-        required: true
-    router_ospf_area:
-        description: The top level parameters set.
-        required: false
-        type: dict
+        description: Summary default cost of stub or NSSA area.
+      filter_list:
+        aliases: ['filter-list']
+        type: list
+        elements: dict
+        description: Filter list.
         suboptions:
-            authentication:
-                type: str
-                description: Authentication type.
-                choices:
-                    - 'none'
-                    - 'text'
-                    - 'md5'
-                    - 'message-digest'
-            comments:
-                type: str
-                description: Comment.
-            default_cost:
-                aliases: ['default-cost']
+          direction:
+            type: str
+            description: Direction.
+            choices: ['out', 'in']
+          id:
+            type: int
+            description: Filter list entry ID.
+          list:
+            type: list
+            elements: str
+            description: Access-list or prefix-list name.
+      id:
+        type: str
+        description: Area entry IP address.
+        required: true
+      nssa_default_information_originate:
+        aliases: ['nssa-default-information-originate']
+        type: str
+        description: Redistribute, advertise, or do not originate Type-7 default route into NSSA area.
+        choices: ['disable', 'enable', 'always']
+      nssa_default_information_originate_metric:
+        aliases: ['nssa-default-information-originate-metric']
+        type: int
+        description: OSPF default metric.
+      nssa_default_information_originate_metric_type:
+        aliases: ['nssa-default-information-originate-metric-type']
+        type: str
+        description: OSPF metric type for default routes.
+        choices: ['2', '1']
+      nssa_redistribution:
+        aliases: ['nssa-redistribution']
+        type: str
+        description: Enable/disable redistribute into NSSA area.
+        choices: ['disable', 'enable']
+      nssa_translator_role:
+        aliases: ['nssa-translator-role']
+        type: str
+        description: NSSA translator role type.
+        choices: ['candidate', 'never', 'always']
+      range:
+        type: list
+        elements: dict
+        description: Range.
+        suboptions:
+          advertise:
+            type: str
+            description: Enable/disable advertise status.
+            choices: ['disable', 'enable']
+          id:
+            type: int
+            description: Range entry ID.
+          prefix:
+            type: list
+            elements: str
+            description: Prefix.
+          substitute:
+            type: list
+            elements: str
+            description: Substitute prefix.
+          substitute_status:
+            aliases: ['substitute-status']
+            type: str
+            description: Enable/disable substitute status.
+            choices: ['disable', 'enable']
+      shortcut:
+        type: str
+        description: Enable/disable shortcut option.
+        choices: ['disable', 'enable', 'default']
+      stub_type:
+        aliases: ['stub-type']
+        type: str
+        description: Stub summary setting.
+        choices: ['summary', 'no-summary']
+      type:
+        type: str
+        description: Area type setting.
+        choices: ['regular', 'nssa', 'stub']
+      virtual_link:
+        aliases: ['virtual-link']
+        type: list
+        elements: dict
+        description: Virtual link.
+        suboptions:
+          authentication:
+            type: str
+            description: Authentication type.
+            choices: ['none', 'text', 'md5', 'message-digest']
+          authentication_key:
+            aliases: ['authentication-key']
+            type: list
+            elements: str
+            description: Authentication key.
+          dead_interval:
+            aliases: ['dead-interval']
+            type: int
+            description: Dead interval.
+          hello_interval:
+            aliases: ['hello-interval']
+            type: int
+            description: Hello interval.
+          keychain:
+            type: list
+            elements: str
+            description: Message-digest key-chain name.
+          md5_keys:
+            aliases: ['md5-keys']
+            type: list
+            elements: dict
+            description: Md5 keys.
+            suboptions:
+              id:
                 type: int
-                description: Summary default cost of stub or NSSA area.
-            filter_list:
-                aliases: ['filter-list']
+                description: Key ID
+              key_string:
+                aliases: ['key-string']
                 type: list
-                elements: dict
-                description: Filter list.
-                suboptions:
-                    direction:
-                        type: str
-                        description: Direction.
-                        choices:
-                            - 'out'
-                            - 'in'
-                    id:
-                        type: int
-                        description: Filter list entry ID.
-                    list:
-                        type: list
-                        elements: str
-                        description: Access-list or prefix-list name.
-            id:
-                type: str
-                description: Area entry IP address.
-                required: true
-            nssa_default_information_originate:
-                aliases: ['nssa-default-information-originate']
-                type: str
-                description: Redistribute, advertise, or do not originate Type-7 default route into NSSA area.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'always'
-            nssa_default_information_originate_metric:
-                aliases: ['nssa-default-information-originate-metric']
-                type: int
-                description: OSPF default metric.
-            nssa_default_information_originate_metric_type:
-                aliases: ['nssa-default-information-originate-metric-type']
-                type: str
-                description: OSPF metric type for default routes.
-                choices:
-                    - '2'
-                    - '1'
-            nssa_redistribution:
-                aliases: ['nssa-redistribution']
-                type: str
-                description: Enable/disable redistribute into NSSA area.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            nssa_translator_role:
-                aliases: ['nssa-translator-role']
-                type: str
-                description: NSSA translator role type.
-                choices:
-                    - 'candidate'
-                    - 'never'
-                    - 'always'
-            range:
-                type: list
-                elements: dict
-                description: Range.
-                suboptions:
-                    advertise:
-                        type: str
-                        description: Enable/disable advertise status.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    id:
-                        type: int
-                        description: Range entry ID.
-                    prefix:
-                        type: list
-                        elements: str
-                        description: Prefix.
-                    substitute:
-                        type: list
-                        elements: str
-                        description: Substitute prefix.
-                    substitute_status:
-                        aliases: ['substitute-status']
-                        type: str
-                        description: Enable/disable substitute status.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            shortcut:
-                type: str
-                description: Enable/disable shortcut option.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'default'
-            stub_type:
-                aliases: ['stub-type']
-                type: str
-                description: Stub summary setting.
-                choices:
-                    - 'summary'
-                    - 'no-summary'
-            type:
-                type: str
-                description: Area type setting.
-                choices:
-                    - 'regular'
-                    - 'nssa'
-                    - 'stub'
-            virtual_link:
-                aliases: ['virtual-link']
-                type: list
-                elements: dict
-                description: Virtual link.
-                suboptions:
-                    authentication:
-                        type: str
-                        description: Authentication type.
-                        choices:
-                            - 'none'
-                            - 'text'
-                            - 'md5'
-                            - 'message-digest'
-                    authentication_key:
-                        aliases: ['authentication-key']
-                        type: list
-                        elements: str
-                        description: Authentication key.
-                    dead_interval:
-                        aliases: ['dead-interval']
-                        type: int
-                        description: Dead interval.
-                    hello_interval:
-                        aliases: ['hello-interval']
-                        type: int
-                        description: Hello interval.
-                    keychain:
-                        type: list
-                        elements: str
-                        description: Message-digest key-chain name.
-                    md5_keys:
-                        aliases: ['md5-keys']
-                        type: list
-                        elements: dict
-                        description: Md5 keys.
-                        suboptions:
-                            id:
-                                type: int
-                                description: Key ID
-                            key_string:
-                                aliases: ['key-string']
-                                type: list
-                                elements: str
-                                description: Password for the key.
-                    name:
-                        type: str
-                        description: Virtual link entry name.
-                    peer:
-                        type: str
-                        description: Peer IP.
-                    retransmit_interval:
-                        aliases: ['retransmit-interval']
-                        type: int
-                        description: Retransmit interval.
-                    transmit_delay:
-                        aliases: ['transmit-delay']
-                        type: int
-                        description: Transmit delay.
-                    md5_keychain:
-                        aliases: ['md5-keychain']
-                        type: list
-                        elements: str
-                        description: Authentication MD5 key-chain name.
+                elements: str
+                description: Password for the key.
+          name:
+            type: str
+            description: Virtual link entry name.
+          peer:
+            type: str
+            description: Peer IP.
+          retransmit_interval:
+            aliases: ['retransmit-interval']
+            type: int
+            description: Retransmit interval.
+          transmit_delay:
+            aliases: ['transmit-delay']
+            type: int
+            description: Transmit delay.
+          md5_keychain:
+            aliases: ['md5-keychain']
+            type: list
+            elements: str
+            description: Authentication MD5 key-chain name.
 '''
 
 EXAMPLES = '''
@@ -281,18 +192,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: OSPF area configuration.
       fortinet.fmgdevice.fmgd_router_ospf_area:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         state: present # <value in [present, absent]>
@@ -337,42 +240,42 @@ EXAMPLES = '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -384,14 +287,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/router/ospf/area'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = 'id'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'router_ospf_area': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'authentication': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['none', 'text', 'md5', 'message-digest'], 'type': 'str'},
                 'comments': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
@@ -468,19 +368,15 @@ def main():
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'router_ospf_area'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'id', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

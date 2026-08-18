@@ -13,562 +13,293 @@ DOCUMENTATION = '''
 ---
 module: fmgd_vpn_ipsec_phase2interface
 short_description: Configure VPN autokey tunnel.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  vpn_ipsec_phase2interface:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      add_route:
+        aliases: ['add-route']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Enable/disable automatic route addition.
+        choices: ['disable', 'enable', 'phase1']
+      auto_discovery_forwarder:
+        aliases: ['auto-discovery-forwarder']
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
+        description: Enable/disable forwarding short-cut messages.
+        choices: ['disable', 'enable', 'phase1']
+      auto_discovery_sender:
+        aliases: ['auto-discovery-sender']
         type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+        description: Enable/disable sending short-cut messages.
+        choices: ['disable', 'enable', 'phase1']
+      auto_negotiate:
+        aliases: ['auto-negotiate']
+        type: str
+        description: Enable/disable IPsec SA auto-negotiation.
+        choices: ['disable', 'enable']
+      comments:
+        type: str
+        description: Comment.
+      dhcp_ipsec:
+        aliases: ['dhcp-ipsec']
+        type: str
+        description: Enable/disable DHCP-IPsec.
+        choices: ['disable', 'enable']
+      dhgrp:
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
+        elements: str
+        description: Phase2 DH group.
+        choices: ['1', '2', '5', '14', '15', '16', '17', '18', '19', '20', '21', '27', '28', '29',
+                  '30', '31', '32']
+      diffserv:
+        type: str
+        description: Enable/disable applying DSCP value to the IPsec tunnel outer IP header.
+        choices: ['disable', 'enable']
+      diffservcode:
+        type: str
+        description: DSCP value to be applied to the IPsec tunnel outer IP header.
+      dst_addr_type:
+        aliases: ['dst-addr-type']
+        type: str
+        description: Remote proxy ID type.
+        choices: ['subnet', 'range', 'ip', 'name', 'subnet6', 'range6', 'ip6', 'name6']
+      dst_end_ip:
+        aliases: ['dst-end-ip']
+        type: str
+        description: Remote proxy ID IPv4 end.
+      dst_end_ip6:
+        aliases: ['dst-end-ip6']
+        type: str
+        description: Remote proxy ID IPv6 end.
+      dst_name:
+        aliases: ['dst-name']
         type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
-        type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        elements: str
+        description: Remote proxy ID name.
+      dst_name6:
+        aliases: ['dst-name6']
+        type: list
+        elements: str
+        description: Remote proxy ID name.
+      dst_port:
+        aliases: ['dst-port']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Quick mode destination port
+      dst_start_ip:
+        aliases: ['dst-start-ip']
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: Remote proxy ID IPv4 start.
+      dst_start_ip6:
+        aliases: ['dst-start-ip6']
         type: str
+        description: Remote proxy ID IPv6 start.
+      dst_subnet:
+        aliases: ['dst-subnet']
+        type: list
+        elements: str
+        description: Remote proxy ID IPv4 subnet.
+      dst_subnet6:
+        aliases: ['dst-subnet6']
+        type: str
+        description: Remote proxy ID IPv6 subnet.
+      encapsulation:
+        type: str
+        description: ESP encapsulation mode.
+        choices: ['tunnel-mode', 'transport-mode']
+      inbound_dscp_copy:
+        aliases: ['inbound-dscp-copy']
+        type: str
+        description: Enable/disable copying of the DSCP in the ESP header to the inner IP header.
+        choices: ['disable', 'enable', 'phase1']
+      initiator_ts_narrow:
+        aliases: ['initiator-ts-narrow']
+        type: str
+        description: Enable/disable traffic selector narrowing for IKEv2 initiator.
+        choices: ['disable', 'enable']
+      ipv4_df:
+        aliases: ['ipv4-df']
+        type: str
+        description: Enable/disable setting and resetting of IPv4 Dont Fragment bit.
+        choices: ['disable', 'enable']
+      keepalive:
+        type: str
+        description: Enable/disable keep alive.
+        choices: ['disable', 'enable']
+      keylife_type:
+        aliases: ['keylife-type']
+        type: str
+        description: Keylife type.
+        choices: ['seconds', 'kbs', 'both']
+      keylifekbs:
+        type: int
+        description: Phase2 key life in number of kilobytes of traffic
+      keylifeseconds:
+        type: int
+        description: Phase2 key life in time in seconds
+      l2tp:
+        type: str
+        description: Enable/disable L2TP over IPsec.
+        choices: ['disable', 'enable']
+      name:
+        type: str
+        description: IPsec tunnel name.
         required: true
-    vpn_ipsec_phase2interface:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            add_route:
-                aliases: ['add-route']
-                type: str
-                description: Enable/disable automatic route addition.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'phase1'
-            auto_discovery_forwarder:
-                aliases: ['auto-discovery-forwarder']
-                type: str
-                description: Enable/disable forwarding short-cut messages.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'phase1'
-            auto_discovery_sender:
-                aliases: ['auto-discovery-sender']
-                type: str
-                description: Enable/disable sending short-cut messages.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'phase1'
-            auto_negotiate:
-                aliases: ['auto-negotiate']
-                type: str
-                description: Enable/disable IPsec SA auto-negotiation.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            comments:
-                type: str
-                description: Comment.
-            dhcp_ipsec:
-                aliases: ['dhcp-ipsec']
-                type: str
-                description: Enable/disable DHCP-IPsec.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhgrp:
-                type: list
-                elements: str
-                description: Phase2 DH group.
-                choices:
-                    - '1'
-                    - '2'
-                    - '5'
-                    - '14'
-                    - '15'
-                    - '16'
-                    - '17'
-                    - '18'
-                    - '19'
-                    - '20'
-                    - '21'
-                    - '27'
-                    - '28'
-                    - '29'
-                    - '30'
-                    - '31'
-                    - '32'
-            diffserv:
-                type: str
-                description: Enable/disable applying DSCP value to the IPsec tunnel outer IP header.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            diffservcode:
-                type: str
-                description: DSCP value to be applied to the IPsec tunnel outer IP header.
-            dst_addr_type:
-                aliases: ['dst-addr-type']
-                type: str
-                description: Remote proxy ID type.
-                choices:
-                    - 'subnet'
-                    - 'range'
-                    - 'ip'
-                    - 'name'
-                    - 'subnet6'
-                    - 'range6'
-                    - 'ip6'
-                    - 'name6'
-            dst_end_ip:
-                aliases: ['dst-end-ip']
-                type: str
-                description: Remote proxy ID IPv4 end.
-            dst_end_ip6:
-                aliases: ['dst-end-ip6']
-                type: str
-                description: Remote proxy ID IPv6 end.
-            dst_name:
-                aliases: ['dst-name']
-                type: list
-                elements: str
-                description: Remote proxy ID name.
-            dst_name6:
-                aliases: ['dst-name6']
-                type: list
-                elements: str
-                description: Remote proxy ID name.
-            dst_port:
-                aliases: ['dst-port']
-                type: int
-                description: Quick mode destination port
-            dst_start_ip:
-                aliases: ['dst-start-ip']
-                type: str
-                description: Remote proxy ID IPv4 start.
-            dst_start_ip6:
-                aliases: ['dst-start-ip6']
-                type: str
-                description: Remote proxy ID IPv6 start.
-            dst_subnet:
-                aliases: ['dst-subnet']
-                type: list
-                elements: str
-                description: Remote proxy ID IPv4 subnet.
-            dst_subnet6:
-                aliases: ['dst-subnet6']
-                type: str
-                description: Remote proxy ID IPv6 subnet.
-            encapsulation:
-                type: str
-                description: ESP encapsulation mode.
-                choices:
-                    - 'tunnel-mode'
-                    - 'transport-mode'
-            inbound_dscp_copy:
-                aliases: ['inbound-dscp-copy']
-                type: str
-                description: Enable/disable copying of the DSCP in the ESP header to the inner IP header.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'phase1'
-            initiator_ts_narrow:
-                aliases: ['initiator-ts-narrow']
-                type: str
-                description: Enable/disable traffic selector narrowing for IKEv2 initiator.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ipv4_df:
-                aliases: ['ipv4-df']
-                type: str
-                description: Enable/disable setting and resetting of IPv4 Dont Fragment bit.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            keepalive:
-                type: str
-                description: Enable/disable keep alive.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            keylife_type:
-                aliases: ['keylife-type']
-                type: str
-                description: Keylife type.
-                choices:
-                    - 'seconds'
-                    - 'kbs'
-                    - 'both'
-            keylifekbs:
-                type: int
-                description: Phase2 key life in number of kilobytes of traffic
-            keylifeseconds:
-                type: int
-                description: Phase2 key life in time in seconds
-            l2tp:
-                type: str
-                description: Enable/disable L2TP over IPsec.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            name:
-                type: str
-                description: IPsec tunnel name.
-                required: true
-            pfs:
-                type: str
-                description: Enable/disable PFS feature.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            phase1name:
-                type: list
-                elements: str
-                description: Phase 1 determines the options required for phase 2.
-            proposal:
-                type: str
-                description: Phase2 proposal.
-                choices:
-                    - 'null-md5'
-                    - 'null-sha1'
-                    - 'des-null'
-                    - '3des-null'
-                    - 'des-md5'
-                    - 'des-sha1'
-                    - '3des-md5'
-                    - '3des-sha1'
-                    - 'aes128-md5'
-                    - 'aes128-sha1'
-                    - 'aes192-md5'
-                    - 'aes192-sha1'
-                    - 'aes256-md5'
-                    - 'aes256-sha1'
-                    - 'aes128-null'
-                    - 'aes192-null'
-                    - 'aes256-null'
-                    - 'null-sha256'
-                    - 'des-sha256'
-                    - '3des-sha256'
-                    - 'aes128-sha256'
-                    - 'aes192-sha256'
-                    - 'aes256-sha256'
-                    - 'des-sha384'
-                    - 'des-sha512'
-                    - '3des-sha384'
-                    - '3des-sha512'
-                    - 'aes128-sha384'
-                    - 'aes128-sha512'
-                    - 'aes192-sha384'
-                    - 'aes192-sha512'
-                    - 'aes256-sha384'
-                    - 'aes256-sha512'
-                    - 'null-sha384'
-                    - 'null-sha512'
-                    - 'aria128-null'
-                    - 'aria128-md5'
-                    - 'aria128-sha1'
-                    - 'aria128-sha256'
-                    - 'aria128-sha384'
-                    - 'aria128-sha512'
-                    - 'aria192-null'
-                    - 'aria192-md5'
-                    - 'aria192-sha1'
-                    - 'aria192-sha256'
-                    - 'aria192-sha384'
-                    - 'aria192-sha512'
-                    - 'aria256-null'
-                    - 'aria256-md5'
-                    - 'aria256-sha1'
-                    - 'aria256-sha256'
-                    - 'aria256-sha384'
-                    - 'aria256-sha512'
-                    - 'seed-null'
-                    - 'seed-md5'
-                    - 'seed-sha1'
-                    - 'seed-sha256'
-                    - 'seed-sha384'
-                    - 'seed-sha512'
-                    - 'aes128gcm'
-                    - 'aes256gcm'
-                    - 'chacha20poly1305'
-            protocol:
-                type: int
-                description: Quick mode protocol selector
-            replay:
-                type: str
-                description: Enable/disable replay detection.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            route_overlap:
-                aliases: ['route-overlap']
-                type: str
-                description: Action for overlapping routes.
-                choices:
-                    - 'use-old'
-                    - 'use-new'
-                    - 'allow'
-            single_source:
-                aliases: ['single-source']
-                type: str
-                description: Enable/disable single source IP restriction.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            src_addr_type:
-                aliases: ['src-addr-type']
-                type: str
-                description: Local proxy ID type.
-                choices:
-                    - 'subnet'
-                    - 'range'
-                    - 'ip'
-                    - 'name'
-                    - 'subnet6'
-                    - 'range6'
-                    - 'ip6'
-                    - 'name6'
-            src_end_ip:
-                aliases: ['src-end-ip']
-                type: str
-                description: Local proxy ID end.
-            src_end_ip6:
-                aliases: ['src-end-ip6']
-                type: str
-                description: Local proxy ID IPv6 end.
-            src_name:
-                aliases: ['src-name']
-                type: list
-                elements: str
-                description: Local proxy ID name.
-            src_name6:
-                aliases: ['src-name6']
-                type: list
-                elements: str
-                description: Local proxy ID name.
-            src_port:
-                aliases: ['src-port']
-                type: int
-                description: Quick mode source port
-            src_start_ip:
-                aliases: ['src-start-ip']
-                type: str
-                description: Local proxy ID start.
-            src_start_ip6:
-                aliases: ['src-start-ip6']
-                type: str
-                description: Local proxy ID IPv6 start.
-            src_subnet:
-                aliases: ['src-subnet']
-                type: list
-                elements: str
-                description: Local proxy ID subnet.
-            src_subnet6:
-                aliases: ['src-subnet6']
-                type: str
-                description: Local proxy ID IPv6 subnet.
-            addke1:
-                type: list
-                elements: str
-                description: Phase2 ADDKE1 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
-            addke2:
-                type: list
-                elements: str
-                description: Phase2 ADDKE2 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
-            addke3:
-                type: list
-                elements: str
-                description: Phase2 ADDKE3 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
-            addke4:
-                type: list
-                elements: str
-                description: Phase2 ADDKE4 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
-            addke5:
-                type: list
-                elements: str
-                description: Phase2 ADDKE5 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
-            addke6:
-                type: list
-                elements: str
-                description: Phase2 ADDKE6 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
-            addke7:
-                type: list
-                elements: str
-                description: Phase2 ADDKE7 group.
-                choices:
-                    - '0'
-                    - '1080'
-                    - '1081'
-                    - '1082'
-                    - '1083'
-                    - '1084'
-                    - '1085'
-                    - '1089'
-                    - '1090'
-                    - '1091'
-                    - '1092'
-                    - '1093'
-                    - '1094'
-                    - '35'
-                    - '36'
-                    - '37'
+      pfs:
+        type: str
+        description: Enable/disable PFS feature.
+        choices: ['disable', 'enable']
+      phase1name:
+        type: list
+        elements: str
+        description: Phase 1 determines the options required for phase 2.
+      proposal:
+        type: str
+        description: Phase2 proposal.
+        choices: ['null-md5', 'null-sha1', 'des-null', '3des-null', 'des-md5', 'des-sha1',
+                  '3des-md5', '3des-sha1', 'aes128-md5', 'aes128-sha1', 'aes192-md5',
+                  'aes192-sha1', 'aes256-md5', 'aes256-sha1', 'aes128-null', 'aes192-null',
+                  'aes256-null', 'null-sha256', 'des-sha256', '3des-sha256', 'aes128-sha256',
+                  'aes192-sha256', 'aes256-sha256', 'des-sha384', 'des-sha512', '3des-sha384',
+                  '3des-sha512', 'aes128-sha384', 'aes128-sha512', 'aes192-sha384',
+                  'aes192-sha512', 'aes256-sha384', 'aes256-sha512', 'null-sha384', 'null-sha512',
+                  'aria128-null', 'aria128-md5', 'aria128-sha1', 'aria128-sha256',
+                  'aria128-sha384', 'aria128-sha512', 'aria192-null', 'aria192-md5',
+                  'aria192-sha1', 'aria192-sha256', 'aria192-sha384', 'aria192-sha512',
+                  'aria256-null', 'aria256-md5', 'aria256-sha1', 'aria256-sha256',
+                  'aria256-sha384', 'aria256-sha512', 'seed-null', 'seed-md5', 'seed-sha1',
+                  'seed-sha256', 'seed-sha384', 'seed-sha512', 'aes128gcm', 'aes256gcm',
+                  'chacha20poly1305', 'sm4-sm3']
+      protocol:
+        type: int
+        description: Quick mode protocol selector
+      replay:
+        type: str
+        description: Enable/disable replay detection.
+        choices: ['disable', 'enable']
+      route_overlap:
+        aliases: ['route-overlap']
+        type: str
+        description: Action for overlapping routes.
+        choices: ['use-old', 'use-new', 'allow']
+      single_source:
+        aliases: ['single-source']
+        type: str
+        description: Enable/disable single source IP restriction.
+        choices: ['disable', 'enable']
+      src_addr_type:
+        aliases: ['src-addr-type']
+        type: str
+        description: Local proxy ID type.
+        choices: ['subnet', 'range', 'ip', 'name', 'subnet6', 'range6', 'ip6', 'name6']
+      src_end_ip:
+        aliases: ['src-end-ip']
+        type: str
+        description: Local proxy ID end.
+      src_end_ip6:
+        aliases: ['src-end-ip6']
+        type: str
+        description: Local proxy ID IPv6 end.
+      src_name:
+        aliases: ['src-name']
+        type: list
+        elements: str
+        description: Local proxy ID name.
+      src_name6:
+        aliases: ['src-name6']
+        type: list
+        elements: str
+        description: Local proxy ID name.
+      src_port:
+        aliases: ['src-port']
+        type: int
+        description: Quick mode source port
+      src_start_ip:
+        aliases: ['src-start-ip']
+        type: str
+        description: Local proxy ID start.
+      src_start_ip6:
+        aliases: ['src-start-ip6']
+        type: str
+        description: Local proxy ID IPv6 start.
+      src_subnet:
+        aliases: ['src-subnet']
+        type: list
+        elements: str
+        description: Local proxy ID subnet.
+      src_subnet6:
+        aliases: ['src-subnet6']
+        type: str
+        description: Local proxy ID IPv6 subnet.
+      addke1:
+        type: list
+        elements: str
+        description: Phase2 ADDKE1 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
+      addke2:
+        type: list
+        elements: str
+        description: Phase2 ADDKE2 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
+      addke3:
+        type: list
+        elements: str
+        description: Phase2 ADDKE3 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
+      addke4:
+        type: list
+        elements: str
+        description: Phase2 ADDKE4 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
+      addke5:
+        type: list
+        elements: str
+        description: Phase2 ADDKE5 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
+      addke6:
+        type: list
+        elements: str
+        description: Phase2 ADDKE6 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
+      addke7:
+        type: list
+        elements: str
+        description: Phase2 ADDKE7 group.
+        choices: ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091',
+                  '1092', '1093', '1094', '35', '36', '37', 'none', 'ml-kem-512', 'ml-kem-768',
+                  'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3',
+                  'frodo-l5', 'bike-l1', 'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256']
 '''
 
 EXAMPLES = '''
@@ -576,18 +307,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure VPN autokey tunnel.
       fortinet.fmgdevice.fmgd_vpn_ipsec_phase2interface:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         state: present # <value in [present, absent]>
@@ -599,24 +322,8 @@ EXAMPLES = '''
           # auto_negotiate: <value in [disable, enable]>
           # comments: <string>
           # dhcp_ipsec: <value in [disable, enable]>
-          # dhgrp:
-          #   - "1"
-          #   - "2"
-          #   - "5"
-          #   - "14"
-          #   - "15"
-          #   - "16"
-          #   - "17"
-          #   - "18"
-          #   - "19"
-          #   - "20"
-          #   - "21"
-          #   - "27"
-          #   - "28"
-          #   - "29"
-          #   - "30"
-          #   - "31"
-          #   - "32"
+          # dhgrp: ["1", "2", "5", "14", "15", "16", "17", "18", "19", "20", "21", "27", "28",
+          #         "29", "30", "31", "32"]
           # diffserv: <value in [disable, enable]>
           # diffservcode: <string>
           # dst_addr_type: <value in [subnet, range, ip, ...]>
@@ -655,165 +362,74 @@ EXAMPLES = '''
           # src_start_ip6: <string>
           # src_subnet: <list or string>
           # src_subnet6: <string>
-          # addke1:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
-          # addke2:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
-          # addke3:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
-          # addke4:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
-          # addke5:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
-          # addke6:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
-          # addke7:
-          #   - "0"
-          #   - "1080"
-          #   - "1081"
-          #   - "1082"
-          #   - "1083"
-          #   - "1084"
-          #   - "1085"
-          #   - "1089"
-          #   - "1090"
-          #   - "1091"
-          #   - "1092"
-          #   - "1093"
-          #   - "1094"
-          #   - "35"
-          #   - "36"
-          #   - "37"
+          # addke1: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
+          # addke2: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
+          # addke3: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
+          # addke4: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
+          # addke5: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
+          # addke6: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
+          # addke7: ["0", "1080", "1081", "1082", "1083", "1084", "1085", "1089", "1090", "1091",
+          #          "1092", "1093", "1094", "35", "36", "37", "none", "ml-kem-512", "ml-kem-768",
+          #          "ml-kem-1024", "kyber512", "kyber768", "kyber1024", "frodo-l1", "frodo-l3",
+          #          "frodo-l5", "bike-l1", "bike-l3", "bike-l5", "hqc128", "hqc192", "hqc256"]
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -825,14 +441,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/phase2-interface'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'vpn_ipsec_phase2interface': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'add-route': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable', 'phase1'], 'type': 'str'},
                 'auto-discovery-forwarder': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable', 'phase1'], 'type': 'str'},
@@ -884,7 +497,7 @@ def main():
                         'null-sha384', 'null-sha512', 'aria128-null', 'aria128-md5', 'aria128-sha1', 'aria128-sha256', 'aria128-sha384',
                         'aria128-sha512', 'aria192-null', 'aria192-md5', 'aria192-sha1', 'aria192-sha256', 'aria192-sha384', 'aria192-sha512',
                         'aria256-null', 'aria256-md5', 'aria256-sha1', 'aria256-sha256', 'aria256-sha384', 'aria256-sha512', 'seed-null', 'seed-md5',
-                        'seed-sha1', 'seed-sha256', 'seed-sha384', 'seed-sha512', 'aes128gcm', 'aes256gcm', 'chacha20poly1305'
+                        'seed-sha1', 'seed-sha256', 'seed-sha384', 'seed-sha512', 'aes128gcm', 'aes256gcm', 'chacha20poly1305', 'sm4-sm3'
                     ],
                     'type': 'str'
                 },
@@ -909,43 +522,71 @@ def main():
                 'addke1': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 },
                 'addke2': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 },
                 'addke3': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 },
                 'addke4': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 },
                 'addke5': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 },
                 'addke6': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 },
                 'addke7': {
                     'v_range': [['7.6.0', '']],
                     'type': 'list',
-                    'choices': ['0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37'],
+                    'choices': [
+                        '0', '1080', '1081', '1082', '1083', '1084', '1085', '1089', '1090', '1091', '1092', '1093', '1094', '35', '36', '37', 'none',
+                        'ml-kem-512', 'ml-kem-768', 'ml-kem-1024', 'kyber512', 'kyber768', 'kyber1024', 'frodo-l1', 'frodo-l3', 'frodo-l5', 'bike-l1',
+                        'bike-l3', 'bike-l5', 'hqc128', 'hqc192', 'hqc256'
+                    ],
                     'elements': 'str'
                 }
             }
@@ -954,19 +595,15 @@ def main():
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'vpn_ipsec_phase2interface'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

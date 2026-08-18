@@ -1,6 +1,6 @@
-![Fortinet logo|](https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Fortinet_logo.svg/320px-Fortinet_logo.svg.png)
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Fortinet_logo.svg" alt="Fortinet LOGO" width="300" />
 
-# fortinet.fmgdevice:1.1.0 - configuring FortiManager
+# fortinet.fmgdevice:1.2.0 - configuring FortiManager
 
 ## Description
 
@@ -84,9 +84,11 @@ The collection provides the following modules:
 * `fmgd_antivirus_profile_nntp`  Configure NNTP AntiVirus options.
 * `fmgd_antivirus_profile_pop3`  Configure POP3 AntiVirus options.
 * `fmgd_antivirus_profile_smtp`  Configure SMTP AntiVirus options.
+* `fmgd_antivirus_profile_websocket`  Configure WEBSOCKET AntiVirus options.
 * `fmgd_antivirus_quarantine`  Configure quarantine options.
 * `fmgd_antivirus_settings`  Configure AntiVirus settings.
 * `fmgd_application_categories`  Device application categories.
+* `fmgd_application_classificationsettings`  Configure app classification setting.
 * `fmgd_application_custom`  Configure custom application signatures.
 * `fmgd_application_group`  Configure firewall application groups.
 * `fmgd_application_list`  Configure application control lists.
@@ -94,6 +96,7 @@ The collection provides the following modules:
 * `fmgd_application_list_entries`  Application list entries.
 * `fmgd_application_name`  Configure application signatures.
 * `fmgd_application_rulesettings`  Configure application rule settings.
+* `fmgd_application_unsanctionedapps`  Configure unsanctioned applications.
 * `fmgd_authentication_rule`  Configure Authentication Rules.
 * `fmgd_authentication_scheme`  Configure Authentication Schemes.
 * `fmgd_authentication_setting`  Configure authentication setting.
@@ -126,6 +129,8 @@ The collection provides the following modules:
 * `fmgd_casb_useractivity_match_rules`  CASB user activity rules.
 * `fmgd_casb_useractivity_match_tenantextraction`  CASB user activity tenant extraction.
 * `fmgd_casb_useractivity_match_tenantextraction_filters`  CASB user activity tenant extraction filters.
+* `fmgd_casb_useractivity_match_tenantsessionextraction`  CASB user activity tenant session extraction.
+* `fmgd_casb_useractivity_match_tenantsessionextraction_filters`  CASB user activity session extraction filters.
 * `fmgd_certificate_hsmlocal`  Local certificates whose keys are stored on HSM.
 * `fmgd_certificate_remote`  Remote certificate as a PEM file.
 * `fmgd_diameterfilter_profile`  Configure Diameter filter profiles.
@@ -144,6 +149,7 @@ The collection provides the following modules:
 * `fmgd_dlp_sensor`  Configure sensors used by DLP blocking.
 * `fmgd_dlp_sensor_entries`  DLP sensor entries.
 * `fmgd_dlp_settings`  Designate logical storage for DLP fingerprint database.
+* `fmgd_dlp_settings_ocr`  Configure settings for optical character recognition.
 * `fmgd_dnsfilter_domainfilter`  Configure DNS domain filters.
 * `fmgd_dnsfilter_domainfilter_entries`  DNS domain filter entries.
 * `fmgd_dnsfilter_profile`  Configure DNS domain filter profile.
@@ -240,6 +246,7 @@ The collection provides the following modules:
 * `fmgd_firewall_addrgrp_tagging`  Config object tagging.
 * `fmgd_firewall_authportal`  Configure firewall authentication portals.
 * `fmgd_firewall_centralsnatmap`  Configure IPv4 and IPv6 central SNAT policies.
+* `fmgd_firewall_customtag`  Define custom tag table.
 * `fmgd_firewall_dnstranslation`  Configure DNS translation.
 * `fmgd_firewall_dospolicy`  Configure IPv4 DoS policies.
 * `fmgd_firewall_dospolicy6`  Configure IPv6 DoS policies.
@@ -288,6 +295,7 @@ The collection provides the following modules:
 * `fmgd_firewall_ondemandsniffer`  Configure on-demand packet sniffer.
 * `fmgd_firewall_pfcp`  Configure PFCP.
 * `fmgd_firewall_policy`  Configure IPv4 policies.
+* `fmgd_firewall_policy_fabricpolicy`  Fabric policy related attributes.
 * `fmgd_firewall_profilegroup`  Configure profile groups.
 * `fmgd_firewall_profileprotocoloptions`  Configure protocol options.
 * `fmgd_firewall_profileprotocoloptions_cifs`  Configure CIFS protocol options.
@@ -302,15 +310,16 @@ The collection provides the following modules:
 * `fmgd_firewall_profileprotocoloptions_pop3`  Configure POP3 protocol options.
 * `fmgd_firewall_profileprotocoloptions_smtp`  Configure SMTP protocol options.
 * `fmgd_firewall_profileprotocoloptions_ssh`  Configure SFTP and SCP protocol options.
+* `fmgd_firewall_profileprotocoloptions_websocket`  Configure WebSocket protocol options.
 * `fmgd_firewall_proxyaddress`  Configure web proxy address.
-* `fmgd_firewall_proxyaddress6`  Device vdom firewall proxy address6.
-* `fmgd_firewall_proxyaddress6_headergroup`  Device vdom firewall proxy address6 header group.
-* `fmgd_firewall_proxyaddress6_tagging`  Device vdom firewall proxy address6 tagging.
+* `fmgd_firewall_proxyaddress6`  Configure web proxy address6.
+* `fmgd_firewall_proxyaddress6_headergroup`  HTTP header group.
+* `fmgd_firewall_proxyaddress6_tagging`  Config object tagging.
 * `fmgd_firewall_proxyaddress_headergroup`  HTTP header group.
 * `fmgd_firewall_proxyaddress_tagging`  Config object tagging.
 * `fmgd_firewall_proxyaddrgrp`  Configure web proxy address group.
-* `fmgd_firewall_proxyaddrgrp6`  Device vdom firewall proxy addrgrp6.
-* `fmgd_firewall_proxyaddrgrp6_tagging`  Device vdom firewall proxy addrgrp6 tagging.
+* `fmgd_firewall_proxyaddrgrp6`  Configure web proxy address group6.
+* `fmgd_firewall_proxyaddrgrp6_tagging`  Config object tagging.
 * `fmgd_firewall_proxyaddrgrp_tagging`  Config object tagging.
 * `fmgd_firewall_proxypolicy`  Configure proxy policies.
 * `fmgd_firewall_responseshapingpolicy`  Device vdom firewall response shaping policy.
@@ -397,13 +406,13 @@ The collection provides the following modules:
 * `fmgd_isolator_profile`  Device vdom isolator profile.
 * `fmgd_isolator_profile_entries`  Device vdom isolator profile entries.
 * `fmgd_isolator_setting`  Device vdom isolator setting.
-* `fmgd_llm_profile`  Device vdom llm profile.
-* `fmgd_llm_profile_chat`  Device vdom llm profile chat.
-* `fmgd_llm_profile_imagegen`  Device vdom llm profile image gen.
-* `fmgd_llm_profile_listmodels`  Device vdom llm profile list models.
+* `fmgd_llm_profile`  Configure LLM Proxy profiles.
+* `fmgd_llm_profile_chat`  LLM Proxy chat completions API.
+* `fmgd_llm_profile_imagegen`  LLM Proxy image generation API.
+* `fmgd_llm_profile_listmodels`  LLM Proxy list models API.
 * `fmgd_llm_profile_response`  Device vdom llm profile response.
-* `fmgd_llm_proxy`  Device vdom llm proxy.
-* `fmgd_llm_server`  Device vdom llm server.
+* `fmgd_llm_proxy`  Configure LLM Proxy.
+* `fmgd_llm_server`  Configure LLM Proxy servers.
 * `fmgd_loadbalance_flowrule`  flow rule configuration.
 * `fmgd_loadbalance_setting`  load balance setting.
 * `fmgd_loadbalance_setting_workers`  Worker blade used by this group.
@@ -417,6 +426,8 @@ The collection provides the following modules:
 * `fmgd_log_azuresecuritycenter_setting`  Settings for Azure Security Center.
 * `fmgd_log_azuresecuritycenter_setting_customfieldname`  Custom field name for CEF format logging.
 * `fmgd_log_customfield`  Configure custom log fields.
+* `fmgd_log_customformat`  Configure custom log format.
+* `fmgd_log_customformat_logtemplates`  Custom log templates.
 * `fmgd_log_disk_filter`  Configure filters for local disk logging.
 * `fmgd_log_disk_filter_freestyle`  Free style filters.
 * `fmgd_log_disk_setting`  Settings for local disk logging.
@@ -601,6 +612,10 @@ The collection provides the following modules:
 * `fmgd_router_multicast6_interface`  Protocol Independent Multicast.
 * `fmgd_router_multicast6_pimsmglobal`  PIM sparse-mode global settings.
 * `fmgd_router_multicast6_pimsmglobal_rpaddress`  Statically configured RP addresses.
+* `fmgd_router_multicast6_pimsmglobalvrf`  per-VRF PIM sparse-mode global settings.
+* `fmgd_router_multicast6_pimsmglobalvrf_rpaddress`  Statically configured RP addresses.
+* `fmgd_router_multicast6flow`  Configure IPv6 multicast-flow.
+* `fmgd_router_multicast6flow_flows`  IPv6 multicast-flow entries.
 * `fmgd_router_multicast_interface`  PIM interfaces.
 * `fmgd_router_multicast_interface_igmp`  IGMP configuration options.
 * `fmgd_router_multicast_interface_joingroup`  Join multicast groups.
@@ -689,6 +704,8 @@ The collection provides the following modules:
 * `fmgd_switchcontroller_fortilinksettings_nacports`  NAC specific configuration.
 * `fmgd_switchcontroller_global`  Configure FortiSwitch global settings.
 * `fmgd_switchcontroller_igmpsnooping`  Configure FortiSwitch IGMP snooping global settings.
+* `fmgd_switchcontroller_igmpsnoopingstaticgroup`  Configure FortiSwitch IGMP snooping static group settings.
+* `fmgd_switchcontroller_igmpsnoopingstaticgroup_ports`  Configure static group in switches.
 * `fmgd_switchcontroller_initialconfig_template`  Configure template for auto-generated VLANs.
 * `fmgd_switchcontroller_initialconfig_vlans`  Configure initial template for auto-generated VLAN interfaces.
 * `fmgd_switchcontroller_ipsourceguardlog`  Configure FortiSwitch ip source guard log.
@@ -704,6 +721,7 @@ The collection provides the following modules:
 * `fmgd_switchcontroller_macpolicy`  Configure MAC policy to be applied on the managed FortiSwitch devices through NAC device.
 * `fmgd_switchcontroller_managedswitch`  Configure FortiSwitch devices that are managed by this FortiGate.
 * `fmgd_switchcontroller_managedswitch_8021xsettings`  Configuration method to edit FortiSwitch 802.
+* `fmgd_switchcontroller_managedswitch_components`  Managed-switch component list.
 * `fmgd_switchcontroller_managedswitch_customcommand`  Configuration method to edit FortiSwitch commands to be pushed to this FortiSwitch device upon rebooting the FortiGate switch contro...
 * `fmgd_switchcontroller_managedswitch_dhcpsnoopingstaticclient`  Configure FortiSwitch DHCP snooping static clients.
 * `fmgd_switchcontroller_managedswitch_igmpsnooping`  Configure FortiSwitch IGMP snooping global settings.
@@ -748,6 +766,7 @@ The collection provides the following modules:
 * `fmgd_switchcontroller_qos_queuepolicy_cosqueue`  COS queue configuration.
 * `fmgd_switchcontroller_remotelog`  Configure logging by FortiSwitch device to a remote syslog server.
 * `fmgd_switchcontroller_securitypolicy_8021x`  Configure 802.
+* `fmgd_switchcontroller_securitypolicy_admin`  Configure fortiswitchs admin security-policy.
 * `fmgd_switchcontroller_securitypolicy_localaccess`  Configure allowaccess list for mgmt and internal interfaces on managed FortiSwitch units.
 * `fmgd_switchcontroller_sflow`  Configure FortiSwitch sFlow.
 * `fmgd_switchcontroller_snmpcommunity`  Configure FortiSwitch SNMP v1/v2c communities globally.
@@ -821,7 +840,11 @@ The collection provides the following modules:
 * `fmgd_system_consoleserver_entries`  Entry used by console server.
 * `fmgd_system_csf`  Add this FortiGate to a Security Fabric or set up a new Security Fabric on this FortiGate.
 * `fmgd_system_csf_fabricconnector`  Fabric connector configuration.
+* `fmgd_system_csf_fabricdatasourceexemption`  Disable the fabric datasource check on the tables when synchronizing them.
 * `fmgd_system_csf_fabricdevice`  Fabric device configuration.
+* `fmgd_system_csf_sharedobjects`  Fabric-wide objects shared by non-root nodes.
+* `fmgd_system_csf_sharedobjects_objects`  CMDB table entries.
+* `fmgd_system_csf_sharedobjects_objects_keys`  Keys of CMDB table entries.
 * `fmgd_system_csf_trustedlist`  Pre-authorized and blocked security fabric nodes.
 * `fmgd_system_customlanguage`  Configure custom languages.
 * `fmgd_system_ddns`  Configure DDNS.
@@ -838,6 +861,11 @@ The collection provides the following modules:
 * `fmgd_system_dhcp_server_iprange`  DHCP IP range configuration.
 * `fmgd_system_dhcp_server_options`  DHCP options.
 * `fmgd_system_dhcp_server_reservedaddress`  Options for the DHCP server to assign IP settings to specific MAC addresses.
+* `fmgd_system_dhcp_template`  Configure DHCP server templates.
+* `fmgd_system_dhcp_template_excluderange`  Exclude one or more ranges of IP addresses from being assigned to clients.
+* `fmgd_system_dhcp_template_iprange`  DHCP IP range configuration.
+* `fmgd_system_dhcp_template_options`  DHCP options.
+* `fmgd_system_dhcp_template_reservedaddress`  Options for the DHCP server to assign IP settings to specific MAC addresses.
 * `fmgd_system_digitalio`  Configure digital-io.
 * `fmgd_system_dnp3proxy`  Configure dnpproxy settings.
 * `fmgd_system_dns`  Configure DNS.
@@ -860,6 +888,7 @@ The collection provides the following modules:
 * `fmgd_system_fortiai`  Configure FortiAI.
 * `fmgd_system_fortidata`  Configure FortiData.
 * `fmgd_system_fortiguard`  Configure FortiGuard services.
+* `fmgd_system_fortimq`  Configure FortiMQ settings.
 * `fmgd_system_fortindr`  Configure FortiNDR.
 * `fmgd_system_fortisandbox`  Configure FortiSandbox.
 * `fmgd_system_fssopolling`  Configure Fortinet Single Sign On.
@@ -875,6 +904,7 @@ The collection provides the following modules:
 * `fmgd_system_ha`  Configure HA.
 * `fmgd_system_ha_frupsettings`  Device system ha frup settings.
 * `fmgd_system_ha_hamgmtinterfaces`  Reserve interfaces to manage individual cluster units.
+* `fmgd_system_ha_linkgroup`  Link group table.
 * `fmgd_system_ha_secondaryvcluster`  Configure virtual cluster 2.
 * `fmgd_system_ha_unicastpeers`  Number of unicast peers.
 * `fmgd_system_ha_vcluster`  Virtual cluster table.
@@ -1095,6 +1125,7 @@ The collection provides the following modules:
 * `fmgd_system_storage`  Configure logical storage.
 * `fmgd_system_stp`  Configure Spanning Tree Protocol.
 * `fmgd_system_switchinterface`  Configure software switch interfaces by grouping physical and WiFi interfaces.
+* `fmgd_system_theme`  Configure custom gui themes.
 * `fmgd_system_timezone`  Show timezone.
 * `fmgd_system_tosbasedpriority`  Configure Type of Service.
 * `fmgd_system_vdom`  Configure virtual domain.
@@ -1143,7 +1174,7 @@ The collection provides the following modules:
 * `fmgd_user_ldap`  Configure LDAP server entries.
 * `fmgd_user_local`  Configure local users.
 * `fmgd_user_nacpolicy`  Configure NAC policy matching pattern to identify matching NAC devices.
-* `fmgd_user_oidc`  Device vdom user oidc.
+* `fmgd_user_oidc`  OpenID Connect server entry configuration.
 * `fmgd_user_passwordpolicy`  Configure user password policy.
 * `fmgd_user_peer`  Configure peer users.
 * `fmgd_user_peergrp`  Configure peer groups.
@@ -1183,6 +1214,7 @@ The collection provides the following modules:
 * `fmgd_vpn_ipsec_concentrator`  Concentrator configuration.
 * `fmgd_vpn_ipsec_fec`  Configure Forward Error Correction.
 * `fmgd_vpn_ipsec_fec_mappings`  FEC redundancy mapping table.
+* `fmgd_vpn_ipsec_fec_mappings_tos`  FEC redundancy mapping table for specific type of service.
 * `fmgd_vpn_ipsec_forticlient`  Configure FortiClient policy realm.
 * `fmgd_vpn_ipsec_manualkey`  Configure IPsec manual keys.
 * `fmgd_vpn_ipsec_manualkeyinterface`  Configure IPsec manual keys.
@@ -1421,9 +1453,11 @@ The collection provides the following modules:
 * `fmgd_wireless_wtpprofile_radio3`  Configuration options for radio 3.
 * `fmgd_wireless_wtpprofile_radio4`  Configuration options for radio 4.
 * `fmgd_wireless_wtpprofile_splittunnelingacl`  Split tunneling ACL filter list.
+* `fmgd_ztna_connectoredge`  Configure ZTNA connector edge.
 * `fmgd_ztna_connectorserviceedge`  Device vdom ztna connector service edge.
+* `fmgd_ztna_destination`  Configure ZTNA destination.
 * `fmgd_ztna_reverseconnector`  Configure ZTNA Reverse-Connector.
-* `fmgd_ztna_serviceconnector`  Device vdom ztna service connector.
+* `fmgd_ztna_serviceconnector`  Configure ZTNA service connector.
 * `fmgd_ztna_trafficforwardproxy`  Configure ZTNA traffic forward proxy.
 * `fmgd_ztna_trafficforwardproxy_quic`  QUIC setting.
 * `fmgd_ztna_trafficforwardproxy_sslciphersuites`  SSL/TLS cipher suites acceptable from a client, ordered by priority.
@@ -1433,7 +1467,7 @@ The collection provides the following modules:
 * `fmgd_ztna_webportal`  Configure ztna web-portal.
 * `fmgd_ztna_webportalbookmark`  Configure ztna web-portal bookmark.
 * `fmgd_ztna_webportalbookmark_bookmarks`  Bookmark table.
-* `fmgd_ztna_webportalbookmark_llmsecureproxy`  Device vdom ztna web portal bookmark llm secure proxy.
+* `fmgd_ztna_webportalbookmark_llmsecureproxy`  LLM secure proxy.
 * `fmgd_ztna_webproxy`  Configure ZTNA web-proxy.
 * `fmgd_ztna_webproxy_apigateway`  Set IPv4 API Gateway.
 * `fmgd_ztna_webproxy_apigateway6`  Set IPv6 API Gateway.

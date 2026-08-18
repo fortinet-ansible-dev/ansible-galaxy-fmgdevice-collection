@@ -69,9 +69,9 @@ releases:
       - description: DLP exact-data-match column types.
         name: fmgd_dlp_exactdatamatch_columns
         namespace: ""
-      - description: Create a DLP fingerprint database by allowing the FortiGate to
-          access a file server containing files from which to create
-          fingerprints.
+      - description:
+          Create a DLP fingerprint database by allowing the FortiGate to
+          access a file server containing files from which to create fingerprints.
         name: fmgd_dlp_fpdocsource
         namespace: ""
       - description: Designate logical storage for DLP fingerprint database.
@@ -890,8 +890,9 @@ releases:
       - description: Distribute list configuration.
         name: fmgd_router_ospf_distributelist
         namespace: ""
-      - description: OSPF neighbor configuration are used when OSPF runs on
-          non-broadcast media.
+      - description:
+          OSPF neighbor configuration are used when OSPF runs on non-broadcast
+          media.
         name: fmgd_router_ospf_neighbor
         namespace: ""
       - description: OSPF network configuration.
@@ -993,7 +994,8 @@ releases:
       - description: Configure ACL groups to be applied on managed FortiSwitch ports.
         name: fmgd_switchcontroller_acl_group
         namespace: ""
-      - description: Configure ingress ACL policies to be applied on managed FortiSwitch
+      - description:
+          Configure ingress ACL policies to be applied on managed FortiSwitch
           ports.
         name: fmgd_switchcontroller_acl_ingress
         namespace: ""
@@ -1003,30 +1005,35 @@ releases:
       - description: ACL classifiers.
         name: fmgd_switchcontroller_acl_ingress_classifier
         namespace: ""
-      - description: Policies which can override the default for specific
-          ISL/ICL/FortiLink interface.
+      - description:
+          Policies which can override the default for specific ISL/ICL/FortiLink
+          interface.
         name: fmgd_switchcontroller_autoconfig_custom
         namespace: ""
       - description: Switch binding list.
         name: fmgd_switchcontroller_autoconfig_custom_switchbinding
         namespace: ""
-      - description: Policies which are applied automatically to all ISL/ICL/FortiLink
+      - description:
+          Policies which are applied automatically to all ISL/ICL/FortiLink
           interfaces.
         name: fmgd_switchcontroller_autoconfig_default
         namespace: ""
-      - description: Policy definitions which can define the behavior on auto configured
+      - description:
+          Policy definitions which can define the behavior on auto configured
           interfaces.
         name: fmgd_switchcontroller_autoconfig_policy
         namespace: ""
-      - description: Configure the FortiGate switch controller to send custom commands
+      - description:
+          Configure the FortiGate switch controller to send custom commands
           to managed FortiSwitch devices.
         name: fmgd_switchcontroller_customcommand
         namespace: ""
       - description: DSL policy.
         name: fmgd_switchcontroller_dsl_policy
         namespace: ""
-      - description: Configure Dynamic port policy to be applied on the managed
-          FortiSwitch ports through DPP device.
+      - description:
+          Configure Dynamic port policy to be applied on the managed FortiSwitch
+          ports through DPP device.
         name: fmgd_switchcontroller_dynamicportpolicy
         namespace: ""
       - description: Port policies with matching criteria and actions.
@@ -1035,8 +1042,9 @@ releases:
       - description: Configure FortiSwitch flow tracking and export via ipfix/netflow.
         name: fmgd_switchcontroller_flowtracking
         namespace: ""
-      - description: Configure aggregates in which all traffic sessions matching the IP
-          Address will be grouped into the same flow.
+      - description:
+          Configure aggregates in which all traffic sessions matching the
+          IP Address will be grouped into the same flow.
         name: fmgd_switchcontroller_flowtracking_aggregates
         namespace: ""
       - description: Configure collectors for the flow.
@@ -1087,8 +1095,9 @@ releases:
       - description: Configure location ELIN number.
         name: fmgd_switchcontroller_location_elinnumber
         namespace: ""
-      - description: Configure MAC policy to be applied on the managed FortiSwitch
-          devices through NAC device.
+      - description:
+          Configure MAC policy to be applied on the managed FortiSwitch devices
+          through NAC device.
         name: fmgd_switchcontroller_macpolicy
         namespace: ""
       - description: Configure FortiSwitch devices that are managed by this FortiGate.
@@ -1097,8 +1106,9 @@ releases:
       - description: Configuration method to edit FortiSwitch 802.
         name: fmgd_switchcontroller_managedswitch_8021xsettings
         namespace: ""
-      - description: Configuration method to edit FortiSwitch commands to be pushed to
-          this FortiSwitch device upon rebooting the FortiGate switch contro...
+      - description:
+          Configuration method to edit FortiSwitch commands to be pushed
+          to this FortiSwitch device upon rebooting the FortiGate switch contro...
         name: fmgd_switchcontroller_managedswitch_customcommand
         namespace: ""
       - description: Configure FortiSwitch DHCP snooping static clients.
@@ -1149,9 +1159,9 @@ releases:
       - description: Configuration method to edit FortiSwitch Static and Sticky MAC.
         name: fmgd_switchcontroller_managedswitch_staticmac
         namespace: ""
-      - description: Configuration method to edit FortiSwitch storm control for
-          measuring traffic activity using data rates to prevent traffic
-          disruption.
+      - description:
+          Configuration method to edit FortiSwitch storm control for measuring
+          traffic activity using data rates to prevent traffic disruption.
         name: fmgd_switchcontroller_managedswitch_stormcontrol
         namespace: ""
       - description: Configuration method to edit Spanning Tree Protocol
@@ -1166,7 +1176,8 @@ releases:
       - description: Configure VLAN assignment priority.
         name: fmgd_switchcontroller_managedswitch_vlan
         namespace: ""
-      - description: Configure/list NAC devices learned on the managed FortiSwitch ports
+      - description:
+          Configure/list NAC devices learned on the managed FortiSwitch ports
           which matches NAC policy.
         name: fmgd_switchcontroller_nacdevice
         namespace: ""
@@ -1176,7 +1187,8 @@ releases:
       - description: Configure network monitor settings.
         name: fmgd_switchcontroller_networkmonitorsettings
         namespace: ""
-      - description: Configure port policy to be applied on the managed FortiSwitch
+      - description:
+          Configure port policy to be applied on the managed FortiSwitch
           ports through NAC device.
         name: fmgd_switchcontroller_portpolicy
         namespace: ""
@@ -1216,7 +1228,8 @@ releases:
       - description: Configure 802.
         name: fmgd_switchcontroller_securitypolicy_8021x
         namespace: ""
-      - description: Configure allowaccess list for mgmt and internal interfaces on
+      - description:
+          Configure allowaccess list for mgmt and internal interfaces on
           managed FortiSwitch units.
         name: fmgd_switchcontroller_securitypolicy_localaccess
         namespace: ""
@@ -1241,8 +1254,9 @@ releases:
       - description: Configure FortiSwitch storm control.
         name: fmgd_switchcontroller_stormcontrol
         namespace: ""
-      - description: Configure FortiSwitch storm control policy to be applied on
-          managed-switch ports.
+      - description:
+          Configure FortiSwitch storm control policy to be applied on managed-switch
+          ports.
         name: fmgd_switchcontroller_stormcontrolpolicy
         namespace: ""
       - description: Configure FortiSwitch multiple spanning tree protocol
@@ -1284,7 +1298,8 @@ releases:
       - description: Configure virtual pool.
         name: fmgd_switchcontroller_virtualportpool
         namespace: ""
-      - description: Configure VLAN policy to be applied on the managed FortiSwitch
+      - description:
+          Configure VLAN policy to be applied on the managed FortiSwitch
           ports through dynamic-port-policy.
         name: fmgd_switchcontroller_vlanpolicy
         namespace: ""
@@ -1420,7 +1435,8 @@ releases:
       - description: Entry used by console server.
         name: fmgd_system_consoleserver_entries
         namespace: ""
-      - description: Add this FortiGate to a Security Fabric or set up a new Security
+      - description:
+          Add this FortiGate to a Security Fabric or set up a new Security
           Fabric on this FortiGate.
         name: fmgd_system_csf
         namespace: ""
@@ -1835,12 +1851,14 @@ releases:
       - description: Configure system NTP information.
         name: fmgd_system_ntp
         namespace: ""
-      - description: Configure the FortiGate to connect to any available third-party NTP
-          server.
+      - description:
+          Configure the FortiGate to connect to any available third-party
+          NTP server.
         name: fmgd_system_ntp_ntpserver
         namespace: ""
-      - description: Configure password policy for locally defined administrator
-          passwords and IPsec VPN pre-shared keys.
+      - description:
+          Configure password policy for locally defined administrator passwords
+          and IPsec VPN pre-shared keys.
         name: fmgd_system_passwordpolicy
         namespace: ""
       - description: Configure the password policy for guest administrators.
@@ -1951,7 +1969,8 @@ releases:
       - description: Configure public cloud VPN service.
         name: fmgd_system_sdnvpn
         namespace: ""
-      - description: Configure redundant Internet connections with multiple outbound
+      - description:
+          Configure redundant Internet connections with multiple outbound
           links and health-check profiles.
         name: fmgd_system_sdwan
         namespace: ""
@@ -1973,7 +1992,8 @@ releases:
       - description: FortiGate interfaces added to the SD-WAN.
         name: fmgd_system_sdwan_members
         namespace: ""
-      - description: Create SD-WAN neighbor from BGP neighbor table to control route
+      - description:
+          Create SD-WAN neighbor from BGP neighbor table to control route
           advertisements according to SLA status.
         name: fmgd_system_sdwan_neighbor
         namespace: ""
@@ -2088,7 +2108,8 @@ releases:
       - description: Configure Spanning Tree Protocol
         name: fmgd_system_stp
         namespace: ""
-      - description: Configure software switch interfaces by grouping physical and WiFi
+      - description:
+          Configure software switch interfaces by grouping physical and WiFi
           interfaces.
         name: fmgd_system_switchinterface
         namespace: ""
@@ -2104,7 +2125,8 @@ releases:
       - description: Configure DNS servers for a non-management VDOM.
         name: fmgd_system_vdomdns
         namespace: ""
-      - description: Global configuration objects that can be configured independently
+      - description:
+          Global configuration objects that can be configured independently
           across different ha peers for all VDOMs or for the defined VDOM scope.
         name: fmgd_system_vdomexception
         namespace: ""
@@ -2123,7 +2145,8 @@ releases:
       - description: Configure a RADIUS server to use as a RADIUS Single Sign On
         name: fmgd_system_vdomradiusserver
         namespace: ""
-      - description: Configure sFlow per VDOM to add or change the IP address and UDP
+      - description:
+          Configure sFlow per VDOM to add or change the IP address and UDP
           port that FortiGate sFlow agents in this VDOM use to send sFlow dat...
         name: fmgd_system_vdomsflow
         namespace: ""
@@ -2151,7 +2174,8 @@ releases:
       - description: FortiGate interfaces added to the virtual-wan-link.
         name: fmgd_system_virtualwanlink_members
         namespace: ""
-      - description: Create SD-WAN neighbor from BGP neighbor table to control route
+      - description:
+          Create SD-WAN neighbor from BGP neighbor table to control route
           advertisements according to SLA status.
         name: fmgd_system_virtualwanlink_neighbor
         namespace: ""
@@ -2188,7 +2212,9 @@ releases:
       - description: Config object tagging.
         name: fmgd_system_zone_tagging
         namespace: ""
-      - description: Configure NAC policy matching pattern to identify matching NAC devices.
+      - description:
+          Configure NAC policy matching pattern to identify matching NAC
+          devices.
         name: fmgd_user_nacpolicy
         namespace: ""
       - description: Configure quarantine support.
@@ -2206,8 +2232,9 @@ releases:
       - description: Configure user authentication setting.
         name: fmgd_user_setting
         namespace: ""
-      - description: Set up non-standard ports for authentication with HTTP, HTTPS, FTP,
-          and TELNET.
+      - description:
+          Set up non-standard ports for authentication with HTTP, HTTPS,
+          FTP, and TELNET.
         name: fmgd_user_setting_authports
         namespace: ""
       - description: Configure YouTube API keys.
@@ -2636,11 +2663,13 @@ releases:
       - description: Configure WTP groups.
         name: fmgd_wireless_wtpgroup
         namespace: ""
-      - description: Configure WTP profiles or FortiAP profiles that define radio
-          settings for manageable FortiAP platforms.
+      - description:
+          Configure WTP profiles or FortiAP profiles that define radio settings
+          for manageable FortiAP platforms.
         name: fmgd_wireless_wtpprofile
         namespace: ""
-      - description: List of MAC addresses that are denied access to this WTP, FortiAP,
+      - description:
+          List of MAC addresses that are denied access to this WTP, FortiAP,
           or AP.
         name: fmgd_wireless_wtpprofile_denymaclist
         namespace: ""
@@ -2713,7 +2742,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_ztna_webproxy_apigateway6_quic
         namespace: ""
-      - description: Select the real servers that this Access Proxy will distribute
+      - description:
+          Select the real servers that this Access Proxy will distribute
           traffic to.
         name: fmgd_ztna_webproxy_apigateway6_realservers
         namespace: ""
@@ -2723,7 +2753,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_ztna_webproxy_apigateway_quic
         namespace: ""
-      - description: Select the real servers that this Access Proxy will distribute
+      - description:
+          Select the real servers that this Access Proxy will distribute
           traffic to.
         name: fmgd_ztna_webproxy_apigateway_realservers
         namespace: ""
@@ -3029,7 +3060,8 @@ releases:
       - description: Set IPv6 API Gateway.
         name: fmgd_firewall_accessproxy6_apigateway6
         namespace: ""
-      - description: Select the real servers that this Access Proxy will distribute
+      - description:
+          Select the real servers that this Access Proxy will distribute
           traffic to.
         name: fmgd_firewall_accessproxy6_apigateway6_realservers
         namespace: ""
@@ -3039,7 +3071,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_firewall_accessproxy6_apigateway_quic
         namespace: ""
-      - description: Select the real servers that this Access Proxy will distribute
+      - description:
+          Select the real servers that this Access Proxy will distribute
           traffic to.
         name: fmgd_firewall_accessproxy6_apigateway_realservers
         namespace: ""
@@ -3055,7 +3088,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_firewall_accessproxy_apigateway6_quic
         namespace: ""
-      - description: Select the real servers that this Access Proxy will distribute
+      - description:
+          Select the real servers that this Access Proxy will distribute
           traffic to.
         name: fmgd_firewall_accessproxy_apigateway6_realservers
         namespace: ""
@@ -3065,7 +3099,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_firewall_accessproxy_apigateway_quic
         namespace: ""
-      - description: Select the real servers that this Access Proxy will distribute
+      - description:
+          Select the real servers that this Access Proxy will distribute
           traffic to.
         name: fmgd_firewall_accessproxy_apigateway_realservers
         namespace: ""
@@ -3381,7 +3416,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_firewall_vip6_quic
         namespace: ""
-      - description: Select the real servers that this server load balancing VIP will
+      - description:
+          Select the real servers that this server load balancing VIP will
           distribute traffic to.
         name: fmgd_firewall_vip6_realservers
         namespace: ""
@@ -3397,7 +3433,8 @@ releases:
       - description: QUIC setting.
         name: fmgd_firewall_vip_quic
         namespace: ""
-      - description: Select the real servers that this server load balancing VIP will
+      - description:
+          Select the real servers that this server load balancing VIP will
           distribute traffic to.
         name: fmgd_firewall_vip_realservers
         namespace: ""
@@ -3449,7 +3486,8 @@ releases:
       - description: IPS sensor filter.
         name: fmgd_ips_sensor_entries
         namespace: ""
-      - description: Traffic from selected source or destination IP addresses is exempt
+      - description:
+          Traffic from selected source or destination IP addresses is exempt
           from this signature.
         name: fmgd_ips_sensor_entries_exemptip
         namespace: ""
@@ -3624,8 +3662,9 @@ releases:
       - description: Configure DHCP servers.
         name: fmgd_system_dhcp_server
         namespace: ""
-      - description: Exclude one or more ranges of IP addresses from being assigned to
-          clients.
+      - description:
+          Exclude one or more ranges of IP addresses from being assigned
+          to clients.
         name: fmgd_system_dhcp_server_excluderange
         namespace: ""
       - description: DHCP IP range configuration.
@@ -3634,7 +3673,8 @@ releases:
       - description: DHCP options.
         name: fmgd_system_dhcp_server_options
         namespace: ""
-      - description: Options for the DHCP server to assign IP settings to specific MAC
+      - description:
+          Options for the DHCP server to assign IP settings to specific MAC
           addresses.
         name: fmgd_system_dhcp_server_reservedaddress
         namespace: ""
@@ -3770,8 +3810,7 @@ releases:
       - description: Configure SDN proxy.
         name: fmgd_system_sdnproxy
         namespace: ""
-      - description: Configure SMS server for sending SMS messages to support user
-          authentication.
+      - description: Configure SMS server for sending SMS messages to support user authentication.
         name: fmgd_system_smsserver
         namespace: ""
       - description: Configure Sovereign SASE.
@@ -4041,20 +4080,24 @@ releases:
       - description: Enable/disable CIFS
         name: fmgd_wanopt_profile_cifs
         namespace: ""
-      - description: Enable/disable FTP WAN Optimization and configure FTP WAN
-          Optimization features.
+      - description:
+          Enable/disable FTP WAN Optimization and configure FTP WAN Optimization
+          features.
         name: fmgd_wanopt_profile_ftp
         namespace: ""
-      - description: Enable/disable HTTP WAN Optimization and configure HTTP WAN
-          Optimization features.
+      - description:
+          Enable/disable HTTP WAN Optimization and configure HTTP WAN Optimization
+          features.
         name: fmgd_wanopt_profile_http
         namespace: ""
-      - description: Enable/disable MAPI email WAN Optimization and configure MAPI WAN
+      - description:
+          Enable/disable MAPI email WAN Optimization and configure MAPI WAN
           Optimization features.
         name: fmgd_wanopt_profile_mapi
         namespace: ""
-      - description: Enable/disable TCP WAN Optimization and configure TCP WAN
-          Optimization features.
+      - description:
+          Enable/disable TCP WAN Optimization and configure TCP WAN Optimization
+          features.
         name: fmgd_wanopt_profile_tcp
         namespace: ""
       - description: Device vdom webcache prefetch
@@ -4141,7 +4184,8 @@ releases:
       - description: Configure forward-server addresses.
         name: fmgd_webproxy_forwardserver
         namespace: ""
-      - description: Configure a forward server group consisting or multiple forward
+      - description:
+          Configure a forward server group consisting or multiple forward
           servers.
         name: fmgd_webproxy_forwardservergroup
         namespace: ""
@@ -4200,3 +4244,124 @@ releases:
         name: fmgd_ztna_webportalbookmark_llmsecureproxy
         namespace: ""
     release_date: "2026-04-28"
+  1.2.0:
+    changes:
+      bugfixes:
+        - Improved the login logic.
+        - Reduced the number of requests sent when workspace mode is enabled.
+        - Reduced the overall project size.
+      minor_changes:
+        - Supported FortiManager latest schema. Support FortiManager 8.0.0
+      release_summary: Release fortinet.fmgdevice 1.2.0
+    fragments:
+      - 1.2.0.yml
+    modules:
+      - description: Configure WEBSOCKET AntiVirus options.
+        name: fmgd_antivirus_profile_websocket
+        namespace: ""
+      - description: Configure app classification setting.
+        name: fmgd_application_classificationsettings
+        namespace: ""
+      - description: Configure unsanctioned applications.
+        name: fmgd_application_unsanctionedapps
+        namespace: ""
+      - description: CASB user activity tenant session extraction.
+        name: fmgd_casb_useractivity_match_tenantsessionextraction
+        namespace: ""
+      - description: CASB user activity session extraction filters.
+        name: fmgd_casb_useractivity_match_tenantsessionextraction_filters
+        namespace: ""
+      - description: Configure settings for optical character recognition
+        name: fmgd_dlp_settings_ocr
+        namespace: ""
+      - description: Define custom tag table.
+        name: fmgd_firewall_customtag
+        namespace: ""
+      - description: Fabric policy related attributes.
+        name: fmgd_firewall_policy_fabricpolicy
+        namespace: ""
+      - description: Configure WebSocket protocol options.
+        name: fmgd_firewall_profileprotocoloptions_websocket
+        namespace: ""
+      - description: Configure custom log format.
+        name: fmgd_log_customformat
+        namespace: ""
+      - description: Custom log templates.
+        name: fmgd_log_customformat_logtemplates
+        namespace: ""
+      - description: per-VRF PIM sparse-mode global settings.
+        name: fmgd_router_multicast6_pimsmglobalvrf
+        namespace: ""
+      - description: Statically configured RP addresses.
+        name: fmgd_router_multicast6_pimsmglobalvrf_rpaddress
+        namespace: ""
+      - description: Configure IPv6 multicast-flow.
+        name: fmgd_router_multicast6flow
+        namespace: ""
+      - description: IPv6 multicast-flow entries.
+        name: fmgd_router_multicast6flow_flows
+        namespace: ""
+      - description: Configure FortiSwitch IGMP snooping static group settings.
+        name: fmgd_switchcontroller_igmpsnoopingstaticgroup
+        namespace: ""
+      - description: Configure static group in switches.
+        name: fmgd_switchcontroller_igmpsnoopingstaticgroup_ports
+        namespace: ""
+      - description: Managed-switch component list.
+        name: fmgd_switchcontroller_managedswitch_components
+        namespace: ""
+      - description: Configure fortiswitchs admin security-policy.
+        name: fmgd_switchcontroller_securitypolicy_admin
+        namespace: ""
+      - description:
+          Disable the fabric datasource check on the tables when synchronizing
+          them.
+        name: fmgd_system_csf_fabricdatasourceexemption
+        namespace: ""
+      - description: Fabric-wide objects shared by non-root nodes.
+        name: fmgd_system_csf_sharedobjects
+        namespace: ""
+      - description: CMDB table entries.
+        name: fmgd_system_csf_sharedobjects_objects
+        namespace: ""
+      - description: Keys of CMDB table entries.
+        name: fmgd_system_csf_sharedobjects_objects_keys
+        namespace: ""
+      - description: Configure DHCP server templates.
+        name: fmgd_system_dhcp_template
+        namespace: ""
+      - description:
+          Exclude one or more ranges of IP addresses from being assigned
+          to clients.
+        name: fmgd_system_dhcp_template_excluderange
+        namespace: ""
+      - description: DHCP IP range configuration.
+        name: fmgd_system_dhcp_template_iprange
+        namespace: ""
+      - description: DHCP options.
+        name: fmgd_system_dhcp_template_options
+        namespace: ""
+      - description:
+          Options for the DHCP server to assign IP settings to specific MAC
+          addresses.
+        name: fmgd_system_dhcp_template_reservedaddress
+        namespace: ""
+      - description: Configure FortiMQ settings.
+        name: fmgd_system_fortimq
+        namespace: ""
+      - description: Link group table.
+        name: fmgd_system_ha_linkgroup
+        namespace: ""
+      - description: Configure custom gui themes.
+        name: fmgd_system_theme
+        namespace: ""
+      - description: FEC redundancy mapping table for specific type of service
+        name: fmgd_vpn_ipsec_fec_mappings_tos
+        namespace: ""
+      - description: Configure ZTNA connector edge.
+        name: fmgd_ztna_connectoredge
+        namespace: ""
+      - description: Configure ZTNA destination.
+        name: fmgd_ztna_destination
+        namespace: ""
+    release_date: "2026-08-18"

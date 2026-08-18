@@ -1,0 +1,7 @@
+release_summary: Release fortinet.fmgdevice 1.2.0
+minor_changes:
+  - Supported FortiManager latest schema. Support FortiManager 8.0.0
+bugfixes:
+  - Reduced the number of requests sent when workspace mode is enabled.
+  - Improved the login logic.
+  - Reduced the overall project size.

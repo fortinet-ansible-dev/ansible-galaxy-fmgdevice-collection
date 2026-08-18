@@ -13,236 +13,145 @@ DOCUMENTATION = '''
 ---
 module: fmgd_log_eventfilter
 short_description: Configure log event filters.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.partial_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  log_eventfilter:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      cifs:
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Enable/disable CIFS logging.
+        choices: ['disable', 'enable']
+      connector:
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
+        description: Enable/disable SDN connector logging.
+        choices: ['disable', 'enable']
+      endpoint:
         type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+        description: Enable/disable endpoint event logging.
+        choices: ['disable', 'enable']
+      event:
         type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
-        type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Enable/disable event logging.
+        choices: ['disable', 'enable']
+      fortiextender:
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: Enable/disable FortiExtender logging.
+        choices: ['disable', 'enable']
+      ha:
         type: str
-        required: true
-    log_eventfilter:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            cifs:
-                type: str
-                description: Enable/disable CIFS logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            connector:
-                type: str
-                description: Enable/disable SDN connector logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            endpoint:
-                type: str
-                description: Enable/disable endpoint event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            event:
-                type: str
-                description: Enable/disable event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fortiextender:
-                type: str
-                description: Enable/disable FortiExtender logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ha:
-                type: str
-                description: Enable/disable ha event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            rest_api:
-                aliases: ['rest-api']
-                type: str
-                description: Enable/disable REST API logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            router:
-                type: str
-                description: Enable/disable router event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sdwan:
-                type: str
-                description: Enable/disable SD-WAN logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            security_rating:
-                aliases: ['security-rating']
-                type: str
-                description: Enable/disable Security Rating result logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            switch_controller:
-                aliases: ['switch-controller']
-                type: str
-                description: Enable/disable Switch-Controller logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            system:
-                type: str
-                description: Enable/disable system event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            user:
-                type: str
-                description: Enable/disable user authentication event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            vpn:
-                type: str
-                description: Enable/disable VPN event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wan_opt:
-                aliases: ['wan-opt']
-                type: str
-                description: Enable/disable WAN optimization event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            webproxy:
-                type: str
-                description: Enable/disable web proxy event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wireless_activity:
-                aliases: ['wireless-activity']
-                type: str
-                description: Enable/disable wireless event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            aggd:
-                type: str
-                description: Enable/disable log for aggd events.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            crwl:
-                type: str
-                description: Enable/disable log for crwl events.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            iptables:
-                type: str
-                description: Iptables.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wcs:
-                type: str
-                description: Enable/disable log for wcs events.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wdb:
-                type: str
-                description: Enable/disable log for wdb events.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            security_audit:
-                aliases: ['security-audit']
-                type: str
-                description: Enable/disable Security Fabric audit result logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            compliance_check:
-                aliases: ['compliance-check']
-                type: str
-                description: Enable/disable PCI DSS compliance check logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            telemetry:
-                type: str
-                description: Enable/disable telemetry event logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            web_svc:
-                aliases: ['web-svc']
-                type: str
-                description: Enable/disable web-svc performance logging.
-                choices:
-                    - 'disable'
-                    - 'enable'
+        description: Enable/disable ha event logging.
+        choices: ['disable', 'enable']
+      rest_api:
+        aliases: ['rest-api']
+        type: str
+        description: Enable/disable REST API logging.
+        choices: ['disable', 'enable']
+      router:
+        type: str
+        description: Enable/disable router event logging.
+        choices: ['disable', 'enable']
+      sdwan:
+        type: str
+        description: Enable/disable SD-WAN logging.
+        choices: ['disable', 'enable']
+      security_rating:
+        aliases: ['security-rating']
+        type: str
+        description: Enable/disable Security Rating result logging.
+        choices: ['disable', 'enable']
+      switch_controller:
+        aliases: ['switch-controller']
+        type: str
+        description: Enable/disable Switch-Controller logging.
+        choices: ['disable', 'enable']
+      system:
+        type: str
+        description: Enable/disable system event logging.
+        choices: ['disable', 'enable']
+      user:
+        type: str
+        description: Enable/disable user authentication event logging.
+        choices: ['disable', 'enable']
+      vpn:
+        type: str
+        description: Enable/disable VPN event logging.
+        choices: ['disable', 'enable']
+      wan_opt:
+        aliases: ['wan-opt']
+        type: str
+        description: Enable/disable WAN optimization event logging.
+        choices: ['disable', 'enable']
+      webproxy:
+        type: str
+        description: Enable/disable web proxy event logging.
+        choices: ['disable', 'enable']
+      wireless_activity:
+        aliases: ['wireless-activity']
+        type: str
+        description: Enable/disable wireless event logging.
+        choices: ['disable', 'enable']
+      aggd:
+        type: str
+        description: Enable/disable log for aggd events.
+        choices: ['disable', 'enable']
+      crwl:
+        type: str
+        description: Enable/disable log for crwl events.
+        choices: ['disable', 'enable']
+      iptables:
+        type: str
+        description: Iptables.
+        choices: ['disable', 'enable']
+      wcs:
+        type: str
+        description: Enable/disable log for wcs events.
+        choices: ['disable', 'enable']
+      wdb:
+        type: str
+        description: Enable/disable log for wdb events.
+        choices: ['disable', 'enable']
+      security_audit:
+        aliases: ['security-audit']
+        type: str
+        description: Enable/disable Security Fabric audit result logging.
+        choices: ['disable', 'enable']
+      compliance_check:
+        aliases: ['compliance-check']
+        type: str
+        description: Enable/disable PCI DSS compliance check logging.
+        choices: ['disable', 'enable']
+      telemetry:
+        type: str
+        description: Enable/disable telemetry event logging.
+        choices: ['disable', 'enable']
+      web_svc:
+        aliases: ['web-svc']
+        type: str
+        description: Enable/disable web-svc performance logging.
+        choices: ['disable', 'enable']
+      nftables:
+        type: str
+        description: Nftables.
+        choices: ['disable', 'enable']
+      ftnt_sec_mod:
+        aliases: ['ftnt-sec-mod']
+        type: str
+        description: Enable/disable Forti Security Module logging.
+        choices: ['disable', 'enable']
 '''
 
 EXAMPLES = '''
@@ -250,18 +159,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure log event filters.
       fortinet.fmgdevice.fmgd_log_eventfilter:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         log_eventfilter:
@@ -291,46 +192,48 @@ EXAMPLES = '''
           # compliance_check: <value in [disable, enable]>
           # telemetry: <value in [disable, enable]>
           # web_svc: <value in [disable, enable]>
+          # nftables: <value in [disable, enable]>
+          # ftnt_sec_mod: <value in [disable, enable]>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -342,14 +245,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/log/eventfilter'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = None
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'log_eventfilter': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'cifs': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'connector': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
@@ -368,34 +268,32 @@ def main():
                 'wan-opt': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'webproxy': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'wireless-activity': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'aggd': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'crwl': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'iptables': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'wcs': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'wdb': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'security-audit': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'compliance-check': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'aggd': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'crwl': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'iptables': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'wcs': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'wdb': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'security-audit': {'v_range': [['7.4.8', '7.4.11']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'compliance-check': {'v_range': [['7.4.8', '7.4.11']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'telemetry': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'web-svc': {'v_range': [['7.4.9', '7.4.10'], ['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'web-svc': {'v_range': [['7.4.9', '7.4.11'], ['7.6.5', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'nftables': {'v_range': [['7.6.7', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ftnt-sec-mod': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('partial crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'log_eventfilter'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list,
+                       None, 'data', module, connection)
     fmgd.process_partial_crud()
-
     module.exit_json(meta=module.params)
 
 

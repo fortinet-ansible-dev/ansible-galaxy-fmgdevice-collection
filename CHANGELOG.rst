@@ -4,6 +4,64 @@ Fortinet.Fmgdevice Release Notes
 
 .. contents:: Topics
 
+v1.2.0
+======
+
+Release Summary
+---------------
+
+Release fortinet.fmgdevice 1.2.0
+
+Minor Changes
+-------------
+
+- Supported FortiManager latest schema. Support FortiManager 8.0.0
+
+Bugfixes
+--------
+
+- Improved the login logic.
+- Reduced the number of requests sent when workspace mode is enabled.
+- Reduced the overall project size.
+
+New Modules
+-----------
+
+- fortinet.fmgdevice.fmgd_antivirus_profile_websocket - Configure WEBSOCKET AntiVirus options.
+- fortinet.fmgdevice.fmgd_application_classificationsettings - Configure app classification setting.
+- fortinet.fmgdevice.fmgd_application_unsanctionedapps - Configure unsanctioned applications.
+- fortinet.fmgdevice.fmgd_casb_useractivity_match_tenantsessionextraction - CASB user activity tenant session extraction.
+- fortinet.fmgdevice.fmgd_casb_useractivity_match_tenantsessionextraction_filters - CASB user activity session extraction filters.
+- fortinet.fmgdevice.fmgd_dlp_settings_ocr - Configure settings for optical character recognition
+- fortinet.fmgdevice.fmgd_firewall_customtag - Define custom tag table.
+- fortinet.fmgdevice.fmgd_firewall_policy_fabricpolicy - Fabric policy related attributes.
+- fortinet.fmgdevice.fmgd_firewall_profileprotocoloptions_websocket - Configure WebSocket protocol options.
+- fortinet.fmgdevice.fmgd_log_customformat - Configure custom log format.
+- fortinet.fmgdevice.fmgd_log_customformat_logtemplates - Custom log templates.
+- fortinet.fmgdevice.fmgd_router_multicast6_pimsmglobalvrf - per-VRF PIM sparse-mode global settings.
+- fortinet.fmgdevice.fmgd_router_multicast6_pimsmglobalvrf_rpaddress - Statically configured RP addresses.
+- fortinet.fmgdevice.fmgd_router_multicast6flow - Configure IPv6 multicast-flow.
+- fortinet.fmgdevice.fmgd_router_multicast6flow_flows - IPv6 multicast-flow entries.
+- fortinet.fmgdevice.fmgd_switchcontroller_igmpsnoopingstaticgroup - Configure FortiSwitch IGMP snooping static group settings.
+- fortinet.fmgdevice.fmgd_switchcontroller_igmpsnoopingstaticgroup_ports - Configure static group in switches.
+- fortinet.fmgdevice.fmgd_switchcontroller_managedswitch_components - Managed-switch component list.
+- fortinet.fmgdevice.fmgd_switchcontroller_securitypolicy_admin - Configure fortiswitchs admin security-policy.
+- fortinet.fmgdevice.fmgd_system_csf_fabricdatasourceexemption - Disable the fabric datasource check on the tables when synchronizing them.
+- fortinet.fmgdevice.fmgd_system_csf_sharedobjects - Fabric-wide objects shared by non-root nodes.
+- fortinet.fmgdevice.fmgd_system_csf_sharedobjects_objects - CMDB table entries.
+- fortinet.fmgdevice.fmgd_system_csf_sharedobjects_objects_keys - Keys of CMDB table entries.
+- fortinet.fmgdevice.fmgd_system_dhcp_template - Configure DHCP server templates.
+- fortinet.fmgdevice.fmgd_system_dhcp_template_excluderange - Exclude one or more ranges of IP addresses from being assigned to clients.
+- fortinet.fmgdevice.fmgd_system_dhcp_template_iprange - DHCP IP range configuration.
+- fortinet.fmgdevice.fmgd_system_dhcp_template_options - DHCP options.
+- fortinet.fmgdevice.fmgd_system_dhcp_template_reservedaddress - Options for the DHCP server to assign IP settings to specific MAC addresses.
+- fortinet.fmgdevice.fmgd_system_fortimq - Configure FortiMQ settings.
+- fortinet.fmgdevice.fmgd_system_ha_linkgroup - Link group table.
+- fortinet.fmgdevice.fmgd_system_theme - Configure custom gui themes.
+- fortinet.fmgdevice.fmgd_vpn_ipsec_fec_mappings_tos - FEC redundancy mapping table for specific type of service
+- fortinet.fmgdevice.fmgd_ztna_connectoredge - Configure ZTNA connector edge.
+- fortinet.fmgdevice.fmgd_ztna_destination - Configure ZTNA destination.
+
 v1.1.0
 ======
 

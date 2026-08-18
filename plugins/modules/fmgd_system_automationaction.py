@@ -13,414 +13,309 @@ DOCUMENTATION = '''
 ---
 module: fmgd_system_automationaction
 short_description: Action for automation stitches.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
-        type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  system_automationaction:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      accprofile:
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
+        elements: str
+        description: Access profile for CLI script action to access FortiGate features.
+      action_type:
+        aliases: ['action-type']
+        type: str
+        description: Action type.
+        choices: ['email', 'ios-notification', 'alert', 'disable-ssid', 'quarantine', 'ban-ip',
+                  'quarantine-forticlient', 'aws-lambda', 'webhook', 'quarantine-nsx',
+                  'azure-function', 'cli-script', 'google-cloud-function', 'alicloud-function',
+                  'slack-notification', 'quarantine-fortinac', 'microsoft-teams-notification',
+                  'fortiexplorer-notification', 'system-actions', 'diagnose-script',
+                  'regular-expression']
+      alicloud_access_key_id:
+        aliases: ['alicloud-access-key-id']
+        type: str
+        description: AliCloud AccessKey ID.
+      alicloud_access_key_secret:
+        aliases: ['alicloud-access-key-secret']
         type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
+        elements: str
+        description: AliCloud AccessKey secret.
+      alicloud_function_authorization:
+        aliases: ['alicloud-function-authorization']
         type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+        description: AliCloud function authorization type.
+        choices: ['anonymous', 'function']
+      aws_api_key:
+        aliases: ['aws-api-key']
+        type: list
+        elements: str
+        description: AWS API Gateway API key.
+      azure_api_key:
+        aliases: ['azure-api-key']
+        type: list
+        elements: str
+        description: Azure function API key.
+      azure_function_authorization:
+        aliases: ['azure-function-authorization']
         type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
-        type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Azure function authorization level.
+        choices: ['anonymous', 'function', 'admin']
+      description:
         type: str
-        required: true
-    system_automationaction:
-        description: The top level parameters set.
-        required: false
-        type: dict
+        description: Description.
+      email_from:
+        aliases: ['email-from']
+        type: str
+        description: Email sender name.
+      email_subject:
+        aliases: ['email-subject']
+        type: str
+        description: Email subject.
+      email_to:
+        aliases: ['email-to']
+        type: list
+        elements: str
+        description: Email addresses.
+      execute_security_fabric:
+        aliases: ['execute-security-fabric']
+        type: str
+        description: Enable/disable execution of CLI script on all or only one FortiGate unit in the Security Fabric.
+        choices: ['disable', 'enable']
+      forticare_email:
+        aliases: ['forticare-email']
+        type: str
+        description: Enable/disable use of your FortiCare email address as the email-to address.
+        choices: ['disable', 'enable']
+      http_body:
+        aliases: ['http-body']
+        type: str
+        description: Request body
+      http_headers:
+        aliases: ['http-headers']
+        type: list
+        elements: dict
+        description: Http headers.
         suboptions:
-            accprofile:
-                type: list
-                elements: str
-                description: Access profile for CLI script action to access FortiGate features.
-            action_type:
-                aliases: ['action-type']
-                type: str
-                description: Action type.
-                choices:
-                    - 'email'
-                    - 'ios-notification'
-                    - 'alert'
-                    - 'disable-ssid'
-                    - 'quarantine'
-                    - 'ban-ip'
-                    - 'quarantine-forticlient'
-                    - 'aws-lambda'
-                    - 'webhook'
-                    - 'quarantine-nsx'
-                    - 'azure-function'
-                    - 'cli-script'
-                    - 'google-cloud-function'
-                    - 'alicloud-function'
-                    - 'slack-notification'
-                    - 'quarantine-fortinac'
-                    - 'microsoft-teams-notification'
-                    - 'fortiexplorer-notification'
-                    - 'system-actions'
-                    - 'diagnose-script'
-                    - 'regular-expression'
-            alicloud_access_key_id:
-                aliases: ['alicloud-access-key-id']
-                type: str
-                description: AliCloud AccessKey ID.
-            alicloud_access_key_secret:
-                aliases: ['alicloud-access-key-secret']
-                type: list
-                elements: str
-                description: AliCloud AccessKey secret.
-            alicloud_function_authorization:
-                aliases: ['alicloud-function-authorization']
-                type: str
-                description: AliCloud function authorization type.
-                choices:
-                    - 'anonymous'
-                    - 'function'
-            aws_api_key:
-                aliases: ['aws-api-key']
-                type: list
-                elements: str
-                description: AWS API Gateway API key.
-            azure_api_key:
-                aliases: ['azure-api-key']
-                type: list
-                elements: str
-                description: Azure function API key.
-            azure_function_authorization:
-                aliases: ['azure-function-authorization']
-                type: str
-                description: Azure function authorization level.
-                choices:
-                    - 'anonymous'
-                    - 'function'
-                    - 'admin'
-            description:
-                type: str
-                description: Description.
-            email_from:
-                aliases: ['email-from']
-                type: str
-                description: Email sender name.
-            email_subject:
-                aliases: ['email-subject']
-                type: str
-                description: Email subject.
-            email_to:
-                aliases: ['email-to']
-                type: list
-                elements: str
-                description: Email addresses.
-            execute_security_fabric:
-                aliases: ['execute-security-fabric']
-                type: str
-                description: Enable/disable execution of CLI script on all or only one FortiGate unit in the Security Fabric.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            forticare_email:
-                aliases: ['forticare-email']
-                type: str
-                description: Enable/disable use of your FortiCare email address as the email-to address.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            http_body:
-                aliases: ['http-body']
-                type: str
-                description: Request body
-            http_headers:
-                aliases: ['http-headers']
-                type: list
-                elements: dict
-                description: Http headers.
-                suboptions:
-                    id:
-                        type: int
-                        description: Entry ID.
-                    key:
-                        type: str
-                        description: Request header key.
-                    value:
-                        type: str
-                        description: Request header value.
-            fmgr_message:
-                type: str
-                description: Message content.
-            message_type:
-                aliases: ['message-type']
-                type: str
-                description: Message type.
-                choices:
-                    - 'text'
-                    - 'json'
-                    - 'form-data'
-            method:
-                type: str
-                description: Request method
-                choices:
-                    - 'delete'
-                    - 'get'
-                    - 'post'
-                    - 'put'
-                    - 'patch'
-            minimum_interval:
-                aliases: ['minimum-interval']
-                type: int
-                description: Limit execution to no more than once in this interval
-            name:
-                type: str
-                description: Name.
-                required: true
-            output_size:
-                aliases: ['output-size']
-                type: int
-                description: Number of megabytes to limit script output to
-            port:
-                type: int
-                description: Protocol port.
-            protocol:
-                type: str
-                description: Request protocol.
-                choices:
-                    - 'http'
-                    - 'https'
-            replacement_message:
-                aliases: ['replacement-message']
-                type: str
-                description: Enable/disable replacement message.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            replacemsg_group:
-                aliases: ['replacemsg-group']
-                type: list
-                elements: str
-                description: Replacement message group.
-            script:
-                type: str
-                description: CLI script.
-            sdn_connector:
-                aliases: ['sdn-connector']
-                type: list
-                elements: str
-                description: NSX SDN connector names.
-            security_tag:
-                aliases: ['security-tag']
-                type: str
-                description: NSX security tag.
-            system_action:
-                aliases: ['system-action']
-                type: str
-                description: System action type.
-                choices:
-                    - 'reboot'
-                    - 'shutdown'
-                    - 'backup-config'
-            timeout:
-                type: int
-                description: Maximum running time for this script in seconds
-            tls_certificate:
-                aliases: ['tls-certificate']
-                type: list
-                elements: str
-                description: Custom TLS certificate for API request.
-            uri:
-                type: str
-                description: Request API URI.
-            verify_host_cert:
-                aliases: ['verify-host-cert']
-                type: str
-                description: Enable/disable verification of the remote host certificate.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            headers:
-                type: list
-                elements: str
-                description: Request headers.
-            required:
-                type: str
-                description: Required in action chain.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            delay:
-                type: int
-                description: Delay before execution
-            azure_app:
-                aliases: ['azure-app']
-                type: str
-                description: Azure function application name.
-            azure_function:
-                aliases: ['azure-function']
-                type: str
-                description: Azure function name.
-            aws_api_path:
-                aliases: ['aws-api-path']
-                type: str
-                description: AWS API Gateway path.
-            aws_region:
-                aliases: ['aws-region']
-                type: str
-                description: AWS region.
-            gcp_function_domain:
-                aliases: ['gcp-function-domain']
-                type: str
-                description: Google Cloud function domain.
-            alicloud_account_id:
-                aliases: ['alicloud-account-id']
-                type: str
-                description: AliCloud account ID.
-            alicloud_version:
-                aliases: ['alicloud-version']
-                type: str
-                description: AliCloud version.
-            azure_domain:
-                aliases: ['azure-domain']
-                type: str
-                description: Azure function domain.
-            aws_api_stage:
-                aliases: ['aws-api-stage']
-                type: str
-                description: AWS API Gateway deployment stage name.
-            alicloud_region:
-                aliases: ['alicloud-region']
-                type: str
-                description: AliCloud region.
-            gcp_function_region:
-                aliases: ['gcp-function-region']
-                type: str
-                description: Google Cloud function region.
-            aws_api_id:
-                aliases: ['aws-api-id']
-                type: str
-                description: AWS API Gateway ID.
-            alicloud_service:
-                aliases: ['alicloud-service']
-                type: str
-                description: AliCloud service name.
-            alicloud_function:
-                aliases: ['alicloud-function']
-                type: str
-                description: AliCloud function name.
-            aws_domain:
-                aliases: ['aws-domain']
-                type: str
-                description: AWS domain.
-            gcp_project:
-                aliases: ['gcp-project']
-                type: str
-                description: Google Cloud Platform project name.
-            gcp_function:
-                aliases: ['gcp-function']
-                type: str
-                description: Google Cloud function name.
-            alicloud_function_domain:
-                aliases: ['alicloud-function-domain']
-                type: str
-                description: AliCloud function domain.
-            email_body:
-                aliases: ['email-body']
-                type: str
-                description: Email body.
-            duration:
-                type: int
-                description: Maximum running time for this script in seconds.
-            regular_expression:
-                aliases: ['regular-expression']
-                type: str
-                description: Regular expression string.
-            log_debug_print:
-                aliases: ['log-debug-print']
-                type: str
-                description: Enable/disable logging debug print output from diagnose action.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            password:
-                type: list
-                elements: str
-                description: Password.
-            output_interval:
-                aliases: ['output-interval']
-                type: int
-                description: Collect the outputs for each output-interval in seconds
-            file_only:
-                aliases: ['file-only']
-                type: str
-                description: Enable/disable the output in files only.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            form_data:
-                aliases: ['form-data']
-                type: list
-                elements: dict
-                description: Form data.
-                suboptions:
-                    id:
-                        type: int
-                        description: Entry ID.
-                    key:
-                        type: str
-                        description: Key of the part of Multipart/form-data.
-                    value:
-                        type: str
-                        description: Value of the part of Multipart/form-data.
+          id:
+            type: int
+            description: Entry ID.
+          key:
+            type: str
+            description: Request header key.
+          value:
+            type: str
+            description: Request header value.
+      fmgr_message:
+        type: str
+        description: Message content.
+      message_type:
+        aliases: ['message-type']
+        type: str
+        description: Message type.
+        choices: ['text', 'json', 'form-data']
+      method:
+        type: str
+        description: Request method
+        choices: ['delete', 'get', 'post', 'put', 'patch']
+      minimum_interval:
+        aliases: ['minimum-interval']
+        type: int
+        description: Limit execution to no more than once in this interval
+      name:
+        type: str
+        description: Name.
+        required: true
+      output_size:
+        aliases: ['output-size']
+        type: int
+        description: Number of megabytes to limit script output to
+      port:
+        type: int
+        description: Protocol port.
+      protocol:
+        type: str
+        description: Request protocol.
+        choices: ['http', 'https']
+      replacement_message:
+        aliases: ['replacement-message']
+        type: str
+        description: Enable/disable replacement message.
+        choices: ['disable', 'enable']
+      replacemsg_group:
+        aliases: ['replacemsg-group']
+        type: list
+        elements: str
+        description: Replacement message group.
+      script:
+        type: str
+        description: CLI script.
+      sdn_connector:
+        aliases: ['sdn-connector']
+        type: list
+        elements: str
+        description: NSX SDN connector names.
+      security_tag:
+        aliases: ['security-tag']
+        type: str
+        description: NSX security tag.
+      system_action:
+        aliases: ['system-action']
+        type: str
+        description: System action type.
+        choices: ['reboot', 'shutdown', 'backup-config']
+      timeout:
+        type: int
+        description: Maximum running time for this script in seconds
+      tls_certificate:
+        aliases: ['tls-certificate']
+        type: list
+        elements: str
+        description: Custom TLS certificate for API request.
+      uri:
+        type: str
+        description: Request API URI.
+      verify_host_cert:
+        aliases: ['verify-host-cert']
+        type: str
+        description: Enable/disable verification of the remote host certificate.
+        choices: ['disable', 'enable']
+      headers:
+        type: list
+        elements: str
+        description: Request headers.
+      required:
+        type: str
+        description: Required in action chain.
+        choices: ['disable', 'enable']
+      delay:
+        type: int
+        description: Delay before execution
+      azure_app:
+        aliases: ['azure-app']
+        type: str
+        description: Azure function application name.
+      azure_function:
+        aliases: ['azure-function']
+        type: str
+        description: Azure function name.
+      aws_api_path:
+        aliases: ['aws-api-path']
+        type: str
+        description: AWS API Gateway path.
+      aws_region:
+        aliases: ['aws-region']
+        type: str
+        description: AWS region.
+      gcp_function_domain:
+        aliases: ['gcp-function-domain']
+        type: str
+        description: Google Cloud function domain.
+      alicloud_account_id:
+        aliases: ['alicloud-account-id']
+        type: str
+        description: AliCloud account ID.
+      alicloud_version:
+        aliases: ['alicloud-version']
+        type: str
+        description: AliCloud version.
+      azure_domain:
+        aliases: ['azure-domain']
+        type: str
+        description: Azure function domain.
+      aws_api_stage:
+        aliases: ['aws-api-stage']
+        type: str
+        description: AWS API Gateway deployment stage name.
+      alicloud_region:
+        aliases: ['alicloud-region']
+        type: str
+        description: AliCloud region.
+      gcp_function_region:
+        aliases: ['gcp-function-region']
+        type: str
+        description: Google Cloud function region.
+      aws_api_id:
+        aliases: ['aws-api-id']
+        type: str
+        description: AWS API Gateway ID.
+      alicloud_service:
+        aliases: ['alicloud-service']
+        type: str
+        description: AliCloud service name.
+      alicloud_function:
+        aliases: ['alicloud-function']
+        type: str
+        description: AliCloud function name.
+      aws_domain:
+        aliases: ['aws-domain']
+        type: str
+        description: AWS domain.
+      gcp_project:
+        aliases: ['gcp-project']
+        type: str
+        description: Google Cloud Platform project name.
+      gcp_function:
+        aliases: ['gcp-function']
+        type: str
+        description: Google Cloud function name.
+      alicloud_function_domain:
+        aliases: ['alicloud-function-domain']
+        type: str
+        description: AliCloud function domain.
+      email_body:
+        aliases: ['email-body']
+        type: str
+        description: Email body.
+      duration:
+        type: int
+        description: Maximum running time for this script in seconds.
+      regular_expression:
+        aliases: ['regular-expression']
+        type: str
+        description: Regular expression string.
+      log_debug_print:
+        aliases: ['log-debug-print']
+        type: str
+        description: Enable/disable logging debug print output from diagnose action.
+        choices: ['disable', 'enable']
+      password:
+        type: list
+        elements: str
+        description: Password.
+      output_interval:
+        aliases: ['output-interval']
+        type: int
+        description: Collect the outputs for each output-interval in seconds
+      file_only:
+        aliases: ['file-only']
+        type: str
+        description: Enable/disable the output in files only.
+        choices: ['disable', 'enable']
+      form_data:
+        aliases: ['form-data']
+        type: list
+        elements: dict
+        description: Form data.
+        suboptions:
+          id:
+            type: int
+            description: Entry ID.
+          key:
+            type: str
+            description: Key of the part of Multipart/form-data.
+          value:
+            type: str
+            description: Value of the part of Multipart/form-data.
 '''
 
 EXAMPLES = '''
@@ -428,18 +323,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Action for automation stitches.
       fortinet.fmgdevice.fmgd_system_automationaction:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         state: present # <value in [present, absent]>
         system_automationaction:
@@ -516,42 +403,42 @@ EXAMPLES = '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -563,13 +450,10 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/global/system/automation-action'
     ]
-    url_params = ['device']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'system_automationaction': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'accprofile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'action-type': {
@@ -630,29 +514,29 @@ def main():
                 'headers': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'required': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'delay': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'int'},
-                'azure-app': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'azure-function': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'aws-api-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'aws-region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'gcp-function-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'alicloud-account-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'alicloud-version': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'azure-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'aws-api-stage': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'alicloud-region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'gcp-function-region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'aws-api-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'alicloud-service': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'alicloud-function': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'aws-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'gcp-project': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'gcp-function': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
-                'alicloud-function-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
+                'azure-app': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'azure-function': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'aws-api-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'aws-region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'gcp-function-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'alicloud-account-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'alicloud-version': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'azure-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'aws-api-stage': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'alicloud-region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'gcp-function-region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'aws-api-id': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'alicloud-service': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'alicloud-function': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'aws-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'gcp-project': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'gcp-function': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
+                'alicloud-function-domain': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'type': 'str'},
                 'email-body': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'type': 'str'},
                 'duration': {'v_range': [['7.6.2', '']], 'type': 'int'},
                 'regular-expression': {'v_range': [['7.6.2', '']], 'type': 'str'},
                 'log-debug-print': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'password': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'password': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
                 'output-interval': {'v_range': [['7.6.4', '']], 'type': 'int'},
                 'file-only': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'form-data': {
@@ -671,19 +555,15 @@ def main():
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'system_automationaction'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

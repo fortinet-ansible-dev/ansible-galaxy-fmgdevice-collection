@@ -44,9 +44,6 @@ class FMGRMethods:
     MOVE = "move"
 
 
-BASE_HEADERS = {"Content-Type": "application/json",
-                "Accept": "application/json"}
-
 COMMON_SCHEMA = {
     'access_token': {'type': 'str', 'no_log': True},
     'bypass_validation': {'type': 'bool', 'default': False},
@@ -84,7 +81,7 @@ class FMGBaseException(Exception):
 
     def __init__(self, msg=None, *args, **kwargs):
         if msg is None:
-            msg = "An exception occurred within the httpapi connection plugin."
+            msg = "An exception occurred within the fmgdevice.py httpapi connection plugin."
         super(FMGBaseException, self).__init__(msg, *args)
 
 # END ERROR CLASSES

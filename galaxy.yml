@@ -1,6 +1,6 @@
 namespace: "fortinet"
 name: "fmgdevice"
-version: "1.1.0"
+version: "1.2.0"
 readme: "README.md"
 authors:
     - "Xinwei Du (@dux-fortinet)"
@@ -21,3 +21,4 @@ homepage: "https://fortinet.com"
 issues: "https://github.com/fortinet-ansible-dev/ansible-galaxy-fmgdevice-collection/issues"
 build_ignore:
     - ".github"
+    - ".ansible-lint"

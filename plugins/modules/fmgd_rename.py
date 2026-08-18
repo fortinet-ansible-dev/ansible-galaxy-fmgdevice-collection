@@ -14,883 +14,907 @@ DOCUMENTATION = '''
 module: fmgd_rename
 short_description: Rename an object in FortiManager.
 description:
-    - This module is able to configure a FortiManager device by renaming an object.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
+  - This module is able to configure a FortiManager device by renaming an object.
+  - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
 author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
+  - Xinwei Du (@dux-fortinet)
+  - Xing Li (@lix-fortinet)
+  - Jie Xue (@JieX19)
+  - Link Zheng (@chillancezen)
+  - Frank Shen (@fshen01)
+  - Hongbin Lu (@fgtdev-hblu)
 notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+  - Running in workspace locking mode is supported in this FortiManager module, the top
+    level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
+  - Normally, running one module can fail when a non-zero rc is returned. you can also override
+    the conditions to fail or succeed with parameters rc_failed and rc_succeeded
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
-        required: false
-        type: str
-    enable_log:
-        description: Enable/Disable logging for task.
-        required: false
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Access token of forticloud managed API users, this option is available with FortiManager later than 6.4.0.
-        required: false
-        type: str
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        required: false
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
-        required: false
-        type: int
-        default: 300
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        required: false
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        required: false
-        elements: int
-    rename:
-        description: Rename An Object.
-        type: dict
+  access_token:
+    description: The token to access FortiManager without using username and password.
+    required: false
+    type: str
+  enable_log:
+    description: Enable/Disable logging for task.
+    required: false
+    type: bool
+    default: false
+  forticloud_access_token:
+    description: Access token of forticloud managed API users, this option is available with FortiManager later than 6.4.0.
+    required: false
+    type: str
+  workspace_locking_adom:
+    description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+    required: false
+    type: str
+  workspace_locking_timeout:
+    description: The maximum time in seconds to wait for other user to release the workspace lock.
+    required: false
+    type: int
+    default: 300
+  rc_succeeded:
+    description: The rc codes list with which the conditions to succeed will be overriden.
+    type: list
+    required: false
+    elements: int
+  rc_failed:
+    description: The rc codes list with which the conditions to fail will be overriden.
+    type: list
+    required: false
+    elements: int
+  rename:
+    description: Rename An Object.
+    type: dict
+    required: true
+    suboptions:
+      selector:
         required: true
-        suboptions:
-            selector:
-                required: true
-                description: Selector of the renamed object.
-                type: str
-                choices:
-                    - 'antivirus_exemptlist'
-                    - 'antivirus_profile'
-                    - 'application_categories'
-                    - 'application_custom'
-                    - 'application_group'
-                    - 'application_list'
-                    - 'application_list_defaultnetworkservices'
-                    - 'application_list_entries'
-                    - 'application_name'
-                    - 'authentication_rule'
-                    - 'authentication_scheme'
-                    - 'aws_vpce'
-                    - 'azure_vwaningresspublicips'
-                    - 'azure_vwanslb_permanentsecurityrules_rules'
-                    - 'azure_vwanslb_temporarysecurityrules_rules'
-                    - 'casb_attributematch'
-                    - 'casb_attributematch_attribute'
-                    - 'casb_attributematch_match'
-                    - 'casb_attributematch_match_rule'
-                    - 'casb_profile'
-                    - 'casb_profile_saasapplication'
-                    - 'casb_profile_saasapplication_accessrule'
-                    - 'casb_profile_saasapplication_accessrule_attributefilter'
-                    - 'casb_profile_saasapplication_advancedtenantcontrol'
-                    - 'casb_profile_saasapplication_advancedtenantcontrol_attribute'
-                    - 'casb_profile_saasapplication_customcontrol'
-                    - 'casb_profile_saasapplication_customcontrol_attributefilter'
-                    - 'casb_profile_saasapplication_customcontrol_option'
-                    - 'casb_saasapplication'
-                    - 'casb_saasapplication_inputattributes'
-                    - 'casb_saasapplication_outputattributes'
-                    - 'casb_useractivity'
-                    - 'casb_useractivity_match'
-                    - 'casb_useractivity_match_rules'
-                    - 'casb_useractivity_match_tenantextraction_filters'
-                    - 'certificate_hsmlocal'
-                    - 'certificate_remote'
-                    - 'diameterfilter_profile'
-                    - 'dlp_datatype'
-                    - 'dlp_dictionary'
-                    - 'dlp_dictionary_entries'
-                    - 'dlp_exactdatamatch'
-                    - 'dlp_filepattern'
-                    - 'dlp_fpdocsource'
-                    - 'dlp_label'
-                    - 'dlp_label_entries'
-                    - 'dlp_profile'
-                    - 'dlp_profile_rule'
-                    - 'dlp_sensor'
-                    - 'dlp_sensor_entries'
-                    - 'dnsfilter_domainfilter'
-                    - 'dnsfilter_domainfilter_entries'
-                    - 'dnsfilter_profile'
-                    - 'dnsfilter_profile_dnstranslation'
-                    - 'dnsfilter_profile_ftgddns_filters'
-                    - 'emailfilter_blockallowlist'
-                    - 'emailfilter_blockallowlist_entries'
-                    - 'emailfilter_bword'
-                    - 'emailfilter_bword_entries'
-                    - 'emailfilter_dnsbl'
-                    - 'emailfilter_dnsbl_entries'
-                    - 'emailfilter_iptrust'
-                    - 'emailfilter_iptrust_entries'
-                    - 'emailfilter_mheader'
-                    - 'emailfilter_mheader_entries'
-                    - 'emailfilter_profile'
-                    - 'endpointcontrol_fctems'
-                    - 'endpointcontrol_fctemsoverride'
-                    - 'extendercontroller_extender'
-                    - 'extensioncontroller_dataplan'
-                    - 'extensioncontroller_extender'
-                    - 'extensioncontroller_extenderprofile'
-                    - 'extensioncontroller_extenderprofile_cellular_smsnotification_receiver'
-                    - 'extensioncontroller_extendervap'
-                    - 'extensioncontroller_fortigate'
-                    - 'extensioncontroller_fortigateprofile'
-                    - 'filefilter_profile'
-                    - 'filefilter_profile_rules'
-                    - 'firewall_accessproxy'
-                    - 'firewall_accessproxy6'
-                    - 'firewall_accessproxy6_apigateway'
-                    - 'firewall_accessproxy6_apigateway6'
-                    - 'firewall_accessproxy6_apigateway6_realservers'
-                    - 'firewall_accessproxy6_apigateway_realservers'
-                    - 'firewall_accessproxy_apigateway'
-                    - 'firewall_accessproxy_apigateway6'
-                    - 'firewall_accessproxy_apigateway6_realservers'
-                    - 'firewall_accessproxy_apigateway_realservers'
-                    - 'firewall_accessproxysshclientcert'
-                    - 'firewall_accessproxysshclientcert_certextension'
-                    - 'firewall_accessproxyvirtualhost'
-                    - 'firewall_address'
-                    - 'firewall_address6'
-                    - 'firewall_address6_subnetsegment'
-                    - 'firewall_address6_tagging'
-                    - 'firewall_address6template'
-                    - 'firewall_address6template_subnetsegment'
-                    - 'firewall_address6template_subnetsegment_values'
-                    - 'firewall_address_tagging'
-                    - 'firewall_addrgrp'
-                    - 'firewall_addrgrp6'
-                    - 'firewall_addrgrp6_tagging'
-                    - 'firewall_addrgrp_tagging'
-                    - 'firewall_centralsnatmap'
-                    - 'firewall_dnstranslation'
-                    - 'firewall_dospolicy'
-                    - 'firewall_dospolicy6'
-                    - 'firewall_dospolicy6_anomaly'
-                    - 'firewall_identitybasedroute'
-                    - 'firewall_identitybasedroute_rule'
-                    - 'firewall_interfacepolicy'
-                    - 'firewall_interfacepolicy6'
-                    - 'firewall_internetserviceaddition'
-                    - 'firewall_internetserviceaddition_entry'
-                    - 'firewall_internetserviceaddition_entry_portrange'
-                    - 'firewall_internetservicecustom'
-                    - 'firewall_internetservicecustom_entry'
-                    - 'firewall_internetservicecustomgroup'
-                    - 'firewall_internetservicedefinition'
-                    - 'firewall_internetservicedefinition_entry'
-                    - 'firewall_internetservicedefinition_entry_portrange'
-                    - 'firewall_internetserviceextension'
-                    - 'firewall_internetserviceextension_disableentry'
-                    - 'firewall_internetserviceextension_disableentry_ip6range'
-                    - 'firewall_internetserviceextension_disableentry_iprange'
-                    - 'firewall_internetserviceextension_disableentry_portrange'
-                    - 'firewall_internetserviceextension_entry'
-                    - 'firewall_internetserviceextension_entry_portrange'
-                    - 'firewall_internetservicegroup'
-                    - 'firewall_internetservicename'
-                    - 'firewall_ipmacbinding_table'
-                    - 'firewall_ippool'
-                    - 'firewall_ippool6'
-                    - 'firewall_ldbmonitor'
-                    - 'firewall_localinpolicy'
-                    - 'firewall_localinpolicy6'
-                    - 'firewall_multicastaddress'
-                    - 'firewall_multicastaddress6'
-                    - 'firewall_multicastaddress6_tagging'
-                    - 'firewall_multicastaddress_tagging'
-                    - 'firewall_multicastpolicy'
-                    - 'firewall_multicastpolicy6'
-                    - 'firewall_networkservicedynamic'
-                    - 'firewall_ondemandsniffer'
-                    - 'firewall_pfcp'
-                    - 'firewall_policy'
-                    - 'firewall_profilegroup'
-                    - 'firewall_profileprotocoloptions'
-                    - 'firewall_proxyaddress'
-                    - 'firewall_proxyaddress6'
-                    - 'firewall_proxyaddress6_headergroup'
-                    - 'firewall_proxyaddress6_tagging'
-                    - 'firewall_proxyaddress_headergroup'
-                    - 'firewall_proxyaddress_tagging'
-                    - 'firewall_proxyaddrgrp'
-                    - 'firewall_proxyaddrgrp6'
-                    - 'firewall_proxyaddrgrp6_tagging'
-                    - 'firewall_proxyaddrgrp_tagging'
-                    - 'firewall_proxypolicy'
-                    - 'firewall_responseshapingpolicy'
-                    - 'firewall_schedule_group'
-                    - 'firewall_schedule_onetime'
-                    - 'firewall_schedule_recurring'
-                    - 'firewall_securitypolicy'
-                    - 'firewall_service_category'
-                    - 'firewall_service_custom'
-                    - 'firewall_service_group'
-                    - 'firewall_shaper_peripshaper'
-                    - 'firewall_shaper_trafficshaper'
-                    - 'firewall_shapingpolicy'
-                    - 'firewall_shapingprofile'
-                    - 'firewall_shapingprofile_shapingentries'
-                    - 'firewall_sniffer'
-                    - 'firewall_sniffer_anomaly'
-                    - 'firewall_ssh_hostkey'
-                    - 'firewall_ssh_localca'
-                    - 'firewall_ssh_localkey'
-                    - 'firewall_ssl_keyringlist'
-                    - 'firewall_sslserver'
-                    - 'firewall_sslsshprofile'
-                    - 'firewall_sslsshprofile_echoutersni'
-                    - 'firewall_sslsshprofile_sslexempt'
-                    - 'firewall_sslsshprofile_sslserver'
-                    - 'firewall_ttlpolicy'
-                    - 'firewall_vip'
-                    - 'firewall_vip6'
-                    - 'firewall_vip6_realservers'
-                    - 'firewall_vip_realservers'
-                    - 'firewall_vip_sslciphersuites'
-                    - 'firewall_vipgrp'
-                    - 'firewall_vipgrp6'
-                    - 'firewall_wildcardfqdn_custom'
-                    - 'firewall_wildcardfqdn_group'
-                    - 'gtp_apnshaper'
-                    - 'gtp_ieallowlist'
-                    - 'gtp_ieallowlist_entries'
-                    - 'gtp_rattimeoutprofile'
-                    - 'icap_localserver_icapservice'
-                    - 'icap_profile'
-                    - 'icap_profile_icapheaders'
-                    - 'icap_remoteserver'
-                    - 'icap_remoteservergroup'
-                    - 'icap_remoteservergroup_serverlist'
-                    - 'icap_server'
-                    - 'icap_servergroup'
-                    - 'imageanalyzer_profile'
-                    - 'ips_sensor'
-                    - 'ips_sensor_entries'
-                    - 'ips_sensor_entries_exemptip'
-                    - 'isolator_profile'
-                    - 'isolator_profile_entries'
-                    - 'llm_profile'
-                    - 'llm_server'
-                    - 'loadbalance_flowrule'
-                    - 'log_azuresecuritycenter2_filter_freestyle'
-                    - 'log_azuresecuritycenter2_setting_customfieldname'
-                    - 'log_azuresecuritycenter_filter_freestyle'
-                    - 'log_azuresecuritycenter_setting_customfieldname'
-                    - 'log_customfield'
-                    - 'log_disk_filter_freestyle'
-                    - 'log_fortianalyzer2_filter_freestyle'
-                    - 'log_fortianalyzer2_overridefilter_freestyle'
-                    - 'log_fortianalyzer3_filter_freestyle'
-                    - 'log_fortianalyzer3_overridefilter_freestyle'
-                    - 'log_fortianalyzer_filter_freestyle'
-                    - 'log_fortianalyzer_overridefilter_freestyle'
-                    - 'log_fortianalyzercloud_filter_freestyle'
-                    - 'log_fortianalyzercloud_overridefilter_freestyle'
-                    - 'log_fortiguard_filter_freestyle'
-                    - 'log_fortiguard_overridefilter_freestyle'
-                    - 'log_memory_filter_freestyle'
-                    - 'log_nulldevice_filter_freestyle'
-                    - 'log_syslogd2_filter_freestyle'
-                    - 'log_syslogd2_overridefilter_freestyle'
-                    - 'log_syslogd2_overridesetting_customfieldname'
-                    - 'log_syslogd2_overridesetting_logtemplates'
-                    - 'log_syslogd2_setting_customfieldname'
-                    - 'log_syslogd2_setting_logtemplates'
-                    - 'log_syslogd3_filter_freestyle'
-                    - 'log_syslogd3_overridefilter_freestyle'
-                    - 'log_syslogd3_overridesetting_customfieldname'
-                    - 'log_syslogd3_overridesetting_logtemplates'
-                    - 'log_syslogd3_setting_customfieldname'
-                    - 'log_syslogd3_setting_logtemplates'
-                    - 'log_syslogd4_filter_freestyle'
-                    - 'log_syslogd4_overridefilter_freestyle'
-                    - 'log_syslogd4_overridesetting_customfieldname'
-                    - 'log_syslogd4_overridesetting_logtemplates'
-                    - 'log_syslogd4_setting_customfieldname'
-                    - 'log_syslogd4_setting_logtemplates'
-                    - 'log_syslogd_filter_freestyle'
-                    - 'log_syslogd_overridefilter_freestyle'
-                    - 'log_syslogd_overridesetting_customfieldname'
-                    - 'log_syslogd_overridesetting_logtemplates'
-                    - 'log_syslogd_setting_customfieldname'
-                    - 'log_syslogd_setting_logtemplates'
-                    - 'log_threatweight_application'
-                    - 'log_threatweight_geolocation'
-                    - 'log_threatweight_web'
-                    - 'log_webtrends_filter_freestyle'
-                    - 'nsx_profile'
-                    - 'nsxt_servicechain'
-                    - 'nsxt_servicechain_serviceindex'
-                    - 'pfcp_messagefilter'
-                    - 'report_chart'
-                    - 'report_chart_column'
-                    - 'report_chart_column_mapping'
-                    - 'report_chart_drilldowncharts'
-                    - 'report_dataset'
-                    - 'report_dataset_field'
-                    - 'report_dataset_parameters'
-                    - 'report_layout'
-                    - 'report_layout_bodyitem'
-                    - 'report_layout_bodyitem_list'
-                    - 'report_layout_bodyitem_parameters'
-                    - 'report_layout_page_footer_footeritem'
-                    - 'report_layout_page_header_headeritem'
-                    - 'report_style'
-                    - 'report_theme'
-                    - 'router_accesslist'
-                    - 'router_accesslist6'
-                    - 'router_accesslist6_rule'
-                    - 'router_accesslist_rule'
-                    - 'router_aspathlist'
-                    - 'router_aspathlist_rule'
-                    - 'router_authpath'
-                    - 'router_bfd6_multihoptemplate'
-                    - 'router_bfd_multihoptemplate'
-                    - 'router_bgp_admindistance'
-                    - 'router_bgp_aggregateaddress'
-                    - 'router_bgp_aggregateaddress6'
-                    - 'router_bgp_neighborgroup'
-                    - 'router_bgp_neighborrange'
-                    - 'router_bgp_neighborrange6'
-                    - 'router_bgp_network'
-                    - 'router_bgp_network6'
-                    - 'router_communitylist'
-                    - 'router_communitylist_rule'
-                    - 'router_extcommunitylist'
-                    - 'router_extcommunitylist_rule'
-                    - 'router_isis_isisinterface'
-                    - 'router_isis_isisnet'
-                    - 'router_isis_redistribute'
-                    - 'router_isis_redistribute6'
-                    - 'router_isis_summaryaddress'
-                    - 'router_isis_summaryaddress6'
-                    - 'router_keychain'
-                    - 'router_keychain_key'
-                    - 'router_multicast6_interface'
-                    - 'router_multicast6_pimsmglobal_rpaddress'
-                    - 'router_multicast_interface'
-                    - 'router_multicast_pimsmglobal_rpaddress'
-                    - 'router_multicast_pimsmglobalvrf'
-                    - 'router_multicast_pimsmglobalvrf_rpaddress'
-                    - 'router_multicastflow'
-                    - 'router_multicastflow_flows'
-                    - 'router_ospf6_area'
-                    - 'router_ospf6_area_ipseckeys'
-                    - 'router_ospf6_area_range'
-                    - 'router_ospf6_area_virtuallink'
-                    - 'router_ospf6_area_virtuallink_ipseckeys'
-                    - 'router_ospf6_ospf6interface'
-                    - 'router_ospf6_ospf6interface_ipseckeys'
-                    - 'router_ospf6_ospf6interface_neighbor'
-                    - 'router_ospf6_redistribute'
-                    - 'router_ospf6_summaryaddress'
-                    - 'router_ospf_area'
-                    - 'router_ospf_area_filterlist'
-                    - 'router_ospf_area_range'
-                    - 'router_ospf_area_virtuallink'
-                    - 'router_ospf_area_virtuallink_md5keys'
-                    - 'router_ospf_distributelist'
-                    - 'router_ospf_neighbor'
-                    - 'router_ospf_network'
-                    - 'router_ospf_ospfinterface'
-                    - 'router_ospf_ospfinterface_md5keys'
-                    - 'router_ospf_redistribute'
-                    - 'router_ospf_summaryaddress'
-                    - 'router_policy'
-                    - 'router_policy6'
-                    - 'router_prefixlist'
-                    - 'router_prefixlist6'
-                    - 'router_prefixlist6_rule'
-                    - 'router_prefixlist_rule'
-                    - 'router_rip_distance'
-                    - 'router_rip_distributelist'
-                    - 'router_rip_interface'
-                    - 'router_rip_neighbor'
-                    - 'router_rip_network'
-                    - 'router_rip_offsetlist'
-                    - 'router_rip_redistribute'
-                    - 'router_ripng_aggregateaddress'
-                    - 'router_ripng_distance'
-                    - 'router_ripng_distributelist'
-                    - 'router_ripng_interface'
-                    - 'router_ripng_neighbor'
-                    - 'router_ripng_network'
-                    - 'router_ripng_offsetlist'
-                    - 'router_routemap'
-                    - 'router_routemap_rule'
-                    - 'router_static'
-                    - 'router_static6'
-                    - 'sctpfilter_profile'
-                    - 'sctpfilter_profile_ppidfilters'
-                    - 'sshfilter_profile'
-                    - 'sshfilter_profile_shellcommands'
-                    - 'switchcontroller_acl_group'
-                    - 'switchcontroller_acl_ingress'
-                    - 'switchcontroller_autoconfig_custom'
-                    - 'switchcontroller_autoconfig_custom_switchbinding'
-                    - 'switchcontroller_autoconfig_policy'
-                    - 'switchcontroller_customcommand'
-                    - 'switchcontroller_dsl_policy'
-                    - 'switchcontroller_dynamicportpolicy'
-                    - 'switchcontroller_dynamicportpolicy_policy'
-                    - 'switchcontroller_flowtracking_aggregates'
-                    - 'switchcontroller_flowtracking_collectors'
-                    - 'switchcontroller_fortilinksettings'
-                    - 'switchcontroller_initialconfig_template'
-                    - 'switchcontroller_lldpprofile'
-                    - 'switchcontroller_lldpprofile_customtlvs'
-                    - 'switchcontroller_lldpprofile_medlocationservice'
-                    - 'switchcontroller_lldpprofile_mednetworkpolicy'
-                    - 'switchcontroller_location'
-                    - 'switchcontroller_macpolicy'
-                    - 'switchcontroller_managedswitch'
-                    - 'switchcontroller_managedswitch_customcommand'
-                    - 'switchcontroller_managedswitch_dhcpsnoopingstaticclient'
-                    - 'switchcontroller_managedswitch_igmpsnooping_vlans'
-                    - 'switchcontroller_managedswitch_ipsourceguard'
-                    - 'switchcontroller_managedswitch_ipsourceguard_bindingentry'
-                    - 'switchcontroller_managedswitch_mirror'
-                    - 'switchcontroller_managedswitch_ports_dhcpsnoopoption82override'
-                    - 'switchcontroller_managedswitch_remotelog'
-                    - 'switchcontroller_managedswitch_routeoffloadrouter'
-                    - 'switchcontroller_managedswitch_routerstatic'
-                    - 'switchcontroller_managedswitch_routervrf'
-                    - 'switchcontroller_managedswitch_snmpcommunity'
-                    - 'switchcontroller_managedswitch_snmpcommunity_hosts'
-                    - 'switchcontroller_managedswitch_snmpuser'
-                    - 'switchcontroller_managedswitch_staticmac'
-                    - 'switchcontroller_managedswitch_stpinstance'
-                    - 'switchcontroller_managedswitch_systemdhcpserver'
-                    - 'switchcontroller_managedswitch_systemdhcpserver_iprange'
-                    - 'switchcontroller_managedswitch_systemdhcpserver_options'
-                    - 'switchcontroller_managedswitch_systeminterface'
-                    - 'switchcontroller_managedswitch_vlan'
-                    - 'switchcontroller_nacdevice'
-                    - 'switchcontroller_nacsettings'
-                    - 'switchcontroller_portpolicy'
-                    - 'switchcontroller_ptp_interfacepolicy'
-                    - 'switchcontroller_ptp_policy'
-                    - 'switchcontroller_ptp_profile'
-                    - 'switchcontroller_qos_dot1pmap'
-                    - 'switchcontroller_qos_ipdscpmap'
-                    - 'switchcontroller_qos_ipdscpmap_map'
-                    - 'switchcontroller_qos_qospolicy'
-                    - 'switchcontroller_qos_queuepolicy'
-                    - 'switchcontroller_qos_queuepolicy_cosqueue'
-                    - 'switchcontroller_remotelog'
-                    - 'switchcontroller_securitypolicy_8021x'
-                    - 'switchcontroller_securitypolicy_localaccess'
-                    - 'switchcontroller_snmpcommunity'
-                    - 'switchcontroller_snmpcommunity_hosts'
-                    - 'switchcontroller_snmpuser'
-                    - 'switchcontroller_stormcontrolpolicy'
-                    - 'switchcontroller_stpinstance'
-                    - 'switchcontroller_switchgroup'
-                    - 'switchcontroller_switchinterfacetag'
-                    - 'switchcontroller_switchprofile'
-                    - 'switchcontroller_trafficpolicy'
-                    - 'switchcontroller_trafficsniffer_targetip'
-                    - 'switchcontroller_trafficsniffer_targetmac'
-                    - 'switchcontroller_trafficsniffer_targetport'
-                    - 'switchcontroller_virtualportpool'
-                    - 'switchcontroller_vlanpolicy'
-                    - 'system_3gmodem_custom'
-                    - 'system_5gmodem_dataplan'
-                    - 'system_accprofile'
-                    - 'system_acme_accounts'
-                    - 'system_admin'
-                    - 'system_admin_trusthosts'
-                    - 'system_affinityinterrupt'
-                    - 'system_affinitypacketredistribution'
-                    - 'system_alias'
-                    - 'system_apiuser'
-                    - 'system_apiuser_trusthost'
-                    - 'system_arptable'
-                    - 'system_automationaction'
-                    - 'system_automationaction_formdata'
-                    - 'system_automationaction_httpheaders'
-                    - 'system_automationcondition'
-                    - 'system_automationdestination'
-                    - 'system_automationstitch'
-                    - 'system_automationstitch_actions'
-                    - 'system_automationtrigger'
-                    - 'system_automationtrigger_fields'
-                    - 'system_autoscript'
-                    - 'system_centralmanagement_serverlist'
-                    - 'system_cloudservice'
-                    - 'system_clustersync_sessionsyncfilter_customservice'
-                    - 'system_csf_fabricconnector'
-                    - 'system_csf_fabricdevice'
-                    - 'system_csf_trustedlist'
-                    - 'system_customlanguage'
-                    - 'system_deviceupgradeexemptions'
-                    - 'system_dhcp6_server'
-                    - 'system_dhcp6_server_iprange'
-                    - 'system_dhcp6_server_options'
-                    - 'system_dhcp6_server_prefixrange'
-                    - 'system_dhcp_server'
-                    - 'system_dhcp_server_excluderange'
-                    - 'system_dhcp_server_iprange'
-                    - 'system_dhcp_server_options'
-                    - 'system_dhcp_server_reservedaddress'
-                    - 'system_dnsdatabase'
-                    - 'system_dnsdatabase_dnsentry'
-                    - 'system_dnsserver'
-                    - 'system_dscpbasedpriority'
-                    - 'system_evpn'
-                    - 'system_externalresource'
-                    - 'system_fabricvpn_advertisedsubnets'
-                    - 'system_fabricvpn_overlays'
-                    - 'system_geneve'
-                    - 'system_geoipcountry'
-                    - 'system_geoipoverride'
-                    - 'system_geoipoverride_ip6range'
-                    - 'system_geoipoverride_iprange'
-                    - 'system_gretunnel'
-                    - 'system_ha_hamgmtinterfaces'
-                    - 'system_ha_unicastpeers'
-                    - 'system_ha_vcluster'
-                    - 'system_healthcheckfortiguard'
-                    - 'system_interface'
-                    - 'system_interface_clientoptions'
-                    - 'system_interface_dhcpsnoopingserverlist'
-                    - 'system_interface_ipv6_clientoptions'
-                    - 'system_interface_secondaryip'
-                    - 'system_interface_tagging'
-                    - 'system_interface_vrrp'
-                    - 'system_interface_vrrp_proxyarp'
-                    - 'system_interface_wifinetworks'
-                    - 'system_ipam_pools'
-                    - 'system_ipam_rules'
-                    - 'system_ipiptunnel'
-                    - 'system_ipsecaggregate'
-                    - 'system_ipv6neighborcache'
-                    - 'system_ipv6tunnel'
-                    - 'system_iscsi'
-                    - 'system_isfqueueprofile'
-                    - 'system_linkmonitor'
-                    - 'system_linkmonitor_serverlist'
-                    - 'system_lldp_networkpolicy'
-                    - 'system_ltemodem_dataplan'
-                    - 'system_mobiletunnel'
-                    - 'system_mobiletunnel_network'
-                    - 'system_nat64_secondaryprefix'
-                    - 'system_netflow_collectors'
-                    - 'system_netflow_exclusionfilters'
-                    - 'system_nethsm_hagroups'
-                    - 'system_nethsm_partitions'
-                    - 'system_nethsm_servers'
-                    - 'system_nethsm_slots'
-                    - 'system_np6'
-                    - 'system_np6xlite'
-                    - 'system_npuvlink'
-                    - 'system_ntp_ntpserver'
-                    - 'system_objecttag'
-                    - 'system_pcpserver_pools'
-                    - 'system_physicalswitch'
-                    - 'system_pppoeinterface'
-                    - 'system_proxyarp'
-                    - 'system_ptp_serverinterface'
-                    - 'system_replacemsggroup'
-                    - 'system_replacemsggroup_alertmail'
-                    - 'system_replacemsggroup_nacquar'
-                    - 'system_replacemsgimage'
-                    - 'system_saml_serviceproviders'
-                    - 'system_saml_serviceproviders_assertionattributes'
-                    - 'system_sdnconnector'
-                    - 'system_sdnconnector_routetable'
-                    - 'system_sdnproxy'
-                    - 'system_sdnvpn'
-                    - 'system_sdwan_duplication'
-                    - 'system_sdwan_healthcheck'
-                    - 'system_sdwan_healthcheck_sla'
-                    - 'system_sdwan_healthcheckfortiguard_sla'
-                    - 'system_sdwan_service'
-                    - 'system_sdwan_service_sla'
-                    - 'system_sdwan_zone'
-                    - 'system_securityrating_controls'
-                    - 'system_sessionhelper'
-                    - 'system_sessionttl_port'
-                    - 'system_sflow_collectors'
-                    - 'system_sittunnel'
-                    - 'system_smcntp_ntpserver'
-                    - 'system_smsserver'
-                    - 'system_snmp_community'
-                    - 'system_snmp_community_hosts'
-                    - 'system_snmp_community_hosts6'
-                    - 'system_snmp_mibview'
-                    - 'system_snmp_rmonstat'
-                    - 'system_snmp_user'
-                    - 'system_spanport'
-                    - 'system_speedtestserver'
-                    - 'system_speedtestserver_host'
-                    - 'system_ssoadmin'
-                    - 'system_ssoforticloudadmin'
-                    - 'system_ssofortigatecloudadmin'
-                    - 'system_standalonecluster_clusterpeer_sessionsyncfilter_customservice'
-                    - 'system_standalonecluster_monitorprefix'
-                    - 'system_storage'
-                    - 'system_switchinterface'
-                    - 'system_tosbasedpriority'
-                    - 'system_vdom'
-                    - 'system_vdomexception'
-                    - 'system_vdomlink'
-                    - 'system_vdomnetflow_collectors'
-                    - 'system_vdomproperty'
-                    - 'system_vdomradiusserver'
-                    - 'system_vdomsflow_collectors'
-                    - 'system_virtualswitch'
-                    - 'system_virtualswitch_port'
-                    - 'system_virtualwanlink_healthcheck'
-                    - 'system_virtualwanlink_healthcheck_sla'
-                    - 'system_virtualwanlink_service'
-                    - 'system_virtualwanlink_service_sla'
-                    - 'system_virtualwirepair'
-                    - 'system_vneinterface'
-                    - 'system_vpce'
-                    - 'system_vxlan'
-                    - 'system_wccp'
-                    - 'system_wireless_apstatus'
-                    - 'system_zone'
-                    - 'system_zone_tagging'
-                    - 'user_adgrp'
-                    - 'user_certificate'
-                    - 'user_domaincontroller'
-                    - 'user_domaincontroller_extraserver'
-                    - 'user_exchange'
-                    - 'user_externalidentityprovider'
-                    - 'user_fsso'
-                    - 'user_fssopolling'
-                    - 'user_fssopolling_adgrp'
-                    - 'user_group'
-                    - 'user_group_match'
-                    - 'user_krbkeytab'
-                    - 'user_ldap'
-                    - 'user_local'
-                    - 'user_nacpolicy'
-                    - 'user_oidc'
-                    - 'user_passwordpolicy'
-                    - 'user_peer'
-                    - 'user_peergrp'
-                    - 'user_pop3'
-                    - 'user_quarantine_targets_macs'
-                    - 'user_radius'
-                    - 'user_radius_accountingserver'
-                    - 'user_saml'
-                    - 'user_scim'
-                    - 'user_securityexemptlist'
-                    - 'user_securityexemptlist_rule'
-                    - 'user_setting_authports'
-                    - 'user_tacacs'
-                    - 'videofilter_keyword'
-                    - 'videofilter_keyword_word'
-                    - 'videofilter_profile'
-                    - 'videofilter_profile_filters'
-                    - 'videofilter_profile_fortiguardcategory_filters'
-                    - 'videofilter_youtubekey'
-                    - 'virtualpatch_profile'
-                    - 'virtualpatch_profile_exemption'
-                    - 'voip_profile'
-                    - 'vpn_certificate_ca'
-                    - 'vpn_certificate_crl'
-                    - 'vpn_certificate_hsmlocal'
-                    - 'vpn_certificate_local'
-                    - 'vpn_certificate_ocspserver'
-                    - 'vpn_certificate_remote'
-                    - 'vpn_ipsec_concentrator'
-                    - 'vpn_ipsec_fec'
-                    - 'vpn_ipsec_forticlient'
-                    - 'vpn_ipsec_manualkey'
-                    - 'vpn_ipsec_manualkeyinterface'
-                    - 'vpn_ipsec_phase1'
-                    - 'vpn_ipsec_phase1_ipv4excluderange'
-                    - 'vpn_ipsec_phase1_ipv6excluderange'
-                    - 'vpn_ipsec_phase1interface'
-                    - 'vpn_ipsec_phase1interface_ipv4excluderange'
-                    - 'vpn_ipsec_phase1interface_ipv6excluderange'
-                    - 'vpn_ipsec_phase2'
-                    - 'vpn_ipsec_phase2interface'
-                    - 'vpn_kmipserver'
-                    - 'vpn_kmipserver_serverlist'
-                    - 'vpn_ocvpn_forticlientaccess_authgroups'
-                    - 'vpn_ocvpn_overlays'
-                    - 'vpn_ocvpn_overlays_subnets'
-                    - 'vpn_qkd'
-                    - 'vpn_ssl_client'
-                    - 'vpn_ssl_settings_authenticationrule'
-                    - 'vpnsslweb_hostchecksoftware'
-                    - 'vpnsslweb_hostchecksoftware_checkitemlist'
-                    - 'vpnsslweb_portal'
-                    - 'vpnsslweb_portal_bookmarkgroup'
-                    - 'vpnsslweb_portal_bookmarkgroup_bookmarks'
-                    - 'vpnsslweb_portal_bookmarkgroup_bookmarks_formdata'
-                    - 'vpnsslweb_portal_landingpage_formdata'
-                    - 'vpnsslweb_portal_macaddrcheckrule'
-                    - 'vpnsslweb_portal_splitdns'
-                    - 'vpnsslweb_userbookmark'
-                    - 'vpnsslweb_userbookmark_bookmarks'
-                    - 'vpnsslweb_userbookmark_bookmarks_formdata'
-                    - 'vpnsslweb_usergroupbookmark'
-                    - 'vpnsslweb_usergroupbookmark_bookmarks'
-                    - 'vpnsslweb_usergroupbookmark_bookmarks_formdata'
-                    - 'waf_mainclass'
-                    - 'waf_profile'
-                    - 'waf_profile_constraint_exception'
-                    - 'waf_profile_method_methodpolicy'
-                    - 'waf_profile_signature_customsignature'
-                    - 'waf_profile_urlaccess'
-                    - 'waf_profile_urlaccess_accesspattern'
-                    - 'waf_signature'
-                    - 'waf_subclass'
-                    - 'wanopt_authgroup'
-                    - 'wanopt_cacheservice_dstpeer'
-                    - 'wanopt_cacheservice_srcpeer'
-                    - 'wanopt_contentdeliverynetworkrule'
-                    - 'wanopt_contentdeliverynetworkrule_rules'
-                    - 'wanopt_contentdeliverynetworkrule_rules_matchentries'
-                    - 'wanopt_contentdeliverynetworkrule_rules_skipentries'
-                    - 'wanopt_profile'
-                    - 'webcache_prefetch'
-                    - 'webcache_reversecacheserver'
-                    - 'webcache_useragent'
-                    - 'webfilter_content'
-                    - 'webfilter_content_entries'
-                    - 'webfilter_contentheader'
-                    - 'webfilter_domainlist'
-                    - 'webfilter_ftgdlocalcat'
-                    - 'webfilter_ftgdrisklevel'
-                    - 'webfilter_override'
-                    - 'webfilter_profile'
-                    - 'webfilter_profile_antiphish_inspectionentries'
-                    - 'webfilter_profile_ftgdwf_filters'
-                    - 'webfilter_profile_ftgdwf_quota'
-                    - 'webfilter_profile_ftgdwf_risk'
-                    - 'webfilter_searchengine'
-                    - 'webfilter_urlfilter'
-                    - 'webfilter_urlfilter_entries'
-                    - 'webfilter_urllist'
-                    - 'webproxy_debugurl'
-                    - 'webproxy_explicit'
-                    - 'webproxy_explicit_pacpolicy'
-                    - 'webproxy_explicitproxy'
-                    - 'webproxy_fastfallback'
-                    - 'webproxy_forwardserver'
-                    - 'webproxy_forwardservergroup'
-                    - 'webproxy_forwardservergroup_serverlist'
-                    - 'webproxy_implicitproxyrule'
-                    - 'webproxy_implicitproxyrule_proxyservers'
-                    - 'webproxy_implicitproxysetting'
-                    - 'webproxy_isolatorserver'
-                    - 'webproxy_pacpolicy'
-                    - 'webproxy_profile'
-                    - 'webproxy_profile_headers'
-                    - 'webproxy_redirectprofile'
-                    - 'webproxy_redirectprofile_entries'
-                    - 'webproxy_urllist'
-                    - 'webproxy_urllist_entries'
-                    - 'webproxy_urlmatch'
-                    - 'webproxy_wisp'
-                    - 'wireless_accesscontrollist'
-                    - 'wireless_accesscontrollist_layer3ipv4rules'
-                    - 'wireless_accesscontrollist_layer3ipv6rules'
-                    - 'wireless_apcfgprofile'
-                    - 'wireless_apcfgprofile_commandlist'
-                    - 'wireless_apstatus'
-                    - 'wireless_arrpprofile'
-                    - 'wireless_bleprofile'
-                    - 'wireless_bonjourprofile'
-                    - 'wireless_hotspot20_anqp3gppcellular'
-                    - 'wireless_hotspot20_anqp3gppcellular_mccmnclist'
-                    - 'wireless_hotspot20_anqpipaddresstype'
-                    - 'wireless_hotspot20_anqpnairealm'
-                    - 'wireless_hotspot20_anqpnairealm_nailist'
-                    - 'wireless_hotspot20_anqpnairealm_nailist_eapmethod'
-                    - 'wireless_hotspot20_anqpnairealm_nailist_eapmethod_authparam'
-                    - 'wireless_hotspot20_anqpnetworkauthtype'
-                    - 'wireless_hotspot20_anqproamingconsortium'
-                    - 'wireless_hotspot20_anqpvenuename'
-                    - 'wireless_hotspot20_anqpvenueurl'
-                    - 'wireless_hotspot20_h2qpadviceofcharge'
-                    - 'wireless_hotspot20_h2qpadviceofcharge_aoclist'
-                    - 'wireless_hotspot20_h2qpadviceofcharge_aoclist_planinfo'
-                    - 'wireless_hotspot20_h2qpconncapability'
-                    - 'wireless_hotspot20_h2qpoperatorname'
-                    - 'wireless_hotspot20_h2qposuprovider'
-                    - 'wireless_hotspot20_h2qposuprovider_friendlyname'
-                    - 'wireless_hotspot20_h2qposuprovider_servicedescription'
-                    - 'wireless_hotspot20_h2qposuprovidernai'
-                    - 'wireless_hotspot20_h2qposuprovidernai_nailist'
-                    - 'wireless_hotspot20_h2qptermsandconditions'
-                    - 'wireless_hotspot20_h2qpwanmetric'
-                    - 'wireless_hotspot20_hsprofile'
-                    - 'wireless_hotspot20_icon'
-                    - 'wireless_hotspot20_icon_iconlist'
-                    - 'wireless_hotspot20_qosmap'
-                    - 'wireless_hotspot20_qosmap_dscpexcept'
-                    - 'wireless_hotspot20_qosmap_dscprange'
-                    - 'wireless_intercontroller_intercontrollerpeer'
-                    - 'wireless_lwprofile'
-                    - 'wireless_mpskprofile'
-                    - 'wireless_mpskprofile_mpskgroup'
-                    - 'wireless_mpskprofile_mpskgroup_mpskkey'
-                    - 'wireless_nacprofile'
-                    - 'wireless_qosprofile'
-                    - 'wireless_region'
-                    - 'wireless_setting_offendingssid'
-                    - 'wireless_snmp_community'
-                    - 'wireless_snmp_community_hosts'
-                    - 'wireless_snmp_community_hosts6'
-                    - 'wireless_snmp_user'
-                    - 'wireless_ssidpolicy'
-                    - 'wireless_syslogprofile'
-                    - 'wireless_utmprofile'
-                    - 'wireless_vap'
-                    - 'wireless_vap_macfilterlist'
-                    - 'wireless_vap_vlanname'
-                    - 'wireless_vap_vlanpool'
-                    - 'wireless_vapgroup'
-                    - 'wireless_wagprofile'
-                    - 'wireless_widsprofile'
-                    - 'wireless_wtp'
-                    - 'wireless_wtp_splittunnelingacl'
-                    - 'wireless_wtpgroup'
-                    - 'wireless_wtpprofile'
-                    - 'wireless_wtpprofile_denymaclist'
-                    - 'wireless_wtpprofile_splittunnelingacl'
-                    - 'ztna_reverseconnector'
-                    - 'ztna_serviceconnector'
-                    - 'ztna_trafficforwardproxy'
-                    - 'ztna_trafficforwardproxyreverseservice_remoteservers'
-                    - 'ztna_webportal'
-                    - 'ztna_webportalbookmark'
-                    - 'ztna_webportalbookmark_bookmarks'
-                    - 'ztna_webproxy'
-                    - 'ztna_webproxy_apigateway'
-                    - 'ztna_webproxy_apigateway6'
-                    - 'ztna_webproxy_apigateway6_realservers'
-                    - 'ztna_webproxy_apigateway_realservers'
-            self:
-                required: true
-                description: The parameter for each selector.
-                type: dict
-            target:
-                required: true
-                description: Attribute to override for target object.
-                type: dict
+        description: Selector of the renamed object.
+        type: str
+        choices:
+          - 'antivirus_exemptlist'
+          - 'antivirus_profile'
+          - 'application_categories'
+          - 'application_custom'
+          - 'application_group'
+          - 'application_list'
+          - 'application_list_defaultnetworkservices'
+          - 'application_list_entries'
+          - 'application_name'
+          - 'application_unsanctionedapps'
+          - 'authentication_rule'
+          - 'authentication_scheme'
+          - 'aws_vpce'
+          - 'azure_vwaningresspublicips'
+          - 'azure_vwanslb_permanentsecurityrules_rules'
+          - 'azure_vwanslb_temporarysecurityrules_rules'
+          - 'casb_attributematch'
+          - 'casb_attributematch_attribute'
+          - 'casb_attributematch_match'
+          - 'casb_attributematch_match_rule'
+          - 'casb_profile'
+          - 'casb_profile_saasapplication'
+          - 'casb_profile_saasapplication_accessrule'
+          - 'casb_profile_saasapplication_accessrule_attributefilter'
+          - 'casb_profile_saasapplication_advancedtenantcontrol'
+          - 'casb_profile_saasapplication_advancedtenantcontrol_attribute'
+          - 'casb_profile_saasapplication_customcontrol'
+          - 'casb_profile_saasapplication_customcontrol_attributefilter'
+          - 'casb_profile_saasapplication_customcontrol_option'
+          - 'casb_saasapplication'
+          - 'casb_saasapplication_inputattributes'
+          - 'casb_saasapplication_outputattributes'
+          - 'casb_useractivity'
+          - 'casb_useractivity_match'
+          - 'casb_useractivity_match_rules'
+          - 'casb_useractivity_match_tenantextraction_filters'
+          - 'casb_useractivity_match_tenantsessionextraction_filters'
+          - 'certificate_hsmlocal'
+          - 'certificate_remote'
+          - 'diameterfilter_profile'
+          - 'dlp_datatype'
+          - 'dlp_dictionary'
+          - 'dlp_dictionary_entries'
+          - 'dlp_exactdatamatch'
+          - 'dlp_filepattern'
+          - 'dlp_fpdocsource'
+          - 'dlp_label'
+          - 'dlp_label_entries'
+          - 'dlp_profile'
+          - 'dlp_profile_rule'
+          - 'dlp_sensor'
+          - 'dlp_sensor_entries'
+          - 'dnsfilter_domainfilter'
+          - 'dnsfilter_domainfilter_entries'
+          - 'dnsfilter_profile'
+          - 'dnsfilter_profile_dnstranslation'
+          - 'dnsfilter_profile_ftgddns_filters'
+          - 'emailfilter_blockallowlist'
+          - 'emailfilter_blockallowlist_entries'
+          - 'emailfilter_bword'
+          - 'emailfilter_bword_entries'
+          - 'emailfilter_dnsbl'
+          - 'emailfilter_dnsbl_entries'
+          - 'emailfilter_iptrust'
+          - 'emailfilter_iptrust_entries'
+          - 'emailfilter_mheader'
+          - 'emailfilter_mheader_entries'
+          - 'emailfilter_profile'
+          - 'endpointcontrol_fctems'
+          - 'endpointcontrol_fctemsoverride'
+          - 'extendercontroller_extender'
+          - 'extensioncontroller_dataplan'
+          - 'extensioncontroller_extender'
+          - 'extensioncontroller_extenderprofile'
+          - 'extensioncontroller_extenderprofile_cellular_smsnotification_receiver'
+          - 'extensioncontroller_extendervap'
+          - 'extensioncontroller_fortigate'
+          - 'extensioncontroller_fortigateprofile'
+          - 'filefilter_profile'
+          - 'filefilter_profile_rules'
+          - 'firewall_accessproxy'
+          - 'firewall_accessproxy6'
+          - 'firewall_accessproxy6_apigateway'
+          - 'firewall_accessproxy6_apigateway6'
+          - 'firewall_accessproxy6_apigateway6_realservers'
+          - 'firewall_accessproxy6_apigateway_realservers'
+          - 'firewall_accessproxy_apigateway'
+          - 'firewall_accessproxy_apigateway6'
+          - 'firewall_accessproxy_apigateway6_realservers'
+          - 'firewall_accessproxy_apigateway_realservers'
+          - 'firewall_accessproxysshclientcert'
+          - 'firewall_accessproxysshclientcert_certextension'
+          - 'firewall_accessproxyvirtualhost'
+          - 'firewall_address'
+          - 'firewall_address6'
+          - 'firewall_address6_subnetsegment'
+          - 'firewall_address6_tagging'
+          - 'firewall_address6template'
+          - 'firewall_address6template_subnetsegment'
+          - 'firewall_address6template_subnetsegment_values'
+          - 'firewall_address_tagging'
+          - 'firewall_addrgrp'
+          - 'firewall_addrgrp6'
+          - 'firewall_addrgrp6_tagging'
+          - 'firewall_addrgrp_tagging'
+          - 'firewall_centralsnatmap'
+          - 'firewall_customtag'
+          - 'firewall_dnstranslation'
+          - 'firewall_dospolicy'
+          - 'firewall_dospolicy6'
+          - 'firewall_dospolicy6_anomaly'
+          - 'firewall_identitybasedroute'
+          - 'firewall_identitybasedroute_rule'
+          - 'firewall_interfacepolicy'
+          - 'firewall_interfacepolicy6'
+          - 'firewall_internetserviceaddition'
+          - 'firewall_internetserviceaddition_entry'
+          - 'firewall_internetserviceaddition_entry_portrange'
+          - 'firewall_internetservicecustom'
+          - 'firewall_internetservicecustom_entry'
+          - 'firewall_internetservicecustomgroup'
+          - 'firewall_internetservicedefinition'
+          - 'firewall_internetservicedefinition_entry'
+          - 'firewall_internetservicedefinition_entry_portrange'
+          - 'firewall_internetserviceextension'
+          - 'firewall_internetserviceextension_disableentry'
+          - 'firewall_internetserviceextension_disableentry_ip6range'
+          - 'firewall_internetserviceextension_disableentry_iprange'
+          - 'firewall_internetserviceextension_disableentry_portrange'
+          - 'firewall_internetserviceextension_entry'
+          - 'firewall_internetserviceextension_entry_portrange'
+          - 'firewall_internetservicegroup'
+          - 'firewall_internetservicename'
+          - 'firewall_ipmacbinding_table'
+          - 'firewall_ippool'
+          - 'firewall_ippool6'
+          - 'firewall_ldbmonitor'
+          - 'firewall_localinpolicy'
+          - 'firewall_localinpolicy6'
+          - 'firewall_multicastaddress'
+          - 'firewall_multicastaddress6'
+          - 'firewall_multicastaddress6_tagging'
+          - 'firewall_multicastaddress_tagging'
+          - 'firewall_multicastpolicy'
+          - 'firewall_multicastpolicy6'
+          - 'firewall_networkservicedynamic'
+          - 'firewall_ondemandsniffer'
+          - 'firewall_pfcp'
+          - 'firewall_policy'
+          - 'firewall_profilegroup'
+          - 'firewall_profileprotocoloptions'
+          - 'firewall_proxyaddress'
+          - 'firewall_proxyaddress6'
+          - 'firewall_proxyaddress6_headergroup'
+          - 'firewall_proxyaddress6_tagging'
+          - 'firewall_proxyaddress_headergroup'
+          - 'firewall_proxyaddress_tagging'
+          - 'firewall_proxyaddrgrp'
+          - 'firewall_proxyaddrgrp6'
+          - 'firewall_proxyaddrgrp6_tagging'
+          - 'firewall_proxyaddrgrp_tagging'
+          - 'firewall_proxypolicy'
+          - 'firewall_responseshapingpolicy'
+          - 'firewall_schedule_group'
+          - 'firewall_schedule_onetime'
+          - 'firewall_schedule_recurring'
+          - 'firewall_securitypolicy'
+          - 'firewall_service_category'
+          - 'firewall_service_custom'
+          - 'firewall_service_group'
+          - 'firewall_shaper_peripshaper'
+          - 'firewall_shaper_trafficshaper'
+          - 'firewall_shapingpolicy'
+          - 'firewall_shapingprofile'
+          - 'firewall_shapingprofile_shapingentries'
+          - 'firewall_sniffer'
+          - 'firewall_sniffer_anomaly'
+          - 'firewall_ssh_hostkey'
+          - 'firewall_ssh_localca'
+          - 'firewall_ssh_localkey'
+          - 'firewall_ssl_keyringlist'
+          - 'firewall_sslserver'
+          - 'firewall_sslsshprofile'
+          - 'firewall_sslsshprofile_echoutersni'
+          - 'firewall_sslsshprofile_sslexempt'
+          - 'firewall_sslsshprofile_sslserver'
+          - 'firewall_ttlpolicy'
+          - 'firewall_vip'
+          - 'firewall_vip6'
+          - 'firewall_vip6_realservers'
+          - 'firewall_vip_realservers'
+          - 'firewall_vip_sslciphersuites'
+          - 'firewall_vipgrp'
+          - 'firewall_vipgrp6'
+          - 'firewall_wildcardfqdn_custom'
+          - 'firewall_wildcardfqdn_group'
+          - 'gtp_apnshaper'
+          - 'gtp_ieallowlist'
+          - 'gtp_ieallowlist_entries'
+          - 'gtp_rattimeoutprofile'
+          - 'icap_localserver_icapservice'
+          - 'icap_profile'
+          - 'icap_profile_icapheaders'
+          - 'icap_remoteserver'
+          - 'icap_remoteservergroup'
+          - 'icap_remoteservergroup_serverlist'
+          - 'icap_server'
+          - 'icap_servergroup'
+          - 'imageanalyzer_profile'
+          - 'ips_sensor'
+          - 'ips_sensor_entries'
+          - 'ips_sensor_entries_exemptip'
+          - 'isolator_profile'
+          - 'isolator_profile_entries'
+          - 'llm_profile'
+          - 'llm_server'
+          - 'loadbalance_flowrule'
+          - 'log_azuresecuritycenter2_filter_freestyle'
+          - 'log_azuresecuritycenter2_setting_customfieldname'
+          - 'log_azuresecuritycenter_filter_freestyle'
+          - 'log_azuresecuritycenter_setting_customfieldname'
+          - 'log_customfield'
+          - 'log_customformat'
+          - 'log_customformat_logtemplates'
+          - 'log_disk_filter_freestyle'
+          - 'log_fortianalyzer2_filter_freestyle'
+          - 'log_fortianalyzer2_overridefilter_freestyle'
+          - 'log_fortianalyzer3_filter_freestyle'
+          - 'log_fortianalyzer3_overridefilter_freestyle'
+          - 'log_fortianalyzer_filter_freestyle'
+          - 'log_fortianalyzer_overridefilter_freestyle'
+          - 'log_fortianalyzercloud_filter_freestyle'
+          - 'log_fortianalyzercloud_overridefilter_freestyle'
+          - 'log_fortiguard_filter_freestyle'
+          - 'log_fortiguard_overridefilter_freestyle'
+          - 'log_memory_filter_freestyle'
+          - 'log_nulldevice_filter_freestyle'
+          - 'log_syslogd2_filter_freestyle'
+          - 'log_syslogd2_overridefilter_freestyle'
+          - 'log_syslogd2_overridesetting_customfieldname'
+          - 'log_syslogd2_overridesetting_logtemplates'
+          - 'log_syslogd2_setting_customfieldname'
+          - 'log_syslogd2_setting_logtemplates'
+          - 'log_syslogd3_filter_freestyle'
+          - 'log_syslogd3_overridefilter_freestyle'
+          - 'log_syslogd3_overridesetting_customfieldname'
+          - 'log_syslogd3_overridesetting_logtemplates'
+          - 'log_syslogd3_setting_customfieldname'
+          - 'log_syslogd3_setting_logtemplates'
+          - 'log_syslogd4_filter_freestyle'
+          - 'log_syslogd4_overridefilter_freestyle'
+          - 'log_syslogd4_overridesetting_customfieldname'
+          - 'log_syslogd4_overridesetting_logtemplates'
+          - 'log_syslogd4_setting_customfieldname'
+          - 'log_syslogd4_setting_logtemplates'
+          - 'log_syslogd_filter_freestyle'
+          - 'log_syslogd_overridefilter_freestyle'
+          - 'log_syslogd_overridesetting_customfieldname'
+          - 'log_syslogd_overridesetting_logtemplates'
+          - 'log_syslogd_setting_customfieldname'
+          - 'log_syslogd_setting_logtemplates'
+          - 'log_threatweight_application'
+          - 'log_threatweight_geolocation'
+          - 'log_threatweight_web'
+          - 'log_webtrends_filter_freestyle'
+          - 'nsx_profile'
+          - 'nsxt_servicechain'
+          - 'nsxt_servicechain_serviceindex'
+          - 'pfcp_messagefilter'
+          - 'report_chart'
+          - 'report_chart_column'
+          - 'report_chart_column_mapping'
+          - 'report_chart_drilldowncharts'
+          - 'report_dataset'
+          - 'report_dataset_field'
+          - 'report_dataset_parameters'
+          - 'report_layout'
+          - 'report_layout_bodyitem'
+          - 'report_layout_bodyitem_list'
+          - 'report_layout_bodyitem_parameters'
+          - 'report_layout_page_footer_footeritem'
+          - 'report_layout_page_header_headeritem'
+          - 'report_style'
+          - 'report_theme'
+          - 'router_accesslist'
+          - 'router_accesslist6'
+          - 'router_accesslist6_rule'
+          - 'router_accesslist_rule'
+          - 'router_aspathlist'
+          - 'router_aspathlist_rule'
+          - 'router_authpath'
+          - 'router_bfd6_multihoptemplate'
+          - 'router_bfd_multihoptemplate'
+          - 'router_bgp_admindistance'
+          - 'router_bgp_aggregateaddress'
+          - 'router_bgp_aggregateaddress6'
+          - 'router_bgp_neighbor'
+          - 'router_bgp_neighborgroup'
+          - 'router_bgp_neighborrange'
+          - 'router_bgp_neighborrange6'
+          - 'router_bgp_network'
+          - 'router_bgp_network6'
+          - 'router_communitylist'
+          - 'router_communitylist_rule'
+          - 'router_extcommunitylist'
+          - 'router_extcommunitylist_rule'
+          - 'router_isis_isisinterface'
+          - 'router_isis_isisnet'
+          - 'router_isis_redistribute'
+          - 'router_isis_redistribute6'
+          - 'router_isis_summaryaddress'
+          - 'router_isis_summaryaddress6'
+          - 'router_keychain'
+          - 'router_keychain_key'
+          - 'router_multicast6_interface'
+          - 'router_multicast6_pimsmglobal_rpaddress'
+          - 'router_multicast6_pimsmglobalvrf_rpaddress'
+          - 'router_multicast6flow'
+          - 'router_multicast6flow_flows'
+          - 'router_multicast_interface'
+          - 'router_multicast_pimsmglobal_rpaddress'
+          - 'router_multicast_pimsmglobalvrf'
+          - 'router_multicast_pimsmglobalvrf_rpaddress'
+          - 'router_multicastflow'
+          - 'router_multicastflow_flows'
+          - 'router_ospf6_area'
+          - 'router_ospf6_area_ipseckeys'
+          - 'router_ospf6_area_range'
+          - 'router_ospf6_area_virtuallink'
+          - 'router_ospf6_area_virtuallink_ipseckeys'
+          - 'router_ospf6_ospf6interface'
+          - 'router_ospf6_ospf6interface_ipseckeys'
+          - 'router_ospf6_ospf6interface_neighbor'
+          - 'router_ospf6_redistribute'
+          - 'router_ospf6_summaryaddress'
+          - 'router_ospf_area'
+          - 'router_ospf_area_filterlist'
+          - 'router_ospf_area_range'
+          - 'router_ospf_area_virtuallink'
+          - 'router_ospf_area_virtuallink_md5keys'
+          - 'router_ospf_distributelist'
+          - 'router_ospf_neighbor'
+          - 'router_ospf_network'
+          - 'router_ospf_ospfinterface'
+          - 'router_ospf_ospfinterface_md5keys'
+          - 'router_ospf_redistribute'
+          - 'router_ospf_summaryaddress'
+          - 'router_policy'
+          - 'router_policy6'
+          - 'router_prefixlist'
+          - 'router_prefixlist6'
+          - 'router_prefixlist6_rule'
+          - 'router_prefixlist_rule'
+          - 'router_rip_distance'
+          - 'router_rip_distributelist'
+          - 'router_rip_interface'
+          - 'router_rip_neighbor'
+          - 'router_rip_network'
+          - 'router_rip_offsetlist'
+          - 'router_rip_redistribute'
+          - 'router_ripng_aggregateaddress'
+          - 'router_ripng_distance'
+          - 'router_ripng_distributelist'
+          - 'router_ripng_interface'
+          - 'router_ripng_neighbor'
+          - 'router_ripng_network'
+          - 'router_ripng_offsetlist'
+          - 'router_routemap'
+          - 'router_routemap_rule'
+          - 'router_static'
+          - 'router_static6'
+          - 'sctpfilter_profile'
+          - 'sctpfilter_profile_ppidfilters'
+          - 'sshfilter_profile'
+          - 'sshfilter_profile_shellcommands'
+          - 'switchcontroller_acl_group'
+          - 'switchcontroller_acl_ingress'
+          - 'switchcontroller_autoconfig_custom'
+          - 'switchcontroller_autoconfig_custom_switchbinding'
+          - 'switchcontroller_autoconfig_policy'
+          - 'switchcontroller_customcommand'
+          - 'switchcontroller_dsl_policy'
+          - 'switchcontroller_dynamicportpolicy'
+          - 'switchcontroller_dynamicportpolicy_policy'
+          - 'switchcontroller_flowtracking_aggregates'
+          - 'switchcontroller_flowtracking_collectors'
+          - 'switchcontroller_fortilinksettings'
+          - 'switchcontroller_igmpsnoopingstaticgroup'
+          - 'switchcontroller_igmpsnoopingstaticgroup_ports'
+          - 'switchcontroller_initialconfig_template'
+          - 'switchcontroller_lldpprofile'
+          - 'switchcontroller_lldpprofile_customtlvs'
+          - 'switchcontroller_lldpprofile_medlocationservice'
+          - 'switchcontroller_lldpprofile_mednetworkpolicy'
+          - 'switchcontroller_location'
+          - 'switchcontroller_macpolicy'
+          - 'switchcontroller_managedswitch'
+          - 'switchcontroller_managedswitch_components'
+          - 'switchcontroller_managedswitch_customcommand'
+          - 'switchcontroller_managedswitch_dhcpsnoopingstaticclient'
+          - 'switchcontroller_managedswitch_igmpsnooping_vlans'
+          - 'switchcontroller_managedswitch_ipsourceguard'
+          - 'switchcontroller_managedswitch_ipsourceguard_bindingentry'
+          - 'switchcontroller_managedswitch_mirror'
+          - 'switchcontroller_managedswitch_ports_dhcpsnoopoption82override'
+          - 'switchcontroller_managedswitch_remotelog'
+          - 'switchcontroller_managedswitch_routeoffloadrouter'
+          - 'switchcontroller_managedswitch_routerstatic'
+          - 'switchcontroller_managedswitch_routervrf'
+          - 'switchcontroller_managedswitch_snmpcommunity'
+          - 'switchcontroller_managedswitch_snmpcommunity_hosts'
+          - 'switchcontroller_managedswitch_snmpuser'
+          - 'switchcontroller_managedswitch_staticmac'
+          - 'switchcontroller_managedswitch_stpinstance'
+          - 'switchcontroller_managedswitch_systemdhcpserver'
+          - 'switchcontroller_managedswitch_systemdhcpserver_iprange'
+          - 'switchcontroller_managedswitch_systemdhcpserver_options'
+          - 'switchcontroller_managedswitch_systeminterface'
+          - 'switchcontroller_managedswitch_vlan'
+          - 'switchcontroller_nacdevice'
+          - 'switchcontroller_nacsettings'
+          - 'switchcontroller_portpolicy'
+          - 'switchcontroller_ptp_interfacepolicy'
+          - 'switchcontroller_ptp_policy'
+          - 'switchcontroller_ptp_profile'
+          - 'switchcontroller_qos_dot1pmap'
+          - 'switchcontroller_qos_ipdscpmap'
+          - 'switchcontroller_qos_ipdscpmap_map'
+          - 'switchcontroller_qos_qospolicy'
+          - 'switchcontroller_qos_queuepolicy'
+          - 'switchcontroller_qos_queuepolicy_cosqueue'
+          - 'switchcontroller_remotelog'
+          - 'switchcontroller_securitypolicy_8021x'
+          - 'switchcontroller_securitypolicy_admin'
+          - 'switchcontroller_securitypolicy_localaccess'
+          - 'switchcontroller_snmpcommunity'
+          - 'switchcontroller_snmpcommunity_hosts'
+          - 'switchcontroller_snmpuser'
+          - 'switchcontroller_stormcontrolpolicy'
+          - 'switchcontroller_stpinstance'
+          - 'switchcontroller_switchgroup'
+          - 'switchcontroller_switchinterfacetag'
+          - 'switchcontroller_switchprofile'
+          - 'switchcontroller_trafficpolicy'
+          - 'switchcontroller_trafficsniffer_targetip'
+          - 'switchcontroller_trafficsniffer_targetmac'
+          - 'switchcontroller_trafficsniffer_targetport'
+          - 'switchcontroller_virtualportpool'
+          - 'switchcontroller_vlanpolicy'
+          - 'system_3gmodem_custom'
+          - 'system_5gmodem_dataplan'
+          - 'system_accprofile'
+          - 'system_acme_accounts'
+          - 'system_admin'
+          - 'system_admin_trusthosts'
+          - 'system_affinityinterrupt'
+          - 'system_affinitypacketredistribution'
+          - 'system_alias'
+          - 'system_apiuser'
+          - 'system_apiuser_trusthost'
+          - 'system_arptable'
+          - 'system_automationaction'
+          - 'system_automationaction_formdata'
+          - 'system_automationaction_httpheaders'
+          - 'system_automationcondition'
+          - 'system_automationdestination'
+          - 'system_automationstitch'
+          - 'system_automationstitch_actions'
+          - 'system_automationtrigger'
+          - 'system_automationtrigger_fields'
+          - 'system_autoscript'
+          - 'system_centralmanagement_serverlist'
+          - 'system_cloudservice'
+          - 'system_clustersync_sessionsyncfilter_customservice'
+          - 'system_csf_fabricconnector'
+          - 'system_csf_fabricdatasourceexemption'
+          - 'system_csf_fabricdevice'
+          - 'system_csf_sharedobjects'
+          - 'system_csf_sharedobjects_objects_keys'
+          - 'system_csf_trustedlist'
+          - 'system_customlanguage'
+          - 'system_deviceupgradeexemptions'
+          - 'system_dhcp6_server'
+          - 'system_dhcp6_server_iprange'
+          - 'system_dhcp6_server_options'
+          - 'system_dhcp6_server_prefixrange'
+          - 'system_dhcp_server'
+          - 'system_dhcp_server_excluderange'
+          - 'system_dhcp_server_iprange'
+          - 'system_dhcp_server_options'
+          - 'system_dhcp_server_reservedaddress'
+          - 'system_dhcp_template'
+          - 'system_dhcp_template_excluderange'
+          - 'system_dhcp_template_iprange'
+          - 'system_dhcp_template_options'
+          - 'system_dhcp_template_reservedaddress'
+          - 'system_dnsdatabase'
+          - 'system_dnsdatabase_dnsentry'
+          - 'system_dnsserver'
+          - 'system_dscpbasedpriority'
+          - 'system_evpn'
+          - 'system_externalresource'
+          - 'system_fabricvpn_advertisedsubnets'
+          - 'system_fabricvpn_overlays'
+          - 'system_geneve'
+          - 'system_geoipcountry'
+          - 'system_geoipoverride'
+          - 'system_geoipoverride_ip6range'
+          - 'system_geoipoverride_iprange'
+          - 'system_gretunnel'
+          - 'system_ha_hamgmtinterfaces'
+          - 'system_ha_linkgroup'
+          - 'system_ha_unicastpeers'
+          - 'system_ha_vcluster'
+          - 'system_healthcheckfortiguard'
+          - 'system_interface'
+          - 'system_interface_clientoptions'
+          - 'system_interface_dhcpsnoopingserverlist'
+          - 'system_interface_ipv6_clientoptions'
+          - 'system_interface_secondaryip'
+          - 'system_interface_tagging'
+          - 'system_interface_vrrp'
+          - 'system_interface_vrrp_proxyarp'
+          - 'system_interface_wifinetworks'
+          - 'system_ipam_pools'
+          - 'system_ipam_rules'
+          - 'system_ipiptunnel'
+          - 'system_ipsecaggregate'
+          - 'system_ipv6neighborcache'
+          - 'system_ipv6tunnel'
+          - 'system_iscsi'
+          - 'system_isfqueueprofile'
+          - 'system_linkmonitor'
+          - 'system_linkmonitor_serverlist'
+          - 'system_lldp_networkpolicy'
+          - 'system_ltemodem_dataplan'
+          - 'system_mobiletunnel'
+          - 'system_mobiletunnel_network'
+          - 'system_nat64_secondaryprefix'
+          - 'system_netflow_collectors'
+          - 'system_netflow_exclusionfilters'
+          - 'system_nethsm_hagroups'
+          - 'system_nethsm_partitions'
+          - 'system_nethsm_servers'
+          - 'system_nethsm_slots'
+          - 'system_np6'
+          - 'system_np6xlite'
+          - 'system_npuvlink'
+          - 'system_ntp_ntpserver'
+          - 'system_objecttag'
+          - 'system_pcpserver_pools'
+          - 'system_physicalswitch'
+          - 'system_pppoeinterface'
+          - 'system_proxyarp'
+          - 'system_ptp_serverinterface'
+          - 'system_replacemsggroup'
+          - 'system_replacemsggroup_alertmail'
+          - 'system_replacemsggroup_nacquar'
+          - 'system_replacemsgimage'
+          - 'system_saml_serviceproviders'
+          - 'system_saml_serviceproviders_assertionattributes'
+          - 'system_sdnconnector'
+          - 'system_sdnconnector_routetable'
+          - 'system_sdnproxy'
+          - 'system_sdnvpn'
+          - 'system_sdwan_duplication'
+          - 'system_sdwan_healthcheck'
+          - 'system_sdwan_healthcheck_sla'
+          - 'system_sdwan_healthcheckfortiguard_sla'
+          - 'system_sdwan_service'
+          - 'system_sdwan_service_sla'
+          - 'system_sdwan_zone'
+          - 'system_securityrating_controls'
+          - 'system_sessionhelper'
+          - 'system_sessionttl_port'
+          - 'system_sflow_collectors'
+          - 'system_sittunnel'
+          - 'system_smcntp_ntpserver'
+          - 'system_smsserver'
+          - 'system_snmp_community'
+          - 'system_snmp_community_hosts'
+          - 'system_snmp_community_hosts6'
+          - 'system_snmp_mibview'
+          - 'system_snmp_rmonstat'
+          - 'system_snmp_user'
+          - 'system_spanport'
+          - 'system_speedtestserver'
+          - 'system_speedtestserver_host'
+          - 'system_ssoadmin'
+          - 'system_ssoforticloudadmin'
+          - 'system_ssofortigatecloudadmin'
+          - 'system_standalonecluster_clusterpeer_sessionsyncfilter_customservice'
+          - 'system_standalonecluster_monitorprefix'
+          - 'system_storage'
+          - 'system_switchinterface'
+          - 'system_theme'
+          - 'system_tosbasedpriority'
+          - 'system_vdom'
+          - 'system_vdomexception'
+          - 'system_vdomlink'
+          - 'system_vdomnetflow_collectors'
+          - 'system_vdomproperty'
+          - 'system_vdomradiusserver'
+          - 'system_vdomsflow_collectors'
+          - 'system_virtualswitch'
+          - 'system_virtualswitch_port'
+          - 'system_virtualwanlink_healthcheck'
+          - 'system_virtualwanlink_healthcheck_sla'
+          - 'system_virtualwanlink_service'
+          - 'system_virtualwanlink_service_sla'
+          - 'system_virtualwirepair'
+          - 'system_vneinterface'
+          - 'system_vpce'
+          - 'system_vxlan'
+          - 'system_wccp'
+          - 'system_wireless_apstatus'
+          - 'system_zone'
+          - 'system_zone_tagging'
+          - 'user_adgrp'
+          - 'user_certificate'
+          - 'user_domaincontroller'
+          - 'user_domaincontroller_extraserver'
+          - 'user_exchange'
+          - 'user_externalidentityprovider'
+          - 'user_fsso'
+          - 'user_fssopolling'
+          - 'user_fssopolling_adgrp'
+          - 'user_group'
+          - 'user_group_match'
+          - 'user_krbkeytab'
+          - 'user_ldap'
+          - 'user_local'
+          - 'user_nacpolicy'
+          - 'user_oidc'
+          - 'user_passwordpolicy'
+          - 'user_peer'
+          - 'user_peergrp'
+          - 'user_pop3'
+          - 'user_quarantine_targets_macs'
+          - 'user_radius'
+          - 'user_radius_accountingserver'
+          - 'user_saml'
+          - 'user_scim'
+          - 'user_securityexemptlist'
+          - 'user_securityexemptlist_rule'
+          - 'user_setting_authports'
+          - 'user_tacacs'
+          - 'videofilter_keyword'
+          - 'videofilter_keyword_word'
+          - 'videofilter_profile'
+          - 'videofilter_profile_filters'
+          - 'videofilter_profile_fortiguardcategory_filters'
+          - 'videofilter_youtubekey'
+          - 'virtualpatch_profile'
+          - 'virtualpatch_profile_exemption'
+          - 'voip_profile'
+          - 'vpn_certificate_ca'
+          - 'vpn_certificate_crl'
+          - 'vpn_certificate_hsmlocal'
+          - 'vpn_certificate_local'
+          - 'vpn_certificate_ocspserver'
+          - 'vpn_certificate_remote'
+          - 'vpn_ipsec_concentrator'
+          - 'vpn_ipsec_fec'
+          - 'vpn_ipsec_forticlient'
+          - 'vpn_ipsec_manualkey'
+          - 'vpn_ipsec_manualkeyinterface'
+          - 'vpn_ipsec_phase1'
+          - 'vpn_ipsec_phase1_ipv4excluderange'
+          - 'vpn_ipsec_phase1_ipv6excluderange'
+          - 'vpn_ipsec_phase1interface'
+          - 'vpn_ipsec_phase1interface_ipv4excluderange'
+          - 'vpn_ipsec_phase1interface_ipv6excluderange'
+          - 'vpn_ipsec_phase2'
+          - 'vpn_ipsec_phase2interface'
+          - 'vpn_kmipserver'
+          - 'vpn_kmipserver_serverlist'
+          - 'vpn_ocvpn_forticlientaccess_authgroups'
+          - 'vpn_ocvpn_overlays'
+          - 'vpn_ocvpn_overlays_subnets'
+          - 'vpn_qkd'
+          - 'vpn_ssl_client'
+          - 'vpn_ssl_settings_authenticationrule'
+          - 'vpnsslweb_hostchecksoftware'
+          - 'vpnsslweb_hostchecksoftware_checkitemlist'
+          - 'vpnsslweb_portal'
+          - 'vpnsslweb_portal_bookmarkgroup'
+          - 'vpnsslweb_portal_bookmarkgroup_bookmarks'
+          - 'vpnsslweb_portal_bookmarkgroup_bookmarks_formdata'
+          - 'vpnsslweb_portal_landingpage_formdata'
+          - 'vpnsslweb_portal_macaddrcheckrule'
+          - 'vpnsslweb_portal_splitdns'
+          - 'vpnsslweb_userbookmark'
+          - 'vpnsslweb_userbookmark_bookmarks'
+          - 'vpnsslweb_userbookmark_bookmarks_formdata'
+          - 'vpnsslweb_usergroupbookmark'
+          - 'vpnsslweb_usergroupbookmark_bookmarks'
+          - 'vpnsslweb_usergroupbookmark_bookmarks_formdata'
+          - 'waf_mainclass'
+          - 'waf_profile'
+          - 'waf_profile_constraint_exception'
+          - 'waf_profile_method_methodpolicy'
+          - 'waf_profile_signature_customsignature'
+          - 'waf_profile_urlaccess'
+          - 'waf_profile_urlaccess_accesspattern'
+          - 'waf_signature'
+          - 'waf_subclass'
+          - 'wanopt_authgroup'
+          - 'wanopt_cacheservice_dstpeer'
+          - 'wanopt_cacheservice_srcpeer'
+          - 'wanopt_contentdeliverynetworkrule'
+          - 'wanopt_contentdeliverynetworkrule_rules'
+          - 'wanopt_contentdeliverynetworkrule_rules_matchentries'
+          - 'wanopt_contentdeliverynetworkrule_rules_skipentries'
+          - 'wanopt_profile'
+          - 'webcache_prefetch'
+          - 'webcache_reversecacheserver'
+          - 'webcache_useragent'
+          - 'webfilter_content'
+          - 'webfilter_content_entries'
+          - 'webfilter_contentheader'
+          - 'webfilter_domainlist'
+          - 'webfilter_ftgdlocalcat'
+          - 'webfilter_ftgdrisklevel'
+          - 'webfilter_override'
+          - 'webfilter_profile'
+          - 'webfilter_profile_antiphish_inspectionentries'
+          - 'webfilter_profile_ftgdwf_filters'
+          - 'webfilter_profile_ftgdwf_quota'
+          - 'webfilter_profile_ftgdwf_risk'
+          - 'webfilter_searchengine'
+          - 'webfilter_urlfilter'
+          - 'webfilter_urlfilter_entries'
+          - 'webfilter_urllist'
+          - 'webproxy_debugurl'
+          - 'webproxy_explicit'
+          - 'webproxy_explicit_pacpolicy'
+          - 'webproxy_explicitproxy'
+          - 'webproxy_fastfallback'
+          - 'webproxy_forwardserver'
+          - 'webproxy_forwardservergroup'
+          - 'webproxy_forwardservergroup_serverlist'
+          - 'webproxy_implicitproxyrule'
+          - 'webproxy_implicitproxyrule_proxyservers'
+          - 'webproxy_implicitproxysetting'
+          - 'webproxy_isolatorserver'
+          - 'webproxy_pacpolicy'
+          - 'webproxy_profile'
+          - 'webproxy_profile_headers'
+          - 'webproxy_redirectprofile'
+          - 'webproxy_redirectprofile_entries'
+          - 'webproxy_urllist'
+          - 'webproxy_urllist_entries'
+          - 'webproxy_urlmatch'
+          - 'webproxy_wisp'
+          - 'wireless_accesscontrollist'
+          - 'wireless_accesscontrollist_layer3ipv4rules'
+          - 'wireless_accesscontrollist_layer3ipv6rules'
+          - 'wireless_apcfgprofile'
+          - 'wireless_apcfgprofile_commandlist'
+          - 'wireless_apstatus'
+          - 'wireless_arrpprofile'
+          - 'wireless_bleprofile'
+          - 'wireless_bonjourprofile'
+          - 'wireless_hotspot20_anqp3gppcellular'
+          - 'wireless_hotspot20_anqp3gppcellular_mccmnclist'
+          - 'wireless_hotspot20_anqpipaddresstype'
+          - 'wireless_hotspot20_anqpnairealm'
+          - 'wireless_hotspot20_anqpnairealm_nailist'
+          - 'wireless_hotspot20_anqpnairealm_nailist_eapmethod'
+          - 'wireless_hotspot20_anqpnairealm_nailist_eapmethod_authparam'
+          - 'wireless_hotspot20_anqpnetworkauthtype'
+          - 'wireless_hotspot20_anqproamingconsortium'
+          - 'wireless_hotspot20_anqpvenuename'
+          - 'wireless_hotspot20_anqpvenueurl'
+          - 'wireless_hotspot20_h2qpadviceofcharge'
+          - 'wireless_hotspot20_h2qpadviceofcharge_aoclist'
+          - 'wireless_hotspot20_h2qpadviceofcharge_aoclist_planinfo'
+          - 'wireless_hotspot20_h2qpconncapability'
+          - 'wireless_hotspot20_h2qpoperatorname'
+          - 'wireless_hotspot20_h2qposuprovider'
+          - 'wireless_hotspot20_h2qposuprovider_friendlyname'
+          - 'wireless_hotspot20_h2qposuprovider_servicedescription'
+          - 'wireless_hotspot20_h2qposuprovidernai'
+          - 'wireless_hotspot20_h2qposuprovidernai_nailist'
+          - 'wireless_hotspot20_h2qptermsandconditions'
+          - 'wireless_hotspot20_h2qpwanmetric'
+          - 'wireless_hotspot20_hsprofile'
+          - 'wireless_hotspot20_icon'
+          - 'wireless_hotspot20_icon_iconlist'
+          - 'wireless_hotspot20_qosmap'
+          - 'wireless_hotspot20_qosmap_dscpexcept'
+          - 'wireless_hotspot20_qosmap_dscprange'
+          - 'wireless_intercontroller_intercontrollerpeer'
+          - 'wireless_lwprofile'
+          - 'wireless_mpskprofile'
+          - 'wireless_mpskprofile_mpskgroup'
+          - 'wireless_mpskprofile_mpskgroup_mpskkey'
+          - 'wireless_nacprofile'
+          - 'wireless_qosprofile'
+          - 'wireless_region'
+          - 'wireless_setting_offendingssid'
+          - 'wireless_snmp_community'
+          - 'wireless_snmp_community_hosts'
+          - 'wireless_snmp_community_hosts6'
+          - 'wireless_snmp_user'
+          - 'wireless_ssidpolicy'
+          - 'wireless_syslogprofile'
+          - 'wireless_utmprofile'
+          - 'wireless_vap'
+          - 'wireless_vap_macfilterlist'
+          - 'wireless_vap_vlanname'
+          - 'wireless_vap_vlanpool'
+          - 'wireless_vapgroup'
+          - 'wireless_wagprofile'
+          - 'wireless_widsprofile'
+          - 'wireless_wtp'
+          - 'wireless_wtp_splittunnelingacl'
+          - 'wireless_wtpgroup'
+          - 'wireless_wtpprofile'
+          - 'wireless_wtpprofile_denymaclist'
+          - 'wireless_wtpprofile_splittunnelingacl'
+          - 'ztna_destination'
+          - 'ztna_reverseconnector'
+          - 'ztna_serviceconnector'
+          - 'ztna_trafficforwardproxy'
+          - 'ztna_trafficforwardproxyreverseservice_remoteservers'
+          - 'ztna_webportal'
+          - 'ztna_webportalbookmark'
+          - 'ztna_webportalbookmark_bookmarks'
+          - 'ztna_webproxy'
+          - 'ztna_webproxy_apigateway'
+          - 'ztna_webproxy_apigateway6'
+          - 'ztna_webproxy_apigateway6_realservers'
+          - 'ztna_webproxy_apigateway_realservers'
+      self:
+        required: true
+        description: The parameter for each selector.
+        type: dict
+      target:
+        required: true
+        description: Attribute to override for target object.
+        type: dict
 '''
 
 EXAMPLES = '''
@@ -915,42 +939,42 @@ EXAMPLES = '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -972,49 +996,49 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/antivirus/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_categories': {
             'params': ['device', 'categories'],
             'urls': [
                 '/pm/config/device/{device}/global/application/categories/{categories}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_custom': {
             'params': ['device', 'vdom', 'custom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/application/custom/{custom}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_group': {
             'params': ['device', 'vdom', 'group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/application/group/{group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_list': {
             'params': ['device', 'vdom', 'list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_list_defaultnetworkservices': {
             'params': ['device', 'vdom', 'list', 'default-network-services'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}/default-network-services/{default-network-services}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_list_entries': {
             'params': ['device', 'vdom', 'list', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/application/list/{list}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'application_name': {
             'params': ['device', 'name'],
@@ -1023,19 +1047,26 @@ def main():
             ],
             'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
+        'application_unsanctionedapps': {
+            'params': ['device', 'vdom', 'unsanctioned-apps'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/application/unsanctioned-apps/{unsanctioned-apps}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
+        },
         'authentication_rule': {
             'params': ['device', 'vdom', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/authentication/rule/{rule}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'authentication_scheme': {
             'params': ['device', 'vdom', 'scheme'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/authentication/scheme/{scheme}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'aws_vpce': {
             'params': ['device', 'vpce'],
@@ -1098,21 +1129,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_profile_saasapplication': {
             'params': ['device', 'vdom', 'profile', 'saas-application'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_profile_saasapplication_accessrule': {
             'params': ['device', 'vdom', 'profile', 'saas-application', 'access-rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/access-rule/{access-rule}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_profile_saasapplication_accessrule_attributefilter': {
             'params': ['device', 'vdom', 'profile', 'saas-application', 'access-rule', 'attribute-filter'],
@@ -1143,7 +1174,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_profile_saasapplication_customcontrol_attributefilter': {
             'params': ['device', 'vdom', 'profile', 'saas-application', 'custom-control', 'attribute-filter'],
@@ -1159,14 +1190,14 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/casb/profile/{profile}/saas-application/{saas-application}/custom-control/{custom-control}/option/{op'
                 'tion}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_saasapplication': {
             'params': ['device', 'vdom', 'saas-application'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/saas-application/{saas-application}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_saasapplication_inputattributes': {
             'params': ['device', 'vdom', 'saas-application', 'input-attributes'],
@@ -1187,21 +1218,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_useractivity_match': {
             'params': ['device', 'vdom', 'user-activity', 'match'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_useractivity_match_rules': {
             'params': ['device', 'vdom', 'user-activity', 'match', 'rules'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/rules/{rules}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'casb_useractivity_match_tenantextraction_filters': {
             'params': ['device', 'vdom', 'user-activity', 'match', 'filters'],
@@ -1209,6 +1240,13 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/tenant-extraction/filters/{filters}'
             ],
             'mkey': 'id', 'v_range': [['7.6.4', '']]
+        },
+        'casb_useractivity_match_tenantsessionextraction_filters': {
+            'params': ['device', 'vdom', 'user-activity', 'match', 'filters'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/casb/user-activity/{user-activity}/match/{match}/tenant-session-extraction/filters/{filters}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
         },
         'certificate_hsmlocal': {
             'params': ['device', 'hsm-local'],
@@ -1229,28 +1267,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/diameter-filter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_datatype': {
             'params': ['device', 'vdom', 'data-type'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/data-type/{data-type}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_dictionary': {
             'params': ['device', 'vdom', 'dictionary'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/dictionary/{dictionary}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_dictionary_entries': {
             'params': ['device', 'vdom', 'dictionary', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/dictionary/{dictionary}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_exactdatamatch': {
             'params': ['device', 'vdom', 'exact-data-match'],
@@ -1264,7 +1302,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/filepattern/{filepattern}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_fpdocsource': {
             'params': ['device', 'vdom', 'fp-doc-source'],
@@ -1292,147 +1330,147 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_profile_rule': {
             'params': ['device', 'vdom', 'profile', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/profile/{profile}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_sensor': {
             'params': ['device', 'vdom', 'sensor'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/sensor/{sensor}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dlp_sensor_entries': {
             'params': ['device', 'vdom', 'sensor', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dlp/sensor/{sensor}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dnsfilter_domainfilter': {
             'params': ['device', 'vdom', 'domain-filter'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/domain-filter/{domain-filter}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dnsfilter_domainfilter_entries': {
             'params': ['device', 'vdom', 'domain-filter', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/domain-filter/{domain-filter}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dnsfilter_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dnsfilter_profile_dnstranslation': {
             'params': ['device', 'vdom', 'profile', 'dns-translation'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/dns-translation/{dns-translation}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'dnsfilter_profile_ftgddns_filters': {
             'params': ['device', 'vdom', 'profile', 'filters'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/dnsfilter/profile/{profile}/ftgd-dns/filters/{filters}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_blockallowlist': {
             'params': ['device', 'vdom', 'block-allow-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/block-allow-list/{block-allow-list}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_blockallowlist_entries': {
             'params': ['device', 'vdom', 'block-allow-list', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/block-allow-list/{block-allow-list}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_bword': {
             'params': ['device', 'vdom', 'bword'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/bword/{bword}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_bword_entries': {
             'params': ['device', 'vdom', 'bword', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/bword/{bword}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_dnsbl': {
             'params': ['device', 'vdom', 'dnsbl'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/dnsbl/{dnsbl}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_dnsbl_entries': {
             'params': ['device', 'vdom', 'dnsbl', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/dnsbl/{dnsbl}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_iptrust': {
             'params': ['device', 'vdom', 'iptrust'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/iptrust/{iptrust}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_iptrust_entries': {
             'params': ['device', 'vdom', 'iptrust', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/iptrust/{iptrust}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_mheader': {
             'params': ['device', 'vdom', 'mheader'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/mheader/{mheader}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_mheader_entries': {
             'params': ['device', 'vdom', 'mheader', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/mheader/{mheader}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'emailfilter_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/emailfilter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'endpointcontrol_fctems': {
             'params': ['device', 'fctems'],
             'urls': [
                 '/pm/config/device/{device}/global/endpoint-control/fctems/{fctems}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'endpointcontrol_fctemsoverride': {
             'params': ['device', 'vdom', 'fctems-override'],
@@ -1453,7 +1491,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/dataplan/{dataplan}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'extensioncontroller_extender': {
             'params': ['device', 'vdom', 'extender'],
@@ -1467,7 +1505,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'extensioncontroller_extenderprofile_cellular_smsnotification_receiver': {
             'params': ['device', 'vdom', 'extender-profile', 'receiver'],
@@ -1475,7 +1513,7 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/extension-controller/extender-profile/{extender-profile}/cellular/sms-notification/receiver/{receiver'
                 '}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'extensioncontroller_extendervap': {
             'params': ['device', 'vdom', 'extender-vap'],
@@ -1503,196 +1541,203 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/file-filter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'filefilter_profile_rules': {
             'params': ['device', 'vdom', 'profile', 'rules'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/file-filter/profile/{profile}/rules/{rules}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy': {
             'params': ['device', 'vdom', 'access-proxy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy6': {
             'params': ['device', 'vdom', 'access-proxy6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy6_apigateway': {
             'params': ['device', 'vdom', 'access-proxy6', 'api-gateway'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy6_apigateway6': {
             'params': ['device', 'vdom', 'access-proxy6', 'api-gateway6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy6_apigateway6_realservers': {
             'params': ['device', 'vdom', 'access-proxy6', 'api-gateway6', 'realservers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway6/{api-gateway6}/realservers/{realservers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy6_apigateway_realservers': {
             'params': ['device', 'vdom', 'access-proxy6', 'api-gateway', 'realservers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy6/{access-proxy6}/api-gateway/{api-gateway}/realservers/{realservers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy_apigateway': {
             'params': ['device', 'vdom', 'access-proxy', 'api-gateway'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy_apigateway6': {
             'params': ['device', 'vdom', 'access-proxy', 'api-gateway6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy_apigateway6_realservers': {
             'params': ['device', 'vdom', 'access-proxy', 'api-gateway6', 'realservers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway6/{api-gateway6}/realservers/{realservers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxy_apigateway_realservers': {
             'params': ['device', 'vdom', 'access-proxy', 'api-gateway', 'realservers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy/{access-proxy}/api-gateway/{api-gateway}/realservers/{realservers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxysshclientcert': {
             'params': ['device', 'vdom', 'access-proxy-ssh-client-cert'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-ssh-client-cert/{access-proxy-ssh-client-cert}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxysshclientcert_certextension': {
             'params': ['device', 'vdom', 'access-proxy-ssh-client-cert', 'cert-extension'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-ssh-client-cert/{access-proxy-ssh-client-cert}/cert-extension/{cert-extension}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_accessproxyvirtualhost': {
             'params': ['device', 'vdom', 'access-proxy-virtual-host'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/access-proxy-virtual-host/{access-proxy-virtual-host}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address': {
             'params': ['device', 'vdom', 'address'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address6': {
             'params': ['device', 'vdom', 'address6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address6_subnetsegment': {
             'params': ['device', 'vdom', 'address6', 'subnet-segment'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/subnet-segment/{subnet-segment}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address6_tagging': {
             'params': ['device', 'vdom', 'address6', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address6/{address6}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address6template': {
             'params': ['device', 'vdom', 'address6-template'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address6template_subnetsegment': {
             'params': ['device', 'vdom', 'address6-template', 'subnet-segment'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}/subnet-segment/{subnet-segment}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address6template_subnetsegment_values': {
             'params': ['device', 'vdom', 'address6-template', 'subnet-segment', 'values'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address6-template/{address6-template}/subnet-segment/{subnet-segment}/values/{values}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_address_tagging': {
             'params': ['device', 'vdom', 'address', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/address/{address}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_addrgrp': {
             'params': ['device', 'vdom', 'addrgrp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp/{addrgrp}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_addrgrp6': {
             'params': ['device', 'vdom', 'addrgrp6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp6/{addrgrp6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_addrgrp6_tagging': {
             'params': ['device', 'vdom', 'addrgrp6', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp6/{addrgrp6}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_addrgrp_tagging': {
             'params': ['device', 'vdom', 'addrgrp', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/addrgrp/{addrgrp}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_centralsnatmap': {
             'params': ['device', 'vdom', 'central-snat-map'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/central-snat-map/{central-snat-map}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
+        },
+        'firewall_customtag': {
+            'params': ['device', 'vdom', 'custom-tag'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/firewall/custom-tag/{custom-tag}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'firewall_dnstranslation': {
             'params': ['device', 'vdom', 'dnstranslation'],
@@ -1706,91 +1751,91 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy/{DoS-policy}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_dospolicy6': {
             'params': ['device', 'vdom', 'DoS-policy6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy6/{DoS-policy6}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_dospolicy6_anomaly': {
             'params': ['device', 'vdom', 'DoS-policy6', 'anomaly'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/DoS-policy6/{DoS-policy6}/anomaly/{anomaly}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_identitybasedroute': {
             'params': ['device', 'vdom', 'identity-based-route'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/identity-based-route/{identity-based-route}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_identitybasedroute_rule': {
             'params': ['device', 'vdom', 'identity-based-route', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/identity-based-route/{identity-based-route}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_interfacepolicy': {
             'params': ['device', 'vdom', 'interface-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/interface-policy/{interface-policy}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_interfacepolicy6': {
             'params': ['device', 'vdom', 'interface-policy6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/interface-policy6/{interface-policy6}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetserviceaddition': {
             'params': ['device', 'internet-service-addition'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetserviceaddition_entry': {
             'params': ['device', 'internet-service-addition', 'entry'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}/entry/{entry}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetserviceaddition_entry_portrange': {
             'params': ['device', 'internet-service-addition', 'entry', 'port-range'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/internet-service-addition/{internet-service-addition}/entry/{entry}/port-range/{port-range}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetservicecustom': {
             'params': ['device', 'vdom', 'internet-service-custom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom/{internet-service-custom}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetservicecustom_entry': {
             'params': ['device', 'vdom', 'internet-service-custom', 'entry'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom/{internet-service-custom}/entry/{entry}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetservicecustomgroup': {
             'params': ['device', 'vdom', 'internet-service-custom-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-custom-group/{internet-service-custom-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetservicedefinition': {
             'params': ['device', 'internet-service-definition'],
@@ -1871,14 +1916,14 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/internet-service-group/{internet-service-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_internetservicename': {
             'params': ['device', 'internet-service-name'],
             'urls': [
                 '/pm/config/device/{device}/global/firewall/internet-service-name/{internet-service-name}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_ipmacbinding_table': {
             'params': ['device', 'vdom', 'table'],
@@ -1892,84 +1937,84 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ippool/{ippool}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_ippool6': {
             'params': ['device', 'vdom', 'ippool6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ippool6/{ippool6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_ldbmonitor': {
             'params': ['device', 'vdom', 'ldb-monitor'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ldb-monitor/{ldb-monitor}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_localinpolicy': {
             'params': ['device', 'vdom', 'local-in-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/local-in-policy/{local-in-policy}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_localinpolicy6': {
             'params': ['device', 'vdom', 'local-in-policy6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/local-in-policy6/{local-in-policy6}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_multicastaddress': {
             'params': ['device', 'vdom', 'multicast-address'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address/{multicast-address}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_multicastaddress6': {
             'params': ['device', 'vdom', 'multicast-address6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address6/{multicast-address6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_multicastaddress6_tagging': {
             'params': ['device', 'vdom', 'multicast-address6', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address6/{multicast-address6}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_multicastaddress_tagging': {
             'params': ['device', 'vdom', 'multicast-address', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-address/{multicast-address}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_multicastpolicy': {
             'params': ['device', 'vdom', 'multicast-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-policy/{multicast-policy}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_multicastpolicy6': {
             'params': ['device', 'vdom', 'multicast-policy6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/multicast-policy6/{multicast-policy6}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_networkservicedynamic': {
             'params': ['device', 'vdom', 'network-service-dynamic'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/network-service-dynamic/{network-service-dynamic}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_ondemandsniffer': {
             'params': ['device', 'vdom', 'on-demand-sniffer'],
@@ -1997,168 +2042,168 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-group/{profile-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_profileprotocoloptions': {
             'params': ['device', 'vdom', 'profile-protocol-options'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/profile-protocol-options/{profile-protocol-options}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddress': {
             'params': ['device', 'vdom', 'proxy-address'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddress6': {
             'params': ['device', 'vdom', 'proxy-address6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddress6_headergroup': {
             'params': ['device', 'vdom', 'proxy-address6', 'header-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}/header-group/{header-group}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddress6_tagging': {
             'params': ['device', 'vdom', 'proxy-address6', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address6/{proxy-address6}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddress_headergroup': {
             'params': ['device', 'vdom', 'proxy-address', 'header-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}/header-group/{header-group}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddress_tagging': {
             'params': ['device', 'vdom', 'proxy-address', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-address/{proxy-address}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddrgrp': {
             'params': ['device', 'vdom', 'proxy-addrgrp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp/{proxy-addrgrp}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddrgrp6': {
             'params': ['device', 'vdom', 'proxy-addrgrp6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp6/{proxy-addrgrp6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddrgrp6_tagging': {
             'params': ['device', 'vdom', 'proxy-addrgrp6', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp6/{proxy-addrgrp6}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxyaddrgrp_tagging': {
             'params': ['device', 'vdom', 'proxy-addrgrp', 'tagging'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-addrgrp/{proxy-addrgrp}/tagging/{tagging}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_proxypolicy': {
             'params': ['device', 'vdom', 'proxy-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/proxy-policy/{proxy-policy}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_responseshapingpolicy': {
             'params': ['device', 'vdom', 'response-shaping-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/response-shaping-policy/{response-shaping-policy}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_schedule_group': {
             'params': ['device', 'vdom', 'group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/group/{group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_schedule_onetime': {
             'params': ['device', 'vdom', 'onetime'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/onetime/{onetime}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_schedule_recurring': {
             'params': ['device', 'vdom', 'recurring'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/schedule/recurring/{recurring}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_securitypolicy': {
             'params': ['device', 'vdom', 'security-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/security-policy/{security-policy}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_service_category': {
             'params': ['device', 'vdom', 'category'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/service/category/{category}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_service_custom': {
             'params': ['device', 'vdom', 'custom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/service/custom/{custom}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_service_group': {
             'params': ['device', 'vdom', 'group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/service/group/{group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_shaper_peripshaper': {
             'params': ['device', 'vdom', 'per-ip-shaper'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/shaper/per-ip-shaper/{per-ip-shaper}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_shaper_trafficshaper': {
             'params': ['device', 'vdom', 'traffic-shaper'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/shaper/traffic-shaper/{traffic-shaper}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_shapingpolicy': {
             'params': ['device', 'vdom', 'shaping-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-policy/{shaping-policy}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_shapingprofile': {
             'params': ['device', 'vdom', 'shaping-profile'],
@@ -2166,14 +2211,14 @@ def main():
                 '/pm/config/device/{device}/global/firewall/shaping-profile/{shaping-profile}',
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-profile/{shaping-profile}'
             ],
-            'mkey': 'profile_name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'profile_name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_shapingprofile_shapingentries': {
             'params': ['device', 'vdom', 'shaping-profile', 'shaping-entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/shaping-profile/{shaping-profile}/shaping-entries/{shaping-entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_sniffer': {
             'params': ['device', 'vdom', 'sniffer'],
@@ -2201,7 +2246,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssh/local-ca/{local-ca}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_ssh_localkey': {
             'params': ['device', 'vdom', 'local-key'],
@@ -2215,7 +2260,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/firewall/ssl/keyring-list/{keyring-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_sslserver': {
             'params': ['device', 'vdom', 'ssl-server'],
@@ -2229,28 +2274,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_sslsshprofile_echoutersni': {
             'params': ['device', 'vdom', 'ssl-ssh-profile', 'ech-outer-sni'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ech-outer-sni/{ech-outer-sni}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_sslsshprofile_sslexempt': {
             'params': ['device', 'vdom', 'ssl-ssh-profile', 'ssl-exempt'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-exempt/{ssl-exempt}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_sslsshprofile_sslserver': {
             'params': ['device', 'vdom', 'ssl-ssh-profile', 'ssl-server'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/ssl-ssh-profile/{ssl-ssh-profile}/ssl-server/{ssl-server}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_ttlpolicy': {
             'params': ['device', 'vdom', 'ttl-policy'],
@@ -2264,63 +2309,63 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_vip6': {
             'params': ['device', 'vdom', 'vip6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_vip6_realservers': {
             'params': ['device', 'vdom', 'vip6', 'realservers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vip6/{vip6}/realservers/{realservers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_vip_realservers': {
             'params': ['device', 'vdom', 'vip', 'realservers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/realservers/{realservers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_vip_sslciphersuites': {
             'params': ['device', 'vdom', 'vip', 'ssl-cipher-suites'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vip/{vip}/ssl-cipher-suites/{ssl-cipher-suites}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_vipgrp': {
             'params': ['device', 'vdom', 'vipgrp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vipgrp/{vipgrp}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_vipgrp6': {
             'params': ['device', 'vdom', 'vipgrp6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/vipgrp6/{vipgrp6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_wildcardfqdn_custom': {
             'params': ['device', 'vdom', 'custom'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/wildcard-fqdn/custom/{custom}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'firewall_wildcardfqdn_group': {
             'params': ['device', 'vdom', 'group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/firewall/wildcard-fqdn/group/{group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'gtp_apnshaper': {
             'params': ['device', 'vdom', 'apn-shaper'],
@@ -2355,7 +2400,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/icap/local-server/{local-server}/icap-service/{icap-service}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'icap_profile': {
             'params': ['device', 'vdom', 'profile'],
@@ -2369,28 +2414,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/icap/profile/{profile}/icap-headers/{icap-headers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'icap_remoteserver': {
             'params': ['device', 'vdom', 'remote-server'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server/{remote-server}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'icap_remoteservergroup': {
             'params': ['device', 'vdom', 'remote-server-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server-group/{remote-server-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'icap_remoteservergroup_serverlist': {
             'params': ['device', 'vdom', 'remote-server-group', 'server-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/icap/remote-server-group/{remote-server-group}/server-list/{server-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'icap_server': {
             'params': ['device', 'vdom', 'server'],
@@ -2411,42 +2456,42 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/image-analyzer/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'ips_sensor': {
             'params': ['device', 'vdom', 'sensor'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'ips_sensor_entries': {
             'params': ['device', 'vdom', 'sensor', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'ips_sensor_entries_exemptip': {
             'params': ['device', 'vdom', 'sensor', 'entries', 'exempt-ip'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ips/sensor/{sensor}/entries/{entries}/exempt-ip/{exempt-ip}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'isolator_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/isolator/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'isolator_profile_entries': {
             'params': ['device', 'vdom', 'profile', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/isolator/profile/{profile}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'llm_profile': {
             'params': ['device', 'vdom', 'profile'],
@@ -2502,7 +2547,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/custom-field/{custom-field}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
+        },
+        'log_customformat': {
+            'params': ['device', 'custom-format'],
+            'urls': [
+                '/pm/config/device/{device}/global/log/custom-format/{custom-format}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
+        },
+        'log_customformat_logtemplates': {
+            'params': ['device', 'custom-format', 'log-templates'],
+            'urls': [
+                '/pm/config/device/{device}/global/log/custom-format/{custom-format}/log-templates/{log-templates}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'log_disk_filter_freestyle': {
             'params': ['device', 'vdom', 'free-style'],
@@ -2621,7 +2680,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd2/override-setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd2_setting_customfieldname': {
             'params': ['device', 'custom-field-name'],
@@ -2635,7 +2694,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd2/setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd3_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2663,7 +2722,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd3/override-setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd3_setting_customfieldname': {
             'params': ['device', 'custom-field-name'],
@@ -2677,7 +2736,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd3/setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd4_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2705,7 +2764,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd4/override-setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd4_setting_customfieldname': {
             'params': ['device', 'custom-field-name'],
@@ -2719,7 +2778,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd4/setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2747,7 +2806,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/syslogd/override-setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_syslogd_setting_customfieldname': {
             'params': ['device', 'custom-field-name'],
@@ -2761,28 +2820,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/log/syslogd/setting/log-templates/{log-templates}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_threatweight_application': {
             'params': ['device', 'vdom', 'application'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/application/{application}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_threatweight_geolocation': {
             'params': ['device', 'vdom', 'geolocation'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/geolocation/{geolocation}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_threatweight_web': {
             'params': ['device', 'vdom', 'web'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/log/threat-weight/web/{web}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'log_webtrends_filter_freestyle': {
             'params': ['device', 'free-style'],
@@ -2824,49 +2883,49 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_chart_column': {
             'params': ['device', 'vdom', 'chart', 'column'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/column/{column}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_chart_column_mapping': {
             'params': ['device', 'vdom', 'chart', 'column', 'mapping'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/column/{column}/mapping/{mapping}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_chart_drilldowncharts': {
             'params': ['device', 'vdom', 'chart', 'drill-down-charts'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/chart/{chart}/drill-down-charts/{drill-down-charts}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_dataset': {
             'params': ['device', 'vdom', 'dataset'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_dataset_field': {
             'params': ['device', 'vdom', 'dataset', 'field'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}/field/{field}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_dataset_parameters': {
             'params': ['device', 'vdom', 'dataset', 'parameters'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/dataset/{dataset}/parameters/{parameters}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_layout': {
             'params': ['device', 'vdom', 'layout'],
@@ -2887,7 +2946,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/layout/{layout}/body-item/{body-item}/list/{list}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_layout_bodyitem_parameters': {
             'params': ['device', 'vdom', 'layout', 'body-item', 'parameters'],
@@ -2915,56 +2974,56 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/style/{style}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'report_theme': {
             'params': ['device', 'vdom', 'theme'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/report/theme/{theme}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'router_accesslist': {
             'params': ['device', 'vdom', 'access-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/access-list/{access-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_accesslist6': {
             'params': ['device', 'vdom', 'access-list6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/access-list6/{access-list6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_accesslist6_rule': {
             'params': ['device', 'vdom', 'access-list6', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/access-list6/{access-list6}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_accesslist_rule': {
             'params': ['device', 'vdom', 'access-list', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/access-list/{access-list}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_aspathlist': {
             'params': ['device', 'vdom', 'aspath-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/aspath-list/{aspath-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_aspathlist_rule': {
             'params': ['device', 'vdom', 'aspath-list', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/aspath-list/{aspath-list}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_authpath': {
             'params': ['device', 'vdom', 'auth-path'],
@@ -3008,6 +3067,13 @@ def main():
             ],
             'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
+        'router_bgp_neighbor': {
+            'params': ['device', 'vdom', 'neighbor'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/bgp/neighbor/{neighbor}'
+            ],
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
         'router_bgp_neighborgroup': {
             'params': ['device', 'vdom', 'neighbor-group'],
             'urls': [
@@ -3048,14 +3114,14 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/community-list/{community-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_communitylist_rule': {
             'params': ['device', 'vdom', 'community-list', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/community-list/{community-list}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_extcommunitylist': {
             'params': ['device', 'vdom', 'extcommunity-list'],
@@ -3140,6 +3206,27 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/pim-sm-global/rp-address/{rp-address}'
             ],
             'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'router_multicast6_pimsmglobalvrf_rpaddress': {
+            'params': ['device', 'vdom', 'pim-sm-global-vrf', 'rp-address'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/multicast6/pim-sm-global-vrf/{pim-sm-global-vrf}/rp-address/{rp-address}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
+        },
+        'router_multicast6flow': {
+            'params': ['device', 'vdom', 'multicast6-flow'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/multicast6-flow/{multicast6-flow}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
+        },
+        'router_multicast6flow_flows': {
+            'params': ['device', 'vdom', 'multicast6-flow', 'flows'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/router/multicast6-flow/{multicast6-flow}/flows/{flows}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
         },
         'router_multicast_interface': {
             'params': ['device', 'vdom', 'interface'],
@@ -3356,28 +3443,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list/{prefix-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_prefixlist6': {
             'params': ['device', 'vdom', 'prefix-list6'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list6/{prefix-list6}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_prefixlist6_rule': {
             'params': ['device', 'vdom', 'prefix-list6', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list6/{prefix-list6}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_prefixlist_rule': {
             'params': ['device', 'vdom', 'prefix-list', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/prefix-list/{prefix-list}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_rip_distance': {
             'params': ['device', 'vdom', 'distance'],
@@ -3489,7 +3576,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/router/route-map/{route-map}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'router_static': {
             'params': ['device', 'vdom', 'static'],
@@ -3510,28 +3597,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/sctp-filter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'sctpfilter_profile_ppidfilters': {
             'params': ['device', 'vdom', 'profile', 'ppid-filters'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/sctp-filter/profile/{profile}/ppid-filters/{ppid-filters}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'sshfilter_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ssh-filter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'sshfilter_profile_shellcommands': {
             'params': ['device', 'vdom', 'profile', 'shell-commands'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/ssh-filter/profile/{profile}/shell-commands/{shell-commands}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'switchcontroller_acl_group': {
             'params': ['device', 'vdom', 'group'],
@@ -3618,6 +3705,20 @@ def main():
             ],
             'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
+        'switchcontroller_igmpsnoopingstaticgroup': {
+            'params': ['device', 'vdom', 'igmp-snooping-static-group'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/igmp-snooping-static-group/{igmp-snooping-static-group}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
+        },
+        'switchcontroller_igmpsnoopingstaticgroup_ports': {
+            'params': ['device', 'vdom', 'igmp-snooping-static-group', 'ports'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/igmp-snooping-static-group/{igmp-snooping-static-group}/ports/{ports}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
+        },
         'switchcontroller_initialconfig_template': {
             'params': ['device', 'vdom', 'template'],
             'urls': [
@@ -3673,6 +3774,13 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}'
             ],
             'mkey': 'switch_id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'switchcontroller_managedswitch_components': {
+            'params': ['device', 'vdom', 'managed-switch', 'components'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/managed-switch/{managed-switch}/components/{components}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'switchcontroller_managedswitch_customcommand': {
             'params': ['device', 'vdom', 'managed-switch', 'custom-command'],
@@ -3831,21 +3939,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/nac-device/{nac-device}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'switchcontroller_nacsettings': {
             'params': ['device', 'vdom', 'nac-settings'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/nac-settings/{nac-settings}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'switchcontroller_portpolicy': {
             'params': ['device', 'vdom', 'port-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/port-policy/{port-policy}'
             ],
-            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+            'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']]
         },
         'switchcontroller_ptp_interfacepolicy': {
             'params': ['device', 'vdom', 'interface-policy'],
@@ -3923,6 +4031,13 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/switch-controller/security-policy/802-1X/{802-1X}'
             ],
             'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'switchcontroller_securitypolicy_admin': {
+            'params': ['device', 'vdom', 'admin'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/switch-controller/security-policy/admin/{admin}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'switchcontroller_securitypolicy_localaccess': {
             'params': ['device', 'vdom', 'local-access'],
@@ -4069,7 +4184,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/admin/{admin}/trusthosts/{trusthosts}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_affinityinterrupt': {
             'params': ['device', 'affinity-interrupt'],
@@ -4139,7 +4254,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/automation-condition/{automation-condition}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.6', '7.4.10'], ['7.6.2', '']]
+            'mkey': 'name', 'v_range': [['7.4.6', '7.4.11'], ['7.6.2', '']]
         },
         'system_automationdestination': {
             'params': ['device', 'automation-destination'],
@@ -4211,12 +4326,33 @@ def main():
             ],
             'mkey': 'serial', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
         },
+        'system_csf_fabricdatasourceexemption': {
+            'params': ['device', 'fabric-datasource-exemption'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/csf/fabric-datasource-exemption/{fabric-datasource-exemption}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
+        },
         'system_csf_fabricdevice': {
             'params': ['device', 'fabric-device'],
             'urls': [
                 '/pm/config/device/{device}/global/system/csf/fabric-device/{fabric-device}'
             ],
             'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_csf_sharedobjects': {
+            'params': ['device', 'shared-objects'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/csf/shared-objects/{shared-objects}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
+        },
+        'system_csf_sharedobjects_objects_keys': {
+            'params': ['device', 'shared-objects', 'objects', 'keys'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/csf/shared-objects/{shared-objects}/objects/{objects}/keys/{keys}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'system_csf_trustedlist': {
             'params': ['device', 'trusted-list'],
@@ -4230,7 +4366,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/custom-language/{custom-language}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_deviceupgradeexemptions': {
             'params': ['device', 'device-upgrade-exemptions'],
@@ -4272,35 +4408,70 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_dhcp_server_excluderange': {
             'params': ['device', 'vdom', 'server', 'exclude-range'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/exclude-range/{exclude-range}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_dhcp_server_iprange': {
             'params': ['device', 'vdom', 'server', 'ip-range'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/ip-range/{ip-range}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_dhcp_server_options': {
             'params': ['device', 'vdom', 'server', 'options'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/options/{options}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_dhcp_server_reservedaddress': {
             'params': ['device', 'vdom', 'server', 'reserved-address'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/dhcp/server/{server}/reserved-address/{reserved-address}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
+        },
+        'system_dhcp_template': {
+            'params': ['device', 'template'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/dhcp/template/{template}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
+        },
+        'system_dhcp_template_excluderange': {
+            'params': ['device', 'template', 'exclude-range'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/dhcp/template/{template}/exclude-range/{exclude-range}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
+        },
+        'system_dhcp_template_iprange': {
+            'params': ['device', 'template', 'ip-range'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/dhcp/template/{template}/ip-range/{ip-range}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
+        },
+        'system_dhcp_template_options': {
+            'params': ['device', 'template', 'options'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/dhcp/template/{template}/options/{options}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
+        },
+        'system_dhcp_template_reservedaddress': {
+            'params': ['device', 'template', 'reserved-address'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/dhcp/template/{template}/reserved-address/{reserved-address}'
+            ],
+            'mkey': 'id', 'v_range': [['8.0.0', '']]
         },
         'system_dnsdatabase': {
             'params': ['device', 'vdom', 'dns-database'],
@@ -4343,7 +4514,7 @@ def main():
                 '/pm/config/device/{device}/global/system/external-resource/{external-resource}',
                 '/pm/config/device/{device}/vdom/{vdom}/system/external-resource/{external-resource}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '7.6.7']]
         },
         'system_fabricvpn_advertisedsubnets': {
             'params': ['device', 'advertised-subnets'],
@@ -4371,28 +4542,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/geoip-country/{geoip-country}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_geoipoverride': {
             'params': ['device', 'geoip-override'],
             'urls': [
                 '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_geoipoverride_ip6range': {
             'params': ['device', 'geoip-override', 'ip6-range'],
             'urls': [
                 '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}/ip6-range/{ip6-range}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_geoipoverride_iprange': {
             'params': ['device', 'geoip-override', 'ip-range'],
             'urls': [
                 '/pm/config/device/{device}/global/system/geoip-override/{geoip-override}/ip-range/{ip-range}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_gretunnel': {
             'params': ['device', 'vdom', 'gre-tunnel'],
@@ -4407,6 +4578,13 @@ def main():
                 '/pm/config/device/{device}/global/system/ha/ha-mgmt-interfaces/{ha-mgmt-interfaces}'
             ],
             'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_ha_linkgroup': {
+            'params': ['device', 'link-group'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/ha/link-group/{link-group}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'system_ha_unicastpeers': {
             'params': ['device', 'unicast-peers'],
@@ -4616,28 +4794,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/nethsm/hagroups/{hagroups}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_nethsm_partitions': {
             'params': ['device', 'partitions'],
             'urls': [
                 '/pm/config/device/{device}/global/system/nethsm/partitions/{partitions}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_nethsm_servers': {
             'params': ['device', 'servers'],
             'urls': [
                 '/pm/config/device/{device}/global/system/nethsm/servers/{servers}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_nethsm_slots': {
             'params': ['device', 'slots'],
             'urls': [
                 '/pm/config/device/{device}/global/system/nethsm/slots/{slots}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_np6': {
             'params': ['device', 'np6'],
@@ -4672,7 +4850,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/object-tag/{object-tag}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11']]
         },
         'system_pcpserver_pools': {
             'params': ['device', 'vdom', 'pools'],
@@ -4714,28 +4892,29 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_replacemsggroup_alertmail': {
             'params': ['device', 'vdom', 'replacemsg-group', 'alertmail'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/alertmail/{alertmail}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_replacemsggroup_nacquar': {
             'params': ['device', 'vdom', 'replacemsg-group', 'nac-quar'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-group/{replacemsg-group}/nac-quar/{nac-quar}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_replacemsgimage': {
-            'params': ['device', 'replacemsg-image'],
+            'params': ['device', 'vdom', 'replacemsg-image'],
             'urls': [
-                '/pm/config/device/{device}/global/system/replacemsg-image/{replacemsg-image}'
+                '/pm/config/device/{device}/global/system/replacemsg-image/{replacemsg-image}',
+                '/pm/config/device/{device}/vdom/{vdom}/system/replacemsg-image/{replacemsg-image}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_saml_serviceproviders': {
             'params': ['device', 'service-providers'],
@@ -4756,21 +4935,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_sdnconnector_routetable': {
             'params': ['device', 'sdn-connector', 'route-table'],
             'urls': [
                 '/pm/config/device/{device}/global/system/sdn-connector/{sdn-connector}/route-table/{route-table}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_sdnproxy': {
             'params': ['device', 'sdn-proxy'],
             'urls': [
                 '/pm/config/device/{device}/global/system/sdn-proxy/{sdn-proxy}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_sdnvpn': {
             'params': ['device', 'sdn-vpn'],
@@ -4875,7 +5054,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/sms-server/{sms-server}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_snmp_community': {
             'params': ['device', 'community'],
@@ -4924,7 +5103,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/system/span-port/{span-port}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_speedtestserver': {
             'params': ['device', 'vdom', 'speed-test-server'],
@@ -4988,6 +5167,13 @@ def main():
                 '/pm/config/device/{device}/global/system/switch-interface/{switch-interface}'
             ],
             'mkey': 'name', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'system_theme': {
+            'params': ['device', 'theme'],
+            'urls': [
+                '/pm/config/device/{device}/global/system/theme/{theme}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'system_tosbasedpriority': {
             'params': ['device', 'tos-based-priority'],
@@ -5092,7 +5278,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/system/virtual-wire-pair/{virtual-wire-pair}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'system_vneinterface': {
             'params': ['device', 'vdom', 'vne-interface'],
@@ -5148,98 +5334,98 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/adgrp/{adgrp}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_certificate': {
             'params': ['device', 'vdom', 'certificate'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/certificate/{certificate}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_domaincontroller': {
             'params': ['device', 'vdom', 'domain-controller'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/domain-controller/{domain-controller}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_domaincontroller_extraserver': {
             'params': ['device', 'vdom', 'domain-controller', 'extra-server'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/domain-controller/{domain-controller}/extra-server/{extra-server}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_exchange': {
             'params': ['device', 'vdom', 'exchange'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/exchange/{exchange}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_externalidentityprovider': {
             'params': ['device', 'vdom', 'external-identity-provider'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/external-identity-provider/{external-identity-provider}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_fsso': {
             'params': ['device', 'vdom', 'fsso'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/fsso/{fsso}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_fssopolling': {
             'params': ['device', 'vdom', 'fsso-polling'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/fsso-polling/{fsso-polling}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_fssopolling_adgrp': {
             'params': ['device', 'vdom', 'fsso-polling', 'adgrp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/fsso-polling/{fsso-polling}/adgrp/{adgrp}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_group': {
             'params': ['device', 'vdom', 'group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/group/{group}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_group_match': {
             'params': ['device', 'vdom', 'group', 'match'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/group/{group}/match/{match}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_krbkeytab': {
             'params': ['device', 'vdom', 'krb-keytab'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/krb-keytab/{krb-keytab}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_ldap': {
             'params': ['device', 'vdom', 'ldap'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/ldap/{ldap}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_local': {
             'params': ['device', 'vdom', 'local'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/local/{local}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_nacpolicy': {
             'params': ['device', 'vdom', 'nac-policy'],
@@ -5260,28 +5446,28 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/password-policy/{password-policy}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_peer': {
             'params': ['device', 'vdom', 'peer'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/peer/{peer}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_peergrp': {
             'params': ['device', 'vdom', 'peergrp'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/peergrp/{peergrp}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_pop3': {
             'params': ['device', 'vdom', 'pop3'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/pop3/{pop3}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_quarantine_targets_macs': {
             'params': ['device', 'vdom', 'targets', 'macs'],
@@ -5295,21 +5481,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/radius/{radius}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_radius_accountingserver': {
             'params': ['device', 'vdom', 'radius', 'accounting-server'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/radius/{radius}/accounting-server/{accounting-server}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_saml': {
             'params': ['device', 'vdom', 'saml'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/saml/{saml}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_scim': {
             'params': ['device', 'vdom', 'scim'],
@@ -5323,14 +5509,14 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/security-exempt-list/{security-exempt-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_securityexemptlist_rule': {
             'params': ['device', 'vdom', 'security-exempt-list', 'rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/security-exempt-list/{security-exempt-list}/rule/{rule}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'user_setting_authports': {
             'params': ['device', 'vdom', 'auth-ports'],
@@ -5344,77 +5530,77 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/user/tacacs+/{tacacs+}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'videofilter_keyword': {
             'params': ['device', 'vdom', 'keyword'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/keyword/{keyword}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'videofilter_keyword_word': {
             'params': ['device', 'vdom', 'keyword', 'word'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/keyword/{keyword}/word/{word}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'videofilter_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'videofilter_profile_filters': {
             'params': ['device', 'vdom', 'profile', 'filters'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}/filters/{filters}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'videofilter_profile_fortiguardcategory_filters': {
             'params': ['device', 'vdom', 'profile', 'filters'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/profile/{profile}/fortiguard-category/filters/{filters}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'videofilter_youtubekey': {
             'params': ['device', 'vdom', 'youtube-key'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/videofilter/youtube-key/{youtube-key}'
             ],
-            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'virtualpatch_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/virtual-patch/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'virtualpatch_profile_exemption': {
             'params': ['device', 'vdom', 'profile', 'exemption'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/virtual-patch/profile/{profile}/exemption/{exemption}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'voip_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/voip/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpn_certificate_ca': {
             'params': ['device', 'vdom', 'ca'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/ca/{ca}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpn_certificate_crl': {
             'params': ['device', 'vdom', 'crl'],
@@ -5442,14 +5628,14 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/ocsp-server/{ocsp-server}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpn_certificate_remote': {
             'params': ['device', 'vdom', 'remote'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/certificate/remote/{remote}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpn_ipsec_concentrator': {
             'params': ['device', 'vdom', 'concentrator'],
@@ -5463,7 +5649,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ipsec/fec/{fec}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpn_ipsec_forticlient': {
             'params': ['device', 'vdom', 'forticlient'],
@@ -5603,35 +5789,35 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/host-check-software/{host-check-software}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_hostchecksoftware_checkitemlist': {
             'params': ['device', 'vdom', 'host-check-software', 'check-item-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/host-check-software/{host-check-software}/check-item-list/{check-item-list}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal': {
             'params': ['device', 'vdom', 'portal'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal_bookmarkgroup': {
             'params': ['device', 'vdom', 'portal', 'bookmark-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal_bookmarkgroup_bookmarks': {
             'params': ['device', 'vdom', 'portal', 'bookmark-group', 'bookmarks'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}/bookmarks/{bookmarks}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal_bookmarkgroup_bookmarks_formdata': {
             'params': ['device', 'vdom', 'portal', 'bookmark-group', 'bookmarks', 'form-data'],
@@ -5639,28 +5825,28 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/bookmark-group/{bookmark-group}/bookmarks/{bookmarks}/form-data/{form-dat'
                 'a}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal_landingpage_formdata': {
             'params': ['device', 'vdom', 'portal', 'form-data'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/landing-page/form-data/{form-data}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal_macaddrcheckrule': {
             'params': ['device', 'vdom', 'portal', 'mac-addr-check-rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/mac-addr-check-rule/{mac-addr-check-rule}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_portal_splitdns': {
             'params': ['device', 'vdom', 'portal', 'split-dns'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/vpn/ssl/web/portal/{portal}/split-dns/{split-dns}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'vpnsslweb_userbookmark': {
             'params': ['device', 'vdom', 'user-bookmark'],
@@ -5709,70 +5895,70 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/global/waf/main-class/{main-class}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_profile_constraint_exception': {
             'params': ['device', 'vdom', 'profile', 'exception'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/constraint/exception/{exception}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_profile_method_methodpolicy': {
             'params': ['device', 'vdom', 'profile', 'method-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/method/method-policy/{method-policy}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_profile_signature_customsignature': {
             'params': ['device', 'vdom', 'profile', 'custom-signature'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/signature/custom-signature/{custom-signature}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_profile_urlaccess': {
             'params': ['device', 'vdom', 'profile', 'url-access'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/url-access/{url-access}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_profile_urlaccess_accesspattern': {
             'params': ['device', 'vdom', 'profile', 'url-access', 'access-pattern'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/waf/profile/{profile}/url-access/{url-access}/access-pattern/{access-pattern}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_signature': {
             'params': ['device', 'signature'],
             'urls': [
                 '/pm/config/device/{device}/global/waf/signature/{signature}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'waf_subclass': {
             'params': ['device', 'sub-class'],
             'urls': [
                 '/pm/config/device/{device}/global/waf/sub-class/{sub-class}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'wanopt_authgroup': {
             'params': ['device', 'vdom', 'auth-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wanopt/auth-group/{auth-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'wanopt_cacheservice_dstpeer': {
             'params': ['device', 'vdom', 'dst-peer'],
@@ -5825,70 +6011,70 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/wanopt/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webcache_prefetch': {
             'params': ['device', 'vdom', 'prefetch'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webcache/prefetch/{prefetch}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webcache_reversecacheserver': {
             'params': ['device', 'vdom', 'reverse-cache-server'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webcache/reverse-cache-server/{reverse-cache-server}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webcache_useragent': {
             'params': ['device', 'vdom', 'user-agent'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webcache/user-agent/{user-agent}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_content': {
             'params': ['device', 'vdom', 'content'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/content/{content}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_content_entries': {
             'params': ['device', 'vdom', 'content', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/content/{content}/entries/{entries}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_contentheader': {
             'params': ['device', 'vdom', 'content-header'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/content-header/{content-header}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_domainlist': {
             'params': ['device', 'vdom', 'domain-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/domain-list/{domain-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_ftgdlocalcat': {
             'params': ['device', 'vdom', 'ftgd-local-cat'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-local-cat/{ftgd-local-cat}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_ftgdrisklevel': {
             'params': ['device', 'vdom', 'ftgd-risk-level'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/ftgd-risk-level/{ftgd-risk-level}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.2', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.2', '']]
         },
         'webfilter_override': {
             'params': ['device', 'vdom', 'override'],
@@ -5902,35 +6088,35 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_profile_antiphish_inspectionentries': {
             'params': ['device', 'vdom', 'profile', 'inspection-entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/antiphish/inspection-entries/{inspection-entries}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_profile_ftgdwf_filters': {
             'params': ['device', 'vdom', 'profile', 'filters'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/filters/{filters}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_profile_ftgdwf_quota': {
             'params': ['device', 'vdom', 'profile', 'quota'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/quota/{quota}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_profile_ftgdwf_risk': {
             'params': ['device', 'vdom', 'profile', 'risk'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/profile/{profile}/ftgd-wf/risk/{risk}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_searchengine': {
             'params': ['device', 'vdom', 'search-engine'],
@@ -5944,21 +6130,21 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/urlfilter/{urlfilter}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_urlfilter_entries': {
             'params': ['device', 'vdom', 'urlfilter', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/urlfilter/{urlfilter}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webfilter_urllist': {
             'params': ['device', 'vdom', 'url-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/webfilter/url-list/{url-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_debugurl': {
             'params': ['device', 'vdom', 'debug-url'],
@@ -5986,7 +6172,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit-proxy/{explicit-proxy}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_fastfallback': {
             'params': ['device', 'vdom', 'fast-fallback'],
@@ -6000,98 +6186,98 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server/{forward-server}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_forwardservergroup': {
             'params': ['device', 'vdom', 'forward-server-group'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server-group/{forward-server-group}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_forwardservergroup_serverlist': {
             'params': ['device', 'vdom', 'forward-server-group', 'server-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server-group/{forward-server-group}/server-list/{server-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_implicitproxyrule': {
             'params': ['device', 'vdom', 'implicit-proxy-rule'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-rule/{implicit-proxy-rule}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_implicitproxyrule_proxyservers': {
             'params': ['device', 'vdom', 'implicit-proxy-rule', 'proxy-servers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-rule/{implicit-proxy-rule}/proxy-servers/{proxy-servers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_implicitproxysetting': {
             'params': ['device', 'vdom', 'implicit-proxy-setting'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/implicit-proxy-setting/{implicit-proxy-setting}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_isolatorserver': {
             'params': ['device', 'vdom', 'isolator-server'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/isolator-server/{isolator-server}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_pacpolicy': {
             'params': ['device', 'vdom', 'pac-policy'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/pac-policy/{pac-policy}'
             ],
-            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'policyid', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_profile': {
             'params': ['device', 'vdom', 'profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/profile/{profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_profile_headers': {
             'params': ['device', 'vdom', 'profile', 'headers'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/profile/{profile}/headers/{headers}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_redirectprofile': {
             'params': ['device', 'vdom', 'redirect-profile'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/redirect-profile/{redirect-profile}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_redirectprofile_entries': {
             'params': ['device', 'vdom', 'redirect-profile', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/redirect-profile/{redirect-profile}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_urllist': {
             'params': ['device', 'vdom', 'url-list'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-list/{url-list}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_urllist_entries': {
             'params': ['device', 'vdom', 'url-list', 'entries'],
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/url-list/{url-list}/entries/{entries}'
             ],
-            'mkey': 'id', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'id', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'webproxy_urlmatch': {
             'params': ['device', 'vdom', 'url-match'],
@@ -6105,7 +6291,7 @@ def main():
             'urls': [
                 '/pm/config/device/{device}/vdom/{vdom}/web-proxy/wisp/{wisp}'
             ],
-            'mkey': 'name', 'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']]
+            'mkey': 'name', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']]
         },
         'wireless_accesscontrollist': {
             'params': ['device', 'vdom', 'access-control-list'],
@@ -6579,6 +6765,13 @@ def main():
                 '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp-profile/{wtp-profile}/split-tunneling-acl/{split-tunneling-acl}'
             ],
             'mkey': 'id', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']]
+        },
+        'ztna_destination': {
+            'params': ['device', 'vdom', 'destination'],
+            'urls': [
+                '/pm/config/device/{device}/vdom/{vdom}/ztna/destination/{destination}'
+            ],
+            'mkey': 'name', 'v_range': [['8.0.0', '']]
         },
         'ztna_reverseconnector': {
             'params': ['device', 'vdom', 'reverse-connector'],

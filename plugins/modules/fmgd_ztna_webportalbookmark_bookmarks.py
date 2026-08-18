@@ -13,276 +13,130 @@ DOCUMENTATION = '''
 ---
 module: fmgd_ztna_webportalbookmark_bookmarks
 short_description: Bookmark table.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  web-portal-bookmark:
+    description: Deprecated, please use "web_portal_bookmark"
+    type: str
+  web_portal_bookmark:
+    description: The parameter (web-portal-bookmark) in requested url.
+    type: str
+  ztna_webportalbookmark_bookmarks:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      apptype:
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Application type.
+        choices: ['web', 'telnet', 'ssh', 'ftp', 'smb', 'vnc', 'rdp', 'sftp']
+      color_depth:
+        aliases: ['color-depth']
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
+        description: Color depth per pixel.
+        choices: ['8', '16', '32']
+      description:
         type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
+        description: Description.
+      domain:
         type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+        description: Login domain.
+      folder:
         type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        description: Network shared file folder parameter.
+      height:
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Screen height
+      host:
         type: str
+        description: Host name/IP parameter.
+      keyboard_layout:
+        aliases: ['keyboard-layout']
+        type: str
+        description: Keyboard layout.
+        choices: ['da', 'de', 'de-ch', 'en-uk', 'en-us', 'es', 'fi', 'fr', 'fr-be', 'fr-ca',
+                  'fr-ch', 'hr', 'hu', 'it', 'ja', 'lt', 'mk', 'no', 'pt', 'pt-br', 'ru', 'sl',
+                  'sv', 'ar-101', 'ar-102', 'ar-102-azerty', 'can-mul', 'cz', 'cz-qwerty',
+                  'cz-pr', 'nl', 'de-ibm', 'en-uk-ext', 'en-us-dvorak', 'es-var', 'fi-sami',
+                  'hu-101', 'it-142', 'ko', 'lt-ibm', 'lt-std', 'lav-std', 'lav-leg', 'mk-std',
+                  'no-sami', 'pol-214', 'pol-pr', 'pt-br-abnt2', 'ru-mne', 'ru-t', 'sv-sami',
+                  'tuk', 'tur-f', 'tur-q', 'zh-sym-sg-us', 'zh-sym-us', 'zh-tr-hk', 'zh-tr-mo',
+                  'zh-tr-us', 'fr-apple', 'la-am', 'ja-106']
+      load_balancing_info:
+        aliases: ['load-balancing-info']
+        type: str
+        description: The load balancing information or cookie which should be provided to the connection broker.
+      logon_password:
+        aliases: ['logon-password']
+        type: list
+        elements: str
+        description: Logon password.
+      logon_user:
+        aliases: ['logon-user']
+        type: str
+        description: Logon user.
+      name:
+        type: str
+        description: Bookmark name.
         required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+      port:
+        type: int
+        description: Remote port.
+      preconnection_blob:
+        aliases: ['preconnection-blob']
         type: str
-        required: true
-    web-portal-bookmark:
-        description: Deprecated, please use "web_portal_bookmark"
+        description: An arbitrary string which identifies the RDP source.
+      preconnection_id:
+        aliases: ['preconnection-id']
+        type: int
+        description: The numeric ID of the RDP source
+      restricted_admin:
+        aliases: ['restricted-admin']
         type: str
-    web_portal_bookmark:
-        description: The parameter (web-portal-bookmark) in requested url.
+        description: Enable/disable restricted admin mode for RDP.
+        choices: ['disable', 'enable']
+      security:
         type: str
-    ztna_webportalbookmark_bookmarks:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            apptype:
-                type: str
-                description: Application type.
-                choices:
-                    - 'web'
-                    - 'telnet'
-                    - 'ssh'
-                    - 'ftp'
-                    - 'smb'
-                    - 'vnc'
-                    - 'rdp'
-                    - 'sftp'
-            color_depth:
-                aliases: ['color-depth']
-                type: str
-                description: Color depth per pixel.
-                choices:
-                    - '8'
-                    - '16'
-                    - '32'
-            description:
-                type: str
-                description: Description.
-            domain:
-                type: str
-                description: Login domain.
-            folder:
-                type: str
-                description: Network shared file folder parameter.
-            height:
-                type: int
-                description: Screen height
-            host:
-                type: str
-                description: Host name/IP parameter.
-            keyboard_layout:
-                aliases: ['keyboard-layout']
-                type: str
-                description: Keyboard layout.
-                choices:
-                    - 'da'
-                    - 'de'
-                    - 'de-ch'
-                    - 'en-uk'
-                    - 'en-us'
-                    - 'es'
-                    - 'fi'
-                    - 'fr'
-                    - 'fr-be'
-                    - 'fr-ca'
-                    - 'fr-ch'
-                    - 'hr'
-                    - 'hu'
-                    - 'it'
-                    - 'ja'
-                    - 'lt'
-                    - 'mk'
-                    - 'no'
-                    - 'pt'
-                    - 'pt-br'
-                    - 'ru'
-                    - 'sl'
-                    - 'sv'
-                    - 'ar-101'
-                    - 'ar-102'
-                    - 'ar-102-azerty'
-                    - 'can-mul'
-                    - 'cz'
-                    - 'cz-qwerty'
-                    - 'cz-pr'
-                    - 'nl'
-                    - 'de-ibm'
-                    - 'en-uk-ext'
-                    - 'en-us-dvorak'
-                    - 'es-var'
-                    - 'fi-sami'
-                    - 'hu-101'
-                    - 'it-142'
-                    - 'ko'
-                    - 'lt-ibm'
-                    - 'lt-std'
-                    - 'lav-std'
-                    - 'lav-leg'
-                    - 'mk-std'
-                    - 'no-sami'
-                    - 'pol-214'
-                    - 'pol-pr'
-                    - 'pt-br-abnt2'
-                    - 'ru-mne'
-                    - 'ru-t'
-                    - 'sv-sami'
-                    - 'tuk'
-                    - 'tur-f'
-                    - 'tur-q'
-                    - 'zh-sym-sg-us'
-                    - 'zh-sym-us'
-                    - 'zh-tr-hk'
-                    - 'zh-tr-mo'
-                    - 'zh-tr-us'
-                    - 'fr-apple'
-                    - 'la-am'
-                    - 'ja-106'
-            load_balancing_info:
-                aliases: ['load-balancing-info']
-                type: str
-                description: The load balancing information or cookie which should be provided to the connection broker.
-            logon_password:
-                aliases: ['logon-password']
-                type: list
-                elements: str
-                description: Logon password.
-            logon_user:
-                aliases: ['logon-user']
-                type: str
-                description: Logon user.
-            name:
-                type: str
-                description: Bookmark name.
-                required: true
-            port:
-                type: int
-                description: Remote port.
-            preconnection_blob:
-                aliases: ['preconnection-blob']
-                type: str
-                description: An arbitrary string which identifies the RDP source.
-            preconnection_id:
-                aliases: ['preconnection-id']
-                type: int
-                description: The numeric ID of the RDP source
-            restricted_admin:
-                aliases: ['restricted-admin']
-                type: str
-                description: Enable/disable restricted admin mode for RDP.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            security:
-                type: str
-                description: Security mode for RDP connection
-                choices:
-                    - 'rdp'
-                    - 'nla'
-                    - 'tls'
-                    - 'any'
-            send_preconnection_id:
-                aliases: ['send-preconnection-id']
-                type: str
-                description: Enable/disable sending of preconnection ID.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sso:
-                type: str
-                description: Single sign-on.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            url:
-                type: str
-                description: URL parameter.
-            vnc_keyboard_layout:
-                aliases: ['vnc-keyboard-layout']
-                type: str
-                description: Keyboard layout.
-                choices:
-                    - 'da'
-                    - 'de'
-                    - 'de-ch'
-                    - 'en-uk'
-                    - 'es'
-                    - 'fi'
-                    - 'fr'
-                    - 'fr-be'
-                    - 'it'
-                    - 'no'
-                    - 'pt'
-                    - 'sv'
-                    - 'nl'
-                    - 'en-uk-ext'
-                    - 'it-142'
-                    - 'pt-br-abnt2'
-                    - 'default'
-                    - 'fr-ca-mul'
-                    - 'gd'
-                    - 'us-intl'
-            width:
-                type: int
-                description: Screen width
+        description: Security mode for RDP connection
+        choices: ['rdp', 'nla', 'tls', 'any']
+      send_preconnection_id:
+        aliases: ['send-preconnection-id']
+        type: str
+        description: Enable/disable sending of preconnection ID.
+        choices: ['disable', 'enable']
+      sso:
+        type: str
+        description: Single sign-on.
+        choices: ['disable', 'enable']
+      url:
+        type: str
+        description: URL parameter.
+      vnc_keyboard_layout:
+        aliases: ['vnc-keyboard-layout']
+        type: str
+        description: Keyboard layout.
+        choices: ['da', 'de', 'de-ch', 'en-uk', 'es', 'fi', 'fr', 'fr-be', 'it', 'no', 'pt', 'sv',
+                  'nl', 'en-uk-ext', 'it-142', 'pt-br-abnt2', 'default', 'fr-ca-mul', 'gd',
+                  'us-intl']
+      width:
+        type: int
+        description: Screen width
+      verify_cert:
+        aliases: ['verify-cert']
+        type: str
+        description: Enable/disable certificate verification of the real server.
+        choices: ['disable', 'enable']
 '''
 
 EXAMPLES = '''
@@ -290,18 +144,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Bookmark table.
       fortinet.fmgdevice.fmgd_ztna_webportalbookmark_bookmarks:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         web_portal_bookmark: <your own value>
@@ -329,46 +175,47 @@ EXAMPLES = '''
           # url: <string>
           # vnc_keyboard_layout: <value in [da, de, de-ch, ...]>
           # width: <integer>
+          # verify_cert: <value in [disable, enable]>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -380,16 +227,13 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/ztna/web-portal-bookmark/{web-portal-bookmark}/bookmarks'
     ]
-    url_params = ['device', 'vdom', 'web-portal-bookmark']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'web-portal-bookmark': {'type': 'str', 'api_name': 'web_portal_bookmark'},
         'web_portal_bookmark': {'type': 'str'},
         'ztna_webportalbookmark_bookmarks': {
-            'type': 'dict',
-            'v_range': [['7.6.2', '']],
+            'type': 'dict', 'v_range': [['7.6.2', '']],
             'options': {
                 'apptype': {'v_range': [['7.6.2', '']], 'choices': ['web', 'telnet', 'ssh', 'ftp', 'smb', 'vnc', 'rdp', 'sftp'], 'type': 'str'},
                 'color-depth': {'v_range': [['7.6.2', '']], 'choices': ['8', '16', '32'], 'type': 'str'},
@@ -429,26 +273,23 @@ def main():
                     ],
                     'type': 'str'
                 },
-                'width': {'v_range': [['7.6.2', '']], 'type': 'int'}
+                'width': {'v_range': [['7.6.2', '']], 'type': 'int'},
+                'verify-cert': {'v_range': [['7.6.7', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'ztna_webportalbookmark_bookmarks'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

@@ -13,1170 +13,1024 @@ DOCUMENTATION = '''
 ---
 module: fmgd_wireless_wtp
 short_description: Configure Wireless Termination Points
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  wireless_wtp:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      admin:
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+        description: Configure how the FortiGate operating as a wireless controller discovers and manages this WTP, AP or FortiAP.
+        choices: ['discovery', 'disable', 'enable', 'discovered']
+      allowaccess:
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
+        elements: str
+        description: Control management access to the managed WTP, FortiAP, or AP.
+        choices: ['https', 'ssh', 'snmp', 'http', 'telnet']
+      apcfg_profile:
+        aliases: ['apcfg-profile']
         type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
-        type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        elements: str
+        description: AP local configuration profile name.
+      ble_major_id:
+        aliases: ['ble-major-id']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Override BLE Major ID.
+      ble_minor_id:
+        aliases: ['ble-minor-id']
+        type: int
+        description: Override BLE Minor ID.
+      bonjour_profile:
+        aliases: ['bonjour-profile']
+        type: list
+        elements: str
+        description: Bonjour profile name.
+      coordinate_latitude:
+        aliases: ['coordinate-latitude']
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: WTP latitude coordinate.
+      coordinate_longitude:
+        aliases: ['coordinate-longitude']
         type: str
-        required: true
-    wireless_wtp:
-        description: The top level parameters set.
-        required: false
+        description: WTP longitude coordinate.
+      firmware_provision:
+        aliases: ['firmware-provision']
+        type: str
+        description: Firmware version to provision to this FortiAP on bootup
+      firmware_provision_latest:
+        aliases: ['firmware-provision-latest']
+        type: str
+        description: Enable/disable one-time automatic provisioning of the latest firmware version.
+        choices: ['disable', 'once']
+      image_download:
+        aliases: ['image-download']
+        type: str
+        description: Enable/disable WTP image download.
+        choices: ['disable', 'enable']
+      index:
+        type: int
+        description: Index.
+      ip_fragment_preventing:
+        aliases: ['ip-fragment-preventing']
+        type: list
+        elements: str
+        description: Method
+        choices: ['tcp-mss-adjust', 'icmp-unreachable']
+      lan:
         type: dict
+        description: Lan.
         suboptions:
-            admin:
-                type: str
-                description: Configure how the FortiGate operating as a wireless controller discovers and manages this WTP, AP or FortiAP.
-                choices:
-                    - 'discovery'
-                    - 'disable'
-                    - 'enable'
-                    - 'discovered'
-            allowaccess:
-                type: list
-                elements: str
-                description: Control management access to the managed WTP, FortiAP, or AP.
-                choices:
-                    - 'https'
-                    - 'ssh'
-                    - 'snmp'
-                    - 'http'
-                    - 'telnet'
-            apcfg_profile:
-                aliases: ['apcfg-profile']
-                type: list
-                elements: str
-                description: AP local configuration profile name.
-            ble_major_id:
-                aliases: ['ble-major-id']
-                type: int
-                description: Override BLE Major ID.
-            ble_minor_id:
-                aliases: ['ble-minor-id']
-                type: int
-                description: Override BLE Minor ID.
-            bonjour_profile:
-                aliases: ['bonjour-profile']
-                type: list
-                elements: str
-                description: Bonjour profile name.
-            coordinate_latitude:
-                aliases: ['coordinate-latitude']
-                type: str
-                description: WTP latitude coordinate.
-            coordinate_longitude:
-                aliases: ['coordinate-longitude']
-                type: str
-                description: WTP longitude coordinate.
-            firmware_provision:
-                aliases: ['firmware-provision']
-                type: str
-                description: Firmware version to provision to this FortiAP on bootup
-            firmware_provision_latest:
-                aliases: ['firmware-provision-latest']
-                type: str
-                description: Enable/disable one-time automatic provisioning of the latest firmware version.
-                choices:
-                    - 'disable'
-                    - 'once'
-            image_download:
-                aliases: ['image-download']
-                type: str
-                description: Enable/disable WTP image download.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            index:
-                type: int
-                description: Index.
-            ip_fragment_preventing:
-                aliases: ['ip-fragment-preventing']
-                type: list
-                elements: str
-                description: Method
-                choices:
-                    - 'tcp-mss-adjust'
-                    - 'icmp-unreachable'
-            lan:
-                type: dict
-                description: Lan.
-                suboptions:
-                    port_esl_mode:
-                        aliases: ['port-esl-mode']
-                        type: str
-                        description: ESL port mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port_esl_ssid:
-                        aliases: ['port-esl-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge ESL port to SSID.
-                    port_mode:
-                        aliases: ['port-mode']
-                        type: str
-                        description: LAN port mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port_ssid:
-                        aliases: ['port-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port to SSID.
-                    port1_mode:
-                        aliases: ['port1-mode']
-                        type: str
-                        description: LAN port 1 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port1_ssid:
-                        aliases: ['port1-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 1 to SSID.
-                    port2_mode:
-                        aliases: ['port2-mode']
-                        type: str
-                        description: LAN port 2 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port2_ssid:
-                        aliases: ['port2-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 2 to SSID.
-                    port3_mode:
-                        aliases: ['port3-mode']
-                        type: str
-                        description: LAN port 3 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port3_ssid:
-                        aliases: ['port3-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 3 to SSID.
-                    port4_mode:
-                        aliases: ['port4-mode']
-                        type: str
-                        description: LAN port 4 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port4_ssid:
-                        aliases: ['port4-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 4 to SSID.
-                    port5_mode:
-                        aliases: ['port5-mode']
-                        type: str
-                        description: LAN port 5 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port5_ssid:
-                        aliases: ['port5-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 5 to SSID.
-                    port6_mode:
-                        aliases: ['port6-mode']
-                        type: str
-                        description: LAN port 6 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port6_ssid:
-                        aliases: ['port6-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 6 to SSID.
-                    port7_mode:
-                        aliases: ['port7-mode']
-                        type: str
-                        description: LAN port 7 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port7_ssid:
-                        aliases: ['port7-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 7 to SSID.
-                    port8_mode:
-                        aliases: ['port8-mode']
-                        type: str
-                        description: LAN port 8 mode.
-                        choices:
-                            - 'offline'
-                            - 'bridge-to-wan'
-                            - 'bridge-to-ssid'
-                            - 'nat-to-wan'
-                    port8_ssid:
-                        aliases: ['port8-ssid']
-                        type: list
-                        elements: str
-                        description: Bridge LAN port 8 to SSID.
-            led_state:
-                aliases: ['led-state']
-                type: str
-                description: Enable to allow the FortiAPs LEDs to light.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            location:
-                type: str
-                description: Field for describing the physical location of the WTP, AP or FortiAP.
-            login_passwd:
-                aliases: ['login-passwd']
-                type: list
-                elements: str
-                description: Set the managed WTP, FortiAP, or APs administrator password.
-            login_passwd_change:
-                aliases: ['login-passwd-change']
-                type: str
-                description: Change or reset the administrator password of a managed WTP, FortiAP or AP
-                choices:
-                    - 'no'
-                    - 'yes'
-                    - 'default'
-            mesh_bridge_enable:
-                aliases: ['mesh-bridge-enable']
-                type: str
-                description: Enable/disable mesh Ethernet bridge when WTP is configured as a mesh branch/leaf AP.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'default'
-            name:
-                type: str
-                description: WTP, AP or FortiAP configuration name.
-            override_allowaccess:
-                aliases: ['override-allowaccess']
-                type: str
-                description: Enable to override the WTP profile management access configuration.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_ip_fragment:
-                aliases: ['override-ip-fragment']
-                type: str
-                description: Enable/disable overriding the WTP profile IP fragment prevention setting.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_lan:
-                aliases: ['override-lan']
-                type: str
-                description: Enable to override the WTP profile LAN port setting.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_led_state:
-                aliases: ['override-led-state']
-                type: str
-                description: Enable to override the profile LED state setting for this FortiAP.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_login_passwd_change:
-                aliases: ['override-login-passwd-change']
-                type: str
-                description: Enable to override the WTP profile login-password
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_split_tunnel:
-                aliases: ['override-split-tunnel']
-                type: str
-                description: Enable/disable overriding the WTP profile split tunneling setting.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_wan_port_mode:
-                aliases: ['override-wan-port-mode']
-                type: str
-                description: Enable/disable overriding the wan-port-mode in the WTP profile.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            purdue_level:
-                aliases: ['purdue-level']
-                type: str
-                description: Purdue Level of this WTP.
-                choices:
-                    - '1'
-                    - '2'
-                    - '3'
-                    - '4'
-                    - '5'
-                    - '1.5'
-                    - '2.5'
-                    - '3.5'
-                    - '5.5'
-            radio_1:
-                aliases: ['radio-1']
-                type: dict
-                description: Radio 1.
-                suboptions:
-                    auto_power_high:
-                        aliases: ['auto-power-high']
-                        type: int
-                        description: The upper bound of automatic transmit power adjustment in dBm
-                    auto_power_level:
-                        aliases: ['auto-power-level']
-                        type: str
-                        description: Enable/disable automatic power-level adjustment to prevent co-channel interference
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    auto_power_low:
-                        aliases: ['auto-power-low']
-                        type: int
-                        description: The lower bound of automatic transmit power adjustment in dBm
-                    auto_power_target:
-                        aliases: ['auto-power-target']
-                        type: str
-                        description: Target of automatic transmit power adjustment in dBm
-                    band:
-                        type: list
-                        elements: str
-                        description: WiFi band that Radio 1 operates on.
-                        choices:
-                            - '802.11a'
-                            - '802.11b'
-                            - '802.11g'
-                            - '802.11n'
-                            - '802.11n-5G'
-                            - '802.11n,g-only'
-                            - '802.11g-only'
-                            - '802.11n-only'
-                            - '802.11n-5G-only'
-                            - '802.11ac'
-                            - '802.11ac,n-only'
-                            - '802.11ac-only'
-                            - '802.11ax-5G'
-                            - '802.11ax,ac-only'
-                            - '802.11ax,ac,n-only'
-                            - '802.11ax-5G-only'
-                            - '802.11ax'
-                            - '802.11ax,n-only'
-                            - '802.11ax,n,g-only'
-                            - '802.11ax-only'
-                            - '802.11ac-2G'
-                            - '802.11ax-6G'
-                            - '802.11n-2G'
-                            - '802.11ac-5G'
-                            - '802.11ax-2G'
-                            - '802.11be-2G'
-                            - '802.11be-5G'
-                            - '802.11be-6G'
-                    channel:
-                        type: list
-                        elements: str
-                        description: Selected list of wireless radio channels.
-                    drma_manual_mode:
-                        aliases: ['drma-manual-mode']
-                        type: str
-                        description: Radio mode to be used for DRMA manual mode
-                        choices:
-                            - 'ap'
-                            - 'monitor'
-                            - 'ncf'
-                            - 'ncf-peek'
-                    override_band:
-                        aliases: ['override-band']
-                        type: str
-                        description: Enable to override the WTP profile band setting.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_channel:
-                        aliases: ['override-channel']
-                        type: str
-                        description: Enable to override WTP profile channel settings.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_txpower:
-                        aliases: ['override-txpower']
-                        type: str
-                        description: Enable to override the WTP profile power level configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_vaps:
-                        aliases: ['override-vaps']
-                        type: str
-                        description: Enable to override WTP profile Virtual Access Point
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    power_level:
-                        aliases: ['power-level']
-                        type: int
-                        description: Radio EIRP power level as a percentage of the maximum EIRP power
-                    power_mode:
-                        aliases: ['power-mode']
-                        type: str
-                        description: Set radio effective isotropic radiated power
-                        choices:
-                            - 'dBm'
-                            - 'percentage'
-                    power_value:
-                        aliases: ['power-value']
-                        type: int
-                        description: Radio EIRP power in dBm
-                    radio_id:
-                        aliases: ['radio-id']
-                        type: int
-                        description: Radio id.
-                    vap_all:
-                        aliases: ['vap-all']
-                        type: str
-                        description: Configure method for assigning SSIDs to this FortiAP
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'tunnel'
-                            - 'bridge'
-                            - 'manual'
-                    vap1:
-                        type: str
-                        description: Virtual Access Point
-                    vap2:
-                        type: str
-                        description: Virtual Access Point
-                    vap3:
-                        type: str
-                        description: Virtual Access Point
-                    vap4:
-                        type: str
-                        description: Virtual Access Point
-                    vap5:
-                        type: str
-                        description: Virtual Access Point
-                    vap6:
-                        type: str
-                        description: Virtual Access Point
-                    vap7:
-                        type: str
-                        description: Virtual Access Point
-                    vap8:
-                        type: str
-                        description: Virtual Access Point
-                    vaps:
-                        type: list
-                        elements: str
-                        description: Manually selected list of Virtual Access Points
-                    spectrum_analysis:
-                        aliases: ['spectrum-analysis']
-                        type: str
-                        description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'scan-only'
-                    override_analysis:
-                        aliases: ['override-analysis']
-                        type: str
-                        description: Enable to override the WTP profile spectrum analysis configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            radio_2:
-                aliases: ['radio-2']
-                type: dict
-                description: Radio 2.
-                suboptions:
-                    auto_power_high:
-                        aliases: ['auto-power-high']
-                        type: int
-                        description: The upper bound of automatic transmit power adjustment in dBm
-                    auto_power_level:
-                        aliases: ['auto-power-level']
-                        type: str
-                        description: Enable/disable automatic power-level adjustment to prevent co-channel interference
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    auto_power_low:
-                        aliases: ['auto-power-low']
-                        type: int
-                        description: The lower bound of automatic transmit power adjustment in dBm
-                    auto_power_target:
-                        aliases: ['auto-power-target']
-                        type: str
-                        description: Target of automatic transmit power adjustment in dBm
-                    band:
-                        type: list
-                        elements: str
-                        description: WiFi band that Radio 2 operates on.
-                        choices:
-                            - '802.11a'
-                            - '802.11b'
-                            - '802.11g'
-                            - '802.11n'
-                            - '802.11n-5G'
-                            - '802.11n,g-only'
-                            - '802.11g-only'
-                            - '802.11n-only'
-                            - '802.11n-5G-only'
-                            - '802.11ac'
-                            - '802.11ac,n-only'
-                            - '802.11ac-only'
-                            - '802.11ax-5G'
-                            - '802.11ax,ac-only'
-                            - '802.11ax,ac,n-only'
-                            - '802.11ax-5G-only'
-                            - '802.11ax'
-                            - '802.11ax,n-only'
-                            - '802.11ax,n,g-only'
-                            - '802.11ax-only'
-                            - '802.11ac-2G'
-                            - '802.11ax-6G'
-                            - '802.11n-2G'
-                            - '802.11ac-5G'
-                            - '802.11ax-2G'
-                            - '802.11be-2G'
-                            - '802.11be-5G'
-                            - '802.11be-6G'
-                    channel:
-                        type: list
-                        elements: str
-                        description: Selected list of wireless radio channels.
-                    drma_manual_mode:
-                        aliases: ['drma-manual-mode']
-                        type: str
-                        description: Radio mode to be used for DRMA manual mode
-                        choices:
-                            - 'ap'
-                            - 'monitor'
-                            - 'ncf'
-                            - 'ncf-peek'
-                    override_band:
-                        aliases: ['override-band']
-                        type: str
-                        description: Enable to override the WTP profile band setting.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_channel:
-                        aliases: ['override-channel']
-                        type: str
-                        description: Enable to override WTP profile channel settings.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_txpower:
-                        aliases: ['override-txpower']
-                        type: str
-                        description: Enable to override the WTP profile power level configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_vaps:
-                        aliases: ['override-vaps']
-                        type: str
-                        description: Enable to override WTP profile Virtual Access Point
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    power_level:
-                        aliases: ['power-level']
-                        type: int
-                        description: Radio EIRP power level as a percentage of the maximum EIRP power
-                    power_mode:
-                        aliases: ['power-mode']
-                        type: str
-                        description: Set radio effective isotropic radiated power
-                        choices:
-                            - 'dBm'
-                            - 'percentage'
-                    power_value:
-                        aliases: ['power-value']
-                        type: int
-                        description: Radio EIRP power in dBm
-                    radio_id:
-                        aliases: ['radio-id']
-                        type: int
-                        description: Radio id.
-                    vap_all:
-                        aliases: ['vap-all']
-                        type: str
-                        description: Configure method for assigning SSIDs to this FortiAP
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'tunnel'
-                            - 'bridge'
-                            - 'manual'
-                    vap1:
-                        type: str
-                        description: Virtual Access Point
-                    vap2:
-                        type: str
-                        description: Virtual Access Point
-                    vap3:
-                        type: str
-                        description: Virtual Access Point
-                    vap4:
-                        type: str
-                        description: Virtual Access Point
-                    vap5:
-                        type: str
-                        description: Virtual Access Point
-                    vap6:
-                        type: str
-                        description: Virtual Access Point
-                    vap7:
-                        type: str
-                        description: Virtual Access Point
-                    vap8:
-                        type: str
-                        description: Virtual Access Point
-                    vaps:
-                        type: list
-                        elements: str
-                        description: Manually selected list of Virtual Access Points
-                    spectrum_analysis:
-                        aliases: ['spectrum-analysis']
-                        type: str
-                        description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'scan-only'
-                    override_analysis:
-                        aliases: ['override-analysis']
-                        type: str
-                        description: Enable to override the WTP profile spectrum analysis configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            radio_3:
-                aliases: ['radio-3']
-                type: dict
-                description: Radio 3.
-                suboptions:
-                    auto_power_high:
-                        aliases: ['auto-power-high']
-                        type: int
-                        description: The upper bound of automatic transmit power adjustment in dBm
-                    auto_power_level:
-                        aliases: ['auto-power-level']
-                        type: str
-                        description: Enable/disable automatic power-level adjustment to prevent co-channel interference
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    auto_power_low:
-                        aliases: ['auto-power-low']
-                        type: int
-                        description: The lower bound of automatic transmit power adjustment in dBm
-                    auto_power_target:
-                        aliases: ['auto-power-target']
-                        type: str
-                        description: Target of automatic transmit power adjustment in dBm
-                    band:
-                        type: list
-                        elements: str
-                        description: WiFi band that Radio 3 operates on.
-                        choices:
-                            - '802.11a'
-                            - '802.11b'
-                            - '802.11g'
-                            - '802.11n'
-                            - '802.11n-5G'
-                            - '802.11n,g-only'
-                            - '802.11g-only'
-                            - '802.11n-only'
-                            - '802.11n-5G-only'
-                            - '802.11ac'
-                            - '802.11ac,n-only'
-                            - '802.11ac-only'
-                            - '802.11ax-5G'
-                            - '802.11ax,ac-only'
-                            - '802.11ax,ac,n-only'
-                            - '802.11ax-5G-only'
-                            - '802.11ax'
-                            - '802.11ax,n-only'
-                            - '802.11ax,n,g-only'
-                            - '802.11ax-only'
-                            - '802.11ac-2G'
-                            - '802.11ax-6G'
-                            - '802.11n-2G'
-                            - '802.11ac-5G'
-                            - '802.11ax-2G'
-                            - '802.11be-2G'
-                            - '802.11be-5G'
-                            - '802.11be-6G'
-                    channel:
-                        type: list
-                        elements: str
-                        description: Selected list of wireless radio channels.
-                    drma_manual_mode:
-                        aliases: ['drma-manual-mode']
-                        type: str
-                        description: Radio mode to be used for DRMA manual mode
-                        choices:
-                            - 'ap'
-                            - 'monitor'
-                            - 'ncf'
-                            - 'ncf-peek'
-                    override_band:
-                        aliases: ['override-band']
-                        type: str
-                        description: Enable to override the WTP profile band setting.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_channel:
-                        aliases: ['override-channel']
-                        type: str
-                        description: Enable to override WTP profile channel settings.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_txpower:
-                        aliases: ['override-txpower']
-                        type: str
-                        description: Enable to override the WTP profile power level configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_vaps:
-                        aliases: ['override-vaps']
-                        type: str
-                        description: Enable to override WTP profile Virtual Access Point
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    power_level:
-                        aliases: ['power-level']
-                        type: int
-                        description: Radio EIRP power level as a percentage of the maximum EIRP power
-                    power_mode:
-                        aliases: ['power-mode']
-                        type: str
-                        description: Set radio effective isotropic radiated power
-                        choices:
-                            - 'dBm'
-                            - 'percentage'
-                    power_value:
-                        aliases: ['power-value']
-                        type: int
-                        description: Radio EIRP power in dBm
-                    radio_id:
-                        aliases: ['radio-id']
-                        type: int
-                        description: Radio id.
-                    vap_all:
-                        aliases: ['vap-all']
-                        type: str
-                        description: Configure method for assigning SSIDs to this FortiAP
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'tunnel'
-                            - 'bridge'
-                            - 'manual'
-                    vap1:
-                        type: str
-                        description: Virtual Access Point
-                    vap2:
-                        type: str
-                        description: Virtual Access Point
-                    vap3:
-                        type: str
-                        description: Virtual Access Point
-                    vap4:
-                        type: str
-                        description: Virtual Access Point
-                    vap5:
-                        type: str
-                        description: Virtual Access Point
-                    vap6:
-                        type: str
-                        description: Virtual Access Point
-                    vap7:
-                        type: str
-                        description: Virtual Access Point
-                    vap8:
-                        type: str
-                        description: Virtual Access Point
-                    vaps:
-                        type: list
-                        elements: str
-                        description: Manually selected list of Virtual Access Points
-                    spectrum_analysis:
-                        aliases: ['spectrum-analysis']
-                        type: str
-                        description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'scan-only'
-                    override_analysis:
-                        aliases: ['override-analysis']
-                        type: str
-                        description: Enable to override the WTP profile spectrum analysis configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            radio_4:
-                aliases: ['radio-4']
-                type: dict
-                description: Radio 4.
-                suboptions:
-                    auto_power_high:
-                        aliases: ['auto-power-high']
-                        type: int
-                        description: The upper bound of automatic transmit power adjustment in dBm
-                    auto_power_level:
-                        aliases: ['auto-power-level']
-                        type: str
-                        description: Enable/disable automatic power-level adjustment to prevent co-channel interference
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    auto_power_low:
-                        aliases: ['auto-power-low']
-                        type: int
-                        description: The lower bound of automatic transmit power adjustment in dBm
-                    auto_power_target:
-                        aliases: ['auto-power-target']
-                        type: str
-                        description: Target of automatic transmit power adjustment in dBm
-                    band:
-                        type: list
-                        elements: str
-                        description: WiFi band that Radio 4 operates on.
-                        choices:
-                            - '802.11a'
-                            - '802.11b'
-                            - '802.11g'
-                            - '802.11n'
-                            - '802.11n-5G'
-                            - '802.11n,g-only'
-                            - '802.11g-only'
-                            - '802.11n-only'
-                            - '802.11n-5G-only'
-                            - '802.11ac'
-                            - '802.11ac,n-only'
-                            - '802.11ac-only'
-                            - '802.11ax-5G'
-                            - '802.11ax,ac-only'
-                            - '802.11ax,ac,n-only'
-                            - '802.11ax-5G-only'
-                            - '802.11ax'
-                            - '802.11ax,n-only'
-                            - '802.11ax,n,g-only'
-                            - '802.11ax-only'
-                            - '802.11ac-2G'
-                            - '802.11ax-6G'
-                            - '802.11n-2G'
-                            - '802.11ac-5G'
-                            - '802.11ax-2G'
-                            - '802.11be-2G'
-                            - '802.11be-5G'
-                            - '802.11be-6G'
-                    channel:
-                        type: list
-                        elements: str
-                        description: Selected list of wireless radio channels.
-                    drma_manual_mode:
-                        aliases: ['drma-manual-mode']
-                        type: str
-                        description: Radio mode to be used for DRMA manual mode
-                        choices:
-                            - 'ap'
-                            - 'monitor'
-                            - 'ncf'
-                            - 'ncf-peek'
-                    override_band:
-                        aliases: ['override-band']
-                        type: str
-                        description: Enable to override the WTP profile band setting.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_channel:
-                        aliases: ['override-channel']
-                        type: str
-                        description: Enable to override WTP profile channel settings.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_txpower:
-                        aliases: ['override-txpower']
-                        type: str
-                        description: Enable to override the WTP profile power level configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    override_vaps:
-                        aliases: ['override-vaps']
-                        type: str
-                        description: Enable to override WTP profile Virtual Access Point
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    power_level:
-                        aliases: ['power-level']
-                        type: int
-                        description: Radio EIRP power level as a percentage of the maximum EIRP power
-                    power_mode:
-                        aliases: ['power-mode']
-                        type: str
-                        description: Set radio effective isotropic radiated power
-                        choices:
-                            - 'dBm'
-                            - 'percentage'
-                    power_value:
-                        aliases: ['power-value']
-                        type: int
-                        description: Radio EIRP power in dBm
-                    radio_id:
-                        aliases: ['radio-id']
-                        type: int
-                        description: Radio id.
-                    vap_all:
-                        aliases: ['vap-all']
-                        type: str
-                        description: Configure method for assigning SSIDs to this FortiAP
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'tunnel'
-                            - 'bridge'
-                            - 'manual'
-                    vap1:
-                        type: str
-                        description: Virtual Access Point
-                    vap2:
-                        type: str
-                        description: Virtual Access Point
-                    vap3:
-                        type: str
-                        description: Virtual Access Point
-                    vap4:
-                        type: str
-                        description: Virtual Access Point
-                    vap5:
-                        type: str
-                        description: Virtual Access Point
-                    vap6:
-                        type: str
-                        description: Virtual Access Point
-                    vap7:
-                        type: str
-                        description: Virtual Access Point
-                    vap8:
-                        type: str
-                        description: Virtual Access Point
-                    vaps:
-                        type: list
-                        elements: str
-                        description: Manually selected list of Virtual Access Points
-                    spectrum_analysis:
-                        aliases: ['spectrum-analysis']
-                        type: str
-                        description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                            - 'scan-only'
-                    override_analysis:
-                        aliases: ['override-analysis']
-                        type: str
-                        description: Enable to override the WTP profile spectrum analysis configuration.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            region:
-                type: list
-                elements: str
-                description: Region name WTP is associated with.
-            region_x:
-                aliases: ['region-x']
-                type: str
-                description: Relative horizontal region coordinate
-            region_y:
-                aliases: ['region-y']
-                type: str
-                description: Relative vertical region coordinate
-            split_tunneling_acl:
-                aliases: ['split-tunneling-acl']
-                type: list
-                elements: dict
-                description: Split tunneling acl.
-                suboptions:
-                    dest_ip:
-                        aliases: ['dest-ip']
-                        type: list
-                        elements: str
-                        description: Destination IP and mask for the split-tunneling subnet.
-                    id:
-                        type: int
-                        description: ID.
-            split_tunneling_acl_local_ap_subnet:
-                aliases: ['split-tunneling-acl-local-ap-subnet']
-                type: str
-                description: Enable/disable automatically adding local subnetwork of FortiAP to split-tunneling ACL
-                choices:
-                    - 'disable'
-                    - 'enable'
-            split_tunneling_acl_path:
-                aliases: ['split-tunneling-acl-path']
-                type: str
-                description: Split tunneling ACL path is local/tunnel.
-                choices:
-                    - 'tunnel'
-                    - 'local'
-            tun_mtu_downlink:
-                aliases: ['tun-mtu-downlink']
-                type: int
-                description: The MTU of downlink CAPWAP tunnel
-            tun_mtu_uplink:
-                aliases: ['tun-mtu-uplink']
-                type: int
-                description: The maximum transmission unit
-            uuid:
-                type: str
-                description: Universally Unique Identifier
-            wan_port_mode:
-                aliases: ['wan-port-mode']
-                type: str
-                description: Enable/disable using the FortiAP WAN port as a LAN port.
-                choices:
-                    - 'wan-lan'
-                    - 'wan-only'
-            wtp_id:
-                aliases: ['wtp-id']
-                type: str
-                description: WTP ID.
-            wtp_mode:
-                aliases: ['wtp-mode']
-                type: str
-                description: WTP, AP, or FortiAP operating mode
-                choices:
-                    - 'normal'
-                    - 'remote'
-            wtp_profile:
-                aliases: ['wtp-profile']
-                type: list
-                elements: str
-                description: WTP profile name to apply to this WTP, AP or FortiAP.
-            comment:
-                type: str
-                description: Comment.
-            _prefer_img_ver:
-                aliases: ['_prefer-img-ver']
-                type: str
-                description: Prefer img ver.
-            default_mesh_root:
-                aliases: ['default-mesh-root']
-                type: str
-                description: Configure default mesh root SSID when it is not included by radios SSID configuration.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            override_default_mesh_root:
-                aliases: ['override-default-mesh-root']
-                type: str
-                description: Enable to override the WTP profile default mesh root SSID setting.
-                choices:
-                    - 'disable'
-                    - 'enable'
+          port_esl_mode:
+            aliases: ['port-esl-mode']
+            type: str
+            description: ESL port mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port_esl_ssid:
+            aliases: ['port-esl-ssid']
+            type: list
+            elements: str
+            description: Bridge ESL port to SSID.
+          port_mode:
+            aliases: ['port-mode']
+            type: str
+            description: LAN port mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port_ssid:
+            aliases: ['port-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port to SSID.
+          port1_mode:
+            aliases: ['port1-mode']
+            type: str
+            description: LAN port 1 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port1_ssid:
+            aliases: ['port1-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 1 to SSID.
+          port2_mode:
+            aliases: ['port2-mode']
+            type: str
+            description: LAN port 2 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port2_ssid:
+            aliases: ['port2-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 2 to SSID.
+          port3_mode:
+            aliases: ['port3-mode']
+            type: str
+            description: LAN port 3 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port3_ssid:
+            aliases: ['port3-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 3 to SSID.
+          port4_mode:
+            aliases: ['port4-mode']
+            type: str
+            description: LAN port 4 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port4_ssid:
+            aliases: ['port4-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 4 to SSID.
+          port5_mode:
+            aliases: ['port5-mode']
+            type: str
+            description: LAN port 5 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port5_ssid:
+            aliases: ['port5-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 5 to SSID.
+          port6_mode:
+            aliases: ['port6-mode']
+            type: str
+            description: LAN port 6 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port6_ssid:
+            aliases: ['port6-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 6 to SSID.
+          port7_mode:
+            aliases: ['port7-mode']
+            type: str
+            description: LAN port 7 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port7_ssid:
+            aliases: ['port7-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 7 to SSID.
+          port8_mode:
+            aliases: ['port8-mode']
+            type: str
+            description: LAN port 8 mode.
+            choices: ['offline', 'bridge-to-wan', 'bridge-to-ssid', 'nat-to-wan']
+          port8_ssid:
+            aliases: ['port8-ssid']
+            type: list
+            elements: str
+            description: Bridge LAN port 8 to SSID.
+      led_state:
+        aliases: ['led-state']
+        type: str
+        description: Enable to allow the FortiAPs LEDs to light.
+        choices: ['disable', 'enable']
+      location:
+        type: str
+        description: Field for describing the physical location of the WTP, AP or FortiAP.
+      login_passwd:
+        aliases: ['login-passwd']
+        type: list
+        elements: str
+        description: Set the managed WTP, FortiAP, or APs administrator password.
+      login_passwd_change:
+        aliases: ['login-passwd-change']
+        type: str
+        description: Change or reset the administrator password of a managed WTP, FortiAP or AP
+        choices: ['no', 'yes', 'default']
+      mesh_bridge_enable:
+        aliases: ['mesh-bridge-enable']
+        type: str
+        description: Enable/disable mesh Ethernet bridge when WTP is configured as a mesh branch/leaf AP.
+        choices: ['disable', 'enable', 'default']
+      name:
+        type: str
+        description: WTP, AP or FortiAP configuration name.
+      override_allowaccess:
+        aliases: ['override-allowaccess']
+        type: str
+        description: Enable to override the WTP profile management access configuration.
+        choices: ['disable', 'enable']
+      override_ip_fragment:
+        aliases: ['override-ip-fragment']
+        type: str
+        description: Enable/disable overriding the WTP profile IP fragment prevention setting.
+        choices: ['disable', 'enable']
+      override_lan:
+        aliases: ['override-lan']
+        type: str
+        description: Enable to override the WTP profile LAN port setting.
+        choices: ['disable', 'enable']
+      override_led_state:
+        aliases: ['override-led-state']
+        type: str
+        description: Enable to override the profile LED state setting for this FortiAP.
+        choices: ['disable', 'enable']
+      override_login_passwd_change:
+        aliases: ['override-login-passwd-change']
+        type: str
+        description: Enable to override the WTP profile login-password
+        choices: ['disable', 'enable']
+      override_split_tunnel:
+        aliases: ['override-split-tunnel']
+        type: str
+        description: Enable/disable overriding the WTP profile split tunneling setting.
+        choices: ['disable', 'enable']
+      override_wan_port_mode:
+        aliases: ['override-wan-port-mode']
+        type: str
+        description: Enable/disable overriding the wan-port-mode in the WTP profile.
+        choices: ['disable', 'enable']
+      purdue_level:
+        aliases: ['purdue-level']
+        type: str
+        description: Purdue Level of this WTP.
+        choices: ['1', '2', '3', '4', '5', '1.5', '2.5', '3.5', '5.5']
+      radio_1:
+        aliases: ['radio-1']
+        type: dict
+        description: Radio 1.
+        suboptions:
+          auto_power_high:
+            aliases: ['auto-power-high']
+            type: int
+            description: The upper bound of automatic transmit power adjustment in dBm
+          auto_power_level:
+            aliases: ['auto-power-level']
+            type: str
+            description: Enable/disable automatic power-level adjustment to prevent co-channel interference
+            choices: ['disable', 'enable']
+          auto_power_low:
+            aliases: ['auto-power-low']
+            type: int
+            description: The lower bound of automatic transmit power adjustment in dBm
+          auto_power_target:
+            aliases: ['auto-power-target']
+            type: str
+            description: Target of automatic transmit power adjustment in dBm
+          band:
+            type: list
+            elements: str
+            description: WiFi band that Radio 1 operates on.
+            choices: ['802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only',
+                      '802.11g-only', '802.11n-only', '802.11n-5G-only', '802.11ac',
+                      '802.11ac,n-only', '802.11ac-only', '802.11ax-5G', '802.11ax,ac-only',
+                      '802.11ax,ac,n-only', '802.11ax-5G-only', '802.11ax', '802.11ax,n-only',
+                      '802.11ax,n,g-only', '802.11ax-only', '802.11ac-2G', '802.11ax-6G',
+                      '802.11n-2G', '802.11ac-5G', '802.11ax-2G', '802.11be-2G', '802.11be-5G',
+                      '802.11be-6G']
+          channel:
+            type: list
+            elements: str
+            description: Selected list of wireless radio channels.
+          drma_manual_mode:
+            aliases: ['drma-manual-mode']
+            type: str
+            description: Radio mode to be used for DRMA manual mode
+            choices: ['ap', 'monitor', 'ncf', 'ncf-peek']
+          override_band:
+            aliases: ['override-band']
+            type: str
+            description: Enable to override the WTP profile band setting.
+            choices: ['disable', 'enable']
+          override_channel:
+            aliases: ['override-channel']
+            type: str
+            description: Enable to override WTP profile channel settings.
+            choices: ['disable', 'enable']
+          override_txpower:
+            aliases: ['override-txpower']
+            type: str
+            description: Enable to override the WTP profile power level configuration.
+            choices: ['disable', 'enable']
+          override_vaps:
+            aliases: ['override-vaps']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          power_level:
+            aliases: ['power-level']
+            type: int
+            description: Radio EIRP power level as a percentage of the maximum EIRP power
+          power_mode:
+            aliases: ['power-mode']
+            type: str
+            description: Set radio effective isotropic radiated power
+            choices: ['dBm', 'percentage']
+          power_value:
+            aliases: ['power-value']
+            type: int
+            description: Radio EIRP power in dBm
+          radio_id:
+            aliases: ['radio-id']
+            type: int
+            description: Radio id.
+          vap_all:
+            aliases: ['vap-all']
+            type: str
+            description: Configure method for assigning SSIDs to this FortiAP
+            choices: ['disable', 'enable', 'tunnel', 'bridge', 'manual']
+          vap1:
+            type: str
+            description: Virtual Access Point
+          vap2:
+            type: str
+            description: Virtual Access Point
+          vap3:
+            type: str
+            description: Virtual Access Point
+          vap4:
+            type: str
+            description: Virtual Access Point
+          vap5:
+            type: str
+            description: Virtual Access Point
+          vap6:
+            type: str
+            description: Virtual Access Point
+          vap7:
+            type: str
+            description: Virtual Access Point
+          vap8:
+            type: str
+            description: Virtual Access Point
+          vaps:
+            type: list
+            elements: str
+            description: Manually selected list of Virtual Access Points
+          spectrum_analysis:
+            aliases: ['spectrum-analysis']
+            type: str
+            description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
+            choices: ['disable', 'enable', 'scan-only']
+          override_analysis:
+            aliases: ['override-analysis']
+            type: str
+            description: Enable to override the WTP profile spectrum analysis configuration.
+            choices: ['disable', 'enable']
+          cca_threshold:
+            aliases: ['cca-threshold']
+            type: str
+            description: Configure Clear Channel Assessment
+          override_cca_threshold:
+            aliases: ['override-cca-threshold']
+            type: str
+            description: Enable to override WTP profile CCA threshold enable/disable settings.
+            choices: ['disable', 'enable']
+          override_vap_status:
+            aliases: ['override-vap-status']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          vap_status:
+            aliases: ['vap-status']
+            type: str
+            description: Enable/disable all configured SSIDs on this radio
+            choices: ['disable', 'enable']
+          vap10:
+            type: str
+            description: Virtual Access Point
+          vap11:
+            type: str
+            description: Virtual Access Point
+          vap12:
+            type: str
+            description: Virtual Access Point
+          vap13:
+            type: str
+            description: Virtual Access Point
+          vap14:
+            type: str
+            description: Virtual Access Point
+          vap15:
+            type: str
+            description: Virtual Access Point
+          vap16:
+            type: str
+            description: Virtual Access Point
+          vap9:
+            type: str
+            description: Virtual Access Point
+      radio_2:
+        aliases: ['radio-2']
+        type: dict
+        description: Radio 2.
+        suboptions:
+          auto_power_high:
+            aliases: ['auto-power-high']
+            type: int
+            description: The upper bound of automatic transmit power adjustment in dBm
+          auto_power_level:
+            aliases: ['auto-power-level']
+            type: str
+            description: Enable/disable automatic power-level adjustment to prevent co-channel interference
+            choices: ['disable', 'enable']
+          auto_power_low:
+            aliases: ['auto-power-low']
+            type: int
+            description: The lower bound of automatic transmit power adjustment in dBm
+          auto_power_target:
+            aliases: ['auto-power-target']
+            type: str
+            description: Target of automatic transmit power adjustment in dBm
+          band:
+            type: list
+            elements: str
+            description: WiFi band that Radio 2 operates on.
+            choices: ['802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only',
+                      '802.11g-only', '802.11n-only', '802.11n-5G-only', '802.11ac',
+                      '802.11ac,n-only', '802.11ac-only', '802.11ax-5G', '802.11ax,ac-only',
+                      '802.11ax,ac,n-only', '802.11ax-5G-only', '802.11ax', '802.11ax,n-only',
+                      '802.11ax,n,g-only', '802.11ax-only', '802.11ac-2G', '802.11ax-6G',
+                      '802.11n-2G', '802.11ac-5G', '802.11ax-2G', '802.11be-2G', '802.11be-5G',
+                      '802.11be-6G']
+          channel:
+            type: list
+            elements: str
+            description: Selected list of wireless radio channels.
+          drma_manual_mode:
+            aliases: ['drma-manual-mode']
+            type: str
+            description: Radio mode to be used for DRMA manual mode
+            choices: ['ap', 'monitor', 'ncf', 'ncf-peek']
+          override_band:
+            aliases: ['override-band']
+            type: str
+            description: Enable to override the WTP profile band setting.
+            choices: ['disable', 'enable']
+          override_channel:
+            aliases: ['override-channel']
+            type: str
+            description: Enable to override WTP profile channel settings.
+            choices: ['disable', 'enable']
+          override_txpower:
+            aliases: ['override-txpower']
+            type: str
+            description: Enable to override the WTP profile power level configuration.
+            choices: ['disable', 'enable']
+          override_vaps:
+            aliases: ['override-vaps']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          power_level:
+            aliases: ['power-level']
+            type: int
+            description: Radio EIRP power level as a percentage of the maximum EIRP power
+          power_mode:
+            aliases: ['power-mode']
+            type: str
+            description: Set radio effective isotropic radiated power
+            choices: ['dBm', 'percentage']
+          power_value:
+            aliases: ['power-value']
+            type: int
+            description: Radio EIRP power in dBm
+          radio_id:
+            aliases: ['radio-id']
+            type: int
+            description: Radio id.
+          vap_all:
+            aliases: ['vap-all']
+            type: str
+            description: Configure method for assigning SSIDs to this FortiAP
+            choices: ['disable', 'enable', 'tunnel', 'bridge', 'manual']
+          vap1:
+            type: str
+            description: Virtual Access Point
+          vap2:
+            type: str
+            description: Virtual Access Point
+          vap3:
+            type: str
+            description: Virtual Access Point
+          vap4:
+            type: str
+            description: Virtual Access Point
+          vap5:
+            type: str
+            description: Virtual Access Point
+          vap6:
+            type: str
+            description: Virtual Access Point
+          vap7:
+            type: str
+            description: Virtual Access Point
+          vap8:
+            type: str
+            description: Virtual Access Point
+          vaps:
+            type: list
+            elements: str
+            description: Manually selected list of Virtual Access Points
+          spectrum_analysis:
+            aliases: ['spectrum-analysis']
+            type: str
+            description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
+            choices: ['disable', 'enable', 'scan-only']
+          override_analysis:
+            aliases: ['override-analysis']
+            type: str
+            description: Enable to override the WTP profile spectrum analysis configuration.
+            choices: ['disable', 'enable']
+          cca_threshold:
+            aliases: ['cca-threshold']
+            type: str
+            description: Configure Clear Channel Assessment
+          override_cca_threshold:
+            aliases: ['override-cca-threshold']
+            type: str
+            description: Enable to override WTP profile CCA threshold enable/disable settings.
+            choices: ['disable', 'enable']
+          override_vap_status:
+            aliases: ['override-vap-status']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          vap_status:
+            aliases: ['vap-status']
+            type: str
+            description: Enable/disable all configured SSIDs on this radio
+            choices: ['disable', 'enable']
+          vap10:
+            type: str
+            description: Virtual Access Point
+          vap11:
+            type: str
+            description: Virtual Access Point
+          vap12:
+            type: str
+            description: Virtual Access Point
+          vap13:
+            type: str
+            description: Virtual Access Point
+          vap14:
+            type: str
+            description: Virtual Access Point
+          vap15:
+            type: str
+            description: Virtual Access Point
+          vap16:
+            type: str
+            description: Virtual Access Point
+          vap9:
+            type: str
+            description: Virtual Access Point
+      radio_3:
+        aliases: ['radio-3']
+        type: dict
+        description: Radio 3.
+        suboptions:
+          auto_power_high:
+            aliases: ['auto-power-high']
+            type: int
+            description: The upper bound of automatic transmit power adjustment in dBm
+          auto_power_level:
+            aliases: ['auto-power-level']
+            type: str
+            description: Enable/disable automatic power-level adjustment to prevent co-channel interference
+            choices: ['disable', 'enable']
+          auto_power_low:
+            aliases: ['auto-power-low']
+            type: int
+            description: The lower bound of automatic transmit power adjustment in dBm
+          auto_power_target:
+            aliases: ['auto-power-target']
+            type: str
+            description: Target of automatic transmit power adjustment in dBm
+          band:
+            type: list
+            elements: str
+            description: WiFi band that Radio 3 operates on.
+            choices: ['802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only',
+                      '802.11g-only', '802.11n-only', '802.11n-5G-only', '802.11ac',
+                      '802.11ac,n-only', '802.11ac-only', '802.11ax-5G', '802.11ax,ac-only',
+                      '802.11ax,ac,n-only', '802.11ax-5G-only', '802.11ax', '802.11ax,n-only',
+                      '802.11ax,n,g-only', '802.11ax-only', '802.11ac-2G', '802.11ax-6G',
+                      '802.11n-2G', '802.11ac-5G', '802.11ax-2G', '802.11be-2G', '802.11be-5G',
+                      '802.11be-6G']
+          channel:
+            type: list
+            elements: str
+            description: Selected list of wireless radio channels.
+          drma_manual_mode:
+            aliases: ['drma-manual-mode']
+            type: str
+            description: Radio mode to be used for DRMA manual mode
+            choices: ['ap', 'monitor', 'ncf', 'ncf-peek']
+          override_band:
+            aliases: ['override-band']
+            type: str
+            description: Enable to override the WTP profile band setting.
+            choices: ['disable', 'enable']
+          override_channel:
+            aliases: ['override-channel']
+            type: str
+            description: Enable to override WTP profile channel settings.
+            choices: ['disable', 'enable']
+          override_txpower:
+            aliases: ['override-txpower']
+            type: str
+            description: Enable to override the WTP profile power level configuration.
+            choices: ['disable', 'enable']
+          override_vaps:
+            aliases: ['override-vaps']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          power_level:
+            aliases: ['power-level']
+            type: int
+            description: Radio EIRP power level as a percentage of the maximum EIRP power
+          power_mode:
+            aliases: ['power-mode']
+            type: str
+            description: Set radio effective isotropic radiated power
+            choices: ['dBm', 'percentage']
+          power_value:
+            aliases: ['power-value']
+            type: int
+            description: Radio EIRP power in dBm
+          radio_id:
+            aliases: ['radio-id']
+            type: int
+            description: Radio id.
+          vap_all:
+            aliases: ['vap-all']
+            type: str
+            description: Configure method for assigning SSIDs to this FortiAP
+            choices: ['disable', 'enable', 'tunnel', 'bridge', 'manual']
+          vap1:
+            type: str
+            description: Virtual Access Point
+          vap2:
+            type: str
+            description: Virtual Access Point
+          vap3:
+            type: str
+            description: Virtual Access Point
+          vap4:
+            type: str
+            description: Virtual Access Point
+          vap5:
+            type: str
+            description: Virtual Access Point
+          vap6:
+            type: str
+            description: Virtual Access Point
+          vap7:
+            type: str
+            description: Virtual Access Point
+          vap8:
+            type: str
+            description: Virtual Access Point
+          vaps:
+            type: list
+            elements: str
+            description: Manually selected list of Virtual Access Points
+          spectrum_analysis:
+            aliases: ['spectrum-analysis']
+            type: str
+            description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
+            choices: ['disable', 'enable', 'scan-only']
+          override_analysis:
+            aliases: ['override-analysis']
+            type: str
+            description: Enable to override the WTP profile spectrum analysis configuration.
+            choices: ['disable', 'enable']
+          cca_threshold:
+            aliases: ['cca-threshold']
+            type: str
+            description: Configure Clear Channel Assessment
+          override_cca_threshold:
+            aliases: ['override-cca-threshold']
+            type: str
+            description: Enable to override WTP profile CCA threshold enable/disable settings.
+            choices: ['disable', 'enable']
+          override_vap_status:
+            aliases: ['override-vap-status']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          vap_status:
+            aliases: ['vap-status']
+            type: str
+            description: Enable/disable all configured SSIDs on this radio
+            choices: ['disable', 'enable']
+          vap10:
+            type: str
+            description: Virtual Access Point
+          vap11:
+            type: str
+            description: Virtual Access Point
+          vap12:
+            type: str
+            description: Virtual Access Point
+          vap13:
+            type: str
+            description: Virtual Access Point
+          vap14:
+            type: str
+            description: Virtual Access Point
+          vap15:
+            type: str
+            description: Virtual Access Point
+          vap16:
+            type: str
+            description: Virtual Access Point
+          vap9:
+            type: str
+            description: Virtual Access Point
+      radio_4:
+        aliases: ['radio-4']
+        type: dict
+        description: Radio 4.
+        suboptions:
+          auto_power_high:
+            aliases: ['auto-power-high']
+            type: int
+            description: The upper bound of automatic transmit power adjustment in dBm
+          auto_power_level:
+            aliases: ['auto-power-level']
+            type: str
+            description: Enable/disable automatic power-level adjustment to prevent co-channel interference
+            choices: ['disable', 'enable']
+          auto_power_low:
+            aliases: ['auto-power-low']
+            type: int
+            description: The lower bound of automatic transmit power adjustment in dBm
+          auto_power_target:
+            aliases: ['auto-power-target']
+            type: str
+            description: Target of automatic transmit power adjustment in dBm
+          band:
+            type: list
+            elements: str
+            description: WiFi band that Radio 4 operates on.
+            choices: ['802.11a', '802.11b', '802.11g', '802.11n', '802.11n-5G', '802.11n,g-only',
+                      '802.11g-only', '802.11n-only', '802.11n-5G-only', '802.11ac',
+                      '802.11ac,n-only', '802.11ac-only', '802.11ax-5G', '802.11ax,ac-only',
+                      '802.11ax,ac,n-only', '802.11ax-5G-only', '802.11ax', '802.11ax,n-only',
+                      '802.11ax,n,g-only', '802.11ax-only', '802.11ac-2G', '802.11ax-6G',
+                      '802.11n-2G', '802.11ac-5G', '802.11ax-2G', '802.11be-2G', '802.11be-5G',
+                      '802.11be-6G']
+          channel:
+            type: list
+            elements: str
+            description: Selected list of wireless radio channels.
+          drma_manual_mode:
+            aliases: ['drma-manual-mode']
+            type: str
+            description: Radio mode to be used for DRMA manual mode
+            choices: ['ap', 'monitor', 'ncf', 'ncf-peek']
+          override_band:
+            aliases: ['override-band']
+            type: str
+            description: Enable to override the WTP profile band setting.
+            choices: ['disable', 'enable']
+          override_channel:
+            aliases: ['override-channel']
+            type: str
+            description: Enable to override WTP profile channel settings.
+            choices: ['disable', 'enable']
+          override_txpower:
+            aliases: ['override-txpower']
+            type: str
+            description: Enable to override the WTP profile power level configuration.
+            choices: ['disable', 'enable']
+          override_vaps:
+            aliases: ['override-vaps']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          power_level:
+            aliases: ['power-level']
+            type: int
+            description: Radio EIRP power level as a percentage of the maximum EIRP power
+          power_mode:
+            aliases: ['power-mode']
+            type: str
+            description: Set radio effective isotropic radiated power
+            choices: ['dBm', 'percentage']
+          power_value:
+            aliases: ['power-value']
+            type: int
+            description: Radio EIRP power in dBm
+          radio_id:
+            aliases: ['radio-id']
+            type: int
+            description: Radio id.
+          vap_all:
+            aliases: ['vap-all']
+            type: str
+            description: Configure method for assigning SSIDs to this FortiAP
+            choices: ['disable', 'enable', 'tunnel', 'bridge', 'manual']
+          vap1:
+            type: str
+            description: Virtual Access Point
+          vap2:
+            type: str
+            description: Virtual Access Point
+          vap3:
+            type: str
+            description: Virtual Access Point
+          vap4:
+            type: str
+            description: Virtual Access Point
+          vap5:
+            type: str
+            description: Virtual Access Point
+          vap6:
+            type: str
+            description: Virtual Access Point
+          vap7:
+            type: str
+            description: Virtual Access Point
+          vap8:
+            type: str
+            description: Virtual Access Point
+          vaps:
+            type: list
+            elements: str
+            description: Manually selected list of Virtual Access Points
+          spectrum_analysis:
+            aliases: ['spectrum-analysis']
+            type: str
+            description: Enable/disable spectrum analysis to find interference that would negatively impact wireless performance.
+            choices: ['disable', 'enable', 'scan-only']
+          override_analysis:
+            aliases: ['override-analysis']
+            type: str
+            description: Enable to override the WTP profile spectrum analysis configuration.
+            choices: ['disable', 'enable']
+          cca_threshold:
+            aliases: ['cca-threshold']
+            type: str
+            description: Configure Clear Channel Assessment
+          override_cca_threshold:
+            aliases: ['override-cca-threshold']
+            type: str
+            description: Enable to override WTP profile CCA threshold enable/disable settings.
+            choices: ['disable', 'enable']
+          override_vap_status:
+            aliases: ['override-vap-status']
+            type: str
+            description: Enable to override WTP profile Virtual Access Point
+            choices: ['disable', 'enable']
+          vap_status:
+            aliases: ['vap-status']
+            type: str
+            description: Enable/disable all configured SSIDs on this radio
+            choices: ['disable', 'enable']
+          vap10:
+            type: str
+            description: Virtual Access Point
+          vap11:
+            type: str
+            description: Virtual Access Point
+          vap12:
+            type: str
+            description: Virtual Access Point
+          vap13:
+            type: str
+            description: Virtual Access Point
+          vap14:
+            type: str
+            description: Virtual Access Point
+          vap15:
+            type: str
+            description: Virtual Access Point
+          vap16:
+            type: str
+            description: Virtual Access Point
+          vap9:
+            type: str
+            description: Virtual Access Point
+      region:
+        type: list
+        elements: str
+        description: Region name WTP is associated with.
+      region_x:
+        aliases: ['region-x']
+        type: str
+        description: Relative horizontal region coordinate
+      region_y:
+        aliases: ['region-y']
+        type: str
+        description: Relative vertical region coordinate
+      split_tunneling_acl:
+        aliases: ['split-tunneling-acl']
+        type: list
+        elements: dict
+        description: Split tunneling acl.
+        suboptions:
+          dest_ip:
+            aliases: ['dest-ip']
+            type: list
+            elements: str
+            description: Destination IP and mask for the split-tunneling subnet.
+          id:
+            type: int
+            description: ID.
+      split_tunneling_acl_local_ap_subnet:
+        aliases: ['split-tunneling-acl-local-ap-subnet']
+        type: str
+        description: Enable/disable automatically adding local subnetwork of FortiAP to split-tunneling ACL
+        choices: ['disable', 'enable']
+      split_tunneling_acl_path:
+        aliases: ['split-tunneling-acl-path']
+        type: str
+        description: Split tunneling ACL path is local/tunnel.
+        choices: ['tunnel', 'local']
+      tun_mtu_downlink:
+        aliases: ['tun-mtu-downlink']
+        type: int
+        description: The MTU of downlink CAPWAP tunnel
+      tun_mtu_uplink:
+        aliases: ['tun-mtu-uplink']
+        type: int
+        description: The maximum transmission unit
+      uuid:
+        type: str
+        description: Universally Unique Identifier
+      wan_port_mode:
+        aliases: ['wan-port-mode']
+        type: str
+        description: Enable/disable using the FortiAP WAN port as a LAN port.
+        choices: ['wan-lan', 'wan-only']
+      wtp_id:
+        aliases: ['wtp-id']
+        type: str
+        description: WTP ID.
+      wtp_mode:
+        aliases: ['wtp-mode']
+        type: str
+        description: WTP, AP, or FortiAP operating mode
+        choices: ['normal', 'remote']
+      wtp_profile:
+        aliases: ['wtp-profile']
+        type: list
+        elements: str
+        description: WTP profile name to apply to this WTP, AP or FortiAP.
+      comment:
+        type: str
+        description: Comment.
+      _prefer_img_ver:
+        aliases: ['_prefer-img-ver']
+        type: str
+        description: Prefer img ver.
+      default_mesh_root:
+        aliases: ['default-mesh-root']
+        type: str
+        description: Configure default mesh root SSID when it is not included by radios SSID configuration.
+        choices: ['disable', 'enable']
+      override_default_mesh_root:
+        aliases: ['override-default-mesh-root']
+        type: str
+        description: Enable to override the WTP profile default mesh root SSID setting.
+        choices: ['disable', 'enable']
+      static_lowi:
+        aliases: ['static-lowi']
+        type: str
+        description: Enable/disable static LOWI position of the FortiAP.
+        choices: ['disable', 'enable']
+      static_lowi_alt:
+        aliases: ['static-lowi-alt']
+        type: int
+        description: Static LOWI altitude position of the AP
+      static_lowi_alt_err:
+        aliases: ['static-lowi-alt-err']
+        type: int
+        description: Static LOWI altitude error of the AP
+      static_lowi_lat:
+        aliases: ['static-lowi-lat']
+        type: str
+        description: Static LOWI latitude position of the AP
+      static_lowi_lat_err:
+        aliases: ['static-lowi-lat-err']
+        type: int
+        description: Static LOWI latitude error of the AP
+      static_lowi_lon:
+        aliases: ['static-lowi-lon']
+        type: str
+        description: Static LOWI longitude position of the AP
+      static_lowi_lon_err:
+        aliases: ['static-lowi-lon-err']
+        type: int
+        description: Static LOWI longitude error of the AP
 '''
 
 EXAMPLES = '''
@@ -1184,30 +1038,17 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure Wireless Termination Points
       fortinet.fmgdevice.fmgd_wireless_wtp:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         state: present # <value in [present, absent]>
         wireless_wtp:
           wtp_id: "your value" # Required variable, string
           # admin: <value in [discovery, disable, enable, ...]>
-          # allowaccess:
-          #   - "https"
-          #   - "ssh"
-          #   - "snmp"
-          #   - "http"
-          #   - "telnet"
+          # allowaccess: ["https", "ssh", "snmp", "http", "telnet"]
           # apcfg_profile: <list or string>
           # ble_major_id: <integer>
           # ble_minor_id: <integer>
@@ -1218,9 +1059,7 @@ EXAMPLES = '''
           # firmware_provision_latest: <value in [disable, once]>
           # image_download: <value in [disable, enable]>
           # index: <integer>
-          # ip_fragment_preventing:
-          #   - "tcp-mss-adjust"
-          #   - "icmp-unreachable"
+          # ip_fragment_preventing: ["tcp-mss-adjust", "icmp-unreachable"]
           # lan:
           #   port_esl_mode: <value in [offline, bridge-to-wan, bridge-to-ssid, ...]>
           #   port_esl_ssid: <list or string>
@@ -1261,35 +1100,13 @@ EXAMPLES = '''
           #   auto_power_level: <value in [disable, enable]>
           #   auto_power_low: <integer>
           #   auto_power_target: <string>
-          #   band:
-          #     - "802.11a"
-          #     - "802.11b"
-          #     - "802.11g"
-          #     - "802.11n"
-          #     - "802.11n-5G"
-          #     - "802.11n,g-only"
-          #     - "802.11g-only"
-          #     - "802.11n-only"
-          #     - "802.11n-5G-only"
-          #     - "802.11ac"
-          #     - "802.11ac,n-only"
-          #     - "802.11ac-only"
-          #     - "802.11ax-5G"
-          #     - "802.11ax,ac-only"
-          #     - "802.11ax,ac,n-only"
-          #     - "802.11ax-5G-only"
-          #     - "802.11ax"
-          #     - "802.11ax,n-only"
-          #     - "802.11ax,n,g-only"
-          #     - "802.11ax-only"
-          #     - "802.11ac-2G"
-          #     - "802.11ax-6G"
-          #     - "802.11n-2G"
-          #     - "802.11ac-5G"
-          #     - "802.11ax-2G"
-          #     - "802.11be-2G"
-          #     - "802.11be-5G"
-          #     - "802.11be-6G"
+          #   band: ["802.11a", "802.11b", "802.11g", "802.11n", "802.11n-5G", "802.11n,g-only",
+          #          "802.11g-only", "802.11n-only", "802.11n-5G-only", "802.11ac",
+          #          "802.11ac,n-only", "802.11ac-only", "802.11ax-5G", "802.11ax,ac-only",
+          #          "802.11ax,ac,n-only", "802.11ax-5G-only", "802.11ax", "802.11ax,n-only",
+          #          "802.11ax,n,g-only", "802.11ax-only", "802.11ac-2G", "802.11ax-6G",
+          #          "802.11n-2G", "802.11ac-5G", "802.11ax-2G", "802.11be-2G", "802.11be-5G",
+          #          "802.11be-6G"]
           #   channel: <list or string>
           #   drma_manual_mode: <value in [ap, monitor, ncf, ...]>
           #   override_band: <value in [disable, enable]>
@@ -1312,40 +1129,30 @@ EXAMPLES = '''
           #   vaps: <list or string>
           #   spectrum_analysis: <value in [disable, enable, scan-only]>
           #   override_analysis: <value in [disable, enable]>
+          #   cca_threshold: <string>
+          #   override_cca_threshold: <value in [disable, enable]>
+          #   override_vap_status: <value in [disable, enable]>
+          #   vap_status: <value in [disable, enable]>
+          #   vap10: <string>
+          #   vap11: <string>
+          #   vap12: <string>
+          #   vap13: <string>
+          #   vap14: <string>
+          #   vap15: <string>
+          #   vap16: <string>
+          #   vap9: <string>
           # radio_2:
           #   auto_power_high: <integer>
           #   auto_power_level: <value in [disable, enable]>
           #   auto_power_low: <integer>
           #   auto_power_target: <string>
-          #   band:
-          #     - "802.11a"
-          #     - "802.11b"
-          #     - "802.11g"
-          #     - "802.11n"
-          #     - "802.11n-5G"
-          #     - "802.11n,g-only"
-          #     - "802.11g-only"
-          #     - "802.11n-only"
-          #     - "802.11n-5G-only"
-          #     - "802.11ac"
-          #     - "802.11ac,n-only"
-          #     - "802.11ac-only"
-          #     - "802.11ax-5G"
-          #     - "802.11ax,ac-only"
-          #     - "802.11ax,ac,n-only"
-          #     - "802.11ax-5G-only"
-          #     - "802.11ax"
-          #     - "802.11ax,n-only"
-          #     - "802.11ax,n,g-only"
-          #     - "802.11ax-only"
-          #     - "802.11ac-2G"
-          #     - "802.11ax-6G"
-          #     - "802.11n-2G"
-          #     - "802.11ac-5G"
-          #     - "802.11ax-2G"
-          #     - "802.11be-2G"
-          #     - "802.11be-5G"
-          #     - "802.11be-6G"
+          #   band: ["802.11a", "802.11b", "802.11g", "802.11n", "802.11n-5G", "802.11n,g-only",
+          #          "802.11g-only", "802.11n-only", "802.11n-5G-only", "802.11ac",
+          #          "802.11ac,n-only", "802.11ac-only", "802.11ax-5G", "802.11ax,ac-only",
+          #          "802.11ax,ac,n-only", "802.11ax-5G-only", "802.11ax", "802.11ax,n-only",
+          #          "802.11ax,n,g-only", "802.11ax-only", "802.11ac-2G", "802.11ax-6G",
+          #          "802.11n-2G", "802.11ac-5G", "802.11ax-2G", "802.11be-2G", "802.11be-5G",
+          #          "802.11be-6G"]
           #   channel: <list or string>
           #   drma_manual_mode: <value in [ap, monitor, ncf, ...]>
           #   override_band: <value in [disable, enable]>
@@ -1368,40 +1175,30 @@ EXAMPLES = '''
           #   vaps: <list or string>
           #   spectrum_analysis: <value in [disable, enable, scan-only]>
           #   override_analysis: <value in [disable, enable]>
+          #   cca_threshold: <string>
+          #   override_cca_threshold: <value in [disable, enable]>
+          #   override_vap_status: <value in [disable, enable]>
+          #   vap_status: <value in [disable, enable]>
+          #   vap10: <string>
+          #   vap11: <string>
+          #   vap12: <string>
+          #   vap13: <string>
+          #   vap14: <string>
+          #   vap15: <string>
+          #   vap16: <string>
+          #   vap9: <string>
           # radio_3:
           #   auto_power_high: <integer>
           #   auto_power_level: <value in [disable, enable]>
           #   auto_power_low: <integer>
           #   auto_power_target: <string>
-          #   band:
-          #     - "802.11a"
-          #     - "802.11b"
-          #     - "802.11g"
-          #     - "802.11n"
-          #     - "802.11n-5G"
-          #     - "802.11n,g-only"
-          #     - "802.11g-only"
-          #     - "802.11n-only"
-          #     - "802.11n-5G-only"
-          #     - "802.11ac"
-          #     - "802.11ac,n-only"
-          #     - "802.11ac-only"
-          #     - "802.11ax-5G"
-          #     - "802.11ax,ac-only"
-          #     - "802.11ax,ac,n-only"
-          #     - "802.11ax-5G-only"
-          #     - "802.11ax"
-          #     - "802.11ax,n-only"
-          #     - "802.11ax,n,g-only"
-          #     - "802.11ax-only"
-          #     - "802.11ac-2G"
-          #     - "802.11ax-6G"
-          #     - "802.11n-2G"
-          #     - "802.11ac-5G"
-          #     - "802.11ax-2G"
-          #     - "802.11be-2G"
-          #     - "802.11be-5G"
-          #     - "802.11be-6G"
+          #   band: ["802.11a", "802.11b", "802.11g", "802.11n", "802.11n-5G", "802.11n,g-only",
+          #          "802.11g-only", "802.11n-only", "802.11n-5G-only", "802.11ac",
+          #          "802.11ac,n-only", "802.11ac-only", "802.11ax-5G", "802.11ax,ac-only",
+          #          "802.11ax,ac,n-only", "802.11ax-5G-only", "802.11ax", "802.11ax,n-only",
+          #          "802.11ax,n,g-only", "802.11ax-only", "802.11ac-2G", "802.11ax-6G",
+          #          "802.11n-2G", "802.11ac-5G", "802.11ax-2G", "802.11be-2G", "802.11be-5G",
+          #          "802.11be-6G"]
           #   channel: <list or string>
           #   drma_manual_mode: <value in [ap, monitor, ncf, ...]>
           #   override_band: <value in [disable, enable]>
@@ -1424,40 +1221,30 @@ EXAMPLES = '''
           #   vaps: <list or string>
           #   spectrum_analysis: <value in [disable, enable, scan-only]>
           #   override_analysis: <value in [disable, enable]>
+          #   cca_threshold: <string>
+          #   override_cca_threshold: <value in [disable, enable]>
+          #   override_vap_status: <value in [disable, enable]>
+          #   vap_status: <value in [disable, enable]>
+          #   vap10: <string>
+          #   vap11: <string>
+          #   vap12: <string>
+          #   vap13: <string>
+          #   vap14: <string>
+          #   vap15: <string>
+          #   vap16: <string>
+          #   vap9: <string>
           # radio_4:
           #   auto_power_high: <integer>
           #   auto_power_level: <value in [disable, enable]>
           #   auto_power_low: <integer>
           #   auto_power_target: <string>
-          #   band:
-          #     - "802.11a"
-          #     - "802.11b"
-          #     - "802.11g"
-          #     - "802.11n"
-          #     - "802.11n-5G"
-          #     - "802.11n,g-only"
-          #     - "802.11g-only"
-          #     - "802.11n-only"
-          #     - "802.11n-5G-only"
-          #     - "802.11ac"
-          #     - "802.11ac,n-only"
-          #     - "802.11ac-only"
-          #     - "802.11ax-5G"
-          #     - "802.11ax,ac-only"
-          #     - "802.11ax,ac,n-only"
-          #     - "802.11ax-5G-only"
-          #     - "802.11ax"
-          #     - "802.11ax,n-only"
-          #     - "802.11ax,n,g-only"
-          #     - "802.11ax-only"
-          #     - "802.11ac-2G"
-          #     - "802.11ax-6G"
-          #     - "802.11n-2G"
-          #     - "802.11ac-5G"
-          #     - "802.11ax-2G"
-          #     - "802.11be-2G"
-          #     - "802.11be-5G"
-          #     - "802.11be-6G"
+          #   band: ["802.11a", "802.11b", "802.11g", "802.11n", "802.11n-5G", "802.11n,g-only",
+          #          "802.11g-only", "802.11n-only", "802.11n-5G-only", "802.11ac",
+          #          "802.11ac,n-only", "802.11ac-only", "802.11ax-5G", "802.11ax,ac-only",
+          #          "802.11ax,ac,n-only", "802.11ax-5G-only", "802.11ax", "802.11ax,n-only",
+          #          "802.11ax,n,g-only", "802.11ax-only", "802.11ac-2G", "802.11ax-6G",
+          #          "802.11n-2G", "802.11ac-5G", "802.11ax-2G", "802.11be-2G", "802.11be-5G",
+          #          "802.11be-6G"]
           #   channel: <list or string>
           #   drma_manual_mode: <value in [ap, monitor, ncf, ...]>
           #   override_band: <value in [disable, enable]>
@@ -1480,6 +1267,18 @@ EXAMPLES = '''
           #   vaps: <list or string>
           #   spectrum_analysis: <value in [disable, enable, scan-only]>
           #   override_analysis: <value in [disable, enable]>
+          #   cca_threshold: <string>
+          #   override_cca_threshold: <value in [disable, enable]>
+          #   override_vap_status: <value in [disable, enable]>
+          #   vap_status: <value in [disable, enable]>
+          #   vap10: <string>
+          #   vap11: <string>
+          #   vap12: <string>
+          #   vap13: <string>
+          #   vap14: <string>
+          #   vap15: <string>
+          #   vap16: <string>
+          #   vap9: <string>
           # region: <list or string>
           # region_x: <string>
           # region_y: <string>
@@ -1498,46 +1297,53 @@ EXAMPLES = '''
           # _prefer_img_ver: <string>
           # default_mesh_root: <value in [disable, enable]>
           # override_default_mesh_root: <value in [disable, enable]>
+          # static_lowi: <value in [disable, enable]>
+          # static_lowi_alt: <integer>
+          # static_lowi_alt_err: <integer>
+          # static_lowi_lat: <string>
+          # static_lowi_lat_err: <integer>
+          # static_lowi_lon: <string>
+          # static_lowi_lon_err: <integer>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -1549,14 +1355,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wtp'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = 'wtp_id'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'wireless_wtp': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'admin': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['discovery', 'disable', 'enable', 'discovered'], 'type': 'str'},
                 'allowaccess': {
@@ -1709,11 +1512,23 @@ def main():
                         'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'cca-threshold': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'override-cca-threshold': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'override-vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap10': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap11': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap12': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap13': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap14': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap15': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap16': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap9': {'v_range': [['8.0.0', '']], 'type': 'str'}
                     }
                 },
                 'radio-2': {
@@ -1764,11 +1579,23 @@ def main():
                         'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'cca-threshold': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'override-cca-threshold': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'override-vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap10': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap11': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap12': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap13': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap14': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap15': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap16': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap9': {'v_range': [['8.0.0', '']], 'type': 'str'}
                     }
                 },
                 'radio-3': {
@@ -1819,11 +1646,23 @@ def main():
                         'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'cca-threshold': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'override-cca-threshold': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'override-vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap10': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap11': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap12': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap13': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap14': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap15': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap16': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap9': {'v_range': [['8.0.0', '']], 'type': 'str'}
                     }
                 },
                 'radio-4': {
@@ -1874,11 +1713,23 @@ def main():
                         'vap8': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'str'},
                         'vaps': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                         'spectrum-analysis': {
-                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']],
                             'choices': ['disable', 'enable', 'scan-only'],
                             'type': 'str'
                         },
-                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                        'override-analysis': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'cca-threshold': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'override-cca-threshold': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'override-vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap-status': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                        'vap10': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap11': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap12': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap13': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap14': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap15': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap16': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                        'vap9': {'v_range': [['8.0.0', '']], 'type': 'str'}
                     }
                 },
                 'region': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
@@ -1903,28 +1754,31 @@ def main():
                 'wtp-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['normal', 'remote'], 'type': 'str'},
                 'wtp-profile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'comment': {'v_range': [['7.6.2', '']], 'type': 'str'},
-                '_prefer-img-ver': {'v_range': [['7.4.8', '7.4.10']], 'type': 'str'},
+                '_prefer-img-ver': {'v_range': [['7.4.8', '7.4.11']], 'type': 'str'},
                 'default-mesh-root': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'override-default-mesh-root': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'override-default-mesh-root': {'v_range': [['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'static-lowi': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'static-lowi-alt': {'v_range': [['8.0.0', '']], 'type': 'int'},
+                'static-lowi-alt-err': {'v_range': [['8.0.0', '']], 'type': 'int'},
+                'static-lowi-lat': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                'static-lowi-lat-err': {'v_range': [['8.0.0', '']], 'type': 'int'},
+                'static-lowi-lon': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                'static-lowi-lon-err': {'v_range': [['8.0.0', '']], 'type': 'int'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'wireless_wtp'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'wtp_id', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

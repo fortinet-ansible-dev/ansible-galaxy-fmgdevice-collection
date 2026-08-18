@@ -13,1207 +13,906 @@ DOCUMENTATION = '''
 ---
 module: fmgd_system_settings
 short_description: Configure VDOM settings.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.partial_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  system_settings:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      allow_linkdown_path:
+        aliases: ['allow-linkdown-path']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Enable/disable link down path.
+        choices: ['disable', 'enable']
+      allow_subnet_overlap:
+        aliases: ['allow-subnet-overlap']
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
+        description: Enable/disable allowing interface subnets to use overlapping IP addresses.
+        choices: ['disable', 'enable']
+      application_bandwidth_tracking:
+        aliases: ['application-bandwidth-tracking']
         type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+        description: Enable/disable application bandwidth tracking.
+        choices: ['disable', 'enable']
+      asymroute:
         type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        description: Enable/disable IPv4 asymmetric routing.
+        choices: ['disable', 'enable']
+      asymroute_icmp:
+        aliases: ['asymroute-icmp']
+        type: str
+        description: Enable/disable ICMP asymmetric routing.
+        choices: ['disable', 'enable']
+      asymroute6:
+        type: str
+        description: Enable/disable asymmetric IPv6 routing.
+        choices: ['disable', 'enable']
+      asymroute6_icmp:
+        aliases: ['asymroute6-icmp']
+        type: str
+        description: Enable/disable asymmetric ICMPv6 routing.
+        choices: ['disable', 'enable']
+      auxiliary_session:
+        aliases: ['auxiliary-session']
+        type: str
+        description: Enable/disable auxiliary session.
+        choices: ['disable', 'enable']
+      bfd:
+        type: str
+        description: Enable/disable Bi-directional Forwarding Detection
+        choices: ['disable', 'enable']
+      bfd_desired_min_tx:
+        aliases: ['bfd-desired-min-tx']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: BFD desired minimal transmit interval
+      bfd_detect_mult:
+        aliases: ['bfd-detect-mult']
+        type: int
+        description: BFD detection multiplier
+      bfd_dont_enforce_src_port:
+        aliases: ['bfd-dont-enforce-src-port']
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: Enable to not enforce verifying the source port of BFD Packets.
+        choices: ['disable', 'enable']
+      bfd_required_min_rx:
+        aliases: ['bfd-required-min-rx']
+        type: int
+        description: BFD required minimal receive interval
+      block_land_attack:
+        aliases: ['block-land-attack']
         type: str
-        required: true
-    system_settings:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            allow_linkdown_path:
-                aliases: ['allow-linkdown-path']
-                type: str
-                description: Enable/disable link down path.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            allow_subnet_overlap:
-                aliases: ['allow-subnet-overlap']
-                type: str
-                description: Enable/disable allowing interface subnets to use overlapping IP addresses.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            application_bandwidth_tracking:
-                aliases: ['application-bandwidth-tracking']
-                type: str
-                description: Enable/disable application bandwidth tracking.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            asymroute:
-                type: str
-                description: Enable/disable IPv4 asymmetric routing.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            asymroute_icmp:
-                aliases: ['asymroute-icmp']
-                type: str
-                description: Enable/disable ICMP asymmetric routing.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            asymroute6:
-                type: str
-                description: Enable/disable asymmetric IPv6 routing.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            asymroute6_icmp:
-                aliases: ['asymroute6-icmp']
-                type: str
-                description: Enable/disable asymmetric ICMPv6 routing.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            auxiliary_session:
-                aliases: ['auxiliary-session']
-                type: str
-                description: Enable/disable auxiliary session.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            bfd:
-                type: str
-                description: Enable/disable Bi-directional Forwarding Detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            bfd_desired_min_tx:
-                aliases: ['bfd-desired-min-tx']
-                type: int
-                description: BFD desired minimal transmit interval
-            bfd_detect_mult:
-                aliases: ['bfd-detect-mult']
-                type: int
-                description: BFD detection multiplier
-            bfd_dont_enforce_src_port:
-                aliases: ['bfd-dont-enforce-src-port']
-                type: str
-                description: Enable to not enforce verifying the source port of BFD Packets.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            bfd_required_min_rx:
-                aliases: ['bfd-required-min-rx']
-                type: int
-                description: BFD required minimal receive interval
-            block_land_attack:
-                aliases: ['block-land-attack']
-                type: str
-                description: Enable/disable blocking of land attacks.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            central_nat:
-                aliases: ['central-nat']
-                type: str
-                description: Enable/disable central NAT.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            comments:
-                type: str
-                description: VDOM comments.
-            default_app_port_as_service:
-                aliases: ['default-app-port-as-service']
-                type: str
-                description: Enable/disable policy service enforcement based on application default ports.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            default_policy_expiry_days:
-                aliases: ['default-policy-expiry-days']
-                type: int
-                description: Default policy expiry in days
-            default_voip_alg_mode:
-                aliases: ['default-voip-alg-mode']
-                type: str
-                description: Configure how the FortiGate handles VoIP traffic when a policy that accepts the traffic doesnt include a VoIP profile.
-                choices:
-                    - 'proxy-based'
-                    - 'kernel-helper-based'
-            deny_tcp_with_icmp:
-                aliases: ['deny-tcp-with-icmp']
-                type: str
-                description: Enable/disable denying TCP by sending an ICMP communication prohibited packet.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            detect_unknown_esp:
-                aliases: ['detect-unknown-esp']
-                type: str
-                description: Enable/disable detection of unknown ESP packets
-                choices:
-                    - 'disable'
-                    - 'enable'
-            device:
-                type: list
-                elements: str
-                description: Interface to use for management access for NAT mode.
-            dhcp_proxy:
-                aliases: ['dhcp-proxy']
-                type: str
-                description: Enable/disable the DHCP Proxy.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhcp_proxy_interface:
-                aliases: ['dhcp-proxy-interface']
-                type: list
-                elements: str
-                description: Specify outgoing interface to reach server.
-            dhcp_proxy_interface_select_method:
-                aliases: ['dhcp-proxy-interface-select-method']
-                type: str
-                description: Specify how to select outgoing interface to reach server.
-                choices:
-                    - 'auto'
-                    - 'sdwan'
-                    - 'specify'
-            dhcp_server_ip:
-                aliases: ['dhcp-server-ip']
-                type: list
-                elements: str
-                description: DHCP Server IPv4 address.
-            dhcp6_server_ip:
-                aliases: ['dhcp6-server-ip']
-                type: list
-                elements: str
-                description: DHCPv6 server IPv6 address.
-            discovered_device_timeout:
-                aliases: ['discovered-device-timeout']
-                type: int
-                description: Timeout for discovered devices
-            dp_load_distribution_method:
-                aliases: ['dp-load-distribution-method']
-                type: str
-                description: Per VDOM DP load distribution method.
-                choices:
-                    - 'src-ip'
-                    - 'dst-ip'
-                    - 'src-dst-ip'
-                    - 'src-ip-sport'
-                    - 'dst-ip-dport'
-                    - 'src-dst-ip-sport-dport'
-                    - 'to-master'
-                    - 'derived'
-                    - 'to-primary'
-            dyn_addr_session_check:
-                aliases: ['dyn-addr-session-check']
-                type: str
-                description: Enable/disable dirty session check caused by dynamic address updates.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ecmp_max_paths:
-                aliases: ['ecmp-max-paths']
-                type: int
-                description: Maximum number of Equal Cost Multi-Path
-            email_portal_check_dns:
-                aliases: ['email-portal-check-dns']
-                type: str
-                description: Enable/disable using DNS to validate email addresses collected by a captive portal.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ext_resource_session_check:
-                aliases: ['ext-resource-session-check']
-                type: str
-                description: Enable/disable dirty session check caused by external resource updates.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            firewall_session_dirty:
-                aliases: ['firewall-session-dirty']
-                type: str
-                description: Select how to manage sessions affected by firewall policy configuration changes.
-                choices:
-                    - 'check-all'
-                    - 'check-new'
-                    - 'check-policy-option'
-            fqdn_session_check:
-                aliases: ['fqdn-session-check']
-                type: str
-                description: Enable/disable dirty session check caused by FQDN updates.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fw_session_hairpin:
-                aliases: ['fw-session-hairpin']
-                type: str
-                description: Enable/disable checking for a matching policy each time hairpin traffic goes through the FortiGate.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gateway:
-                type: str
-                description: Transparent mode IPv4 default gateway IP address.
-            gateway6:
-                type: str
-                description: Transparent mode IPv6 default gateway IP address.
-            gtp_asym_fgsp:
-                aliases: ['gtp-asym-fgsp']
-                type: str
-                description: Enable/disable GTP asymmetric traffic handling on FGSP.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gtp_monitor_mode:
-                aliases: ['gtp-monitor-mode']
-                type: str
-                description: Enable/disable GTP monitor mode
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_advanced_policy:
-                aliases: ['gui-advanced-policy']
-                type: str
-                description: Enable/disable advanced policy configuration on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_advanced_wireless_features:
-                aliases: ['gui-advanced-wireless-features']
-                type: str
-                description: Enable/disable advanced wireless features in GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_allow_unnamed_policy:
-                aliases: ['gui-allow-unnamed-policy']
-                type: str
-                description: Enable/disable the requirement for policy naming on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_antivirus:
-                aliases: ['gui-antivirus']
-                type: str
-                description: Enable/disable AntiVirus on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_ap_profile:
-                aliases: ['gui-ap-profile']
-                type: str
-                description: Enable/disable FortiAP profiles on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_application_control:
-                aliases: ['gui-application-control']
-                type: str
-                description: Enable/disable application control on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_casb:
-                aliases: ['gui-casb']
-                type: str
-                description: Enable/disable Inline-CASB on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_default_policy_columns:
-                aliases: ['gui-default-policy-columns']
-                type: list
-                elements: str
-                description: Default columns to display for policy lists on GUI.
-            gui_dhcp_advanced:
-                aliases: ['gui-dhcp-advanced']
-                type: str
-                description: Enable/disable advanced DHCP options on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dlp_profile:
-                aliases: ['gui-dlp-profile']
-                type: str
-                description: Enable/disable Data Loss Prevention on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dns_database:
-                aliases: ['gui-dns-database']
-                type: str
-                description: Enable/disable DNS database settings on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dnsfilter:
-                aliases: ['gui-dnsfilter']
-                type: str
-                description: Enable/disable DNS Filtering on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dos_policy:
-                aliases: ['gui-dos-policy']
-                type: str
-                description: Enable/disable DoS policies on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dynamic_device_os_id:
-                aliases: ['gui-dynamic-device-os-id']
-                type: str
-                description: Enable/disable Create dynamic addresses to manage known devices.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dynamic_routing:
-                aliases: ['gui-dynamic-routing']
-                type: str
-                description: Enable/disable dynamic routing on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_email_collection:
-                aliases: ['gui-email-collection']
-                type: str
-                description: Enable/disable email collection on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_enforce_change_summary:
-                aliases: ['gui-enforce-change-summary']
-                type: str
-                description: Enforce change summaries for select tables in the GUI.
-                choices:
-                    - 'disable'
-                    - 'require'
-                    - 'optional'
-            gui_explicit_proxy:
-                aliases: ['gui-explicit-proxy']
-                type: str
-                description: Enable/disable the explicit proxy on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_file_filter:
-                aliases: ['gui-file-filter']
-                type: str
-                description: Enable/disable File-filter on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_fortiap_split_tunneling:
-                aliases: ['gui-fortiap-split-tunneling']
-                type: str
-                description: Enable/disable FortiAP split tunneling on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_fortiextender_controller:
-                aliases: ['gui-fortiextender-controller']
-                type: str
-                description: Enable/disable FortiExtender on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_icap:
-                aliases: ['gui-icap']
-                type: str
-                description: Enable/disable ICAP on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_implicit_policy:
-                aliases: ['gui-implicit-policy']
-                type: str
-                description: Enable/disable implicit firewall policies on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_ips:
-                aliases: ['gui-ips']
-                type: str
-                description: Enable/disable IPS on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_load_balance:
-                aliases: ['gui-load-balance']
-                type: str
-                description: Enable/disable server load balancing on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_local_in_policy:
-                aliases: ['gui-local-in-policy']
-                type: str
-                description: Enable/disable Local-In policies on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_multicast_policy:
-                aliases: ['gui-multicast-policy']
-                type: str
-                description: Enable/disable multicast firewall policies on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_multiple_interface_policy:
-                aliases: ['gui-multiple-interface-policy']
-                type: str
-                description: Enable/disable adding multiple interfaces to a policy on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_object_colors:
-                aliases: ['gui-object-colors']
-                type: str
-                description: Enable/disable object colors on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_ot:
-                aliases: ['gui-ot']
-                type: str
-                description: Enable/disable Operational technology features on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_policy_based_ipsec:
-                aliases: ['gui-policy-based-ipsec']
-                type: str
-                description: Enable/disable policy-based IPsec VPN on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_policy_disclaimer:
-                aliases: ['gui-policy-disclaimer']
-                type: str
-                description: Enable/disable policy disclaimer on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_proxy_inspection:
-                aliases: ['gui-proxy-inspection']
-                type: str
-                description: Enable/disable the proxy features on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_route_tag_address_creation:
-                aliases: ['gui-route-tag-address-creation']
-                type: str
-                description: Enable/disable route-tag addresses on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_security_profile_group:
-                aliases: ['gui-security-profile-group']
-                type: str
-                description: Enable/disable Security Profile Groups on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_spamfilter:
-                aliases: ['gui-spamfilter']
-                type: str
-                description: Enable/disable Antispam on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_sslvpn:
-                aliases: ['gui-sslvpn']
-                type: str
-                description: Enable/disable SSL-VPN settings pages on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_sslvpn_personal_bookmarks:
-                aliases: ['gui-sslvpn-personal-bookmarks']
-                type: str
-                description: Enable/disable SSL-VPN personal bookmark management on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_sslvpn_realms:
-                aliases: ['gui-sslvpn-realms']
-                type: str
-                description: Enable/disable SSL-VPN realms on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_switch_controller:
-                aliases: ['gui-switch-controller']
-                type: str
-                description: Enable/disable the switch controller on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_threat_weight:
-                aliases: ['gui-threat-weight']
-                type: str
-                description: Enable/disable threat weight on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_traffic_shaping:
-                aliases: ['gui-traffic-shaping']
-                type: str
-                description: Enable/disable traffic shaping on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_videofilter:
-                aliases: ['gui-videofilter']
-                type: str
-                description: Enable/disable Video filtering on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_virtual_patch_profile:
-                aliases: ['gui-virtual-patch-profile']
-                type: str
-                description: Enable/disable Virtual Patching on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_voip_profile:
-                aliases: ['gui-voip-profile']
-                type: str
-                description: Enable/disable VoIP profiles on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_vpn:
-                aliases: ['gui-vpn']
-                type: str
-                description: Enable/disable IPsec VPN settings pages on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_waf_profile:
-                aliases: ['gui-waf-profile']
-                type: str
-                description: Enable/disable Web Application Firewall on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_wan_load_balancing:
-                aliases: ['gui-wan-load-balancing']
-                type: str
-                description: Enable/disable SD-WAN on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_wanopt_cache:
-                aliases: ['gui-wanopt-cache']
-                type: str
-                description: Enable/disable WAN Optimization and Web Caching on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_webfilter:
-                aliases: ['gui-webfilter']
-                type: str
-                description: Enable/disable Web filtering on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_webfilter_advanced:
-                aliases: ['gui-webfilter-advanced']
-                type: str
-                description: Enable/disable advanced web filtering on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_wireless_controller:
-                aliases: ['gui-wireless-controller']
-                type: str
-                description: Enable/disable the wireless controller on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_ztna:
-                aliases: ['gui-ztna']
-                type: str
-                description: Enable/disable Zero Trust Network Access features on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            h323_direct_model:
-                aliases: ['h323-direct-model']
-                type: str
-                description: Enable/disable H323 direct model.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            http_external_dest:
-                aliases: ['http-external-dest']
-                type: str
-                description: Offload HTTP traffic to FortiWeb or FortiCache.
-                choices:
-                    - 'fortiweb'
-                    - 'forticache'
-            hyperscale_default_policy_action:
-                aliases: ['hyperscale-default-policy-action']
-                type: str
-                description: Hyperscale default policy action.
-                choices:
-                    - 'drop-on-hardware'
-                    - 'forward-to-host'
-            ike_dn_format:
-                aliases: ['ike-dn-format']
-                type: str
-                description: Configure IKE ASN.
-                choices:
-                    - 'with-space'
-                    - 'no-space'
-            ike_policy_route:
-                aliases: ['ike-policy-route']
-                type: str
-                description: Enable/disable IKE Policy Based Routing
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ike_port:
-                aliases: ['ike-port']
-                type: int
-                description: UDP port for IKE/IPsec traffic
-            ike_quick_crash_detect:
-                aliases: ['ike-quick-crash-detect']
-                type: str
-                description: Enable/disable IKE quick crash detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ike_session_resume:
-                aliases: ['ike-session-resume']
-                type: str
-                description: Enable/disable IKEv2 session resumption
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ike_tcp_port:
-                aliases: ['ike-tcp-port']
-                type: int
-                description: TCP port for IKE/IPsec traffic
-            internet_service_app_ctrl_size:
-                aliases: ['internet-service-app-ctrl-size']
-                type: int
-                description: Maximum number of tuple entries
-            internet_service_database_cache:
-                aliases: ['internet-service-database-cache']
-                type: str
-                description: Enable/disable Internet Service database caching.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip:
-                type: list
-                elements: str
-                description: IP address and netmask.
-            ip6:
-                type: str
-                description: IPv6 address prefix for NAT mode.
-            lan_extension_controller_addr:
-                aliases: ['lan-extension-controller-addr']
-                type: str
-                description: Controller IP address or FQDN to connect.
-            link_down_access:
-                aliases: ['link-down-access']
-                type: str
-                description: Enable/disable link down access traffic.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            lldp_reception:
-                aliases: ['lldp-reception']
-                type: str
-                description: Enable/disable Link Layer Discovery Protocol
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'global'
-            lldp_transmission:
-                aliases: ['lldp-transmission']
-                type: str
-                description: Enable/disable Link Layer Discovery Protocol
-                choices:
-                    - 'enable'
-                    - 'disable'
-                    - 'global'
-            location_id:
-                aliases: ['location-id']
-                type: str
-                description: Local location ID in the form of an IPv4 address.
-            mac_ttl:
-                aliases: ['mac-ttl']
-                type: int
-                description: Duration of MAC addresses in Transparent mode
-            manageip:
-                type: list
-                elements: str
-                description: Transparent mode IPv4 management IP address and netmask.
-            manageip6:
-                type: str
-                description: Transparent mode IPv6 management IP address and netmask.
-            multicast_forward:
-                aliases: ['multicast-forward']
-                type: str
-                description: Enable/disable multicast forwarding.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            multicast_skip_policy:
-                aliases: ['multicast-skip-policy']
-                type: str
-                description: Enable/disable allowing multicast traffic through the FortiGate without a policy check.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            multicast_ttl_notchange:
-                aliases: ['multicast-ttl-notchange']
-                type: str
-                description: Enable/disable preventing the FortiGate from changing the TTL for forwarded multicast packets.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            nat46_force_ipv4_packet_forwarding:
-                aliases: ['nat46-force-ipv4-packet-forwarding']
-                type: str
-                description: Enable/disable mandatory IPv4 packet forwarding in NAT46.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            nat46_generate_ipv6_fragment_header:
-                aliases: ['nat46-generate-ipv6-fragment-header']
-                type: str
-                description: Enable/disable NAT46 IPv6 fragment header generation.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            nat64_force_ipv6_packet_forwarding:
-                aliases: ['nat64-force-ipv6-packet-forwarding']
-                type: str
-                description: Enable/disable mandatory IPv6 packet forwarding in NAT64.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ngfw_mode:
-                aliases: ['ngfw-mode']
-                type: str
-                description: Next Generation Firewall
-                choices:
-                    - 'profile-based'
-                    - 'policy-based'
-            npu_group_id:
-                aliases: ['npu-group-id']
-                type: int
-                description: Npu-group-index.
-            opmode:
-                type: str
-                description: Firewall operation mode
-                choices:
-                    - 'nat'
-                    - 'transparent'
-            pfcp_monitor_mode:
-                aliases: ['pfcp-monitor-mode']
-                type: str
-                description: Enable/disable PFCP monitor mode
-                choices:
-                    - 'disable'
-                    - 'enable'
-            policy_offload_level:
-                aliases: ['policy-offload-level']
-                type: str
-                description: Configure firewall policy offload level.
-                choices:
-                    - 'disable'
-                    - 'default'
-                    - 'dos-offload'
-                    - 'full-offload'
-            prp_trailer_action:
-                aliases: ['prp-trailer-action']
-                type: str
-                description: Enable/disable action to take on PRP trailer.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sccp_port:
-                aliases: ['sccp-port']
-                type: int
-                description: TCP port the SCCP proxy monitors for SCCP traffic
-            sctp_session_without_init:
-                aliases: ['sctp-session-without-init']
-                type: str
-                description: Enable/disable SCTP session creation without SCTP INIT.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ses_denied_traffic:
-                aliases: ['ses-denied-traffic']
-                type: str
-                description: Enable/disable including denied session in the session table.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            session_insert_trial:
-                aliases: ['session-insert-trial']
-                type: str
-                description: Trial session insert.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sip_expectation:
-                aliases: ['sip-expectation']
-                type: str
-                description: Enable/disable the SIP kernel session helper to create an expectation for port 5060.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sip_nat_trace:
-                aliases: ['sip-nat-trace']
-                type: str
-                description: Enable/disable recording the original SIP source IP address when NAT is used.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sip_ssl_port:
-                aliases: ['sip-ssl-port']
-                type: int
-                description: TCP port the SIP proxy monitors for SIP SSL/TLS traffic
-            sip_tcp_port:
-                aliases: ['sip-tcp-port']
-                type: list
-                elements: int
-                description: TCP port the SIP proxy monitors for SIP traffic
-            sip_udp_port:
-                aliases: ['sip-udp-port']
-                type: list
-                elements: int
-                description: UDP port the SIP proxy monitors for SIP traffic
-            snat_hairpin_traffic:
-                aliases: ['snat-hairpin-traffic']
-                type: str
-                description: Enable/disable source NAT
-                choices:
-                    - 'disable'
-                    - 'enable'
-            status:
-                type: str
-                description: Enable/disable this VDOM.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            strict_src_check:
-                aliases: ['strict-src-check']
-                type: str
-                description: Enable/disable strict source verification.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            tcp_session_without_syn:
-                aliases: ['tcp-session-without-syn']
-                type: str
-                description: Enable/disable allowing TCP session without SYN flags.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            trap_local_session:
-                aliases: ['trap-local-session']
-                type: str
-                description: Enable/disable local-in traffic session traps.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            trap_session_flag:
-                aliases: ['trap-session-flag']
-                type: str
-                description: Trap session operation flags.
-                choices:
-                    - 'udp-both'
-                    - 'udp-reply'
-                    - 'tcpudp-both'
-                    - 'tcpudp-reply'
-                    - 'trap-none'
-            utf8_spam_tagging:
-                aliases: ['utf8-spam-tagging']
-                type: str
-                description: Enable/disable converting antispam tags to UTF-8 for better non-ASCII character support.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            v4_ecmp_mode:
-                aliases: ['v4-ecmp-mode']
-                type: str
-                description: IPv4 Equal-cost multi-path
-                choices:
-                    - 'source-ip-based'
-                    - 'weight-based'
-                    - 'usage-based'
-                    - 'source-dest-ip-based'
-            vdom_type:
-                aliases: ['vdom-type']
-                type: str
-                description: Vdom type
-                choices:
-                    - 'traffic'
-                    - 'admin'
-                    - 'lan-extension'
-            vpn_stats_log:
-                aliases: ['vpn-stats-log']
-                type: list
-                elements: str
-                description: Enable/disable periodic VPN log statistics for one or more types of VPN.
-                choices:
-                    - 'ipsec'
-                    - 'pptp'
-                    - 'l2tp'
-                    - 'ssl'
-            vpn_stats_period:
-                aliases: ['vpn-stats-period']
-                type: int
-                description: Period to send VPN log statistics
-            wccp_cache_engine:
-                aliases: ['wccp-cache-engine']
-                type: str
-                description: Enable/disable WCCP cache engine.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_endpoint_control_advanced:
-                aliases: ['gui-endpoint-control-advanced']
-                type: str
-                description: Enable/disable advanced endpoint control options on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_endpoint_control:
-                aliases: ['gui-endpoint-control']
-                type: str
-                description: Enable/disable endpoint control on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_local_reports:
-                aliases: ['gui-local-reports']
-                type: str
-                description: Enable/disable local reports on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_nat46_64:
-                aliases: ['gui-nat46-64']
-                type: str
-                description: Enable/disable NAT46 and NAT64 settings on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dynamic_profile_display:
-                aliases: ['gui-dynamic-profile-display']
-                type: str
-                description: Enable/disable RADIUS Single Sign On
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_replacement_message_groups:
-                aliases: ['gui-replacement-message-groups']
-                type: str
-                description: Enable/disable replacement message groups on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_domain_ip_reputation:
-                aliases: ['gui-domain-ip-reputation']
-                type: str
-                description: Enable/disable Domain and IP Reputation on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_multiple_utm_profiles:
-                aliases: ['gui-multiple-utm-profiles']
-                type: str
-                description: Enable/disable multiple UTM profiles on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            implicit_allow_dns:
-                aliases: ['implicit-allow-dns']
-                type: str
-                description: Enable/disable implicitly allowing DNS traffic.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_per_policy_disclaimer:
-                aliases: ['gui-per-policy-disclaimer']
-                type: str
-                description: Enable/disable policy disclaimer on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            consolidated_firewall_mode:
-                aliases: ['consolidated-firewall-mode']
-                type: str
-                description: Consolidated firewall mode.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            motherboard_traffic_forwarding:
-                aliases: ['motherboard-traffic-forwarding']
-                type: list
-                elements: str
-                description: Motherboard traffic forwarding.
-                choices:
-                    - 'icmp'
-                    - 'admin'
-                    - 'auth'
-            gui_gtp:
-                aliases: ['gui-gtp']
-                type: str
-                description: Enable/disable Manage general radio packet service
-                choices:
-                    - 'disable'
-                    - 'enable'
-            nonat_eif_key_sel:
-                aliases: ['nonat-eif-key-sel']
-                type: str
-                description: Nonat EIF tuple key selection.
-                choices:
-                    - 'dip-only'
-                    - 'dip-dport'
-                    - 'dip-dport-proto'
-            ses_denied_multicast_traffic:
-                aliases: ['ses-denied-multicast-traffic']
-                type: str
-                description: Enable/disable including denied multicast session in the session table.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            dhcp_proxy_vrf_select:
-                aliases: ['dhcp-proxy-vrf-select']
-                type: int
-                description: VRF ID used for connection to server.
-            dp_load_distribution_group:
-                aliases: ['dp-load-distribution-group']
-                type: list
-                elements: str
-                description: Per VDOM DP load distribution group.
-            gui_dlp_advanced:
-                aliases: ['gui-dlp-advanced']
-                type: str
-                description: Enable/disable Show advanced DLP expressions on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_sslvpn_clients:
-                aliases: ['gui-sslvpn-clients']
-                type: str
-                description: Enable/disable SSL-VPN clients on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            intree_ses_best_route:
-                aliases: ['intree-ses-best-route']
-                type: str
-                description: Force the intree session to always use the best route.
-                choices:
-                    - 'force'
-                    - 'disable'
-            gui_fortitelemetry:
-                aliases: ['gui-fortitelemetry']
-                type: str
-                description: Enable/disable FortiTelemetry on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ike_detailed_event_logs:
-                aliases: ['ike-detailed-event-logs']
-                type: str
-                description: Enable/disable detail log for IKE events.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            forward_domain:
-                aliases: ['forward-domain']
-                type: str
-                description: Forward domain.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wccp_local_route:
-                aliases: ['wccp-local-route']
-                type: str
-                description: Wccp local route.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            gui_dlp:
-                aliases: ['gui-dlp']
-                type: str
-                description: Enable/disable DLP on the GUI.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            lan_extension_controller_port:
-                aliases: ['lan-extension-controller-port']
-                type: int
-                description: Controller port to connect.
+        description: Enable/disable blocking of land attacks.
+        choices: ['disable', 'enable']
+      central_nat:
+        aliases: ['central-nat']
+        type: str
+        description: Enable/disable central NAT.
+        choices: ['disable', 'enable']
+      comments:
+        type: str
+        description: VDOM comments.
+      default_app_port_as_service:
+        aliases: ['default-app-port-as-service']
+        type: str
+        description: Enable/disable policy service enforcement based on application default ports.
+        choices: ['disable', 'enable']
+      default_policy_expiry_days:
+        aliases: ['default-policy-expiry-days']
+        type: int
+        description: Default policy expiry in days
+      default_voip_alg_mode:
+        aliases: ['default-voip-alg-mode']
+        type: str
+        description: Configure how the FortiGate handles VoIP traffic when a policy that accepts the traffic doesnt include a VoIP profile.
+        choices: ['proxy-based', 'kernel-helper-based']
+      deny_tcp_with_icmp:
+        aliases: ['deny-tcp-with-icmp']
+        type: str
+        description: Enable/disable denying TCP by sending an ICMP communication prohibited packet.
+        choices: ['disable', 'enable']
+      detect_unknown_esp:
+        aliases: ['detect-unknown-esp']
+        type: str
+        description: Enable/disable detection of unknown ESP packets
+        choices: ['disable', 'enable']
+      device:
+        type: list
+        elements: str
+        description: Interface to use for management access for NAT mode.
+      dhcp_proxy:
+        aliases: ['dhcp-proxy']
+        type: str
+        description: Enable/disable the DHCP Proxy.
+        choices: ['disable', 'enable']
+      dhcp_proxy_interface:
+        aliases: ['dhcp-proxy-interface']
+        type: list
+        elements: str
+        description: Specify outgoing interface to reach server.
+      dhcp_proxy_interface_select_method:
+        aliases: ['dhcp-proxy-interface-select-method']
+        type: str
+        description: Specify how to select outgoing interface to reach server.
+        choices: ['auto', 'sdwan', 'specify']
+      dhcp_server_ip:
+        aliases: ['dhcp-server-ip']
+        type: list
+        elements: str
+        description: DHCP Server IPv4 address.
+      dhcp6_server_ip:
+        aliases: ['dhcp6-server-ip']
+        type: list
+        elements: str
+        description: DHCPv6 server IPv6 address.
+      discovered_device_timeout:
+        aliases: ['discovered-device-timeout']
+        type: int
+        description: Timeout for discovered devices
+      dp_load_distribution_method:
+        aliases: ['dp-load-distribution-method']
+        type: str
+        description: Per VDOM DP load distribution method.
+        choices: ['src-ip', 'dst-ip', 'src-dst-ip', 'src-ip-sport', 'dst-ip-dport',
+                  'src-dst-ip-sport-dport', 'to-master', 'derived', 'to-primary']
+      dyn_addr_session_check:
+        aliases: ['dyn-addr-session-check']
+        type: str
+        description: Enable/disable dirty session check caused by dynamic address updates.
+        choices: ['disable', 'enable']
+      ecmp_max_paths:
+        aliases: ['ecmp-max-paths']
+        type: int
+        description: Maximum number of Equal Cost Multi-Path
+      email_portal_check_dns:
+        aliases: ['email-portal-check-dns']
+        type: str
+        description: Enable/disable using DNS to validate email addresses collected by a captive portal.
+        choices: ['disable', 'enable']
+      ext_resource_session_check:
+        aliases: ['ext-resource-session-check']
+        type: str
+        description: Enable/disable dirty session check caused by external resource updates.
+        choices: ['disable', 'enable']
+      firewall_session_dirty:
+        aliases: ['firewall-session-dirty']
+        type: str
+        description: Select how to manage sessions affected by firewall policy configuration changes.
+        choices: ['check-all', 'check-new', 'check-policy-option']
+      fqdn_session_check:
+        aliases: ['fqdn-session-check']
+        type: str
+        description: Enable/disable dirty session check caused by FQDN updates.
+        choices: ['disable', 'enable']
+      fw_session_hairpin:
+        aliases: ['fw-session-hairpin']
+        type: str
+        description: Enable/disable checking for a matching policy each time hairpin traffic goes through the FortiGate.
+        choices: ['disable', 'enable']
+      gateway:
+        type: str
+        description: Transparent mode IPv4 default gateway IP address.
+      gateway6:
+        type: str
+        description: Transparent mode IPv6 default gateway IP address.
+      gtp_asym_fgsp:
+        aliases: ['gtp-asym-fgsp']
+        type: str
+        description: Enable/disable GTP asymmetric traffic handling on FGSP.
+        choices: ['disable', 'enable']
+      gtp_monitor_mode:
+        aliases: ['gtp-monitor-mode']
+        type: str
+        description: Enable/disable GTP monitor mode
+        choices: ['disable', 'enable']
+      gui_advanced_policy:
+        aliases: ['gui-advanced-policy']
+        type: str
+        description: Enable/disable advanced policy configuration on the GUI.
+        choices: ['disable', 'enable']
+      gui_advanced_wireless_features:
+        aliases: ['gui-advanced-wireless-features']
+        type: str
+        description: Enable/disable advanced wireless features in GUI.
+        choices: ['disable', 'enable']
+      gui_allow_unnamed_policy:
+        aliases: ['gui-allow-unnamed-policy']
+        type: str
+        description: Enable/disable the requirement for policy naming on the GUI.
+        choices: ['disable', 'enable']
+      gui_antivirus:
+        aliases: ['gui-antivirus']
+        type: str
+        description: Enable/disable AntiVirus on the GUI.
+        choices: ['disable', 'enable']
+      gui_ap_profile:
+        aliases: ['gui-ap-profile']
+        type: str
+        description: Enable/disable FortiAP profiles on the GUI.
+        choices: ['disable', 'enable']
+      gui_application_control:
+        aliases: ['gui-application-control']
+        type: str
+        description: Enable/disable application control on the GUI.
+        choices: ['disable', 'enable']
+      gui_casb:
+        aliases: ['gui-casb']
+        type: str
+        description: Enable/disable Inline-CASB on the GUI.
+        choices: ['disable', 'enable']
+      gui_default_policy_columns:
+        aliases: ['gui-default-policy-columns']
+        type: list
+        elements: str
+        description: Default columns to display for policy lists on GUI.
+      gui_dhcp_advanced:
+        aliases: ['gui-dhcp-advanced']
+        type: str
+        description: Enable/disable advanced DHCP options on the GUI.
+        choices: ['disable', 'enable']
+      gui_dlp_profile:
+        aliases: ['gui-dlp-profile']
+        type: str
+        description: Enable/disable Data Loss Prevention on the GUI.
+        choices: ['disable', 'enable']
+      gui_dns_database:
+        aliases: ['gui-dns-database']
+        type: str
+        description: Enable/disable DNS database settings on the GUI.
+        choices: ['disable', 'enable']
+      gui_dnsfilter:
+        aliases: ['gui-dnsfilter']
+        type: str
+        description: Enable/disable DNS Filtering on the GUI.
+        choices: ['disable', 'enable']
+      gui_dos_policy:
+        aliases: ['gui-dos-policy']
+        type: str
+        description: Enable/disable DoS policies on the GUI.
+        choices: ['disable', 'enable']
+      gui_dynamic_device_os_id:
+        aliases: ['gui-dynamic-device-os-id']
+        type: str
+        description: Enable/disable Create dynamic addresses to manage known devices.
+        choices: ['disable', 'enable']
+      gui_dynamic_routing:
+        aliases: ['gui-dynamic-routing']
+        type: str
+        description: Enable/disable dynamic routing on the GUI.
+        choices: ['disable', 'enable']
+      gui_email_collection:
+        aliases: ['gui-email-collection']
+        type: str
+        description: Enable/disable email collection on the GUI.
+        choices: ['disable', 'enable']
+      gui_enforce_change_summary:
+        aliases: ['gui-enforce-change-summary']
+        type: str
+        description: Enforce change summaries for select tables in the GUI.
+        choices: ['disable', 'require', 'optional']
+      gui_explicit_proxy:
+        aliases: ['gui-explicit-proxy']
+        type: str
+        description: Enable/disable the explicit proxy on the GUI.
+        choices: ['disable', 'enable']
+      gui_file_filter:
+        aliases: ['gui-file-filter']
+        type: str
+        description: Enable/disable File-filter on the GUI.
+        choices: ['disable', 'enable']
+      gui_fortiap_split_tunneling:
+        aliases: ['gui-fortiap-split-tunneling']
+        type: str
+        description: Enable/disable FortiAP split tunneling on the GUI.
+        choices: ['disable', 'enable']
+      gui_fortiextender_controller:
+        aliases: ['gui-fortiextender-controller']
+        type: str
+        description: Enable/disable FortiExtender on the GUI.
+        choices: ['disable', 'enable']
+      gui_icap:
+        aliases: ['gui-icap']
+        type: str
+        description: Enable/disable ICAP on the GUI.
+        choices: ['disable', 'enable']
+      gui_implicit_policy:
+        aliases: ['gui-implicit-policy']
+        type: str
+        description: Enable/disable implicit firewall policies on the GUI.
+        choices: ['disable', 'enable']
+      gui_ips:
+        aliases: ['gui-ips']
+        type: str
+        description: Enable/disable IPS on the GUI.
+        choices: ['disable', 'enable']
+      gui_load_balance:
+        aliases: ['gui-load-balance']
+        type: str
+        description: Enable/disable server load balancing on the GUI.
+        choices: ['disable', 'enable']
+      gui_local_in_policy:
+        aliases: ['gui-local-in-policy']
+        type: str
+        description: Enable/disable Local-In policies on the GUI.
+        choices: ['disable', 'enable']
+      gui_multicast_policy:
+        aliases: ['gui-multicast-policy']
+        type: str
+        description: Enable/disable multicast firewall policies on the GUI.
+        choices: ['disable', 'enable']
+      gui_multiple_interface_policy:
+        aliases: ['gui-multiple-interface-policy']
+        type: str
+        description: Enable/disable adding multiple interfaces to a policy on the GUI.
+        choices: ['disable', 'enable']
+      gui_object_colors:
+        aliases: ['gui-object-colors']
+        type: str
+        description: Enable/disable object colors on the GUI.
+        choices: ['disable', 'enable']
+      gui_ot:
+        aliases: ['gui-ot']
+        type: str
+        description: Enable/disable Operational technology features on the GUI.
+        choices: ['disable', 'enable']
+      gui_policy_based_ipsec:
+        aliases: ['gui-policy-based-ipsec']
+        type: str
+        description: Enable/disable policy-based IPsec VPN on the GUI.
+        choices: ['disable', 'enable']
+      gui_policy_disclaimer:
+        aliases: ['gui-policy-disclaimer']
+        type: str
+        description: Enable/disable policy disclaimer on the GUI.
+        choices: ['disable', 'enable']
+      gui_proxy_inspection:
+        aliases: ['gui-proxy-inspection']
+        type: str
+        description: Enable/disable the proxy features on the GUI.
+        choices: ['disable', 'enable']
+      gui_route_tag_address_creation:
+        aliases: ['gui-route-tag-address-creation']
+        type: str
+        description: Enable/disable route-tag addresses on the GUI.
+        choices: ['disable', 'enable']
+      gui_security_profile_group:
+        aliases: ['gui-security-profile-group']
+        type: str
+        description: Enable/disable Security Profile Groups on the GUI.
+        choices: ['disable', 'enable']
+      gui_spamfilter:
+        aliases: ['gui-spamfilter']
+        type: str
+        description: Enable/disable Antispam on the GUI.
+        choices: ['disable', 'enable']
+      gui_sslvpn:
+        aliases: ['gui-sslvpn']
+        type: str
+        description: Enable/disable SSL-VPN settings pages on the GUI.
+        choices: ['disable', 'enable']
+      gui_sslvpn_personal_bookmarks:
+        aliases: ['gui-sslvpn-personal-bookmarks']
+        type: str
+        description: Enable/disable SSL-VPN personal bookmark management on the GUI.
+        choices: ['disable', 'enable']
+      gui_sslvpn_realms:
+        aliases: ['gui-sslvpn-realms']
+        type: str
+        description: Enable/disable SSL-VPN realms on the GUI.
+        choices: ['disable', 'enable']
+      gui_switch_controller:
+        aliases: ['gui-switch-controller']
+        type: str
+        description: Enable/disable the switch controller on the GUI.
+        choices: ['disable', 'enable']
+      gui_threat_weight:
+        aliases: ['gui-threat-weight']
+        type: str
+        description: Enable/disable threat weight on the GUI.
+        choices: ['disable', 'enable']
+      gui_traffic_shaping:
+        aliases: ['gui-traffic-shaping']
+        type: str
+        description: Enable/disable traffic shaping on the GUI.
+        choices: ['disable', 'enable']
+      gui_videofilter:
+        aliases: ['gui-videofilter']
+        type: str
+        description: Enable/disable Video filtering on the GUI.
+        choices: ['disable', 'enable']
+      gui_virtual_patch_profile:
+        aliases: ['gui-virtual-patch-profile']
+        type: str
+        description: Enable/disable Virtual Patching on the GUI.
+        choices: ['disable', 'enable']
+      gui_voip_profile:
+        aliases: ['gui-voip-profile']
+        type: str
+        description: Enable/disable VoIP profiles on the GUI.
+        choices: ['disable', 'enable']
+      gui_vpn:
+        aliases: ['gui-vpn']
+        type: str
+        description: Enable/disable IPsec VPN settings pages on the GUI.
+        choices: ['disable', 'enable']
+      gui_waf_profile:
+        aliases: ['gui-waf-profile']
+        type: str
+        description: Enable/disable Web Application Firewall on the GUI.
+        choices: ['disable', 'enable']
+      gui_wan_load_balancing:
+        aliases: ['gui-wan-load-balancing']
+        type: str
+        description: Enable/disable SD-WAN on the GUI.
+        choices: ['disable', 'enable']
+      gui_wanopt_cache:
+        aliases: ['gui-wanopt-cache']
+        type: str
+        description: Enable/disable WAN Optimization and Web Caching on the GUI.
+        choices: ['disable', 'enable']
+      gui_webfilter:
+        aliases: ['gui-webfilter']
+        type: str
+        description: Enable/disable Web filtering on the GUI.
+        choices: ['disable', 'enable']
+      gui_webfilter_advanced:
+        aliases: ['gui-webfilter-advanced']
+        type: str
+        description: Enable/disable advanced web filtering on the GUI.
+        choices: ['disable', 'enable']
+      gui_wireless_controller:
+        aliases: ['gui-wireless-controller']
+        type: str
+        description: Enable/disable the wireless controller on the GUI.
+        choices: ['disable', 'enable']
+      gui_ztna:
+        aliases: ['gui-ztna']
+        type: str
+        description: Enable/disable Zero Trust Network Access features on the GUI.
+        choices: ['disable', 'enable']
+      h323_direct_model:
+        aliases: ['h323-direct-model']
+        type: str
+        description: Enable/disable H323 direct model.
+        choices: ['disable', 'enable']
+      http_external_dest:
+        aliases: ['http-external-dest']
+        type: str
+        description: Offload HTTP traffic to FortiWeb or FortiCache.
+        choices: ['fortiweb', 'forticache']
+      hyperscale_default_policy_action:
+        aliases: ['hyperscale-default-policy-action']
+        type: str
+        description: Hyperscale default policy action.
+        choices: ['drop-on-hardware', 'forward-to-host']
+      ike_dn_format:
+        aliases: ['ike-dn-format']
+        type: str
+        description: Configure IKE ASN.
+        choices: ['with-space', 'no-space']
+      ike_policy_route:
+        aliases: ['ike-policy-route']
+        type: str
+        description: Enable/disable IKE Policy Based Routing
+        choices: ['disable', 'enable']
+      ike_port:
+        aliases: ['ike-port']
+        type: int
+        description: UDP port for IKE/IPsec traffic
+      ike_quick_crash_detect:
+        aliases: ['ike-quick-crash-detect']
+        type: str
+        description: Enable/disable IKE quick crash detection
+        choices: ['disable', 'enable']
+      ike_session_resume:
+        aliases: ['ike-session-resume']
+        type: str
+        description: Enable/disable IKEv2 session resumption
+        choices: ['disable', 'enable']
+      ike_tcp_port:
+        aliases: ['ike-tcp-port']
+        type: int
+        description: TCP port for IKE/IPsec traffic
+      internet_service_app_ctrl_size:
+        aliases: ['internet-service-app-ctrl-size']
+        type: int
+        description: Maximum number of tuple entries
+      internet_service_database_cache:
+        aliases: ['internet-service-database-cache']
+        type: str
+        description: Enable/disable Internet Service database caching.
+        choices: ['disable', 'enable']
+      ip:
+        type: list
+        elements: str
+        description: IP address and netmask.
+      ip6:
+        type: str
+        description: IPv6 address prefix for NAT mode.
+      lan_extension_controller_addr:
+        aliases: ['lan-extension-controller-addr']
+        type: str
+        description: Controller IP address or FQDN to connect.
+      link_down_access:
+        aliases: ['link-down-access']
+        type: str
+        description: Enable/disable link down access traffic.
+        choices: ['disable', 'enable']
+      lldp_reception:
+        aliases: ['lldp-reception']
+        type: str
+        description: Enable/disable Link Layer Discovery Protocol
+        choices: ['disable', 'enable', 'global']
+      lldp_transmission:
+        aliases: ['lldp-transmission']
+        type: str
+        description: Enable/disable Link Layer Discovery Protocol
+        choices: ['enable', 'disable', 'global']
+      location_id:
+        aliases: ['location-id']
+        type: str
+        description: Local location ID in the form of an IPv4 address.
+      mac_ttl:
+        aliases: ['mac-ttl']
+        type: int
+        description: Duration of MAC addresses in Transparent mode
+      manageip:
+        type: list
+        elements: str
+        description: Transparent mode IPv4 management IP address and netmask.
+      manageip6:
+        type: str
+        description: Transparent mode IPv6 management IP address and netmask.
+      multicast_forward:
+        aliases: ['multicast-forward']
+        type: str
+        description: Enable/disable multicast forwarding.
+        choices: ['disable', 'enable']
+      multicast_skip_policy:
+        aliases: ['multicast-skip-policy']
+        type: str
+        description: Enable/disable allowing multicast traffic through the FortiGate without a policy check.
+        choices: ['disable', 'enable']
+      multicast_ttl_notchange:
+        aliases: ['multicast-ttl-notchange']
+        type: str
+        description: Enable/disable preventing the FortiGate from changing the TTL for forwarded multicast packets.
+        choices: ['disable', 'enable']
+      nat46_force_ipv4_packet_forwarding:
+        aliases: ['nat46-force-ipv4-packet-forwarding']
+        type: str
+        description: Enable/disable mandatory IPv4 packet forwarding in NAT46.
+        choices: ['disable', 'enable']
+      nat46_generate_ipv6_fragment_header:
+        aliases: ['nat46-generate-ipv6-fragment-header']
+        type: str
+        description: Enable/disable NAT46 IPv6 fragment header generation.
+        choices: ['disable', 'enable']
+      nat64_force_ipv6_packet_forwarding:
+        aliases: ['nat64-force-ipv6-packet-forwarding']
+        type: str
+        description: Enable/disable mandatory IPv6 packet forwarding in NAT64.
+        choices: ['disable', 'enable']
+      ngfw_mode:
+        aliases: ['ngfw-mode']
+        type: str
+        description: Next Generation Firewall
+        choices: ['profile-based', 'policy-based']
+      npu_group_id:
+        aliases: ['npu-group-id']
+        type: int
+        description: Npu-group-index.
+      opmode:
+        type: str
+        description: Firewall operation mode
+        choices: ['nat', 'transparent']
+      pfcp_monitor_mode:
+        aliases: ['pfcp-monitor-mode']
+        type: str
+        description: Enable/disable PFCP monitor mode
+        choices: ['disable', 'enable']
+      policy_offload_level:
+        aliases: ['policy-offload-level']
+        type: str
+        description: Configure firewall policy offload level.
+        choices: ['disable', 'default', 'dos-offload', 'full-offload']
+      prp_trailer_action:
+        aliases: ['prp-trailer-action']
+        type: str
+        description: Enable/disable action to take on PRP trailer.
+        choices: ['disable', 'enable']
+      sccp_port:
+        aliases: ['sccp-port']
+        type: int
+        description: TCP port the SCCP proxy monitors for SCCP traffic
+      sctp_session_without_init:
+        aliases: ['sctp-session-without-init']
+        type: str
+        description: Enable/disable SCTP session creation without SCTP INIT.
+        choices: ['disable', 'enable']
+      ses_denied_traffic:
+        aliases: ['ses-denied-traffic']
+        type: str
+        description: Enable/disable including denied session in the session table.
+        choices: ['disable', 'enable']
+      session_insert_trial:
+        aliases: ['session-insert-trial']
+        type: str
+        description: Trial session insert.
+        choices: ['disable', 'enable']
+      sip_expectation:
+        aliases: ['sip-expectation']
+        type: str
+        description: Enable/disable the SIP kernel session helper to create an expectation for port 5060.
+        choices: ['disable', 'enable']
+      sip_nat_trace:
+        aliases: ['sip-nat-trace']
+        type: str
+        description: Enable/disable recording the original SIP source IP address when NAT is used.
+        choices: ['disable', 'enable']
+      sip_ssl_port:
+        aliases: ['sip-ssl-port']
+        type: int
+        description: TCP port the SIP proxy monitors for SIP SSL/TLS traffic
+      sip_tcp_port:
+        aliases: ['sip-tcp-port']
+        type: list
+        elements: int
+        description: TCP port the SIP proxy monitors for SIP traffic
+      sip_udp_port:
+        aliases: ['sip-udp-port']
+        type: list
+        elements: int
+        description: UDP port the SIP proxy monitors for SIP traffic
+      snat_hairpin_traffic:
+        aliases: ['snat-hairpin-traffic']
+        type: str
+        description: Enable/disable source NAT
+        choices: ['disable', 'enable']
+      status:
+        type: str
+        description: Enable/disable this VDOM.
+        choices: ['disable', 'enable']
+      strict_src_check:
+        aliases: ['strict-src-check']
+        type: str
+        description: Enable/disable strict source verification.
+        choices: ['disable', 'enable']
+      tcp_session_without_syn:
+        aliases: ['tcp-session-without-syn']
+        type: str
+        description: Enable/disable allowing TCP session without SYN flags.
+        choices: ['disable', 'enable']
+      trap_local_session:
+        aliases: ['trap-local-session']
+        type: str
+        description: Enable/disable local-in traffic session traps.
+        choices: ['disable', 'enable']
+      trap_session_flag:
+        aliases: ['trap-session-flag']
+        type: str
+        description: Trap session operation flags.
+        choices: ['udp-both', 'udp-reply', 'tcpudp-both', 'tcpudp-reply', 'trap-none']
+      utf8_spam_tagging:
+        aliases: ['utf8-spam-tagging']
+        type: str
+        description: Enable/disable converting antispam tags to UTF-8 for better non-ASCII character support.
+        choices: ['disable', 'enable']
+      v4_ecmp_mode:
+        aliases: ['v4-ecmp-mode']
+        type: str
+        description: IPv4 Equal-cost multi-path
+        choices: ['source-ip-based', 'weight-based', 'usage-based', 'source-dest-ip-based']
+      vdom_type:
+        aliases: ['vdom-type']
+        type: str
+        description: Vdom type
+        choices: ['traffic', 'admin', 'lan-extension', 'chassis-admin']
+      vpn_stats_log:
+        aliases: ['vpn-stats-log']
+        type: list
+        elements: str
+        description: Enable/disable periodic VPN log statistics for one or more types of VPN.
+        choices: ['ipsec', 'pptp', 'l2tp', 'ssl']
+      vpn_stats_period:
+        aliases: ['vpn-stats-period']
+        type: int
+        description: Period to send VPN log statistics
+      wccp_cache_engine:
+        aliases: ['wccp-cache-engine']
+        type: str
+        description: Enable/disable WCCP cache engine.
+        choices: ['disable', 'enable']
+      gui_endpoint_control_advanced:
+        aliases: ['gui-endpoint-control-advanced']
+        type: str
+        description: Enable/disable advanced endpoint control options on the GUI.
+        choices: ['disable', 'enable']
+      gui_endpoint_control:
+        aliases: ['gui-endpoint-control']
+        type: str
+        description: Enable/disable endpoint control on the GUI.
+        choices: ['disable', 'enable']
+      gui_local_reports:
+        aliases: ['gui-local-reports']
+        type: str
+        description: Enable/disable local reports on the GUI.
+        choices: ['disable', 'enable']
+      gui_nat46_64:
+        aliases: ['gui-nat46-64']
+        type: str
+        description: Enable/disable NAT46 and NAT64 settings on the GUI.
+        choices: ['disable', 'enable']
+      gui_dynamic_profile_display:
+        aliases: ['gui-dynamic-profile-display']
+        type: str
+        description: Enable/disable RADIUS Single Sign On
+        choices: ['disable', 'enable']
+      gui_replacement_message_groups:
+        aliases: ['gui-replacement-message-groups']
+        type: str
+        description: Enable/disable replacement message groups on the GUI.
+        choices: ['disable', 'enable']
+      gui_domain_ip_reputation:
+        aliases: ['gui-domain-ip-reputation']
+        type: str
+        description: Enable/disable Domain and IP Reputation on the GUI.
+        choices: ['disable', 'enable']
+      gui_multiple_utm_profiles:
+        aliases: ['gui-multiple-utm-profiles']
+        type: str
+        description: Enable/disable multiple UTM profiles on the GUI.
+        choices: ['disable', 'enable']
+      implicit_allow_dns:
+        aliases: ['implicit-allow-dns']
+        type: str
+        description: Enable/disable implicitly allowing DNS traffic.
+        choices: ['disable', 'enable']
+      gui_per_policy_disclaimer:
+        aliases: ['gui-per-policy-disclaimer']
+        type: str
+        description: Enable/disable policy disclaimer on the GUI.
+        choices: ['disable', 'enable']
+      consolidated_firewall_mode:
+        aliases: ['consolidated-firewall-mode']
+        type: str
+        description: Consolidated firewall mode.
+        choices: ['disable', 'enable']
+      motherboard_traffic_forwarding:
+        aliases: ['motherboard-traffic-forwarding']
+        type: list
+        elements: str
+        description: Motherboard traffic forwarding.
+        choices: ['icmp', 'admin', 'auth']
+      gui_gtp:
+        aliases: ['gui-gtp']
+        type: str
+        description: Enable/disable Manage general radio packet service
+        choices: ['disable', 'enable']
+      nonat_eif_key_sel:
+        aliases: ['nonat-eif-key-sel']
+        type: str
+        description: Nonat EIF tuple key selection.
+        choices: ['dip-only', 'dip-dport', 'dip-dport-proto']
+      ses_denied_multicast_traffic:
+        aliases: ['ses-denied-multicast-traffic']
+        type: str
+        description: Enable/disable including denied multicast session in the session table.
+        choices: ['disable', 'enable']
+      dhcp_proxy_vrf_select:
+        aliases: ['dhcp-proxy-vrf-select']
+        type: int
+        description: VRF ID used for connection to server.
+      dp_load_distribution_group:
+        aliases: ['dp-load-distribution-group']
+        type: list
+        elements: str
+        description: Per VDOM DP load distribution group.
+      gui_dlp_advanced:
+        aliases: ['gui-dlp-advanced']
+        type: str
+        description: Enable/disable Show advanced DLP expressions on the GUI.
+        choices: ['disable', 'enable']
+      gui_sslvpn_clients:
+        aliases: ['gui-sslvpn-clients']
+        type: str
+        description: Enable/disable SSL-VPN clients on the GUI.
+        choices: ['disable', 'enable']
+      intree_ses_best_route:
+        aliases: ['intree-ses-best-route']
+        type: str
+        description: Force the intree session to always use the best route.
+        choices: ['force', 'disable']
+      gui_fortitelemetry:
+        aliases: ['gui-fortitelemetry']
+        type: str
+        description: Enable/disable FortiTelemetry on the GUI.
+        choices: ['disable', 'enable']
+      ike_detailed_event_logs:
+        aliases: ['ike-detailed-event-logs']
+        type: str
+        description: Enable/disable detail log for IKE events.
+        choices: ['disable', 'enable']
+      forward_domain:
+        aliases: ['forward-domain']
+        type: str
+        description: Forward domain.
+        choices: ['disable', 'enable']
+      wccp_local_route:
+        aliases: ['wccp-local-route']
+        type: str
+        description: Wccp local route.
+        choices: ['disable', 'enable']
+      gui_dlp:
+        aliases: ['gui-dlp']
+        type: str
+        description: Enable/disable DLP on the GUI.
+        choices: ['disable', 'enable']
+      lan_extension_controller_port:
+        aliases: ['lan-extension-controller-port']
+        type: int
+        description: Controller port to connect.
+      ike_extra_ports:
+        aliases: ['ike-extra-ports']
+        type: list
+        elements: int
+        description: Extra UDP ports for the IKE daemon to listen on other than 500 and 4500
+      src_check_reply:
+        aliases: ['src-check-reply']
+        type: str
+        description: Enable/disable source verification for reply packets.
+        choices: ['disable', 'enable']
+      gtp_fgsp_s10_only:
+        aliases: ['gtp-fgsp-s10-only']
+        type: str
+        description: Enable/disable synchronization over FGSP of only GTP tunnels created by the S10 interface.
+        choices: ['disable', 'enable']
+      gui_advanced_switch_features:
+        aliases: ['gui-advanced-switch-features']
+        type: str
+        description: Enable/disable advanced switching features on the GUI.
+        choices: ['disable', 'enable']
+      gui_policy_custom_tags:
+        aliases: ['gui-policy-custom-tags']
+        type: str
+        description: Enable/disable Allow configuring custom tags for polices on the GUI.
+        choices: ['disable', 'enable']
+      gui_reverse_connector:
+        aliases: ['gui-reverse-connector']
+        type: str
+        description: Enable/disable Enable ZTNA Reverse Proxy Connector on the GUI.
+        choices: ['disable', 'enable']
+      ike_proposal_visibility:
+        aliases: ['ike-proposal-visibility']
+        type: str
+        description: Enable/disable display only recommended proposals in IPsec tunnel configuration.
+        choices: ['recommended', 'all']
+      ike_tcp_service:
+        aliases: ['ike-tcp-service']
+        type: str
+        description: Enable/disable IKE TCP service.
+        choices: ['disable', 'enable']
+      ike_tls_service:
+        aliases: ['ike-tls-service']
+        type: str
+        description: Enable/disable IKE TLS service.
+        choices: ['disable', 'enable']
+      vrf_local_ip_isolation:
+        aliases: ['vrf-local-ip-isolation']
+        type: str
+        description: Enable/disable VRF local IP address isolation.
+        choices: ['disable', 'enable']
 '''
 
 EXAMPLES = '''
@@ -1221,18 +920,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure VDOM settings.
       fortinet.fmgdevice.fmgd_system_settings:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         system_settings:
@@ -1379,12 +1070,8 @@ EXAMPLES = '''
           # trap_session_flag: <value in [udp-both, udp-reply, tcpudp-both, ...]>
           # utf8_spam_tagging: <value in [disable, enable]>
           # v4_ecmp_mode: <value in [source-ip-based, weight-based, usage-based, ...]>
-          # vdom_type: <value in [traffic, admin, lan-extension]>
-          # vpn_stats_log:
-          #   - "ipsec"
-          #   - "pptp"
-          #   - "l2tp"
-          #   - "ssl"
+          # vdom_type: <value in [traffic, admin, lan-extension, ...]>
+          # vpn_stats_log: ["ipsec", "pptp", "l2tp", "ssl"]
           # vpn_stats_period: <integer>
           # wccp_cache_engine: <value in [disable, enable]>
           # gui_endpoint_control_advanced: <value in [disable, enable]>
@@ -1398,10 +1085,7 @@ EXAMPLES = '''
           # implicit_allow_dns: <value in [disable, enable]>
           # gui_per_policy_disclaimer: <value in [disable, enable]>
           # consolidated_firewall_mode: <value in [disable, enable]>
-          # motherboard_traffic_forwarding:
-          #   - "icmp"
-          #   - "admin"
-          #   - "auth"
+          # motherboard_traffic_forwarding: ["icmp", "admin", "auth"]
           # gui_gtp: <value in [disable, enable]>
           # nonat_eif_key_sel: <value in [dip-only, dip-dport, dip-dport-proto]>
           # ses_denied_multicast_traffic: <value in [disable, enable]>
@@ -1416,46 +1100,56 @@ EXAMPLES = '''
           # wccp_local_route: <value in [disable, enable]>
           # gui_dlp: <value in [disable, enable]>
           # lan_extension_controller_port: <integer>
+          # ike_extra_ports: <list or integer>
+          # src_check_reply: <value in [disable, enable]>
+          # gtp_fgsp_s10_only: <value in [disable, enable]>
+          # gui_advanced_switch_features: <value in [disable, enable]>
+          # gui_policy_custom_tags: <value in [disable, enable]>
+          # gui_reverse_connector: <value in [disable, enable]>
+          # ike_proposal_visibility: <value in [recommended, all]>
+          # ike_tcp_service: <value in [disable, enable]>
+          # ike_tls_service: <value in [disable, enable]>
+          # vrf_local_ip_isolation: <value in [disable, enable]>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -1467,14 +1161,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/system/settings'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = None
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'system_settings': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'allow-linkdown-path': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'allow-subnet-overlap': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
@@ -1657,7 +1348,11 @@ def main():
                     'choices': ['source-ip-based', 'weight-based', 'usage-based', 'source-dest-ip-based'],
                     'type': 'str'
                 },
-                'vdom-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['traffic', 'admin', 'lan-extension'], 'type': 'str'},
+                'vdom-type': {
+                    'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+                    'choices': ['traffic', 'admin', 'lan-extension', 'chassis-admin'],
+                    'type': 'str'
+                },
                 'vpn-stats-log': {
                     'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
                     'type': 'list',
@@ -1670,10 +1365,10 @@ def main():
                 'gui-endpoint-control': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'gui-local-reports': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'gui-nat46-64': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'gui-dynamic-profile-display': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'gui-replacement-message-groups': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'gui-domain-ip-reputation': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'gui-multiple-utm-profiles': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-dynamic-profile-display': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-replacement-message-groups': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-domain-ip-reputation': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-multiple-utm-profiles': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.7']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'implicit-allow-dns': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'gui-per-policy-disclaimer': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'consolidated-firewall-mode': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'choices': ['disable', 'enable'], 'type': 'str'},
@@ -1685,37 +1380,43 @@ def main():
                 },
                 'gui-gtp': {'v_range': [['7.6.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'nonat-eif-key-sel': {'v_range': [['7.6.0', '']], 'choices': ['dip-only', 'dip-dport', 'dip-dport-proto'], 'type': 'str'},
-                'ses-denied-multicast-traffic': {'v_range': [['7.4.4', '7.4.10'], ['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ses-denied-multicast-traffic': {'v_range': [['7.4.4', '7.4.11'], ['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'dhcp-proxy-vrf-select': {'v_range': [['7.6.2', '']], 'type': 'int'},
                 'dp-load-distribution-group': {'v_range': [['7.6.2', '']], 'type': 'list', 'elements': 'str'},
                 'gui-dlp-advanced': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'gui-sslvpn-clients': {'v_range': [['7.6.2', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'intree-ses-best-route': {'v_range': [['7.4.8', '7.4.10'], ['7.6.2', '']], 'choices': ['force', 'disable'], 'type': 'str'},
+                'intree-ses-best-route': {'v_range': [['7.4.8', '7.4.11'], ['7.6.2', '']], 'choices': ['force', 'disable'], 'type': 'str'},
                 'gui-fortitelemetry': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'ike-detailed-event-logs': {'v_range': [['7.6.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'forward-domain': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'wccp-local-route': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'gui-dlp': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'lan-extension-controller-port': {'v_range': [['7.6.5', '']], 'type': 'int'}
+                'forward-domain': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'wccp-local-route': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-dlp': {'v_range': [['7.4.8', '7.4.11']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'lan-extension-controller-port': {'v_range': [['7.6.5', '']], 'type': 'int'},
+                'ike-extra-ports': {'v_range': [['7.6.7', '']], 'type': 'list', 'elements': 'int'},
+                'src-check-reply': {'v_range': [['7.6.7', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gtp-fgsp-s10-only': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-advanced-switch-features': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-policy-custom-tags': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'gui-reverse-connector': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ike-proposal-visibility': {'v_range': [['8.0.0', '']], 'choices': ['recommended', 'all'], 'type': 'str'},
+                'ike-tcp-service': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ike-tls-service': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'vrf-local-ip-isolation': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('partial crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'system_settings'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list,
+                       None, 'data', module, connection)
     fmgd.process_partial_crud()
-
     module.exit_json(meta=module.params)
 
 

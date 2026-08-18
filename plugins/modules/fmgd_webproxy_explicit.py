@@ -13,355 +13,248 @@ DOCUMENTATION = '''
 ---
 module: fmgd_webproxy_explicit
 short_description: Configure explicit Web proxy settings.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  webproxy_explicit:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      client_cert:
+        aliases: ['client-cert']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Enable/disable to request client certificate.
+        choices: ['disable', 'enable']
+      empty_cert_action:
+        aliases: ['empty-cert-action']
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+        description: Action of an empty client certificate.
+        choices: ['block', 'accept', 'accept-unmanageable']
+      ftp_incoming_port:
+        aliases: ['ftp-incoming-port']
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
+        elements: str
+        description: Accept incoming FTP-over-HTTP requests on one or more ports
+      ftp_over_http:
+        aliases: ['ftp-over-http']
+        type: str
+        description: Enable to proxy FTP-over-HTTP sessions sent from a web browser.
+        choices: ['disable', 'enable']
+      http_connection_mode:
+        aliases: ['http-connection-mode']
+        type: str
+        description: HTTP connection mode
+        choices: ['static', 'multiplex', 'serverpool']
+      http_incoming_port:
+        aliases: ['http-incoming-port']
         type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
+        elements: str
+        description: Accept incoming HTTP requests on one or more ports
+      https_incoming_port:
+        aliases: ['https-incoming-port']
+        type: list
+        elements: str
+        description: Accept incoming HTTPS requests on one or more ports
+      https_replacement_message:
+        aliases: ['https-replacement-message']
         type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+        description: Enable/disable sending the client a replacement message for HTTPS requests.
+        choices: ['disable', 'enable']
+      incoming_ip:
+        aliases: ['incoming-ip']
         type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
-        type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Restrict the explicit HTTP proxy to only accept sessions from this IP address.
+      incoming_ip6:
+        aliases: ['incoming-ip6']
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: Restrict the explicit web proxy to only accept sessions from this IPv6 address.
+      ipv6_status:
+        aliases: ['ipv6-status']
         type: str
-        required: true
-    webproxy_explicit:
-        description: The top level parameters set.
-        required: false
-        type: dict
+        description: Enable/disable allowing an IPv6 web proxy destination in policies and all IPv6 related entries in this command.
+        choices: ['disable', 'enable']
+      message_upon_server_error:
+        aliases: ['message-upon-server-error']
+        type: str
+        description: Enable/disable displaying a replacement message when a server error is detected.
+        choices: ['disable', 'enable']
+      outgoing_ip:
+        aliases: ['outgoing-ip']
+        type: list
+        elements: str
+        description: Outgoing HTTP requests will have this IP address as their source address.
+      outgoing_ip6:
+        aliases: ['outgoing-ip6']
+        type: list
+        elements: str
+        description: Outgoing HTTP requests will leave this IPv6.
+      pac_file_data:
+        aliases: ['pac-file-data']
+        type: str
+        description: PAC file contents enclosed in quotes
+      pac_file_name:
+        aliases: ['pac-file-name']
+        type: str
+        description: Pac file name.
+      pac_file_server_port:
+        aliases: ['pac-file-server-port']
+        type: list
+        elements: str
+        description: Port number that PAC traffic from client web browsers uses to connect to the explicit web proxy
+      pac_file_server_status:
+        aliases: ['pac-file-server-status']
+        type: str
+        description: Enable/disable Proxy Auto-Configuration
+        choices: ['disable', 'enable']
+      pac_file_through_https:
+        aliases: ['pac-file-through-https']
+        type: str
+        description: Enable/disable to get Proxy Auto-Configuration
+        choices: ['disable', 'enable']
+      pac_file_url:
+        aliases: ['pac-file-url']
+        type: str
+        description: Pac file url.
+      pac_policy:
+        aliases: ['pac-policy']
+        type: list
+        elements: dict
+        description: Pac policy.
         suboptions:
-            client_cert:
-                aliases: ['client-cert']
-                type: str
-                description: Enable/disable to request client certificate.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            empty_cert_action:
-                aliases: ['empty-cert-action']
-                type: str
-                description: Action of an empty client certificate.
-                choices:
-                    - 'block'
-                    - 'accept'
-                    - 'accept-unmanageable'
-            ftp_incoming_port:
-                aliases: ['ftp-incoming-port']
-                type: list
-                elements: str
-                description: Accept incoming FTP-over-HTTP requests on one or more ports
-            ftp_over_http:
-                aliases: ['ftp-over-http']
-                type: str
-                description: Enable to proxy FTP-over-HTTP sessions sent from a web browser.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            http_connection_mode:
-                aliases: ['http-connection-mode']
-                type: str
-                description: HTTP connection mode
-                choices:
-                    - 'static'
-                    - 'multiplex'
-                    - 'serverpool'
-            http_incoming_port:
-                aliases: ['http-incoming-port']
-                type: list
-                elements: str
-                description: Accept incoming HTTP requests on one or more ports
-            https_incoming_port:
-                aliases: ['https-incoming-port']
-                type: list
-                elements: str
-                description: Accept incoming HTTPS requests on one or more ports
-            https_replacement_message:
-                aliases: ['https-replacement-message']
-                type: str
-                description: Enable/disable sending the client a replacement message for HTTPS requests.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            incoming_ip:
-                aliases: ['incoming-ip']
-                type: str
-                description: Restrict the explicit HTTP proxy to only accept sessions from this IP address.
-            incoming_ip6:
-                aliases: ['incoming-ip6']
-                type: str
-                description: Restrict the explicit web proxy to only accept sessions from this IPv6 address.
-            ipv6_status:
-                aliases: ['ipv6-status']
-                type: str
-                description: Enable/disable allowing an IPv6 web proxy destination in policies and all IPv6 related entries in this command.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            message_upon_server_error:
-                aliases: ['message-upon-server-error']
-                type: str
-                description: Enable/disable displaying a replacement message when a server error is detected.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            outgoing_ip:
-                aliases: ['outgoing-ip']
-                type: list
-                elements: str
-                description: Outgoing HTTP requests will have this IP address as their source address.
-            outgoing_ip6:
-                aliases: ['outgoing-ip6']
-                type: list
-                elements: str
-                description: Outgoing HTTP requests will leave this IPv6.
-            pac_file_data:
-                aliases: ['pac-file-data']
-                type: str
-                description: PAC file contents enclosed in quotes
-            pac_file_name:
-                aliases: ['pac-file-name']
-                type: str
-                description: Pac file name.
-            pac_file_server_port:
-                aliases: ['pac-file-server-port']
-                type: list
-                elements: str
-                description: Port number that PAC traffic from client web browsers uses to connect to the explicit web proxy
-            pac_file_server_status:
-                aliases: ['pac-file-server-status']
-                type: str
-                description: Enable/disable Proxy Auto-Configuration
-                choices:
-                    - 'disable'
-                    - 'enable'
-            pac_file_through_https:
-                aliases: ['pac-file-through-https']
-                type: str
-                description: Enable/disable to get Proxy Auto-Configuration
-                choices:
-                    - 'disable'
-                    - 'enable'
-            pac_file_url:
-                aliases: ['pac-file-url']
-                type: str
-                description: Pac file url.
-            pac_policy:
-                aliases: ['pac-policy']
-                type: list
-                elements: dict
-                description: Pac policy.
-                suboptions:
-                    comments:
-                        type: str
-                        description: Optional comments.
-                    dstaddr:
-                        type: list
-                        elements: str
-                        description: Destination address objects.
-                    pac_file_data:
-                        aliases: ['pac-file-data']
-                        type: str
-                        description: PAC file contents enclosed in quotes
-                    pac_file_name:
-                        aliases: ['pac-file-name']
-                        type: str
-                        description: Pac file name.
-                    policyid:
-                        type: int
-                        description: Policy ID.
-                    srcaddr:
-                        type: list
-                        elements: str
-                        description: Source address objects.
-                    srcaddr6:
-                        type: list
-                        elements: str
-                        description: Source address6 objects.
-                    status:
-                        type: str
-                        description: Enable/disable policy.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            pref_dns_result:
-                aliases: ['pref-dns-result']
-                type: str
-                description: Prefer resolving addresses using the configured IPv4 or IPv6 DNS server
-                choices:
-                    - 'ipv4'
-                    - 'ipv6'
-                    - 'ipv4-strict'
-                    - 'ipv6-strict'
-            realm:
-                type: str
-                description: Authentication realm used to identify the explicit web proxy
-            sec_default_action:
-                aliases: ['sec-default-action']
-                type: str
-                description: Accept or deny explicit web proxy sessions when no web proxy firewall policy exists.
-                choices:
-                    - 'deny'
-                    - 'accept'
-            secure_web_proxy:
-                aliases: ['secure-web-proxy']
-                type: str
-                description: Enable/disable/require the secure web proxy for HTTP and HTTPS session.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'secure'
-            secure_web_proxy_cert:
-                aliases: ['secure-web-proxy-cert']
-                type: list
-                elements: str
-                description: Name of certificates for secure web proxy.
-            socks:
-                type: str
-                description: Enable/disable the SOCKS proxy.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            socks_incoming_port:
-                aliases: ['socks-incoming-port']
-                type: list
-                elements: str
-                description: Accept incoming SOCKS proxy requests on one or more ports
-            ssl_algorithm:
-                aliases: ['ssl-algorithm']
-                type: str
-                description: Relative strength of encryption algorithms accepted in HTTPS deep scan
-                choices:
-                    - 'high'
-                    - 'medium'
-                    - 'low'
-            ssl_dh_bits:
-                aliases: ['ssl-dh-bits']
-                type: str
-                description: Bit-size of Diffie-Hellman
-                choices:
-                    - '768'
-                    - '1024'
-                    - '1536'
-                    - '2048'
-            status:
-                type: str
-                description: Enable/disable the explicit Web proxy for HTTP and HTTPS session.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            strict_guest:
-                aliases: ['strict-guest']
-                type: str
-                description: Enable/disable strict guest user checking by the explicit web proxy.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            trace_auth_no_rsp:
-                aliases: ['trace-auth-no-rsp']
-                type: str
-                description: Enable/disable logging timed-out authentication requests.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            unknown_http_version:
-                aliases: ['unknown-http-version']
-                type: str
-                description: How to handle HTTP sessions that do not comply with HTTP 0.
-                choices:
-                    - 'best-effort'
-                    - 'reject'
-                    - 'tunnel'
-            user_agent_detect:
-                aliases: ['user-agent-detect']
-                type: str
-                description: Enable/disable to detect device type by HTTP user-agent if no client certificate provided.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            interface:
-                type: list
-                elements: str
-                description: Specify outgoing interface to reach server.
-            interface_select_method:
-                aliases: ['interface-select-method']
-                type: str
-                description: Specify how to select outgoing interface to reach server.
-                choices:
-                    - 'sdwan'
-                    - 'specify'
-            vrf_select:
-                aliases: ['vrf-select']
-                type: int
-                description: VRF ID used for connection to server.
-            name:
-                type: str
-                description: Object name
-                required: true
-            return_to_sender:
-                aliases: ['return-to-sender']
-                type: str
-                description: Enable/disable return-to-sender.
-                choices:
-                    - 'disable'
-                    - 'enable'
+          comments:
+            type: str
+            description: Optional comments.
+          dstaddr:
+            type: list
+            elements: str
+            description: Destination address objects.
+          pac_file_data:
+            aliases: ['pac-file-data']
+            type: str
+            description: PAC file contents enclosed in quotes
+          pac_file_name:
+            aliases: ['pac-file-name']
+            type: str
+            description: Pac file name.
+          policyid:
+            type: int
+            description: Policy ID.
+          srcaddr:
+            type: list
+            elements: str
+            description: Source address objects.
+          srcaddr6:
+            type: list
+            elements: str
+            description: Source address6 objects.
+          status:
+            type: str
+            description: Enable/disable policy.
+            choices: ['disable', 'enable']
+      pref_dns_result:
+        aliases: ['pref-dns-result']
+        type: str
+        description: Prefer resolving addresses using the configured IPv4 or IPv6 DNS server
+        choices: ['ipv4', 'ipv6', 'ipv4-strict', 'ipv6-strict']
+      realm:
+        type: str
+        description: Authentication realm used to identify the explicit web proxy
+      sec_default_action:
+        aliases: ['sec-default-action']
+        type: str
+        description: Accept or deny explicit web proxy sessions when no web proxy firewall policy exists.
+        choices: ['deny', 'accept']
+      secure_web_proxy:
+        aliases: ['secure-web-proxy']
+        type: str
+        description: Enable/disable/require the secure web proxy for HTTP and HTTPS session.
+        choices: ['disable', 'enable', 'secure']
+      secure_web_proxy_cert:
+        aliases: ['secure-web-proxy-cert']
+        type: list
+        elements: str
+        description: Name of certificates for secure web proxy.
+      socks:
+        type: str
+        description: Enable/disable the SOCKS proxy.
+        choices: ['disable', 'enable']
+      socks_incoming_port:
+        aliases: ['socks-incoming-port']
+        type: list
+        elements: str
+        description: Accept incoming SOCKS proxy requests on one or more ports
+      ssl_algorithm:
+        aliases: ['ssl-algorithm']
+        type: str
+        description: Relative strength of encryption algorithms accepted in HTTPS deep scan
+        choices: ['high', 'medium', 'low']
+      ssl_dh_bits:
+        aliases: ['ssl-dh-bits']
+        type: str
+        description: Bit-size of Diffie-Hellman
+        choices: ['768', '1024', '1536', '2048']
+      status:
+        type: str
+        description: Enable/disable the explicit Web proxy for HTTP and HTTPS session.
+        choices: ['disable', 'enable']
+      strict_guest:
+        aliases: ['strict-guest']
+        type: str
+        description: Enable/disable strict guest user checking by the explicit web proxy.
+        choices: ['disable', 'enable']
+      trace_auth_no_rsp:
+        aliases: ['trace-auth-no-rsp']
+        type: str
+        description: Enable/disable logging timed-out authentication requests.
+        choices: ['disable', 'enable']
+      unknown_http_version:
+        aliases: ['unknown-http-version']
+        type: str
+        description: How to handle HTTP sessions that do not comply with HTTP 0.
+        choices: ['best-effort', 'reject', 'tunnel']
+      user_agent_detect:
+        aliases: ['user-agent-detect']
+        type: str
+        description: Enable/disable to detect device type by HTTP user-agent if no client certificate provided.
+        choices: ['disable', 'enable']
+      interface:
+        type: list
+        elements: str
+        description: Specify outgoing interface to reach server.
+      interface_select_method:
+        aliases: ['interface-select-method']
+        type: str
+        description: Specify how to select outgoing interface to reach server.
+        choices: ['sdwan', 'specify']
+      vrf_select:
+        aliases: ['vrf-select']
+        type: int
+        description: VRF ID used for connection to server.
+      name:
+        type: str
+        description: Object name
+        required: true
+      return_to_sender:
+        aliases: ['return-to-sender']
+        type: str
+        description: Enable/disable return-to-sender.
+        choices: ['disable', 'enable']
+      client_certificate_blocklist:
+        aliases: ['client-certificate-blocklist']
+        type: str
+        description: Enable/disable blocking client malicious certificates list by FortiGuard during TLS handshake.
+        choices: ['disable', 'enable']
 '''
 
 EXAMPLES = '''
@@ -369,18 +262,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure explicit Web proxy settings.
       fortinet.fmgdevice.fmgd_webproxy_explicit:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         state: present # <value in [present, absent]>
@@ -433,46 +318,47 @@ EXAMPLES = '''
           # interface_select_method: <value in [sdwan, specify]>
           # vrf_select: <integer>
           # return_to_sender: <value in [disable, enable]>
+          # client_certificate_blocklist: <value in [disable, enable]>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -484,14 +370,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/web-proxy/explicit'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'webproxy_explicit': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'client-cert': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'empty-cert-action': {'v_range': [['7.4.3', '']], 'choices': ['block', 'accept', 'accept-unmanageable'], 'type': 'str'},
@@ -546,30 +429,27 @@ def main():
                 'trace-auth-no-rsp': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'unknown-http-version': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['best-effort', 'reject', 'tunnel'], 'type': 'str'},
                 'user-agent-detect': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'interface': {'v_range': [['7.4.8', '7.4.10'], ['7.6.2', '']], 'type': 'list', 'elements': 'str'},
+                'interface': {'v_range': [['7.4.8', '7.4.11'], ['7.6.2', '']], 'type': 'list', 'elements': 'str'},
                 'interface-select-method': {'v_range': [['7.6.2', '']], 'choices': ['sdwan', 'specify'], 'type': 'str'},
                 'vrf-select': {'v_range': [['7.6.2', '']], 'type': 'int'},
-                'name': {'v_range': [['7.4.8', '7.4.10']], 'required': True, 'type': 'str'},
-                'return-to-sender': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['disable', 'enable'], 'type': 'str'}
+                'name': {'v_range': [['7.4.8', '7.4.11']], 'required': True, 'type': 'str'},
+                'return-to-sender': {'v_range': [['7.4.8', '7.4.11']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'client-certificate-blocklist': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'webproxy_explicit'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

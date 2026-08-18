@@ -13,175 +13,122 @@ DOCUMENTATION = '''
 ---
 module: fmgd_webproxy_forwardserver
 short_description: Configure forward-server addresses.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.1.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  webproxy_forwardserver:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      addr_type:
+        aliases: ['addr-type']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
+        description: Address type of the forwarding proxy server
+        choices: ['fqdn', 'ipv6', 'ip']
+      comment:
         type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
+        description: Comment.
+      fqdn:
         type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+        description: Forward server Fully Qualified Domain Name
+      healthcheck:
+        type: str
+        description: Enable/disable forward server health checking.
+        choices: ['disable', 'enable']
+      ip:
+        type: str
+        description: Forward proxy server IP address.
+      ippool:
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
+        elements: str
+        description: Ippool.
+      ipv6:
         type: str
+        description: Forward proxy server IPv6 address.
+      masquerade:
+        type: str
+        description: Enable/disable use of the of the IP address of the outgoing interface as the client IP address
+        choices: ['disable', 'enable']
+      monitor:
+        type: str
+        description: URL for forward server health check monitoring
+      name:
+        type: str
+        description: Server name.
         required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+      password:
+        type: list
+        elements: str
+        description: HTTP authentication password.
+      port:
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Port number that the forwarding server expects to receive HTTP sessions on
+      protocol:
+        type: list
+        elements: str
+        description: Protocol.
+        choices: ['http', 'ftp', 'socks']
+      server_down_option:
+        aliases: ['server-down-option']
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: Action to take when the forward server is found to be down
+        choices: ['block', 'pass']
+      username:
         type: str
-        required: true
-    webproxy_forwardserver:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            addr_type:
-                aliases: ['addr-type']
-                type: str
-                description: Address type of the forwarding proxy server
-                choices:
-                    - 'fqdn'
-                    - 'ipv6'
-                    - 'ip'
-            comment:
-                type: str
-                description: Comment.
-            fqdn:
-                type: str
-                description: Forward server Fully Qualified Domain Name
-            healthcheck:
-                type: str
-                description: Enable/disable forward server health checking.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ip:
-                type: str
-                description: Forward proxy server IP address.
-            ippool:
-                type: list
-                elements: str
-                description: Ippool.
-            ipv6:
-                type: str
-                description: Forward proxy server IPv6 address.
-            masquerade:
-                type: str
-                description: Enable/disable use of the of the IP address of the outgoing interface as the client IP address
-                choices:
-                    - 'disable'
-                    - 'enable'
-            monitor:
-                type: str
-                description: URL for forward server health check monitoring
-            name:
-                type: str
-                description: Server name.
-                required: true
-            password:
-                type: list
-                elements: str
-                description: HTTP authentication password.
-            port:
-                type: int
-                description: Port number that the forwarding server expects to receive HTTP sessions on
-            protocol:
-                type: list
-                elements: str
-                description: Protocol.
-                choices:
-                    - 'http'
-                    - 'ftp'
-                    - 'socks'
-            server_down_option:
-                aliases: ['server-down-option']
-                type: str
-                description: Action to take when the forward server is found to be down
-                choices:
-                    - 'block'
-                    - 'pass'
-            username:
-                type: str
-                description: HTTP authentication user name.
-            authentication:
-                type: str
-                description: Authentication type.
-                choices:
-                    - 'disabled'
-                    - 'immediately'
-                    - 'upon-challenge'
-            user:
-                type: str
-                description: User name of basic proxy authentication.
-            interface_select_method:
-                aliases: ['interface-select-method']
-                type: str
-                description: Specify how to select outgoing interface to reach server.
-                choices:
-                    - 'auto'
-                    - 'sdwan'
-                    - 'specify'
-            interface:
-                type: list
-                elements: str
-                description: Specify outgoing interface to reach server.
-            vrf_select:
-                aliases: ['vrf-select']
-                type: int
-                description: VRF ID used for connection to server.
+        description: HTTP authentication user name.
+      authentication:
+        type: str
+        description: Authentication type.
+        choices: ['disabled', 'immediately', 'upon-challenge']
+      user:
+        type: str
+        description: User name of basic proxy authentication.
+      interface_select_method:
+        aliases: ['interface-select-method']
+        type: str
+        description: Specify how to select outgoing interface to reach server.
+        choices: ['auto', 'sdwan', 'specify']
+      interface:
+        type: list
+        elements: str
+        description: Specify outgoing interface to reach server.
+      vrf_select:
+        aliases: ['vrf-select']
+        type: int
+        description: VRF ID used for connection to server.
+      ippool6:
+        type: list
+        elements: str
+        description: Ippool6.
+      fabric_force_sync:
+        aliases: ['fabric-force-sync']
+        type: str
+        description: Enable/disable forced synchronization of configuration objects from the root FortiGate unit to the downstream devices.
+        choices: ['disable', 'enable']
+      fabric_object:
+        aliases: ['fabric-object']
+        type: str
+        description: Security Fabric global object setting.
+        choices: ['disable', 'enable']
+      fabric_object_source:
+        aliases: ['fabric-object-source']
+        type: str
+        description: Source of truth for fabric object.
+        choices: ['member', 'local', 'root']
+      uuid:
+        type: str
+        description: Universally Unique Identifier
 '''
 
 EXAMPLES = '''
@@ -189,18 +136,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure forward-server addresses.
       fortinet.fmgdevice.fmgd_webproxy_forwardserver:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         state: present # <value in [present, absent]>
@@ -217,10 +156,7 @@ EXAMPLES = '''
           # monitor: <string>
           # password: <list or string>
           # port: <integer>
-          # protocol:
-          #   - "http"
-          #   - "ftp"
-          #   - "socks"
+          # protocol: ["http", "ftp", "socks"]
           # server_down_option: <value in [block, pass]>
           # username: <string>
           # authentication: <value in [disabled, immediately, upon-challenge]>
@@ -228,46 +164,51 @@ EXAMPLES = '''
           # interface_select_method: <value in [auto, sdwan, specify]>
           # interface: <list or string>
           # vrf_select: <integer>
+          # ippool6: <list or string>
+          # fabric_force_sync: <value in [disable, enable]>
+          # fabric_object: <value in [disable, enable]>
+          # fabric_object_source: <value in [member, local, root]>
+          # uuid: <string>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -279,54 +220,52 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/web-proxy/forward-server'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'webproxy_forwardserver': {
-            'type': 'dict',
-            'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']],
+            'type': 'dict', 'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']],
             'options': {
-                'addr-type': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['fqdn', 'ipv6', 'ip'], 'type': 'str'},
-                'comment': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                'fqdn': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                'healthcheck': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'ip': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                'ippool': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'ipv6': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                'masquerade': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
-                'monitor': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                'name': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'required': True, 'type': 'str'},
-                'password': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'port': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'int'},
-                'protocol': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'choices': ['http', 'ftp', 'socks'], 'elements': 'str'},
-                'server-down-option': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['block', 'pass'], 'type': 'str'},
-                'username': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                'authentication': {'v_range': [['7.4.8', '7.4.10']], 'choices': ['disabled', 'immediately', 'upon-challenge'], 'type': 'str'},
-                'user': {'v_range': [['7.4.8', '7.4.10']], 'type': 'str'},
+                'addr-type': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['fqdn', 'ipv6', 'ip'], 'type': 'str'},
+                'comment': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                'fqdn': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                'healthcheck': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'ip': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                'ippool': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'ipv6': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                'masquerade': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'monitor': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                'name': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'required': True, 'type': 'str'},
+                'password': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'port': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'int'},
+                'protocol': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'choices': ['http', 'ftp', 'socks'], 'elements': 'str'},
+                'server-down-option': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['block', 'pass'], 'type': 'str'},
+                'username': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                'authentication': {'v_range': [['7.4.8', '7.4.11']], 'choices': ['disabled', 'immediately', 'upon-challenge'], 'type': 'str'},
+                'user': {'v_range': [['7.4.8', '7.4.11']], 'type': 'str'},
                 'interface-select-method': {'v_range': [['7.6.4', '']], 'choices': ['auto', 'sdwan', 'specify'], 'type': 'str'},
                 'interface': {'v_range': [['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'vrf-select': {'v_range': [['7.6.4', '']], 'type': 'int'}
+                'vrf-select': {'v_range': [['7.6.4', '']], 'type': 'int'},
+                'ippool6': {'v_range': [['7.6.7', '7.6.7']], 'type': 'list', 'elements': 'str'},
+                'fabric-force-sync': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'fabric-object': {'v_range': [['8.0.0', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
+                'fabric-object-source': {'v_range': [['8.0.0', '']], 'choices': ['member', 'local', 'root'], 'type': 'str'},
+                'uuid': {'v_range': [['8.0.0', '']], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'webproxy_forwardserver'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

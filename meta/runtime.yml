@@ -14,9 +14,11 @@ action_groups:
     - fmgd_antivirus_profile_nntp
     - fmgd_antivirus_profile_pop3
     - fmgd_antivirus_profile_smtp
+    - fmgd_antivirus_profile_websocket
     - fmgd_antivirus_quarantine
     - fmgd_antivirus_settings
     - fmgd_application_categories
+    - fmgd_application_classificationsettings
     - fmgd_application_custom
     - fmgd_application_group
     - fmgd_application_list
@@ -24,6 +26,7 @@ action_groups:
     - fmgd_application_list_entries
     - fmgd_application_name
     - fmgd_application_rulesettings
+    - fmgd_application_unsanctionedapps
     - fmgd_authentication_rule
     - fmgd_authentication_scheme
     - fmgd_authentication_setting
@@ -56,6 +59,8 @@ action_groups:
     - fmgd_casb_useractivity_match_rules
     - fmgd_casb_useractivity_match_tenantextraction
     - fmgd_casb_useractivity_match_tenantextraction_filters
+    - fmgd_casb_useractivity_match_tenantsessionextraction
+    - fmgd_casb_useractivity_match_tenantsessionextraction_filters
     - fmgd_certificate_hsmlocal
     - fmgd_certificate_remote
     - fmgd_clone
@@ -75,6 +80,7 @@ action_groups:
     - fmgd_dlp_sensor
     - fmgd_dlp_sensor_entries
     - fmgd_dlp_settings
+    - fmgd_dlp_settings_ocr
     - fmgd_dnsfilter_domainfilter
     - fmgd_dnsfilter_domainfilter_entries
     - fmgd_dnsfilter_profile
@@ -172,6 +178,7 @@ action_groups:
     - fmgd_firewall_addrgrp_tagging
     - fmgd_firewall_authportal
     - fmgd_firewall_centralsnatmap
+    - fmgd_firewall_customtag
     - fmgd_firewall_dnstranslation
     - fmgd_firewall_dospolicy
     - fmgd_firewall_dospolicy6
@@ -220,6 +227,7 @@ action_groups:
     - fmgd_firewall_ondemandsniffer
     - fmgd_firewall_pfcp
     - fmgd_firewall_policy
+    - fmgd_firewall_policy_fabricpolicy
     - fmgd_firewall_profilegroup
     - fmgd_firewall_profileprotocoloptions
     - fmgd_firewall_profileprotocoloptions_cifs
@@ -234,6 +242,7 @@ action_groups:
     - fmgd_firewall_profileprotocoloptions_pop3
     - fmgd_firewall_profileprotocoloptions_smtp
     - fmgd_firewall_profileprotocoloptions_ssh
+    - fmgd_firewall_profileprotocoloptions_websocket
     - fmgd_firewall_proxyaddress
     - fmgd_firewall_proxyaddress6
     - fmgd_firewall_proxyaddress6_headergroup
@@ -350,6 +359,8 @@ action_groups:
     - fmgd_log_azuresecuritycenter_setting
     - fmgd_log_azuresecuritycenter_setting_customfieldname
     - fmgd_log_customfield
+    - fmgd_log_customformat
+    - fmgd_log_customformat_logtemplates
     - fmgd_log_disk_filter
     - fmgd_log_disk_filter_freestyle
     - fmgd_log_disk_setting
@@ -536,6 +547,10 @@ action_groups:
     - fmgd_router_multicast6_interface
     - fmgd_router_multicast6_pimsmglobal
     - fmgd_router_multicast6_pimsmglobal_rpaddress
+    - fmgd_router_multicast6_pimsmglobalvrf
+    - fmgd_router_multicast6_pimsmglobalvrf_rpaddress
+    - fmgd_router_multicast6flow
+    - fmgd_router_multicast6flow_flows
     - fmgd_router_multicast_interface
     - fmgd_router_multicast_interface_igmp
     - fmgd_router_multicast_interface_joingroup
@@ -624,6 +639,8 @@ action_groups:
     - fmgd_switchcontroller_fortilinksettings_nacports
     - fmgd_switchcontroller_global
     - fmgd_switchcontroller_igmpsnooping
+    - fmgd_switchcontroller_igmpsnoopingstaticgroup
+    - fmgd_switchcontroller_igmpsnoopingstaticgroup_ports
     - fmgd_switchcontroller_initialconfig_template
     - fmgd_switchcontroller_initialconfig_vlans
     - fmgd_switchcontroller_ipsourceguardlog
@@ -639,6 +656,7 @@ action_groups:
     - fmgd_switchcontroller_macpolicy
     - fmgd_switchcontroller_managedswitch
     - fmgd_switchcontroller_managedswitch_8021xsettings
+    - fmgd_switchcontroller_managedswitch_components
     - fmgd_switchcontroller_managedswitch_customcommand
     - fmgd_switchcontroller_managedswitch_dhcpsnoopingstaticclient
     - fmgd_switchcontroller_managedswitch_igmpsnooping
@@ -683,6 +701,7 @@ action_groups:
     - fmgd_switchcontroller_qos_queuepolicy_cosqueue
     - fmgd_switchcontroller_remotelog
     - fmgd_switchcontroller_securitypolicy_8021x
+    - fmgd_switchcontroller_securitypolicy_admin
     - fmgd_switchcontroller_securitypolicy_localaccess
     - fmgd_switchcontroller_sflow
     - fmgd_switchcontroller_snmpcommunity
@@ -756,7 +775,11 @@ action_groups:
     - fmgd_system_consoleserver_entries
     - fmgd_system_csf
     - fmgd_system_csf_fabricconnector
+    - fmgd_system_csf_fabricdatasourceexemption
     - fmgd_system_csf_fabricdevice
+    - fmgd_system_csf_sharedobjects
+    - fmgd_system_csf_sharedobjects_objects
+    - fmgd_system_csf_sharedobjects_objects_keys
     - fmgd_system_csf_trustedlist
     - fmgd_system_customlanguage
     - fmgd_system_ddns
@@ -773,6 +796,11 @@ action_groups:
     - fmgd_system_dhcp_server_iprange
     - fmgd_system_dhcp_server_options
     - fmgd_system_dhcp_server_reservedaddress
+    - fmgd_system_dhcp_template
+    - fmgd_system_dhcp_template_excluderange
+    - fmgd_system_dhcp_template_iprange
+    - fmgd_system_dhcp_template_options
+    - fmgd_system_dhcp_template_reservedaddress
     - fmgd_system_digitalio
     - fmgd_system_dnp3proxy
     - fmgd_system_dns
@@ -795,6 +823,7 @@ action_groups:
     - fmgd_system_fortiai
     - fmgd_system_fortidata
     - fmgd_system_fortiguard
+    - fmgd_system_fortimq
     - fmgd_system_fortindr
     - fmgd_system_fortisandbox
     - fmgd_system_fssopolling
@@ -810,6 +839,7 @@ action_groups:
     - fmgd_system_ha
     - fmgd_system_ha_frupsettings
     - fmgd_system_ha_hamgmtinterfaces
+    - fmgd_system_ha_linkgroup
     - fmgd_system_ha_secondaryvcluster
     - fmgd_system_ha_unicastpeers
     - fmgd_system_ha_vcluster
@@ -1030,6 +1060,7 @@ action_groups:
     - fmgd_system_storage
     - fmgd_system_stp
     - fmgd_system_switchinterface
+    - fmgd_system_theme
     - fmgd_system_timezone
     - fmgd_system_tosbasedpriority
     - fmgd_system_vdom
@@ -1118,6 +1149,7 @@ action_groups:
     - fmgd_vpn_ipsec_concentrator
     - fmgd_vpn_ipsec_fec
     - fmgd_vpn_ipsec_fec_mappings
+    - fmgd_vpn_ipsec_fec_mappings_tos
     - fmgd_vpn_ipsec_forticlient
     - fmgd_vpn_ipsec_manualkey
     - fmgd_vpn_ipsec_manualkeyinterface
@@ -1356,7 +1388,9 @@ action_groups:
     - fmgd_wireless_wtpprofile_radio3
     - fmgd_wireless_wtpprofile_radio4
     - fmgd_wireless_wtpprofile_splittunnelingacl
+    - fmgd_ztna_connectoredge
     - fmgd_ztna_connectorserviceedge
+    - fmgd_ztna_destination
     - fmgd_ztna_reverseconnector
     - fmgd_ztna_serviceconnector
     - fmgd_ztna_trafficforwardproxy

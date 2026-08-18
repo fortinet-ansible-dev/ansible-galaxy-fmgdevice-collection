@@ -13,207 +13,130 @@ DOCUMENTATION = '''
 ---
 module: fmgd_system_icond
 short_description: Configure Industrial Connectivity.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.partial_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  system_icond:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      iec101_keepalive:
+        aliases: ['iec101-keepalive']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
-        type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        description: Send periodic test frame for probing link status.
+        choices: ['disable', 'enable']
+      iec101_laddr_local:
+        aliases: ['iec101-laddr-local']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Link address of local.
+      iec101_laddr_remote:
+        aliases: ['iec101-laddr-remote']
+        type: int
+        description: Link address of remote.
+      iec101_laddr_size:
+        aliases: ['iec101-laddr-size']
+        type: int
+        description: Link address size.
+      iec101_mode:
+        aliases: ['iec101-mode']
         type: str
-        required: true
-    system_icond:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            iec101_keepalive:
-                aliases: ['iec101-keepalive']
-                type: str
-                description: Send periodic test frame for probing link status.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            iec101_laddr_local:
-                aliases: ['iec101-laddr-local']
-                type: int
-                description: Link address of local.
-            iec101_laddr_remote:
-                aliases: ['iec101-laddr-remote']
-                type: int
-                description: Link address of remote.
-            iec101_laddr_size:
-                aliases: ['iec101-laddr-size']
-                type: int
-                description: Link address size.
-            iec101_mode:
-                aliases: ['iec101-mode']
-                type: str
-                description: Link layer transmission procedure.
-                choices:
-                    - 'balanced'
-                    - 'unbalanced'
-            iec101_t0:
-                aliases: ['iec101-t0']
-                type: int
-                description: Time out for repetition of frames in milliseconds
-            iec101_trp:
-                aliases: ['iec101-trp']
-                type: int
-                description: Time interval during which repetitions are permitted in milliseconds
-            iec101_use_ack_char:
-                aliases: ['iec101-use-ack-char']
-                type: str
-                description: Use single character for ACK.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            iec104_k:
-                aliases: ['iec104-k']
-                type: int
-                description: Maximum number of outstanding I formate APDUs
-            iec104_t1:
-                aliases: ['iec104-t1']
-                type: int
-                description: Time-out of send or test APDUs in seconds
-            iec104_t2:
-                aliases: ['iec104-t2']
-                type: int
-                description: Time-out for acknowledges in case no data messages in seconds
-            iec104_t3:
-                aliases: ['iec104-t3']
-                type: int
-                description: Time-out for sending test frames in case of a long idle state in seconds
-            iec104_w:
-                aliases: ['iec104-w']
-                type: int
-                description: Maximum number of latest acknowledge APDUs
-            modbus_serial_addr:
-                aliases: ['modbus-serial-addr']
-                type: int
-                description: Serial remote station address.
-            modbus_serial_mode:
-                aliases: ['modbus-serial-mode']
-                type: str
-                description: Serial transmission mode.
-                choices:
-                    - 'RTU'
-                    - 'ASCII'
-            modbus_serial_timeout_resp:
-                aliases: ['modbus-serial-timeout-resp']
-                type: int
-                description: Time out for serial remote station response in milliseconds
-            modbus_tcp_unit_id:
-                aliases: ['modbus-tcp-unit-id']
-                type: int
-                description: TCP MBAP unit identifier.
-            port:
-                type: int
-                description: Listening socket port.
-            status:
-                type: str
-                description: Enable/disable this connection.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            tty_baudrate:
-                aliases: ['tty-baudrate']
-                type: str
-                description: TTY baudrate.
-                choices:
-                    - '200'
-                    - '300'
-                    - '600'
-                    - '1200'
-                    - '2400'
-                    - '4800'
-                    - '9600'
-                    - '19200'
-                    - '38400'
-                    - '115200'
-            tty_databits:
-                aliases: ['tty-databits']
-                type: int
-                description: TTY databits.
-            tty_device:
-                aliases: ['tty-device']
-                type: str
-                description: TTY device.
-            tty_flowcontrol:
-                aliases: ['tty-flowcontrol']
-                type: str
-                description: TTY flowcontrol.
-                choices:
-                    - 'none'
-                    - 'xon-xoff'
-                    - 'hw'
-            tty_parity:
-                aliases: ['tty-parity']
-                type: str
-                description: TTY parity.
-                choices:
-                    - 'none'
-                    - 'odd'
-                    - 'even'
-            tty_stopbits:
-                aliases: ['tty-stopbits']
-                type: int
-                description: TTY stopbits.
-            type:
-                type: str
-                description: Connection type.
-                choices:
-                    - 'iec101-104'
-                    - 'modbus-serial-tcp'
-                    - 'raw'
+        description: Link layer transmission procedure.
+        choices: ['balanced', 'unbalanced']
+      iec101_t0:
+        aliases: ['iec101-t0']
+        type: int
+        description: Time out for repetition of frames in milliseconds
+      iec101_trp:
+        aliases: ['iec101-trp']
+        type: int
+        description: Time interval during which repetitions are permitted in milliseconds
+      iec101_use_ack_char:
+        aliases: ['iec101-use-ack-char']
+        type: str
+        description: Use single character for ACK.
+        choices: ['disable', 'enable']
+      iec104_k:
+        aliases: ['iec104-k']
+        type: int
+        description: Maximum number of outstanding I formate APDUs
+      iec104_t1:
+        aliases: ['iec104-t1']
+        type: int
+        description: Time-out of send or test APDUs in seconds
+      iec104_t2:
+        aliases: ['iec104-t2']
+        type: int
+        description: Time-out for acknowledges in case no data messages in seconds
+      iec104_t3:
+        aliases: ['iec104-t3']
+        type: int
+        description: Time-out for sending test frames in case of a long idle state in seconds
+      iec104_w:
+        aliases: ['iec104-w']
+        type: int
+        description: Maximum number of latest acknowledge APDUs
+      modbus_serial_addr:
+        aliases: ['modbus-serial-addr']
+        type: int
+        description: Serial remote station address.
+      modbus_serial_mode:
+        aliases: ['modbus-serial-mode']
+        type: str
+        description: Serial transmission mode.
+        choices: ['RTU', 'ASCII']
+      modbus_serial_timeout_resp:
+        aliases: ['modbus-serial-timeout-resp']
+        type: int
+        description: Time out for serial remote station response in milliseconds
+      modbus_tcp_unit_id:
+        aliases: ['modbus-tcp-unit-id']
+        type: int
+        description: TCP MBAP unit identifier.
+      port:
+        type: int
+        description: Listening socket port.
+      status:
+        type: str
+        description: Enable/disable this connection.
+        choices: ['disable', 'enable']
+      tty_baudrate:
+        aliases: ['tty-baudrate']
+        type: str
+        description: TTY baudrate.
+        choices: ['200', '300', '600', '1200', '2400', '4800', '9600', '19200', '38400', '115200']
+      tty_databits:
+        aliases: ['tty-databits']
+        type: int
+        description: TTY databits.
+      tty_device:
+        aliases: ['tty-device']
+        type: str
+        description: TTY device.
+      tty_flowcontrol:
+        aliases: ['tty-flowcontrol']
+        type: str
+        description: TTY flowcontrol.
+        choices: ['none', 'xon-xoff', 'hw']
+      tty_parity:
+        aliases: ['tty-parity']
+        type: str
+        description: TTY parity.
+        choices: ['none', 'odd', 'even']
+      tty_stopbits:
+        aliases: ['tty-stopbits']
+        type: int
+        description: TTY stopbits.
+      type:
+        type: str
+        description: Connection type.
+        choices: ['iec101-104', 'modbus-serial-tcp', 'raw']
 '''
 
 EXAMPLES = '''
@@ -221,18 +144,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure Industrial Connectivity.
       fortinet.fmgdevice.fmgd_system_icond:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         system_icond:
           # iec101_keepalive: <value in [disable, enable]>
@@ -265,42 +180,42 @@ EXAMPLES = '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -312,13 +227,10 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/global/system/icond'
     ]
-    url_params = ['device']
-    module_primary_key = None
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'system_icond': {
-            'type': 'dict',
-            'v_range': [['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.4.3', '']],
             'options': {
                 'iec101-keepalive': {'v_range': [['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'iec101-laddr-local': {'v_range': [['7.4.3', '']], 'type': 'int'},
@@ -356,19 +268,15 @@ def main():
 
     module_option_spec = get_module_arg_spec('partial crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'system_icond'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list,
+                       None, 'data', module, connection)
     fmgd.process_partial_crud()
-
     module.exit_json(meta=module.params)
 
 

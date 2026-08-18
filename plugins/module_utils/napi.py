@@ -181,19 +181,17 @@ def is_basic_data_format(data):
 
 
 class NAPIManager(object):
-    def __init__(self, task_type, metadata, urls_list, module_primary_key,
-                 url_params, module, conn, top_level_schema_name=None):
+    def __init__(self, task_type, metadata, urls_list, module_primary_key, top_level_schema_name,
+                 module, conn):
         self.urls_list = urls_list
         self.module_primary_key = module_primary_key
-        self.url_params = url_params
         self.module = module
         self.conn = conn
-        self._process_workspace_lock()
         self.module_name = self.module._name
         self.module_level2_name = self.module_name.split(".")[-1][5:]
         self.top_level_schema_name = top_level_schema_name
         self._set_connection_options()
-        self.system_status = self.get_system_status()
+        self._process_workspace_lock()
         self.version_check_warnings = list()
         self._nr_exported_playbooks = 0
         self._nr_valid_selectors = 0
@@ -203,6 +201,7 @@ class NAPIManager(object):
         self.task_type = task_type
         self.diff_data = {"before": {}, "after": {}}
         self.allow_diff = False
+        self.system_status = self.get_system_status()
 
     def _set_connection_options(self):
         for key in ["access_token", "enable_log", "forticloud_access_token"]:
@@ -510,9 +509,9 @@ class NAPIManager(object):
             self.module.fail_json(msg="Please check the value of parameter: vdom")
         return target_url
 
-    def get_replaced_url(self, url_template):
-        target_url = url_template
-        for param in self.url_params:
+    def get_replaced_url(self, target_url):
+        url_params = self.get_params_in_url(target_url)
+        for param in url_params:
             token_hint = "{%s}" % (param)
             token = ""
             modified_name = get_ansible_format_name(param)

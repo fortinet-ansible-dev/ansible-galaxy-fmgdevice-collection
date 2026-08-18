@@ -13,702 +13,524 @@ DOCUMENTATION = '''
 ---
 module: fmgd_wireless_widsprofile
 short_description: Configure wireless intrusion detection system
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  wireless_widsprofile:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      ap_auto_suppress:
+        aliases: ['ap-auto-suppress']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+        description: Enable/disable on-wire rogue AP auto-suppression
+        choices: ['disable', 'enable']
+      ap_bgscan_disable_schedules:
+        aliases: ['ap-bgscan-disable-schedules']
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
-        type: str
-        required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        elements: str
+        description: Firewall schedules for turning off FortiAP radio background scan.
+      ap_bgscan_duration:
+        aliases: ['ap-bgscan-duration']
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
+        description: Listen time on scanning a channel
+      ap_bgscan_idle:
+        aliases: ['ap-bgscan-idle']
+        type: int
+        description: Wait time for channel inactivity before scanning this channel
+      ap_bgscan_intv:
+        aliases: ['ap-bgscan-intv']
+        type: int
+        description: Period between successive channel scans
+      ap_bgscan_period:
+        aliases: ['ap-bgscan-period']
+        type: int
+        description: Period between background scans
+      ap_bgscan_report_intv:
+        aliases: ['ap-bgscan-report-intv']
+        type: int
+        description: Period between background scan reports
+      ap_fgscan_report_intv:
+        aliases: ['ap-fgscan-report-intv']
+        type: int
+        description: Period between foreground scan reports
+      ap_scan:
+        aliases: ['ap-scan']
         type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
+        description: Enable/disable rogue AP detection.
+        choices: ['disable', 'enable']
+      ap_scan_channel_list_2G_5G:
+        aliases: ['ap-scan-channel-list-2G-5G']
+        type: list
+        elements: str
+        description: Selected ap scan channel list for 2.
+      ap_scan_channel_list_6G:
+        aliases: ['ap-scan-channel-list-6G']
+        type: list
+        elements: str
+        description: Selected ap scan channel list for 6G band.
+      ap_scan_passive:
+        aliases: ['ap-scan-passive']
         type: str
+        description: Enable/disable passive scanning.
+        choices: ['disable', 'enable']
+      ap_scan_threshold:
+        aliases: ['ap-scan-threshold']
+        type: str
+        description: Minimum signal level/threshold in dBm required for the AP to report detected rogue AP
+      asleap_attack:
+        aliases: ['asleap-attack']
+        type: str
+        description: Enable/disable asleap attack detection
+        choices: ['disable', 'enable']
+      assoc_flood_thresh:
+        aliases: ['assoc-flood-thresh']
+        type: int
+        description: The threshold value for association frame flooding.
+      assoc_flood_time:
+        aliases: ['assoc-flood-time']
+        type: int
+        description: Number of seconds after which a station is considered not connected.
+      assoc_frame_flood:
+        aliases: ['assoc-frame-flood']
+        type: str
+        description: Enable/disable association frame flooding detection
+        choices: ['disable', 'enable']
+      auth_flood_thresh:
+        aliases: ['auth-flood-thresh']
+        type: int
+        description: The threshold value for authentication frame flooding.
+      auth_flood_time:
+        aliases: ['auth-flood-time']
+        type: int
+        description: Number of seconds after which a station is considered not connected.
+      auth_frame_flood:
+        aliases: ['auth-frame-flood']
+        type: str
+        description: Enable/disable authentication frame flooding detection
+        choices: ['disable', 'enable']
+      comment:
+        type: str
+        description: Comment.
+      deauth_broadcast:
+        aliases: ['deauth-broadcast']
+        type: str
+        description: Enable/disable broadcasting de-authentication detection
+        choices: ['disable', 'enable']
+      deauth_unknown_src_thresh:
+        aliases: ['deauth-unknown-src-thresh']
+        type: int
+        description: Threshold value per second to deauth unknown src for DoS attack
+      eapol_fail_flood:
+        aliases: ['eapol-fail-flood']
+        type: str
+        description: Enable/disable EAPOL-Failure flooding
+        choices: ['disable', 'enable']
+      eapol_fail_intv:
+        aliases: ['eapol-fail-intv']
+        type: int
+        description: The detection interval for EAPOL-Failure flooding
+      eapol_fail_thresh:
+        aliases: ['eapol-fail-thresh']
+        type: int
+        description: The threshold value for EAPOL-Failure flooding in specified interval.
+      eapol_logoff_flood:
+        aliases: ['eapol-logoff-flood']
+        type: str
+        description: Enable/disable EAPOL-Logoff flooding
+        choices: ['disable', 'enable']
+      eapol_logoff_intv:
+        aliases: ['eapol-logoff-intv']
+        type: int
+        description: The detection interval for EAPOL-Logoff flooding
+      eapol_logoff_thresh:
+        aliases: ['eapol-logoff-thresh']
+        type: int
+        description: The threshold value for EAPOL-Logoff flooding in specified interval.
+      eapol_pre_fail_flood:
+        aliases: ['eapol-pre-fail-flood']
+        type: str
+        description: Enable/disable premature EAPOL-Failure flooding
+        choices: ['disable', 'enable']
+      eapol_pre_fail_intv:
+        aliases: ['eapol-pre-fail-intv']
+        type: int
+        description: The detection interval for premature EAPOL-Failure flooding
+      eapol_pre_fail_thresh:
+        aliases: ['eapol-pre-fail-thresh']
+        type: int
+        description: The threshold value for premature EAPOL-Failure flooding in specified interval.
+      eapol_pre_succ_flood:
+        aliases: ['eapol-pre-succ-flood']
+        type: str
+        description: Enable/disable premature EAPOL-Success flooding
+        choices: ['disable', 'enable']
+      eapol_pre_succ_intv:
+        aliases: ['eapol-pre-succ-intv']
+        type: int
+        description: The detection interval for premature EAPOL-Success flooding
+      eapol_pre_succ_thresh:
+        aliases: ['eapol-pre-succ-thresh']
+        type: int
+        description: The threshold value for premature EAPOL-Success flooding in specified interval.
+      eapol_start_flood:
+        aliases: ['eapol-start-flood']
+        type: str
+        description: Enable/disable EAPOL-Start flooding
+        choices: ['disable', 'enable']
+      eapol_start_intv:
+        aliases: ['eapol-start-intv']
+        type: int
+        description: The detection interval for EAPOL-Start flooding
+      eapol_start_thresh:
+        aliases: ['eapol-start-thresh']
+        type: int
+        description: The threshold value for EAPOL-Start flooding in specified interval.
+      eapol_succ_flood:
+        aliases: ['eapol-succ-flood']
+        type: str
+        description: Enable/disable EAPOL-Success flooding
+        choices: ['disable', 'enable']
+      eapol_succ_intv:
+        aliases: ['eapol-succ-intv']
+        type: int
+        description: The detection interval for EAPOL-Success flooding
+      eapol_succ_thresh:
+        aliases: ['eapol-succ-thresh']
+        type: int
+        description: The threshold value for EAPOL-Success flooding in specified interval.
+      invalid_mac_oui:
+        aliases: ['invalid-mac-oui']
+        type: str
+        description: Enable/disable invalid MAC OUI detection.
+        choices: ['disable', 'enable']
+      long_duration_attack:
+        aliases: ['long-duration-attack']
+        type: str
+        description: Enable/disable long duration attack detection based on user configured threshold
+        choices: ['disable', 'enable']
+      long_duration_thresh:
+        aliases: ['long-duration-thresh']
+        type: int
+        description: Threshold value for long duration attack detection
+      name:
+        type: str
+        description: WIDS profile name.
         required: true
-    wireless_widsprofile:
-        description: The top level parameters set.
-        required: false
-        type: dict
-        suboptions:
-            ap_auto_suppress:
-                aliases: ['ap-auto-suppress']
-                type: str
-                description: Enable/disable on-wire rogue AP auto-suppression
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ap_bgscan_disable_schedules:
-                aliases: ['ap-bgscan-disable-schedules']
-                type: list
-                elements: str
-                description: Firewall schedules for turning off FortiAP radio background scan.
-            ap_bgscan_duration:
-                aliases: ['ap-bgscan-duration']
-                type: int
-                description: Listen time on scanning a channel
-            ap_bgscan_idle:
-                aliases: ['ap-bgscan-idle']
-                type: int
-                description: Wait time for channel inactivity before scanning this channel
-            ap_bgscan_intv:
-                aliases: ['ap-bgscan-intv']
-                type: int
-                description: Period between successive channel scans
-            ap_bgscan_period:
-                aliases: ['ap-bgscan-period']
-                type: int
-                description: Period between background scans
-            ap_bgscan_report_intv:
-                aliases: ['ap-bgscan-report-intv']
-                type: int
-                description: Period between background scan reports
-            ap_fgscan_report_intv:
-                aliases: ['ap-fgscan-report-intv']
-                type: int
-                description: Period between foreground scan reports
-            ap_scan:
-                aliases: ['ap-scan']
-                type: str
-                description: Enable/disable rogue AP detection.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ap_scan_channel_list_2G_5G:
-                aliases: ['ap-scan-channel-list-2G-5G']
-                type: list
-                elements: str
-                description: Selected ap scan channel list for 2.
-            ap_scan_channel_list_6G:
-                aliases: ['ap-scan-channel-list-6G']
-                type: list
-                elements: str
-                description: Selected ap scan channel list for 6G band.
-            ap_scan_passive:
-                aliases: ['ap-scan-passive']
-                type: str
-                description: Enable/disable passive scanning.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ap_scan_threshold:
-                aliases: ['ap-scan-threshold']
-                type: str
-                description: Minimum signal level/threshold in dBm required for the AP to report detected rogue AP
-            asleap_attack:
-                aliases: ['asleap-attack']
-                type: str
-                description: Enable/disable asleap attack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            assoc_flood_thresh:
-                aliases: ['assoc-flood-thresh']
-                type: int
-                description: The threshold value for association frame flooding.
-            assoc_flood_time:
-                aliases: ['assoc-flood-time']
-                type: int
-                description: Number of seconds after which a station is considered not connected.
-            assoc_frame_flood:
-                aliases: ['assoc-frame-flood']
-                type: str
-                description: Enable/disable association frame flooding detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            auth_flood_thresh:
-                aliases: ['auth-flood-thresh']
-                type: int
-                description: The threshold value for authentication frame flooding.
-            auth_flood_time:
-                aliases: ['auth-flood-time']
-                type: int
-                description: Number of seconds after which a station is considered not connected.
-            auth_frame_flood:
-                aliases: ['auth-frame-flood']
-                type: str
-                description: Enable/disable authentication frame flooding detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            comment:
-                type: str
-                description: Comment.
-            deauth_broadcast:
-                aliases: ['deauth-broadcast']
-                type: str
-                description: Enable/disable broadcasting de-authentication detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            deauth_unknown_src_thresh:
-                aliases: ['deauth-unknown-src-thresh']
-                type: int
-                description: Threshold value per second to deauth unknown src for DoS attack
-            eapol_fail_flood:
-                aliases: ['eapol-fail-flood']
-                type: str
-                description: Enable/disable EAPOL-Failure flooding
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_fail_intv:
-                aliases: ['eapol-fail-intv']
-                type: int
-                description: The detection interval for EAPOL-Failure flooding
-            eapol_fail_thresh:
-                aliases: ['eapol-fail-thresh']
-                type: int
-                description: The threshold value for EAPOL-Failure flooding in specified interval.
-            eapol_logoff_flood:
-                aliases: ['eapol-logoff-flood']
-                type: str
-                description: Enable/disable EAPOL-Logoff flooding
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_logoff_intv:
-                aliases: ['eapol-logoff-intv']
-                type: int
-                description: The detection interval for EAPOL-Logoff flooding
-            eapol_logoff_thresh:
-                aliases: ['eapol-logoff-thresh']
-                type: int
-                description: The threshold value for EAPOL-Logoff flooding in specified interval.
-            eapol_pre_fail_flood:
-                aliases: ['eapol-pre-fail-flood']
-                type: str
-                description: Enable/disable premature EAPOL-Failure flooding
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_pre_fail_intv:
-                aliases: ['eapol-pre-fail-intv']
-                type: int
-                description: The detection interval for premature EAPOL-Failure flooding
-            eapol_pre_fail_thresh:
-                aliases: ['eapol-pre-fail-thresh']
-                type: int
-                description: The threshold value for premature EAPOL-Failure flooding in specified interval.
-            eapol_pre_succ_flood:
-                aliases: ['eapol-pre-succ-flood']
-                type: str
-                description: Enable/disable premature EAPOL-Success flooding
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_pre_succ_intv:
-                aliases: ['eapol-pre-succ-intv']
-                type: int
-                description: The detection interval for premature EAPOL-Success flooding
-            eapol_pre_succ_thresh:
-                aliases: ['eapol-pre-succ-thresh']
-                type: int
-                description: The threshold value for premature EAPOL-Success flooding in specified interval.
-            eapol_start_flood:
-                aliases: ['eapol-start-flood']
-                type: str
-                description: Enable/disable EAPOL-Start flooding
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_start_intv:
-                aliases: ['eapol-start-intv']
-                type: int
-                description: The detection interval for EAPOL-Start flooding
-            eapol_start_thresh:
-                aliases: ['eapol-start-thresh']
-                type: int
-                description: The threshold value for EAPOL-Start flooding in specified interval.
-            eapol_succ_flood:
-                aliases: ['eapol-succ-flood']
-                type: str
-                description: Enable/disable EAPOL-Success flooding
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_succ_intv:
-                aliases: ['eapol-succ-intv']
-                type: int
-                description: The detection interval for EAPOL-Success flooding
-            eapol_succ_thresh:
-                aliases: ['eapol-succ-thresh']
-                type: int
-                description: The threshold value for EAPOL-Success flooding in specified interval.
-            invalid_mac_oui:
-                aliases: ['invalid-mac-oui']
-                type: str
-                description: Enable/disable invalid MAC OUI detection.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            long_duration_attack:
-                aliases: ['long-duration-attack']
-                type: str
-                description: Enable/disable long duration attack detection based on user configured threshold
-                choices:
-                    - 'disable'
-                    - 'enable'
-            long_duration_thresh:
-                aliases: ['long-duration-thresh']
-                type: int
-                description: Threshold value for long duration attack detection
-            name:
-                type: str
-                description: WIDS profile name.
-                required: true
-            null_ssid_probe_resp:
-                aliases: ['null-ssid-probe-resp']
-                type: str
-                description: Enable/disable null SSID probe response detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            sensor_mode:
-                aliases: ['sensor-mode']
-                type: str
-                description: Scan nearby WiFi stations
-                choices:
-                    - 'disable'
-                    - 'foreign'
-                    - 'both'
-            spoofed_deauth:
-                aliases: ['spoofed-deauth']
-                type: str
-                description: Enable/disable spoofed de-authentication attack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            weak_wep_iv:
-                aliases: ['weak-wep-iv']
-                type: str
-                description: Enable/disable weak WEP IV
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wireless_bridge:
-                aliases: ['wireless-bridge']
-                type: str
-                description: Enable/disable wireless bridge detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            adhoc_network:
-                aliases: ['adhoc-network']
-                type: str
-                description: Enable/disable adhoc network detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            adhoc_valid_ssid:
-                aliases: ['adhoc-valid-ssid']
-                type: str
-                description: Enable/disable adhoc using valid SSID detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            air_jack:
-                aliases: ['air-jack']
-                type: str
-                description: Enable/disable AirJack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ap_impersonation:
-                aliases: ['ap-impersonation']
-                type: str
-                description: Enable/disable AP impersonation detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ap_spoofing:
-                aliases: ['ap-spoofing']
-                type: str
-                description: Enable/disable AP spoofing detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            bcn_flood:
-                aliases: ['bcn-flood']
-                type: str
-                description: Enable/disable bcn flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            bcn_flood_thresh:
-                aliases: ['bcn-flood-thresh']
-                type: int
-                description: The threshold value for bcn flood.
-            bcn_flood_time:
-                aliases: ['bcn-flood-time']
-                type: int
-                description: Detection Window Period.
-            beacon_wrong_channel:
-                aliases: ['beacon-wrong-channel']
-                type: str
-                description: Enable/disable beacon wrong channel detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            block_ack_flood:
-                aliases: ['block_ack-flood']
-                type: str
-                description: Enable/disable block_ack flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            block_ack_flood_thresh:
-                aliases: ['block_ack-flood-thresh']
-                type: int
-                description: The threshold value for block_ack flood.
-            block_ack_flood_time:
-                aliases: ['block_ack-flood-time']
-                type: int
-                description: Detection Window Period.
-            chan_based_mitm:
-                aliases: ['chan-based-mitm']
-                type: str
-                description: Enable/disable channel based mitm detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            client_flood:
-                aliases: ['client-flood']
-                type: str
-                description: Enable/disable client flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            client_flood_thresh:
-                aliases: ['client-flood-thresh']
-                type: int
-                description: The threshold value for client flood.
-            client_flood_time:
-                aliases: ['client-flood-time']
-                type: int
-                description: Detection Window Period.
-            cts_flood:
-                aliases: ['cts-flood']
-                type: str
-                description: Enable/disable cts flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            cts_flood_thresh:
-                aliases: ['cts-flood-thresh']
-                type: int
-                description: The threshold value for cts flood.
-            cts_flood_time:
-                aliases: ['cts-flood-time']
-                type: int
-                description: Detection Window Period.
-            disassoc_broadcast:
-                aliases: ['disassoc-broadcast']
-                type: str
-                description: Enable/disable broadcast dis-association detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            disconnect_station:
-                aliases: ['disconnect-station']
-                type: str
-                description: Enable/disable disconnect station detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            eapol_key_overflow:
-                aliases: ['eapol-key-overflow']
-                type: str
-                description: Enable/disable overflow EAPOL key detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fata_jack:
-                aliases: ['fata-jack']
-                type: str
-                description: Enable/disable FATA-Jack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fuzzed_beacon:
-                aliases: ['fuzzed-beacon']
-                type: str
-                description: Enable/disable fuzzed beacon detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fuzzed_probe_request:
-                aliases: ['fuzzed-probe-request']
-                type: str
-                description: Enable/disable fuzzed probe request detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fuzzed_probe_response:
-                aliases: ['fuzzed-probe-response']
-                type: str
-                description: Enable/disable fuzzed probe response detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            hotspotter_attack:
-                aliases: ['hotspotter-attack']
-                type: str
-                description: Enable/disable hotspotter attack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ht_40mhz_intolerance:
-                aliases: ['ht-40mhz-intolerance']
-                type: str
-                description: Enable/disable HT 40 MHz intolerance detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ht_greenfield:
-                aliases: ['ht-greenfield']
-                type: str
-                description: Enable/disable HT greenfield detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            invalid_addr_combination:
-                aliases: ['invalid-addr-combination']
-                type: str
-                description: Enable/disable invalid address combination detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            malformed_association:
-                aliases: ['malformed-association']
-                type: str
-                description: Enable/disable malformed association request detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            malformed_auth:
-                aliases: ['malformed-auth']
-                type: str
-                description: Enable/disable malformed auth frame detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            malformed_ht_ie:
-                aliases: ['malformed-ht-ie']
-                type: str
-                description: Enable/disable malformed HT IE detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            netstumbler:
-                type: str
-                description: Enable/disable netstumbler detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            netstumbler_thresh:
-                aliases: ['netstumbler-thresh']
-                type: int
-                description: The threshold value for netstumbler.
-            netstumbler_time:
-                aliases: ['netstumbler-time']
-                type: int
-                description: Detection Window Period.
-            omerta_attack:
-                aliases: ['omerta-attack']
-                type: str
-                description: Enable/disable omerta attack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            overflow_ie:
-                aliases: ['overflow-ie']
-                type: str
-                description: Enable/disable overflow IE detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            probe_flood:
-                aliases: ['probe-flood']
-                type: str
-                description: Enable/disable probe flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            probe_flood_thresh:
-                aliases: ['probe-flood-thresh']
-                type: int
-                description: The threshold value for probe flood.
-            probe_flood_time:
-                aliases: ['probe-flood-time']
-                type: int
-                description: Detection Window Period.
-            pspoll_flood:
-                aliases: ['pspoll-flood']
-                type: str
-                description: Enable/disable pspoll flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            pspoll_flood_thresh:
-                aliases: ['pspoll-flood-thresh']
-                type: int
-                description: The threshold value for pspoll flood.
-            pspoll_flood_time:
-                aliases: ['pspoll-flood-time']
-                type: int
-                description: Detection Window Period.
-            pwsave_dos_attack:
-                aliases: ['pwsave-dos-attack']
-                type: str
-                description: Enable/disable power save DOS attack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            reassoc_flood:
-                aliases: ['reassoc-flood']
-                type: str
-                description: Enable/disable reassociation flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            reassoc_flood_thresh:
-                aliases: ['reassoc-flood-thresh']
-                type: int
-                description: The threshold value for reassociation flood.
-            reassoc_flood_time:
-                aliases: ['reassoc-flood-time']
-                type: int
-                description: Detection Window Period.
-            risky_encryption:
-                aliases: ['risky-encryption']
-                type: str
-                description: Enable/disable Risky Encryption detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            rts_flood:
-                aliases: ['rts-flood']
-                type: str
-                description: Enable/disable rts flood detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            rts_flood_thresh:
-                aliases: ['rts-flood-thresh']
-                type: int
-                description: The threshold value for rts flood.
-            rts_flood_time:
-                aliases: ['rts-flood-time']
-                type: int
-                description: Detection Window Period.
-            unencrypted_valid:
-                aliases: ['unencrypted-valid']
-                type: str
-                description: Enable/disable unencrypted valid detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            valid_client_misassociation:
-                aliases: ['valid-client-misassociation']
-                type: str
-                description: Enable/disable valid client misassociation detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            valid_ssid_misuse:
-                aliases: ['valid-ssid-misuse']
-                type: str
-                description: Enable/disable valid SSID misuse detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wellenreiter:
-                type: str
-                description: Enable/disable wellenreiter detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wellenreiter_thresh:
-                aliases: ['wellenreiter-thresh']
-                type: int
-                description: The threshold value for wellenreiter.
-            wellenreiter_time:
-                aliases: ['wellenreiter-time']
-                type: int
-                description: Detection Window Period.
-            windows_bridge:
-                aliases: ['windows-bridge']
-                type: str
-                description: Enable/disable windows bridge detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wpa_ft_attack:
-                aliases: ['wpa-ft-attack']
-                type: str
-                description: Enable/disable WPA FT attack detection
-                choices:
-                    - 'disable'
-                    - 'enable'
+      null_ssid_probe_resp:
+        aliases: ['null-ssid-probe-resp']
+        type: str
+        description: Enable/disable null SSID probe response detection
+        choices: ['disable', 'enable']
+      sensor_mode:
+        aliases: ['sensor-mode']
+        type: str
+        description: Scan nearby WiFi stations
+        choices: ['disable', 'foreign', 'both']
+      spoofed_deauth:
+        aliases: ['spoofed-deauth']
+        type: str
+        description: Enable/disable spoofed de-authentication attack detection
+        choices: ['disable', 'enable']
+      weak_wep_iv:
+        aliases: ['weak-wep-iv']
+        type: str
+        description: Enable/disable weak WEP IV
+        choices: ['disable', 'enable']
+      wireless_bridge:
+        aliases: ['wireless-bridge']
+        type: str
+        description: Enable/disable wireless bridge detection
+        choices: ['disable', 'enable']
+      adhoc_network:
+        aliases: ['adhoc-network']
+        type: str
+        description: Enable/disable adhoc network detection
+        choices: ['disable', 'enable']
+      adhoc_valid_ssid:
+        aliases: ['adhoc-valid-ssid']
+        type: str
+        description: Enable/disable adhoc using valid SSID detection
+        choices: ['disable', 'enable']
+      air_jack:
+        aliases: ['air-jack']
+        type: str
+        description: Enable/disable AirJack detection
+        choices: ['disable', 'enable']
+      ap_impersonation:
+        aliases: ['ap-impersonation']
+        type: str
+        description: Enable/disable AP impersonation detection
+        choices: ['disable', 'enable']
+      ap_spoofing:
+        aliases: ['ap-spoofing']
+        type: str
+        description: Enable/disable AP spoofing detection
+        choices: ['disable', 'enable']
+      bcn_flood:
+        aliases: ['bcn-flood']
+        type: str
+        description: Enable/disable bcn flood detection
+        choices: ['disable', 'enable']
+      bcn_flood_thresh:
+        aliases: ['bcn-flood-thresh']
+        type: int
+        description: The threshold value for bcn flood.
+      bcn_flood_time:
+        aliases: ['bcn-flood-time']
+        type: int
+        description: Detection Window Period.
+      beacon_wrong_channel:
+        aliases: ['beacon-wrong-channel']
+        type: str
+        description: Enable/disable beacon wrong channel detection
+        choices: ['disable', 'enable']
+      block_ack_flood:
+        aliases: ['block_ack-flood']
+        type: str
+        description: Enable/disable block_ack flood detection
+        choices: ['disable', 'enable']
+      block_ack_flood_thresh:
+        aliases: ['block_ack-flood-thresh']
+        type: int
+        description: The threshold value for block_ack flood.
+      block_ack_flood_time:
+        aliases: ['block_ack-flood-time']
+        type: int
+        description: Detection Window Period.
+      chan_based_mitm:
+        aliases: ['chan-based-mitm']
+        type: str
+        description: Enable/disable channel based mitm detection
+        choices: ['disable', 'enable']
+      client_flood:
+        aliases: ['client-flood']
+        type: str
+        description: Enable/disable client flood detection
+        choices: ['disable', 'enable']
+      client_flood_thresh:
+        aliases: ['client-flood-thresh']
+        type: int
+        description: The threshold value for client flood.
+      client_flood_time:
+        aliases: ['client-flood-time']
+        type: int
+        description: Detection Window Period.
+      cts_flood:
+        aliases: ['cts-flood']
+        type: str
+        description: Enable/disable cts flood detection
+        choices: ['disable', 'enable']
+      cts_flood_thresh:
+        aliases: ['cts-flood-thresh']
+        type: int
+        description: The threshold value for cts flood.
+      cts_flood_time:
+        aliases: ['cts-flood-time']
+        type: int
+        description: Detection Window Period.
+      disassoc_broadcast:
+        aliases: ['disassoc-broadcast']
+        type: str
+        description: Enable/disable broadcast dis-association detection
+        choices: ['disable', 'enable']
+      disconnect_station:
+        aliases: ['disconnect-station']
+        type: str
+        description: Enable/disable disconnect station detection
+        choices: ['disable', 'enable']
+      eapol_key_overflow:
+        aliases: ['eapol-key-overflow']
+        type: str
+        description: Enable/disable overflow EAPOL key detection
+        choices: ['disable', 'enable']
+      fata_jack:
+        aliases: ['fata-jack']
+        type: str
+        description: Enable/disable FATA-Jack detection
+        choices: ['disable', 'enable']
+      fuzzed_beacon:
+        aliases: ['fuzzed-beacon']
+        type: str
+        description: Enable/disable fuzzed beacon detection
+        choices: ['disable', 'enable']
+      fuzzed_probe_request:
+        aliases: ['fuzzed-probe-request']
+        type: str
+        description: Enable/disable fuzzed probe request detection
+        choices: ['disable', 'enable']
+      fuzzed_probe_response:
+        aliases: ['fuzzed-probe-response']
+        type: str
+        description: Enable/disable fuzzed probe response detection
+        choices: ['disable', 'enable']
+      hotspotter_attack:
+        aliases: ['hotspotter-attack']
+        type: str
+        description: Enable/disable hotspotter attack detection
+        choices: ['disable', 'enable']
+      ht_40mhz_intolerance:
+        aliases: ['ht-40mhz-intolerance']
+        type: str
+        description: Enable/disable HT 40 MHz intolerance detection
+        choices: ['disable', 'enable']
+      ht_greenfield:
+        aliases: ['ht-greenfield']
+        type: str
+        description: Enable/disable HT greenfield detection
+        choices: ['disable', 'enable']
+      invalid_addr_combination:
+        aliases: ['invalid-addr-combination']
+        type: str
+        description: Enable/disable invalid address combination detection
+        choices: ['disable', 'enable']
+      malformed_association:
+        aliases: ['malformed-association']
+        type: str
+        description: Enable/disable malformed association request detection
+        choices: ['disable', 'enable']
+      malformed_auth:
+        aliases: ['malformed-auth']
+        type: str
+        description: Enable/disable malformed auth frame detection
+        choices: ['disable', 'enable']
+      malformed_ht_ie:
+        aliases: ['malformed-ht-ie']
+        type: str
+        description: Enable/disable malformed HT IE detection
+        choices: ['disable', 'enable']
+      netstumbler:
+        type: str
+        description: Enable/disable netstumbler detection
+        choices: ['disable', 'enable']
+      netstumbler_thresh:
+        aliases: ['netstumbler-thresh']
+        type: int
+        description: The threshold value for netstumbler.
+      netstumbler_time:
+        aliases: ['netstumbler-time']
+        type: int
+        description: Detection Window Period.
+      omerta_attack:
+        aliases: ['omerta-attack']
+        type: str
+        description: Enable/disable omerta attack detection
+        choices: ['disable', 'enable']
+      overflow_ie:
+        aliases: ['overflow-ie']
+        type: str
+        description: Enable/disable overflow IE detection
+        choices: ['disable', 'enable']
+      probe_flood:
+        aliases: ['probe-flood']
+        type: str
+        description: Enable/disable probe flood detection
+        choices: ['disable', 'enable']
+      probe_flood_thresh:
+        aliases: ['probe-flood-thresh']
+        type: int
+        description: The threshold value for probe flood.
+      probe_flood_time:
+        aliases: ['probe-flood-time']
+        type: int
+        description: Detection Window Period.
+      pspoll_flood:
+        aliases: ['pspoll-flood']
+        type: str
+        description: Enable/disable pspoll flood detection
+        choices: ['disable', 'enable']
+      pspoll_flood_thresh:
+        aliases: ['pspoll-flood-thresh']
+        type: int
+        description: The threshold value for pspoll flood.
+      pspoll_flood_time:
+        aliases: ['pspoll-flood-time']
+        type: int
+        description: Detection Window Period.
+      pwsave_dos_attack:
+        aliases: ['pwsave-dos-attack']
+        type: str
+        description: Enable/disable power save DOS attack detection
+        choices: ['disable', 'enable']
+      reassoc_flood:
+        aliases: ['reassoc-flood']
+        type: str
+        description: Enable/disable reassociation flood detection
+        choices: ['disable', 'enable']
+      reassoc_flood_thresh:
+        aliases: ['reassoc-flood-thresh']
+        type: int
+        description: The threshold value for reassociation flood.
+      reassoc_flood_time:
+        aliases: ['reassoc-flood-time']
+        type: int
+        description: Detection Window Period.
+      risky_encryption:
+        aliases: ['risky-encryption']
+        type: str
+        description: Enable/disable Risky Encryption detection
+        choices: ['disable', 'enable']
+      rts_flood:
+        aliases: ['rts-flood']
+        type: str
+        description: Enable/disable rts flood detection
+        choices: ['disable', 'enable']
+      rts_flood_thresh:
+        aliases: ['rts-flood-thresh']
+        type: int
+        description: The threshold value for rts flood.
+      rts_flood_time:
+        aliases: ['rts-flood-time']
+        type: int
+        description: Detection Window Period.
+      unencrypted_valid:
+        aliases: ['unencrypted-valid']
+        type: str
+        description: Enable/disable unencrypted valid detection
+        choices: ['disable', 'enable']
+      valid_client_misassociation:
+        aliases: ['valid-client-misassociation']
+        type: str
+        description: Enable/disable valid client misassociation detection
+        choices: ['disable', 'enable']
+      valid_ssid_misuse:
+        aliases: ['valid-ssid-misuse']
+        type: str
+        description: Enable/disable valid SSID misuse detection
+        choices: ['disable', 'enable']
+      wellenreiter:
+        type: str
+        description: Enable/disable wellenreiter detection
+        choices: ['disable', 'enable']
+      wellenreiter_thresh:
+        aliases: ['wellenreiter-thresh']
+        type: int
+        description: The threshold value for wellenreiter.
+      wellenreiter_time:
+        aliases: ['wellenreiter-time']
+        type: int
+        description: Detection Window Period.
+      windows_bridge:
+        aliases: ['windows-bridge']
+        type: str
+        description: Enable/disable windows bridge detection
+        choices: ['disable', 'enable']
+      wpa_ft_attack:
+        aliases: ['wpa-ft-attack']
+        type: str
+        description: Enable/disable WPA FT attack detection
+        choices: ['disable', 'enable']
 '''
 
 EXAMPLES = '''
@@ -716,18 +538,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure wireless intrusion detection system
       fortinet.fmgdevice.fmgd_wireless_widsprofile:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         state: present # <value in [present, absent]>
@@ -846,42 +660,42 @@ EXAMPLES = '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -893,14 +707,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/wireless-controller/wids-profile'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'wireless_widsprofile': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'ap-auto-suppress': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'ap-bgscan-disable-schedules': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
@@ -1018,19 +829,15 @@ def main():
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'wireless_widsprofile'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

@@ -13,457 +13,421 @@ DOCUMENTATION = '''
 ---
 module: fmgd_system_admin
 short_description: Configure admin users.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - To create or update an object, use state present directive.
-    - To delete an object, use state absent directive.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.full_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
-        type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  system_admin:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      accprofile:
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    state:
-        description: The directive to create, update or delete an object.
+        elements: str
+        description: Access profile for this administrator.
+      accprofile_override:
+        aliases: ['accprofile-override']
         type: str
+        description: Enable to use the name of an access profile provided by the remote authentication server to control the FortiGate features that th...
+        choices: ['disable', 'enable']
+      allow_remove_admin_session:
+        aliases: ['allow-remove-admin-session']
+        type: str
+        description: Enable/disable allow admin session to be removed by privileged admin users.
+        choices: ['disable', 'enable']
+      comments:
+        type: str
+        description: Comment.
+      email_to:
+        aliases: ['email-to']
+        type: str
+        description: This administrators email address.
+      force_password_change:
+        aliases: ['force-password-change']
+        type: str
+        description: Enable/disable force password change on next login.
+        choices: ['disable', 'enable']
+      fortitoken:
+        type: list
+        elements: str
+        description: This administrators FortiToken serial number.
+      guest_auth:
+        aliases: ['guest-auth']
+        type: str
+        description: Enable/disable guest authentication.
+        choices: ['disable', 'enable']
+      guest_lang:
+        aliases: ['guest-lang']
+        type: list
+        elements: str
+        description: Guest management portal language.
+      guest_usergroups:
+        aliases: ['guest-usergroups']
+        type: list
+        elements: str
+        description: Select guest user groups.
+      gui_default_dashboard_template:
+        aliases: ['gui-default-dashboard-template']
+        type: str
+        description: The default dashboard template.
+      gui_ignore_invalid_signature_version:
+        aliases: ['gui-ignore-invalid-signature-version']
+        type: str
+        description: FortiOS image build version to ignore invalid signature warning for.
+      gui_ignore_release_overview_version:
+        aliases: ['gui-ignore-release-overview-version']
+        type: str
+        description: FortiOS version to ignore release overview prompt for.
+      history0:
+        type: list
+        elements: str
+        description: History0.
+      history1:
+        type: list
+        elements: str
+        description: History1.
+      ip6_trusthost1:
+        aliases: ['ip6-trusthost1']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost10:
+        aliases: ['ip6-trusthost10']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost2:
+        aliases: ['ip6-trusthost2']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost3:
+        aliases: ['ip6-trusthost3']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost4:
+        aliases: ['ip6-trusthost4']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost5:
+        aliases: ['ip6-trusthost5']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost6:
+        aliases: ['ip6-trusthost6']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost7:
+        aliases: ['ip6-trusthost7']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost8:
+        aliases: ['ip6-trusthost8']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      ip6_trusthost9:
+        aliases: ['ip6-trusthost9']
+        type: str
+        description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
+      name:
+        type: str
+        description: User name.
         required: true
-        choices:
-          - present
-          - absent
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
+      password:
+        type: list
+        elements: str
+        description: Admin user password.
+      password_expire:
+        aliases: ['password-expire']
+        type: list
+        elements: str
+        description: Password expire time.
+      peer_auth:
+        aliases: ['peer-auth']
         type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
+        description: Set to enable peer certificate authentication
+        choices: ['disable', 'enable']
+      peer_group:
+        aliases: ['peer-group']
+        type: list
+        elements: str
+        description: Name of peer group defined under config user group which has PKI members.
+      remote_auth:
+        aliases: ['remote-auth']
+        type: str
+        description: Enable/disable authentication using a remote RADIUS, LDAP, or TACACS+ server.
+        choices: ['disable', 'enable']
+      remote_group:
+        aliases: ['remote-group']
+        type: list
+        elements: str
+        description: User group name used for remote auth.
+      schedule:
+        type: str
+        description: Firewall schedule used to restrict when the administrator can log in.
+      sms_custom_server:
+        aliases: ['sms-custom-server']
+        type: list
+        elements: str
+        description: Custom SMS server to send SMS messages to.
+      sms_phone:
+        aliases: ['sms-phone']
+        type: str
+        description: Phone number on which the administrator receives SMS messages.
+      sms_server:
+        aliases: ['sms-server']
+        type: str
+        description: Send SMS messages using the FortiGuard SMS server or a custom server.
+        choices: ['fortiguard', 'custom']
+      ssh_certificate:
+        aliases: ['ssh-certificate']
+        type: list
+        elements: str
+        description: Select the certificate to be used by the FortiGate for authentication with an SSH client.
+      ssh_public_key1:
+        aliases: ['ssh-public-key1']
+        type: str
+        description: Public key of an SSH client.
+      ssh_public_key2:
+        aliases: ['ssh-public-key2']
+        type: str
+        description: Public key of an SSH client.
+      ssh_public_key3:
+        aliases: ['ssh-public-key3']
+        type: str
+        description: Public key of an SSH client.
+      trusthost1:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost10:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost2:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost3:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost4:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost5:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost6:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost7:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost8:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      trusthost9:
+        type: list
+        elements: str
+        description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
+      two_factor:
+        aliases: ['two-factor']
+        type: str
+        description: Enable/disable two-factor authentication.
+        choices: ['disable', 'fortitoken', 'email', 'sms', 'fortitoken-cloud']
+      two_factor_authentication:
+        aliases: ['two-factor-authentication']
+        type: str
+        description: Authentication method by FortiToken Cloud.
+        choices: ['fortitoken', 'email', 'sms']
+      two_factor_notification:
+        aliases: ['two-factor-notification']
+        type: str
+        description: Notification method for user activation by FortiToken Cloud.
+        choices: ['email', 'sms']
+      vdom:
+        type: list
+        elements: str
+        description: Virtual domain
+      vdom_override:
+        aliases: ['vdom-override']
+        type: str
+        description: Enable to use the names of VDOMs provided by the remote authentication server to control the VDOMs that this administrator can access.
+        choices: ['disable', 'enable']
+      wildcard:
+        type: str
+        description: Enable/disable wildcard RADIUS authentication.
+        choices: ['disable', 'enable']
+      radius_vdom_override:
+        aliases: ['radius-vdom-override']
+        type: str
+        description: Enable to use the names of VDOMs provided by the remote authentication server to control the VDOMs that this administrator can access.
+        choices: ['disable', 'enable']
+      hidden:
         type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
-        type: str
-        required: true
-    system_admin:
-        description: The top level parameters set.
-        required: false
-        type: dict
+        description: Hidden.
+      old_password:
+        aliases: ['old-password']
+        type: list
+        elements: str
+        description: Admin user old password.
+      history10:
+        type: list
+        elements: str
+        description: History10.
+      history11:
+        type: list
+        elements: str
+        description: History11.
+      history12:
+        type: list
+        elements: str
+        description: History12.
+      history13:
+        type: list
+        elements: str
+        description: History13.
+      history14:
+        type: list
+        elements: str
+        description: History14.
+      history15:
+        type: list
+        elements: str
+        description: History15.
+      history16:
+        type: list
+        elements: str
+        description: History16.
+      history17:
+        type: list
+        elements: str
+        description: History17.
+      history18:
+        type: list
+        elements: str
+        description: History18.
+      history19:
+        type: list
+        elements: str
+        description: History19.
+      history2:
+        type: list
+        elements: str
+        description: History2.
+      history3:
+        type: list
+        elements: str
+        description: History3.
+      history4:
+        type: list
+        elements: str
+        description: History4.
+      history5:
+        type: list
+        elements: str
+        description: History5.
+      history6:
+        type: list
+        elements: str
+        description: History6.
+      history7:
+        type: list
+        elements: str
+        description: History7.
+      history8:
+        type: list
+        elements: str
+        description: History8.
+      history9:
+        type: list
+        elements: str
+        description: History9.
+      trusthosts:
+        type: list
+        elements: dict
+        description: Trusthosts.
         suboptions:
-            accprofile:
-                type: list
-                elements: str
-                description: Access profile for this administrator.
-            accprofile_override:
-                aliases: ['accprofile-override']
-                type: str
-                description: Enable to use the name of an access profile provided by the remote authentication server to control the FortiGate features...
-                choices:
-                    - 'disable'
-                    - 'enable'
-            allow_remove_admin_session:
-                aliases: ['allow-remove-admin-session']
-                type: str
-                description: Enable/disable allow admin session to be removed by privileged admin users.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            comments:
-                type: str
-                description: Comment.
-            email_to:
-                aliases: ['email-to']
-                type: str
-                description: This administrators email address.
-            force_password_change:
-                aliases: ['force-password-change']
-                type: str
-                description: Enable/disable force password change on next login.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            fortitoken:
-                type: list
-                elements: str
-                description: This administrators FortiToken serial number.
-            guest_auth:
-                aliases: ['guest-auth']
-                type: str
-                description: Enable/disable guest authentication.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            guest_lang:
-                aliases: ['guest-lang']
-                type: list
-                elements: str
-                description: Guest management portal language.
-            guest_usergroups:
-                aliases: ['guest-usergroups']
-                type: list
-                elements: str
-                description: Select guest user groups.
-            gui_default_dashboard_template:
-                aliases: ['gui-default-dashboard-template']
-                type: str
-                description: The default dashboard template.
-            gui_ignore_invalid_signature_version:
-                aliases: ['gui-ignore-invalid-signature-version']
-                type: str
-                description: FortiOS image build version to ignore invalid signature warning for.
-            gui_ignore_release_overview_version:
-                aliases: ['gui-ignore-release-overview-version']
-                type: str
-                description: FortiOS version to ignore release overview prompt for.
-            history0:
-                type: list
-                elements: str
-                description: History0.
-            history1:
-                type: list
-                elements: str
-                description: History1.
-            ip6_trusthost1:
-                aliases: ['ip6-trusthost1']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost10:
-                aliases: ['ip6-trusthost10']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost2:
-                aliases: ['ip6-trusthost2']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost3:
-                aliases: ['ip6-trusthost3']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost4:
-                aliases: ['ip6-trusthost4']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost5:
-                aliases: ['ip6-trusthost5']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost6:
-                aliases: ['ip6-trusthost6']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost7:
-                aliases: ['ip6-trusthost7']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost8:
-                aliases: ['ip6-trusthost8']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            ip6_trusthost9:
-                aliases: ['ip6-trusthost9']
-                type: str
-                description: Any IPv6 address from which the administrator can connect to the FortiGate unit.
-            name:
-                type: str
-                description: User name.
-                required: true
-            password:
-                type: list
-                elements: str
-                description: Admin user password.
-            password_expire:
-                aliases: ['password-expire']
-                type: list
-                elements: str
-                description: Password expire time.
-            peer_auth:
-                aliases: ['peer-auth']
-                type: str
-                description: Set to enable peer certificate authentication
-                choices:
-                    - 'disable'
-                    - 'enable'
-            peer_group:
-                aliases: ['peer-group']
-                type: list
-                elements: str
-                description: Name of peer group defined under config user group which has PKI members.
-            remote_auth:
-                aliases: ['remote-auth']
-                type: str
-                description: Enable/disable authentication using a remote RADIUS, LDAP, or TACACS+ server.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            remote_group:
-                aliases: ['remote-group']
-                type: list
-                elements: str
-                description: User group name used for remote auth.
-            schedule:
-                type: str
-                description: Firewall schedule used to restrict when the administrator can log in.
-            sms_custom_server:
-                aliases: ['sms-custom-server']
-                type: list
-                elements: str
-                description: Custom SMS server to send SMS messages to.
-            sms_phone:
-                aliases: ['sms-phone']
-                type: str
-                description: Phone number on which the administrator receives SMS messages.
-            sms_server:
-                aliases: ['sms-server']
-                type: str
-                description: Send SMS messages using the FortiGuard SMS server or a custom server.
-                choices:
-                    - 'fortiguard'
-                    - 'custom'
-            ssh_certificate:
-                aliases: ['ssh-certificate']
-                type: list
-                elements: str
-                description: Select the certificate to be used by the FortiGate for authentication with an SSH client.
-            ssh_public_key1:
-                aliases: ['ssh-public-key1']
-                type: str
-                description: Public key of an SSH client.
-            ssh_public_key2:
-                aliases: ['ssh-public-key2']
-                type: str
-                description: Public key of an SSH client.
-            ssh_public_key3:
-                aliases: ['ssh-public-key3']
-                type: str
-                description: Public key of an SSH client.
-            trusthost1:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost10:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost2:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost3:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost4:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost5:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost6:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost7:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost8:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            trusthost9:
-                type: list
-                elements: str
-                description: Any IPv4 address or subnet address and netmask from which the administrator can connect to the FortiGate unit.
-            two_factor:
-                aliases: ['two-factor']
-                type: str
-                description: Enable/disable two-factor authentication.
-                choices:
-                    - 'disable'
-                    - 'fortitoken'
-                    - 'email'
-                    - 'sms'
-                    - 'fortitoken-cloud'
-            two_factor_authentication:
-                aliases: ['two-factor-authentication']
-                type: str
-                description: Authentication method by FortiToken Cloud.
-                choices:
-                    - 'fortitoken'
-                    - 'email'
-                    - 'sms'
-            two_factor_notification:
-                aliases: ['two-factor-notification']
-                type: str
-                description: Notification method for user activation by FortiToken Cloud.
-                choices:
-                    - 'email'
-                    - 'sms'
-            vdom:
-                type: list
-                elements: str
-                description: Virtual domain
-            vdom_override:
-                aliases: ['vdom-override']
-                type: str
-                description: Enable to use the names of VDOMs provided by the remote authentication server to control the VDOMs that this administrator...
-                choices:
-                    - 'disable'
-                    - 'enable'
-            wildcard:
-                type: str
-                description: Enable/disable wildcard RADIUS authentication.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            radius_vdom_override:
-                aliases: ['radius-vdom-override']
-                type: str
-                description: Enable to use the names of VDOMs provided by the remote authentication server to control the VDOMs that this administrator...
-                choices:
-                    - 'disable'
-                    - 'enable'
-            hidden:
-                type: int
-                description: Hidden.
-            old_password:
-                aliases: ['old-password']
-                type: list
-                elements: str
-                description: Admin user old password.
-            history10:
-                type: list
-                elements: str
-                description: History10.
-            history11:
-                type: list
-                elements: str
-                description: History11.
-            history12:
-                type: list
-                elements: str
-                description: History12.
-            history13:
-                type: list
-                elements: str
-                description: History13.
-            history14:
-                type: list
-                elements: str
-                description: History14.
-            history15:
-                type: list
-                elements: str
-                description: History15.
-            history16:
-                type: list
-                elements: str
-                description: History16.
-            history17:
-                type: list
-                elements: str
-                description: History17.
-            history18:
-                type: list
-                elements: str
-                description: History18.
-            history19:
-                type: list
-                elements: str
-                description: History19.
-            history2:
-                type: list
-                elements: str
-                description: History2.
-            history3:
-                type: list
-                elements: str
-                description: History3.
-            history4:
-                type: list
-                elements: str
-                description: History4.
-            history5:
-                type: list
-                elements: str
-                description: History5.
-            history6:
-                type: list
-                elements: str
-                description: History6.
-            history7:
-                type: list
-                elements: str
-                description: History7.
-            history8:
-                type: list
-                elements: str
-                description: History8.
-            history9:
-                type: list
-                elements: str
-                description: History9.
-            trusthosts:
-                type: list
-                elements: dict
-                description: Trusthosts.
-                suboptions:
-                    id:
-                        type: int
-                        description: Id.
-                    ipv4:
-                        type: list
-                        elements: str
-                        description: Ipv4.
-                    ipv6:
-                        type: str
-                        description: Ipv6.
-                    type:
-                        type: str
-                        description: Type.
-                        choices:
-                            - 'ipv4'
-                            - 'ipv6'
-            ssh_tmp_file:
-                aliases: ['ssh-tmp-file']
-                type: str
-                description: Temporary file for SSH keys.
+          id:
+            type: int
+            description: Id.
+          ipv4:
+            type: list
+            elements: str
+            description: Ipv4.
+          ipv6:
+            type: str
+            description: Ipv6.
+          type:
+            type: str
+            description: Type.
+            choices: ['ipv4', 'ipv6']
+      ssh_tmp_file:
+        aliases: ['ssh-tmp-file']
+        type: str
+        description: Temporary file for SSH keys.
+      disallowed_login_methods:
+        aliases: ['disallowed-login-methods']
+        type: list
+        elements: str
+        description: Configure login methods that explicitly are disallowed.
+        choices: ['console', 'gui', 'ssh', 'telnet']
+      gui_custom_theme:
+        aliases: ['gui-custom-theme']
+        type: list
+        elements: str
+        description: Custom theme that overrides the default FortiGate theme.
+      gui_dashboard_id:
+        aliases: ['gui-dashboard-id']
+        type: int
+        description: GUI Dashboard ID.
+      gui_llm_provider:
+        aliases: ['gui-llm-provider']
+        type: str
+        description: Select the LLM provider.
+        choices: ['fortiai', 'openai']
+      gui_theme:
+        aliases: ['gui-theme']
+        type: str
+        description: Predefined theme that overrides the default FortiGate theme.
+        choices: ['melongene', 'mariner', 'neutrino', 'jade', 'graphite', 'dark-matter', 'onyx',
+                  'eclipse', 'retro', 'jet-stream', 'security-fabric', 'none']
+      gui_theme_type:
+        aliases: ['gui-theme-type']
+        type: str
+        description: Use predefined themes or custom themes.
+        choices: ['predefined', 'custom']
+      openai_api_key:
+        aliases: ['openai-api-key']
+        type: list
+        elements: str
+        description: Openai API key.
+      openai_api_key_part2:
+        aliases: ['openai-api-key-part2']
+        type: list
+        elements: str
+        description: OpenAI API key part 2 for excess length.
+      openai_model:
+        aliases: ['openai-model']
+        type: str
+        description: OpenAI model.
+      openai_org_id:
+        aliases: ['openai-org-id']
+        type: str
+        description: OpenAI organization ID.
+      openai_project_id:
+        aliases: ['openai-project-id']
+        type: str
+        description: OpenAI project ID.
 '''
 
 EXAMPLES = '''
@@ -471,18 +435,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure admin users.
       fortinet.fmgdevice.fmgd_system_admin:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         state: present # <value in [present, absent]>
         system_admin:
@@ -569,46 +525,57 @@ EXAMPLES = '''
           #     ipv6: <string>
           #     type: <value in [ipv4, ipv6]>
           # ssh_tmp_file: <string>
+          # disallowed_login_methods: ["console", "gui", "ssh", "telnet"]
+          # gui_custom_theme: <list or string>
+          # gui_dashboard_id: <integer>
+          # gui_llm_provider: <value in [fortiai, openai]>
+          # gui_theme: <value in [melongene, mariner, neutrino, ...]>
+          # gui_theme_type: <value in [predefined, custom]>
+          # openai_api_key: <list or string>
+          # openai_api_key_part2: <list or string>
+          # openai_model: <string>
+          # openai_org_id: <string>
+          # openai_project_id: <string>
 '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -620,13 +587,10 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/global/system/admin'
     ]
-    url_params = ['device']
-    module_primary_key = 'name'
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'system_admin': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'accprofile': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'type': 'list', 'elements': 'str'},
                 'accprofile-override': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
@@ -690,56 +654,75 @@ def main():
                 'wildcard': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'radius-vdom-override': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['disable', 'enable'], 'type': 'str'},
                 'hidden': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '7.6.2']], 'type': 'int'},
-                'old-password': {'v_range': [['7.2.10', '7.2.12'], ['7.4.7', '7.4.10'], ['7.6.2', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
-                'history10': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history11': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history12': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history13': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history14': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history15': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history16': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history17': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history18': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history19': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history2': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history3': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history4': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history5': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history6': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history7': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history8': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                'history9': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'old-password': {'v_range': [['7.2.10', '7.2.12'], ['7.4.7', '7.4.11'], ['7.6.2', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'history10': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history11': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history12': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history13': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history14': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history15': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history16': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history17': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history18': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history19': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history2': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history3': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history4': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history5': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history6': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history7': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history8': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                'history9': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
                 'trusthosts': {
-                    'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']],
+                    'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']],
                     'type': 'list',
                     'options': {
-                        'id': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'int'},
-                        'ipv4': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
-                        'ipv6': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'type': 'str'},
-                        'type': {'v_range': [['7.4.8', '7.4.10'], ['7.6.4', '']], 'choices': ['ipv4', 'ipv6'], 'type': 'str'}
+                        'id': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'int'},
+                        'ipv4': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'list', 'elements': 'str'},
+                        'ipv6': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'type': 'str'},
+                        'type': {'v_range': [['7.4.8', '7.4.11'], ['7.6.4', '']], 'choices': ['ipv4', 'ipv6'], 'type': 'str'}
                     },
                     'elements': 'dict'
                 },
-                'ssh-tmp-file': {'v_range': [['7.6.4', '']], 'type': 'str'}
+                'ssh-tmp-file': {'v_range': [['7.6.4', '']], 'type': 'str'},
+                'disallowed-login-methods': {
+                    'v_range': [['8.0.0', '']],
+                    'type': 'list',
+                    'choices': ['console', 'gui', 'ssh', 'telnet'],
+                    'elements': 'str'
+                },
+                'gui-custom-theme': {'v_range': [['8.0.0', '']], 'type': 'list', 'elements': 'str'},
+                'gui-dashboard-id': {'v_range': [['8.0.0', '']], 'type': 'int'},
+                'gui-llm-provider': {'v_range': [['8.0.0', '']], 'choices': ['fortiai', 'openai'], 'type': 'str'},
+                'gui-theme': {
+                    'v_range': [['8.0.0', '']],
+                    'choices': [
+                        'melongene', 'mariner', 'neutrino', 'jade', 'graphite', 'dark-matter', 'onyx', 'eclipse', 'retro', 'jet-stream',
+                        'security-fabric', 'none'
+                    ],
+                    'type': 'str'
+                },
+                'gui-theme-type': {'v_range': [['8.0.0', '']], 'choices': ['predefined', 'custom'], 'type': 'str'},
+                'openai-api-key': {'v_range': [['8.0.0', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'openai-api-key-part2': {'v_range': [['8.0.0', '']], 'no_log': True, 'type': 'list', 'elements': 'str'},
+                'openai-model': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                'openai-org-id': {'v_range': [['8.0.0', '']], 'type': 'str'},
+                'openai-project-id': {'v_range': [['8.0.0', '']], 'type': 'str'}
             }
         }
     }
 
     module_option_spec = get_module_arg_spec('full crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'system_admin'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('full crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('full crud', module_arg_spec, urls_list,
+                       'name', 'data', module, connection)
     fmgd.process_crud()
-
     module.exit_json(meta=module.params)
 
 

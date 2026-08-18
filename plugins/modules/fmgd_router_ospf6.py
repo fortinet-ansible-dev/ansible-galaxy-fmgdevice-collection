@@ -13,554 +13,413 @@ DOCUMENTATION = '''
 ---
 module: fmgd_router_ospf6
 short_description: Configure IPv6 OSPF.
-description:
-    - This module is able to configure a FortiManager device.
-    - Examples include all parameters and values which need to be adjusted to data sources before usage.
 version_added: "1.0.0"
-author:
-    - Xinwei Du (@dux-fortinet)
-    - Xing Li (@lix-fortinet)
-    - Jie Xue (@JieX19)
-    - Link Zheng (@chillancezen)
-    - Frank Shen (@fshen01)
-    - Hongbin Lu (@fgtdev-hblu)
-notes:
-    - Running in workspace locking mode is supported in this FortiManager module, the top
-      level parameters workspace_locking_adom and workspace_locking_timeout help do the work.
-    - Normally, running one module can fail when a non-zero rc is returned. you can also override
-      the conditions to fail or succeed with parameters rc_failed and rc_succeeded
+extends_documentation_fragment:
+  - fortinet.fmgdevice.general
+  - fortinet.fmgdevice.general.partial_crud
 options:
-    access_token:
-        description: The token to access FortiManager without using username and password.
+  device:
+    description: The parameter (device) in requested url.
+    type: str
+    required: true
+  vdom:
+    description: The parameter (vdom) in requested url.
+    type: str
+    required: true
+  router_ospf6:
+    description: The top level parameters set.
+    required: false
+    type: dict
+    suboptions:
+      abr_type:
+        aliases: ['abr-type']
         type: str
-    bypass_validation:
-        description: Only set to True when module schema diffs with FortiManager API structure, module continues to execute without validating parameters.
-        type: bool
-        default: false
-    enable_log:
-        description: Enable/Disable logging for task.
-        type: bool
-        default: false
-    forticloud_access_token:
-        description: Authenticate Ansible client with forticloud API access token.
-        type: str
-    proposed_method:
-        description: The overridden method for the underlying Json RPC request.
-        type: str
-        choices:
-          - update
-          - set
-          - add
-    rc_succeeded:
-        description: The rc codes list with which the conditions to succeed will be overriden.
+        description: Area border router type.
+        choices: ['cisco', 'ibm', 'standard']
+      area:
         type: list
-        elements: int
-    rc_failed:
-        description: The rc codes list with which the conditions to fail will be overriden.
-        type: list
-        elements: int
-    workspace_locking_adom:
-        description: The adom to lock for FortiManager running in workspace mode, the value can be global and others including root.
-        type: str
-    workspace_locking_timeout:
-        description: The maximum time in seconds to wait for other user to release the workspace lock.
-        type: int
-        default: 300
-    device:
-        description: The parameter (device) in requested url.
-        type: str
-        required: true
-    vdom:
-        description: The parameter (vdom) in requested url.
-        type: str
-        required: true
-    router_ospf6:
-        description: The top level parameters set.
-        required: false
-        type: dict
+        elements: dict
+        description: Area.
         suboptions:
-            abr_type:
-                aliases: ['abr-type']
-                type: str
-                description: Area border router type.
-                choices:
-                    - 'cisco'
-                    - 'ibm'
-                    - 'standard'
-            area:
-                type: list
-                elements: dict
-                description: Area.
-                suboptions:
-                    authentication:
-                        type: str
-                        description: Authentication mode.
-                        choices:
-                            - 'none'
-                            - 'ah'
-                            - 'esp'
-                    default_cost:
-                        aliases: ['default-cost']
-                        type: int
-                        description: Summary default cost of stub or NSSA area.
-                    id:
-                        type: str
-                        description: Area entry IP address.
-                    ipsec_auth_alg:
-                        aliases: ['ipsec-auth-alg']
-                        type: str
-                        description: Authentication algorithm.
-                        choices:
-                            - 'md5'
-                            - 'sha1'
-                            - 'sha256'
-                            - 'sha384'
-                            - 'sha512'
-                    ipsec_enc_alg:
-                        aliases: ['ipsec-enc-alg']
-                        type: str
-                        description: Encryption algorithm.
-                        choices:
-                            - 'null'
-                            - 'des'
-                            - '3des'
-                            - 'aes128'
-                            - 'aes192'
-                            - 'aes256'
-                    ipsec_keys:
-                        aliases: ['ipsec-keys']
-                        type: list
-                        elements: dict
-                        description: Ipsec keys.
-                        suboptions:
-                            auth_key:
-                                aliases: ['auth-key']
-                                type: list
-                                elements: str
-                                description: Authentication key.
-                            enc_key:
-                                aliases: ['enc-key']
-                                type: list
-                                elements: str
-                                description: Encryption key.
-                            spi:
-                                type: int
-                                description: Security Parameters Index.
-                    key_rollover_interval:
-                        aliases: ['key-rollover-interval']
-                        type: int
-                        description: Key roll-over interval.
-                    nssa_default_information_originate:
-                        aliases: ['nssa-default-information-originate']
-                        type: str
-                        description: Enable/disable originate type 7 default into NSSA area.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    nssa_default_information_originate_metric:
-                        aliases: ['nssa-default-information-originate-metric']
-                        type: int
-                        description: OSPFv3 default metric.
-                    nssa_default_information_originate_metric_type:
-                        aliases: ['nssa-default-information-originate-metric-type']
-                        type: str
-                        description: OSPFv3 metric type for default routes.
-                        choices:
-                            - '1'
-                            - '2'
-                    nssa_redistribution:
-                        aliases: ['nssa-redistribution']
-                        type: str
-                        description: Enable/disable redistribute into NSSA area.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    nssa_translator_role:
-                        aliases: ['nssa-translator-role']
-                        type: str
-                        description: NSSA translator role type.
-                        choices:
-                            - 'candidate'
-                            - 'never'
-                            - 'always'
-                    range:
-                        type: list
-                        elements: dict
-                        description: Range.
-                        suboptions:
-                            advertise:
-                                type: str
-                                description: Enable/disable advertise status.
-                                choices:
-                                    - 'disable'
-                                    - 'enable'
-                            id:
-                                type: int
-                                description: Range entry ID.
-                            prefix6:
-                                type: str
-                                description: IPv6 prefix.
-                    stub_type:
-                        aliases: ['stub-type']
-                        type: str
-                        description: Stub summary setting.
-                        choices:
-                            - 'summary'
-                            - 'no-summary'
-                    type:
-                        type: str
-                        description: Area type setting.
-                        choices:
-                            - 'regular'
-                            - 'nssa'
-                            - 'stub'
-                    virtual_link:
-                        aliases: ['virtual-link']
-                        type: list
-                        elements: dict
-                        description: Virtual link.
-                        suboptions:
-                            authentication:
-                                type: str
-                                description: Authentication mode.
-                                choices:
-                                    - 'none'
-                                    - 'ah'
-                                    - 'esp'
-                                    - 'area'
-                            dead_interval:
-                                aliases: ['dead-interval']
-                                type: int
-                                description: Dead interval.
-                            hello_interval:
-                                aliases: ['hello-interval']
-                                type: int
-                                description: Hello interval.
-                            ipsec_auth_alg:
-                                aliases: ['ipsec-auth-alg']
-                                type: str
-                                description: Authentication algorithm.
-                                choices:
-                                    - 'md5'
-                                    - 'sha1'
-                                    - 'sha256'
-                                    - 'sha384'
-                                    - 'sha512'
-                            ipsec_enc_alg:
-                                aliases: ['ipsec-enc-alg']
-                                type: str
-                                description: Encryption algorithm.
-                                choices:
-                                    - 'null'
-                                    - 'des'
-                                    - '3des'
-                                    - 'aes128'
-                                    - 'aes192'
-                                    - 'aes256'
-                            ipsec_keys:
-                                aliases: ['ipsec-keys']
-                                type: list
-                                elements: dict
-                                description: Ipsec keys.
-                                suboptions:
-                                    auth_key:
-                                        aliases: ['auth-key']
-                                        type: list
-                                        elements: str
-                                        description: Authentication key.
-                                    enc_key:
-                                        aliases: ['enc-key']
-                                        type: list
-                                        elements: str
-                                        description: Encryption key.
-                                    spi:
-                                        type: int
-                                        description: Security Parameters Index.
-                            key_rollover_interval:
-                                aliases: ['key-rollover-interval']
-                                type: int
-                                description: Key roll-over interval.
-                            name:
-                                type: str
-                                description: Virtual link entry name.
-                            peer:
-                                type: str
-                                description: A.
-                            retransmit_interval:
-                                aliases: ['retransmit-interval']
-                                type: int
-                                description: Retransmit interval.
-                            transmit_delay:
-                                aliases: ['transmit-delay']
-                                type: int
-                                description: Transmit delay.
-            auto_cost_ref_bandwidth:
-                aliases: ['auto-cost-ref-bandwidth']
-                type: int
-                description: Reference bandwidth in terms of megabits per second.
-            bfd:
-                type: str
-                description: Enable/disable Bidirectional Forwarding Detection
-                choices:
-                    - 'disable'
-                    - 'enable'
-            default_information_metric:
-                aliases: ['default-information-metric']
-                type: int
-                description: Default information metric.
-            default_information_metric_type:
-                aliases: ['default-information-metric-type']
-                type: str
-                description: Default information metric type.
-                choices:
-                    - '1'
-                    - '2'
-            default_information_originate:
-                aliases: ['default-information-originate']
-                type: str
-                description: Enable/disable generation of default route.
-                choices:
-                    - 'disable'
-                    - 'enable'
-                    - 'always'
-            default_information_route_map:
-                aliases: ['default-information-route-map']
+          authentication:
+            type: str
+            description: Authentication mode.
+            choices: ['none', 'ah', 'esp']
+          default_cost:
+            aliases: ['default-cost']
+            type: int
+            description: Summary default cost of stub or NSSA area.
+          id:
+            type: str
+            description: Area entry IP address.
+          ipsec_auth_alg:
+            aliases: ['ipsec-auth-alg']
+            type: str
+            description: Authentication algorithm.
+            choices: ['md5', 'sha1', 'sha256', 'sha384', 'sha512']
+          ipsec_enc_alg:
+            aliases: ['ipsec-enc-alg']
+            type: str
+            description: Encryption algorithm.
+            choices: ['null', 'des', '3des', 'aes128', 'aes192', 'aes256']
+          ipsec_keys:
+            aliases: ['ipsec-keys']
+            type: list
+            elements: dict
+            description: Ipsec keys.
+            suboptions:
+              auth_key:
+                aliases: ['auth-key']
                 type: list
                 elements: str
-                description: Default information route map.
-            default_metric:
-                aliases: ['default-metric']
-                type: int
-                description: Default metric of redistribute routes.
-            log_neighbour_changes:
-                aliases: ['log-neighbour-changes']
-                type: str
-                description: Log OSPFv3 neighbor changes.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            ospf6_interface:
-                aliases: ['ospf6-interface']
-                type: list
-                elements: dict
-                description: Ospf6 interface.
-                suboptions:
-                    area_id:
-                        aliases: ['area-id']
-                        type: str
-                        description: A.
-                    authentication:
-                        type: str
-                        description: Authentication mode.
-                        choices:
-                            - 'none'
-                            - 'ah'
-                            - 'esp'
-                            - 'area'
-                    bfd:
-                        type: str
-                        description: Enable/disable Bidirectional Forwarding Detection
-                        choices:
-                            - 'global'
-                            - 'enable'
-                            - 'disable'
-                    cost:
-                        type: int
-                        description: Cost of the interface, value range from 0 to 65535, 0 means auto-cost.
-                    dead_interval:
-                        aliases: ['dead-interval']
-                        type: int
-                        description: Dead interval.
-                    hello_interval:
-                        aliases: ['hello-interval']
-                        type: int
-                        description: Hello interval.
-                    interface:
-                        type: list
-                        elements: str
-                        description: Configuration interface name.
-                    ipsec_auth_alg:
-                        aliases: ['ipsec-auth-alg']
-                        type: str
-                        description: Authentication algorithm.
-                        choices:
-                            - 'md5'
-                            - 'sha1'
-                            - 'sha256'
-                            - 'sha384'
-                            - 'sha512'
-                    ipsec_enc_alg:
-                        aliases: ['ipsec-enc-alg']
-                        type: str
-                        description: Encryption algorithm.
-                        choices:
-                            - 'null'
-                            - 'des'
-                            - '3des'
-                            - 'aes128'
-                            - 'aes192'
-                            - 'aes256'
-                    ipsec_keys:
-                        aliases: ['ipsec-keys']
-                        type: list
-                        elements: dict
-                        description: Ipsec keys.
-                        suboptions:
-                            auth_key:
-                                aliases: ['auth-key']
-                                type: list
-                                elements: str
-                                description: Authentication key.
-                            enc_key:
-                                aliases: ['enc-key']
-                                type: list
-                                elements: str
-                                description: Encryption key.
-                            spi:
-                                type: int
-                                description: Security Parameters Index.
-                    key_rollover_interval:
-                        aliases: ['key-rollover-interval']
-                        type: int
-                        description: Key roll-over interval.
-                    mtu:
-                        type: int
-                        description: MTU for OSPFv3 packets.
-                    mtu_ignore:
-                        aliases: ['mtu-ignore']
-                        type: str
-                        description: Enable/disable ignoring MTU field in DBD packets.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    name:
-                        type: str
-                        description: Interface entry name.
-                    neighbor:
-                        type: list
-                        elements: dict
-                        description: Neighbor.
-                        suboptions:
-                            cost:
-                                type: int
-                                description: Cost of the interface, value range from 0 to 65535, 0 means auto-cost.
-                            ip6:
-                                type: str
-                                description: IPv6 link local address of the neighbor.
-                            poll_interval:
-                                aliases: ['poll-interval']
-                                type: int
-                                description: Poll interval time in seconds.
-                            priority:
-                                type: int
-                                description: Priority.
-                    network_type:
-                        aliases: ['network-type']
-                        type: str
-                        description: Network type.
-                        choices:
-                            - 'broadcast'
-                            - 'non-broadcast'
-                            - 'point-to-point'
-                            - 'point-to-multipoint'
-                            - 'point-to-multipoint-non-broadcast'
-                    priority:
-                        type: int
-                        description: Priority.
-                    retransmit_interval:
-                        aliases: ['retransmit-interval']
-                        type: int
-                        description: Retransmit interval.
-                    status:
-                        type: str
-                        description: Enable/disable OSPF6 routing on this interface.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    transmit_delay:
-                        aliases: ['transmit-delay']
-                        type: int
-                        description: Transmit delay.
-            passive_interface:
-                aliases: ['passive-interface']
+                description: Authentication key.
+              enc_key:
+                aliases: ['enc-key']
                 type: list
                 elements: str
-                description: Passive interface configuration.
-            redistribute:
-                type: dict
-                description: Redistribute.
-                suboptions:
-                    metric:
-                        type: int
-                        description: Redistribute metric setting.
-                    metric_type:
-                        aliases: ['metric-type']
-                        type: str
-                        description: Metric type.
-                        choices:
-                            - '1'
-                            - '2'
-                    name:
-                        type: str
-                        description: Redistribute name.
-                    routemap:
-                        type: list
-                        elements: str
-                        description: Route map name.
-                    status:
-                        type: str
-                        description: Status.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-            restart_mode:
-                aliases: ['restart-mode']
-                type: str
-                description: OSPFv3 restart mode
-                choices:
-                    - 'none'
-                    - 'graceful-restart'
-            restart_on_topology_change:
-                aliases: ['restart-on-topology-change']
-                type: str
-                description: Enable/disable continuing graceful restart upon topology change.
-                choices:
-                    - 'disable'
-                    - 'enable'
-            restart_period:
-                aliases: ['restart-period']
+                description: Encryption key.
+              spi:
                 type: int
-                description: Graceful restart period in seconds.
-            router_id:
-                aliases: ['router-id']
+                description: Security Parameters Index.
+          key_rollover_interval:
+            aliases: ['key-rollover-interval']
+            type: int
+            description: Key roll-over interval.
+          nssa_default_information_originate:
+            aliases: ['nssa-default-information-originate']
+            type: str
+            description: Enable/disable originate type 7 default into NSSA area.
+            choices: ['disable', 'enable']
+          nssa_default_information_originate_metric:
+            aliases: ['nssa-default-information-originate-metric']
+            type: int
+            description: OSPFv3 default metric.
+          nssa_default_information_originate_metric_type:
+            aliases: ['nssa-default-information-originate-metric-type']
+            type: str
+            description: OSPFv3 metric type for default routes.
+            choices: ['1', '2']
+          nssa_redistribution:
+            aliases: ['nssa-redistribution']
+            type: str
+            description: Enable/disable redistribute into NSSA area.
+            choices: ['disable', 'enable']
+          nssa_translator_role:
+            aliases: ['nssa-translator-role']
+            type: str
+            description: NSSA translator role type.
+            choices: ['candidate', 'never', 'always']
+          range:
+            type: list
+            elements: dict
+            description: Range.
+            suboptions:
+              advertise:
+                type: str
+                description: Enable/disable advertise status.
+                choices: ['disable', 'enable']
+              id:
+                type: int
+                description: Range entry ID.
+              prefix6:
+                type: str
+                description: IPv6 prefix.
+          stub_type:
+            aliases: ['stub-type']
+            type: str
+            description: Stub summary setting.
+            choices: ['summary', 'no-summary']
+          type:
+            type: str
+            description: Area type setting.
+            choices: ['regular', 'nssa', 'stub']
+          virtual_link:
+            aliases: ['virtual-link']
+            type: list
+            elements: dict
+            description: Virtual link.
+            suboptions:
+              authentication:
+                type: str
+                description: Authentication mode.
+                choices: ['none', 'ah', 'esp', 'area']
+              dead_interval:
+                aliases: ['dead-interval']
+                type: int
+                description: Dead interval.
+              hello_interval:
+                aliases: ['hello-interval']
+                type: int
+                description: Hello interval.
+              ipsec_auth_alg:
+                aliases: ['ipsec-auth-alg']
+                type: str
+                description: Authentication algorithm.
+                choices: ['md5', 'sha1', 'sha256', 'sha384', 'sha512']
+              ipsec_enc_alg:
+                aliases: ['ipsec-enc-alg']
+                type: str
+                description: Encryption algorithm.
+                choices: ['null', 'des', '3des', 'aes128', 'aes192', 'aes256']
+              ipsec_keys:
+                aliases: ['ipsec-keys']
+                type: list
+                elements: dict
+                description: Ipsec keys.
+                suboptions:
+                  auth_key:
+                    aliases: ['auth-key']
+                    type: list
+                    elements: str
+                    description: Authentication key.
+                  enc_key:
+                    aliases: ['enc-key']
+                    type: list
+                    elements: str
+                    description: Encryption key.
+                  spi:
+                    type: int
+                    description: Security Parameters Index.
+              key_rollover_interval:
+                aliases: ['key-rollover-interval']
+                type: int
+                description: Key roll-over interval.
+              name:
+                type: str
+                description: Virtual link entry name.
+              peer:
                 type: str
                 description: A.
-            spf_timers:
-                aliases: ['spf-timers']
+              retransmit_interval:
+                aliases: ['retransmit-interval']
+                type: int
+                description: Retransmit interval.
+              transmit_delay:
+                aliases: ['transmit-delay']
+                type: int
+                description: Transmit delay.
+      auto_cost_ref_bandwidth:
+        aliases: ['auto-cost-ref-bandwidth']
+        type: int
+        description: Reference bandwidth in terms of megabits per second.
+      bfd:
+        type: str
+        description: Enable/disable Bidirectional Forwarding Detection
+        choices: ['disable', 'enable']
+      default_information_metric:
+        aliases: ['default-information-metric']
+        type: int
+        description: Default information metric.
+      default_information_metric_type:
+        aliases: ['default-information-metric-type']
+        type: str
+        description: Default information metric type.
+        choices: ['1', '2']
+      default_information_originate:
+        aliases: ['default-information-originate']
+        type: str
+        description: Enable/disable generation of default route.
+        choices: ['disable', 'enable', 'always']
+      default_information_route_map:
+        aliases: ['default-information-route-map']
+        type: list
+        elements: str
+        description: Default information route map.
+      default_metric:
+        aliases: ['default-metric']
+        type: int
+        description: Default metric of redistribute routes.
+      log_neighbour_changes:
+        aliases: ['log-neighbour-changes']
+        type: str
+        description: Log OSPFv3 neighbor changes.
+        choices: ['disable', 'enable']
+      ospf6_interface:
+        aliases: ['ospf6-interface']
+        type: list
+        elements: dict
+        description: Ospf6 interface.
+        suboptions:
+          area_id:
+            aliases: ['area-id']
+            type: str
+            description: A.
+          authentication:
+            type: str
+            description: Authentication mode.
+            choices: ['none', 'ah', 'esp', 'area']
+          bfd:
+            type: str
+            description: Enable/disable Bidirectional Forwarding Detection
+            choices: ['global', 'enable', 'disable']
+          cost:
+            type: int
+            description: Cost of the interface, value range from 0 to 65535, 0 means auto-cost.
+          dead_interval:
+            aliases: ['dead-interval']
+            type: int
+            description: Dead interval.
+          hello_interval:
+            aliases: ['hello-interval']
+            type: int
+            description: Hello interval.
+          interface:
+            type: list
+            elements: str
+            description: Configuration interface name.
+          ipsec_auth_alg:
+            aliases: ['ipsec-auth-alg']
+            type: str
+            description: Authentication algorithm.
+            choices: ['md5', 'sha1', 'sha256', 'sha384', 'sha512']
+          ipsec_enc_alg:
+            aliases: ['ipsec-enc-alg']
+            type: str
+            description: Encryption algorithm.
+            choices: ['null', 'des', '3des', 'aes128', 'aes192', 'aes256']
+          ipsec_keys:
+            aliases: ['ipsec-keys']
+            type: list
+            elements: dict
+            description: Ipsec keys.
+            suboptions:
+              auth_key:
+                aliases: ['auth-key']
                 type: list
-                elements: int
-                description: SPF calculation frequency.
-            summary_address:
-                aliases: ['summary-address']
+                elements: str
+                description: Authentication key.
+              enc_key:
+                aliases: ['enc-key']
                 type: list
-                elements: dict
-                description: Summary address.
-                suboptions:
-                    advertise:
-                        type: str
-                        description: Enable/disable advertise status.
-                        choices:
-                            - 'disable'
-                            - 'enable'
-                    id:
-                        type: int
-                        description: Summary address entry ID.
-                    prefix6:
-                        type: str
-                        description: IPv6 prefix.
-                    tag:
-                        type: int
-                        description: Tag value.
+                elements: str
+                description: Encryption key.
+              spi:
+                type: int
+                description: Security Parameters Index.
+          key_rollover_interval:
+            aliases: ['key-rollover-interval']
+            type: int
+            description: Key roll-over interval.
+          mtu:
+            type: int
+            description: MTU for OSPFv3 packets.
+          mtu_ignore:
+            aliases: ['mtu-ignore']
+            type: str
+            description: Enable/disable ignoring MTU field in DBD packets.
+            choices: ['disable', 'enable']
+          name:
+            type: str
+            description: Interface entry name.
+          neighbor:
+            type: list
+            elements: dict
+            description: Neighbor.
+            suboptions:
+              cost:
+                type: int
+                description: Cost of the interface, value range from 0 to 65535, 0 means auto-cost.
+              ip6:
+                type: str
+                description: IPv6 link local address of the neighbor.
+              poll_interval:
+                aliases: ['poll-interval']
+                type: int
+                description: Poll interval time in seconds.
+              priority:
+                type: int
+                description: Priority.
+          network_type:
+            aliases: ['network-type']
+            type: str
+            description: Network type.
+            choices: ['broadcast', 'non-broadcast', 'point-to-point', 'point-to-multipoint',
+                      'point-to-multipoint-non-broadcast']
+          priority:
+            type: int
+            description: Priority.
+          retransmit_interval:
+            aliases: ['retransmit-interval']
+            type: int
+            description: Retransmit interval.
+          status:
+            type: str
+            description: Enable/disable OSPF6 routing on this interface.
+            choices: ['disable', 'enable']
+          transmit_delay:
+            aliases: ['transmit-delay']
+            type: int
+            description: Transmit delay.
+      passive_interface:
+        aliases: ['passive-interface']
+        type: list
+        elements: str
+        description: Passive interface configuration.
+      redistribute:
+        type: dict
+        description: Redistribute.
+        suboptions:
+          metric:
+            type: int
+            description: Redistribute metric setting.
+          metric_type:
+            aliases: ['metric-type']
+            type: str
+            description: Metric type.
+            choices: ['1', '2']
+          name:
+            type: str
+            description: Redistribute name.
+          routemap:
+            type: list
+            elements: str
+            description: Route map name.
+          status:
+            type: str
+            description: Status.
+            choices: ['disable', 'enable']
+      restart_mode:
+        aliases: ['restart-mode']
+        type: str
+        description: OSPFv3 restart mode
+        choices: ['none', 'graceful-restart']
+      restart_on_topology_change:
+        aliases: ['restart-on-topology-change']
+        type: str
+        description: Enable/disable continuing graceful restart upon topology change.
+        choices: ['disable', 'enable']
+      restart_period:
+        aliases: ['restart-period']
+        type: int
+        description: Graceful restart period in seconds.
+      router_id:
+        aliases: ['router-id']
+        type: str
+        description: A.
+      spf_timers:
+        aliases: ['spf-timers']
+        type: list
+        elements: int
+        description: SPF calculation frequency.
+      summary_address:
+        aliases: ['summary-address']
+        type: list
+        elements: dict
+        description: Summary address.
+        suboptions:
+          advertise:
+            type: str
+            description: Enable/disable advertise status.
+            choices: ['disable', 'enable']
+          id:
+            type: int
+            description: Summary address entry ID.
+          prefix6:
+            type: str
+            description: IPv6 prefix.
+          tag:
+            type: int
+            description: Tag value.
 '''
 
 EXAMPLES = '''
@@ -568,18 +427,10 @@ EXAMPLES = '''
   hosts: fortimanagers
   connection: httpapi
   gather_facts: false
-  vars:
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
-    ansible_httpapi_port: 443
   tasks:
     - name: Configure IPv6 OSPF.
       fortinet.fmgdevice.fmgd_router_ospf6:
-        # bypass_validation: false
         # workspace_locking_adom: <global or your adom name>
-        # workspace_locking_timeout: 300
-        # rc_succeeded: [0, -2, -3, ...]
-        # rc_failed: [-2, -3, ...]
         device: <your own value>
         vdom: <your own value>
         router_ospf6:
@@ -678,42 +529,42 @@ EXAMPLES = '''
 
 RETURN = '''
 meta:
-    description: The result of the request.
-    type: dict
-    returned: always
-    contains:
-        request_url:
-            description: The full url requested.
-            returned: always
-            type: str
-            sample: /sys/login/user
-        response_code:
-            description: The status of api request.
-            returned: always
-            type: int
-            sample: 0
-        response_data:
-            description: The api response.
-            type: list
-            returned: always
-        response_message:
-            description: The descriptive message of the api response.
-            type: str
-            returned: always
-            sample: OK.
-        system_information:
-            description: The information of the target system.
-            type: dict
-            returned: always
+  description: The result of the request.
+  type: dict
+  returned: always
+  contains:
+    request_url:
+      description: The full url requested.
+      returned: always
+      type: str
+      sample: /sys/login/user
+    response_code:
+      description: The status of api request.
+      returned: always
+      type: int
+      sample: 0
+    response_data:
+      description: The api response.
+      type: list
+      returned: always
+    response_message:
+      description: The descriptive message of the api response.
+      type: str
+      returned: always
+      sample: OK.
+    system_information:
+      description: The information of the target system.
+      type: dict
+      returned: always
 rc:
-    description: The status the request.
-    type: int
-    returned: always
-    sample: 0
+  description: The status the request.
+  type: int
+  returned: always
+  sample: 0
 version_check_warning:
-    description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
-    type: list
-    returned: complex
+  description: Warning if the parameters used in the playbook are not supported by the current FortiManager version.
+  type: list
+  returned: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
@@ -725,14 +576,11 @@ def main():
     urls_list = [
         '/pm/config/device/{device}/vdom/{vdom}/router/ospf6'
     ]
-    url_params = ['device', 'vdom']
-    module_primary_key = None
     module_arg_spec = {
         'device': {'required': True, 'type': 'str'},
         'vdom': {'required': True, 'type': 'str'},
         'router_ospf6': {
-            'type': 'dict',
-            'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
+            'type': 'dict', 'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']],
             'options': {
                 'abr-type': {'v_range': [['7.2.6', '7.2.12'], ['7.4.3', '']], 'choices': ['cisco', 'ibm', 'standard'], 'type': 'str'},
                 'area': {
@@ -941,19 +789,15 @@ def main():
 
     module_option_spec = get_module_arg_spec('partial crud')
     module_arg_spec.update(module_option_spec)
-    params_validation_blob = []
     check_galaxy_version(module_arg_spec)
     module = AnsibleModule(argument_spec=check_parameter_bypass(module_arg_spec, 'router_ospf6'),
                            supports_check_mode=True)
-
     if not module._socket_path:
         module.fail_json(msg='MUST RUN IN HTTPAPI MODE')
     connection = Connection(module._socket_path)
-    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list, module_primary_key, url_params,
-                       module, connection, top_level_schema_name='data')
-    fmgd.validate_parameters(params_validation_blob)
+    fmgd = NAPIManager('partial crud', module_arg_spec, urls_list,
+                       None, 'data', module, connection)
     fmgd.process_partial_crud()
-
     module.exit_json(meta=module.params)
 
 
